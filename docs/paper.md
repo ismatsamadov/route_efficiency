@@ -232,13 +232,13 @@ My ORCID already exists; I will add the Zenodo DOI and later the paper to it. A 
 Scholar profile can be created, but Scholar lists profiles in its people search only
 with a verified university e-mail; the paper itself is indexed anyway.
 
-Before anyone cites the repository it needs two files it does not have: a `LICENSE`
-for the code (MIT is the usual choice for a standard-library tool; it covers code only)
-and a `CITATION.cff`. The README should say which licence each data folder carries
-([data/SOURCES.md](../data/SOURCES.md)). Then I connect the repository to Zenodo (log in
-with GitHub, enable the repository, publish a release such as v1.0.0) and cite the
-version DOI of the release that produced the paper's numbers. A template for
-`CITATION.cff`:
+The repository has a `LICENSE` (MIT, for the code), a `CITATION.cff`, and a Licensing
+section in the README that says which terms each data folder carries
+([data/SOURCES.md](../data/SOURCES.md)); the documentation is CC BY 4.0. What remains is
+to connect the repository to Zenodo (log in with GitHub, enable the repository, publish
+a release such as v1.0.0) and cite the version DOI of the release that produced the
+paper's numbers. The `CITATION.cff` as committed (the version and date move with each
+release):
 
 ```yaml
 cff-version: 1.2.0
@@ -285,9 +285,9 @@ point.
 
 ## 7. Step by step
 
-1. Repository: add `LICENSE` (MIT) and `CITATION.cff`; add a licensing section to the
-   README; note at the top of the February 2026 GitHub report that this work supersedes
-   it; tag release v1.0.0 and get the Zenodo DOI.
+1. Repository: note at the top of the February 2026 GitHub report that this work
+   supersedes it; tag release v1.0.0 and get the Zenodo DOI (`LICENSE`, `CITATION.cff`
+   and the Licensing section of the README are in place).
 2. Write to AYNA and Bakı Metropoliteni for data terms, and request the data in
    [roadmap.md](roadmap.md#data-i-would-ask-ayna-for).
 3. Decide between the three ways forward in section 2. For the paper as it is, take a
@@ -310,7 +310,8 @@ point.
 
 ## 8. Checklist before submitting
 
-- [ ] `LICENSE`, `CITATION.cff`, Zenodo version DOI, licensing section in the README
+- [x] `LICENSE`, `CITATION.cff` and the Licensing section of the README
+- [ ] Zenodo version DOI
 - [ ] The February 2026 report cited and superseded
 - [ ] Every number in the manuscript traceable to a file in `output/` at the cited release
 - [ ] OpenStreetMap credit on every map; Kontur and opendata.az cited as datasets
