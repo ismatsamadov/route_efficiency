@@ -2,7 +2,7 @@
 
 Supported inputs:
   - GeoPackage (.gpkg), e.g. Kontur Population, with polygon or point features and a
-    population column; each feature becomes one zone at its centre
+    population column; each polygon becomes seven points that share its population
   - CSV with latitude, longitude and population columns (header names are matched loosely)
 Zones are clipped to a bounding box, normally the served stops plus a margin."""
 
@@ -20,8 +20,16 @@ def _mercator_to_latlon(x, y):
     return lat, lon
 
 
-def _gpkg_centre(blob):
-    """Centre (x, y) of a GeoPackage geometry: its envelope centre, else its vertices' mean."""
+# A hexagon split into seven equal parts, the way H3 subdivides a cell: its centre and
+# six points at 0.655 of the circumradius (about a third of the envelope's larger side).
+SPLIT = [(0.0, 0.0)] + [(math.cos(math.radians(60 * k)), math.sin(math.radians(60 * k))) for k in range(6)]
+
+
+def _gpkg_shape(blob):
+    """(centre_x, centre_y, width, height) of a GeoPackage geometry.
+
+    Width and height come from the envelope; without one they are 0 and the
+    centre is the mean of the vertices."""
     if blob[:2] != b"GP":
         raise ValueError("not a GeoPackage geometry")
     flags = blob[3]
@@ -29,12 +37,12 @@ def _gpkg_centre(blob):
     env_len = {0: 0, 1: 32, 2: 48, 3: 48, 4: 64}[(flags >> 1) & 7]
     if env_len:
         minx, maxx, miny, maxy = struct.unpack(order + "4d", blob[8:40])
-        return (minx + maxx) / 2, (miny + maxy) / 2
+        return (minx + maxx) / 2, (miny + maxy) / 2, maxx - minx, maxy - miny
     wkb = blob[8:]
     worder = "<" if wkb[0] == 1 else ">"
     gtype = struct.unpack(worder + "I", wkb[1:5])[0] % 1000
     if gtype == 1:                                           # point
-        return struct.unpack(worder + "2d", wkb[5:21])
+        return (*struct.unpack(worder + "2d", wkb[5:21]), 0.0, 0.0)
     if gtype == 6:                                           # multipolygon: use the first polygon
         wkb = wkb[9:]
         worder = "<" if wkb[0] == 1 else ">"
@@ -43,10 +51,12 @@ def _gpkg_centre(blob):
     npts = struct.unpack(worder + "I", wkb[9:13])[0]
     coords = struct.unpack(worder + f"{2 * npts}d", wkb[13:13 + 16 * npts])
     xs, ys = coords[0::2][:-1] or coords[0::2], coords[1::2][:-1] or coords[1::2]
-    return sum(xs) / len(xs), sum(ys) / len(ys)
+    return sum(xs) / len(xs), sum(ys) / len(ys), max(xs) - min(xs), max(ys) - min(ys)
 
 
-def load_gpkg(path, bbox=None):
+def load_gpkg(path, bbox=None, split=True):
+    """Zones from a GeoPackage. With split=True each polygon becomes seven points
+    sharing its population, so coverage is not judged from the centre alone."""
     con = sqlite3.connect(f"file:{path}?mode=ro", uri=True)
     table, geom_col, srs = con.execute(
         "SELECT c.table_name, g.column_name, g.srs_id FROM gpkg_contents c "
@@ -60,10 +70,14 @@ def load_gpkg(path, bbox=None):
     for blob, pop in con.execute(f'SELECT "{geom_col}", "{pop_col}" FROM "{table}"'):
         if not blob or not pop:
             continue
-        x, y = _gpkg_centre(blob)
-        lat, lon = _mercator_to_latlon(x, y) if srs == 3857 else (y, x)
-        if bbox is None or (bbox[0] <= lat <= bbox[1] and bbox[2] <= lon <= bbox[3]):
-            zones.append((lat, lon, float(pop)))
+        cx, cy, w, h = _gpkg_shape(blob)
+        step = 0.33 * max(w, h)
+        pts = [(cx + dx * step, cy + dy * step) for dx, dy in SPLIT] if split and step else [(cx, cy)]
+        share = float(pop) / len(pts)
+        for x, y in pts:
+            lat, lon = _mercator_to_latlon(x, y) if srs == 3857 else (y, x)
+            if bbox is None or (bbox[0] <= lat <= bbox[1] and bbox[2] <= lon <= bbox[3]):
+                zones.append((lat, lon, share))
     con.close()
     return zones
 
@@ -83,8 +97,8 @@ def load_csv(path, bbox=None):
     return zones
 
 
-def load_population(path, bbox=None):
-    return load_gpkg(path, bbox) if str(path).lower().endswith(".gpkg") else load_csv(path, bbox)
+def load_population(path, bbox=None, split=True):
+    return load_gpkg(path, bbox, split) if str(path).lower().endswith(".gpkg") else load_csv(path, bbox)
 
 
 def stops_bbox(network, margin_km=2.0):
