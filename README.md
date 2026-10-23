@@ -3,6 +3,17 @@
 Data and code to measure how efficiently Baku's bus routes serve riders, and to test
 changes to the network before making them. Python 3.11 or newer, standard library only.
 
+**Documentation is in [docs/](docs/README.md)**. It covers:
+
+- the data and its defects;
+- every setting;
+- how each number is computed;
+- the redesign algorithm;
+- every output column;
+- the latest results;
+- the research behind the approach;
+- the roadmap.
+
 ## Regenerate the results
 
 ```sh
