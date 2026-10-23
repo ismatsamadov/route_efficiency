@@ -81,7 +81,7 @@ For one trip in one direction (`service.py`):
 - CO₂ = fuel × `co2_kg_per_l`
 
 With the defaults, total route-km divided by total running time over all directions is
-22 km/h, the average bus speed AYNA reported.
+22 km/h, the bus speed AYNA reported in November 2024.
 
 ## 4. Headways and daily service
 
@@ -164,6 +164,7 @@ correlation (1 means the same ranking) and the correlation of the logarithms of 
 
 | Model inputs | Correlation |
 |---|---|
+| One headway of 12 minutes for every route, trips to homes only | 0.41 |
 | Headways by service type, trips to homes only | 0.56 |
 | Plus destinations (OpenStreetMap, metro) | 0.58 |
 | Plus headways estimated from boardings | 0.77 |
@@ -171,8 +172,8 @@ correlation (1 means the same ranking) and the correlation of the logarithms of 
 The last step uses the same boardings it is checked against, so 0.58 is the fair
 measure of how well the model predicts (`python3 measure.py --set headway_from_ridership=false`).
 In that run the model overrates express routes such as E1, 120E and 72, and underrates
-several suburban routes such as 139, 141E, 189 and 163. (With one 12-minute headway for
-every route the correlation was 0.41.)
+several suburban routes such as 139, 141E, 189 and 163. `output/robustness/fit_ladder.csv`
+holds the four steps (section 10).
 
 ## 9. Stop balancing
 
@@ -183,7 +184,31 @@ longer than `--max-gap` (700 m). Stops served by fewer routes are considered fir
 transfer stops survive. In the redesign, a stop that would leave anyone without a stop
 within `max_access_walk_m` is protected and the pass runs again.
 
-## 10. How far to trust the numbers
+## 10. Robustness checks
+
+`robustness.py` repeats the main results under other conditions and writes
+`output/robustness/` ([outputs.md](outputs.md)).
+
+- **Fit ladder.** The ridership check of section 8, four times, adding one input at a
+  time: every route every 12 minutes with trips to homes only; headways by service type;
+  plus destinations; plus headways from boardings (the default). Each step runs
+  `evaluate_od` on the same 300 origins as `measure.py` and compares the modelled
+  boardings with the observed ones. H1 keeps its published headway from step 2 on.
+- **Coverage by radius.** The coverage of section 5 at 300, 400, 500, 800 and 1,000 m.
+- **Other trip samples.** The redesign search runs exactly as in `redesign.py`, then
+  today's network and the redesigned one are scored with `evaluate_od` on ten different
+  samples of 300 origins (seeds 1 to 10, the seven-point population, the gravity model
+  with destinations). Each row gives the average door-to-door minutes counting a trip
+  that cannot be made within 2 hours as 120, as the search does, and the gain. Seed 7 is
+  the independent check that `redesign.py` reports.
+- **Other assumptions.** `redesign.py` runs again, in parallel processes, under eleven
+  changed settings (transfer penalty 2 and 8 minutes; distance decay 4 and 9 km; homes
+  only; 45 and 80 boardings per trip; 400 m walks; a search sample of 200 origins and
+  one with another seed; nobody may lose a stop), plus the committed settings. Each row
+  reports what the search kept, its independent check and its fleet-saving option, from
+  that run's `summary.json` and `changes.csv`.
+
+## 11. How far to trust the numbers
 
 - **Measured from the data**: lengths, stop spacing, directness, duplication, corridors,
   near-duplicates, detours (except their minutes), coverage.
@@ -192,4 +217,5 @@ within `max_access_walk_m` is protected and the pass runs again.
   the network, not forecasts.
 - **Checks**: average speed calibrated to the reported 22 km/h; implied fleet 2,015 against
   2,300 reported; the population grid's 3.04 million against official 3.22 million; model
-  ridership ranking 0.58 against observed.
+  ridership ranking 0.58 against observed; the redesign's gain on ten trip samples and
+  under eleven other settings ([results.md](results.md#how-robust-the-results-are)).

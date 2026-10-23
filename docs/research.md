@@ -92,7 +92,7 @@ The lessons for Baku:
 | When | What | Source |
 |---|---|---|
 | December 2023 | AYNA presented its Mobility Transformation Program, with an international consultant. All routes were analysed, and routes are optimised on a digital twin (computer model) of the city. 1.6 million bus trips a day | [Ministry, 2023](https://mincom.gov.az/en/media-en/news/presentation-of-mobility-transformation-program-in-azerbaijan-took-place) |
-| November 2024 | Bus lanes and route optimisation raised average bus speed from 18 to 22 km/h; target of a fully electric bus fleet by 2030 | [Report.az, 2024](https://report.az/en/amp/cop29/minister-azerbaijan-plans-to-fully-electrify-its-bus-fleet-by-2030) |
+| November 2024 | Bus lanes and route optimisation raised the speed of buses in Baku from 18 to 22 km/h; target of a fully electric bus fleet by 2030 | [Report.az, 2024](https://report.az/en/amp/cop29/minister-azerbaijan-plans-to-fully-electrify-its-bus-fleet-by-2030) |
 | September 2025 | The consultant found weak links between Baku and Absheron routes, overlapping routes, and 17% of residents with limited bus access. The new network needs about 2,800 buses; gross-cost contracts are planned | [APA, 2025](https://en.apa.az/infrastructure/azerbaijan-to-implement-gross-contract-system-to-ensure-sustainable-public-transport-financing-478431) |
 | January 2026 | The new network began launching, with 8 routes. 114 km of bus lanes; about 2,300 buses in daily service; 55% of the fleet electric or CNG | [Ministry, 2026](https://mincom.gov.az/en/media-en/news/roundtable-on-the-2025-state-program-for-the-improvement-of-transport-infrastructure-in-baku-and-surrounding-areas) |
 

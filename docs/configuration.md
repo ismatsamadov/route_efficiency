@@ -149,4 +149,7 @@ python3 measure.py --set destination_share=0
 
 # keep routes 180 and 519 exactly as they are
 python3 redesign.py --set 'redesign_protected_routes=["180", "519"]'
+
+# the redesign under eleven other settings at once, plus other trip samples
+python3 robustness.py
 ```

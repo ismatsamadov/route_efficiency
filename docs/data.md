@@ -27,6 +27,16 @@ snapshot in github.com/samirmehd1yev/best_route_finding. Its `meta` table record
 committed database was built by the snapshot's own pipeline (it has a `meta` table the
 script does not write).
 
+### When the data is from
+
+Every result describes the network as it was on 6 May 2026. AYNA's new network began
+launching in January 2026 ([research.md](research.md#4-bakus-own-programme)), and the
+BakuBus counts used for ridership are from September 2026, so the two describe the
+network some months apart: eight routes in the counts (M2, M3, M4, M5, M6, 500, 149E,
+195E) do not exist in the snapshot. Before building on the results, take a new snapshot
+and rerun the tools ([roadmap.md](roadmap.md#updating-the-work-when-data-arrives)); the
+repairs are detected from the data, so they adapt to it.
+
 | Table | Rows | Contents |
 |---|---|---|
 | `buses` | 208 | One row per route: number, carrier, end points, `route_length_km`, `duration_min`, fare (`tariff_qepik`, `tariff_azn`), payment type (`Kart` card or `Nəğd` cash), region (`Bakı` or `Sumqayıt`), working zone, card payment start date, stop counts per direction |
@@ -80,11 +90,13 @@ stop sits 7.2 m from its route line, and 90% sit within 13.7 m.
 2023-11-01, CC BY 4.0. A GeoPackage (SQLite) with one row per H3 hexagon of resolution 8
 (about 0.74 km² each); 34,609 hexagons and 10.48 million people for Azerbaijan.
 
-`busnet/population.py` keeps the hexagons inside the box around the served stops plus
-2 km: 2,707 hexagons with 3,043,184 people. For coverage and travel times each hexagon is
-split into seven points that share its population (its centre and six points around it,
-the way H3 divides a cell), so coverage is not judged from the centre alone; that gives
-18,952 points. The official figures for 1 January 2026 (Baku 2,356,200; Sumqayıt 428,200;
+`busnet/population.py` keeps the hexagons whose centre lies inside the box around the
+served stops plus 2 km: 2,707 hexagons with 3,043,187 people. For coverage and travel
+times each hexagon is split into seven points that share its population (its centre and
+six points around it, the way H3 divides a cell), so coverage is not judged from the
+centre alone. The points inside the box number 18,952 and carry 3,043,184 people, the
+figure every result uses; the small difference is a few points of hexagons at the edge
+of the box. The official figures for 1 January 2026 (Baku 2,356,200; Sumqayıt 428,200;
 Absheron district 435,200; table in `data/external/stat/`) total 3.22 million, consistent
 with the grid.
 
@@ -99,6 +111,8 @@ Columns: date, route number, daily boardings.
   September 2026.
 - 56 of those routes are in the AYNA snapshot with stops (692,288 boardings a day). Eight
   newer routes in the file are not in the snapshot: M2, M3, M4, M5, M6, 500, 149E, 195E.
+  One counted route, 49, is listed under another carrier (Azlənd Plaza MMC) in the AYNA
+  data, which is why the snapshot shows 55 BakuBus routes but 56 routes have counts.
 - Only BakuBus routes are covered; the other carriers' routes have no observed boardings.
 
 ## Metro

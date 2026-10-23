@@ -8,7 +8,7 @@ Terms as they are used in this repository. Setting names are in `code` font
 | Accessibility | How easily people can reach places by bus. Here: door-to-door times between homes and destinations from the travel model |
 | AYNA | Azərbaycan Yerüstü Nəqliyyat Agentliyi, the agency that plans Baku's surface transport and publishes the bus map the data comes from |
 | BakıKart | Baku's transport smart card |
-| BakuBus | The largest carrier in the data (55 of the 201 routes with stops, among 42 carriers), and the only one whose boardings per route are published (by Bakı Metropoliteni on opendata.az) |
+| BakuBus | The largest carrier in the data (55 of the 201 routes with stops, among 42 carriers), and the only one whose boardings per route are published (by Bakı Metropoliteni on opendata.az). 56 routes have counts: route 49 is listed under another carrier (Azlənd Plaza MMC) in the AYNA data |
 | Boarding | One rider getting on one bus. A trip with one change is two boardings |
 | Bus-equivalent | A fractional number of buses. The redesign assigns fractions so that small changes count; whole buses are the fractions rounded up per route |
 | Bus-hours, bus-km | Hours and kilometres that buses drive in service in a day. The main operating costs |
@@ -28,6 +28,7 @@ Terms as they are used in this repository. Setting names are in `code` font
 | Duplication ratio | Total route length ÷ length of distinct stop-to-stop links. 1 means no two routes share a link |
 | Express route | A route in an express working zone ("ekspres" in the AYNA data): E1, H1, 72, 120E, 121E, 140E, 150E, 594 and 595. Near-duplicate checks leave them out, since skipping a local route's stops is their purpose |
 | Fleet | Buses needed to run the service: round-trip time × (1 + `layover_share`) ÷ headway, per route |
+| Fit ladder | The demand model checked against observed boardings four times, adding one input at a time: flat headways, headways by service type, destinations, headways from boardings (`output/robustness/fit_ladder.csv`) |
 | Fleet-saving option | The share of the redesigned network's buses that still gives today's average trip time |
 | Frequency, headway | How often buses come. The headway is the minutes between buses; frequency is buses per hour |
 | GTFS | General Transit Feed Specification, the standard file format for transit networks and timetables. `frequencies.txt` describes service as "every N minutes" |
@@ -52,6 +53,7 @@ Terms as they are used in this repository. Setting names are in `code` font
 | Reference fleet | Buses reported in daily service, 2,300 (`reference_fleet`), used to check the estimated headways |
 | Repair | An automatic fix of a defect in the AYNA data when it is loaded, listed in `output/repairs.txt` |
 | Ridership-derived headway | A headway estimated from observed boardings: enough trips for each to carry `boardings_per_trip` riders |
+| Robustness checks | `robustness.py`: the redesign scored on other samples of trips and under other assumptions, the model's fit as each input is added, and coverage at several radii (`output/robustness/`) |
 | Route | A bus line with a number, such as 7A. Has one or two directions |
 | Search sample | The fixed set of trips the redesign scores every change on (`redesign_origins`, `redesign_seed`) |
 | Service hours | Hours of service a day (`service_hours`, 17: 06:00 to 23:00) |

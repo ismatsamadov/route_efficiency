@@ -14,6 +14,7 @@ From the repository root:
 ```sh
 python3 measure.py --scenario stop-balancing --min-gap 250
 python3 redesign.py
+python3 robustness.py
 ```
 
 | Command | Writes | Time |
@@ -21,16 +22,30 @@ python3 redesign.py
 | `python3 measure.py` | `output/` measures of today's network | about 8 s |
 | `python3 measure.py --scenario stop-balancing --min-gap 250` | the same, plus `output/scenario.json` and `output/scenario_removed_stops.csv` | about 12 s |
 | `python3 redesign.py` | `output/redesign/` | about 2 minutes |
+| `python3 robustness.py` | `output/robustness/`: the results on other trip samples and under other assumptions | about 10 minutes (8 processes) |
 
-The committed `output/` folder was produced by exactly these two commands. Running them
-again gives byte-identical files: random sampling uses fixed seeds and every list is
-sorted before use. This was checked on a fresh clone of the repository.
+The committed `output/` folder was produced by exactly these three commands. Running
+them again gives byte-identical files: random sampling uses fixed seeds and every list
+is sorted before use. This was checked on a fresh clone of the repository. One caveat:
+Python 3.12 changed how `sum()` adds floats, so Python 3.11 can differ from the
+committed files in the last digits of some numbers; the regression test allows that.
+
+## Run the tests
+
+```sh
+python3 -m unittest                            # about 15 s
+BUSNET_SLOW_TESTS=1 python3 -m unittest        # also regenerates the redesign and the robustness checks, about 15 minutes
+```
+
+The tests check the geometry, the headway and daily-service rules, the settings reader
+and the redesign's plan arithmetic on a small made-up network, and regenerate `output/`
+to compare it with the committed files ([code.md](code.md#checking-a-change)).
 
 ## Change something and see the effect
 
 1. Edit a value in `busnet.toml` (see [configuration.md](configuration.md)), or add real
    data, for example real headways in `data/headways.csv`.
-2. Run the two commands again.
+2. Run the three commands again.
 3. `git diff output/` shows what changed in every result.
 
 To try a value once without editing the file:
