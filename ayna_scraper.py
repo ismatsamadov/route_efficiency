@@ -27,6 +27,7 @@ import argparse
 import csv
 import json
 import os
+import re
 import sqlite3
 import time
 import urllib.error
@@ -143,6 +144,37 @@ def write_sqlite(path, bus_rows, stop_rows, seq_rows, route_rows):
     os.replace(tmp, path)
 
 
+def parse_coord(value):
+    """Parse an AYNA coordinate. Besides normal numbers the API sometimes sends
+    comma forms: "49,961721" (comma decimal) and "49,961,721" / "4,049,233"
+    (digits grouped after the decimal point was dropped; Baku degrees are 2 digits).
+    Returns None for anything unparseable or outside [-180, 180]."""
+    if value is None:
+        return None
+    if isinstance(value, (int, float)):
+        v = float(value)
+    else:
+        s = str(value).strip()
+        if not s:
+            return None
+        try:
+            v = float(s)
+        except ValueError:
+            if s.count(",") == 1 and "." not in s:
+                try:
+                    v = float(s.replace(",", "."))
+                except ValueError:
+                    return None
+            elif re.fullmatch(r"-?\d{1,3}(?:,\d{3}){2,}", s):
+                neg = s.startswith("-")
+                digits = s.lstrip("-").replace(",", "")
+                v = float(digits[:2] + "." + digits[2:])
+                v = -v if neg else v
+            else:
+                return None
+    return v if -180 <= v <= 180 else None
+
+
 def fetch_json(url, retries=4, timeout=30):
     """GET a URL and parse JSON, retrying with exponential backoff."""
     last_err = None
@@ -222,7 +254,7 @@ def main():
     for s in all_stops:
         stop_info[s["id"]] = {
             "stop_id": s["id"], "code": "", "name": "",
-            "lat": float(s["latitude"]), "lon": float(s["longitude"]),
+            "lat": parse_coord(s.get("latitude")), "lon": parse_coord(s.get("longitude")),
             "is_hub": s.get("isTransportHub", False),
         }
 
@@ -241,10 +273,13 @@ def main():
 
             info = stop_info.setdefault(sid, {
                 "stop_id": sid, "code": "", "name": "",
-                "lat": float(inner["latitude"]) if inner.get("latitude") else None,
-                "lon": float(inner["longitude"]) if inner.get("longitude") else None,
+                "lat": parse_coord(inner.get("latitude")),
+                "lon": parse_coord(inner.get("longitude")),
                 "is_hub": inner.get("isTransportHub", False),
             })
+            if info["lat"] is None:
+                info["lat"] = parse_coord(inner.get("latitude"))
+                info["lon"] = parse_coord(inner.get("longitude"))
             info["code"] = info["code"] or inner.get("code") or st.get("stopCode") or ""
             info["name"] = info["name"] or (inner.get("name") or st.get("stopName") or "").strip()
             stop_routes[sid].add(b.get("number"))
@@ -254,7 +289,7 @@ def main():
                 "direction": d, "seq": seq_counter[d],
                 "stop_id": sid, "stop_code": st.get("stopCode"),
                 "stop_name": (st.get("stopName") or "").strip(),
-                "lat": inner.get("latitude"), "lon": inner.get("longitude"),
+                "lat": parse_coord(inner.get("latitude")), "lon": parse_coord(inner.get("longitude")),
             })
 
         tariff = b.get("tariff")
@@ -277,7 +312,9 @@ def main():
         })
 
         for r in b.get("routes") or []:
-            coords = [[p["lng"], p["lat"]] for p in r.get("flowCoordinates") or []]
+            coords = [[parse_coord(p.get("lng")), parse_coord(p.get("lat"))]
+                      for p in r.get("flowCoordinates") or []]
+            coords = [c for c in coords if None not in c]
             if len(coords) < 2:
                 continue
             route_rows.append((b["id"], r.get("directionTypeId"), r.get("destination"), coords))
