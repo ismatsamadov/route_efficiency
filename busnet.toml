@@ -77,6 +77,19 @@ max_trip_min = 120               # longer door-to-door times count as "not reach
 destination_share = 0.5          # share of trip ends drawn to destinations rather than homes
 metro_weight_per_1000_entries = 2.0
 
+[redesign]
+# redesign.py keeps the fleet at today's size and keeps a change only if it shortens the
+# average door-to-door trip without cutting people off from bus service.
+redesign_origins = 100                       # trip origins in the search sample (more is slower)
+redesign_seed = 11                           # the final check uses a different sample
+redesign_min_gain_min = 0.005                # smallest improvement worth keeping, minutes
+redesign_max_straighten = 80                 # detours to try straightening
+redesign_max_drop = 20                       # least-used routes to try dropping
+redesign_max_people_losing_stop = 500        # people a single change may leave without a stop within max_access_walk_m
+redesign_max_people_losing_stop_total = 3000 # the same, for all changes together
+redesign_shift_share = 0.2                   # share of a route's buses moved in one frequency shift
+redesign_shift_rounds = 4
+
 [destination_weights]            # pull of one OpenStreetMap feature of each kind
 office = 1
 townhall = 3
