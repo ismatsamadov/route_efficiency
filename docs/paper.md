@@ -234,8 +234,8 @@ with a verified university e-mail; the paper itself is indexed anyway.
 
 The repository has a `LICENSE` (MIT, for the code), a `CITATION.cff`, and a Licensing
 section in the README that says which terms each data folder carries
-([data/SOURCES.md](../data/SOURCES.md)); the documentation is CC BY 4.0. Release v1.0.0
-is archived on Zenodo: the version DOI 10.5281/zenodo.23602094 is the one to cite for the
+([data/SOURCES.md](../data/SOURCES.md)); the documentation is CC BY 4.0. Release v1.1.0
+is archived on Zenodo: the version DOI 10.5281/zenodo.23604370 is the one to cite for the
 numbers in the paper, and 10.5281/zenodo.23602093 always resolves to the latest version.
 The `CITATION.cff` as committed (the version, date and DOI move with each release):
 
@@ -249,9 +249,9 @@ authors:
     given-names: Ismat
     orcid: "https://orcid.org/0009-0007-7919-4950"
     affiliation: "Independent researcher, Baku, Azerbaijan"
-version: 1.0.0
-date-released: 2026-10-23
-doi: 10.5281/zenodo.23602094
+version: 1.1.0
+date-released: 2026-10-24
+doi: 10.5281/zenodo.23604370
 license: MIT
 repository-code: "https://github.com/ismatsamadov/route_efficiency"
 keywords: [public transport, bus network, network design, Baku, open data]
@@ -286,7 +286,7 @@ point.
 
 1. Repository: note at the top of the February 2026 GitHub report that this work
    supersedes it (`LICENSE`, `CITATION.cff`, the Licensing section of the README and the
-   Zenodo DOI of release v1.0.0 are in place).
+   Zenodo DOI of release v1.1.0 are in place).
 2. Decide between the three ways forward in section 2. For the paper as it is, state
    that the map API was unchanged between May and October 2026 and list the
    before-and-after comparison as future work.
@@ -316,7 +316,7 @@ point.
 ## 8. Checklist before submitting
 
 - [x] `LICENSE`, `CITATION.cff` and the Licensing section of the README
-- [x] Zenodo version DOI (10.5281/zenodo.23602094; all versions 10.5281/zenodo.23602093)
+- [x] Zenodo version DOI (10.5281/zenodo.23604370 for v1.1.0; all versions 10.5281/zenodo.23602093)
 - [x] The February 2026 report cited and superseded (manuscript section 2.1)
 - [x] Every number in the manuscript traceable to a file in `output/` at the cited
       release (the one exception, the route-by-route ratios of the fair 0.58 run in

@@ -20,7 +20,7 @@ captions.
 Data and code availability: every input, setting, script and result, including today's
 network and the redesign as GTFS feeds (output/redesign/gtfs_today.zip and
 gtfs_redesign.zip), is in the repository github.com/ismatsamadov/route_efficiency,
-release v1.1.0, archived at https://doi.org/10.5281/zenodo.23602094 (all versions:
+release v1.1.0, archived at https://doi.org/10.5281/zenodo.23604370 (all versions:
 https://doi.org/10.5281/zenodo.23602093). The release holds the map database scraped on
 23 October 2026, identical in every table to the public snapshot of 6 May 2026.
 

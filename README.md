@@ -1,6 +1,6 @@
 # Baku bus route efficiency
 
-Release v1.0.0 is archived on Zenodo: https://doi.org/10.5281/zenodo.23602094
+Release v1.1.0 is archived on Zenodo: https://doi.org/10.5281/zenodo.23604370
 
 I built this to measure how efficiently Baku's bus routes serve riders and what they
 cost to run, using nothing but public data, and to test changes to the network before
@@ -107,8 +107,8 @@ The code is mine and is under the MIT License ([LICENSE](LICENSE)): `busnet/`,
 `measure.py`, `redesign.py`, `robustness.py`, `paper/figures.py`, `paper/check.py`, `tests/`, `data/ayna_scraper.py`,
 `data/fetch_external.py` and `busnet.toml`. The documentation in `docs/` is under
 [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). [CITATION.cff](CITATION.cff)
-says how to cite the repository: release v1.0.0 is archived on Zenodo as
-[10.5281/zenodo.23602094](https://doi.org/10.5281/zenodo.23602094), and
+says how to cite the repository: release v1.1.0 is archived on Zenodo as
+[10.5281/zenodo.23604370](https://doi.org/10.5281/zenodo.23604370), and
 [10.5281/zenodo.23602093](https://doi.org/10.5281/zenodo.23602093) always resolves to the
 latest release.
 
