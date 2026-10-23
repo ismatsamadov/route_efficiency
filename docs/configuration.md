@@ -46,11 +46,11 @@ headways come from the zone table; no destinations means trips end at homes only
 
 | Setting | Default | Meaning | Source or reason |
 |---|---|---|---|
-| `walk_speed_mps` | 1.25 | Walking speed, metres per second (4.5 km/h) | Common planning value |
-| `walk_detour` | 1.3 | Street distance divided by straight-line distance when walking | Common planning value |
-| `max_access_walk_m` | 500 | Furthest straight-line walk between a home or destination and a stop; also the distance the redesign's coverage guard protects | Planning practice (400 to 500 m) |
-| `max_transfer_walk_m` | 300 | Furthest walk between stops when changing buses | Keeps transfers realistic |
-| `coverage_radius_m` | 400 | A person counts as served with a stop within this distance | TCQSM convention; TransLink uses 450 m |
+| `walk_speed_mps` | 1.25 | Walking speed, metres per second (4.5 km/h) | Assumption |
+| `walk_detour` | 1.3 | Street distance divided by straight-line distance when walking | Assumption |
+| `max_access_walk_m` | 500 | Furthest straight-line walk between a home or destination and a stop; also the distance the redesign's coverage guard protects | Between the TCQSM's 400 m convention and the 524 m that 85% of Montreal's riders walked ([research.md](research.md#2-planning-guidelines-and-how-baku-compares)) |
+| `max_transfer_walk_m` | 300 | Furthest walk between stops when changing buses | Assumption; keeps transfers realistic |
+| `coverage_radius_m` | 400 | A person counts as served with a stop within this distance | The TCQSM's coverage-area convention; TransLink's 2004 target used a 450 m walk |
 
 ## Service frequency and transfers (`[service]`, `[headway_by_zone]`)
 
@@ -64,9 +64,9 @@ working zone in `[headway_by_zone]`; `default_headway_min`.
 | `headway_from_ridership` | true | Estimate BakuBus headways from their observed boardings | Uses the opendata.az counts |
 | `boardings_per_trip` | 60 | Average boardings on one one-way trip of a 12 m bus, used for that estimate | Assumption; checked through the fleet total |
 | `service_hours` | 17 | Hours of service a day (06:00 to 23:00) | Assumption |
-| `min_headway_min` | 3 | Shortest headway allowed | Practical limit |
-| `max_headway_min` | 30 | Longest headway allowed for estimates, and the floor of service the redesign keeps on every route | Planning practice |
-| `transfer_penalty_min` | 5 | Extra minutes a rider perceives for each change, on top of waiting | Usual value in the literature |
+| `min_headway_min` | 3 | Shortest headway allowed | Assumption |
+| `max_headway_min` | 30 | Longest headway allowed for estimates, and the floor of service the redesign keeps on every route | Assumption; the TCQSM's 31–60 minute band is a lower level of service |
+| `transfer_penalty_min` | 5 | Extra minutes a rider perceives for each change, on top of waiting | The value used in the Mandl and Mumford benchmark studies ([research.md](research.md#5-designing-a-network-by-computer)) |
 | `layover_share` | 0.15 | Recovery time at terminals as a share of running time (for fleet size) | Assumption |
 | `reference_fleet` | 2300 | Buses in daily service, all operators | Ministry of Digital Development, January 2026 |
 | `headway_by_zone` | urban 10, urban express 15, suburban 15, suburban express 20, within a settlement 20, between settlements 20, intercity 30 | Headway by working zone (keys are the Azerbaijani zone names) | Assumption |
@@ -87,12 +87,12 @@ suggests they are realistic.
 | Setting | Default | Meaning | Source or reason |
 |---|---|---|---|
 | `fuel_l_per_km` | 0.30 | Diesel-equivalent litres per km of steady driving, 12 m bus | With the next value, gives 43 L/100 km at 2.65 stops/km, the Braunschweig test cycle result for diesel buses (43.8 L/100 km, VTT 2012) |
-| `fuel_l_per_stop` | 0.05 | Extra litres for one stop-start cycle | VTT 2012 measured 0.03 to 0.07 L |
+| `fuel_l_per_stop` | 0.05 | Extra litres for one stop-start cycle | Our estimate of 0.03 to 0.07 L from the slope between VTT 2012's test cycles |
 | `co2_kg_per_l` | 2.67 | kg of CO₂ per litre of diesel, tank to wheel | IPCC 2006 |
 
-Baku's BakuBus fleet is mostly CNG with a growing electric share; CNG buses use about 35%
-more energy than diesel for similar CO₂ per km, so diesel-equivalent litres are a fair
-common unit.
+By January 2026, 55% of Baku's bus fleet was described as eco-friendly (electric or CNG)
+and no split by fuel is published; CNG buses use about 35% more energy than diesel for
+similar CO₂ per km, so diesel-equivalent litres are a fair common unit.
 
 ## Demand (`[demand]`, `[destination_weights]`)
 

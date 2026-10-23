@@ -67,7 +67,7 @@ stop_loss_s = 20                 # slowing, serving and accelerating (nMotion 20
 [fuel]
 # 43 L/100 km at 2.65 stops/km, matching the Braunschweig cycle for 12 m diesel buses (VTT 2012).
 fuel_l_per_km = 0.30             # diesel-equivalent litres per km of steady driving
-fuel_l_per_stop = 0.05           # one stop-start cycle (VTT: 0.03-0.07 L)
+fuel_l_per_stop = 0.05           # one stop-start cycle (0.03-0.07 L, estimated from VTT 2012's test cycles)
 co2_kg_per_l = 2.67              # diesel, tank-to-wheel (IPCC 2006)
 
 [demand]
