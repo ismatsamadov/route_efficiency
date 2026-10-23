@@ -9,7 +9,7 @@ different, finer sample of trips than the search used.
 
 Writes to ./output/redesign/ (or --out):
   changes.csv        every change kept, in order, with its effect on average door-to-door time
-  routes.csv         each route before and after: kept, straightened or dropped; buses, headway, length
+  routes.csv         each route before and after: kept, straightened, merged or dropped; riders, buses, headway, length
   summary.json       riders, operator and network measures before and after (the independent check),
                      and how much of the fleet would give today's travel times
   network.geojson    redesigned routes and dropped routes, for any map tool (GitHub draws it)
@@ -52,7 +52,7 @@ def write_csv(path, rows):
             w.writerow({k: (round(v, 4) if isinstance(v, float) else v) for k, v in r.items()})
 
 
-def route_rows(before, after, a, log):
+def route_rows(before, after, a, log, riders, counted, protected):
     kinds = {}
     for change in log:
         for n in change["routes"].split():
@@ -67,6 +67,9 @@ def route_rows(before, after, a, log):
         rows.append({
             "route": n,
             "status": ("merged" if "merge" in kinds.get(n, []) else "dropped") if dropped else ("straightened" if straight else "kept"),
+            "protected": rid in protected,
+            "boardings_per_day": riders.get(rid, 0.0),
+            "boardings_source": "counted" if rid in counted else "estimated",
             "buses_before": before.fleet[rid], "buses_after": 0.0 if dropped else after.fleet[rid],
             "headway_min_before": hb[rid][0], "headway_min_after": None if dropped else ha[rid][0],
             "one_way_km_before": km(before), "one_way_km_after": None if dropped else km(after),
@@ -116,7 +119,9 @@ def main():
     print(f"Today: {len(today.fleet)} routes, {today.total_fleet():,.0f} buses in service (estimated)")
     evaluator = Evaluator(net, a, inp.zones, inp.attraction, coverage_zones=fine,
                           n_origins=a.redesign_origins, seed=a.redesign_seed)
-    ctx = Context(net, a, evaluator)
+    ctx = Context(net, a, evaluator, observed=inp.observed)
+    if ctx.protected:
+        print(f"Protected routes: {', '.join(sorted(net.number(r) for r in ctx.protected))}")
     print(f"Searching ({a.redesign_origins} sample origins):")
     plan, log, before, after = search(today, evaluator, ctx)
     share = fleet_for_same_time(plan, evaluator, before["minutes"])
@@ -168,7 +173,8 @@ def main():
         "settings": asdict(a), "inputs": inp.found,
     }
     write_csv(out / "changes.csv", log)
-    write_csv(out / "routes.csv", route_rows(today, plan, a, log))
+    riders_today = ctx.riders_for(today, before["boardings"])
+    write_csv(out / "routes.csv", route_rows(today, plan, a, log, riders_today, ctx.observed, ctx.protected))
     (out / "summary.json").write_text(json.dumps(summary, ensure_ascii=False, indent=1), encoding="utf-8")
     (out / "network.geojson").write_text(json.dumps(geojson(today, plan), ensure_ascii=False), encoding="utf-8")
     write_gtfs(out / "gtfs_today.zip", today.network, a, today.headways(a))

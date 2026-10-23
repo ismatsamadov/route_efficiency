@@ -89,6 +89,11 @@ redesign_max_people_losing_stop = 500        # people a single change may leave 
 redesign_max_people_losing_stop_total = 3000 # the same, for all changes together
 redesign_shift_share = 0.2                   # share of a route's buses moved in one frequency shift
 redesign_shift_rounds = 4
+redesign_protect_boardings = 1000            # never drop a route with at least this many counted weekday
+                                             # boardings: the model cannot tell where its riders would go
+redesign_protected_routes = ["180"]          # never merged, dropped, straightened, thinned or stop-balanced
+                                             # (they can still gain buses). 180 serves Pirallahı, whose
+                                             # connecting routes 150A and 446 have no stops in the data
 
 [destination_weights]            # pull of one OpenStreetMap feature of each kind
 office = 1
