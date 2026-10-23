@@ -12,7 +12,7 @@ flowchart LR
   hw[(headways.csv)] --> svc
   pop[(Population)] --> dem[Demand<br/>destinations.py, metrics.py]
   osm[(OSM and metro)] --> dem
-  svc --> j[Door-to-door journeys<br/>graph.py, metrics.py]
+  svc --> j[Door-to-door trips<br/>graph.py, metrics.py]
   dem --> j
   j --> check[Ridership check]
   rid --> check
@@ -128,7 +128,7 @@ No origin-destination data is public, so trips are spread with a gravity model:
   and metro exits (`metro_weight_per_1000_entries` per 1,000 weekday entries at the
   station, split across its exits). Each feature is credited to its nearest zone within 1.5 km.
 
-## 7. Door-to-door journeys
+## 7. Door-to-door trips
 
 `graph.TransitGraph` holds, for every served stop, an arrival node and a departure node,
 and for every route direction a chain of on-board nodes:
@@ -144,7 +144,7 @@ and for every route direction a chain of on-board nodes:
 Walking time = straight-line distance × `walk_detour` ÷ `walk_speed_mps`. Walking happens
 once between rides, never chained.
 
-A journey walks from its origin point to any stop within `max_access_walk_m`, follows the
+A trip walks from its origin point to any stop within `max_access_walk_m`, follows the
 cheapest path (Dijkstra's algorithm, up to `max_trip_min`), and walks from a stop within
 `max_access_walk_m` to its destination. Every boarding pays the transfer penalty, so one
 penalty is taken off at the end: the first boarding is not a change. Trips under 2 km may

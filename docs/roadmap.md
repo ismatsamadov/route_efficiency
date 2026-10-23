@@ -65,6 +65,9 @@ change in `busnet/optimize.py` and to the GTFS writer.
   the best network.
 - Fuel is in diesel-equivalent litres; CNG and electric buses are not modelled
   separately.
+- The loader reads only AYNA's tables, so another city needs a reader for its own map
+  format (GTFS, for example) before anything else runs; the service types that key the
+  headway and speed settings are AYNA's names too.
 
 ## Questions that are not mine to answer
 

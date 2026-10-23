@@ -139,8 +139,10 @@ ridership only moderately (0.58), and there is no crowding. For the 145 routes w
 counts, riders are estimates and can be far off, so the estimate behind every dropped
 route and every route that gains or loses many buses deserves a look; in the latest
 result, route 519, a 3-stop shuttle the model credits with 14,700 boardings a day, goes
-from every 15 to every 3 minutes. When local knowledge says a route must stay as it is,
-add it to `redesign_protected_routes` and run the search again.
+from every 15 to every 3 minutes. When local knowledge says a route must not be changed,
+add it to `redesign_protected_routes` and run the search again: a protected route is
+never merged, dropped or straightened, keeps its stops and never gives up buses, but it
+can still receive buses, so protecting 519 would not hold it at every 15 minutes.
 
 ## Tuning
 
@@ -150,7 +152,7 @@ python3 redesign.py --set redesign_max_people_losing_stop=0 \
 python3 redesign.py --set redesign_origins=200                     # steadier, about twice as slow
 python3 redesign.py --set redesign_max_drop=0                      # never drop a route
 python3 redesign.py --set transfer_penalty_min=8                   # riders dislike changes more
-python3 redesign.py --set 'redesign_protected_routes=["180", "519"]'   # also keep 519 as it is
+python3 redesign.py --set 'redesign_protected_routes=["180", "519"]'   # also protect 519 (it can still gain buses)
 python3 redesign.py --set redesign_protect_boardings=0             # let the search drop any route
 ```
 

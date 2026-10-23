@@ -1,0 +1,32 @@
+# Title page
+
+How efficient are Baku's bus routes? An open-data measurement and a fleet-neutral
+redesign
+
+Ismat Samadov, Independent researcher, Baku, Azerbaijan. ORCID 0009-0007-7919-4950.
+E-mail: [stable contact e-mail].
+
+Submission note: Case Studies on Transport Policy (article). The manuscript
+(manuscript.md) is the review copy for double-anonymised review and carries no author
+details; this page carries the author details and the declarations that identify the
+author. Both are restored into the manuscript on acceptance. Numbers are those of
+release v1.0.0 of the repository, and every one of them can be regenerated from it.
+Length: about 6,700 words from the Introduction to the Conclusions, tables and
+references excluded; about 7,100 with the title, abstract, keywords and figure
+captions.
+
+## Declarations that identify the author
+
+Data and code availability: every input, setting, script and result, including today's
+network and the redesign as GTFS feeds (output/redesign/gtfs_today.zip and
+gtfs_redesign.zip), is in the repository github.com/ismatsamadov/route_efficiency,
+release v1.0.0, archived at https://doi.org/10.5281/zenodo.23602094 (all versions:
+https://doi.org/10.5281/zenodo.23602093). Release v1.0.0 holds the map database of 6 May
+2026; the scrape of 23 October 2026 committed since is identical in every table and
+changes no result.
+
+Competing interests: none.
+
+Funding: none.
+
+Author contributions: single author.

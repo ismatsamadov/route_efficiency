@@ -8,7 +8,7 @@ Terms as they are used in this repository. Setting names are in `code` font
 | Accessibility | How easily people can reach places by bus. Here: door-to-door times between homes and destinations from the travel model |
 | AYNA | Azərbaycan Yerüstü Nəqliyyat Agentliyi, the agency that plans Baku's surface transport and publishes the bus map the data comes from |
 | BakıKart | Baku's transport smart card |
-| BakuBus | The largest carrier in the data (55 of the 201 routes with stops, among 42 carriers), and the only one whose boardings per route are published (by Bakı Metropoliteni on opendata.az). 56 routes have counts: route 49 is listed under another carrier (Azlənd Plaza MMC) in the AYNA data |
+| BakuBus | The largest carrier in the data (55 of the 201 routes with stops, among 39 carriers; the data lists 42 carrier names, three of them spelling variants of others), and the only one whose boardings per route are published (by Bakı Metropoliteni on opendata.az). 56 routes have counts: route 49 is listed under another carrier (Azlənd Plaza MMC) in the AYNA data |
 | Boarding | One rider getting on one bus. A trip with one change is two boardings |
 | Bus-equivalent | A fractional number of buses. The redesign assigns fractions so that small changes count; whole buses are the fractions rounded up per route |
 | Bus-hours, bus-km | Hours and kilometres that buses drive in service in a day. The main operating costs |

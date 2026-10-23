@@ -37,6 +37,7 @@ lists what to check first.
 | See the research and other cities' experience behind the approach | [research.md](research.md) |
 | Know what comes next, the limitations and the open questions | [roadmap.md](roadmap.md) |
 | Turn the work into a research paper: outline, venues, format, steps for an independent researcher | [paper.md](paper.md) |
+| Read the manuscript draft and its title page | [../paper/manuscript.md](../paper/manuscript.md), [../paper/title-page.md](../paper/title-page.md) |
 | Look up a term | [glossary.md](glossary.md) |
 
 ## Three commands

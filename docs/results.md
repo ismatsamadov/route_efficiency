@@ -24,15 +24,15 @@ link carries 1.93 routes on average, on 21 stretches totalling 71 km eight or mo
 routes share every link, and 25 routes have at least 85% of their stops on one other
 route. Detours are common and mostly unnecessary: 271 of them on 139 routes add 939 km
 to one trip in each direction of every route, and for 217 of them nobody near the stops
-inside the detour depends on that route alone. Stops are close together, with 23.9% of
-the gaps under 300 m, so that stopping takes an estimated 19% of the buses' running
-time and 20% of their fuel. And access is limited: 66% of the 3.04 million people
+inside the detour depends on that route alone. Stop spacing is uneven: the median gap
+is 420 m, but 23.9% of the gaps are under 300 m, and stopping takes an estimated 19% of
+the buses' running time and 20% of their fuel. And access is limited: 66% of the 3.04 million people
 around the network live within 400 m of a stop, the average modelled trip takes 52
 minutes door to door, and only 29% of trips can be made within 45 minutes.
 
 The redesign helps, but only a little. With the same fleet it shortens the average trip
 from 51.8 to 50.9 minutes; alternatively it gives today's travel times with about 12%
-fewer buses, fuel and CO₂. The gain is small but it holds up: on ten samples of trips
+fewer buses and 12% less fuel and CO₂. The gain is small but it holds up: on ten samples of trips
 the redesign saves 0.68 to 0.81 minutes a trip (mean 0.77), under eleven other
 assumptions 0.58 to 0.84, and today's travel times then need 87 to 90% of the buses
 ([how robust the results are](#how-robust-the-results-are)). I treat the changes as
@@ -145,7 +145,8 @@ The routes with the most detour length are 205 (5 detours, 26.0 km), 169 (3, 22.
 
 `network.json` reports the 400 m value; `output/robustness/coverage_radius.csv` has all
 five (the same as runs with `--set coverage_radius_m=300` and so on). The 12.8% beyond
-800 m is close to the 17% with limited bus access that AYNA's consultant reported in 2025.
+800 m is close to the 17% with limited bus access that AYNA's consultant reported in
+2025, by a definition that is not public.
 
 Door-to-door, on 300 origins sampled by population:
 

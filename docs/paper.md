@@ -36,9 +36,9 @@ Public Transit Network Optimization: Strategic Analysis & Implementation Roadmap
 (github.com/analisto/ayna_gov_az, February 2026, under the byline "Transport Systems
 Research Group") uses the same AYNA data but different definitions and different
 numbers (an "efficiency score" of 62.73/100, 46.84% overlap, 41.89% "resource waste",
-dollar savings). The paper should cite it and say that this work supersedes it with
-defined, reproducible measures, and I should add a note at the top of that README
-pointing here.
+dollar savings). The manuscript cites it in section 2.1 and says that this work
+supersedes it with defined, reproducible measures, and the README of that repository
+now points here.
 
 ## 2. Three ways forward
 
@@ -290,8 +290,13 @@ point.
 2. Decide between the three ways forward in section 2. For the paper as it is, state
    that the map API was unchanged between May and October 2026 and list the
    before-and-after comparison as future work.
-3. Write the paper from section 3, 6,000–7,000 words, figures from `output/`. Ask two
-   readers (a transport planner and a quantitative researcher) to comment.
+3. Write the paper from section 3, 6,000–7,000 words, figures from `output/`. The draft
+   is in [`paper/manuscript.md`](../paper/manuscript.md), written as the anonymised
+   review copy for Case Studies on Transport Policy, with the author details and the
+   identifying declarations in [`paper/title-page.md`](../paper/title-page.md); every
+   number in it was checked against `output/`, and the four figures still have to be
+   drawn. Ask two readers (a transport planner and a quantitative researcher) to
+   comment.
 4. Post a preprint: engrXiv (no endorsement needed), or arXiv physics.soc-ph with an
    endorsement; record the DOI in the README and ORCID.
 5. Submit, in this order of fit and cost: Case Studies on Transport Policy (subscription
@@ -309,12 +314,21 @@ point.
 
 - [x] `LICENSE`, `CITATION.cff` and the Licensing section of the README
 - [x] Zenodo version DOI (10.5281/zenodo.23602094; all versions 10.5281/zenodo.23602093)
-- [ ] The February 2026 report cited and superseded
-- [ ] Every number in the manuscript traceable to a file in `output/` at the cited release
-- [ ] OpenStreetMap credit on every map; Kontur and opendata.az cited as datasets
-- [ ] Data-availability statement covering the AYNA snapshot's missing licence
-- [ ] Ethics, competing-interests, funding, contributions and AI-use statements
+- [x] The February 2026 report cited and superseded (manuscript section 2.1)
+- [x] Every number in the manuscript traceable to a file in `output/` at the cited
+      release (the one exception, the route-by-route ratios of the fair 0.58 run in
+      section 5.3, regenerates with `--set headway_from_ridership=false` and the
+      manuscript says so)
+- [x] OpenStreetMap credit on every map; Kontur and opendata.az cited as datasets
+- [x] Data-availability statement covering the AYNA snapshot's missing licence
+- [ ] Ethics, competing-interests, funding, contributions and AI-use statements (all
+      written except the generative-AI declaration, which is a placeholder in the
+      manuscript's Declarations for me to complete in the journal's wording)
 - [ ] Word count, abstract length, highlights and reference style of the chosen journal
-- [ ] Anonymised review copy where the journal is double-blind
+      (highlights are 70–83 characters, the abstract 246 words, the main text about
+      6,700 words without tables and references; whether the journal counts tables or
+      references toward its 7,000 is to be checked in the live Guide for Authors)
+- [x] Anonymised review copy where the journal is double-blind (`paper/manuscript.md`
+      with `paper/title-page.md`)
 - [ ] Three to five suggested reviewers
 - [ ] Journal's preprint policy checked against the preprint posted
