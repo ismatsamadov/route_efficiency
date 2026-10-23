@@ -74,14 +74,14 @@ def route_rows(before, after, a, log):
     return rows
 
 
-def geojson(before, after, log):
-    changed = {n for c in log if c["kind"] == "straighten" for n in c["routes"].split()}
+def geojson(before, after):
     features = []
     for (rid, d), p in sorted(before.network.patterns.items()):
         n = before.network.number(rid)
         if rid in after.fleet:
-            p = after.network.patterns[(rid, d)]
-            status = "straightened" if n in changed else "kept"
+            new = after.network.patterns[(rid, d)]
+            status = "straightened" if new.path != p.path else "kept"      # stop balancing keeps the path
+            p = new
         else:
             status = "dropped"
         features.append({"type": "Feature",
@@ -170,7 +170,7 @@ def main():
     write_csv(out / "changes.csv", log)
     write_csv(out / "routes.csv", route_rows(today, plan, a, log))
     (out / "summary.json").write_text(json.dumps(summary, ensure_ascii=False, indent=1), encoding="utf-8")
-    (out / "network.geojson").write_text(json.dumps(geojson(today, plan, log), ensure_ascii=False), encoding="utf-8")
+    (out / "network.geojson").write_text(json.dumps(geojson(today, plan), ensure_ascii=False), encoding="utf-8")
     write_gtfs(out / "gtfs_today.zip", today.network, a, today.headways(a))
     write_gtfs(out / "gtfs_redesign.zip", plan.network, a, plan.headways(a))
 
