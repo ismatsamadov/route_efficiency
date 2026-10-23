@@ -38,7 +38,6 @@ lists what to check first.
 | Know what comes next, the limitations and the open questions | [roadmap.md](roadmap.md) |
 | Turn the work into a research paper: outline, venues, format, steps for an independent researcher | [paper.md](paper.md) |
 | Look up a term | [glossary.md](glossary.md) |
-| See what was built, in which order | [changelog.md](changelog.md) |
 
 ## Three commands
 

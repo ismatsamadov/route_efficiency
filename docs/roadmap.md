@@ -1,7 +1,7 @@
 # Roadmap
 
-Where I think the work stands on 23 October 2026, and what I would do next. The
-[changelog](changelog.md) lists what has been built; this page is about what is missing.
+Where I think the work stands on 23 October 2026, and what I would do next. This page is
+about what is missing, not what has been built.
 
 ## What I would do next
 
