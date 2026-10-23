@@ -1,6 +1,6 @@
 # Baku bus route efficiency
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23602094.svg)](https://doi.org/10.5281/zenodo.23602094)
+Release v1.0.0 is archived on Zenodo: https://doi.org/10.5281/zenodo.23602094
 
 I built this to measure how efficiently Baku's bus routes serve riders and what they
 cost to run, using nothing but public data, and to test changes to the network before
