@@ -1,0 +1,26 @@
+cff-version: 1.2.0
+message: "If you use this work, please cite it."
+type: software
+title: "Baku bus route efficiency: measurement, travel model and fleet-neutral redesign from open data"
+authors:
+  - family-names: Samadov
+    given-names: Ismat
+    orcid: "https://orcid.org/0009-0007-7919-4950"
+    affiliation: "Independent researcher, Baku, Azerbaijan"
+version: 1.0.0
+date-released: 2026-10-23
+license: MIT
+repository-code: "https://github.com/ismatsamadov/route_efficiency"
+keywords:
+  - public transport
+  - bus network
+  - network design
+  - Baku
+  - open data
+abstract: >-
+  Measures how efficiently Baku's bus routes serve riders from public data alone
+  (AYNA's map, a population grid, OpenStreetMap, BakuBus boardings), builds a
+  door-to-door travel model checked against observed ridership, and searches for a
+  fleet-neutral redesign whose gain is checked over other trip samples and
+  assumptions. Every input is committed and every result regenerates from three
+  commands. The code is MIT-licensed; the data keep their own terms (see README).

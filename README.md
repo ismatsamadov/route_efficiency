@@ -1,18 +1,12 @@
 # Baku bus route efficiency
 
-Data and code to measure how efficiently Baku's bus routes serve riders, and to test
-changes to the network before making them. Python 3.11 or newer, standard library only.
-
-**Documentation is in [docs/](docs/README.md)**. It covers:
-
-- the data and its defects;
-- every setting;
-- how each number is computed;
-- the redesign algorithm;
-- every output column;
-- the latest results;
-- the research behind the approach;
-- the roadmap.
+I built this to measure how efficiently Baku's bus routes serve riders and what they
+cost to run, using nothing but public data, and to test changes to the network before
+anyone makes them. It is Python 3.11 or newer with the standard library only. Every
+input is committed, every result regenerates from three commands, and the documentation
+in [docs/](docs/README.md) explains the data and its defects, every setting, how each
+number is computed, the redesign algorithm, every output column, the latest results,
+the research behind the approach and what I would do next.
 
 ## Regenerate the results
 
@@ -22,8 +16,8 @@ python3 measure.py --scenario stop-balancing --min-gap 250 # also writes output/
 python3 -m unittest                                        # tests, including a regeneration check
 ```
 
-Every input is committed under `data/` (see [data/SOURCES.md](data/SOURCES.md)), so these
-commands need no internet. To refresh the public datasets from their sources:
+Nothing here needs the internet: every input is under `data/` (see
+[data/SOURCES.md](data/SOURCES.md)). To refresh the public datasets from their sources:
 
 ```sh
 python3 data/fetch_external.py --refresh
@@ -35,12 +29,12 @@ python3 data/fetch_external.py --refresh
 python3 redesign.py          # writes output/redesign/, about two minutes
 ```
 
-The search keeps today's fleet and tries the changes other cities' redesigns used: merging
-near-duplicate routes, dropping little-used ones, straightening detours, stop balancing,
-and moving buses to where they save riders the most waiting. Counted boardings are used
-wherever they exist, and routes listed in `busnet.toml` can be protected from changes. A
-change is kept only if the average door-to-door trip gets shorter without leaving people
-with no stop within walking distance. The result is then checked on a different sample of
+The search keeps today's fleet and tries the changes other cities' redesigns used:
+merging near-duplicate routes, dropping little-used ones, straightening detours, stop
+balancing, and moving buses to where they save riders the most waiting. It uses counted
+boardings wherever they exist, leaves the routes listed in `busnet.toml` alone, and
+keeps a change only if the average door-to-door trip gets shorter without leaving people
+with no stop within walking distance. I then check the result on a different sample of
 trips than the search used. Its settings are in the `[redesign]` table of `busnet.toml`.
 
 | File in `output/redesign/` | Contents |
@@ -57,23 +51,21 @@ trips than the search used. Its settings are in the `[redesign]` table of `busne
 python3 robustness.py        # writes output/robustness/, about ten minutes
 ```
 
-It scores today's network and the redesign on ten samples of trips, runs the
-redesign search again under other assumptions (transfer penalty, trip lengths,
-destinations, headway estimates, walking distance, search sample, coverage guard),
-checks the demand model against observed boardings as each input is added, and measures
-coverage at several walking distances. [docs/results.md](docs/results.md#how-robust-the-results-are)
-reads the tables.
+This scores today's network and the redesign on ten samples of trips, runs the search
+again under other assumptions (transfer penalty, trip lengths, destinations, headway
+estimates, walking distance, search sample, coverage guard), checks the demand model
+against observed boardings as each input is added, and measures coverage at several
+walking distances. [docs/results.md](docs/results.md#how-robust-the-results-are) reads
+the tables.
 
 ## Change an assumption
 
 The AYNA data has no timetables, speeds or ridership by stop, so some values are
-assumptions. They all live in [busnet.toml](busnet.toml), with their sources.
-
-- Edit `busnet.toml`, or change one value for a single run:
-  `python3 measure.py --set default_headway_min=10`
-- Real data always wins over an assumption. Add real headways to
-  [data/headways.csv](data/headways.csv) and they replace the estimates.
-- `python3 measure.py --config none` runs with the built-in defaults only.
+assumptions. They all live in [busnet.toml](busnet.toml) with their sources. Edit the
+file, or change one value for a single run with
+`python3 measure.py --set default_headway_min=10`. Real data always wins over an
+assumption: add real headways to [data/headways.csv](data/headways.csv) and they replace
+the estimates. `python3 measure.py --config none` runs with the built-in defaults only.
 
 ## What is where
 
@@ -90,6 +82,7 @@ assumptions. They all live in [busnet.toml](busnet.toml), with their sources.
 | `robustness.py` | Repeats the results under other trip samples and assumptions and writes `output/robustness/` |
 | `tests/` | Unit tests and a regression test: `python3 -m unittest` |
 | `output/` | Results, regenerated by the three scripts |
+| `LICENSE`, `CITATION.cff` | The MIT licence for the code, and how to cite the repository |
 
 ## Outputs
 
@@ -104,3 +97,29 @@ assumptions. They all live in [busnet.toml](busnet.toml), with their sources.
 | `scenario.json` | The same results before and after a scenario |
 | `repairs.txt` | Data defects fixed automatically before measuring |
 | `robustness/` | The redesign on other trip samples and under other assumptions, the model's fit as inputs are added, coverage by radius |
+
+## Licensing
+
+The code is mine and is under the MIT License ([LICENSE](LICENSE)): `busnet/`,
+`measure.py`, `redesign.py`, `robustness.py`, `tests/`, `data/ayna_scraper.py`,
+`data/fetch_external.py` and `busnet.toml`. The documentation in `docs/` is under
+[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). [CITATION.cff](CITATION.cff)
+says how to cite the repository.
+
+The data keep their own terms, listed file by file in [data/SOURCES.md](data/SOURCES.md):
+
+- `data/external/osm/`: © OpenStreetMap contributors, under the
+  [Open Database License](https://opendatacommons.org/licenses/odbl/1-0/)
+  (https://www.openstreetmap.org/copyright). These extracts are a derivative database
+  and are shared under the same licence.
+- `data/external/kontur/`: Kontur Population, CC BY.
+- `data/external/opendata/`: opendata.az datasets, CC BY (Bakı Metropoliteni) or CC0
+  (AYNA, State Statistical Committee).
+- `data/ayna.db`: a snapshot of AYNA's public map API with no published licence,
+  redistributed as a research snapshot with attribution to AYNA; the licences above do
+  not extend to it ([docs/data.md](docs/data.md#the-ayna-bus-network-snapshot-dataaynadb)).
+
+The results in `output/` are derived from those data and carry the same terms: the
+files that contain AYNA's routes and stops (the GTFS feeds, `network.geojson` and the
+CSV tables) are covered by the note on `data/ayna.db`, and the maps and tables that
+draw on OpenStreetMap carry its attribution.

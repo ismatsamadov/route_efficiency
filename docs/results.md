@@ -1,7 +1,7 @@
 # Results
 
-These results come from the committed data with the default settings in `busnet.toml`.
-They were generated on 23 October 2026 by:
+I generated these results on 23 October 2026 from the committed data with the default
+settings in `busnet.toml`:
 
 ```sh
 python3 measure.py --scenario stop-balancing --min-gap 250
@@ -9,38 +9,35 @@ python3 redesign.py
 python3 robustness.py
 ```
 
-Every number below is in `output/` ([outputs.md](outputs.md) explains each file). There
-are two kinds of number:
-
-- **Measured** numbers come straight from the network data: lengths, directness,
-  overlap, detours, stop spacing and coverage.
-- **Estimated** numbers depend on the assumptions in [configuration.md](configuration.md):
-  times, fuel, daily service and modelled riders. Use them to compare versions of the
-  network, not as forecasts.
+Every number below is in `output/` ([outputs.md](outputs.md) explains each file). Two
+kinds of number appear. Measured ones come straight from the network data (lengths,
+directness, overlap, detours, stop spacing and coverage) and are facts about the
+snapshot. Estimated ones depend on the assumptions in [configuration.md](configuration.md)
+(times, fuel, daily service and modelled riders); I use them to compare versions of the
+network, not as forecasts.
 
 ## In short
 
-- **Routes are indirect.** Only 29 of 201 routes run within 1.4 times the straight line
-  between their ends. 74 are very indirect or loops.
-- **Routes overlap.** Every stop-to-stop link carries 1.93 routes on average. On 21
-  stretches (71 km), 8 or more routes share every link. 25 routes have at least 85% of
-  their stops on one other route.
-- **Detours are common and mostly unnecessary.** There are 271 detours on 139 routes,
-  adding 939 km to one trip in each direction of every route. For 217 of them, nobody
-  near the stops inside the detour depends on that route alone.
-- **Stops are close together.** 23.9% of gaps between stops are under 300 m. Stopping
-  takes an estimated 19% of buses' running time and 20% of their fuel.
-- **Access is limited.** 66% of the 3.04 million people around the network live within
-  400 m of a stop. An average modelled trip takes 52 minutes door to door, and only 29%
-  of trips can be made within 45 minutes.
-- **The redesign helps a little.** With the same fleet, it shortens the average trip
-  from 51.8 to 50.9 minutes. Alternatively, it gives today's travel times with about 12%
-  fewer buses, fuel and CO₂. Its changes are candidates to review, not a plan
-  ([what to check](#check-these-before-acting)).
-- **The gain is small but holds up.** On ten samples of trips the redesign saves
-  0.68 to 0.81 minutes a trip (mean 0.77), and under eleven other assumptions 0.58 to
-  0.84; today's travel times then need 87 to 90% of the buses
-  ([how robust the results are](#how-robust-the-results-are)).
+The routes are indirect: only 29 of the 201 run within 1.4 times the straight line
+between their ends, and 74 are very indirect or loops. They overlap: every stop-to-stop
+link carries 1.93 routes on average, on 21 stretches totalling 71 km eight or more
+routes share every link, and 25 routes have at least 85% of their stops on one other
+route. Detours are common and mostly unnecessary: 271 of them on 139 routes add 939 km
+to one trip in each direction of every route, and for 217 of them nobody near the stops
+inside the detour depends on that route alone. Stops are close together, with 23.9% of
+the gaps under 300 m, so that stopping takes an estimated 19% of the buses' running
+time and 20% of their fuel. And access is limited: 66% of the 3.04 million people
+around the network live within 400 m of a stop, the average modelled trip takes 52
+minutes door to door, and only 29% of trips can be made within 45 minutes.
+
+The redesign helps, but only a little. With the same fleet it shortens the average trip
+from 51.8 to 50.9 minutes; alternatively it gives today's travel times with about 12%
+fewer buses, fuel and CO₂. The gain is small but it holds up: on ten samples of trips
+the redesign saves 0.68 to 0.81 minutes a trip (mean 0.77), under eleven other
+assumptions 0.58 to 0.84, and today's travel times then need 87 to 90% of the buses
+([how robust the results are](#how-robust-the-results-are)). I treat the changes as
+candidates to review, not a plan; [what to check first](#check-these-before-acting) is
+listed below.
 
 ## Today's network
 
@@ -76,10 +73,10 @@ are two kinds of number:
 
 ### Overlap
 
-- **Duplication ratio 1.93.** Buses run 7,398 km of route over 3,824 km of distinct
-  links. Up to 26 routes use one link.
-- **21 trunk corridors**, 71 km in total, where 8 or more routes share every link. The
-  three longest, and the one used by the most routes:
+- The duplication ratio is 1.93: buses run 7,398 km of route over 3,824 km of distinct
+  links, and up to 26 routes use one link.
+- There are 21 trunk corridors, 71 km in total, where 8 or more routes share every
+  link. The three longest, and the one used by the most routes:
 
 | Corridor | Length | Routes per link (mean / most) | Routes using it |
 |---|---|---|---|
@@ -91,8 +88,8 @@ are two kinds of number:
   `output/corridors.csv` has all 21 and their routes. Stop names here are spelled as in
   the data, which sometimes mixes Cyrillic letters into Azerbaijani names.
 
-- **25 near-duplicate routes**, in 72 pairs. In 59 of the pairs the two routes belong to
-  different carriers. Examples:
+- 25 routes are near-duplicates, in 72 pairs; in 59 of the pairs the two routes belong
+  to different carriers. Examples:
 
 | Route | Inside | Share of its stops | Same carrier |
 |---|---|---|---|
@@ -178,15 +175,14 @@ realistic overall. Individual routes can still be far off.
 
 ### Ridership, and how well the model matches it
 
-- **Observed.** BakuBus routes carried 768,253 boardings on an average weekday in
-  September 2026, on 64 routes. 56 of those routes are in the snapshot, with 692,288.
-- **Busiest.** Route 14 carries 31,303 boardings a weekday and the most per km of route
+- BakuBus routes carried 768,253 boardings on an average weekday in September 2026, on
+  64 routes; 56 of those routes are in the snapshot, with 692,288.
+- Route 14 is the busiest, with 31,303 boardings a weekday and the most per km of route
   (2,285).
-- **Least used.** Route 150E recorded only 16.5 boardings a weekday, so it probably
-  barely ran in September. Apart from it, route 595 carries the fewest per km of route
-  (90).
-- **How well the model ranks routes.** The model's boardings per route rank the 56 routes
-  with a Spearman correlation of (`output/robustness/fit_ladder.csv`):
+- Route 150E recorded only 16.5 boardings a weekday, so it probably barely ran in
+  September; apart from it, route 595 carries the fewest per km of route (90).
+- The model's boardings per route rank the 56 routes with a Spearman correlation of
+  (`output/robustness/fit_ladder.csv`):
 
 | Model inputs | Correlation |
 |---|---|
@@ -196,9 +192,10 @@ realistic overall. Individual routes can still be far off.
 | Plus headways estimated from observed boardings (the default) | 0.77 |
 
 `network.json` shows 0.77 because the default settings estimate headways from the same
-boardings the check compares against. That makes the check partly circular. The fair
-figure is 0.58, from `python3 measure.py --set headway_from_ridership=false`. That run
-also implies a fleet of 1,848 buses.
+boardings the check compares against, which makes the check partly circular. The fair
+figure, and the one I quote, is 0.58, from
+`python3 measure.py --set headway_from_ridership=false`; that run also implies a fleet of
+1,848 buses.
 
 In the fair run, the model overrates express and long suburban routes: E1 (6.4 times
 its observed share), 205 (3.4), 120E (2.6), 72 (2.2). It underrates others: the
@@ -241,15 +238,13 @@ Routes go from 201 to 193. Route 180 is protected and left as it is. No route wi
 
 ### Riders per route
 
-Drops and frequency shifts rank routes by boardings a day:
-
-- **Counted** for the 56 BakuBus routes in the opendata.az data: 692,288 a weekday.
-- **Estimated** for the other 145 routes: 733,436 a weekday. This is the model's
-  boardings, scaled so that on the counted routes the model and the counts agree in total.
-
-Together that is 1.43 million boardings a weekday, close to the 1.6 million daily bus
-trips AYNA reported in 2023. A trip with a change counts as two boardings.
-`output/redesign/routes.csv` gives each route's figure and its source.
+Drops and frequency shifts rank routes by boardings a day: counted for the 56 BakuBus
+routes in the opendata.az data (692,288 a weekday) and estimated for the other 145
+routes (733,436 a weekday, the model's boardings scaled so that on the counted routes
+the model and the counts agree in total). Together that is 1.43 million boardings a
+weekday, close to the 1.6 million daily bus trips AYNA reported in 2023; a trip with a
+change counts as two boardings. `output/redesign/routes.csv` gives each route's figure
+and its source.
 
 ### The 27 changes
 
@@ -332,7 +327,7 @@ The same buses run more trips on shorter routes, so frequencies rise and waits s
 Bus-km rise a little. Fuel stays about the same, because buses also stop less.
 
 On the search sample itself, the capped average fell more, from 79.66 to 78.31 minutes,
-because the search was tuned to those trips. Quote the independent check.
+because the search was tuned to those trips. I quote the independent check.
 
 ### Or: today's travel times with fewer buses
 
@@ -355,61 +350,56 @@ same reason as above.
 
 ### What changed from the first version
 
-The first run of the search (commit `fe1a6f1`) ranked routes by modelled riders only. It
-dropped routes 595, 149 and 140E, which carry about 10,100 counted boardings a weekday, and
-cut route 180 to Pirallahı from every 20 to every 30 minutes. The current version fixes
-both:
-
-- It uses counts where they exist.
-- It never drops a route with 1,000 or more counted boardings.
-- It moves buses by the waiting time they save.
-- It leaves 180 alone.
-
-595 and 140E now gain buses instead.
-
-The overall effect is about the same. The average trip goes from 51.82 to 50.86 minutes,
-against 50.88 in the first version, and 88% of the buses give today's travel times in both.
+My first run of the search (commit `15473b6`) ranked routes by modelled riders only. It
+dropped routes 595, 149 and 140E, which carry about 10,100 counted boardings a weekday,
+and cut route 180 to Pirallahı from every 20 to every 30 minutes, which told me that the
+model could not be allowed to overrule a count. The current version uses counts where
+they exist, never drops a route with 1,000 or more counted boardings, moves buses by the
+waiting time they save, and leaves 180 alone; 595 and 140E now gain buses instead. The
+overall effect is about the same: the average trip goes from 51.82 to 50.86 minutes,
+against 50.88 in the first version, and 88% of the buses give today's travel times in
+both.
 
 ### Check these before acting
 
-1. **Route 519 runs every 3 minutes.** It is a 2.1 km route with 3 stops and no counts.
-   The model estimates 14,700 boardings a day for it, so the search raises it from every
-   15 minutes to the shortest headway allowed. Count its riders before adding buses.
-2. **Some people lose their stop.**
-   - Merging 210 into 215 leaves 495 people without a stop within 500 m, just under the
-     limit of 500 per change.
-   - Dropping 150E strands 290, dropping 164 strands 171, and merging 173A strands 20.
-   - That is 976 people in total.
-   - Run with `redesign_max_people_losing_stop=0` and `redesign_max_people_losing_stop_total=0`,
-     the search keeps 24 changes, strands nobody, and gains as much: 0.77 against 0.76
-     minutes on the independent check (`output/robustness/redesign_settings.csv`). The
-     stricter rule costs nothing here.
-3. **The dropped routes have little evidence behind them.** 164 and 39 have no counts:
-   their estimated boardings are 133 and 582 a day. 150E recorded only 16.5 boardings a
-   weekday in September. Check all three with their operators.
-4. **Some routes lose buses on estimates alone.** 131, 197, 198, 550, 551 and 554 go from
-   every 15 to every 30 minutes. 54 and 50 go from every 10 to about every 24. None of
+1. Route 519 ends up running every 3 minutes. It is a 2.1 km route with 3 stops and no
+   counts; the model estimates 14,700 boardings a day for it, so the search raises it
+   from every 15 minutes to the shortest headway allowed. I would count its riders
+   before adding a single bus.
+2. Some people lose their stop. Merging 210 into 215 leaves 495 people without a stop
+   within 500 m, just under the limit of 500 per change; dropping 150E strands 290,
+   dropping 164 strands 171, and merging 173A strands 20, which is 976 people in total.
+   Run with `redesign_max_people_losing_stop=0` and
+   `redesign_max_people_losing_stop_total=0`, the search keeps 24 changes, strands
+   nobody, and gains as much: 0.77 against 0.76 minutes on the independent check
+   (`output/robustness/redesign_settings.csv`). The stricter rule costs nothing here,
+   and I would use it.
+3. The dropped routes have little evidence behind them. 164 and 39 have no counts; their
+   estimated boardings are 133 and 582 a day. 150E recorded only 16.5 boardings a
+   weekday in September. All three should be checked with their operators.
+4. Some routes lose buses on estimates alone: 131, 197, 198, 550, 551 and 554 go from
+   every 15 to every 30 minutes, and 54 and 50 from every 10 to about every 24. None of
    them has counts.
-5. **More riders must change buses.** The share of trips with two or more changes rises
+5. More riders must change buses: the share of trips with two or more changes rises
    from 16.5% to 17.4%.
-6. **Look at every straightened stretch on the map.**
-   - Open `output/redesign/network.geojson`.
-   - Each new path follows links that buses drive today.
-   - Turns, one-way streets and the skipped stops (schools, clinics) still need checking
-     on the ground.
+6. Every straightened stretch needs looking at on the map
+   (`output/redesign/network.geojson`). Each new path follows links that buses drive
+   today, but turns, one-way streets and the skipped stops (schools, clinics) still need
+   checking on the ground.
 
 ### What the results do not say
 
 They are not forecasts. They rest on estimated headways, a gravity model of demand that
-ranks routes only moderately well, and no vehicle capacity or crowding. They show where
-the network wastes time and which changes look promising. They cannot replace counts,
-GPS data or local knowledge. [roadmap.md](roadmap.md) lists what would make them firmer.
-The next section shows which of them survive other trip samples and other assumptions.
+ranks routes only moderately well, and no vehicle capacity or crowding. What they show
+is where the network wastes time and which changes look promising; they cannot replace
+counts, GPS data or local knowledge, and [roadmap.md](roadmap.md) says what I would
+want before trusting them further. The next section shows which of them survive other
+trip samples and other assumptions.
 
 ## How robust the results are
 
-`python3 robustness.py` repeats the main results under other conditions
-([methodology.md](methodology.md#10-robustness-checks)) and writes `output/robustness/`
+I wrote `robustness.py` to repeat the main results under other conditions
+([methodology.md](methodology.md#10-robustness-checks)); it writes `output/robustness/`
 ([outputs.md](outputs.md)). Minutes below are the capped average the search uses:
 door-to-door minutes, with a trip that cannot be made within 2 hours counted as 120.
 
@@ -435,8 +425,8 @@ samples, with the search itself unchanged (`redesign_seeds.csv`):
 The gain is positive in every sample. The level moves by about 4 minutes between
 samples (73.6 to 77.5 for today's network), because each sample draws different
 origins; the difference between the two networks on the same sample moves by 0.13
-minutes, about a thirtieth of that. Quote the gain with its range, not the level to two
-decimals.
+minutes, about a thirtieth of that. So I quote the gain with its range, not the level
+to two decimals.
 
 ### Under other assumptions
 
@@ -459,21 +449,24 @@ pass.
 | Another search sample of the same size: seed 23 instead of 11 | 33 (8 merges, 4 drops, 16 straightened, 4 shifts) | 189 | 1,986 | 74.82 → 74.03 | 0.79 | 88% | 12.5% |
 | No change may leave anyone without a stop within reach | 24 (3 merges, 2 drops, 14 straightened, 4 shifts) | 196 | 0 | 74.82 → 74.05 | 0.77 | 88% | 11.6% |
 
-- The gain stays between 0.58 and 0.84 minutes, and today's travel times need 87 to
-  90% of the buses in every run (10 to 13% less fuel). The direction of the result does
-  not depend on any one assumption.
-- The smallest gains come with shorter trips (decay 4 km) and shorter walks (400 m); the
-  largest with a search sample twice as large.
-- What the search keeps is stable: two to four drops, 12 to 17 straightened detours,
-  one stop-balancing pass and four bus shifts in every run, and five merges in nine of
-  the twelve (three under the strict coverage guard, seven and eight with the larger
-  and the other search sample). A larger search sample (200 origins) or a different one
-  (seed 23) keeps 32 or 33 changes instead of 27, with the same gain on the independent
-  sample: the search sample decides the changes at the margin, not the effect. Those
-  two runs also strand more people (1,133 and 1,986), still within the 3,000 allowed.
-- The strict coverage guard, under which nobody may lose a stop, keeps 24 changes and
-  gains 0.77 minutes, as much as the default run. The 976 people the default run leaves
-  without a stop buy nothing; see [Check these before acting](#check-these-before-acting).
+The gain stays between 0.58 and 0.84 minutes, and today's travel times need 87 to 90%
+of the buses in every run (10 to 13% less fuel), so the direction of the result does not
+depend on any one assumption. The smallest gains come with shorter trips (decay 4 km)
+and shorter walks (400 m), the largest with a search sample twice as large.
+
+What the search keeps is also stable: two to four drops, 12 to 17 straightened detours,
+one stop-balancing pass and four bus shifts in every run, and five merges in nine of
+the twelve (three under the strict coverage guard, seven and eight with the larger and
+the other search sample). A larger search sample (200 origins) or a different one (seed
+23) keeps 32 or 33 changes instead of 27, with the same gain on the independent sample,
+which tells me the search sample decides the changes at the margin, not the effect.
+Those two runs also strand more people (1,133 and 1,986), still within the 3,000
+allowed.
+
+The result I find most useful is the strict coverage guard: with nobody allowed to lose
+a stop, the search keeps 24 changes and gains 0.77 minutes, as much as the default run.
+The 976 people the default run leaves without a stop buy nothing; see
+[Check these before acting](#check-these-before-acting).
 
 ### The demand model as each input is added
 
@@ -486,7 +479,7 @@ pass.
 
 Each input improves the ranking of the 56 counted routes. Headways by service type add
 most (0.41 to 0.56), destinations a little more (0.58); the last step uses the counts
-themselves and is not a fair test. 0.58 is the figure to quote for the model
+themselves and is not a fair test. 0.58 is the figure I quote for the model
 (`fit_ladder.csv`).
 
 ### Coverage by walking distance
