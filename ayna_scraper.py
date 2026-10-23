@@ -14,6 +14,7 @@ Output (in ./ayna_data/):
   stops.csv           every stop with its NAME (getAll has no names) + routes serving it
   bus_stops.csv       ordered stop sequence per bus and direction
   routes.geojson      route polylines (one LineString per bus per direction)
+  ayna.db             SQLite database with all of the above (see SCHEMA below)
   failed.txt          ids that could not be fetched (only if any failed)
 
 Standard library only. Usage:
@@ -25,6 +26,8 @@ Standard library only. Usage:
 import argparse
 import csv
 import json
+import os
+import sqlite3
 import time
 import urllib.error
 import urllib.request
@@ -36,6 +39,108 @@ BASE = "https://map-api.ayna.gov.az/api"
 HEADERS = {"User-Agent": "Mozilla/5.0 (ayna-scraper)", "Accept": "application/json"}
 OUT = Path("ayna_data")
 RAW = OUT / "raw"
+
+
+SCHEMA = """
+CREATE TABLE buses (
+    bus_id             INTEGER PRIMARY KEY,   -- internal API id (17 = route 21)
+    number             TEXT NOT NULL,         -- route number shown on the bus
+    carrier            TEXT,
+    first_point        TEXT,
+    last_point         TEXT,
+    route_length_km    REAL,
+    duration_min       INTEGER,
+    tariff_qepik       INTEGER,
+    tariff_azn         REAL,
+    payment_type       TEXT,
+    region             TEXT,
+    working_zone       TEXT,
+    card_payment_since TEXT,
+    stops_dir1         INTEGER,
+    stops_dir2         INTEGER
+);
+CREATE TABLE stops (
+    stop_id     INTEGER PRIMARY KEY,
+    code        TEXT,
+    name        TEXT,
+    lat         REAL,
+    lon         REAL,
+    is_hub      INTEGER,                      -- 0/1
+    route_count INTEGER
+);
+CREATE TABLE bus_stops (                      -- ordered stops per route and direction
+    bus_id     INTEGER NOT NULL REFERENCES buses(bus_id),
+    direction  INTEGER NOT NULL,              -- 1 = outbound, 2 = return
+    seq        INTEGER NOT NULL,              -- 1-based order along the route
+    stop_id    INTEGER REFERENCES stops(stop_id),
+    stop_code  TEXT,
+    stop_name  TEXT,
+    PRIMARY KEY (bus_id, direction, seq)
+);
+CREATE TABLE routes (                         -- one row per route direction
+    bus_id      INTEGER NOT NULL REFERENCES buses(bus_id),
+    direction   INTEGER NOT NULL,
+    destination TEXT,
+    point_count INTEGER,
+    geojson     TEXT,                         -- LineString geometry as GeoJSON
+    PRIMARY KEY (bus_id, direction)
+);
+CREATE TABLE route_points (                   -- same shapes, one row per vertex
+    bus_id    INTEGER NOT NULL,
+    direction INTEGER NOT NULL,
+    seq       INTEGER NOT NULL,
+    lat       REAL NOT NULL,
+    lon       REAL NOT NULL,
+    PRIMARY KEY (bus_id, direction, seq)
+);
+CREATE INDEX idx_bus_stops_stop ON bus_stops(stop_id);
+CREATE INDEX idx_buses_number   ON buses(number);
+
+-- Convenience view: which route numbers serve each stop
+CREATE VIEW stop_routes AS
+SELECT DISTINCT s.stop_id, s.name AS stop_name, b.number AS bus_number, bs.direction
+FROM bus_stops bs
+JOIN stops s ON s.stop_id = bs.stop_id
+JOIN buses b ON b.bus_id = bs.bus_id;
+"""
+
+
+def write_sqlite(path, bus_rows, stop_rows, seq_rows, route_rows):
+    """Build a fresh database in a temp file, then swap it in atomically."""
+    tmp = path.with_suffix(".db.tmp")
+    if tmp.exists():
+        tmp.unlink()
+    con = sqlite3.connect(tmp)
+    try:
+        con.executescript(SCHEMA)
+        con.executemany(
+            "INSERT INTO buses VALUES (:bus_id,:number,:carrier,:first_point,:last_point,"
+            ":route_length_km,:duration_min,:tariff_qepik,:tariff_azn,:payment_type,:region,"
+            ":working_zone,:card_payment_since,:stops_dir1,:stops_dir2)",
+            bus_rows,
+        )
+        con.executemany(
+            "INSERT OR REPLACE INTO stops VALUES (?,?,?,?,?,?,?)",
+            [(r["stop_id"], r["code"] or None, r["name"] or None, r["lat"], r["lon"],
+              int(bool(r["is_hub"])), r["route_count"])
+             for r in stop_rows if r["stop_id"] is not None],
+        )
+        con.executemany(
+            "INSERT OR REPLACE INTO bus_stops VALUES (?,?,?,?,?,?)",
+            [(r["bus_id"], r["direction"], r["seq"], r["stop_id"], r["stop_code"], r["stop_name"])
+             for r in seq_rows],
+        )
+        for bus_id, direction, destination, coords in route_rows:
+            geom = json.dumps({"type": "LineString", "coordinates": coords})
+            con.execute("INSERT OR REPLACE INTO routes VALUES (?,?,?,?,?)",
+                        (bus_id, direction, destination, len(coords), geom))
+            con.executemany("INSERT OR REPLACE INTO route_points VALUES (?,?,?,?,?)",
+                            [(bus_id, direction, i, lat, lon)
+                             for i, (lon, lat) in enumerate(coords, 1)])
+        con.commit()
+    finally:
+        con.close()
+    os.replace(tmp, path)
 
 
 def fetch_json(url, retries=4, timeout=30):
@@ -121,7 +226,7 @@ def main():
             "is_hub": s.get("isTransportHub", False),
         }
 
-    bus_rows, seq_rows, features = [], [], []
+    bus_rows, seq_rows, features, route_rows = [], [], [], []
     for b in buses:
         stops = b.get("stops") or []
         dir_counts = defaultdict(int)
@@ -175,6 +280,7 @@ def main():
             coords = [[p["lng"], p["lat"]] for p in r.get("flowCoordinates") or []]
             if len(coords) < 2:
                 continue
+            route_rows.append((b["id"], r.get("directionTypeId"), r.get("destination"), coords))
             features.append({
                 "type": "Feature",
                 "properties": {
@@ -209,6 +315,8 @@ def main():
         encoding="utf-8",
     )
 
+    write_sqlite(OUT / "ayna.db", bus_rows, stop_rows, seq_rows, route_rows)
+
     if failed:
         (OUT / "failed.txt").write_text(
             "\n".join(f"{i}\t{n}\t{e}" for i, n, e in failed), encoding="utf-8"
@@ -221,6 +329,7 @@ def main():
     print(f"Route shapes:  {len(features)}")
     if failed:
         print(f"Failed:        {len(failed)} (see failed.txt; re-run to retry, cached ones are skipped)")
+    print(f"SQLite:        {(OUT / 'ayna.db').resolve()}")
     print(f"Output folder: {OUT.resolve()}")
 
 
