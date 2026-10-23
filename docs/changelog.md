@@ -51,6 +51,17 @@ does one thing, so `git show <hash>` explains a single step.
 | `5636bec` | Regenerate results with the updated redesign: 595, 149 and 140E are no longer dropped |
 | `38e067a` | Update the docs for the updated redesign |
 
+## Pull request #8
+
+| Commit | Change |
+|---|---|
+| `9df0794` | Add `robustness.py` and `output/robustness/`: the redesign on ten samples of trips and under eleven other settings, the demand model's fit as each input is added, coverage by radius |
+| `d4db58f` | Add `tests/`: unit tests for the geometry, headways, settings and plans, and a regression test that regenerates `output/` and compares it with the committed files |
+| `4b21e8d` | Print the fleet-saving option in whole buses on the console, as results.md reports it |
+| `618c510` | Document the robustness checks and the tests; state when the data is from; pair the population figures consistently; explain route 49's carrier |
+| `5c73bda` | Check every cited figure in research.md against its source and correct the wording; mark unsourced settings as assumptions |
+| `422b82d` | Record the licence and provenance of every dataset, including that `ayna.db` has no published licence |
+
 ## Published reports
 
 These pages were published alongside the code. They are snapshots; `docs/` and `output/`
