@@ -1,13 +1,11 @@
 # Research behind the approach
 
-This page summarises the research done in October 2026. It shaped three choices: what to
-measure, which assumptions to use, and how to search for a better network.
-
-- Figures for other cities are as their sources report them, and those sources often
-  have an interest in the result.
-- Every figure was checked against its source on 23 October 2026, twice and
-  independently. Where a page no longer opens, an archived copy or the publisher's
-  record is linked.
+I did this reading in October 2026 to decide three things: what to measure, which
+assumptions to use, and how to search for a better network. Figures for other cities
+are as their sources report them, and those sources often have an interest in the
+result. I checked every figure against its source on 23 October 2026, twice and
+independently; where a page no longer opens, I link an archived copy or the publisher's
+record.
 
 ## 1. What to measure
 
@@ -27,24 +25,20 @@ bus-hours, kilometres and litres as possible.
 
 ### Fuel or travel time?
 
-Use both, but make one the goal and the other the budget. This is how the redesigns
-in section 3 worked.
-
-- **Fix the budget.** Hold the bus-hours, or the fleet, at today's level.
-- **Redraw the routes.** Make riders' total door-to-door time as short as possible within
-  that budget.
-- **Why it works.** A shorter, straighter, less duplicated route frees buses to run more
-  often. That cuts waiting, which for a short trip can outweigh the ride itself.
-- **Fuel falls along the way.** Fuel follows kilometres and stops, so the same changes
-  save it. Alternatively, the gain can be taken as a smaller fleet for the same travel
-  times. `redesign.py` reports both.
+I use both, but make one the goal and the other the budget, which is how the redesigns
+in section 3 worked: hold the bus-hours, or the fleet, at today's level, then redraw the
+routes to make riders' total door-to-door time as short as possible within it. It works
+because a shorter, straighter, less duplicated route frees buses to run more often, and
+that cuts waiting, which for a short trip can outweigh the ride itself. Fuel falls along
+the way, since it follows kilometres and stops; alternatively the gain can be taken as a
+smaller fleet for the same travel times, and `redesign.py` reports both.
 
 Jarrett Walker frames a related trade-off ([Human Transit](https://humantransit.org/basics-the-ridership-coverage-tradeoff)).
 Running buses where many people will ride (ridership) conflicts with running buses
 everywhere someone might need one (coverage). A network should therefore decide
 explicitly how to split its budget between the two. Houston's board chose 80% ridership
 and 20% coverage ([Walker, 2014](https://humantransit.org/2014/05/houston-a-transit-network-reimagined.html)).
-Here, the redesign's coverage guard plays the coverage role: it limits how many people
+In my redesign the coverage guard plays the coverage role: it limits how many people
 may lose their stop.
 
 ## 2. Planning guidelines, and how Baku compares
@@ -62,14 +56,10 @@ may lose their stop.
 
 ## 3. What other cities did
 
-The redesigns below followed a similar recipe:
-
-- fewer, straighter routes that run more often;
-- overlapping routes merged into frequent trunks;
-- stops spaced further apart;
-- bus lanes where routes stack up.
-
-How much they gained went with whether service was added at the same time.
+The redesigns below followed a similar recipe: fewer, straighter routes that run more
+often, overlapping routes merged into frequent trunks, stops spaced further apart, and
+bus lanes where routes stack up. How much they gained went with whether service was
+added at the same time.
 
 | City | What was done | Reported result | Source |
 |---|---|---|---|
@@ -82,12 +72,10 @@ How much they gained went with whether service was added at the same time.
 | Tbilisi, 2016–2024 | Minibus fleet cut back and large buses added: about 860 new buses in 2016–2022, 370 of them CNG, with 18-metre CNG buses arriving from 2024 | Bus ridership +30% (operator figure, reported by EBRD) | [EBRD, 2024](https://www.ebrd.com/news/2024/tbilisi-gets-greener-and-more-inclusive.html); [Bankwatch, 2022](https://bankwatch.org/wp-content/uploads/2022/09/2022-09-29_Tbilisi-urban-public-transit-reform.pdf) |
 | Tashkent, 2023–2025 | 1,000 buses bought in 2023, with more on order; headways cut from 18–20 to 8–10 minutes | 412 million bus passengers in 2025, +26% (official) | [Kun.uz, 2026](https://kun.uz/en/48790711) |
 
-What the cases suggest for Baku:
-
-- Merging duplicate routes and straightening detours pays off only if the freed buses
-  run more often on the remaining routes.
-- Riders accept a change of bus when the second bus comes soon.
-- Results are better when bus lanes and fare integration come with the new network.
+What I take from them for Baku: merging duplicate routes and straightening detours pays
+off only if the freed buses run more often on the remaining routes; riders accept a
+change of bus when the second bus comes soon; and results are better when bus lanes and
+fare integration come with the new network.
 
 ## 4. Baku's own programme
 
@@ -98,10 +86,10 @@ What the cases suggest for Baku:
 | September 2025 | The consultant found weak links between Baku and Absheron routes, overlapping routes, and 17% of residents with limited bus access. The new network needs about 2,800 buses; gross-cost contracts are planned | [APA, 2025](https://en.apa.az/infrastructure/azerbaijan-to-implement-gross-contract-system-to-ensure-sustainable-public-transport-financing-478431) |
 | January 2026 | The new network began launching, with 8 routes. 114 km of bus lanes; about 2,300 buses in daily service; 55% of the fleet described as eco-friendly (395 new electric and CNG buses) | [Ministry, 2026](https://mincom.gov.az/en/media-en/news/roundtable-on-the-2025-state-program-for-the-improvement-of-transport-infrastructure-in-baku-and-surrounding-areas) |
 
-This project works only from public data and points the same way as the consultant's
-findings. Its settings use two of these figures: 22 km/h calibrates the speeds, and
-2,300 buses is the reference fleet. AYNA's own model has data this project does not have.
-Compare results with it wherever possible.
+I work only from public data and reach the same conclusions as the consultant. Two of
+these figures are in my settings: 22 km/h calibrates the speeds and 2,300 buses is the
+reference fleet. AYNA's own model has data I do not have, and I would compare results
+with it wherever possible.
 
 ## 5. Designing a network by computer
 
@@ -136,47 +124,38 @@ surveys in section 9 describe the usual formulation:
      simulation of the real network of Laval, Canada (Holliday, El-Geneidy & Dudek,
      2025). It needs real origin-destination data, GPUs and machine-learning experience.
 
-### Why this project uses a greedy local search
+### Why I use a greedy local search
 
-The research recommended a path that is transparent and runs on a laptop:
-
-1. Write one fast, trusted evaluator first. Here that is the door-to-door model,
-   checked against observed ridership.
-2. Start from today's routes.
-3. Propose changes that redesigns elsewhere have used.
-4. Keep the changes that improve the evaluator's score.
-
-Every kept change can be explained in one sentence, which matters when people have to
-approve it. The next steps are listed in [roadmap.md](roadmap.md):
-
-- new candidate routes (k-shortest paths between busy places);
-- simulated annealing or NSGA-II instead of the greedy search;
-- a simplified network of 500–1,000 nodes, nearer the sizes published methods have
-  been run on (the largest standard benchmark, Mumford3, has 127 nodes).
-
-In our judgement, results will depend more on the quality of the demand data than on
-the algorithm.
+I wanted something transparent that runs on a laptop: one fast, trusted evaluator first
+(the door-to-door model, checked against observed ridership), then start from today's
+routes, propose the changes that redesigns elsewhere have used, and keep the ones that
+improve the evaluator's score. Every kept change can be explained in one sentence,
+which matters when people have to approve it. The obvious next steps, listed in
+[roadmap.md](roadmap.md), are new candidate routes (k-shortest paths between busy
+places), simulated annealing or NSGA-II instead of the greedy search, and a simplified
+network of 500–1,000 nodes, nearer the sizes published methods have been run on (the
+largest standard benchmark, Mumford3, has 127 nodes). My judgement is that the results
+will depend more on the quality of the demand data than on the algorithm.
 
 ## 6. Demand without origin-destination data
 
-No public data says where Baku's bus riders travel from and to. The options, from what
-is possible now to what needs agreements:
+No public data says where Baku's bus riders travel from and to, so I use a gravity
+model: trips between two places grow with the people at one end and the attractions at
+the other, and fall with distance. Population comes from a grid, attractions from
+OpenStreetMap and metro entries, and the model is checked against observed boardings.
+The Python packages AequilibraE and scikit-mobility ([JSS, 2022](https://doi.org/10.18637/jss.v103.i04))
+do the same job, and the radiation model (Simini et al., 2012) and Deep Gravity, which
+learns from OpenStreetMap features (Simini et al., 2021), are the related models.
 
-- **Gravity model (used here).** Trips between two places grow with the people at one
-  end and the attractions at the other, and fall with distance. Population comes from a
-  grid; attractions from OpenStreetMap and metro entries. The model is then checked
-  against observed boardings. Python packages: AequilibraE, scikit-mobility
-  ([JSS, 2022](https://doi.org/10.18637/jss.v103.i04)).
-- **Related models.** The radiation model (Simini et al., 2012) and Deep Gravity, which
-  learns from OpenStreetMap features (Simini et al., 2021).
-- **Smart-card trip chaining.** It infers where each rider got off from where they next
-  tapped in. It worked for over 80% of boardings in Santiago (Munizaga & Palma, 2012).
-  It needs BakıKart tap records and vehicle GPS from AYNA.
-- **Mobile-phone data.** In Abidjan, IBM's AllAboard project (2013) worked on samples
-  of a 2.5-billion-record call dataset from Orange's Data for Development challenge,
-  scored 65 candidate routes and recommended four new ones that cut modelled travel
-  times by about 10% ([Berlingerio et al., 2013](https://perso.uclouvain.be/vincent.blondel/netmob/2013/D4D-book.pdf)).
-  It needs an agreement with a mobile operator.
+Two better options need agreements I do not have. Smart-card trip chaining infers where
+each rider got off from where they next tapped in; it worked for over 80% of boardings
+in Santiago (Munizaga & Palma, 2012), and it would need BakıKart tap records and
+vehicle GPS from AYNA. Mobile-phone data is the other: in Abidjan, IBM's AllAboard
+project (2013) worked on samples of a 2.5-billion-record call dataset from Orange's
+Data for Development challenge, scored 65 candidate routes and recommended four new
+ones that cut modelled travel times by about 10%
+([Berlingerio et al., 2013](https://perso.uclouvain.be/vincent.blondel/netmob/2013/D4D-book.pdf)).
+It needs an agreement with a mobile operator.
 
 ## 7. Fuel, energy and emissions
 
@@ -191,7 +170,7 @@ is possible now to what needs agreements:
 By January 2026, 55% of the fleet was described as eco-friendly (electric or CNG,
 section 4) and no split of the whole fleet by fuel is published. Per km, diesel and CNG
 emit roughly the same CO₂. A better
-network therefore saves more CO₂ than switching between those two fuels. The model counts
+network therefore saves more CO₂ than switching between those two fuels, so I count
 diesel-equivalent litres as a common unit ([configuration.md](configuration.md#fuel-and-emissions-fuel)).
 
 ## 8. Tools
@@ -213,7 +192,7 @@ No public GTFS feed exists for Baku: the Mobility Database lists none for Azerba
 
 ## 9. Reading list
 
-In order, for someone new to the field:
+In the order I would read them, for someone new to the field:
 
 1. Jarrett Walker, [Human Transit basics](https://humantransit.org/basics): the
    ridership versus coverage choice and why frequency matters.

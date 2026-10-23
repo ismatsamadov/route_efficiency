@@ -1,100 +1,89 @@
 # Roadmap
 
-Where the work stands on 23 October 2026, what to do next, what the current version
-cannot do, and which decisions and data are needed from people outside the code.
+Where I think the work stands on 23 October 2026, and what I would do next. The
+[changelog](changelog.md) lists what has been built; this page is about what is missing.
 
-## Done
+## What I would do next
 
-| Step | Where |
-|---|---|
-| Audit of the AYNA snapshot, and automatic repair of its defects (23 repairs) | `busnet/model.py`, [data.md](data.md) |
-| Network measures: directness, detours, overlap, trunk corridors, stop spacing, coverage | `busnet/metrics.py`, `output/` |
-| Headways from published data, boardings or service type; daily trips, bus-hours, bus-km, fleet, fuel, CO₂ | `busnet/service.py` |
-| Door-to-door travel model with demand from population, OpenStreetMap and metro; check against observed boardings | `busnet/graph.py`, `busnet/metrics.py`, `busnet/destinations.py` |
-| Every input committed; every assumption in `busnet.toml`; results regenerate byte for byte | `data/`, `busnet.toml` |
-| Stop-balancing scenario | `measure.py --scenario stop-balancing` |
-| GTFS export of today's network and of the redesign | `busnet/gtfs.py` |
-| Redesign search, with an independent check and a fleet-saving option | `busnet/optimize.py`, `redesign.py`, [results.md](results.md#the-redesign) |
-| The redesign ranks routes by counted boardings where they exist, never drops a route with 1,000 or more counted boardings, moves buses by the waiting they save, and leaves protected routes (180) alone | `busnet/optimize.py`, [redesign.md](redesign.md#riders-per-route) |
-| Documentation | `docs/` |
-| Robustness checks: the redesign on ten trip samples and under eleven other settings, the demand model's fit as each input is added, coverage by radius | `robustness.py`, [results.md](results.md#how-robust-the-results-are) |
-| Tests: unit tests for the geometry, headways, settings and plans, and a regression test that regenerates `output/` | `tests/`, [code.md](code.md#checking-a-change) |
-| Every cited figure in [research.md](research.md) checked against its source; data licences and provenance recorded | [research.md](research.md), [data/SOURCES.md](../data/SOURCES.md) |
+The weakest part of the work is demand. The gravity model ranks routes against the
+BakuBus counts at only 0.58, and 145 of the 201 routes have no counts at all, so the
+redesign's bus moves rest on estimates. Route 519 is the warning sign: a 3-stop shuttle
+that the model credits with 14,700 boardings a day and that the search therefore runs
+every 3 minutes. Nothing I can do with public data fixes this. It needs boardings for
+the other carriers' routes and, ideally, BakıKart validations, which is why the first
+thing on my list is to ask AYNA for the data in the table at the end of this page. Real
+headways would replace 200 estimates at the same time.
 
-## Next, in order of value
+Until that data exists there are three things I can do alone that would change the
+answer. The first is a new snapshot. The network is from 6 May 2026 and AYNA has been
+launching a new one since January ([data.md](data.md#when-the-data-is-from)), so I do
+not know which findings still hold; scraping the map again and rerunning the three
+scripts would tell me, and it would turn this snapshot into the "before" of a
+before-and-after study. The second is the metro. Today metro stations only attract
+trips, but many Baku trips combine bus and metro and some bus routes exist mainly to
+feed it, so trips that would use the metro look slower or impossible by bus. The third
+is vehicle capacity: a maximum-load rule (buses needed = peak load ÷ bus capacity) so
+that a frequency shift cannot hand a route more riders than its buses carry.
 
-1. **Ask AYNA for data** ([list below](#data-to-request-from-ayna-and-the-operators)).
-   - Real headways would replace 200 estimates.
-   - Boardings for the other carriers' routes would replace the model's estimates for
-     145 routes. One of them is route 519, which the redesign runs every 3 minutes on an
-     estimate of 14,700 boardings a day.
-2. **Improve the demand model.** Raise the fair ridership correlation (0.58) by calibrating
-   `trip_decay_km`, `destination_share` and `destination_weights` against the observed
-   boardings, and by trying a doubly constrained gravity model. Keep part of the routes
-   aside for checking, so the fit is not tuned to the data that judges it.
-3. **Add the metro to the travel model.** Today metro stations only attract trips. Many
-   Baku trips combine bus and metro, and some bus routes exist mainly to feed it.
-4. **Add vehicle capacity.** Set frequencies with a maximum-load rule (buses needed =
-   peak load ÷ bus capacity), so no route is given more riders than it can carry.
-5. **Generate new routes.** So far the search only changes existing routes. New
-   candidates could come from:
-   - k-shortest paths between busy terminals, metro stations and destinations;
-   - splitting long routes;
-   - cutting loops.
-6. **Search better.** Try simulated annealing, or NSGA-II from pymoo, to trade rider time
-   against bus-hours. Both can also undo earlier changes, which the greedy search never
-   does.
-7. **Take a new snapshot.** The network is from 6 May 2026 and AYNA has been launching
-   a new one since January 2026 ([data.md](data.md#when-the-data-is-from)). Scrape the
-   AYNA map again, rerun the three scripts and compare the results with the committed
-   ones to see which findings still hold.
-8. **Check against benchmarks.** Run the evaluator on the Mandl and Mumford test networks
-   and compare with published results ([research.md](research.md#5-designing-a-network-by-computer)).
-9. **Validate the GTFS feeds** with the MobilityData validator. Compare travel times with
-   r5py.
-10. **Extend the tests** to the kinds of change in `busnet/optimize.py` (merge, drop,
-    straighten, shift) on the small test network, and to the GTFS writer.
+I would also calibrate the demand model properly: fit `trip_decay_km`,
+`destination_share` and `destination_weights` against the observed boardings, try a
+doubly constrained gravity model, and keep part of the routes aside for checking so the
+fit is not tuned to the data that judges it. That should raise the fair 0.58, but it
+would still be calibration against 56 routes of one carrier.
 
-## Limitations of the current version
+Everything else can wait, because it would make the method look more serious without
+changing the answer much: generating new candidate routes (k-shortest paths between
+busy terminals, metro stations and destinations, splitting long routes, cutting loops),
+replacing the greedy search with simulated annealing or NSGA-II from pymoo, which can
+undo earlier changes, running the evaluator on the Mandl and Mumford benchmarks to
+compare with published results, validating the GTFS feeds with the MobilityData
+validator and comparing travel times with r5py, and extending the tests to the kinds of
+change in `busnet/optimize.py` and to the GTFS writer.
 
-| Limitation | Effect |
-|---|---|
-| Headways are estimated: 1 published, 55 from boardings, 145 by service type | Waiting times, fleet, bus-hours and fuel per route are approximate |
-| Demand comes from a gravity model, which ranks routes with a correlation of 0.58 | Estimated riders per route can be far off. The redesign uses counts for the 56 BakuBus routes and these estimates for the other 145 |
-| No metro in the travel graph | Trips that would use the metro look slower or impossible by bus |
-| No vehicle capacity or crowding | Busy routes look better than they are; frequency shifts can overload them |
-| One all-day average, weekdays only | No peak or night service; no weekend pattern |
-| Straight-line walking × 1.3 | Walks across rail lines, motorways or the sea look shorter than they are |
-| Speeds by service type, not by street | Congested streets and bus lanes are not distinguished |
-| Observed boardings only for BakuBus | 145 routes of other carriers have no ridership to check against |
-| Snapshot of 6 May 2026 | AYNA's new network began launching in January 2026, so the snapshot may mix old and new routes. 7 routes have no stops, and route 180 (Pirallahı) looks cut off |
-| Population grid from November 2023 | 3.04 million people in the study area against 3.22 million official for 2026 |
-| Greedy search over existing routes | It finds improvements, not the best network; it invents no new routes |
-| Fuel in diesel-equivalent litres | CNG and electric buses are not modelled separately |
+## What this version cannot do
 
-## Open questions for decision-makers
+- Headways are estimated for 200 of the 201 routes (55 from boardings, 145 by service
+  type, 1 published), so waiting times, fleet, bus-hours and fuel per route are
+  approximate.
+- Demand comes from a gravity model that ranks routes at 0.58, so estimated riders per
+  route can be far off; the redesign uses counts for the 56 BakuBus routes and
+  estimates for the other 145.
+- The metro is not in the travel graph; there is no vehicle capacity or crowding; there
+  is one all-day weekday average with no peak, night or weekend pattern; walking is
+  straight-line distance times 1.3, so walks across rail lines, motorways or the sea
+  look shorter than they are; and speeds are set by service type, not by street.
+- Observed boardings exist only for BakuBus, so 145 routes of other carriers have
+  nothing to check against.
+- The snapshot is from 6 May 2026 and may mix old and new routes; 7 routes have no
+  stops, and route 180 (Pirallahı) looks cut off because its connecting routes are
+  missing from the data.
+- The population grid is from November 2023: 3.04 million people in the study area
+  against 3.22 million official for 2026.
+- The search is greedy and only changes existing routes, so it finds improvements, not
+  the best network.
+- Fuel is in diesel-equivalent litres; CNG and electric buses are not modelled
+  separately.
 
-These are choices for people, not code. Each one has a setting that can follow the
-answer.
+## Questions that are not mine to answer
 
-1. **Faster trips or fewer buses?** The redesign can take its gain as shorter trips
-   with today's fleet, or as today's trip times with about 12% fewer buses. Both are
-   reported.
-2. **Ridership or coverage?** How many people may lose a stop within walking distance
-   for the rest to travel faster? Today the limits are 500 per change and 3,000 in
-   total, at 500 m (`redesign_max_people_losing_stop`,
-   `redesign_max_people_losing_stop_total`, `max_access_walk_m`).
-3. **How much do riders mind changing buses?** The model counts each change as 5 extra
-   minutes on top of waiting (`transfer_penalty_min`). A survey or AYNA's own model
-   could set this for Baku.
-4. **Which routes are fixed?** For example express routes, school services, or routes
-   bound by contracts. List them in `redesign_protected_routes`; today it holds only 180.
-5. **Can routes of different carriers be merged?** 59 of the 72 near-duplicate pairs
-   involve two carriers. The gross-cost contracts AYNA plans would make this easier.
-6. **How does this compare with AYNA's own redesign?** Its consultant's network needs
-   about 2,800 buses, against about 2,300 in service.
+Several settings are really policy choices, and I have only picked defaults for them.
+Whether the redesign's gain should be taken as faster trips with today's fleet or as
+today's trip times with about 12% fewer buses is the first; the results report both.
+How many people may lose a stop within walking distance so that the rest travel faster
+is the second: today the limits are 500 per change and 3,000 in total, at 500 m
+(`redesign_max_people_losing_stop`, `redesign_max_people_losing_stop_total`,
+`max_access_walk_m`), and the robustness run shows that a limit of zero costs nothing
+here. How much riders mind changing buses is the third: the model counts each change as
+5 extra minutes on top of waiting (`transfer_penalty_min`), a figure a survey or AYNA's
+own model could set for Baku. Which routes must stay as they are, whether express
+routes, school services or routes bound by contracts, belongs in
+`redesign_protected_routes`, which today holds only 180. Whether routes of different
+carriers can be merged at all matters, because 59 of the 72 near-duplicate pairs
+involve two carriers; the gross-cost contracts AYNA plans would make it easier. And how
+any of this compares with AYNA's own redesign I cannot say: its consultant's network
+needs about 2,800 buses, against about 2,300 in service.
 
-## Data to request from AYNA and the operators
+## Data I would ask AYNA for
 
 | Data | Replaces | Ideal format |
 |---|---|---|
@@ -108,16 +97,13 @@ answer.
 | The new network's routes, as launched | An up-to-date snapshot | GTFS, or a new scrape of the AYNA map |
 | Passenger counts by stop | Which stops can go, and which detours riders actually use | CSV |
 
-## Updating the work when data arrives
+## When new data arrives
 
-- **Real headways.** Add rows to `data/headways.csv`, then rerun the three scripts.
-- **A new network snapshot.**
-  1. In an empty folder outside the repository, run
-     `python3 <repository>/data/ayna_scraper.py`. It writes `ayna_data/ayna.db` in that
-     folder.
-  2. Replace `data/ayna.db` with that file.
-  3. Rerun the three scripts. The repairs detect defects from the data, so they adapt to
-     the new snapshot. Check `output/repairs.txt` for new ones.
-- **Fresh public data.** Run `python3 data/fetch_external.py --refresh`.
-- **Commit together.** Commit new data and the regenerated `output/` in the same commit,
-  so results always match their inputs.
+Real headways go into `data/headways.csv`; then rerun the three scripts. For a new
+network snapshot, run `python3 <repository>/data/ayna_scraper.py` in an empty folder
+outside the repository (it writes `ayna_data/ayna.db` there), replace `data/ayna.db`
+with that file and rerun the three scripts; the repairs are detected from the data, so
+they adapt to the new snapshot, and `output/repairs.txt` shows any new ones. Fresh
+public data comes from `python3 data/fetch_external.py --refresh`. Whatever changes, I
+commit the new data and the regenerated `output/` together, so results always match
+their inputs.

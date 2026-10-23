@@ -7,20 +7,16 @@ the `[redesign]` table of `busnet.toml`.
 ## The idea
 
 Most cities that redesigned their bus networks fixed the operating budget and redrew the
-routes to serve riders better within it (see [research.md](research.md)). The search does
-the same on a computer:
-
-1. Start from today's routes, each with the buses that its estimated headway implies.
-2. Try changes that other redesigns used: merge routes that repeat each other, drop
-   routes that carry few riders per bus, straighten detours, remove closely spaced stops,
-   move buses from quiet routes to busy ones.
-3. Score each change with the door-to-door travel model, and keep it only if riders'
-   average trip gets shorter and nobody beyond a small allowance loses their last stop
-   within walking distance.
-4. Check the final network on a different sample of trips than the search used.
-
-The fleet never changes. A route that gets shorter keeps its buses and therefore runs
-more often; a dropped route's buses go to the routes that overlap it.
+routes to serve riders better within it (see [research.md](research.md)), and I do the
+same on a computer. I start from today's routes, each with the buses its estimated
+headway implies, and try the changes other redesigns used: merging routes that repeat
+each other, dropping routes that carry few riders per bus, straightening detours,
+removing closely spaced stops, and moving buses from quiet routes to busy ones. Each
+change is scored with the door-to-door travel model and kept only if riders' average
+trip gets shorter and nobody beyond a small allowance loses their last stop within
+walking distance. Then I check the final network on a different sample of trips than
+the search used. The fleet never changes: a route that gets shorter keeps its buses and
+therefore runs more often, and a dropped route's buses go to the routes that overlap it.
 
 ## A plan
 
@@ -47,10 +43,10 @@ be made within `max_trip_min` (120) as 120 minutes, so losing access is penalise
 
 Drops and frequency shifts need to know how many people ride each route.
 
-- **Counted** boardings exist for the 56 BakuBus routes (opendata.az, weekday average of
+- Counted boardings exist for the 56 BakuBus routes (opendata.az, weekday average of
   the latest month).
-- **Estimated** boardings stand in for the other routes. They are the model's boardings,
-  scaled so that, over the counted routes, the model's total equals the counts' total.
+- Estimated boardings stand in for the other routes: the model's boardings, scaled so
+  that, over the counted routes, the model's total equals the counts' total.
 
 A count always wins over the model. A route the model underrates is therefore never
 dropped for looking empty, which happened to 595, 149 and 140E in the first version of
@@ -106,9 +102,9 @@ People who lose their stop are counted on the finer seven-points-per-hexagon pop
 5. Try stop balancing at 250 m, then 300 m, and keep the first that helps.
 6. Up to four rounds: recount riders per route, try the three shifts, keep the best one
    that helps.
-7. **Independent check**: score today's plan and the result on a different, larger
+7. Independent check: score today's plan and the result on a different, larger
    sample (300 origins, seed 7, seven points per hexagon, the same model as `measure.py`).
-8. **Fleet option**: find, by halving the interval six times, the smallest share of the
+8. Fleet option: find, by halving the interval six times, the smallest share of the
    new plan's buses (scaled evenly) whose average trip on the independent sample is no
    longer than today's. That is the saving if the improvement is taken as fewer buses
    instead of faster trips.
@@ -133,21 +129,18 @@ The latest result is described in [results.md](results.md#the-redesign).
 
 ## How to treat the result
 
-These are candidate changes for people who know the city to review, not a finished
-plan. Before acting on any of them:
-
-- Check each dropped or merged route with its operator and riders. The model does not
-  know contracts, depots, school runs or vehicle types.
-- Look at each straightened detour on the map: the shortest path may use a street that
-  is unsuitable, and the stops it skips may serve a hospital or school.
-- Remember the inputs: headways are estimates, the demand model matches observed
-  ridership only moderately (0.58), and the model has no crowding.
-- For the 145 routes without counts, riders are estimates, and they can be far off.
-  Check the estimate behind every dropped route and every route that gains or loses many
-  buses. In the latest result, route 519, a 3-stop shuttle the model credits with 14,700
-  boardings a day, goes from every 15 to every 3 minutes.
-- Add a route to `redesign_protected_routes` when local knowledge says it must stay as
-  it is, and run the search again.
+I treat the result as candidate changes for people who know the city to review, not a
+finished plan. Each dropped or merged route should be checked with its operator and
+riders, because the model does not know contracts, depots, school runs or vehicle
+types. Each straightened detour should be looked at on the map: the shortest path may
+use a street that is unsuitable, and the stops it skips may serve a hospital or school.
+The inputs are what they are: headways are estimates, the demand model matches observed
+ridership only moderately (0.58), and there is no crowding. For the 145 routes without
+counts, riders are estimates and can be far off, so the estimate behind every dropped
+route and every route that gains or loses many buses deserves a look; in the latest
+result, route 519, a 3-stop shuttle the model credits with 14,700 boardings a day, goes
+from every 15 to every 3 minutes. When local knowledge says a route must stay as it is,
+add it to `redesign_protected_routes` and run the search again.
 
 ## Tuning
 
@@ -165,22 +158,21 @@ Use `--out output/redesign_<name>` to keep variants side by side.
 
 ## Limitations
 
-- The search improves today's routes; it does not invent new routes. Generating new
-  routes (for example k-shortest paths between busy places) is the next step in
-  [roadmap.md](roadmap.md).
-- It is a greedy search: it keeps every improving change and never undoes one. Simulated
-  annealing or NSGA-II could find better combinations.
-- Some of the gain does not carry over to new trips. Counting impossible trips at 120
-  minutes, the average improved by 1.35 minutes on the search sample (79.66 to 78.31) but
-  by 0.76 minutes on the independent check (74.82 to 74.06). The independent check is
-  the figure to quote.
-- There is no vehicle capacity, so a route can be given more riders than its buses carry.
-- Headways for 145 routes come from the zone table, not data.
-- Counts describe today's network. When a merge moves riders onto a counted route, its
-  count is not raised, so later shifts may undervalue that route.
-- Counts decide which changes are tried, but the model's demand decides which are kept.
-  145 routes have no counts at all.
-- The metro is not part of the travel model; it only attracts trips.
+The search improves today's routes and invents none; generating new routes (for
+example k-shortest paths between busy places) is the next step in
+[roadmap.md](roadmap.md). It is greedy, keeping every improving change and never undoing
+one, so simulated annealing or NSGA-II could find better combinations. And some of the
+gain does not carry over to new trips: counting impossible trips at 120 minutes, the
+average improved by 1.35 minutes on the search sample (79.66 to 78.31) but by 0.76
+minutes on the independent check (74.82 to 74.06), which is the figure I quote.
+
+The model underneath has its own gaps. There is no vehicle capacity, so a route can be
+given more riders than its buses carry. Headways for 145 routes come from the zone
+table, not data. Counts describe today's network, so when a merge moves riders onto a
+counted route its count is not raised and later shifts may undervalue that route; and
+counts decide which changes are tried, but the model's demand decides which are kept,
+with 145 routes having no counts at all. The metro is not part of the travel model; it
+only attracts trips.
 
 ## Extending it
 
