@@ -72,7 +72,7 @@ stop sits 7.2 m from its route line, and 90% sit within 13.7 m.
 | 218 stop names mix Cyrillic letters (ә, Ә, Х) into Azerbaijani Latin; 530 names are shared by several stops, 36 of them more than 1 km apart | A text search for a stop would miss or confuse stops | The code always uses stop ids; names are only displayed |
 | Carriers appear under variant spellings (SAHİL and Sahil MMC, XAN and Xan Nəqliyyat MMC, General-Auto-Company with or without spaces) | Carrier totals split | Extra spaces are removed; spelling variants are not merged |
 | `card_payment_since` is local midnight stored as UTC | Read naively, the date is one day early | Not used |
-| Route 180 (Pirallahı) is cut off: its connecting routes 150A and 446 have no stops in the data | Trips to and from Pirallahı look impossible | None; the redesign's coverage guard keeps the route |
+| Route 180 (Pirallahı) is cut off: its connecting routes 150A and 446 have no stops in the data | Trips to and from Pirallahı look impossible, so the model sees few riders on 180 | The redesign leaves 180 as it is by default (`redesign_protected_routes`) |
 
 ## Population
 

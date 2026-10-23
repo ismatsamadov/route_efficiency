@@ -128,6 +128,9 @@ One line per data repair applied when loading `ayna.db` ([data.md](data.md#defec
 |---|---|
 | `route` | Route number |
 | `status` | `kept`, `straightened` (at least one direction), `merged` or `dropped`. Stop balancing alone leaves a route `kept` |
+| `protected` | `True` for routes listed in `redesign_protected_routes` |
+| `boardings_per_day` | Boardings a weekday the search used for this route in today's network |
+| `boardings_source` | `counted` (BakuBus counts on opendata.az) or `estimated` (the model's boardings, scaled so that model and counts agree in total on the counted routes) |
 | `buses_before`, `buses_after` | Bus-equivalents assigned (fractional); `buses_after` is 0 for a merged or dropped route |
 | `headway_min_before`, `headway_min_after` | Minutes between buses |
 | `one_way_km_before`, `one_way_km_after` | Length, averaged over directions |
@@ -155,9 +158,9 @@ One line feature per route direction of today's network (402), with `route`, `di
 
 | `status` | Line drawn | Colour | Features in the latest run |
 |---|---|---|---|
-| `kept` | The path after the redesign (stop balancing does not move it) | blue `#2a78d6` | 370 |
+| `kept` | The path after the redesign (stop balancing does not move it) | blue `#2a78d6` | 372 |
 | `straightened` | The new path of a direction whose detour was straightened | green `#1baf7a` | 14 |
-| `dropped` | The old path of a direction of a merged or dropped route | red `#d03b3b` | 18 |
+| `dropped` | The old path of a direction of a merged or dropped route | red `#d03b3b` | 16 |
 
 Merged routes are drawn as `dropped`; `routes.csv` tells merges and drops apart.
 

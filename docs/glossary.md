@@ -15,6 +15,7 @@ Terms as they are used in this repository. Setting names are in `code` font
 | Chainage | Distance along a route's path from its first stop, at each stop |
 | Circuity | Distance along the route ÷ straight-line distance. End-to-end circuity uses the two end stops; rider circuity averages over pairs of stops at least 1 km apart |
 | CNG | Compressed natural gas; most BakuBus buses run on it |
+| Counted boardings | Boardings per route from the BakuBus counts on opendata.az, as opposed to estimated (modelled) boardings |
 | Coverage | The share of people with a served stop within `coverage_radius_m` (400 m) |
 | Coverage guard | The redesign rule that limits how many people may lose their last stop within `max_access_walk_m` |
 | Cruise speed | A bus's moving speed between stops, set by working zone (`cruise_kmh`) |
@@ -46,6 +47,7 @@ Terms as they are used in this repository. Setting names are in `code` font
 | Order break | A stop that cannot be placed on its route's shape in order. Many order breaks mean the shape belongs to another direction, or is wrong |
 | Pattern | One direction of one route in the code: ordered stops, chainage and path |
 | Plan | In the redesign: a network plus the buses assigned to each route |
+| Protected route | A route the redesign leaves as it is, apart from giving it buses (`redesign_protected_routes`) |
 | Pull (attraction) | How strongly a zone draws trip ends: a mix of its population and its destinations |
 | Reference fleet | Buses reported in daily service, 2,300 (`reference_fleet`), used to check the estimated headways |
 | Repair | An automatic fix of a defect in the AYNA data when it is loaded, listed in `output/repairs.txt` |
@@ -53,8 +55,9 @@ Terms as they are used in this repository. Setting names are in `code` font
 | Route | A bus line with a number, such as 7A. Has one or two directions |
 | Search sample | The fixed set of trips the redesign scores every change on (`redesign_origins`, `redesign_seed`) |
 | Service hours | Hours of service a day (`service_hours`, 17: 06:00 to 23:00) |
-| Shift | A redesign change that moves buses from routes with few modelled riders per bus to routes with many |
+| Shift | A redesign change that moves buses from the routes where one more bus would save riders the least waiting to the routes where it would save the most |
 | Simulated annealing | A search that sometimes accepts a worse change, to escape a local optimum |
+| Square-root rule | The classic result that, to minimise riders' total waiting with a fixed fleet, buses on a route should grow with the square root of its riders × round-trip time. Equivalently, one more bus should save the same waiting on every route; the redesign's shift moves buses towards that |
 | Spearman correlation | How similarly two lists rank the same items: 1 is the same order, 0 no relation |
 | Stop balancing | Removing stops that are very close to their neighbours, so buses stop less often |
 | Stop gap | Distance along the route between two consecutive stops |

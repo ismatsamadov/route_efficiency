@@ -43,5 +43,10 @@ does one thing, so `git show <hash>` explains a single step.
 | `2d7d22c` | Add the redesign search (`busnet/optimize.py`) |
 | `881d75d` | Add `redesign.py` to run the search and report the result |
 | `fe1a6f1` | Regenerate results and add the first redesign |
-| | In `network.geojson`, mark a direction as straightened only if its path changed. Before, both directions of a route were marked when one was straightened |
-| | Add this documentation under `docs/`, and link it from the README |
+| `90cedb9` | In `network.geojson`, mark a direction as straightened only if its path changed. Before, both directions of a route were marked when one was straightened |
+| `32a78ca`, `42822d9`, `88fad72` | Add this documentation under `docs/` |
+| `1c98e51` | Link the documentation from the README |
+| `8f9b3c2` | Use the new repository name in the download script's user agent. The GitHub repository was renamed from `router_algorithm` to `route_efficiency`; GitHub redirects the old address |
+| `1c974c0` | Rank redesign changes by counted boardings where they exist and by the waiting one more bus saves; never drop a route with 1,000 or more counted boardings; leave protected routes (180) alone |
+| `5636bec` | Regenerate results with the updated redesign: 595, 149 and 140E are no longer dropped |
+| | Update the docs for the updated redesign |

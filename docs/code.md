@@ -96,7 +96,7 @@ output files show.
 | `graph` | `StopIndex(stops)` (`within`, `nearest`), `TransitGraph(network, a, headways)` (`search`, `arrival`, `departure`, `is_departure`, `node_route`) | Dijkstra over arrival, departure and on-board nodes |
 | `metrics` | `route_table`, `detour_table`, `trunk_corridors`, `near_duplicates`, `find_detours`, `StreetGraph`, `coverage_by_route`, `evaluate_od`, `compare_ridership`, `network_summary` | `network_summary` gives every network-wide figure in `network.json` |
 | `scenarios` | `balance_stops(network, min_gap_m, max_gap_after_m, protect)` | Returns (new network, details); never edits its input |
-| `optimize` | `Plan`, `allocate`, `Evaluator` (`score`, `people_with_stop`), `Streets`, `straightened`, `Drop`, `Straighten`, `BalanceStops`, `Shift`, `Context`, `candidates`, `search`, `fleet_for_same_time` | Explained in [redesign.md](redesign.md) |
+| `optimize` | `Plan`, `allocate`, `Evaluator` (`score`, `people_with_stop`), `Streets`, `straightened`, `Drop`, `Straighten`, `BalanceStops`, `Shift`, `Context` (`riders_for`), `candidates`, `search`, `fleet_for_same_time` | Explained in [redesign.md](redesign.md) |
 | `gtfs` | `write_gtfs(path, network, a, headways, start_hour=6)` | Frequency-based feed |
 | `config` | `load_config(path, overrides)`, `parse_value`, `DATA_KEYS` | |
 | `inputs` | `load_inputs(root, config, overrides, repair, split, say)` | |
@@ -161,10 +161,13 @@ A change is a class with:
 - `routes`: the route ids it touches (may be empty);
 - `apply(plan, ctx)`: returns a new `Plan`, or `None` if the change no longer applies (for
   example its route has gone). `ctx` gives `ctx.a` (settings), `ctx.evaluator`,
-  `ctx.streets` (the street graph) and `ctx.boardings` (modelled boardings per route);
+  `ctx.streets` (the street graph), `ctx.riders` (boardings a day per route: counted where
+  known, otherwise estimated), `ctx.observed` (counted boardings by route id) and
+  `ctx.protected` (route ids to leave alone);
 - `describe(network)`: one sentence for `changes.csv`.
 
-Add candidates of the new kind in `optimize.candidates()`, where they are screened alone
+Respect `ctx.protected` unless the change only adds buses. Add candidates of the new kind
+in `optimize.candidates(plan, ctx)`, where they are screened alone
 and then applied in order of gain, or give them their own step in `optimize.search()`.
 The coverage guard, the scoring and the log apply automatically.
 

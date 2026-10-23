@@ -13,7 +13,7 @@ trip data are public, a travel model built from public population, ridership, me
 OpenStreetMap data estimates door-to-door travel times and daily bus operation, with
 every assumption in one settings file. A redesign search then changes the network step
 by step with today's fleet, keeping a change only if trips get faster without cutting
-people off. The first redesign shortens the average trip from 51.8 to 50.9 minutes with
+people off. The redesign shortens the average trip from 51.8 to 50.9 minutes with
 the same buses, or matches today's trip times with about 12% fewer buses and 12% less fuel.
 Its changes are candidates for review, not a plan: [results.md](results.md#check-these-before-acting)
 lists what to check first.
@@ -23,7 +23,7 @@ lists what to check first.
 | If you want to... | Read |
 |---|---|
 | Run the tools and regenerate every result | [getting-started.md](getting-started.md) |
-| See the latest findings and the first redesign | [results.md](results.md) |
+| See the latest findings and the redesign | [results.md](results.md) |
 | Understand the data, its defects, the repairs and the licences | [data.md](data.md) |
 | Change an assumption or a data path | [configuration.md](configuration.md) |
 | Know exactly how a number is computed | [methodology.md](methodology.md) |

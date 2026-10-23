@@ -32,10 +32,10 @@ are two kinds of number:
 - **Access is limited.** 66% of the 3.04 million people around the network live within
   400 m of a stop. An average modelled trip takes 52 minutes door to door, and only 29%
   of trips can be made within 45 minutes.
-- **The first redesign helps a little.** With the same fleet, it shortens the average
-  trip from 51.8 to 50.9 minutes. Alternatively, it gives today's travel times with about
-  12% fewer buses, fuel and CO₂. Its changes are candidates to review, not a plan. Three
-  of the routes it drops carry riders the model does not see ([below](#check-these-before-acting)).
+- **The redesign helps a little.** With the same fleet, it shortens the average trip
+  from 51.8 to 50.9 minutes. Alternatively, it gives today's travel times with about 12%
+  fewer buses, fuel and CO₂. Its changes are candidates to review, not a plan
+  ([what to check](#check-these-before-acting)).
 
 ## Today's network
 
@@ -219,68 +219,81 @@ on every route that uses them. It keeps terminals and hubs, and never leaves a g
 | Average door-to-door time | 51.8 min | 51.6 min | |
 | Trips possible within 2 hours | 66.3% | 66.0% | |
 
-## The first redesign
+## The redesign
 
 `python3 redesign.py` with the default settings ([redesign.md](redesign.md) explains the
-method). It kept 28 changes:
+method). It kept 27 changes:
 
 - 5 merges: 114B, 100, 173A, 210 and 169;
-- 4 drops: 164, 595, 149 and 140E;
+- 3 drops: 164, 39 and 150E;
 - 14 straightened detours on 12 routes;
-- one stop-balancing pass removing 340 stops;
-- 4 frequency shifts moving 24, 17, 11 and 5 bus-equivalents.
+- one stop-balancing pass removing 338 stops;
+- 4 frequency shifts moving 25, 19, 19 and 14 bus-equivalents.
 
-Routes go from 201 to 192.
+Routes go from 201 to 193. Route 180 is protected and left as it is. No route with
+1,000 or more counted boardings a weekday was dropped.
 
-### The 28 changes
+### Riders per route
 
-Gains are average door-to-door minutes on the search sample (100 origins), counting a
-trip that is impossible within 2 hours as 120 minutes. "People" counts people left with
-no stop within 500 m. Full wording is in `output/redesign/changes.csv`.
+Drops and frequency shifts rank routes by boardings a day:
+
+- **Counted** for the 56 BakuBus routes in the opendata.az data: 692,288 a weekday.
+- **Estimated** for the other 145 routes: 733,436 a weekday. This is the model's
+  boardings, scaled so that on the counted routes the model and the counts agree in total.
+
+Together that is 1.43 million boardings a weekday, close to the 1.6 million daily bus
+trips AYNA reported in 2023. A trip with a change counts as two boardings.
+`output/redesign/routes.csv` gives each route's figure and its source.
+
+### The 27 changes
+
+Gains are average door-to-door minutes on the search sample (100 origins). A trip that is
+impossible within 2 hours counts as 120 minutes. "People" counts people left with no stop
+within 500 m. The full wording is in `output/redesign/changes.csv`.
 
 | Step | Change | Gain (min) | People |
 |---|---|---|---|
 | 1 | Merge 114B into 114A (92% of its stops on 114A) | 0.061 | 0 |
-| 2 | Drop 164 (few modelled riders per bus) | 0.049 | 171 |
+| 2 | Drop 164: 14 boardings a day per bus (estimated) | 0.049 | 171 |
 | 3 | Merge 100 into 108B (93%) | 0.038 | 0 |
 | 4 | Straighten 161 direction 2 near Hövsan: 1.8 km shorter, 8 stops skipped | 0.031 | 0 |
 | 5 | Straighten 132 direction 2, the same stretch: 1.8 km shorter, 8 stops skipped | 0.015 | 0 |
 | 6 | Merge 173A into 173B (94%) | 0.021 | 20 |
 | 7 | Straighten 509 direction 1 (Xocasən şosesi): 6.6 km shorter, 8 stops skipped | 0.022 | 0 |
-| 8 | Drop 595 | 0.014 | 0 |
-| 9 | Straighten 166 direction 1: 3.9 km shorter, 4 stops skipped | 0.017 | 0 |
-| 10 | Straighten 32 direction 1: 2.2 km shorter, 5 stops skipped | 0.017 | 0 |
-| 11 | Merge 210 into 215 (93%) | 0.016 | 495 |
-| 12 | Straighten 509 direction 2: 6.1 km shorter, 7 stops skipped | 0.019 | 0 |
-| 13 | Straighten 525 direction 1: 6.6 km shorter, 9 stops skipped | 0.016 | 0 |
-| 14 | Straighten 157 direction 2: 3.0 km shorter, 6 stops skipped | 0.011 | 0 |
-| 15 | Straighten 40 direction 1: 1.8 km shorter, 8 stops skipped | 0.011 | 0 |
-| 16 | Drop 149 | 0.010 | 0 |
-| 17 | Straighten 17 direction 2: 3.1 km shorter, 10 stops skipped | 0.011 | 0 |
-| 18 | Straighten 3 direction 1: 2.1 km shorter, 4 stops skipped | 0.010 | 0 |
-| 19 | Merge 169 into 168 (91%) | 0.009 | 0 |
-| 20 | Straighten 537 direction 1: 3.4 km shorter, no stops skipped | 0.008 | 0 |
-| 21 | Straighten 525 direction 2: 2.3 km shorter, 9 stops skipped | 0.008 | 0 |
-| 22 | Drop 140E | 0.006 | 0 |
-| 23 | Straighten 125 direction 2: 1.8 km shorter, 9 stops skipped | 0.005 | 0 |
-| 24 | Stop balancing at 250 m: 340 stops removed, none that is someone's only stop | 0.217 | 0 |
-| 25 | Move 24 buses from the 20 routes with the fewest modelled riders per bus to the 20 with the most | 0.350 | 0 |
-| 26 | The same, 17 buses | 0.173 | 0 |
-| 27 | The same, 11 buses | 0.085 | 0 |
-| 28 | The same, 5 buses | 0.037 | 0 |
+| 8 | Straighten 166 direction 1: 3.9 km shorter, 4 stops skipped | 0.017 | 0 |
+| 9 | Straighten 32 direction 1: 2.2 km shorter, 5 stops skipped | 0.017 | 0 |
+| 10 | Merge 210 into 215 (93%) | 0.016 | 495 |
+| 11 | Straighten 509 direction 2: 6.1 km shorter, 7 stops skipped | 0.019 | 0 |
+| 12 | Straighten 525 direction 1: 6.6 km shorter, 9 stops skipped | 0.016 | 0 |
+| 13 | Straighten 157 direction 2: 3.0 km shorter, 6 stops skipped | 0.011 | 0 |
+| 14 | Straighten 40 direction 1: 1.8 km shorter, 8 stops skipped | 0.011 | 0 |
+| 15 | Straighten 17 direction 2: 3.1 km shorter, 10 stops skipped | 0.011 | 0 |
+| 16 | Straighten 3 direction 1: 2.1 km shorter, 4 stops skipped | 0.010 | 0 |
+| 17 | Drop 39: 84 boardings a day per bus (estimated) | 0.011 | 0 |
+| 18 | Merge 169 into 168 (91%) | 0.009 | 0 |
+| 19 | Straighten 537 direction 1: 3.4 km shorter, no stops skipped | 0.008 | 0 |
+| 20 | Straighten 525 direction 2: 2.3 km shorter, 9 stops skipped | 0.008 | 0 |
+| 21 | Drop 150E: 3 boardings a day per bus (counted) | 0.005 | 290 |
+| 22 | Straighten 125 direction 2: 1.8 km shorter, 9 stops skipped | 0.005 | 0 |
+| 23 | Stop balancing at 250 m: 338 stops removed, none that is someone's only stop | 0.217 | 0 |
+| 24 | Move 25 buses from the 20 routes where a bus saves riders the least waiting to the 20 where it saves the most | 0.332 | 0 |
+| 25 | The same, 19 buses | 0.175 | 0 |
+| 26 | The same, 19 buses | 0.127 | 0 |
+| 27 | The same, 14 buses | 0.088 | 0 |
 
-The gain of 1.28 minutes on the search sample divides as follows:
+The gain of 1.35 minutes on the search sample divides as follows (shares rounded):
 
 | Kind of change | Gain | Share of the gain |
 |---|---|---|
-| Moving buses to busier routes | 0.64 min | half |
-| Stop balancing | 0.22 min | 17% |
-| Straightening | 0.20 min | 16% |
+| Moving buses to where they save the most waiting | 0.72 min | 54% |
+| Stop balancing | 0.22 min | 16% |
+| Straightening | 0.20 min | 15% |
 | Merges | 0.14 min | 11% |
-| Drops | 0.08 min | 6% |
+| Drops | 0.07 min | 5% |
 
-The bus moves depend most on the model's riders per route, which it gets only roughly
-right (0.58). They are therefore the least certain part of the result.
+The bus moves depend most on riders per route. Riders are counted for only 56 routes and
+estimated for the rest by a model that ranks routes only roughly right (0.58). The bus
+moves are therefore the least certain part of the result.
 
 ### Before and after
 
@@ -289,74 +302,91 @@ hexagon (`output/redesign/summary.json`).
 
 | Measure | Today | Redesign | Change |
 |---|---|---|---|
-| Routes | 201 | 192 | −9 |
-| Stops served | 3,456 | 3,103 | −353 |
-| Route length, all directions | 7,398 km | 6,906 km | −6.6% |
-| Distinct links | 3,824 km | 3,651 km | −4.5% |
-| Duplication ratio | 1.93 | 1.89 | |
-| Median stop gap | 420 m | 469 m | |
-| Gaps under 300 m | 23.9% | 14.7% | |
-| People within 400 m of a stop | 65.96% | 65.80% | about 4,900 fewer people; 687 have no stop within 500 m any more |
-| Average door-to-door time, possible trips | 51.8 min | 50.9 min | −0.9 min |
-| Trips possible within 30 / 45 / 60 minutes | 16.2 / 29.4 / 42.2% | 16.5 / 30.3 / 43.3% | |
+| Routes | 201 | 193 | −8 |
+| Stops served | 3,456 | 3,105 | −351 |
+| Route length, all directions | 7,398 km | 6,970 km | −5.8% |
+| Distinct links | 3,824 km | 3,678 km | −3.8% |
+| Duplication ratio | 1.93 | 1.90 | |
+| Median stop gap | 420 m | 470 m | |
+| Gaps under 300 m | 23.9% | 14.6% | |
+| People within 400 m of a stop | 65.96% | 65.80% | about 5,000 fewer people; 976 have no stop within 500 m any more |
+| Average door-to-door time, possible trips | 51.82 min | 50.86 min | −0.97 min |
+| Trips possible within 30 / 45 / 60 minutes | 16.2 / 29.4 / 42.2% | 16.6 / 30.3 / 43.4% | |
 | Trips possible within 2 hours | 66.3% | 66.4% | |
-| Average counting impossible trips as 120 min | 74.8 min | 74.1 min | −0.7 min |
+| Average counting impossible trips as 120 min | 74.82 min | 74.06 min | −0.76 min |
 | Possible trips with two or more changes | 16.5% | 17.4% | more changes |
-| Trips a day | 33,363 | 34,565 | +3.6% |
+| Trips a day | 33,363 | 34,418 | +3.2% |
 | Bus-hours a day | 28,327 | 28,327 | same fleet |
-| Bus-km a day | 588,994 | 595,077 | +1.0% |
-| Buses, rounded up per route | 2,015 | 2,010 | |
-| Fuel a day | 226,592 L | 226,310 L | −0.1% |
-| CO₂ a day | 605.0 t | 604.2 t | |
+| Bus-km a day | 588,994 | 596,868 | +1.3% |
+| Buses, rounded up per route | 2,015 | 2,017 | |
+| Fuel a day | 226,592 L | 226,708 L | +0.05% |
+| CO₂ a day | 605.0 t | 605.3 t | |
 
 The same buses run more trips on shorter routes, so frequencies rise and waits shorten.
-Bus-km rise a little, but fuel falls slightly because buses stop less.
+Bus-km rise a little. Fuel stays about the same, because buses also stop less.
 
-On the search sample itself, the capped average fell more, from 79.7 to 78.4 minutes,
+On the search sample itself, the capped average fell more, from 79.66 to 78.31 minutes,
 because the search was tuned to those trips. Quote the independent check.
 
 ### Or: today's travel times with fewer buses
 
 The improvement can be taken as a smaller fleet instead. With 88.3% of the redesigned
 network's buses, cut evenly on every route, the independent check's average trip
-(counting impossible trips as 120 minutes) is no longer than today's. The share is
-found by halving an interval six times, so it is accurate to about one percentage point.
+(counting impossible trips as 120 minutes) is no longer than today's. The share is found
+by halving an interval six times, so it is accurate to about one percentage point.
 
 | Measure | Today | Redesign with 88% of the buses | Change |
 |---|---|---|---|
 | Bus-equivalents | 1,916 | 1,692 | −11.7% |
-| Buses, rounded up per route | 2,015 | 1,794 | −221 |
+| Buses, rounded up per route | 2,015 | 1,796 | −219 |
 | Bus-hours a day | 28,327 | 25,007 | −11.7% |
-| Bus-km a day | 588,994 | 525,341 | −10.8% |
-| Fuel a day | 226,592 L | 199,789 L | −11.8% |
-| CO₂ a day | 605 t | 533 t | −11.8% |
+| Bus-km a day | 588,994 | 526,923 | −10.5% |
+| Fuel a day | 226,592 L | 200,140 L | −11.7% |
+| CO₂ a day | 605 t | 534 t | −11.7% |
 
-On the search sample the same calculation gives 80%, which overstates the saving for
-the same reason as above.
+On the search sample the same calculation gives 79%, which overstates the saving for the
+same reason as above.
+
+### What changed from the first version
+
+The first run of the search (commit `fe1a6f1`) ranked routes by modelled riders only. It
+dropped routes 595, 149 and 140E, which carry about 10,100 counted boardings a weekday, and
+cut route 180 to Pirallahı from every 20 to every 30 minutes. The current version fixes
+both:
+
+- It uses counts where they exist.
+- It never drops a route with 1,000 or more counted boardings.
+- It moves buses by the waiting time they save.
+- It leaves 180 alone.
+
+595 and 140E now gain buses instead.
+
+The overall effect is about the same. The average trip goes from 51.82 to 50.86 minutes,
+against 50.88 in the first version, and 88% of the buses give today's travel times in both.
 
 ### Check these before acting
 
-1. **Three dropped routes carry real riders the model misses.** 595 carries 2,399
-   boardings a weekday, 149 carries 4,605 and 140E carries 3,133: about 10,100 in all.
-   They are BakuBus routes. The model gives them 2%, 3% and 0% of their observed share
-   of riders, so it judged them nearly empty. Do not drop them on this evidence. The
-   next version of the search should use observed boardings where they exist (see
-   [roadmap.md](roadmap.md)).
-2. **Some people lose their stop.** Merging 210 into 215 leaves 495 people without a
-   stop within 500 m, just under the limit of 500 per change. Dropping 164 strands 171
-   and merging 173A strands 20, for 687 in total.
-3. **Route 180 (Pirallahı) runs less often.** It goes from every 20 to every 30 minutes,
-   because the model sees few riders on it. Its connecting routes are missing from the
-   data ([data.md](data.md#known-issues-not-repaired)).
-4. **Riders per bus favours very short routes.** Route 519, 2.1 km and 3 stops, gains
-   buses in every shift and goes from every 15 to every 3.7 minutes. Routes 197, 198, 550
-   and 554 drop to every 30 minutes.
+1. **Route 519 runs every 3 minutes.** It is a 2.1 km route with 3 stops and no counts.
+   The model estimates 14,700 boardings a day for it, so the search raises it from every
+   15 minutes to the shortest headway allowed. Count its riders before adding buses.
+2. **Some people lose their stop.**
+   - Merging 210 into 215 leaves 495 people without a stop within 500 m, just under the
+     limit of 500 per change.
+   - Dropping 150E strands 290, dropping 164 strands 171, and merging 173A strands 20.
+   - That is 976 people in total.
+3. **The dropped routes have little evidence behind them.** 164 and 39 have no counts:
+   their estimated boardings are 133 and 582 a day. 150E recorded only 16.5 boardings a
+   weekday in September. Check all three with their operators.
+4. **Some routes lose buses on estimates alone.** 131, 197, 198, 550, 551 and 554 go from
+   every 15 to every 30 minutes. 54 and 50 go from every 10 to about every 24. None of
+   them has counts.
 5. **More riders must change buses.** The share of trips with two or more changes rises
    from 16.5% to 17.4%.
-6. **Look at every straightened stretch on the map.** Open
-   `output/redesign/network.geojson`. The new path follows links that buses drive
-   today, but turns, one-way streets and the skipped stops (schools, clinics) need
-   checking on the ground.
+6. **Look at every straightened stretch on the map.**
+   - Open `output/redesign/network.geojson`.
+   - Each new path follows links that buses drive today.
+   - Turns, one-way streets and the skipped stops (schools, clinics) still need checking
+     on the ground.
 
 ### What the results do not say
 

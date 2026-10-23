@@ -36,10 +36,11 @@ python3 redesign.py          # writes output/redesign/, about two minutes
 
 The search keeps today's fleet and tries the changes other cities' redesigns used: merging
 near-duplicate routes, dropping little-used ones, straightening detours, stop balancing,
-and moving buses from quiet routes to busy ones. A change is kept only if the average
-door-to-door trip gets shorter without leaving people with no stop within walking
-distance. The result is then checked on a different sample of trips than the search used.
-Its settings are in the `[redesign]` table of `busnet.toml`.
+and moving buses to where they save riders the most waiting. Counted boardings are used
+wherever they exist, and routes listed in `busnet.toml` can be protected from changes. A
+change is kept only if the average door-to-door trip gets shorter without leaving people
+with no stop within walking distance. The result is then checked on a different sample of
+trips than the search used. Its settings are in the `[redesign]` table of `busnet.toml`.
 
 | File in `output/redesign/` | Contents |
 |---|---|

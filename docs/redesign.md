@@ -43,6 +43,32 @@ be made within `max_trip_min` (120) as 120 minutes, so losing access is penalise
 - Because every plan is scored on the same trips, differences between plans are not
   sampling noise.
 
+## Riders per route
+
+Drops and frequency shifts need to know how many people ride each route.
+
+- **Counted** boardings exist for the 56 BakuBus routes (opendata.az, weekday average of
+  the latest month).
+- **Estimated** boardings stand in for the other routes. They are the model's boardings,
+  scaled so that, over the counted routes, the model's total equals the counts' total.
+
+A count always wins over the model. A route the model underrates is therefore never
+dropped for looking empty, which happened to 595, 149 and 140E in the first version of
+the search. `output/redesign/routes.csv` gives the figure used for each route and its
+source. Counts only steer which changes are tried. Whether a change is kept is still
+decided by door-to-door time in the model.
+
+### Which routes gain or lose buses
+
+A route's riders wait on average half its headway, and its headway is its round-trip
+time divided by its buses. One more bus on a route therefore saves its riders about
+riders × headway ÷ buses ÷ 2 minutes of waiting a day.
+
+A shift moves buses from the routes where that saving is smallest to those where it is
+largest. This is the idea behind the square-root rule of frequency setting: with a fixed
+fleet, total waiting is lowest when buses grow with the square root of riders × round-trip
+time. Unlike riders per bus, the saving falls quickly as a short route gains buses.
+
 ## Rules every change must keep
 
 | Rule | Setting |
@@ -53,6 +79,8 @@ be made within `max_trip_min` (120) as 120 minutes, so losing access is penalise
 | No route is made to run less often than every `max_headway_min` (30) minutes by moving its buses away | `max_headway_min` |
 | No route gets buses beyond what it can use at `min_headway_min` (3) minutes | `min_headway_min` |
 | A merge needs the route it merges into to still exist | (built in) |
+| A route with at least this many counted weekday boardings is never dropped | `redesign_protect_boardings` = 1000 |
+| Protected routes are never merged, dropped, straightened, stop-balanced or thinned out; they may gain buses | `redesign_protected_routes` = ["180"] |
 
 People who lose their stop are counted on the finer seven-points-per-hexagon population.
 
@@ -61,14 +89,15 @@ People who lose their stop are counted on the finer seven-points-per-hexagon pop
 | Kind | What it does | Candidates |
 |---|---|---|
 | merge | Drops a route whose stops are mostly (at least 85%) on another route; its buses go to the up to three routes that share most of its stops | Every near-duplicate pair, closest first, one per route |
-| drop | Drops a route; its buses go to the routes that share most of its stops, or across the network if none do | The `redesign_max_drop` (20) routes with the fewest modelled riders per bus |
+| drop | Drops a route; its buses go to the routes that share most of its stops, or across the network if none do | The `redesign_max_drop` (20) routes with the fewest boardings a day per bus ([counted or estimated](#riders-per-route)), leaving out protected routes and routes with at least `redesign_protect_boardings` counted boardings |
 | straighten | Replaces a detour with the shortest path between its two end stops along stop-to-stop links that some route drives today, in the right direction; the route stops at the stops on that path. Two stop poles less than 60 m apart count as one place | Detours whose straight path is at least 500 m shorter; the `redesign_max_straighten` (80) that save most time |
 | stops | Stop balancing at 250 m (then 300 m), keeping any stop that is someone's only one within walking distance | Once, after the others |
-| shift | Moves `redesign_shift_share` (20%) of the buses of the 5, 10 or 20 routes with the fewest modelled riders per bus to the same number of routes with the most, in proportion to their riders | Up to `redesign_shift_rounds` (4) rounds |
+| shift | Moves `redesign_shift_share` (20%) of the buses of the 5, 10 or 20 routes where a bus [saves riders the least waiting](#which-routes-gain-or-lose-buses) to the same number of routes where it saves the most, in proportion to that saving. Protected routes never give buses | Up to `redesign_shift_rounds` (4) rounds |
 
 ## The search, step by step
 
-1. Score today's plan and count modelled boardings per route.
+1. Score today's plan, and work out [boardings per route](#riders-per-route), counted
+   where known and estimated elsewhere.
 2. Build the merge, drop and straighten candidates.
 3. Score each candidate alone against today's plan. Keep those that improve the average
    by more than `redesign_min_gain_min` (0.005 minutes) without breaking a rule.
@@ -90,7 +119,8 @@ The run takes about two minutes and is deterministic: the same inputs give the s
 
 - `output/redesign/changes.csv`: each kept change in order, with the average minutes
   before and after on the search sample and the people who lost their last stop.
-- `output/redesign/routes.csv`: each route's status (kept, straightened, merged, dropped),
+- `output/redesign/routes.csv`: each route's status (kept, straightened, merged,
+  dropped), whether it is protected, the boardings used for it and their source, and its
   buses, headway and length before and after.
 - `output/redesign/summary.json`: the independent check, the fleet option, settings and
   inputs.
@@ -99,7 +129,7 @@ The run takes about two minutes and is deterministic: the same inputs give the s
 - `output/redesign/gtfs_today.zip` and `gtfs_redesign.zip`: both networks as GTFS feeds,
   to open in other tools such as r5py or a GTFS viewer.
 
-The latest result is described in [results.md](results.md#the-first-redesign).
+The latest result is described in [results.md](results.md#the-redesign).
 
 ## How to treat the result
 
@@ -112,12 +142,12 @@ plan. Before acting on any of them:
   is unsuitable, and the stops it skips may serve a hospital or school.
 - Remember the inputs: headways are estimates, the demand model matches observed
   ridership only moderately (0.58), and the model has no crowding.
-- Compare every dropped route with its observed boardings. Drops and shifts rank routes
-  by **modelled** riders per bus, and the model underrates some routes badly: the first
-  redesign dropped 595, 149 and 140E, which carry about 10,100 boardings a weekday.
-- Riders per bus favours very short routes, which can end up running every few minutes
-  (route 519 in the first redesign). Routes the model sees few riders on, such as 180 to
-  Pirallahı, lose buses down to `max_headway_min`.
+- For the 145 routes without counts, riders are estimates, and they can be far off.
+  Check the estimate behind every dropped route and every route that gains or loses many
+  buses. In the latest result, route 519, a 3-stop shuttle the model credits with 14,700
+  boardings a day, goes from every 15 to every 3 minutes.
+- Add a route to `redesign_protected_routes` when local knowledge says it must stay as
+  it is, and run the search again.
 
 ## Tuning
 
@@ -127,6 +157,8 @@ python3 redesign.py --set redesign_max_people_losing_stop=0 \
 python3 redesign.py --set redesign_origins=200                     # steadier, about twice as slow
 python3 redesign.py --set redesign_max_drop=0                      # never drop a route
 python3 redesign.py --set transfer_penalty_min=8                   # riders dislike changes more
+python3 redesign.py --set 'redesign_protected_routes=["180", "519"]'   # also keep 519 as it is
+python3 redesign.py --set redesign_protect_boardings=0             # let the search drop any route
 ```
 
 Use `--out output/redesign_<name>` to keep variants side by side.
@@ -139,13 +171,15 @@ Use `--out output/redesign_<name>` to keep variants side by side.
 - It is a greedy search: it keeps every improving change and never undoes one. Simulated
   annealing or NSGA-II could find better combinations.
 - Some of the gain does not carry over to new trips. Counting impossible trips at 120
-  minutes, the average improved by 1.3 minutes on the search sample (79.7 to 78.4) but by
-  0.7 minutes on the independent check (74.8 to 74.1). The independent check is the
-  figure to quote.
+  minutes, the average improved by 1.35 minutes on the search sample (79.66 to 78.31) but
+  by 0.76 minutes on the independent check (74.82 to 74.06). The independent check is
+  the figure to quote.
 - There is no vehicle capacity, so a route can be given more riders than its buses carry.
 - Headways for 145 routes come from the zone table, not data.
-- Drops and shifts use modelled riders even where observed boardings exist. Using the
-  observed ones is the first item in [roadmap.md](roadmap.md#next-in-order-of-value).
+- Counts describe today's network. When a merge moves riders onto a counted route, its
+  count is not raised, so later shifts may undervalue that route.
+- Counts decide which changes are tried, but the model's demand decides which are kept.
+  145 routes have no counts at all.
 - The metro is not part of the travel model; it only attracts trips.
 
 ## Extending it
