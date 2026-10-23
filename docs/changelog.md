@@ -61,3 +61,4 @@ does one thing, so `git show <hash>` explains a single step.
 | `618c510` | Document the robustness checks and the tests; state when the data is from; pair the population figures consistently; explain route 49's carrier |
 | `5c73bda` | Check every cited figure in research.md against its source and correct the wording; mark unsourced settings as assumptions |
 | `422b82d` | Record the licence and provenance of every dataset, including that `ayna.db` has no published licence |
+| `64d898b` | Add `docs/paper.md`: whether there is a paper, its outline mapped to the repository, pivots, venues checked on their own pages, format rules and the steps for an independent researcher |
