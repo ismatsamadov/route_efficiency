@@ -189,7 +189,8 @@ def main():
     print(f"  bus-km a day                        {check_before['operations']['bus_km_per_day']:,.0f} -> {check_after['operations']['bus_km_per_day']:,.0f}")
     print(f"  fuel a day (L)                      {check_before['operations']['fuel_l_per_day']:,.0f} -> {check_after['operations']['fuel_l_per_day']:,.0f}")
     before_ops = check_before["operations"]
-    print(f"\nOr keep today's travel times with {fleet_share:.0%} of the fleet ({today.total_fleet() * (1 - fleet_share):,.0f} fewer buses):")
+    print(f"\nOr keep today's travel times with {fleet_share:.0%} of the fleet "
+          f"({before_ops['fleet'] - saving_ops['fleet']:,} fewer buses, rounded up per route):")
     print(f"  fuel a day (L)                      {before_ops['fuel_l_per_day']:,.0f} -> {saving_ops['fuel_l_per_day']:,.0f}")
     print(f"  CO2 a day (t)                       {before_ops['co2_t_per_day']:,.0f} -> {saving_ops['co2_t_per_day']:,.0f}")
     print(f"  bus-hours a day                     {before_ops['bus_hours_per_day']:,.0f} -> {saving_ops['bus_hours_per_day']:,.0f}")
