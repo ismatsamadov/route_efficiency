@@ -234,11 +234,10 @@ with a verified university e-mail; the paper itself is indexed anyway.
 
 The repository has a `LICENSE` (MIT, for the code), a `CITATION.cff`, and a Licensing
 section in the README that says which terms each data folder carries
-([data/SOURCES.md](../data/SOURCES.md)); the documentation is CC BY 4.0. What remains is
-to connect the repository to Zenodo (log in with GitHub, enable the repository, publish
-a release such as v1.0.0) and cite the version DOI of the release that produced the
-paper's numbers. The `CITATION.cff` as committed (the version and date move with each
-release):
+([data/SOURCES.md](../data/SOURCES.md)); the documentation is CC BY 4.0. Release v1.0.0
+is archived on Zenodo: the version DOI 10.5281/zenodo.23602094 is the one to cite for the
+numbers in the paper, and 10.5281/zenodo.23602093 always resolves to the latest version.
+The `CITATION.cff` as committed (the version, date and DOI move with each release):
 
 ```yaml
 cff-version: 1.2.0
@@ -252,6 +251,7 @@ authors:
     affiliation: "Independent researcher, Baku, Azerbaijan"
 version: 1.0.0
 date-released: 2026-10-23
+doi: 10.5281/zenodo.23602094
 license: MIT
 repository-code: "https://github.com/ismatsamadov/route_efficiency"
 keywords: [public transport, bus network, network design, Baku, open data]
@@ -286,8 +286,8 @@ point.
 ## 7. Step by step
 
 1. Repository: note at the top of the February 2026 GitHub report that this work
-   supersedes it; tag release v1.0.0 and get the Zenodo DOI (`LICENSE`, `CITATION.cff`
-   and the Licensing section of the README are in place).
+   supersedes it (`LICENSE`, `CITATION.cff`, the Licensing section of the README and the
+   Zenodo DOI of release v1.0.0 are in place).
 2. Write to AYNA and Bakı Metropoliteni for data terms, and request the data in
    [roadmap.md](roadmap.md#data-i-would-ask-ayna-for).
 3. Decide between the three ways forward in section 2. For the paper as it is, take a
@@ -311,7 +311,7 @@ point.
 ## 8. Checklist before submitting
 
 - [x] `LICENSE`, `CITATION.cff` and the Licensing section of the README
-- [ ] Zenodo version DOI
+- [x] Zenodo version DOI (10.5281/zenodo.23602094; all versions 10.5281/zenodo.23602093)
 - [ ] The February 2026 report cited and superseded
 - [ ] Every number in the manuscript traceable to a file in `output/` at the cited release
 - [ ] OpenStreetMap credit on every map; Kontur and opendata.az cited as datasets

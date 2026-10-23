@@ -1,5 +1,7 @@
 # Baku bus route efficiency
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23602094.svg)](https://doi.org/10.5281/zenodo.23602094)
+
 I built this to measure how efficiently Baku's bus routes serve riders and what they
 cost to run, using nothing but public data, and to test changes to the network before
 anyone makes them. It is Python 3.11 or newer with the standard library only. Every
@@ -104,7 +106,10 @@ The code is mine and is under the MIT License ([LICENSE](LICENSE)): `busnet/`,
 `measure.py`, `redesign.py`, `robustness.py`, `tests/`, `data/ayna_scraper.py`,
 `data/fetch_external.py` and `busnet.toml`. The documentation in `docs/` is under
 [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). [CITATION.cff](CITATION.cff)
-says how to cite the repository.
+says how to cite the repository: release v1.0.0 is archived on Zenodo as
+[10.5281/zenodo.23602094](https://doi.org/10.5281/zenodo.23602094), and
+[10.5281/zenodo.23602093](https://doi.org/10.5281/zenodo.23602093) always resolves to the
+latest release.
 
 The data keep their own terms, listed file by file in [data/SOURCES.md](data/SOURCES.md):
 

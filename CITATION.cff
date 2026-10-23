@@ -9,6 +9,11 @@ authors:
     affiliation: "Independent researcher, Baku, Azerbaijan"
 version: 1.0.0
 date-released: 2026-10-23
+doi: 10.5281/zenodo.23602094
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.23602093
+    description: "All versions of the repository; resolves to the latest release"
 license: MIT
 repository-code: "https://github.com/ismatsamadov/route_efficiency"
 keywords:
