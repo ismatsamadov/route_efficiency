@@ -9,15 +9,24 @@ unless noted.
 
 | File | Contents | Source | Licence |
 |---|---|---|---|
-| `ayna.db` | 208 routes, 3,841 stops, stop sequences and route shapes | AYNA map API (map-api.ayna.gov.az), via a snapshot in github.com/samirmehd1yev/best_route_finding, scraped 6 May 2026 | The database's `meta` table says ISC; the snapshot repository has no licence file, so check before redistributing |
+| `ayna.db` | 208 routes, 3,841 stops, stop sequences and route shapes | AYNA map API (`map-api.ayna.gov.az`, an unauthenticated OpenAPI service), via the `data/ayna.sqlite` snapshot in github.com/samirmehd1yev/best_route_finding (scraped and committed 6 May 2026, commit `8010c00`; coordinates repaired 11 October 2026, commit `b8c51d5`) | None. The data is AYNA's; neither AYNA nor the API publishes terms of use (ayna.gov.az states only "All rights reserved"). The snapshot repository has no licence file; the "ISC" in its README, `package.json` and the `meta` table covers its code, not AYNA's data. Redistributed here as a research snapshot with attribution to AYNA; this repository's licence does not extend to it |
 | `ayna_scraper.py` | Script that builds `ayna.db` from the AYNA API | This repository | |
-| `headways.csv` | Real headways where a public source gives one; add rows as data arrives | See the `source` column | |
+| `headways.csv` | Real headways where a public source gives one; add rows as data arrives | See the `source` column ([airport.az, August 2024](https://www.airport.az/en/press-release/h1-airport-express-route-will-now-operate-24-7-for-the-convenience-of-passengers/)) | |
+
+The licences of the opendata.az datasets below come from the portal's CKAN metadata
+(`https://admin.opendata.az/api/3/action/package_show?id=<dataset id>`), which records
+the generic Open Definition `cc-by` and `cc-zero` entries without a version; the dataset
+web pages do not display them. The three State Statistical Committee tables are
+downloaded from the Committee's open-data API (see `fetch_external.py`) and are also
+published on opendata.az by the Committee (datasets `f3d36c3a-8bdc-4ceb-9bd5-2c73d2db2d8d`,
+`843bdfbf-9c46-4e07-b9a7-1d831ba3697a` and `1ea3ff52-a1bd-46a8-9d95-0fe2e0b35798`), where
+their licence is recorded as CC0.
 
 ## Population
 
 | File | Contents | Source | Licence |
 |---|---|---|---|
-| `external/kontur/kontur_population_AZ_20231101.gpkg` | Population on H3 hexagons (~0.74 km²), 10.48 million people in Azerbaijan | Kontur Population, release 2023-11-01, [HDX](https://data.humdata.org/dataset/kontur-population-azerbaijan) | CC BY 4.0 |
+| `external/kontur/kontur_population_AZ_20231101.gpkg` | Population on H3 hexagons (~0.74 km²), 10.48 million people in Azerbaijan | Kontur Population, release 2023-11-01, [HDX](https://data.humdata.org/dataset/kontur-population-azerbaijan) | CC BY (HDX: Creative Commons Attribution International; no version stated) |
 | `external/stat/population_by_district_2026.xls` | Official population by city and district, 1 January 2026 | State Statistical Committee, [table 1.15](https://www.stat.gov.az/source/demoqraphy/en/001_15en.xls) | Official statistics; no licence stated |
 
 ## Ridership and travel

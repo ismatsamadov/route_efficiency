@@ -20,12 +20,25 @@ how the code uses it, what is wrong with it and what is still missing.
 
 ## The AYNA bus network snapshot (`data/ayna.db`)
 
-A SQLite database built from AYNA's public map API (`map-api.ayna.gov.az`), taken from a
-snapshot in github.com/samirmehd1yev/best_route_finding. Its `meta` table records: scraped
-6 May 2026, coordinates repaired 11 October 2026, database built 23 October 2026.
+A SQLite database built from AYNA's public map API (`map-api.ayna.gov.az`, an
+unauthenticated OpenAPI service), taken from the `data/ayna.sqlite` snapshot in
+github.com/samirmehd1yev/best_route_finding (added in commit `8010c00` on 6 May 2026,
+coordinates repaired in commit `b8c51d5` on 11 October 2026). Its `meta` table records:
+scraped 6 May 2026, coordinates repaired 11 October 2026, database built 23 October 2026.
 `data/ayna_scraper.py` is the script that builds this kind of database from the API; the
 committed database was built by the snapshot's own pipeline (it has a `meta` table the
 script does not write).
+
+**Licence.** None is published. The data is AYNA's; neither AYNA's website nor the API
+states terms of use, and the snapshot repository has no licence file (the "ISC" in its
+README, in its `package.json` and in the `meta` table's source field is that repository's
+code licence, not a data licence). The database is kept here as a research snapshot
+with attribution to AYNA; this repository's licence does not extend to it. For
+publication, cite AYNA as the source and the snapshot repository at the commits above,
+or take a fresh snapshot with `data/ayna_scraper.py` so that the provenance is your own.
+AYNA also publishes its route lines (KMZ) and bus stations on opendata.az under CC0
+(`data/external/opendata/`), a cleaner source for route geometry if a future snapshot
+can be built from them.
 
 ### When the data is from
 
@@ -87,7 +100,8 @@ stop sits 7.2 m from its route line, and 90% sit within 13.7 m.
 ## Population
 
 `data/external/kontur/kontur_population_AZ_20231101.gpkg`: Kontur Population, release
-2023-11-01, CC BY 4.0. A GeoPackage (SQLite) with one row per H3 hexagon of resolution 8
+2023-11-01, CC BY (HDX records the licence without a version). A GeoPackage (SQLite)
+with one row per H3 hexagon of resolution 8
 (about 0.74 km² each); 34,609 hexagons and 10.48 million people for Azerbaijan.
 
 `busnet/population.py` keeps the hexagons whose centre lies inside the box around the
