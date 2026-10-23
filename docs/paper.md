@@ -68,10 +68,7 @@ software paper, with the repaired AYNA snapshot and the first GTFS feeds for Bak
 research software in the Journal of Open Source Software, which is free and asks for an
 open licence, tests and documentation, all of which exist; a short Findings paper on one
 result, for example that the strict coverage guard gains as much as the default, in
-1,000 words and three figures; or a proposal to AYNA or BakuBus for the data in
-[roadmap.md](roadmap.md#data-i-would-ask-ayna-for), since smart-card trip chaining
-would replace the gravity model and make the redesign evaluation far firmer, with the
-paper as the pilot.
+1,000 words and three figures.
 
 ## 3. The paper, section by section
 
@@ -265,10 +262,9 @@ BY, cited as "Kontur Population, release 2023-11-01". opendata.az: the CC BY dat
 cited as Bakı Metropoliteni's with their dataset ids; CC0 needs no attribution but I
 give it anyway. AYNA map data: no published licence
 ([data.md](data.md#the-ayna-bus-network-snapshot-dataaynadb)); the data-availability
-statement will say the snapshot was taken from the public AYNA map API, is
-redistributed with attribution as a research snapshot, and that AYNA was asked for
-terms. I will write to AYNA, and to Bakı Metropoliteni for the counts, before
-submitting; a written permission removes the only legal uncertainty.
+statement will say the snapshot was taken from the public AYNA map API and is
+redistributed with attribution as a research snapshot. AYNA publishes no terms and
+cannot be asked for any, so that is the one legal uncertainty the paper has to carry.
 
 The ethics statement: "This study analysed only publicly available, aggregated,
 non-personal data (bus routes and stops, a population grid, daily boardings per route).
@@ -288,24 +284,22 @@ point.
 1. Repository: note at the top of the February 2026 GitHub report that this work
    supersedes it (`LICENSE`, `CITATION.cff`, the Licensing section of the README and the
    Zenodo DOI of release v1.0.0 are in place).
-2. Write to AYNA and Bakı Metropoliteni for data terms, and request the data in
-   [roadmap.md](roadmap.md#data-i-would-ask-ayna-for).
-3. Decide between the three ways forward in section 2. For the paper as it is, take a
+2. Decide between the three ways forward in section 2. For the paper as it is, take a
    new snapshot only if it can be done within a week; otherwise state the date clearly
    and list it as future work.
-4. Write the paper from section 3, 6,000–7,000 words, figures from `output/`. Ask two
+3. Write the paper from section 3, 6,000–7,000 words, figures from `output/`. Ask two
    readers (a transport planner and a quantitative researcher) to comment.
-5. Post a preprint: engrXiv (no endorsement needed), or arXiv physics.soc-ph with an
+4. Post a preprint: engrXiv (no endorsement needed), or arXiv physics.soc-ph with an
    endorsement; record the DOI in the README and ORCID.
-6. Submit, in this order of fit and cost: Case Studies on Transport Policy (subscription
+5. Submit, in this order of fit and cost: Case Studies on Transport Policy (subscription
    option, free) or Public Transport (subscription option, free); if a free open-access
    paper matters more than the journal's standing, Periodica Polytechnica Transportation
    Engineering or Transactions on Transport Sciences. Send one sharp result to Findings
    at the same time only if the journals allow it.
-7. Prepare the package: cover letter (aims, three findings, fit, novelty, not under
+6. Prepare the package: cover letter (aims, three findings, fit, novelty, not under
    review elsewhere, preprint DOI, Zenodo DOI), title page with affiliation and ORCID,
    anonymised manuscript where required, highlights, declarations, data statement.
-8. After acceptance: add the reference to the preprint, update `CITATION.cff` with
+7. After acceptance: add the reference to the preprint, update `CITATION.cff` with
    `preferred-citation`, make a new release if anything changed, add the paper to ORCID.
 
 ## 8. Checklist before submitting

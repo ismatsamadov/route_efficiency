@@ -170,8 +170,8 @@ No public source gives route headways or timetables, vehicle GPS positions, tick
 validations by stop, or origin-destination data. I checked the AYNA map API (it returns
 only routes, stops and shapes), the 69 transport datasets on opendata.az, OpenStreetMap
 (249 bus routes; only M5 carries an interval tag), the BakuBus and AYNA websites, and
-news reports. The settings in `busnet.toml` stand in for them; [roadmap.md](roadmap.md)
-lists what I would ask AYNA for.
+news reports. The settings in `busnet.toml` stand in for them, and since such data
+cannot be obtained from AYNA, they will stay estimates.
 
 ## Refreshing
 

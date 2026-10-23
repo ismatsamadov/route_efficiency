@@ -147,10 +147,10 @@ The Python packages AequilibraE and scikit-mobility ([JSS, 2022](https://doi.org
 do the same job, and the radiation model (Simini et al., 2012) and Deep Gravity, which
 learns from OpenStreetMap features (Simini et al., 2021), are the related models.
 
-Two better options need agreements I do not have. Smart-card trip chaining infers where
-each rider got off from where they next tapped in; it worked for over 80% of boardings
-in Santiago (Munizaga & Palma, 2012), and it would need BakıKart tap records and
-vehicle GPS from AYNA. Mobile-phone data is the other: in Abidjan, IBM's AllAboard
+Two better options need data I cannot get. Smart-card trip chaining infers where each
+rider got off from where they next tapped in; it worked for over 80% of boardings in
+Santiago (Munizaga & Palma, 2012), and it would need BakıKart tap records and vehicle
+GPS, which AYNA does not release. Mobile-phone data is the other: in Abidjan, IBM's AllAboard
 project (2013) worked on samples of a 2.5-billion-record call dataset from Orange's
 Data for Development challenge, scored 65 candidate routes and recommended four new
 ones that cut modelled travel times by about 10%

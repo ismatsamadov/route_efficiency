@@ -9,10 +9,10 @@ The weakest part of the work is demand. The gravity model ranks routes against t
 BakuBus counts at only 0.58, and 145 of the 201 routes have no counts at all, so the
 redesign's bus moves rest on estimates. Route 519 is the warning sign: a 3-stop shuttle
 that the model credits with 14,700 boardings a day and that the search therefore runs
-every 3 minutes. Nothing I can do with public data fixes this. It needs boardings for
-the other carriers' routes and, ideally, BakıKart validations, which is why the first
-thing on my list is to ask AYNA for the data in the table at the end of this page. Real
-headways would replace 200 estimates at the same time.
+every 3 minutes. Nothing I can do with public data fixes this, and the data that would
+(real headways, boardings for the other carriers' routes, BakıKart validations) cannot
+be obtained from AYNA, so the estimates are what the work has to live with and the
+paper has to say so plainly.
 
 Until that data exists there are three things I can do alone that would change the
 answer. The first is a new snapshot. The network is from 6 May 2026 and AYNA has been
@@ -82,20 +82,6 @@ carriers can be merged at all matters, because 59 of the 72 near-duplicate pairs
 involve two carriers; the gross-cost contracts AYNA plans would make it easier. And how
 any of this compares with AYNA's own redesign I cannot say: its consultant's network
 needs about 2,800 buses, against about 2,300 in service.
-
-## Data I would ask AYNA for
-
-| Data | Replaces | Ideal format |
-|---|---|---|
-| Timetables or headways per route, by time of day | Headway estimates for 200 routes | GTFS, or a CSV like `data/headways.csv` |
-| Archived vehicle positions (AVL/GPS) | Assumed speeds, stop losses and layover; shows bunching and reliability | CSV of positions, or GTFS-Realtime |
-| BakıKart validations: anonymised card id, time, stop or vehicle | The gravity model: where riders really travel, through trip chaining | CSV |
-| Boardings for routes of other carriers | Ridership for the 145 routes without it | Same as the BakuBus file on opendata.az |
-| Buses per route, with type, capacity and fuel | Estimated fleet per route; capacity; fuel by type | CSV |
-| Fuel or energy use per route or depot | The fuel model | CSV |
-| Depot locations | Empty running to and from routes | Coordinates |
-| The new network's routes, as launched | An up-to-date snapshot | GTFS, or a new scrape of the AYNA map |
-| Passenger counts by stop | Which stops can go, and which detours riders actually use | CSV |
 
 ## When new data arrives
 
