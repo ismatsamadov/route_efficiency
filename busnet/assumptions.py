@@ -50,7 +50,7 @@ class Assumptions:
 
     # Fuel and emissions for a 12 m bus, in diesel-equivalent litres. Together these give
     # 43 L/100 km at 2.65 stops/km, matching the Braunschweig test cycle for diesel buses
-    # (43.8 L/100 km, VTT 2012); VTT's measured cost of an extra stop is 0.03-0.07 L.
+    # (43.8 L/100 km, VTT 2012); the cost of an extra stop, 0.03-0.07 L, is estimated from VTT's test cycles.
     # CNG buses use about 35% more energy for similar CO2 per km; electric about 1.15 kWh/km.
     fuel_l_per_km: float = 0.30           # steady driving between stops
     fuel_l_per_stop: float = 0.05         # one stop-start cycle

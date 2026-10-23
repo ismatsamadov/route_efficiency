@@ -1,0 +1,5 @@
+﻿step,inputs,routes_compared,spearman,pearson_of_log_shares,fleet,headway_sources
+1,One headway of 12 minutes for every route; trips to homes only,56,0.4141,0.4108,2030,zone 201
+2,Headways by service type; trips to homes only,56,0.5582,0.5112,1848,supplied 1 zone 200
+3,"Plus destinations (OpenStreetMap, metro)",56,0.5768,0.4938,1848,supplied 1 zone 200
+4,Plus headways estimated from observed boardings (the default),56,0.7674,0.6146,2015,supplied 1 ridership 55 zone 145

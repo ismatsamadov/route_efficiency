@@ -1,7 +1,8 @@
 # Outputs
 
-`measure.py` writes `output/`; `redesign.py` writes `output/redesign/`. CSV files are
-UTF-8 with a byte-order mark, so Excel shows Azerbaijani letters correctly. Shares are
+`measure.py` writes `output/`; `redesign.py` writes `output/redesign/`; `robustness.py`
+writes `output/robustness/`. CSV files are UTF-8 with a byte-order mark, so Excel shows
+Azerbaijani letters correctly. Shares are
 fractions between 0 and 1; distances are km or m as named; times are minutes unless named
 otherwise. Blank cells mean "not defined" (for example the circuity of a loop route).
 
@@ -171,3 +172,55 @@ GTFS feeds with `agency.txt`, `stops.txt`, `routes.txt`, `calendar.txt`, `trips.
 that repeats every headway from 06:00 to 23:00, every day of 2026. Stop and route ids are
 AYNA's. Stop times come from the travel model, so the feeds describe the model, not an
 official timetable.
+
+## output/robustness/fit_ladder.csv — the demand model as each input is added (4 rows)
+
+| Column | Meaning |
+|---|---|
+| `step`, `inputs` | The step and the inputs the model had: flat 12-minute headways and homes only; headways by service type; plus destinations; plus headways from boardings (the default) |
+| `routes_compared` | BakuBus routes in both the model and the counts (56) |
+| `spearman`, `pearson_of_log_shares` | As `ridership_fit` in `network.json` |
+| `fleet` | Buses the headways of that step imply |
+| `headway_sources` | Routes by headway source in that step |
+
+## output/robustness/coverage_radius.csv — people within reach of a stop (5 rows)
+
+| Column | Meaning |
+|---|---|
+| `radius_m` | 300, 400, 500, 800 or 1,000 m |
+| `population_within`, `share_population_covered` | People, and their share of the study area, with a served stop within that distance |
+
+## output/robustness/redesign_seeds.csv — the redesign on other samples of trips (10 rows)
+
+The search is the one `redesign.py` ran; only the trips it is checked on change. Seed 7
+is the independent check in `redesign/summary.json`.
+
+| Column | Meaning |
+|---|---|
+| `seed` | Which 300 origins were sampled |
+| `minutes_before`, `minutes_after`, `gain_min` | Average door-to-door minutes, counting a trip that cannot be made within 2 hours as 120, for today's network and the redesign, and the difference |
+| `mean_possible_before`, `mean_possible_after` | Average over the trips that can be made |
+| `reachable_before`, `reachable_after` | Share of trips that can be made within 2 hours |
+
+## output/robustness/redesign_settings.csv — the search under other assumptions (12 rows)
+
+One row per run of `redesign.py`, the first with the committed settings.
+
+| Column | Meaning |
+|---|---|
+| `variant`, `what`, `overrides` | A short name, what was changed, and the `--set` values used |
+| `changes`, `merges`, `drops`, `straightened`, `stop_balancing`, `shifts` | Changes kept, in total and by kind |
+| `routes_after`, `stops_after` | The redesigned network's size |
+| `people_losing_stop` | People left without a stop within `max_access_walk_m`, all changes together |
+| `search_before`, `search_after` | Average minutes on the search sample (impossible trips at 120) |
+| `minutes_before`, `minutes_after`, `gain_min` | The same on the independent check, and the difference |
+| `mean_possible_before`, `mean_possible_after` | Average over the trips that can be made, on the independent check |
+| `share_of_fleet_for_todays_time` | Share of the fleet that gives today's average trip with the redesign |
+| `bus_hours_saving`, `fuel_saving` | What that fleet saves a day, as shares |
+
+## output/robustness/summary.json
+
+`fit_ladder`, `coverage_radius` and `redesign_settings`: the rows of those tables as
+lists. `redesign_seeds`: an object with `origins_per_sample` (300), `rows` (the table)
+and `gain_min` (the mean, standard deviation, minimum, maximum, count of positive gains
+and number of samples). Then the `settings` and `inputs` used.
