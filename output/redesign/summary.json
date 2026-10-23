@@ -1,0 +1,215 @@
+{
+ "fleet_buses": 1916.2103707137212,
+ "routes_before": 201,
+ "routes_after": 192,
+ "changes": {
+  "merge": 5,
+  "drop": 4,
+  "straighten": 14,
+  "stops": 1,
+  "shift": 4
+ },
+ "search_sample": {
+  "origins": 100,
+  "seed": 11,
+  "minutes_before": 79.6614670170443,
+  "minutes_after": 78.37706382198739,
+  "unreachable_before": 0.370264684375594,
+  "unreachable_after": 0.3642697284047525
+ },
+ "minutes_counting_impossible_trips_at_limit": {
+  "before": 74.82339838725969,
+  "after": 74.09172506653744
+ },
+ "share_of_fleet_for_todays_travel_time": {
+  "independent_check": 0.8828125,
+  "search_sample": 0.80078125
+ },
+ "fleet_saving_option": {
+  "buses": 1691.654467895707,
+  "operations": {
+   "trips_per_day": 30514.03097231033,
+   "bus_hours_per_day": 25007.066047153923,
+   "bus_km_per_day": 525341.1241270626,
+   "fleet": 1794,
+   "fuel_l_per_day": 199789.3026878292,
+   "co2_t_per_day": 533.4374381765039,
+   "fleet_vs_reference": 0.78,
+   "headway_sources": {
+    "supplied": 0,
+    "ridership": 0,
+    "zone": 0,
+    "default": 0,
+    "plan": 192
+   }
+  }
+ },
+ "independent_check": {
+  "before": {
+   "accessibility": {
+    "origins_sampled": 300,
+    "mean_door_to_door_min": 51.823791264325145,
+    "share_reachable": 0.6626446740078195,
+    "share_within_30_min": 0.16188076149175373,
+    "share_within_45_min": 0.2936376592695846,
+    "share_within_60_min": 0.42163732893584827,
+    "share_trips_without_stop_nearby": 0.3463652785996123,
+    "mean_trip_km_straight_line": 7.989950382646035,
+    "transfers": {
+     "0": 0.28892382345142364,
+     "1": 0.43172646806495635,
+     "2": 0.15035093665783023,
+     "3+": 0.014506761464024354,
+     "walk only": 0.11449201036179091
+    }
+   },
+   "operations": {
+    "trips_per_day": 33363.10801435406,
+    "bus_hours_per_day": 28326.588088811524,
+    "bus_km_per_day": 588993.9705275288,
+    "fleet": 2015,
+    "fuel_l_per_day": 226591.946471257,
+    "co2_t_per_day": 605.0004970782561,
+    "fleet_vs_reference": 0.8760869565217392,
+    "headway_sources": {
+     "supplied": 0,
+     "ridership": 0,
+     "zone": 0,
+     "default": 0,
+     "plan": 201
+    }
+   },
+   "served_stops": 3456,
+   "route_km_one_way_total": 7397.733727579386,
+   "corridor_km": 3824.371931977634,
+   "duplication_ratio": 1.9343656577235464,
+   "median_stop_gap_m": 419.78047237680585,
+   "share_stop_gaps_under_300m": 0.238925583443417,
+   "share_population_covered": 0.6596213045284149
+  },
+  "after": {
+   "accessibility": {
+    "origins_sampled": 300,
+    "mean_door_to_door_min": 50.8842823854822,
+    "share_reachable": 0.664223370862021,
+    "share_within_30_min": 0.16534393740782893,
+    "share_within_45_min": 0.30320849751058365,
+    "share_within_60_min": 0.43334111776408585,
+    "share_trips_without_stop_nearby": 0.3487881354278071,
+    "mean_trip_km_straight_line": 7.989950382646035,
+    "transfers": {
+     "0": 0.2877621554340183,
+     "1": 0.4262406751282921,
+     "2": 0.1551320975642986,
+     "3+": 0.01856293705400689,
+     "walk only": 0.11230213481941612
+    }
+   },
+   "operations": {
+    "trips_per_day": 34564.566057130294,
+    "bus_hours_per_day": 28326.588088811517,
+    "bus_km_per_day": 595076.6715775578,
+    "fleet": 2010,
+    "fuel_l_per_day": 226310.00658444353,
+    "co2_t_per_day": 604.2477175804642,
+    "fleet_vs_reference": 0.8739130434782608,
+    "headway_sources": {
+     "supplied": 0,
+     "ridership": 0,
+     "zone": 0,
+     "default": 0,
+     "plan": 192
+    }
+   },
+   "served_stops": 3103,
+   "route_km_one_way_total": 6905.8198828275,
+   "corridor_km": 3650.6480405225034,
+   "duplication_ratio": 1.8916695902131109,
+   "median_stop_gap_m": 468.9396452884848,
+   "share_stop_gaps_under_300m": 0.14696517412935323,
+   "share_population_covered": 0.6580166412171312
+  }
+ },
+ "settings": {
+  "walk_speed_mps": 1.25,
+  "walk_detour": 1.3,
+  "max_access_walk_m": 500,
+  "max_transfer_walk_m": 300,
+  "coverage_radius_m": 400,
+  "default_headway_min": 12,
+  "headway_by_zone": {
+   "Şəhərdaxili": 10,
+   "Şəhərdaxili (ekspres)": 15,
+   "Şəhərətrafı": 15,
+   "Şəhərətrafı (ekspres)": 20,
+   "Qəsəbədaxili": 20,
+   "Qəsəbələrarası": 20,
+   "Şəhərlərarası": 30
+  },
+  "headway_from_ridership": true,
+  "boardings_per_trip": 60,
+  "service_hours": 17,
+  "min_headway_min": 3,
+  "max_headway_min": 30,
+  "transfer_penalty_min": 5,
+  "layover_share": 0.15,
+  "reference_fleet": 2300,
+  "cruise_kmh": {
+   "Şəhərdaxili": 22,
+   "Şəhərdaxili (ekspres)": 29,
+   "Şəhərətrafı": 29,
+   "Şəhərətrafı (ekspres)": 36,
+   "Qəsəbədaxili": 25,
+   "Qəsəbələrarası": 31,
+   "Şəhərlərarası": 40
+  },
+  "default_cruise_kmh": 25,
+  "stop_loss_s": 20,
+  "fuel_l_per_km": 0.3,
+  "fuel_l_per_stop": 0.05,
+  "co2_kg_per_l": 2.67,
+  "trip_decay_km": 6.0,
+  "max_trip_min": 120,
+  "destination_share": 0.5,
+  "destination_weights": {
+   "office": 1,
+   "townhall": 3,
+   "courthouse": 3,
+   "kindergarten": 1,
+   "school": 3,
+   "college": 5,
+   "university": 10,
+   "clinic": 2,
+   "hospital": 8,
+   "supermarket": 2,
+   "department_store": 4,
+   "mall": 10,
+   "marketplace": 8,
+   "station": 5,
+   "bus_station": 5
+  },
+  "metro_weight_per_1000_entries": 2.0,
+  "redesign_origins": 100,
+  "redesign_seed": 11,
+  "redesign_min_gain_min": 0.005,
+  "redesign_max_straighten": 80,
+  "redesign_max_drop": 20,
+  "redesign_max_people_losing_stop": 500,
+  "redesign_max_people_losing_stop_total": 3000,
+  "redesign_shift_share": 0.2,
+  "redesign_shift_rounds": 4
+ },
+ "inputs": {
+  "db": "data/ayna.db",
+  "population": "data/external/kontur/kontur_population_AZ_20231101.gpkg",
+  "ridership": "data/external/opendata/bakubus_passenger-2026.csv",
+  "headways": "data/headways.csv",
+  "destinations:osm_education.json": "data/external/osm/osm_education.json",
+  "destinations:osm_health.json": "data/external/osm/osm_health.json",
+  "destinations:osm_shopping.json": "data/external/osm/osm_shopping.json",
+  "destinations:osm_offices.json": "data/external/osm/osm_offices.json",
+  "destinations:osm_transport.json": "data/external/osm/osm_transport.json",
+  "metro_passengers": "data/external/opendata/metro_passengers-2026.csv",
+  "metro_exits": "data/external/opendata/metro_exits.csv"
+ }
+}
