@@ -1,0 +1,3388 @@
+{
+  "version": 0.6,
+  "generator": "Overpass API 0.7.62.11 87bfad18",
+  "osm3s": {
+    "timestamp_osm_base": "2026-10-23T09:48:01Z",
+    "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+  },
+  "elements": [
+
+{
+  "type": "relation",
+  "id": 2353714,
+  "tags": {
+    "from": "20-ci sahə",
+    "name": "6 (20-ci sahə - Azadlıq prospekti m/st)",
+    "operator": "“BakuBus” MMC",
+    "public_transport:version": "2",
+    "ref": "6",
+    "route": "bus",
+    "to": "Azadlıq prospekti m/st",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 2393325,
+  "tags": {
+    "from": "20-ci Sahə",
+    "name": "88 (20-ci sahə - Dərnəgül m/st)",
+    "name:en": "88 (20-th sahe - Darnagul m/st)",
+    "operator": "“BakuBus” MMC",
+    "public_transport:version": "2",
+    "ref": "88",
+    "route": "bus",
+    "to": "Dərnəgül m/st",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 2438141,
+  "tags": {
+    "from": "9-сu mikrorayon",
+    "name": "65 (9-сu mikrorayon - Azneft meydanı)",
+    "operator": "\"Xaliq Faiqoğlu\" MMC",
+    "public_transport:version": "2",
+    "ref": "65",
+    "route": "bus",
+    "to": "Azneft meydanı",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 2439658,
+  "tags": {
+    "from": "MİDA Yasamal",
+    "name": "10 (MİDA Yasamal - Ağ Şəhər)",
+    "operator": "“BakuBus” MMC",
+    "public_transport:version": "2",
+    "ref": "10",
+    "route": "bus",
+    "to": "Ağ Şəhər",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 2598151,
+  "tags": {
+    "from": "9-cu mikrorayon",
+    "name": "85 (9-cu mikrorayon - 28 Mall)",
+    "operator": "\"Xaliq Faiqoğlu\" MMC",
+    "public_transport:version": "2",
+    "ref": "85",
+    "route": "bus",
+    "to": "28 Mall",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 2835830,
+  "tags": {
+    "from": "Avtovağzal",
+    "name": "13 (Avtovağzal - Koroğlu m/st)",
+    "operator": "“BakuBus” MMC",
+    "public_transport:version": "2",
+    "ref": "13",
+    "route": "bus",
+    "to": "Koroğlu m/st",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 4088701,
+  "tags": {
+    "ref": "25",
+    "route": "bus",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 4088702,
+  "tags": {
+    "ref": "202",
+    "route": "bus",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 4088703,
+  "tags": {
+    "ref": "14",
+    "route": "bus",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 4088704,
+  "tags": {
+    "ref": "69",
+    "route": "bus",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 4088706,
+  "tags": {
+    "ref": "38",
+    "route": "bus",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 4088765,
+  "tags": {
+    "from": "Nərimanov m/st",
+    "name": "24 (Nərimanov m/st - Qaraçuxur qəs.)",
+    "operator": "“BakuBus” MMC",
+    "public_transport:version": "2",
+    "ref": "24",
+    "route": "bus",
+    "to": "Qaraçuxur qəs.",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 12537261,
+  "tags": {
+    "fee": "yes",
+    "from": "Azadlıq prospekti m/st",
+    "name": "6 (Azadlıq prospekti m/st - 20-ci sahə)",
+    "operator": "“BakuBus” MMC",
+    "public_transport:version": "2",
+    "ref": "6",
+    "route": "bus",
+    "to": "20-ci sahə",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 12537802,
+  "tags": {
+    "from": "Dərnəgül m/st",
+    "name": "88 (Dərnəgül m/st - 20-ci sahə)",
+    "name:en": "88 (Darnagul m/st - 20-th sahe)",
+    "operator": "“BakuBus” MMC",
+    "public_transport:version": "2",
+    "ref": "88",
+    "route": "bus",
+    "to": "20-ci Sahə",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 12540975,
+  "tags": {
+    "from": "Koroğlu m/st",
+    "name": "13 (Koroğlu m/st - Avtovağzal)",
+    "operator": "“BakuBus” MMC",
+    "public_transport:version": "2",
+    "ref": "13",
+    "route": "bus",
+    "to": "Avtovağzal",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 17027881,
+  "tags": {
+    "from": "Polad Həşimov küçəsi",
+    "name": "51 (Polad Həşimov küçəsi - Çobanzadə küçəsi)",
+    "public_transport:version": "2",
+    "ref": "51",
+    "route": "bus",
+    "to": "Çobanzadə küçəsi",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 17440136,
+  "tags": {
+    "description": "Direct connection between Baku city center and airport",
+    "fee": "yes",
+    "from": "Terminal 1",
+    "name": "Aeroport-Ekspress H-1: Terminals 1/2 → 28 May küç.",
+    "operator": "BakuBus",
+    "public_transport:version": "2",
+    "ref": "H-1",
+    "reservation": "no",
+    "route": "bus",
+    "to": "28 May küç.",
+    "type": "route",
+    "via": "Terminal 2"
+  }
+},
+{
+  "type": "relation",
+  "id": 17440137,
+  "tags": {
+    "description": "Direct connection between Baku city center and airport",
+    "fee": "yes",
+    "from": "28 May küç.",
+    "name": "Aeroport-Ekspress H-1: 28 May küç. → Terminals 1/2",
+    "operator": "BakuBus",
+    "public_transport:version": "2",
+    "ref": "H-1",
+    "reservation": "no",
+    "route": "bus",
+    "to": "Terminal 2",
+    "type": "route",
+    "via": "Terminal 1"
+  }
+},
+{
+  "type": "relation",
+  "id": 17445841,
+  "tags": {
+    "fee": "yes",
+    "from": "Yeni Suraxanı",
+    "name": "184 (Yeni Suraxanı - Ulduz m/st)",
+    "public_transport:version": "2",
+    "ref": "184",
+    "route": "bus",
+    "to": "Ulduz m/st",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 17445842,
+  "tags": {
+    "fee": "yes",
+    "from": "Ulduz m/st",
+    "name": "184 (Ulduz m/st - Yeni Suraxanı)",
+    "public_transport:version": "2",
+    "ref": "184",
+    "route": "bus",
+    "to": "Yeni Suraxanı",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21203347,
+  "tags": {
+    "from": "9-cu mikrorayon",
+    "name": "61 (9-cu mikrorayon - Mahnı Teatrı)",
+    "operator": "\"Xaliq Faiqoğlu\" MMC",
+    "public_transport:version": "2",
+    "ref": "61",
+    "route": "bus",
+    "to": "Mahnı Teatrı",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21203639,
+  "tags": {
+    "from": "Mahnı Teatrı",
+    "name": "61 (Mahnı Teatrı - 9-cu mikrorayon)",
+    "operator": "\"Xaliq Faiqoğlu\" MMC",
+    "public_transport:version": "2",
+    "ref": "61",
+    "route": "bus",
+    "to": "9-cu mikrorayon",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21203755,
+  "tags": {
+    "from": "9-cu mikrorayon",
+    "name": "18 (9-cu mikrorayon - Nizami bağı)",
+    "operator": "\"Xaliq Faiqoğlu\" MMC",
+    "public_transport:version": "2",
+    "ref": "18",
+    "route": "bus",
+    "to": "Nizami bağı",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21203819,
+  "tags": {
+    "from": "Çernyayevski küçəsi",
+    "name": "67 (Çernyayevski küçəsi - Biləcəri stansiyası)",
+    "operator": "“Menloqq” MMC",
+    "public_transport:version": "2",
+    "ref": "67",
+    "route": "bus",
+    "to": "Biləcəri stansiyası",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21204543,
+  "tags": {
+    "from": "Biləcəri stansiyası",
+    "name": "67 (Biləcəri stansiyası - Çernyayevski küçəsi)",
+    "operator": "“Menloqq” MMC",
+    "public_transport:version": "2",
+    "ref": "67",
+    "route": "bus",
+    "to": "Çernyayevski küçəsi",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21204983,
+  "tags": {
+    "from": "28 Mall",
+    "name": "85 (28 Mall - 9-cu mikrorayon)",
+    "operator": "\"Xaliq Faiqoğlu\" MMC",
+    "public_transport:version": "2",
+    "ref": "85",
+    "route": "bus",
+    "to": "9-cu mikrorayon",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21204985,
+  "tags": {
+    "from": "Yeni Yasamal parkı",
+    "name": "17 (Yeni Yasamal parkı - 11 saylı məktəb)",
+    "operator": "“BakuBus” MMC",
+    "public_transport:version": "2",
+    "ref": "17",
+    "route": "bus",
+    "to": "11 saylı məktəb",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21205084,
+  "tags": {
+    "from": "11 saylı məktəb",
+    "name": "17 (11 saylı məktəb - Yeni Yasamal parkı)",
+    "operator": "“BakuBus” MMC",
+    "public_transport:version": "2",
+    "ref": "17",
+    "route": "bus",
+    "to": "Yeni Yasamal parkı",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21205420,
+  "tags": {
+    "from": "Avtovağzal",
+    "name": "14 (Avtovağzal - 28 May m/st)",
+    "operator": "“BakuBus” MMC",
+    "public_transport:version": "2",
+    "ref": "14",
+    "route": "bus",
+    "to": "28 May m/st",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21205467,
+  "tags": {
+    "from": "Yeni Yasamal",
+    "name": "77 (Yeni Yasamal - Axundov bağı)",
+    "operator": "\"Xaliq Faiqoğlu\" MMC",
+    "public_transport:version": "2",
+    "ref": "77",
+    "route": "bus",
+    "to": "Axundov bağı",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21205486,
+  "tags": {
+    "from": "Axundov bağı",
+    "name": "77 (Axundov bağı - Yeni Yasamal)",
+    "operator": "\"Xaliq Faiqoğlu\" MMC",
+    "public_transport:version": "2",
+    "ref": "77",
+    "route": "bus",
+    "to": "Yeni Yasamal",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21205505,
+  "tags": {
+    "from": "Nərimanov m/st",
+    "name": "9 (Nərimanov m/st - MİDA Yasamal)",
+    "operator": "\"Xaliq Faiqoğlu\" MMC",
+    "public_transport:version": "2",
+    "ref": "9",
+    "route": "bus",
+    "to": "MİDA Yasamal",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21206205,
+  "tags": {
+    "from": "MİDA Yasamal",
+    "name": "9 (MİDA Yasamal - Nərimanov m/st)",
+    "operator": "\"Xaliq Faiqoğlu\" MMC",
+    "public_transport:version": "2",
+    "ref": "9",
+    "route": "bus",
+    "to": "Nərimanov m/st",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21208894,
+  "tags": {
+    "from": "Nizami bağı",
+    "name": "18 (Nizami bağı - 9-cu mikrorayon)",
+    "operator": "\"Xaliq Faiqoğlu\" MMC",
+    "public_transport:version": "2",
+    "ref": "18",
+    "route": "bus",
+    "to": "9-cu mikrorayon",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21209193,
+  "tags": {
+    "from": "Neftçilər m/st",
+    "name": "1 (Neftçilər m/st - 28 May m/st)",
+    "operator": "“BakuBus” MMC",
+    "public_transport:version": "2",
+    "ref": "1",
+    "route": "bus",
+    "to": "28 May m/st",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21209244,
+  "tags": {
+    "from": "28 May m/st",
+    "name": "1 (28 May m/st - Neftçilər m/st)",
+    "operator": "“BakuBus” MMC",
+    "public_transport:version": "2",
+    "ref": "1",
+    "route": "bus",
+    "to": "Neftçilər m/st",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21209261,
+  "tags": {
+    "from": "Bakı Mühəndislik Universiteti",
+    "name": "199 (BMU - Nemət Quliyev küçəsi)",
+    "operator": "\"Xaliq Faiqoğlu\" MMC",
+    "public_transport:version": "2",
+    "ref": "199",
+    "route": "bus",
+    "to": "Nemət Quliyev küçəsi",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21209380,
+  "tags": {
+    "from": "MİDA Yasamal",
+    "name": "7B (MİDA Yasamal - Koroğlu m/st)",
+    "operator": "“BakuBus” MMC",
+    "public_transport:version": "2",
+    "ref": "7B",
+    "route": "bus",
+    "to": "Koroğlu m/st",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21210388,
+  "tags": {
+    "from": "Koroğlu m/st",
+    "name": "7B (Koroğlu m/st - MİDA Yasamal)",
+    "operator": "“BakuBus” MMC",
+    "public_transport:version": "2",
+    "ref": "7B",
+    "route": "bus",
+    "to": "MİDA Yasamal",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21212095,
+  "tags": {
+    "from": "Dərnəgül m/st",
+    "name": "3 (Dərnəgül m/st - Badamdar qəs.)",
+    "operator": "“BakuBus” MMC",
+    "public_transport:version": "2",
+    "ref": "3",
+    "route": "bus",
+    "to": "Badamdar qəsəbəsi",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21212102,
+  "tags": {
+    "from": "Badamdar qəsəbəsi",
+    "name": "3 (Badamdar qəs. - Dərnəgül m/st)",
+    "operator": "“BakuBus” MMC",
+    "public_transport:version": "2",
+    "ref": "3",
+    "route": "bus",
+    "to": "Dərnəgül m/st",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21212297,
+  "tags": {
+    "from": "Nərimanov m/st",
+    "name": "5 (Nərimanov m/st - 20-ci sahə)",
+    "operator": "“BakuBus” MMC",
+    "public_transport:version": "2",
+    "ref": "5",
+    "route": "bus",
+    "to": "20-ci sahə",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21212344,
+  "tags": {
+    "from": "20-ci sahə",
+    "name": "5 (20-ci sahə - Nərimanov m/st)",
+    "operator": "“BakuBus” MMC",
+    "public_transport:version": "2",
+    "ref": "5",
+    "route": "bus",
+    "to": "Nərimanov m/st",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21212668,
+  "tags": {
+    "name": "14 (28 May m/st - Avtovağzal)",
+    "ref": "14",
+    "route": "bus",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21212907,
+  "tags": {
+    "from": "28 May m/st",
+    "name": "14 (28 May m/st - Avtovağzal)",
+    "operator": "“BakuBus” MMC",
+    "public_transport:version": "2",
+    "ref": "14",
+    "route": "bus",
+    "to": "Avtovağzal",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21213015,
+  "tags": {
+    "from": "Azneft meydanı",
+    "name": "65 (Azneft meydanı - 9-cu mikrorayon)",
+    "operator": "\"Xaliq Faiqoğlu\" MMC",
+    "public_transport:version": "2",
+    "ref": "65",
+    "route": "bus",
+    "to": "9-cu mikrorayon",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21213101,
+  "tags": {
+    "from": "Badamdar qəsəbəsi",
+    "name": "29 (Badamdar qəs. - Avtovağzal)",
+    "operator": "“Menloqq” MMC",
+    "public_transport:version": "2",
+    "ref": "29",
+    "route": "bus",
+    "to": "Avtovağzal",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21213138,
+  "tags": {
+    "from": "9-cu mikrorayon",
+    "name": "26 (9-cu mikrorayon - Mayakovski küçəsi)",
+    "public_transport:version": "2",
+    "ref": "26",
+    "route": "bus",
+    "to": "Mayakovski küçəsi",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21214490,
+  "tags": {
+    "from": "Avtovağzal",
+    "name": "2 (Avtovağzal - Dərnəgül m/st)",
+    "operator": "“BakuBus” MMC",
+    "public_transport:version": "2",
+    "ref": "2",
+    "route": "bus",
+    "to": "Dərnəgül m/st",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21214695,
+  "tags": {
+    "from": "Dərnəgül m/st",
+    "name": "2 (Dərnəgül m/st - Avtovağzal)",
+    "operator": "“BakuBus” MMC",
+    "public_transport:version": "2",
+    "ref": "2",
+    "route": "bus",
+    "to": "Avtovağzal",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21214699,
+  "tags": {
+    "from": "Avtovağzal",
+    "name": "29 (Avtovağzal - Badamdar qəs.)",
+    "operator": "“Menloqq” MMC",
+    "public_transport:version": "2",
+    "ref": "29",
+    "route": "bus",
+    "to": "Badamdar qəsəbəsi",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21214889,
+  "tags": {
+    "from": "Yeni Yasamal parkı",
+    "name": "39 (Yeni Yasamal parkı - Nizami bağı)",
+    "operator": "\"Xaliq Faiqoğlu\" MMC",
+    "public_transport:version": "2",
+    "ref": "39",
+    "route": "bus",
+    "to": "Nizami bağı",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21214904,
+  "tags": {
+    "from": "Nizami bağı",
+    "name": "39 (Nizami bağı - Yeni Yasamal parkı)",
+    "operator": "\"Xaliq Faiqoğlu\" MMC",
+    "public_transport:version": "2",
+    "ref": "39",
+    "route": "bus",
+    "to": "Yeni Yasamal parkı",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21219644,
+  "tags": {
+    "from": "Mayakovski küçəsi",
+    "name": "26 (Mayakovski küçəsi - 9-cu mikrorayon)",
+    "public_transport:version": "2",
+    "ref": "26",
+    "route": "bus",
+    "to": "9-cu mikrorayon",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21223175,
+  "tags": {
+    "from": "Gəncə prospekti",
+    "name": "7A (Gəncə prospekti - Avtovağzal)",
+    "operator": "“BakuBus” MMC",
+    "public_transport:version": "2",
+    "ref": "7A",
+    "route": "bus",
+    "to": "Avtovağzal",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21223468,
+  "tags": {
+    "from": "Avtovağzal",
+    "name": "7A (Avtovağzal - Gəncə prospekti)",
+    "operator": "“BakuBus” MMC",
+    "public_transport:version": "2",
+    "ref": "7A",
+    "route": "bus",
+    "to": "Gəncə prospekti",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21223542,
+  "tags": {
+    "from": "Dərnəgül m/st",
+    "name": "33 (Dərnəgül m/st - 28 Mall)",
+    "operator": "“BakuBus” MMC",
+    "public_transport:version": "2",
+    "ref": "33",
+    "route": "bus",
+    "to": "28 Mall",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21223552,
+  "tags": {
+    "from": "28 Mall",
+    "name": "33 (28 Mall - Dərnəgül m/st)",
+    "operator": "“BakuBus” MMC",
+    "public_transport:version": "2",
+    "ref": "33",
+    "route": "bus",
+    "to": "Dərnəgül m/st",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21223759,
+  "tags": {
+    "from": "Avtovağzal",
+    "name": "96 (Avtovağzal - Xarici İşlər Nazirliyi)",
+    "operator": "\"Xaliq Faiqoğlu\" MMC",
+    "public_transport:version": "2",
+    "ref": "96",
+    "route": "bus",
+    "to": "Xarici İşlər Nazirliyi",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21226068,
+  "tags": {
+    "from": "Memar Əcəmi m/st",
+    "name": "135 (Memar Əcəmi m/st - BMU)",
+    "operator": "\"Xaliq Faiqoğlu\" MMC",
+    "public_transport:version": "2",
+    "ref": "135",
+    "route": "bus",
+    "to": "Bakı Mühəndislik Universiteti",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21226075,
+  "tags": {
+    "from": "Bakı Mühəndislik Universiteti",
+    "name": "135 (BMU - Memar Əcəmi m/st)",
+    "operator": "\"Xaliq Faiqoğlu\" MMC",
+    "public_transport:version": "2",
+    "ref": "135",
+    "route": "bus",
+    "to": "Memar Əcəmi m/st",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21227457,
+  "tags": {
+    "from": "Nemət Quliyev küçəsi",
+    "name": "199 (Nemət Quliyev küçəsi - BMU)",
+    "operator": "\"Xaliq Faiqoğlu\" MMC",
+    "public_transport:version": "2",
+    "ref": "199",
+    "route": "bus",
+    "to": "Bakı Mühəndislik Universiteti",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21227515,
+  "tags": {
+    "from": "Xarici İşlər Nazirliyi",
+    "name": "96 (Xarici İşlər Nazirliyi - Avtovağzal)",
+    "operator": "\"Xaliq Faiqoğlu\" MMC",
+    "public_transport:version": "2",
+    "ref": "96",
+    "route": "bus",
+    "to": "Avtovağzal",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21227564,
+  "tags": {
+    "from": "Ağ Şəhər",
+    "name": "88A (Ağ Şəhər - Azadlıq prospekti m/st)",
+    "operator": "“BakuBus” MMC",
+    "public_transport:version": "2",
+    "ref": "88A",
+    "route": "bus",
+    "to": "Azadlıq prospekti m/st",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21227565,
+  "tags": {
+    "from": "Ağ Şəhər",
+    "name": "4 (Ağ Şəhər - Hidayətzadə küçəsi)",
+    "operator": "“BakuBus” MMC",
+    "public_transport:version": "2",
+    "ref": "4",
+    "route": "bus",
+    "to": "Hidayətzadə küçəsi",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21227566,
+  "tags": {
+    "from": "Ağ Şəhər",
+    "name": "10 (Ağ Şəhər - MİDA Yasamal)",
+    "operator": "“BakuBus” MMC",
+    "public_transport:version": "2",
+    "ref": "10",
+    "route": "bus",
+    "to": "MİDA Yasamal",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21227571,
+  "tags": {
+    "from": "Azadlıq prospekti m/st",
+    "name": "88A (Azadlıq prospekti m/st - Ağ Şəhər)",
+    "operator": "“BakuBus” MMC",
+    "public_transport:version": "2",
+    "ref": "88A",
+    "route": "bus",
+    "to": "Ağ Şəhər",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21227572,
+  "tags": {
+    "from": "Hidayətzadə küçəsi",
+    "name": "4 (Hidayətzadə küçəsi - Ağ Şəhər)",
+    "operator": "“BakuBus” MMC",
+    "public_transport:version": "2",
+    "ref": "4",
+    "route": "bus",
+    "to": "Ağ Şəhər",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21227979,
+  "tags": {
+    "from": "Kazımovski küçəsi",
+    "name": "52 (Kazımovski küçəsi - 28 Mall)",
+    "operator": "\"Xaliq Faiqoğlu\" MMC",
+    "public_transport:version": "2",
+    "ref": "52",
+    "route": "bus",
+    "to": "28 Mall",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21228252,
+  "tags": {
+    "from": "28 Mall",
+    "name": "52 (28 Mall - Kazımovski küçəsi)",
+    "operator": "\"Xaliq Faiqoğlu\" MMC",
+    "public_transport:version": "2",
+    "ref": "52",
+    "route": "bus",
+    "to": "Kazımovski küçəsi",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21228329,
+  "tags": {
+    "from": "Əbilov küçəsi",
+    "name": "11 (Əbilov küçəsi - Dəmiryol vağzalı)",
+    "operator": "“BakuBus” MMC",
+    "public_transport:version": "2",
+    "ref": "11",
+    "route": "bus",
+    "to": "Dəmiryol vağzalı",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21228331,
+  "tags": {
+    "from": "Dəmiryol vağzalı",
+    "name": "11 (Dəmiryol vağzalı - Əbilov küçəsi)",
+    "operator": "“BakuBus” MMC",
+    "public_transport:version": "2",
+    "ref": "11",
+    "route": "bus",
+    "to": "Əbilov küçəsi",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21228374,
+  "tags": {
+    "from": "Binəqədi qəsəbəsi",
+    "name": "79 (Binəqədi qəs. - 28 Mall)",
+    "operator": "\"Xaliq Faiqoğlu\" MMC",
+    "public_transport:version": "2",
+    "ref": "79",
+    "route": "bus",
+    "to": "28 Mall",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21228376,
+  "tags": {
+    "from": "28 Mall",
+    "name": "79 (28 Mall - Binəqədi qəs.)",
+    "operator": "\"Xaliq Faiqoğlu\" MMC",
+    "public_transport:version": "2",
+    "ref": "79",
+    "route": "bus",
+    "to": "Binəqədi qəsəbəsi",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21229634,
+  "tags": {
+    "from": "Tibb universiteti",
+    "name": "38 (Tibb universiteti - Keşlə qəsəbəsi)",
+    "public_transport:version": "2",
+    "ref": "38",
+    "route": "bus",
+    "to": "Keşlə qəsəbəsi",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21229667,
+  "tags": {
+    "from": "Keşlə qəsəbəsi",
+    "name": "38 (Keşlə qəsəbəsi - Tibb Universiteti)",
+    "public_transport:version": "2",
+    "ref": "38",
+    "route": "bus",
+    "to": "Tibb Universiteti",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21230736,
+  "tags": {
+    "from": "Abşeron t/m",
+    "name": "211 (Abşeron t/m - 11 saylı məktəb)",
+    "operator": "“BakuBus” MMC",
+    "public_transport:version": "2",
+    "ref": "211",
+    "route": "bus",
+    "to": "11 saylı məktəb",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21230737,
+  "tags": {
+    "from": "11 saylı məktəb",
+    "name": "211 (11 saylı məktəb - Abşeron t/m)",
+    "operator": "“BakuBus” MMC",
+    "public_transport:version": "2",
+    "ref": "211",
+    "route": "bus",
+    "to": "Abşeron t/m",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21232327,
+  "tags": {
+    "from": "6-cı mikrorayon",
+    "name": "193 (6-cı mikrorayon - Binə t/m)",
+    "public_transport:version": "2",
+    "ref": "193",
+    "route": "bus",
+    "to": "Binə t/m",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21232336,
+  "tags": {
+    "from": "Binə t/m",
+    "name": "193 (Binə t/m - 6-cı mikrorayon)",
+    "public_transport:version": "2",
+    "ref": "193",
+    "route": "bus",
+    "to": "6-cı mikrorayon",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21233065,
+  "tags": {
+    "from": "Sabunçu stansiyası",
+    "name": "93 (Sabunçu stansiyası - Dərnəgül m/st)",
+    "public_transport:version": "2",
+    "ref": "93",
+    "route": "bus",
+    "to": "Dərnəgül m/st",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21233102,
+  "tags": {
+    "from": "Dərnəgül m/st",
+    "name": "93 (Dərnəgül m/st - Sabunçu stansiyası)",
+    "public_transport:version": "2",
+    "ref": "93",
+    "route": "bus",
+    "to": "Sabunçu stansiyası",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21234778,
+  "tags": {
+    "from": "20 Yanvar (Velotrek)",
+    "interval": "5",
+    "name": "M5 (20 Yanvar - Gənclik)",
+    "public_transport:version": "2",
+    "ref": "M5",
+    "route": "bus",
+    "temporary": "yes",
+    "to": "Gənclik NMM",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21234793,
+  "tags": {
+    "from": "20 Yanvar (Velotrek)",
+    "name": "M5 (Gənclik - 20 Yanvar)",
+    "public_transport:version": "2",
+    "ref": "M5",
+    "route": "bus",
+    "temporary": "yes",
+    "to": "Gənclik NMM",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21235089,
+  "tags": {
+    "from": "Koroğlu NMM",
+    "name": "M6 (Koroğlu - Elmlər Akademiyası)",
+    "public_transport:version": "2",
+    "ref": "M6",
+    "route": "bus",
+    "to": "Elmlər Akademiyası",
+    "type": "route",
+    "via": "Gənclik NMM;Nizami m/st"
+  }
+},
+{
+  "type": "relation",
+  "id": 21235104,
+  "tags": {
+    "from": "Elmlər Akademiyası",
+    "name": "M6 (Elmlər Akademiyası - Koroğlu)",
+    "public_transport:version": "2",
+    "ref": "M6",
+    "route": "bus",
+    "temporary": "yes",
+    "to": "Koroğlu NMM",
+    "type": "route",
+    "via": "Nizami m/st;Gənclik NMM"
+  }
+},
+{
+  "type": "relation",
+  "id": 21236068,
+  "tags": {
+    "from": "Cəmşid Naxçıvanski küçəsi",
+    "name": "30 (C.Naxçıvanski küçəsi - 28 May m/st)",
+    "operator": "“BakuBus” MMC",
+    "public_transport:version": "2",
+    "ref": "30",
+    "route": "bus",
+    "to": "28 May m/st",
+    "type": "route",
+    "via": "Babək prospekti"
+  }
+},
+{
+  "type": "relation",
+  "id": 21238478,
+  "tags": {
+    "from": "20 Yanvar (Tbilisi pr.)",
+    "name": "M3 (20 Yanvar - 28 May)",
+    "public_transport:version": "2",
+    "ref": "M3",
+    "route": "bus",
+    "temporary": "yes",
+    "to": "28 May NMM",
+    "type": "route",
+    "via": "Nizami m/st"
+  }
+},
+{
+  "type": "relation",
+  "id": 21238479,
+  "tags": {
+    "from": "28 May NMM",
+    "name": "M3 (28 May - 20 Yanvar)",
+    "public_transport:version": "2",
+    "ref": "M3",
+    "route": "bus",
+    "temporary": "yes",
+    "to": "20 Yanvar (Tbilisi pr.)",
+    "type": "route",
+    "via": "Nizami m/st"
+  }
+},
+{
+  "type": "relation",
+  "id": 21239034,
+  "tags": {
+    "from": "28 May m/st",
+    "name": "46 (28 May m/st - Günəşli qəsəbəsi)",
+    "operator": "“BakuBus” MMC",
+    "public_transport:version": "2",
+    "ref": "46",
+    "route": "bus",
+    "to": "Günəşli qəsəbəsi",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21239606,
+  "tags": {
+    "from": "Günəşli qəsəbəsi",
+    "name": "46 (Günəşli qəsəbəsi - 28 May m/st)",
+    "operator": "“BakuBus” MMC",
+    "public_transport:version": "2",
+    "ref": "46",
+    "route": "bus",
+    "to": "28 May m/st",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21240249,
+  "tags": {
+    "from": "Əhmədli m/st",
+    "name": "21 (Əhmədli m/st - 28 May m/st)",
+    "operator": "“BakuBus” MMC",
+    "public_transport:version": "2",
+    "ref": "21",
+    "route": "bus",
+    "to": "28 May m/st",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21240265,
+  "tags": {
+    "from": "28 May m/st",
+    "name": "21 (28 May m/st - Əhmədli m/st)",
+    "operator": "“BakuBus” MMC",
+    "public_transport:version": "2",
+    "ref": "21",
+    "route": "bus",
+    "to": "Əhmədli m/st",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21241568,
+  "tags": {
+    "from": "28 May m/st",
+    "name": "30 (28 May m/st - C.Naxçıvanski küçəsi)",
+    "operator": "“BakuBus” MMC",
+    "public_transport:version": "2",
+    "ref": "30",
+    "route": "bus",
+    "to": "Cəmşid Naxçıvanski küçəsi",
+    "type": "route",
+    "via": "Babək prospekti"
+  }
+},
+{
+  "type": "relation",
+  "id": 21241627,
+  "tags": {
+    "from": "Cəmşid Naxçıvanski küçəsi",
+    "name": "32 (C. Naxçıvanski küçəsi - 28 May m/st)",
+    "operator": "“BakuBus” MMC",
+    "public_transport:version": "2",
+    "ref": "32",
+    "route": "bus",
+    "to": "28 May m/st",
+    "type": "route",
+    "via": "8 Noyabr prospekti"
+  }
+},
+{
+  "type": "relation",
+  "id": 21241628,
+  "tags": {
+    "from": "28 May m/st",
+    "name": "32 (28 May m/st - C. Naxçıvanski küçəsi)",
+    "operator": "“BakuBus” MMC",
+    "public_transport:version": "2",
+    "ref": "32",
+    "route": "bus",
+    "to": "Cəmşid Naxçıvanski küçəsi",
+    "type": "route",
+    "via": "8 Noyabr prospekti"
+  }
+},
+{
+  "type": "relation",
+  "id": 21253119,
+  "tags": {
+    "from": "Biləcəri",
+    "name": "202 (Biləcəri - Nərimanov m/st)",
+    "operator": "\"Çinar Trans\" MMC",
+    "public_transport:version": "2",
+    "ref": "202",
+    "route": "bus",
+    "to": "Nərimanov m/st",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21253237,
+  "tags": {
+    "from": "Binəqədi",
+    "name": "91 (Binəqədi - Avtovağzal)",
+    "public_transport:version": "2",
+    "ref": "91",
+    "route": "bus",
+    "to": "Avtovağzal",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21253239,
+  "tags": {
+    "from": "Avtovağzal",
+    "name": "91 (Avtovağzal - Binəqədi)",
+    "public_transport:version": "2",
+    "ref": "91",
+    "route": "bus",
+    "to": "Binəqədi",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21253241,
+  "tags": {
+    "from": "Nərimanov m/st",
+    "name": "202 (Nərimanov m/st - Biləcəri)",
+    "operator": "\"Çinar Trans\" MMC",
+    "public_transport:version": "2",
+    "ref": "202",
+    "route": "bus",
+    "to": "Biləcəri",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21255443,
+  "tags": {
+    "from": "Abşeron t/m",
+    "name": "E1 (Abşeron t/m - Xalqlar Dostluğu m/st)",
+    "operator": "“BakuBus” MMC",
+    "public_transport:version": "2",
+    "ref": "E1",
+    "route": "bus",
+    "to": "Xalqlar Dostluğu m/st",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21255453,
+  "tags": {
+    "from": "Xalqlar Dostluğu m/st",
+    "name": "E1 (Xalqlar Dostluğu m/st - Abşeron t/m)",
+    "operator": "“BakuBus” MMC",
+    "public_transport:version": "2",
+    "ref": "E1",
+    "route": "bus",
+    "to": "Abşeron t/m",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21279936,
+  "tags": {
+    "from": "Gənclik metro stansiyası",
+    "name": "133 (Gənclik m/st - Binəqədi qəsəbəsi)",
+    "operator": "\"Çinar Trans\" MMC",
+    "public_transport:version": "2",
+    "ref": "133",
+    "route": "bus",
+    "to": "Cümə məscidi Binəqədi",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21283469,
+  "tags": {
+    "from": "Qarant",
+    "name": "165 (Mehdiabad qəsəbəsi - Şərifzadə küçəsi)",
+    "operator": "\"Çinar Trans\" MMC",
+    "public_transport:version": "2",
+    "ref": "165",
+    "route": "bus",
+    "to": "10 nömrəli uşaq bağçası",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21283505,
+  "tags": {
+    "from": "28 May m/st",
+    "name": "120E (28 May m/st - Hövsan qəs.)",
+    "operator": "“BakuBus” MMC",
+    "public_transport:version": "2",
+    "ref": "120E",
+    "route": "bus",
+    "to": "Hövsan qəsəbəsi",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21288249,
+  "tags": {
+    "from": "Hövsan qəsəbəsi",
+    "name": "120E (Hövsan qəsəbəsi - 28 May m/st)",
+    "operator": "“BakuBus” MMC",
+    "public_transport:version": "2",
+    "ref": "120E",
+    "route": "bus",
+    "to": "28 May m/st",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21288253,
+  "tags": {
+    "from": "Əhmədli m/st",
+    "name": "121E (Əhmədli m/st - Hövsan MİDA)",
+    "operator": "“BakuBus” MMC",
+    "public_transport:version": "2",
+    "ref": "121E",
+    "route": "bus",
+    "to": "Hövsan MİDA",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21288414,
+  "tags": {
+    "from": "Hövsan MİDA",
+    "name": "121E (Hövsan MİDA - Əhmədli m/st)",
+    "operator": "“BakuBus” MMC",
+    "public_transport:version": "2",
+    "ref": "121E",
+    "route": "bus",
+    "to": "Əhmədli m/st",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21288420,
+  "tags": {
+    "from": "20 Yanvar m/st",
+    "name": "594 (20 Yanvar m/st - Sumqayıt avtovağzalı)",
+    "operator": "“BakuBus” MMC",
+    "public_transport:version": "2",
+    "ref": "594",
+    "route": "bus",
+    "to": "Sumqayıt avtovağzalı",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21288524,
+  "tags": {
+    "from": "Sumqayıt avtovağzalı",
+    "name": "594 (Sumqayıt Avtovağzalı - 20 Yanvar m/st)",
+    "operator": "“BakuBus” MMC",
+    "public_transport:version": "2",
+    "ref": "594",
+    "route": "bus",
+    "to": "20 Yanvar m/st",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21289550,
+  "tags": {
+    "from": "Tibb universiteti",
+    "name": "20 (Tibb universiteti - Qaraçuxur qəsəbəsi)",
+    "operator": "“BakuBus” MMC",
+    "public_transport:version": "2",
+    "ref": "20",
+    "route": "bus",
+    "to": "Qaraçuxur qəsəbəsi",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21289560,
+  "tags": {
+    "from": "Qaraçuxur qəsəbəsi",
+    "name": "20 (Qaraçuxur qəsəbəsi - Tibb universiteti)",
+    "operator": "“BakuBus” MMC",
+    "public_transport:version": "2",
+    "ref": "20",
+    "route": "bus",
+    "to": "Tibb universiteti",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21291468,
+  "tags": {
+    "from": "Qaraçuxur qəs.",
+    "name": "24 (Qaraçuxur qəs. - Nərimanov m/st)",
+    "operator": "“BakuBus” MMC",
+    "public_transport:version": "2",
+    "ref": "24",
+    "route": "bus",
+    "to": "Nərimanov m/st",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21292447,
+  "tags": {
+    "from": "28 May m/st",
+    "name": "125 (28 May m/st - Lökbatan qəsəbəsi)",
+    "operator": "“BakuBus” MMC",
+    "public_transport:version": "2",
+    "ref": "125",
+    "route": "bus",
+    "to": "Lökbatan qəsəbəsi",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21292609,
+  "tags": {
+    "from": "Lökbatan qəsəbəsi",
+    "name": "125 (Lökbatan qəsəbəsi - 28 May m/st)",
+    "operator": "“BakuBus” MMC",
+    "public_transport:version": "2",
+    "ref": "125",
+    "route": "bus",
+    "to": "28 May m/st",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21294276,
+  "tags": {
+    "from": "Respublika Klinik Xəstəxanası",
+    "name": "53 (Respublika Klinik Xəstəxanası - 20-ci sahə)",
+    "public_transport:version": "2",
+    "ref": "53",
+    "route": "bus",
+    "to": "20-ci sahə",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21294297,
+  "tags": {
+    "from": "20-ci sahə",
+    "name": "53 (20-ci sahə - Respublika Klinik Xəstəxanası)",
+    "public_transport:version": "2",
+    "ref": "53",
+    "route": "bus",
+    "to": "Respublika Klinik Xəstəxanası",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21294603,
+  "tags": {
+    "from": "Çobanzadə küçəsi",
+    "name": "51 (Çobanzadə küçəsi - Polad Həşimov küçəsi)",
+    "public_transport:version": "2",
+    "ref": "51",
+    "route": "bus",
+    "to": "Polad Həşimov küçəsi",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21294952,
+  "tags": {
+    "from": "Memar Əcəmi m/st",
+    "name": "92 (Memar Əcəmi m/st - Binəqədi qəsəbəsi)",
+    "public_transport:version": "2",
+    "ref": "92",
+    "route": "bus",
+    "to": "Binəqədi qəsəbəsi",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21295132,
+  "tags": {
+    "from": "Binəqədi qəsəbəsi",
+    "name": "92 (Binəqədi qəsəbəsi - Memar Əcəmi m/st)",
+    "public_transport:version": "2",
+    "ref": "92",
+    "route": "bus",
+    "to": "Memar Əcəmi m/st",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21295609,
+  "tags": {
+    "from": "Təbriz küçəsi",
+    "name": "83 (Təbriz küçəsi - Biləcəri qəsəbəsi)",
+    "operator": "“Menloqq” MMC",
+    "public_transport:version": "2",
+    "ref": "83",
+    "route": "bus",
+    "to": "Biləcəri qəsəbəsi",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21295805,
+  "tags": {
+    "from": "Biləcəri qəsəbəsi",
+    "name": "83 (Biləcəri qəsəbəsi - Təbriz küçəsi)",
+    "operator": "“Menloqq” MMC",
+    "public_transport:version": "2",
+    "ref": "83",
+    "route": "bus",
+    "to": "Təbriz küçəsi",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21299739,
+  "tags": {
+    "from": "20 Yanvar m/st",
+    "name": "114A (20 Yanvar m/st - Pirəkəşkül qəsəbəsi)",
+    "operator": "\"Xaliq Faiqoğlu\" MMC",
+    "public_transport:version": "2",
+    "ref": "114A",
+    "route": "bus",
+    "to": "Pirəkəşkül qəsəbəsi",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21299815,
+  "tags": {
+    "from": "Pirəkəşkül qəsəbəsi",
+    "name": "114A (Pirəkəşkül qəsəbəsi - 20 Yanvar m/st)",
+    "operator": "\"Xaliq Faiqoğlu\" MMC",
+    "public_transport:version": "2",
+    "ref": "114A",
+    "route": "bus",
+    "to": "20 Yanvar m/st",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21299999,
+  "tags": {
+    "from": "Memar Əcəmi m/st",
+    "name": "158 (Memar Əcəmi m/st - Xocəsən qəsəbəsi)",
+    "public_transport:version": "2",
+    "ref": "158",
+    "route": "bus",
+    "to": "Xocəsən qəsəbəsi",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21300014,
+  "tags": {
+    "from": "Xocəsən qəsəbəsi",
+    "name": "158 (Xocəsən qəsəbəsi - Memar Əcəmi m/st)",
+    "public_transport:version": "2",
+    "ref": "158",
+    "route": "bus",
+    "to": "Memar Əcəmi m/st",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21306863,
+  "tags": {
+    "name": "165 (Şərifzadə küçəsi - Mehdiabad qəsəbəsi)",
+    "operator": "\"Çinar Trans\" MMC",
+    "public_transport:version": "2",
+    "ref": "165",
+    "route": "bus",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21307942,
+  "tags": {
+    "name": "133 (Binəqədi qəsəbəsi - Gənclik m/st)",
+    "operator": "\"Çinar Trans\" MMC",
+    "public_transport:version": "2",
+    "ref": "133",
+    "route": "bus",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21307943,
+  "tags": {
+    "route": "bus",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21308473,
+  "tags": {
+    "from": "Qobu Park",
+    "name": "194 (Qobu Park - 20 Yanvar m/st)",
+    "public_transport:version": "2",
+    "ref": "194",
+    "route": "bus",
+    "to": "20 Yanvar m/st",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21308506,
+  "tags": {
+    "from": "20 Yanvar m/st",
+    "name": "194 (20 Yanvar m/st - Qobu Park)",
+    "public_transport:version": "2",
+    "ref": "194",
+    "route": "bus",
+    "to": "Qobu Park",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21309263,
+  "tags": {
+    "from": "Sumqayıt şəhəri",
+    "name": "503 (Sumqayıt şəhəri - 20 Yanvar m/st)",
+    "operator": "“BakuBus” MMC",
+    "public_transport:version": "2",
+    "ref": "503",
+    "route": "bus",
+    "to": "20 Yanvar m/st",
+    "type": "route",
+    "via": "Saray qəsəbəsi"
+  }
+},
+{
+  "type": "relation",
+  "id": 21311998,
+  "tags": {
+    "from": "Şüvəlan qəsəbəsi",
+    "name": "140 (Şüvəlan qəsəbəsi - Koroğlu m/st)",
+    "operator": "“BakuBus” MMC",
+    "public_transport:version": "2",
+    "ref": "140",
+    "route": "bus",
+    "to": "Koroğlu m/st",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21312107,
+  "tags": {
+    "from": "Koroğlu m/st",
+    "name": "140 (Koroğlu m/st - Şüvəlan qəsəbəsi)",
+    "operator": "“BakuBus” MMC",
+    "public_transport:version": "2",
+    "ref": "140",
+    "route": "bus",
+    "to": "Şüvəlan qəsəbəsi",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21317388,
+  "tags": {
+    "from": "Mərdəkan qəsəbəsi",
+    "name": "140E (Mərdəkan qəsəbəsi - Koroğlu m/st)",
+    "operator": "“BakuBus” MMC",
+    "public_transport:version": "2",
+    "ref": "140E",
+    "route": "bus",
+    "to": "Koroğlu m/st",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21318065,
+  "tags": {
+    "from": "Koroğlu m/st",
+    "name": "140E (Koroğlu m/st - Mərdəkan qəsəbəsi)",
+    "operator": "“BakuBus” MMC",
+    "public_transport:version": "2",
+    "ref": "140E",
+    "route": "bus",
+    "to": "Mərdəkan qəsəbəsi",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21319381,
+  "tags": {
+    "name": "39 (Yaşıl Dərə qəsəbəsi - Avtovağzal)",
+    "public_transport:version": "2",
+    "ref": "39",
+    "route": "bus",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21320573,
+  "tags": {
+    "name": "39 (Avtovağzal - Yaşıl Dərə qəsəbəsi)",
+    "public_transport:version": "2",
+    "ref": "39",
+    "route": "bus",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21320688,
+  "tags": {
+    "from": "Nizami bağı",
+    "name": "31 (Nizami bağı - 3-cü massiv, Badamdar)",
+    "public_transport:version": "2",
+    "ref": "31",
+    "route": "bus",
+    "to": "3-cü massiv, Badamdar",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21320893,
+  "tags": {
+    "from": "3-cü massiv, Badamdar",
+    "name": "31 (3-cü massiv, Badamdar - Nizami bağı)",
+    "public_transport:version": "2",
+    "ref": "31",
+    "route": "bus",
+    "to": "Nizami bağı",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21321230,
+  "tags": {
+    "from": "Nəsimi m/st",
+    "name": "205 (Nəsimi m/st - Abşeron t/m)",
+    "operator": "“BakuBus” MMC",
+    "public_transport:version": "2",
+    "ref": "205",
+    "route": "bus",
+    "to": "Abşeron t/m",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21321387,
+  "tags": {
+    "from": "Abşeron t/m",
+    "name": "205 (Abşeron t/m - Nəsimi m/st)",
+    "operator": "“BakuBus” MMC",
+    "public_transport:version": "2",
+    "ref": "205",
+    "route": "bus",
+    "to": "Nəsimi m/st",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21322231,
+  "tags": {
+    "from": "20 Yanvar m/st",
+    "name": "130 (20 Yanvar m/st - Lökbatan qəsəbəsi)",
+    "operator": "“BakuBus” MMC",
+    "public_transport:version": "2",
+    "ref": "130",
+    "route": "bus",
+    "to": "Lökbatan qəsəbəsi",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21322384,
+  "tags": {
+    "from": "Atyalı qəsəbəsi",
+    "name": "551 (Atyalı qəsəbəsi - Avtovağzal)",
+    "public_transport:version": "2",
+    "ref": "551",
+    "route": "bus",
+    "to": "Avtovağzal",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21322450,
+  "tags": {
+    "from": "Lökbatan qəsəbəsi",
+    "name": "130 (Lökbatan qəsəbəsi - 20 Yanvar m/st)",
+    "operator": "“BakuBus” MMC",
+    "public_transport:version": "2",
+    "ref": "130",
+    "route": "bus",
+    "to": "20 Yanvar m/st",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21324463,
+  "tags": {
+    "from": "Sahil m/st",
+    "name": "149 (Sahil m/st - Sahil qəsəbəsi)",
+    "operator": "“BakuBus” MMC",
+    "public_transport:version": "2",
+    "ref": "149",
+    "route": "bus",
+    "to": "Sahil qəsəbəsi",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21354804,
+  "tags": {
+    "from": "Sahil qəsəbəsi",
+    "name": "149 (Sahil qəsəbəsi - Sahil m/st)",
+    "operator": "“BakuBus” MMC",
+    "public_transport:version": "2",
+    "ref": "149",
+    "route": "bus",
+    "to": "Sahil m/st",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21357850,
+  "tags": {
+    "from": "Həzi Aslanov m/st",
+    "name": "104 (Həzi Aslanov m/st - Yeni Suraxanı qəsəbəsi)",
+    "public_transport:version": "2",
+    "ref": "104",
+    "route": "bus",
+    "to": "Yeni Suraxanı qəsəbəsi",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21361060,
+  "tags": {
+    "from": "Yeni Suraxanı qəsəbəsi",
+    "name": "104 (Yeni Suraxanı qəsəbəsi - Həzi Aslanov m/st)",
+    "public_transport:version": "2",
+    "ref": "104",
+    "route": "bus",
+    "to": "Həzi Aslanov m/st",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21361183,
+  "tags": {
+    "name": "6 (Sülh küçəsi - 18-ci mikrorayon)",
+    "public_transport:version": "2",
+    "ref": "6",
+    "route": "bus",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21362700,
+  "tags": {
+    "name": "6 (18-ci mikrorayon - Sülh küçəsi )",
+    "public_transport:version": "2",
+    "ref": "6",
+    "route": "bus",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21364531,
+  "tags": {
+    "from": "Avtovağzal",
+    "name": "551 (Avtovağzal - Atyalı qəsəbəsi)",
+    "public_transport:version": "2",
+    "ref": "551",
+    "route": "bus",
+    "to": "Atyalı qəsəbəsi",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21365774,
+  "tags": {
+    "from": "Köhnə Günəşli",
+    "name": "81 (Köhnə Günəşli - Qaraçuxur)",
+    "public_transport:version": "2",
+    "ref": "81",
+    "route": "bus",
+    "to": "Qaraçuxur",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21365844,
+  "tags": {
+    "from": "Yeni Günəşli qəsəbəsi",
+    "name": "50 (Yeni Günəşli qəsəbəsi - Neftçilər m/st)",
+    "public_transport:version": "2",
+    "ref": "50",
+    "route": "bus",
+    "to": "Neftçilər m/st",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21366010,
+  "tags": {
+    "from": "Qaraçuxur",
+    "name": "81 (Qaraçuxur - Köhnə Günəşli)",
+    "public_transport:version": "2",
+    "ref": "81",
+    "route": "bus",
+    "to": "Köhnə Günəşli",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21367384,
+  "tags": {
+    "from": "Neftçilər m/st",
+    "name": "50 (Neftçilər m/st - Yeni Günəşli qəsəbəsi)",
+    "public_transport:version": "2",
+    "ref": "50",
+    "route": "bus",
+    "to": "Yeni Günəşli qəsəbəsi",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21367461,
+  "tags": {
+    "from": "Sabunçu stansiyası",
+    "name": "62 (Sabunçu stansiyası - Tusi küçəsi)",
+    "operator": "“BakuBus” MMC",
+    "public_transport:version": "2",
+    "ref": "62",
+    "route": "bus",
+    "to": "Tusi küçəsi",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21367870,
+  "tags": {
+    "from": "Tusi küçəsi",
+    "name": "62 (Tusi küçəsi - Sabunçu stansiyası)",
+    "operator": "“BakuBus” MMC",
+    "public_transport:version": "2",
+    "ref": "62",
+    "route": "bus",
+    "to": "Sabunçu stansiyası",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21367935,
+  "tags": {
+    "from": "Əhmədli m/st",
+    "name": "42 (Əhmədli m/st - Kərimov küçəsi)",
+    "public_transport:version": "2",
+    "ref": "42",
+    "route": "bus",
+    "to": "Kazımağa Kərimov küçəsi",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21367936,
+  "tags": {
+    "from": "Kazımağa Kərimov küçəsi",
+    "name": "42 (Kərimov küçəsi - Əhmədli m/st)",
+    "public_transport:version": "2",
+    "ref": "42",
+    "route": "bus",
+    "to": "Əhmədli m/st",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21369772,
+  "tags": {
+    "from": "20 Yanvar m/st",
+    "name": "508 (20 Yanvar m/st - Saray qəsəbəsi)",
+    "operator": "“BakuBus” MMC",
+    "public_transport:version": "2",
+    "ref": "508",
+    "route": "bus",
+    "to": "Saray qəsəbəsi",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21372141,
+  "tags": {
+    "from": "Saray qəsəbəsi",
+    "name": "508 (Saray qəsəbəsi - 20 Yanvar m/st)",
+    "operator": "“BakuBus” MMC",
+    "public_transport:version": "2",
+    "ref": "508",
+    "route": "bus",
+    "to": "20 Yanvar m/st",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21372222,
+  "tags": {
+    "from": "Gənclik m/st",
+    "name": "M8 (Gənclik m/st - Maştağa qəsəbəsi)",
+    "operator": "“BakuBus” MMC",
+    "public_transport:version": "2",
+    "ref": "M8",
+    "route": "bus",
+    "to": "Maştağa qəsəbəsi",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21372800,
+  "tags": {
+    "from": "Maştağa qəsəbəsi",
+    "name": "M8 (Maştağa qəsəbəsi - Gənclik m/st)",
+    "operator": "“BakuBus” MMC",
+    "public_transport:version": "2",
+    "ref": "M8",
+    "route": "bus",
+    "to": "Gənclik m/st",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21373686,
+  "tags": {
+    "name": "40 (Novxanı dairəsi - Sülh küçəsi)",
+    "public_transport:version": "2",
+    "ref": "40",
+    "route": "bus",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21378149,
+  "tags": {
+    "name": "40 (Sülh küçəsi - Novxanı dairəsi)",
+    "public_transport:version": "2",
+    "ref": "40",
+    "route": "bus",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21384931,
+  "tags": {
+    "from": "Elmlər Akademiyası m/st",
+    "name": "M1 (Elmlər Akademiyası - 28 May)",
+    "public_transport:version": "2",
+    "ref": "M1",
+    "route": "bus",
+    "to": "28 May NMM",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21384942,
+  "tags": {
+    "from": "28 May NMM",
+    "name": "M1 (28 May - Elmlər Akademiyası)",
+    "public_transport:version": "2",
+    "ref": "M1",
+    "route": "bus",
+    "to": "Elmlər Akademiyası m/st",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21388769,
+  "tags": {
+    "from": "Koroğlu m/st",
+    "name": "71 (Koroğlu m/st - Azadlıq Prospekti m/st)",
+    "operator": "\"Xaliq Faiqoğlu\" MMC",
+    "public_transport:version": "2",
+    "ref": "71",
+    "route": "bus",
+    "to": "Azadlıq Prospekti m/st",
+    "type": "route",
+    "via": "Baksol yolu"
+  }
+},
+{
+  "type": "relation",
+  "id": 21388849,
+  "tags": {
+    "from": "Azadlıq prospekti m/st",
+    "name": "71 (Azadlıq prospekti m/st - Koroğlu m/st)",
+    "operator": "\"Xaliq Faiqoğlu\" MMC",
+    "public_transport:version": "2",
+    "ref": "71",
+    "route": "bus",
+    "to": "Koroğlu m/st",
+    "type": "route",
+    "via": "Baksol yolu"
+  }
+},
+{
+  "type": "relation",
+  "id": 21407215,
+  "tags": {
+    "from": "Sabunçu qəsəbəsi",
+    "name": "49 (Sabunçu qəsəbəsi - 28 May m/st)",
+    "public_transport:version": "2",
+    "ref": "49",
+    "route": "bus",
+    "to": "28 May m/st",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21408766,
+  "tags": {
+    "from": "28 May m/st",
+    "name": "49 (28 May m/st - Sabunçu qəsəbəsi)",
+    "public_transport:version": "2",
+    "ref": "49",
+    "route": "bus",
+    "to": "Sabunçu qəsəbəsi",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21415484,
+  "tags": {
+    "from": "Memar Əcəmi m/st",
+    "name": "119 (Memar Əcəmi m/st - Xırdalan şəhəri)",
+    "operator": "\"Xaliq Faiqoğlu\" MMC",
+    "public_transport:version": "2",
+    "ref": "119",
+    "route": "bus",
+    "to": "Xırdalan şəhəri",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21415675,
+  "tags": {
+    "from": "Xırdalan şəhəri",
+    "name": "119 (Xırdalan şəhəri - Memar Əcəmi m/st)",
+    "operator": "\"Xaliq Faiqoğlu\" MMC",
+    "public_transport:version": "2",
+    "ref": "119",
+    "route": "bus",
+    "to": "Memar Əcəmi m/st",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21418660,
+  "tags": {
+    "from": "Vərəm dispanseri",
+    "name": "12 (Vərəm dispanseri - Cavanşir küçəsi)",
+    "public_transport:version": "2",
+    "ref": "12",
+    "route": "bus",
+    "to": "Cavanşir küçəsi",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21418672,
+  "tags": {
+    "from": "Cavanşir küçəsi",
+    "name": "12 (Cavanşir küçəsi - Vərəm dispanseri)",
+    "public_transport:version": "2",
+    "ref": "12",
+    "route": "bus",
+    "to": "Vərəm dispanseri",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21418697,
+  "tags": {
+    "from": "Koroğlu m/st",
+    "name": "15 (Koroğlu m/st - Keşlə qəsəbəsi)",
+    "public_transport:version": "2",
+    "ref": "15",
+    "route": "bus",
+    "to": "Keşlə qəsəbəsi",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21418758,
+  "tags": {
+    "from": "Keşlə qəsəbəsi",
+    "name": "15 (Keşlə qəsəbəsi - Koroğlu m/st)",
+    "public_transport:version": "2",
+    "ref": "15",
+    "route": "bus",
+    "to": "Koroğlu m/st",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21419311,
+  "tags": {
+    "from": "Sabunçu qəsəbəsi",
+    "name": "22 (Sabunçu qəsəbəsi - NZS qəsəbəsi)",
+    "public_transport:version": "2",
+    "ref": "22",
+    "route": "bus",
+    "to": "NZS qəsəbəsi",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21419354,
+  "tags": {
+    "from": "NZS qəsəbəsi",
+    "name": "22 (NZS qəsəbəsi - Sabunçu qəsəbəsi)",
+    "public_transport:version": "2",
+    "ref": "22",
+    "route": "bus",
+    "to": "Sabunçu qəsəbəsi",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21419380,
+  "tags": {
+    "from": "Sumqayıt şəhəri",
+    "name": "123 (Sumqayıt şəhəri - Azadlıq Prospekti m/st)",
+    "public_transport:version": "2",
+    "ref": "123",
+    "route": "bus",
+    "to": "Azadlıq Prospekti m/st",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21419436,
+  "tags": {
+    "from": "Azadlıq Prospekti m/st",
+    "name": "123 (Azadlıq Prospekti m/st - Sumqayıt şəhəri)",
+    "public_transport:version": "2",
+    "ref": "123",
+    "route": "bus",
+    "to": "Sumqayıt şəhəri",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21420229,
+  "tags": {
+    "from": "Sabunçu stansiyası",
+    "name": "55 (Sabunçu stansiyası - Yeni Günəşli qəsəbəsi)",
+    "public_transport:version": "2",
+    "ref": "55",
+    "route": "bus",
+    "to": "Yeni Günəşli qəsəbəsi",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21420282,
+  "tags": {
+    "from": "Yeni Günəşli qəsəbəsi",
+    "name": "55 (Yeni Günəşli qəsəbəsi - Sabunçu stansiyası)",
+    "public_transport:version": "2",
+    "ref": "55",
+    "route": "bus",
+    "to": "Sabunçu stansiyası",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21420396,
+  "tags": {
+    "from": "Sabunçu stansiyası",
+    "name": "40 (Sabunçu stansiyası - Günəşli qəsəbəsi)",
+    "public_transport:version": "2",
+    "ref": "40",
+    "route": "bus",
+    "to": "Günəşli qəsəbəsi",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21420426,
+  "tags": {
+    "from": "Yeni Günəşli qəsəbəsi",
+    "name": "64 (Yeni Günəşli qəsəbəsi - Neftçilər m/st)",
+    "public_transport:version": "2",
+    "ref": "64",
+    "route": "bus",
+    "to": "Neftçilər m/st",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21420474,
+  "tags": {
+    "from": "Neftçilər m/st",
+    "name": "64 (Neftçilər m/st - Yeni Günəşli qəsəbəsi)",
+    "public_transport:version": "2",
+    "ref": "64",
+    "route": "bus",
+    "to": "Yeni Günəşli qəsəbəsi",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21421886,
+  "tags": {
+    "from": "Günəşli qəsəbəsi",
+    "name": "40 (Günəşli qəsəbəsi - Sabunçu stansiyası)",
+    "public_transport:version": "2",
+    "ref": "40",
+    "route": "bus",
+    "to": "Sabunçu stansiyası",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21422005,
+  "tags": {
+    "from": "Murtuza Muxtarov adına park",
+    "name": "44 (Murtuza Muxtarov adına park - Neftçilər m/st)",
+    "operator": "“BakuBus” MMC",
+    "public_transport:version": "2",
+    "ref": "44",
+    "route": "bus",
+    "to": "Neftçilər m/st",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21422137,
+  "tags": {
+    "from": "Neftçilər m/st",
+    "name": "44 (Neftçilər m/st - Murtuza Muxtarov adına park)",
+    "operator": "“BakuBus” MMC",
+    "public_transport:version": "2",
+    "ref": "44",
+    "route": "bus",
+    "to": "Murtuza Muxtarov adına park",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21435707,
+  "tags": {
+    "from": "İnşaatçılar m/st",
+    "name": "M2 (İnşaatçılar - 28 May)",
+    "public_transport:version": "2",
+    "ref": "M2",
+    "route": "bus",
+    "to": "28 May NMM",
+    "type": "route",
+    "via": "Nizami m/st"
+  }
+},
+{
+  "type": "relation",
+  "id": 21435708,
+  "tags": {
+    "from": "20 Yanvar m/st",
+    "name": "M4 (20 Yanvar - Koroğlu)",
+    "public_transport:version": "2",
+    "ref": "M4",
+    "route": "bus",
+    "to": "Koroğlu NMM",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21435959,
+  "tags": {
+    "from": "Koroğlu NMM",
+    "name": "M4 (Koroğlu - 20 Yanvar)",
+    "public_transport:version": "2",
+    "ref": "M4",
+    "route": "bus",
+    "to": "20 Yanvar m/st",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21435960,
+  "tags": {
+    "from": "28 May NMM",
+    "name": "M2 (28 May - İnşaatçılar)",
+    "public_transport:version": "2",
+    "ref": "M2",
+    "route": "bus",
+    "to": "İnşaatçılar m/st",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21439476,
+  "tags": {
+    "from": "20 Yanvar m/st",
+    "name": "503 (20 Yanvar m/st - Sumqayıt şəhəri)",
+    "operator": "“BakuBus” MMC",
+    "public_transport:version": "2",
+    "ref": "503",
+    "route": "bus",
+    "to": "Sumqayıt şəhəri",
+    "type": "route",
+    "via": "Saray qəsəbəsi"
+  }
+},
+{
+  "type": "relation",
+  "id": 21440168,
+  "tags": {
+    "from": "Köhnə Günəşli",
+    "name": "72 (Köhnə Günəşli - Sədərək t/m)",
+    "operator": "“BakuBus” MMC",
+    "public_transport:version": "2",
+    "ref": "72",
+    "route": "bus",
+    "to": "Sədərək t/m",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21440646,
+  "tags": {
+    "from": "Sədərək t/m",
+    "name": "72 (Sədərək t/m - Köhnə Günəşli)",
+    "operator": "“BakuBus” MMC",
+    "public_transport:version": "2",
+    "ref": "72",
+    "route": "bus",
+    "to": "Köhnə Günəşli",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21443556,
+  "tags": {
+    "from": "20 Yanvar m/st",
+    "name": "M7 (20 Yanvar - Həzi Aslanov)",
+    "public_transport:version": "2",
+    "ref": "M7",
+    "route": "bus",
+    "to": "Həzi Aslanov m/st",
+    "type": "route",
+    "via": "Qara Qarayev;Neftçilər;Xalqlar Dostluğu;Əhmədli"
+  }
+},
+{
+  "type": "relation",
+  "id": 21443786,
+  "tags": {
+    "from": "Həzi Aslanov m/st",
+    "name": "M7 (Həzi Aslanov - 20 Yanvar)",
+    "public_transport:version": "2",
+    "ref": "M7",
+    "route": "bus",
+    "to": "20 Yanvar m/st",
+    "type": "route",
+    "via": "Əhmədli;Xalqlar Dostluğu;Neftçilər;Qara Qarayev"
+  }
+},
+{
+  "type": "relation",
+  "id": 21446454,
+  "tags": {
+    "from": "Memar Əcəmi m/st",
+    "name": "525A (Memar Əcəmi m/st - Yeni Bakı yaşayış kompleksi)",
+    "public_transport:version": "2",
+    "ref": "525A",
+    "route": "bus",
+    "to": "Yeni Bakı yaşayış kompleksi",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21446562,
+  "tags": {
+    "from": "Yeni Bakı yaşayış kompleksi",
+    "name": "525A (Yeni Bakı yaşayış kompleksi - Memar Əcəmi m/st)",
+    "public_transport:version": "2",
+    "ref": "525A",
+    "route": "bus",
+    "to": "Memar Əcəmi m/st",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21446668,
+  "tags": {
+    "from": "Yeni Günəşli",
+    "name": "36 (Yeni Günəşli - Ulduz m/st)",
+    "public_transport:version": "2",
+    "ref": "36",
+    "route": "bus",
+    "to": "Ulduz m/st",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21446780,
+  "tags": {
+    "from": "Ulduz m/st",
+    "name": "36 (Ulduz m/st - Yeni Günəşli)",
+    "public_transport:version": "2",
+    "ref": "36",
+    "route": "bus",
+    "to": "Yeni Günəşli",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21446930,
+  "tags": {
+    "from": "Azadlıq prospekti m/st",
+    "name": "108A (Azadlıq prospekti m/st - Fatmayı bağları)",
+    "operator": "“BakuBus” MMC",
+    "public_transport:version": "2",
+    "ref": "108A",
+    "route": "bus",
+    "to": "Fatmayı bağları",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21447756,
+  "tags": {
+    "from": "Lökbatan qəsəbəsi",
+    "name": "206 (Lökbatan qəsəbəsi - Elmlər Akademiyası m/st)",
+    "operator": "\"Xaliq Faiqoğlu\" MMC",
+    "public_transport:version": "2",
+    "ref": "206",
+    "route": "bus",
+    "to": "Elmlər Akademiyası m/st",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21450290,
+  "tags": {
+    "from": "Elmlər Akademiyası m/st",
+    "name": "206 (Elmlər Akademiyası m/st - Lökbatan qəsəbəsi)",
+    "operator": "\"Xaliq Faiqoğlu\" MMC",
+    "public_transport:version": "2",
+    "ref": "206",
+    "route": "bus",
+    "to": "Lökbatan qəsəbəsi",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21459213,
+  "tags": {
+    "name": "7, dairəvi",
+    "public_transport:version": "2",
+    "ref": "7",
+    "roundtrip": "yes",
+    "route": "bus",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21462885,
+  "tags": {
+    "from": "Bayıl parkı",
+    "name": "56 (Bayıl parkı - Salman Mümtaz küçəsi)",
+    "public_transport:version": "2",
+    "ref": "56",
+    "route": "bus",
+    "to": "Salman Mümtaz küçəsi",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21463259,
+  "tags": {
+    "from": "Salman Mümtaz küçəsi",
+    "name": "56 (Salman Mümtaz küçəsi - Bayıl parkı)",
+    "public_transport:version": "2",
+    "ref": "56",
+    "route": "bus",
+    "to": "Bayıl parkı",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21472576,
+  "tags": {
+    "from": "Zəngilan şəhərciyi yaşayış kompleksi",
+    "name": "525B (Zəngilan şəhərciyi yaşayış kompleksi - Memar Əcəmi m/st)",
+    "public_transport:version": "2",
+    "ref": "525B",
+    "route": "bus",
+    "to": "Memar Əcəmi m/st",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21472577,
+  "tags": {
+    "from": "Memar Əcəmi m/st",
+    "name": "525B (Memar Əcəmi m/st - Zəngilan şəhərciyi yaşayış kompleksi)",
+    "public_transport:version": "2",
+    "ref": "525B",
+    "route": "bus",
+    "to": "Zəngilan şəhərciyi yaşayış kompleksi",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21472602,
+  "tags": {
+    "from": "Müşfiqabad qəsəbəsi",
+    "name": "114B (Müşfiqabad qəsəbəsi - 20 Yanvar m/st)",
+    "operator": "\"Xaliq Faiqoğlu\" MMC",
+    "public_transport:version": "2",
+    "ref": "114B",
+    "route": "bus",
+    "to": "20 Yanvar m/st",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21472603,
+  "tags": {
+    "from": "20 Yanvar m/st",
+    "name": "114B (20 Yanvar m/st - Müşfiqabad qəsəbəsi)",
+    "operator": "\"Xaliq Faiqoğlu\" MMC",
+    "public_transport:version": "2",
+    "ref": "114B",
+    "route": "bus",
+    "to": "Müşfiqabad qəsəbəsi",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21472713,
+  "tags": {
+    "from": "Sumqayıt avtovağzalı",
+    "name": "595 (Sumqayıt avtovağzalı - Bakı avtovağzalı)",
+    "operator": "“BakuBus” MMC",
+    "public_transport:version": "2",
+    "ref": "595",
+    "route": "bus",
+    "to": "Bakı avtovağzalı",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21472714,
+  "tags": {
+    "from": "Bakı avtovağzalı",
+    "name": "595 (Bakı avtovağzalı - Sumqayıt avtovağzalı)",
+    "operator": "“BakuBus” MMC",
+    "public_transport:version": "2",
+    "ref": "595",
+    "route": "bus",
+    "to": "Sumqayıt avtovağzalı",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21472715,
+  "tags": {
+    "from": "Sumqayıt şəhəri",
+    "name": "500 (Sumqayıt şəhəri - 20 Yanvar m/st)",
+    "operator": "“BakuBus” MMC",
+    "public_transport:version": "2",
+    "ref": "500",
+    "route": "bus",
+    "to": "20 Yanvar m/st",
+    "type": "route",
+    "via": "Ceyranbatan"
+  }
+},
+{
+  "type": "relation",
+  "id": 21472716,
+  "tags": {
+    "from": "20 Yanvar m/st",
+    "name": "500 (20 Yanvar m/st - Sumqayıt şəhəri)",
+    "operator": "“BakuBus” MMC",
+    "public_transport:version": "2",
+    "ref": "500",
+    "route": "bus",
+    "to": "Sumqayıt şəhəri",
+    "type": "route",
+    "via": "Ceyranbatan"
+  }
+},
+{
+  "type": "relation",
+  "id": 21476760,
+  "tags": {
+    "from": "Neftçilər m/st",
+    "name": "76 (Neftçilər m/st - Bakıxanov stansiyası)",
+    "public_transport:version": "2",
+    "ref": "76",
+    "route": "bus",
+    "to": "Bakıxanov stansiyası",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21476780,
+  "tags": {
+    "from": "Bakıxanov stansiyası",
+    "name": "76 (Bakıxanov stansiyası - Neftçilər m/st)",
+    "public_transport:version": "2",
+    "ref": "76",
+    "route": "bus",
+    "to": "Neftçilər m/st",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21477546,
+  "tags": {
+    "from": "Neftçilər m/st",
+    "name": "66 (Neftçilər m/st - Əmircan qəsəbəsi)",
+    "public_transport:version": "2",
+    "ref": "66",
+    "route": "bus",
+    "to": "Əmircan qəsəbəsi",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21477551,
+  "tags": {
+    "from": "Əmircan qəsəbəsi",
+    "name": "66 (Əmircan qəsəbəsi - Neftçilər m/st)",
+    "public_transport:version": "2",
+    "ref": "66",
+    "route": "bus",
+    "to": "Neftçilər m/st",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21478215,
+  "tags": {
+    "from": "Fatmayı bağları",
+    "name": "108A (Fatmayı bağları - Azadlıq prospekti m/st)",
+    "operator": "“BakuBus” MMC",
+    "public_transport:version": "2",
+    "ref": "108A",
+    "route": "bus",
+    "to": "Azadlıq prospekti m/st",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21482896,
+  "tags": {
+    "from": "Mehdiabad qəsəbəsi",
+    "name": "108B (Mehdiabad qəsəbəsi - Azadlıq prospekti m/st)",
+    "public_transport:version": "2",
+    "ref": "108B",
+    "route": "bus",
+    "to": "Azadlıq prospekti m/st",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21482897,
+  "tags": {
+    "from": "Azadlıq prospekti m/st",
+    "name": "108B (Azadlıq prospekti m/st - Mehdiabad qəsəbəsi)",
+    "public_transport:version": "2",
+    "ref": "108B",
+    "route": "bus",
+    "to": "Mehdiabad qəsəbəsi",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21483847,
+  "tags": {
+    "from": "Moskva Dövlət Universiteti",
+    "name": "102 (Moskva Dövlət Universiteti - 20 Yanvar m/st)",
+    "public_transport:version": "2",
+    "ref": "102",
+    "route": "bus",
+    "to": "20 Yanvar m/st",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21484886,
+  "tags": {
+    "from": "20 Yanvar m/st",
+    "name": "102 (20 Yanvar m/st - Moskva Dövlət Universiteti)",
+    "public_transport:version": "2",
+    "ref": "102",
+    "route": "bus",
+    "to": "Moskva Dövlət Universiteti",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21489128,
+  "tags": {
+    "from": "Binəqədi qəsəbəsi",
+    "name": "100 (Binəqədi qəsəbəsi - Azadlıq prospekti m/st)",
+    "public_transport:version": "2",
+    "ref": "100",
+    "route": "bus",
+    "to": "Azadlıq prospekti m/st",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21489129,
+  "tags": {
+    "from": "Azadlıq prospekti m/st",
+    "name": "100 (Azadlıq prospekti m/st - Binəqədi qəsəbəsi)",
+    "public_transport:version": "2",
+    "ref": "100",
+    "route": "bus",
+    "to": "Binəqədi qəsəbəsi",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21491662,
+  "tags": {
+    "from": "Binəqədi qəsəbəsi",
+    "name": "170 (Binəqədi qəsəbəsi - Memar Əcəmi m/st)",
+    "operator": "\"Xaliq Faiqoğlu\" MMC",
+    "public_transport:version": "2",
+    "ref": "170",
+    "route": "bus",
+    "to": "Memar Əcəmi m/st",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21491663,
+  "tags": {
+    "from": "Memar Əcəmi m/st",
+    "name": "170 (Memar Əcəmi m/st - Binəqədi qəsəbəsi)",
+    "operator": "\"Xaliq Faiqoğlu\" MMC",
+    "public_transport:version": "2",
+    "ref": "170",
+    "route": "bus",
+    "to": "Binəqədi qəsəbəsi",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21501957,
+  "tags": {
+    "from": "Suraxanı rayonu",
+    "name": "35 (Suraxanı rayonu - Ramiz Quliyev küçəsi)",
+    "operator": "“BakuBus” MMC",
+    "public_transport:version": "2",
+    "ref": "35",
+    "route": "bus",
+    "to": "Ramiz Quliyev küçəsi",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21501973,
+  "tags": {
+    "from": "Ramiz Quliyev küçəsi",
+    "name": "35 (Ramiz Quliyev küçəsi - Suraxanı rayonu)",
+    "operator": "“BakuBus” MMC",
+    "public_transport:version": "2",
+    "ref": "35",
+    "route": "bus",
+    "to": "Suraxanı rayonu",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21502189,
+  "tags": {
+    "from": "Bakıxanov qəsəbəsi",
+    "name": "57 (Bakıxanov qəsəbəsi - C.Hacıəliyev küçəsi)",
+    "operator": "“BakuBus” MMC",
+    "public_transport:version": "2",
+    "ref": "57",
+    "route": "bus",
+    "to": "C.Hacıəliyev küçəsi",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21502190,
+  "tags": {
+    "from": "C.Hacıəliyev küçəsi",
+    "name": "57 (C.Hacıəliyev küçəsi - Bakıxanov qəsəbəsi)",
+    "operator": "“BakuBus” MMC",
+    "public_transport:version": "2",
+    "ref": "57",
+    "route": "bus",
+    "to": "Bakıxanov qəsəbəsi",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21505564,
+  "tags": {
+    "from": "Polad Həşimov küçəsi",
+    "name": "60 (Polad Həşimov küçəsi - Koroğlu m/st)",
+    "operator": "“BakuBus” MMC",
+    "public_transport:version": "2",
+    "ref": "60",
+    "route": "bus",
+    "to": "Koroğlu m/st",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21505565,
+  "tags": {
+    "from": "Koroğlu m/st",
+    "name": "60 (Koroğlu m/st - Polad Həşimov küçəsi)",
+    "operator": "“BakuBus” MMC",
+    "public_transport:version": "2",
+    "ref": "60",
+    "route": "bus",
+    "to": "Polad Həşimov küçəsi",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21530078,
+  "tags": {
+    "from": "Bakıxanov qəsəbəsi",
+    "name": "78 (Bakıxanov qəsəbəsi - Azər Manafov küçəsi)",
+    "public_transport:version": "2",
+    "ref": "78",
+    "route": "bus",
+    "to": "Azər Manafov küçəsi",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21534576,
+  "tags": {
+    "from": "Hövsan MİDA",
+    "name": "120 (Hövsan MİDA - 28 May m/st)",
+    "operator": "“BakuBus” MMC",
+    "public_transport:version": "2",
+    "ref": "120",
+    "route": "bus",
+    "to": "28 May m/st",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21534577,
+  "tags": {
+    "from": "28 May m/st",
+    "name": "120 (28 May m/st - Hövsan MİDA)",
+    "operator": "“BakuBus” MMC",
+    "public_transport:version": "2",
+    "ref": "120",
+    "route": "bus",
+    "to": "Hövsan MİDA",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21584133,
+  "tags": {
+    "from": "20 Yanvar m/st",
+    "name": "E2 (20 Yanvar m/st - Xırdalan şəhəri)",
+    "operator": "\"Xaliq Faiqoğlu\" MMC",
+    "public_transport:version": "2",
+    "ref": "E2",
+    "route": "bus",
+    "to": "Xırdalan şəhəri",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21584159,
+  "tags": {
+    "from": "Xırdalan şəhəri",
+    "name": "E2 (Xırdalan şəhəri - 20 Yanvar m/st)",
+    "operator": "\"Xaliq Faiqoğlu\" MMC",
+    "public_transport:version": "2",
+    "ref": "E2",
+    "route": "bus",
+    "to": "20 Yanvar m/st",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21608546,
+  "tags": {
+    "from": "20 Yanvar m/st",
+    "name": "142 (20 Yanvar m/st - Masazır kəndi)",
+    "public_transport:version": "2",
+    "ref": "142",
+    "route": "bus",
+    "to": "Masazır kəndi",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21609021,
+  "tags": {
+    "from": "Qaraçuxur",
+    "name": "209 (Qaraçuxur - Suraxanı)",
+    "public_transport:version": "2",
+    "ref": "209",
+    "route": "bus",
+    "to": "Suraxanı",
+    "type": "route",
+    "via": "Bakıxanov"
+  }
+},
+{
+  "type": "relation",
+  "id": 21609213,
+  "tags": {
+    "from": "Suraxanı",
+    "name": "209 (Suraxanı - Qaraçuxur)",
+    "public_transport:version": "2",
+    "ref": "209",
+    "route": "bus",
+    "to": "Qaraçuxur",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21617050,
+  "tags": {
+    "from": "Qaraçuxur",
+    "name": "208 (Qaraçuxur - Suraxanı)",
+    "public_transport:version": "2",
+    "ref": "208",
+    "route": "bus",
+    "to": "Suraxanı",
+    "type": "route"
+  }
+},
+{
+  "type": "relation",
+  "id": 21617051,
+  "tags": {
+    "from": "Suraxanı",
+    "name": "208 (Suraxanı - Qaraçuxur)",
+    "public_transport:version": "2",
+    "ref": "208",
+    "route": "bus",
+    "to": "Qaraçuxur",
+    "type": "route",
+    "via": "Bakıxanov"
+  }
+},
+{
+  "type": "relation",
+  "id": 21642948,
+  "tags": {
+    "from": "Elmlər Akademiyası",
+    "name": "M9 (Elmlər Akademiyası - Həzi Aslanov)",
+    "public_transport:version": "2",
+    "ref": "M9",
+    "route": "bus",
+    "to": "Həzi Aslanov",
+    "type": "route",
+    "via": "Nizami;Qara Qarayev;Neftçilər;Xalqlar Dostluğu;Əhmədli"
+  }
+},
+{
+  "type": "relation",
+  "id": 21660412,
+  "tags": {
+    "from": "Həzi Aslanov",
+    "name": "M9 (Həzi Aslanov - Elmlər Akademiyası)",
+    "public_transport:version": "2",
+    "ref": "M9",
+    "route": "bus",
+    "to": "Elmlər Akademiyası",
+    "type": "route",
+    "via": "Əhmədli;Xalqlar Dostluğu;Neftçilər;Qara Qarayev;Nizami"
+  }
+},
+{
+  "type": "relation",
+  "id": 21660487,
+  "tags": {
+    "from": "Azər Manafov küçəsi",
+    "name": "78 (Azər Manafov küçəsi - Bakıxanov qəsəbəsi)",
+    "public_transport:version": "2",
+    "ref": "78",
+    "route": "bus",
+    "to": "Bakıxanov qəsəbəsi",
+    "type": "route"
+  }
+}
+
+  ]
+}

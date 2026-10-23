@@ -1,0 +1,118 @@
+{
+ "scenario": "stop-balancing",
+ "details": {
+  "removed_stop_visits": 883,
+  "min_gap_m": 250.0,
+  "max_gap_after_m": 700,
+  "removed_stops": 351
+ },
+ "before": {
+  "routes_with_stops": 201,
+  "route_directions": 402,
+  "served_stops": 3456,
+  "route_km_one_way_total": 7397.733727579386,
+  "corridor_km": 3824.371931977634,
+  "duplication_ratio": 1.9343656577235464,
+  "median_stop_gap_m": 419.78047237680585,
+  "share_stop_gaps_under_200m": 0.05416116248348745,
+  "share_stop_gaps_under_300m": 0.238925583443417,
+  "most_routes_on_one_link": 26,
+  "hours_one_trip_each_direction_every_route": 335.88436531676433,
+  "share_of_that_time_lost_at_stops": 0.18781265175543668,
+  "fuel_l_one_trip_each_direction_every_route": 2787.0701182738158,
+  "share_of_that_fuel_from_stops": 0.20370854549997416,
+  "area_within_coverage_radius_km2": 479.0,
+  "population_in_study_area": 3043184.0,
+  "population_within_coverage_radius": 2007349.0,
+  "share_population_covered": 0.6596213045284149,
+  "accessibility": {
+   "origins_sampled": 300,
+   "mean_door_to_door_min": 51.823791264325145,
+   "share_reachable": 0.6626446740078195,
+   "share_within_30_min": 0.16188076149175373,
+   "share_within_45_min": 0.2936376592695846,
+   "share_within_60_min": 0.42163732893584827,
+   "share_trips_without_stop_nearby": 0.3463652785996123,
+   "mean_trip_km_straight_line": 7.989950382646035,
+   "transfers": {
+    "0": 0.28892382345142364,
+    "1": 0.43172646806495635,
+    "2": 0.15035093665783023,
+    "3+": 0.014506761464024354,
+    "walk only": 0.11449201036179091
+   }
+  },
+  "operations": {
+   "trips_per_day": 33363.10801435406,
+   "bus_hours_per_day": 28326.588088811524,
+   "bus_km_per_day": 588993.9705275288,
+   "fleet": 2015,
+   "fuel_l_per_day": 226591.946471257,
+   "co2_t_per_day": 605.0004970782561,
+   "fleet_vs_reference": 0.8760869565217392,
+   "headway_sources": {
+    "supplied": 1,
+    "ridership": 55,
+    "zone": 145,
+    "default": 0
+   }
+  },
+  "ridership_fit": {
+   "routes_compared": 56,
+   "spearman": 0.7673957621326042,
+   "pearson_of_log_shares": 0.614587138187115
+  }
+ },
+ "after": {
+  "routes_with_stops": 201,
+  "route_directions": 402,
+  "served_stops": 3105,
+  "route_km_one_way_total": 7397.733727579386,
+  "corridor_km": 3815.397728452283,
+  "duplication_ratio": 1.9389154824968349,
+  "median_stop_gap_m": 473.28864084514953,
+  "share_stop_gaps_under_200m": 0.017666157372039724,
+  "share_stop_gaps_under_300m": 0.14171122994652408,
+  "most_routes_on_one_link": 26,
+  "hours_one_trip_each_direction_every_route": 330.97880976120877,
+  "share_of_that_time_lost_at_stops": 0.1757749319956504,
+  "fuel_l_one_trip_each_direction_every_route": 2742.9201182738157,
+  "share_of_that_fuel_from_stops": 0.19089145050622686,
+  "area_within_coverage_radius_km2": 477.32,
+  "population_in_study_area": 3043184.0,
+  "population_within_coverage_radius": 2002905.7142857143,
+  "share_population_covered": 0.6581612266250461,
+  "accessibility": {
+   "origins_sampled": 300,
+   "mean_door_to_door_min": 51.59139220745088,
+   "share_reachable": 0.6602714961430323,
+   "share_within_30_min": 0.16213791717690582,
+   "share_within_45_min": 0.2945203129020685,
+   "share_within_60_min": 0.4227639719486732,
+   "share_trips_without_stop_nearby": 0.3498441501141004,
+   "mean_trip_km_straight_line": 7.989950382646035,
+   "transfers": {
+    "0": 0.2884286230792015,
+    "1": 0.4321114718135017,
+    "2": 0.14936133513409533,
+    "3+": 0.014675140214772602,
+    "walk only": 0.11542342975846004
+   }
+  },
+  "operations": {
+   "trips_per_day": 33363.10801435406,
+   "bus_hours_per_day": 27894.956156993354,
+   "bus_km_per_day": 588993.9705275288,
+   "fleet": 1987,
+   "fuel_l_per_day": 222707.25908489345,
+   "co2_t_per_day": 594.6283817566656,
+   "fleet_vs_reference": 0.8639130434782609,
+   "headway_sources": {
+    "supplied": 1,
+    "ridership": 55,
+    "zone": 145,
+    "default": 0
+   }
+  }
+ }
+}
