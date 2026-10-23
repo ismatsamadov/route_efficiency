@@ -83,6 +83,9 @@ class Assumptions:
     redesign_max_people_losing_stop_total: int = 3000
     redesign_shift_share: float = 0.2            # share of a route's buses moved in one shift
     redesign_shift_rounds: int = 4
+    redesign_protect_boardings: float = 1000     # never drop a route with at least this many counted weekday boardings
+    redesign_protected_routes: list = field(default_factory=lambda: ["180"])   # left as they are; 180 (Pirallahı):
+                                                 # its connecting routes are missing from the data
 
     def cruise_mps(self, zone):
         return self.cruise_kmh.get(zone, self.default_cruise_kmh) / 3.6

@@ -7,13 +7,18 @@ without leaving more people than allowed with no stop within max_access_walk_m:
 
   merge       drop a route whose stops are mostly served by another route that remains;
               its buses go to the routes it overlaps
-  drop        drop a route that carries few modelled riders per bus; its buses go to
-              the routes it overlaps, or across the network if none do
+  drop        drop a route that carries few riders per bus; its buses go to the routes it
+              overlaps, or across the network if none do
   straighten  replace a detour with the shortest path along streets that buses already
               use, stopping at the stops on that path
   stops       remove closely spaced stops (stop balancing)
-  shift       move buses from the routes with the fewest modelled riders per bus to the
-              routes with the most
+  shift       move buses from the routes where one more bus would save riders the least
+              waiting to the routes where it would save the most
+
+Riders per route are counted boardings where a route has them, and otherwise the model's
+boardings scaled to the same total, so the model never overrules a count. A route with
+at least redesign_protect_boardings counted boardings is never dropped, and the routes in
+redesign_protected_routes are left as they are, apart from receiving buses.
 
 The fleet never changes. A route that gets shorter keeps its buses and runs more often;
 a dropped route's buses go to other routes. No route runs less often than
@@ -379,7 +384,7 @@ class BalanceStops:
 
     def apply(self, plan, ctx):
         before = plan.network.served_stop_ids()
-        protect = set()
+        protect = set().union(*(plan.stops_of(r) for r in ctx.protected))
         for _ in range(10):
             new, details = balance_stops(plan.network, self.min_gap_m, 700, protect)
             removed = set(details["removed_stops"])
@@ -399,9 +404,14 @@ class BalanceStops:
 
 
 class Shift:
-    """Move buses from the routes with the fewest modelled riders per bus to those with the most.
+    """Move buses from the routes where one more bus would save riders the least waiting to
+    the routes where it would save the most.
 
-    No donor drops below the buses it needs to run every max_headway_min."""
+    A route's riders wait half its headway, and headway = cycle time / buses, so one more
+    bus saves riders x headway / buses / 2 minutes a day: the marginal value behind the
+    square-root rule of frequency setting. Unlike riders per bus, it falls quickly as a
+    short route gains buses. No donor drops below the buses it needs to run every
+    max_headway_min, and protected routes never give buses away."""
     kind = "shift"
 
     def __init__(self, k, share):
@@ -409,20 +419,22 @@ class Shift:
         self.routes, self.moved = [], 0.0
 
     def apply(self, plan, ctx):
-        a, rides = ctx.a, ctx.boardings
-        per_bus = sorted((rides.get(r, 0.0) / plan.fleet[r], r) for r in plan.fleet)
-        if len(per_bus) < 2 * self.k:
+        a = ctx.a
+        hw = plan.headways(a)
+        value = {r: ctx.riders.get(r, 0.0) * hw[r][0] / f for r, f in plan.fleet.items()}
+        floor = {r: plan.cycle_min(r, a) / a.max_headway_min for r in plan.fleet}
+        ranked = sorted(plan.fleet, key=lambda r: (value[r], r))
+        donors = [r for r in ranked if r not in ctx.protected and plan.fleet[r] > floor[r] + 1e-9][:self.k]
+        takers = [r for r in reversed(ranked) if r not in donors and hw[r][0] > a.min_headway_min + 1e-9][:self.k]
+        if len(donors) < self.k or len(takers) < self.k:
             return None
-        donors = [r for _, r in per_bus[:self.k]]
-        takers = [r for _, r in per_bus[-self.k:]]
         fleet = dict(plan.fleet)
         moved = 0.0
         for r in donors:
-            floor = plan.cycle_min(r, a) / a.max_headway_min
-            give = max(0.0, min(fleet[r] * self.share, fleet[r] - floor))
+            give = min(fleet[r] * self.share, fleet[r] - floor[r])
             fleet[r] -= give
             moved += give
-        left = allocate(plan, fleet, moved, {r: rides.get(r, 0.0) for r in takers}, a)
+        left = allocate(plan, fleet, moved, {r: value[r] for r in takers}, a)
         for r in donors:                         # anything the takers cannot use goes back
             fleet[r] += left / len(donors)
         moved -= left
@@ -432,40 +444,58 @@ class Shift:
         return plan.changed(fleet=fleet)
 
     def describe(self, net):
-        return (f"Move {self.moved:.0f} buses from the {self.k} routes with the fewest riders per bus "
-                f"({', '.join(net.number(r) for r in self.donors)}) to the {self.k} with the most "
+        return (f"Move {self.moved:.0f} buses from the {self.k} routes where a bus saves riders the least waiting "
+                f"({', '.join(net.number(r) for r in self.donors)}) to the {self.k} where it saves the most "
                 f"({', '.join(net.number(r) for r in self.takers)})")
 
 
 # ---------------------------------------------------------------- candidates and search
 
 class Context:
-    def __init__(self, network, a, evaluator):
+    """What every change can see: settings, the evaluator, the street graph, riders per route,
+    counted boardings (by route id) and the protected routes."""
+
+    def __init__(self, network, a, evaluator, observed=None):
         self.a = a
         self.evaluator = evaluator
         self.streets = Streets(network)
-        self.boardings = {}
+        observed = observed or {}
+        self.observed = {rid: observed[r.number] for rid, r in network.routes.items() if r.number in observed}
+        keep = {str(n) for n in a.redesign_protected_routes}
+        self.protected = {rid for rid, r in network.routes.items() if r.number in keep}
+        self.riders = {}
+
+    def riders_for(self, plan, modelled):
+        """Boardings a day per route: counted where a route has counts, otherwise the model's
+        boardings scaled so that, over the routes with counts, model and counts agree in total."""
+        counted = [r for r in self.observed if r in plan.fleet]
+        model_total = sum(modelled.get(r, 0.0) for r in counted)
+        scale = sum(self.observed[r] for r in counted) / model_total if model_total else 1.0
+        return {r: self.observed[r] if r in self.observed else scale * modelled.get(r, 0.0) for r in plan.fleet}
 
 
-def candidates(plan, ctx, base_score):
+def candidates(plan, ctx):
     """Changes worth trying on today's network, from the inefficiency measures."""
     a, net = ctx.a, plan.network
     out, seen = [], set()
     number_to_id = {r.number: k for k, r in net.routes.items()}
     for d in near_duplicates(net):                         # sorted by share: first match is the closest
         a_id, b_id = number_to_id[d["route"]], number_to_id[d["inside_route"]]
-        if a_id in seen or a_id not in plan.fleet:
+        if a_id in seen or a_id not in plan.fleet or a_id in ctx.protected:
             continue
         seen.add(a_id)
         out.append(Drop(a_id, "merge", f"Merge {d['route']} into {d['inside_route']}: "
                                        f"{d['share_of_stops']:.0%} of its stops are also on {d['inside_route']}", b_id))
-    rides = base_score.get("boardings", {})
-    per_bus = sorted((rides.get(r, 0.0) / plan.fleet[r], r) for r in plan.fleet)
-    for _, rid in per_bus[:a.redesign_max_drop]:
-        if rid not in seen:
-            out.append(Drop(rid, "drop", f"Drop {net.number(rid)}: few riders per bus in the model"))
+    droppable = [r for r in plan.fleet if r not in seen and r not in ctx.protected
+                 and ctx.observed.get(r, 0.0) < a.redesign_protect_boardings]
+    per_bus = sorted((ctx.riders.get(r, 0.0) / plan.fleet[r], r) for r in droppable)
+    for rate, rid in per_bus[:a.redesign_max_drop]:
+        source = "counted" if rid in ctx.observed else "estimated"
+        out.append(Drop(rid, "drop", f"Drop {net.number(rid)}: {rate:,.0f} boardings a day per bus ({source})"))
     straight = []
     for key in sorted(net.patterns):
+        if key[0] in ctx.protected:
+            continue
         p = net.patterns[key]
         pts = [(net.stops[s].lat, net.stops[s].lon) for s in p.stop_ids]
         for det in find_detours(p, pts):
@@ -487,7 +517,7 @@ def search(plan, evaluator, ctx, say=print):
     """Improve the plan step by step. Returns (plan, changes, score before, score after, people check)."""
     a = ctx.a
     start = evaluator.score(plan, boardings=True)
-    ctx.boardings = start["boardings"]
+    ctx.riders = ctx.riders_for(plan, start["boardings"])
     people0 = evaluator.people_with_stop(plan)
     current, cur, people = plan, start["minutes"], people0
     say(f"  today: {cur:.2f} min average door-to-door on the search sample; {people0:,.0f} people with a stop within reach")
@@ -511,7 +541,7 @@ def search(plan, evaluator, ctx, say=print):
         current, cur, people = new_plan, score["minutes"], new_people
 
     # 1. screen each structural change alone, then apply the winners in order of gain
-    cands = candidates(plan, ctx, start)
+    cands = candidates(plan, ctx)
     say(f"  screening {len(cands)} candidate changes")
     screened, blocked = [], 0
     for c in cands:
@@ -543,9 +573,9 @@ def search(plan, evaluator, ctx, say=print):
                 accept(c, p, s, new_people)
                 break
 
-    # 3. move buses towards the routes that carry the most riders
+    # 3. move buses to where they save riders the most waiting
     for _ in range(a.redesign_shift_rounds):
-        ctx.boardings = evaluator.score(current, boardings=True)["boardings"]
+        ctx.riders = ctx.riders_for(current, evaluator.score(current, boardings=True)["boardings"])
         best = None
         for k in (5, 10, 20):
             c = Shift(k, a.redesign_shift_share)
