@@ -3,11 +3,5 @@ __pycache__/
 *.pyc
 .venv/
 
-# Written by measure.py
-output/
-
-# Downloaded public datasets (large; download again when needed)
-data/external/
-
 # macOS
 .DS_Store
