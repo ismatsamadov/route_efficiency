@@ -32,7 +32,7 @@ does one thing, so `git show <hash>` explains a single step.
 | `f90dcc2` | Read settings and data paths from `busnet.toml` |
 | `23958a6` | Add the results from the default settings |
 
-## On the branch, not yet merged
+## Pull request #6, merged as `f8e7701`
 
 | Commit | Change |
 |---|---|
@@ -49,7 +49,7 @@ does one thing, so `git show <hash>` explains a single step.
 | `8f9b3c2` | Use the new repository name in the download script's user agent. The GitHub repository was renamed from `router_algorithm` to `route_efficiency`; GitHub redirects the old address |
 | `1c974c0` | Rank redesign changes by counted boardings where they exist and by the waiting one more bus saves; never drop a route with 1,000 or more counted boardings; leave protected routes (180) alone |
 | `5636bec` | Regenerate results with the updated redesign: 595, 149 and 140E are no longer dropped |
-| | Update the docs for the updated redesign |
+| `38e067a` | Update the docs for the updated redesign |
 
 ## Published reports
 
