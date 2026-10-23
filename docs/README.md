@@ -15,6 +15,7 @@ every assumption in one settings file. A redesign search then changes the networ
 by step with today's fleet, keeping a change only if trips get faster without cutting
 people off. The redesign shortens the average trip from 51.8 to 50.9 minutes with
 the same buses, or matches today's trip times with about 12% fewer buses and 12% less fuel.
+The gain holds on ten samples of trips and under eleven other assumptions.
 Its changes are candidates for review, not a plan: [results.md](results.md#check-these-before-acting)
 lists what to check first.
 
@@ -24,6 +25,7 @@ lists what to check first.
 |---|---|
 | Run the tools and regenerate every result | [getting-started.md](getting-started.md) |
 | See the latest findings and the redesign | [results.md](results.md) |
+| See how much the results depend on the trip sample and the assumptions | [results.md](results.md#how-robust-the-results-are) |
 | Understand the data, its defects, the repairs and the licences | [data.md](data.md) |
 | Change an assumption or a data path | [configuration.md](configuration.md) |
 | Know exactly how a number is computed | [methodology.md](methodology.md) |
@@ -35,15 +37,17 @@ lists what to check first.
 | Look up a term | [glossary.md](glossary.md) |
 | See what was built, in which order | [changelog.md](changelog.md) |
 
-## Two commands
+## Three commands
 
 ```sh
 python3 measure.py --scenario stop-balancing --min-gap 250   # measure today's network (about 12 s)
 python3 redesign.py                                          # search for a better one (about 2 minutes)
+python3 robustness.py                                        # the results under other samples and assumptions (about 10 minutes)
 ```
 
-Both read `busnet.toml` and the data committed under `data/`, need only Python 3.11 or newer,
-and give byte-identical results on every run.
+All three read `busnet.toml` and the data committed under `data/`, need only Python 3.11
+or newer, and give byte-identical results on every run. `python3 -m unittest` runs the
+tests.
 
 ## Published reports
 

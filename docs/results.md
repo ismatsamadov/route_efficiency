@@ -6,6 +6,7 @@ They were generated on 23 October 2026 by:
 ```sh
 python3 measure.py --scenario stop-balancing --min-gap 250
 python3 redesign.py
+python3 robustness.py
 ```
 
 Every number below is in `output/` ([outputs.md](outputs.md) explains each file). There
@@ -36,6 +37,10 @@ are two kinds of number:
   from 51.8 to 50.9 minutes. Alternatively, it gives today's travel times with about 12%
   fewer buses, fuel and CO₂. Its changes are candidates to review, not a plan
   ([what to check](#check-these-before-acting)).
+- **The gain is small but holds up.** On ten samples of trips the redesign saves
+  0.68 to 0.81 minutes a trip (mean 0.77), and under eleven other assumptions 0.58 to
+  0.84; today's travel times then need 87 to 90% of the buses
+  ([how robust the results are](#how-robust-the-results-are)).
 
 ## Today's network
 
@@ -141,9 +146,9 @@ The routes with the most detour length are 205 (5 detours, 26.0 km), 169 (3, 22.
 | 800 m | 87.2% |
 | 1,000 m | 91.5% |
 
-`network.json` reports the 400 m value. The others come from runs with
-`--set coverage_radius_m=300` (and so on). The 12.8% beyond 800 m is close to the 17%
-with limited bus access that AYNA's consultant reported in 2025.
+`network.json` reports the 400 m value; `output/robustness/coverage_radius.csv` has all
+five (the same as runs with `--set coverage_radius_m=300` and so on). The 12.8% beyond
+800 m is close to the 17% with limited bus access that AYNA's consultant reported in 2025.
 
 Door-to-door, on 300 origins sampled by population:
 
@@ -181,10 +186,11 @@ realistic overall. Individual routes can still be far off.
   barely ran in September. Apart from it, route 595 carries the fewest per km of route
   (90).
 - **How well the model ranks routes.** The model's boardings per route rank the 56 routes
-  with a Spearman correlation of:
+  with a Spearman correlation of (`output/robustness/fit_ladder.csv`):
 
 | Model inputs | Correlation |
 |---|---|
+| One headway of 12 minutes for every route, trips to homes only | 0.41 |
 | Headways by service type, trips to homes only | 0.56 |
 | Plus destinations (OpenStreetMap, metro) | 0.58 |
 | Plus headways estimated from observed boardings (the default) | 0.77 |
@@ -374,6 +380,10 @@ against 50.88 in the first version, and 88% of the buses give today's travel tim
      limit of 500 per change.
    - Dropping 150E strands 290, dropping 164 strands 171, and merging 173A strands 20.
    - That is 976 people in total.
+   - Run with `redesign_max_people_losing_stop=0` and `redesign_max_people_losing_stop_total=0`,
+     the search keeps 24 changes, strands nobody, and gains as much: 0.77 against 0.76
+     minutes on the independent check (`output/robustness/redesign_settings.csv`). The
+     stricter rule costs nothing here.
 3. **The dropped routes have little evidence behind them.** 164 and 39 have no counts:
    their estimated boardings are 133 and 582 a day. 150E recorded only 16.5 boardings a
    weekday in September. Check all three with their operators.
@@ -394,3 +404,93 @@ They are not forecasts. They rest on estimated headways, a gravity model of dema
 ranks routes only moderately well, and no vehicle capacity or crowding. They show where
 the network wastes time and which changes look promising. They cannot replace counts,
 GPS data or local knowledge. [roadmap.md](roadmap.md) lists what would make them firmer.
+The next section shows which of them survive other trip samples and other assumptions.
+
+## How robust the results are
+
+`python3 robustness.py` repeats the main results under other conditions
+([methodology.md](methodology.md#10-robustness-checks)) and writes `output/robustness/`
+([outputs.md](outputs.md)). Minutes below are the capped average the search uses:
+door-to-door minutes, with a trip that cannot be made within 2 hours counted as 120.
+
+### On other samples of trips
+
+The redesign above was checked on one sample of 300 origins (seed 7). Scored on ten
+samples, with the search itself unchanged (`redesign_seeds.csv`):
+
+| Trip sample | Today | Redesign | Gain | Possible trips only, today → redesign |
+|---|---|---|---|---|
+| 1 | 77.06 | 76.34 | 0.73 | 52.1 → 51.2 min |
+| 2 | 77.49 | 76.71 | 0.78 | 52.4 → 51.5 min |
+| 3 | 74.67 | 73.86 | 0.80 | 52.4 → 51.6 min |
+| 4 | 75.11 | 74.33 | 0.78 | 51.2 → 50.3 min |
+| 5 | 73.57 | 72.76 | 0.81 | 52.3 → 51.5 min |
+| 6 | 75.50 | 74.74 | 0.76 | 50.8 → 50.0 min |
+| 7 (the independent check above) | 74.82 | 74.06 | 0.76 | 51.8 → 50.9 min |
+| 8 | 75.70 | 75.02 | 0.68 | 51.3 → 50.5 min |
+| 9 | 74.15 | 73.34 | 0.80 | 50.9 → 49.9 min |
+| 10 | 74.33 | 73.52 | 0.81 | 52.6 → 51.8 min |
+| All ten | | | mean 0.77, standard deviation 0.04, from 0.68 to 0.81 | |
+
+The gain is positive in every sample. The level moves by about 4 minutes between
+samples (73.6 to 77.5 for today's network), because each sample draws different
+origins; the difference between the two networks on the same sample moves by 0.13
+minutes, about a thirtieth of that. Quote the gain with its range, not the level to two
+decimals.
+
+### Under other assumptions
+
+The search run again with one setting changed, each run checked on the usual
+independent sample (`redesign_settings.csv`). Every run also kept one stop-balancing
+pass.
+
+| Setting | Changes kept | Routes left | People losing their stop | Today → redesign | Gain | Fleet for today's times | Fuel saved |
+|---|---|---|---|---|---|---|---|
+| The settings in busnet.toml | 27 (5 merges, 3 drops, 14 straightened, 4 shifts) | 193 | 976 | 74.82 → 74.06 | 0.76 | 88% | 11.7% |
+| Riders mind a change less: 2 minutes instead of 5 | 26 (5 merges, 3 drops, 13 straightened, 4 shifts) | 193 | 976 | 73.18 → 72.37 | 0.80 | 88% | 11.7% |
+| Riders mind a change more: 8 minutes instead of 5 | 26 (5 merges, 2 drops, 14 straightened, 4 shifts) | 194 | 828 | 76.32 → 75.60 | 0.72 | 88% | 11.6% |
+| Shorter trips: distance decay 4 km instead of 6 | 27 (5 merges, 4 drops, 13 straightened, 4 shifts) | 192 | 1,391 | 67.53 → 66.95 | 0.59 | 90% | 10.1% |
+| Longer trips: distance decay 9 km instead of 6 | 26 (5 merges, 2 drops, 14 straightened, 4 shifts) | 194 | 828 | 80.53 → 79.69 | 0.83 | 88% | 12.4% |
+| Trips end at homes only, with no destinations | 25 (5 merges, 2 drops, 13 straightened, 4 shifts) | 194 | 687 | 77.90 → 77.07 | 0.82 | 87% | 13.2% |
+| Counted routes run more often: 45 boardings per trip instead of 60 | 25 (5 merges, 2 drops, 13 straightened, 4 shifts) | 194 | 687 | 74.26 → 73.53 | 0.73 | 88% | 12.4% |
+| Counted routes run less often: 80 boardings per trip instead of 60 | 26 (5 merges, 2 drops, 14 straightened, 4 shifts) | 194 | 828 | 75.45 → 74.64 | 0.81 | 88% | 11.6% |
+| People walk at most 400 m to a stop instead of 500 | 24 (5 merges, 2 drops, 12 straightened, 4 shifts) | 194 | 405 | 79.49 → 78.91 | 0.58 | 90% | 10.2% |
+| A search sample twice as large: 200 origins instead of 100 | 32 (7 merges, 3 drops, 17 straightened, 4 shifts) | 191 | 1,133 | 74.82 → 73.99 | 0.84 | 87% | 13.1% |
+| Another search sample of the same size: seed 23 instead of 11 | 33 (8 merges, 4 drops, 16 straightened, 4 shifts) | 189 | 1,986 | 74.82 → 74.03 | 0.79 | 88% | 12.5% |
+| No change may leave anyone without a stop within reach | 24 (3 merges, 2 drops, 14 straightened, 4 shifts) | 196 | 0 | 74.82 → 74.05 | 0.77 | 88% | 11.6% |
+
+- The gain stays between 0.58 and 0.84 minutes, and today's travel times need 87 to
+  90% of the buses in every run (10 to 13% less fuel). The direction of the result does
+  not depend on any one assumption.
+- The smallest gains come with shorter trips (decay 4 km) and shorter walks (400 m); the
+  largest with a search sample twice as large.
+- What the search keeps is stable: two to four drops, 12 to 17 straightened detours,
+  one stop-balancing pass and four bus shifts in every run, and five merges in nine of
+  the twelve (three under the strict coverage guard, seven and eight with the larger
+  and the other search sample). A larger search sample (200 origins) or a different one
+  (seed 23) keeps 32 or 33 changes instead of 27, with the same gain on the independent
+  sample: the search sample decides the changes at the margin, not the effect. Those
+  two runs also strand more people (1,133 and 1,986), still within the 3,000 allowed.
+- The strict coverage guard, under which nobody may lose a stop, keeps 24 changes and
+  gains 0.77 minutes, as much as the default run. The 976 people the default run leaves
+  without a stop buy nothing; see [Check these before acting](#check-these-before-acting).
+
+### The demand model as each input is added
+
+| Model inputs | Spearman | Correlation of log shares | Fleet implied |
+|---|---|---|---|
+| One headway of 12 minutes for every route; trips to homes only | 0.41 | 0.41 | 2,030 |
+| Headways by service type; trips to homes only | 0.56 | 0.51 | 1,848 |
+| Plus destinations (OpenStreetMap, metro) | 0.58 | 0.49 | 1,848 |
+| Plus headways estimated from observed boardings (the default) | 0.77 | 0.61 | 2,015 |
+
+Each input improves the ranking of the 56 counted routes. Headways by service type add
+most (0.41 to 0.56), destinations a little more (0.58); the last step uses the counts
+themselves and is not a fair test. 0.58 is the figure to quote for the model
+(`fit_ladder.csv`).
+
+### Coverage by walking distance
+
+The table in [Who the network reaches](#who-the-network-reaches) comes from
+`coverage_radius.csv`: 55.5% of people within 300 m of a served stop, 66.0% within
+400 m, 73.4% within 500 m, 87.2% within 800 m and 91.5% within 1,000 m.

@@ -18,6 +18,9 @@ cannot do, and which decisions and data are needed from people outside the code.
 | The redesign ranks routes by counted boardings where they exist, never drops a route with 1,000 or more counted boardings, moves buses by the waiting they save, and leaves protected routes (180) alone | `busnet/optimize.py`, [redesign.md](redesign.md#riders-per-route) |
 | Published efficiency report updated with the redesign, including a map view of it | [Efficiency study](https://claude.ai/artifact/546fAb5SJaTSBKkZ53XY1L) |
 | Documentation | `docs/` |
+| Robustness checks: the redesign on ten trip samples and under eleven other settings, the demand model's fit as each input is added, coverage by radius | `robustness.py`, [results.md](results.md#how-robust-the-results-are) |
+| Tests: unit tests for the geometry, headways, settings and plans, and a regression test that regenerates `output/` | `tests/`, [code.md](code.md#checking-a-change) |
+| Every cited figure in [research.md](research.md) checked against its source; data licences and provenance recorded | [research.md](research.md), [data/SOURCES.md](../data/SOURCES.md) |
 
 ## Next, in order of value
 
@@ -42,15 +45,16 @@ cannot do, and which decisions and data are needed from people outside the code.
 6. **Search better.** Try simulated annealing, or NSGA-II from pymoo, to trade rider time
    against bus-hours. Both can also undo earlier changes, which the greedy search never
    does.
-7. **Check against benchmarks.** Run the evaluator on the Mandl and Mumford test networks
+7. **Take a new snapshot.** The network is from 6 May 2026 and AYNA has been launching
+   a new one since January 2026 ([data.md](data.md#when-the-data-is-from)). Scrape the
+   AYNA map again, rerun the three scripts and compare the results with the committed
+   ones to see which findings still hold.
+8. **Check against benchmarks.** Run the evaluator on the Mandl and Mumford test networks
    and compare with published results ([research.md](research.md#5-designing-a-network-by-computer)).
-8. **Add tests.**
-   - Unit tests for `geo.match_stops`, `service.route_headways`, `config.load_config`
-     errors and `Plan` arithmetic.
-   - A regression test that regenerates `output/` and compares it with the committed
-     files.
 9. **Validate the GTFS feeds** with the MobilityData validator. Compare travel times with
    r5py.
+10. **Extend the tests** to the kinds of change in `busnet/optimize.py` (merge, drop,
+    straighten, shift) on the small test network, and to the GTFS writer.
 
 ## Limitations of the current version
 
@@ -107,13 +111,13 @@ answer.
 
 ## Updating the work when data arrives
 
-- **Real headways.** Add rows to `data/headways.csv`, then rerun both scripts.
+- **Real headways.** Add rows to `data/headways.csv`, then rerun the three scripts.
 - **A new network snapshot.**
   1. In an empty folder outside the repository, run
      `python3 <repository>/data/ayna_scraper.py`. It writes `ayna_data/ayna.db` in that
      folder.
   2. Replace `data/ayna.db` with that file.
-  3. Rerun both scripts. The repairs detect defects from the data, so they adapt to
+  3. Rerun the three scripts. The repairs detect defects from the data, so they adapt to
      the new snapshot. Check `output/repairs.txt` for new ones.
 - **Fresh public data.** Run `python3 data/fetch_external.py --refresh`.
 - **Commit together.** Commit new data and the regenerated `output/` in the same commit,
