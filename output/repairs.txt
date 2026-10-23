@@ -1,0 +1,23 @@
+120A d1: stop list was repeated twice; kept one copy
+120A d2: stop list was repeated twice; kept one copy
+4: shapes were filed under the wrong direction (stored d2 -> d1, stored d1 -> d2)
+45: shapes were filed under the wrong direction (stored d2 -> d1, stored d1 -> d2)
+120: shapes were filed under the wrong direction (stored d2 -> d1, stored d1 -> d2)
+121E d1: shape was stored backwards; reversed
+121E d2: shape was stored backwards; reversed
+509: shapes were filed under the wrong direction (stored d2 -> d1, stored d1 -> d2)
+515: shapes were filed under the wrong direction (stored d2 -> d1, stored d1 -> d2)
+519: shapes were filed under the wrong direction (stored d2 -> d1, stored d1 -> d2)
+521 d2: shape had latitude and longitude swapped; swapped back
+522: shapes were filed under the wrong direction (stored d2 -> d1, stored d1 -> d2)
+523: shapes were filed under the wrong direction (stored d2 -> d1, stored d1 -> d2)
+525: shapes were filed under the wrong direction (stored d2 -> d1, stored d1 -> d2)
+531 d1: shape has latitude equal to longitude everywhere; dropped
+531: shapes were filed under the wrong direction (stored d2 -> d1)
+533: shapes were filed under the wrong direction (stored d2 -> d1, stored d1 -> d2)
+535: shapes were filed under the wrong direction (stored d2 -> d1, stored d1 -> d2)
+550 d1: shape cannot explain its stops (straight jump of 17.7 km); using straight lines between stops
+553: shapes were filed under the wrong direction (stored d2 -> d1, stored d1 -> d2)
+553 d1: shape was stored backwards; reversed
+555 d1: shape cannot explain its stops (straight jump of 9.2 km); using straight lines between stops
+557 d1: shape cannot explain its stops (straight jump of 19.8 km); using straight lines between stops
