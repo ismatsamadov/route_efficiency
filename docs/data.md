@@ -32,11 +32,11 @@ script does not write).
 **Licence.** None is published. The data is AYNA's; neither AYNA's website nor the API
 states terms of use, and the snapshot repository has no licence file (the "ISC" in its
 README, in its `package.json` and in the `meta` table's source field is that repository's
-code licence, not a data licence). The database is kept here as a research snapshot
-with attribution to AYNA; this repository's licence does not extend to it. For
-publication, cite AYNA as the source and the snapshot repository at the commits above,
-or take a fresh snapshot with `data/ayna_scraper.py` so that the provenance is your own.
-AYNA also publishes its route lines (KMZ) and bus stations on opendata.az under CC0
+code licence, not a data licence). I keep the database here as a research snapshot with
+attribution to AYNA; this repository's licence does not extend to it. For publication I
+would cite AYNA as the source and the snapshot repository at the commits above, or take
+a fresh snapshot with `data/ayna_scraper.py` so that the provenance is my own. AYNA also
+publishes its route lines (KMZ) and bus stations on opendata.az under CC0
 (`data/external/opendata/`), a cleaner source for route geometry if a future snapshot
 can be built from them.
 
@@ -44,10 +44,10 @@ can be built from them.
 
 Every result describes the network as it was on 6 May 2026. AYNA's new network began
 launching in January 2026 ([research.md](research.md#4-bakus-own-programme)), and the
-BakuBus counts used for ridership are from September 2026, so the two describe the
+BakuBus counts I use for ridership are from September 2026, so the two describe the
 network some months apart: eight routes in the counts (M2, M3, M4, M5, M6, 500, 149E,
-195E) do not exist in the snapshot. Before building on the results, take a new snapshot
-and rerun the tools ([roadmap.md](roadmap.md#updating-the-work-when-data-arrives)); the
+195E) do not exist in the snapshot. Before building on the results I would take a new
+snapshot and rerun the tools ([roadmap.md](roadmap.md#when-new-data-arrives)); the
 repairs are detected from the data, so they adapt to it.
 
 | Table | Rows | Contents |
@@ -167,11 +167,11 @@ headway instead of any estimate. Today it holds one row: H1 (Airport Express) ev
 ## Searched for and not found
 
 No public source gives route headways or timetables, vehicle GPS positions, ticket
-validations by stop, or origin-destination data. Checked: the AYNA map API (it returns
+validations by stop, or origin-destination data. I checked the AYNA map API (it returns
 only routes, stops and shapes), the 69 transport datasets on opendata.az, OpenStreetMap
-(249 bus routes; only M5 carries an interval tag), the BakuBus and AYNA websites, and news
-reports. The settings in `busnet.toml` stand in for them; see [roadmap.md](roadmap.md) for
-what to request from AYNA.
+(249 bus routes; only M5 carries an interval tag), the BakuBus and AYNA websites, and
+news reports. The settings in `busnet.toml` stand in for them; [roadmap.md](roadmap.md)
+lists what I would ask AYNA for.
 
 ## Refreshing
 

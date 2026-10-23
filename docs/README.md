@@ -1,22 +1,24 @@
 # Documentation
 
-This folder explains everything in the repository: where the data comes from, what every
-setting means, how each measurement and the redesign search work, what every output file
-contains, what the latest results are, and what to do next.
+This folder explains everything in the repository: where the data comes from, what
+every setting means, how each measurement and the redesign search work, what every
+output file contains, what the results are, and what I would do next.
 
 ## The project in one paragraph
 
-Baku's bus network (208 routes, about 3,500 stops, from AYNA's public map) is measured
-for inefficiency: routes that wander, routes that repeat each other, stops too close
-together, detours, and people left without a nearby stop. Because no timetables or
-trip data are public, a travel model built from public population, ridership, metro and
-OpenStreetMap data estimates door-to-door travel times and daily bus operation, with
-every assumption in one settings file. A redesign search then changes the network step
-by step with today's fleet, keeping a change only if trips get faster without cutting
-people off. The redesign shortens the average trip from 51.8 to 50.9 minutes with
-the same buses, or matches today's trip times with about 12% fewer buses and 12% less fuel.
-The gain holds on ten samples of trips and under eleven other assumptions.
-Its changes are candidates for review, not a plan: [results.md](results.md#check-these-before-acting)
+Baku's bus network (208 routes, about 3,500 stops, from AYNA's public map) had never
+been measured in public for how well it serves riders, and the data to do it properly
+is not public either: no timetables, no vehicle positions, no origin-destination data.
+So I measured what the geometry alone can tell: routes that wander, routes that repeat
+each other, stops too close together, detours, and people left without a nearby stop.
+Then I built a travel model from public population, ridership, metro and OpenStreetMap
+data to estimate door-to-door travel times and daily bus operation, with every
+assumption in one settings file, and a search that changes the network step by step
+with today's fleet, keeping a change only if trips get faster without cutting people
+off. The redesign shortens the average trip from 51.8 to 50.9 minutes with the same
+buses, or matches today's trip times with about 12% fewer buses and 12% less fuel, and
+the gain holds on ten samples of trips and under eleven other assumptions. I treat its
+changes as candidates for review, not a plan; [results.md](results.md#check-these-before-acting)
 lists what to check first.
 
 ## Where to read
