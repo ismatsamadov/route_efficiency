@@ -12,6 +12,7 @@ from collections import Counter, defaultdict
 
 from .geo import PROJ, haversine_m
 from .graph import StopIndex, TransitGraph
+from .service import fuel_l, operations, run_time_s
 
 ZONE_EN = {
     "Şəhərdaxili": "Urban", "Şəhərdaxili (ekspres)": "Urban express",
@@ -19,19 +20,6 @@ ZONE_EN = {
     "Qəsəbədaxili": "Within a settlement", "Qəsəbələrarası": "Between settlements",
     "Şəhərlərarası": "Intercity",
 }
-
-
-# ---------------------------------------------------------------- time and fuel per trip
-
-def run_time_s(pattern, network, a):
-    """One trip in one direction: moving time plus the fixed loss at each stop after the first."""
-    speed = a.cruise_mps(network.routes[pattern.route_id].zone)
-    return pattern.length_m / speed + (len(pattern.stop_ids) - 1) * a.stop_loss_s
-
-
-def fuel_l(pattern, a):
-    """Diesel-equivalent litres for one trip: distance plus one stop-start cycle per stop."""
-    return pattern.length_m / 1000 * a.fuel_l_per_km + (len(pattern.stop_ids) - 1) * a.fuel_l_per_stop
 
 
 # ---------------------------------------------------------------- street graph for directness
@@ -241,8 +229,12 @@ def coverage_by_route(network, zones, radius_m):
 
 # ---------------------------------------------------------------- route table
 
-def route_table(network, a, zones=None):
-    """One row per route that has stops, combining both directions."""
+def route_table(network, a, zones=None, ridership=None, headways=None):
+    """One row per route that has stops, combining both directions.
+
+    ridership, if given, maps route number to observed weekday boardings;
+    headways, if given, adds the daily service they imply (see service.py)."""
+    ops = operations(network, a, headways)[0] if headways else {}
     street = StreetGraph(network)
     hop_routes = hop_route_sets(network)
     pop_cov = coverage_by_route(network, zones, a.coverage_radius_m) if zones else None
@@ -292,6 +284,13 @@ def route_table(network, a, zones=None):
         if pop_cov:
             row["population_within_radius"] = pop_route[rid]
             row["population_only_this_route"] = pop_unique[rid]
+        if ridership is not None:
+            b = ridership.get(route.number)
+            row["weekday_boardings"] = b
+            row["boardings_per_km"] = b / row["one_way_km"] if b is not None and row["one_way_km"] else None
+        if rid in ops:
+            row.update({k: ops[rid][k] for k in ("headway_min", "headway_source", "trips_per_day", "fleet",
+                                                 "bus_hours_per_day", "bus_km_per_day", "fuel_l_per_day")})
         rows.append(row)
     return rows
 
@@ -332,55 +331,70 @@ def detour_table(network, a, zones=None):
 
 # ---------------------------------------------------------------- door-to-door accessibility
 
-def evaluate_od(network, a, zones, n_origins=300, seed=7):
+def evaluate_od(network, a, zones, n_origins=300, seed=7, headways=None, attraction=None):
     """Estimated door-to-door travel between places, weighted by a gravity model.
 
     Origins are sampled in proportion to population. From each origin, trips go to
     every other zone in proportion to population x exp(-distance / trip_decay_km).
     A trip may walk to a stop up to max_access_walk_m away, ride, change buses
     (walking up to max_transfer_walk_m), and walk to the destination. Trips under
-    2 km may also be walked entirely."""
-    graph = TransitGraph(network, a)
+    2 km may also be walked entirely. Each trip is pushed back along its path to
+    count the boardings it makes on every route.
+
+    headways sets each route's waiting time; attraction, if given, replaces
+    population as the pull of each zone on trip ends (see destinations.py)."""
+    graph = TransitGraph(network, a, headways)
     index = StopIndex([network.stops[s] for s in graph.stop_ids])
     walk = a.walk_detour / a.walk_speed_mps
     access = [[(s.id, d * walk) for d, s in index.within(lat, lon, a.max_access_walk_m)] for lat, lon, _ in zones]
+    acc_nodes = [[graph.arrival(s) for s, _ in acc] for acc in access]
+    acc_walk = [[w for _, w in acc] for acc in access]
     xy = [PROJ.to_xy(lat, lon) for lat, lon, _ in zones]
+    zx, zy, zpop = [p[0] for p in xy], [p[1] for p in xy], [z[2] for z in zones]
+    zatt = attraction or zpop
 
     rng = random.Random(seed)
-    keyed = sorted(((rng.random() ** (1.0 / w), i) for i, (_, _, w) in enumerate(zones) if w > 0), reverse=True)
+    keyed = sorted(((rng.random() ** (1.0 / w), i) for i, w in enumerate(zpop) if w > 0), reverse=True)
     origins = [i for _, i in keyed[:n_origins]]
 
     cutoff = a.max_trip_min * 60
+    decay_m = a.trip_decay_km * 1000
+    penalty = a.transfer_penalty_s
     acc = Counter()
     transfers = Counter()
+    boardings = Counter()                       # route id -> modelled boardings (relative)
     for o in origins:
         sources = {}
         for s, w in access[o]:
             node = graph.departure(s)
             sources[node] = min(w, sources.get(node, math.inf))
-        dist, boards = graph.search(sources, cutoff) if sources else (None, None)
-        ox, oy = xy[o]
+        dist = boards = pred = settled = None
+        if sources:
+            dist, boards, pred, settled = graph.search(sources, cutoff)
+        ox, oy, o_access = zx[o], zy[o], bool(access[o])
         weights, results = [], []
-        for d, (_, _, pop_d) in enumerate(zones):
-            if d == o or pop_d <= 0:
+        for d in range(len(zones)):
+            if d == o or zatt[d] <= 0:
                 continue
-            km = math.hypot(xy[d][0] - ox, xy[d][1] - oy) / 1000
-            weights.append(pop_d * math.exp(-km / a.trip_decay_km))
-            best, nb = math.inf, None
+            dm = math.hypot(zx[d] - ox, zy[d] - oy)
+            weights.append(zatt[d] * math.exp(-dm / decay_m))
+            best, nb, end = math.inf, None, None
             if dist is not None:
-                for t, w in access[d]:
-                    c = dist[graph.arrival(t)] + w - a.transfer_penalty_s
+                for node, w in zip(acc_nodes[d], acc_walk[d]):
+                    c = dist[node] + w - penalty
                     if c < best:
-                        best, nb = c, boards[graph.arrival(t)]
-            if km <= 2.0 and km * 1000 * walk < best:
-                best, nb = km * 1000 * walk, 0
-            results.append((best, nb, bool(access[o]) and bool(access[d])))
+                        best, nb, end = c, boards[node], node
+            if dm <= 2000 and dm * walk < best:
+                best, nb, end = dm * walk, 0, None
+            results.append((best, nb, o_access and bool(acc_nodes[d]), end, dm))
         total = sum(weights)
         if not total:
             continue
-        for w, (t, nb, has_access) in zip(weights, results):
+        flow = {}
+        for w, (t, nb, has_access, end, dm) in zip(weights, results):
             w /= total
             acc["demand"] += w
+            acc["trip_km"] += w * dm / 1000
             if not has_access:
                 acc["no_stop_nearby"] += w
             if t <= cutoff:
@@ -390,6 +404,18 @@ def evaluate_od(network, a, zones, n_origins=300, seed=7):
                     if t <= m * 60:
                         acc[f"within_{m}"] += w
                 transfers["walk only" if nb == 0 else min(nb - 1, 3)] += w
+                if end is not None:
+                    flow[end] = flow.get(end, 0.0) + w
+        # Push each trip back along its path; every boarding edge it crosses is a boarding on that route.
+        if flow and settled:
+            for n in reversed(settled):
+                f = flow.get(n)
+                if not f or pred[n] < 0:
+                    continue
+                p = pred[n]
+                flow[p] = flow.get(p, 0.0) + f
+                if graph.node_route[n] >= 0 and graph.is_departure(p):
+                    boardings[graph.node_route[n]] += f
     n = acc["demand"] or 1
     reach = acc["reachable"] or 1
     return {
@@ -400,13 +426,61 @@ def evaluate_od(network, a, zones, n_origins=300, seed=7):
         "share_within_45_min": acc["within_45"] / n,
         "share_within_60_min": acc["within_60"] / n,
         "share_trips_without_stop_nearby": acc["no_stop_nearby"] / n,
+        "mean_trip_km_straight_line": acc["trip_km"] / n,
         "transfers": {("3+" if k == 3 else str(k)): v / reach for k, v in sorted(transfers.items(), key=lambda kv: str(kv[0]))},
+        "modelled_boardings": dict(boardings),
     }
+
+
+def compare_ridership(network, modelled, observed):
+    """Observed against modelled boardings for routes present in both.
+
+    Both are turned into shares of their own total over the shared routes, so the
+    gravity model only has to get the relative pattern right. Returns (rows, fit)
+    where fit has Spearman's rank correlation and the correlation of log shares."""
+    num = {r.number: k for k, r in network.routes.items() if network.patterns_of(k)}
+    common = [(n, num[n]) for n in observed if n in num]
+    if len(common) < 3:
+        return [], {"routes_compared": len(common)}
+    obs_total = sum(observed[n] for n, _ in common)
+    mod_total = sum(modelled.get(rid, 0.0) for _, rid in common) or 1.0
+    rows = []
+    for n, rid in common:
+        o, m = observed[n] / obs_total, modelled.get(rid, 0.0) / mod_total
+        rows.append({"route": n, "observed_weekday_boardings": observed[n], "observed_share": o,
+                     "modelled_share": m, "modelled_over_observed": m / o if o else None})
+    rows.sort(key=lambda r: -r["observed_share"])
+
+    def ranks(vals):
+        order = sorted(range(len(vals)), key=lambda i: vals[i])
+        out = [0.0] * len(vals)
+        i = 0
+        while i < len(order):
+            j = i
+            while j + 1 < len(order) and vals[order[j + 1]] == vals[order[i]]:
+                j += 1
+            for k in range(i, j + 1):
+                out[order[k]] = (i + j) / 2
+            i = j + 1
+        return out
+
+    def pearson(x, y):
+        mx, my = sum(x) / len(x), sum(y) / len(y)
+        sxy = sum((a - mx) * (b - my) for a, b in zip(x, y))
+        sx = math.sqrt(sum((a - mx) ** 2 for a in x))
+        sy = math.sqrt(sum((b - my) ** 2 for b in y))
+        return sxy / (sx * sy) if sx and sy else None
+
+    obs = [r["observed_share"] for r in rows]
+    mod = [r["modelled_share"] for r in rows]
+    floor = min((v for v in mod if v > 0), default=1e-9) / 2
+    return rows, {"routes_compared": len(rows), "spearman": pearson(ranks(obs), ranks(mod)),
+                  "pearson_of_log_shares": pearson([math.log(v) for v in obs], [math.log(max(v, floor)) for v in mod])}
 
 
 # ---------------------------------------------------------------- network summary
 
-def network_summary(network, a, zones=None, od_origins=300):
+def network_summary(network, a, zones=None, od_origins=300, headways=None, attraction=None):
     pats = list(network.patterns.values())
     route_km = sum(p.length_m for p in pats) / 1000
     corridor = {}
@@ -457,7 +531,9 @@ def network_summary(network, a, zones=None, od_origins=300):
         out["population_within_coverage_radius"] = covered
         out["share_population_covered"] = covered / total if total else None
         if od_origins:
-            out["accessibility"] = evaluate_od(network, a, zones, od_origins)
+            out["accessibility"] = evaluate_od(network, a, zones, od_origins, headways=headways, attraction=attraction)
+    if headways:
+        out["operations"] = operations(network, a, headways)[1]
     return out
 
 

@@ -56,7 +56,9 @@ class StopIndex:
 
 
 class TransitGraph:
-    def __init__(self, network, assumptions):
+    def __init__(self, network, assumptions, headways=None):
+        """headways: {route id: (minutes, source)}; routes not in it use default_headway_min.
+        Waiting at a boarding is half the route's headway."""
         self.a = assumptions
         served = sorted(network.served_stop_ids())
         self.stop_index = {s: i for i, s in enumerate(served)}
@@ -69,12 +71,15 @@ class TransitGraph:
             self.pattern_base[key] = nxt
             nxt += len(network.patterns[key].stop_ids)
         self.n_nodes = nxt
+        self.node_route = [-1] * nxt              # on-board node -> route id
+        for key, base in self.pattern_base.items():
+            for i in range(len(network.patterns[key].stop_ids)):
+                self.node_route[base + i] = key[0]
         adj = [[] for _ in range(nxt)]            # node -> [(to, seconds, boards)]
 
         for i in range(n):
             adj[i].append((n + i, 0.0, 0))         # arrival -> departure at the same stop
         index = StopIndex([network.stops[s] for s in served])
-        board_s = assumptions.wait_s + assumptions.transfer_penalty_s
         for s in served:
             st = network.stops[s]
             for d, t in index.within(st.lat, st.lon, assumptions.max_transfer_walk_m):
@@ -85,6 +90,8 @@ class TransitGraph:
         for key, p in network.patterns.items():
             base = self.pattern_base[key]
             speed = assumptions.cruise_mps(network.routes[p.route_id].zone)
+            headway = headways[p.route_id][0] if headways and p.route_id in headways else assumptions.default_headway_min
+            board_s = headway * 60 / 2 + assumptions.transfer_penalty_s
             last = len(p.stop_ids) - 1
             for i, s in enumerate(p.stop_ids):
                 si = self.stop_index[s]
@@ -103,9 +110,14 @@ class TransitGraph:
         return self.n_stops + self.stop_index[stop_id]
 
     def search(self, sources, cutoff_s=math.inf):
-        """Dijkstra from {node: start cost}. Returns (cost, boardings) per node."""
+        """Dijkstra from {node: start cost}.
+
+        Returns (cost, boardings, predecessor, settled) per node, where settled lists
+        nodes in the order they were finalised (needed to push trips back along paths)."""
         dist = [math.inf] * self.n_nodes
         boards = [0] * self.n_nodes
+        pred = [-1] * self.n_nodes
+        settled = []
         heap = []
         for node, c in sources.items():
             if c < dist[node]:
@@ -117,11 +129,16 @@ class TransitGraph:
             c, u = heapq.heappop(heap)
             if c > dist[u] or c > cutoff_s:
                 continue
+            settled.append(u)
             bu = boards[u]
             for v, w, b in adj[u]:
                 nc = c + w
                 if nc < dist[v]:
                     dist[v] = nc
                     boards[v] = bu + b
+                    pred[v] = u
                     heapq.heappush(heap, (nc, v))
-        return dist, boards
+        return dist, boards, pred, settled
+
+    def is_departure(self, node):
+        return self.n_stops <= node < 2 * self.n_stops
