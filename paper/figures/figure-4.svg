@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="718" viewBox="0 0 1000 718" font-family="Helvetica, Arial, sans-serif">
+<rect x="0" y="0" width="1000" height="718" fill="#ffffff"/>
+<line x1="330.0" y1="32" x2="330.0" y2="678" stroke="#e1e0d9" stroke-width="1"/>
+<line x1="456.0" y1="32" x2="456.0" y2="678" stroke="#e1e0d9" stroke-width="1"/>
+<line x1="582.0" y1="32" x2="582.0" y2="678" stroke="#e1e0d9" stroke-width="1"/>
+<line x1="708.0" y1="32" x2="708.0" y2="678" stroke="#e1e0d9" stroke-width="1"/>
+<line x1="834.0" y1="32" x2="834.0" y2="678" stroke="#e1e0d9" stroke-width="1"/>
+<line x1="960.0" y1="32" x2="960.0" y2="678" stroke="#e1e0d9" stroke-width="1"/>
+<line x1="809.4" y1="32" x2="809.4" y2="678" stroke="#eb6834" stroke-width="1.5" stroke-dasharray="4 3"/>
+<text x="30.0" y="36.0" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#0b0b0b" text-anchor="start" font-weight="bold" dominant-baseline="auto">Ten trip samples of 300 origins (seed 7 is the independent check)</text>
+<text x="318.0" y="72.0" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#52514e" text-anchor="end" font-weight="normal" dominant-baseline="auto">Sample 1</text>
+<line x1="330" y1="67.0" x2="960" y2="67.0" stroke="#e1e0d9" stroke-width="1"/>
+<circle cx="787.2" cy="67.0" r="5" fill="#2a78d6" stroke="#ffffff" stroke-width="2"/>
+<text x="318.0" y="94.0" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#52514e" text-anchor="end" font-weight="normal" dominant-baseline="auto">Sample 2</text>
+<line x1="330" y1="89.0" x2="960" y2="89.0" stroke="#e1e0d9" stroke-width="1"/>
+<circle cx="822.4" cy="89.0" r="5" fill="#2a78d6" stroke="#ffffff" stroke-width="2"/>
+<text x="318.0" y="116.0" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#52514e" text-anchor="end" font-weight="normal" dominant-baseline="auto">Sample 3</text>
+<line x1="330" y1="111.0" x2="960" y2="111.0" stroke="#e1e0d9" stroke-width="1"/>
+<circle cx="836.2" cy="111.0" r="5" fill="#2a78d6" stroke="#ffffff" stroke-width="2"/>
+<text x="318.0" y="138.0" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#52514e" text-anchor="end" font-weight="normal" dominant-baseline="auto">Sample 4</text>
+<line x1="330" y1="133.0" x2="960" y2="133.0" stroke="#e1e0d9" stroke-width="1"/>
+<circle cx="820.7" cy="133.0" r="5" fill="#2a78d6" stroke="#ffffff" stroke-width="2"/>
+<text x="318.0" y="160.0" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#52514e" text-anchor="end" font-weight="normal" dominant-baseline="auto">Sample 5</text>
+<line x1="330" y1="155.0" x2="960" y2="155.0" stroke="#e1e0d9" stroke-width="1"/>
+<circle cx="842.4" cy="155.0" r="5" fill="#2a78d6" stroke="#ffffff" stroke-width="2"/>
+<text x="853.4" y="159.0" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#52514e" text-anchor="start" font-weight="normal" dominant-baseline="auto">0.81</text>
+<text x="318.0" y="182.0" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#52514e" text-anchor="end" font-weight="normal" dominant-baseline="auto">Sample 6</text>
+<line x1="330" y1="177.0" x2="960" y2="177.0" stroke="#e1e0d9" stroke-width="1"/>
+<circle cx="807.2" cy="177.0" r="5" fill="#2a78d6" stroke="#ffffff" stroke-width="2"/>
+<text x="318.0" y="204.0" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#52514e" text-anchor="end" font-weight="normal" dominant-baseline="auto">Sample 7</text>
+<line x1="330" y1="199.0" x2="960" y2="199.0" stroke="#e1e0d9" stroke-width="1"/>
+<polygon points="809.4,192.0 816.4,199.0 809.4,206.0 802.4,199.0" fill="#eb6834" stroke="#ffffff" stroke-width="2"/>
+<text x="820.4" y="203.0" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#52514e" text-anchor="start" font-weight="normal" dominant-baseline="auto">0.76</text>
+<text x="318.0" y="226.0" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#52514e" text-anchor="end" font-weight="normal" dominant-baseline="auto">Sample 8</text>
+<line x1="330" y1="221.0" x2="960" y2="221.0" stroke="#e1e0d9" stroke-width="1"/>
+<circle cx="757.8" cy="221.0" r="5" fill="#2a78d6" stroke="#ffffff" stroke-width="2"/>
+<text x="768.8" y="225.0" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#52514e" text-anchor="start" font-weight="normal" dominant-baseline="auto">0.68</text>
+<text x="318.0" y="248.0" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#52514e" text-anchor="end" font-weight="normal" dominant-baseline="auto">Sample 9</text>
+<line x1="330" y1="243.0" x2="960" y2="243.0" stroke="#e1e0d9" stroke-width="1"/>
+<circle cx="837.0" cy="243.0" r="5" fill="#2a78d6" stroke="#ffffff" stroke-width="2"/>
+<text x="318.0" y="270.0" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#52514e" text-anchor="end" font-weight="normal" dominant-baseline="auto">Sample 10</text>
+<line x1="330" y1="265.0" x2="960" y2="265.0" stroke="#e1e0d9" stroke-width="1"/>
+<circle cx="840.0" cy="265.0" r="5" fill="#2a78d6" stroke="#ffffff" stroke-width="2"/>
+<text x="30.0" y="312.0" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#0b0b0b" text-anchor="start" font-weight="bold" dominant-baseline="auto">The search under other assumptions, scored on the independent check</text>
+<text x="318.0" y="348.0" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#52514e" text-anchor="end" font-weight="normal" dominant-baseline="auto">Default settings</text>
+<line x1="330" y1="343.0" x2="960" y2="343.0" stroke="#e1e0d9" stroke-width="1"/>
+<polygon points="809.4,336.0 816.4,343.0 809.4,350.0 802.4,343.0" fill="#eb6834" stroke="#ffffff" stroke-width="2"/>
+<text x="820.4" y="347.0" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#52514e" text-anchor="start" font-weight="normal" dominant-baseline="auto">0.76</text>
+<text x="318.0" y="370.0" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#52514e" text-anchor="end" font-weight="normal" dominant-baseline="auto">Transfer penalty 2 minutes instead of 5</text>
+<line x1="330" y1="365.0" x2="960" y2="365.0" stroke="#e1e0d9" stroke-width="1"/>
+<circle cx="837.0" cy="365.0" r="5" fill="#2a78d6" stroke="#ffffff" stroke-width="2"/>
+<text x="318.0" y="392.0" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#52514e" text-anchor="end" font-weight="normal" dominant-baseline="auto">Transfer penalty 8 minutes</text>
+<line x1="330" y1="387.0" x2="960" y2="387.0" stroke="#e1e0d9" stroke-width="1"/>
+<circle cx="784.2" cy="387.0" r="5" fill="#2a78d6" stroke="#ffffff" stroke-width="2"/>
+<text x="318.0" y="414.0" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#52514e" text-anchor="end" font-weight="normal" dominant-baseline="auto">Distance decay 4 km instead of 6</text>
+<line x1="330" y1="409.0" x2="960" y2="409.0" stroke="#e1e0d9" stroke-width="1"/>
+<circle cx="699.9" cy="409.0" r="5" fill="#2a78d6" stroke="#ffffff" stroke-width="2"/>
+<text x="318.0" y="436.0" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#52514e" text-anchor="end" font-weight="normal" dominant-baseline="auto">Distance decay 9 km</text>
+<line x1="330" y1="431.0" x2="960" y2="431.0" stroke="#e1e0d9" stroke-width="1"/>
+<circle cx="854.1" cy="431.0" r="5" fill="#2a78d6" stroke="#ffffff" stroke-width="2"/>
+<text x="318.0" y="458.0" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#52514e" text-anchor="end" font-weight="normal" dominant-baseline="auto">Trips end at homes only</text>
+<line x1="330" y1="453.0" x2="960" y2="453.0" stroke="#e1e0d9" stroke-width="1"/>
+<circle cx="849.7" cy="453.0" r="5" fill="#2a78d6" stroke="#ffffff" stroke-width="2"/>
+<text x="318.0" y="480.0" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#52514e" text-anchor="end" font-weight="normal" dominant-baseline="auto">45 boardings per trip instead of 60</text>
+<line x1="330" y1="475.0" x2="960" y2="475.0" stroke="#e1e0d9" stroke-width="1"/>
+<circle cx="789.8" cy="475.0" r="5" fill="#2a78d6" stroke="#ffffff" stroke-width="2"/>
+<text x="318.0" y="502.0" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#52514e" text-anchor="end" font-weight="normal" dominant-baseline="auto">80 boardings per trip</text>
+<line x1="330" y1="497.0" x2="960" y2="497.0" stroke="#e1e0d9" stroke-width="1"/>
+<circle cx="839.9" cy="497.0" r="5" fill="#2a78d6" stroke="#ffffff" stroke-width="2"/>
+<text x="318.0" y="524.0" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#52514e" text-anchor="end" font-weight="normal" dominant-baseline="auto">Access radius 400 m instead of 500</text>
+<line x1="330" y1="519.0" x2="960" y2="519.0" stroke="#e1e0d9" stroke-width="1"/>
+<circle cx="695.8" cy="519.0" r="5" fill="#2a78d6" stroke="#ffffff" stroke-width="2"/>
+<text x="318.0" y="546.0" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#52514e" text-anchor="end" font-weight="normal" dominant-baseline="auto">Search sample of 200 origins</text>
+<line x1="330" y1="541.0" x2="960" y2="541.0" stroke="#e1e0d9" stroke-width="1"/>
+<circle cx="856.3" cy="541.0" r="5" fill="#2a78d6" stroke="#ffffff" stroke-width="2"/>
+<text x="318.0" y="568.0" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#52514e" text-anchor="end" font-weight="normal" dominant-baseline="auto">Search sample with another seed</text>
+<line x1="330" y1="563.0" x2="960" y2="563.0" stroke="#e1e0d9" stroke-width="1"/>
+<circle cx="828.1" cy="563.0" r="5" fill="#2a78d6" stroke="#ffffff" stroke-width="2"/>
+<text x="318.0" y="590.0" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#52514e" text-anchor="end" font-weight="normal" dominant-baseline="auto">Nobody may lose a stop</text>
+<line x1="330" y1="585.0" x2="960" y2="585.0" stroke="#e1e0d9" stroke-width="1"/>
+<circle cx="814.4" cy="585.0" r="5" fill="#2a78d6" stroke="#ffffff" stroke-width="2"/>
+<text x="318.0" y="612.0" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#52514e" text-anchor="end" font-weight="normal" dominant-baseline="auto">No bus shifts</text>
+<line x1="330" y1="607.0" x2="960" y2="607.0" stroke="#e1e0d9" stroke-width="1"/>
+<circle cx="617.4" cy="607.0" r="5" fill="#2a78d6" stroke="#ffffff" stroke-width="2"/>
+<text x="628.4" y="611.0" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#52514e" text-anchor="start" font-weight="normal" dominant-baseline="auto">0.46</text>
+<text x="318.0" y="634.0" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#52514e" text-anchor="end" font-weight="normal" dominant-baseline="auto">Service-type headways × 0.8</text>
+<line x1="330" y1="629.0" x2="960" y2="629.0" stroke="#e1e0d9" stroke-width="1"/>
+<circle cx="760.0" cy="629.0" r="5" fill="#2a78d6" stroke="#ffffff" stroke-width="2"/>
+<text x="318.0" y="656.0" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#52514e" text-anchor="end" font-weight="normal" dominant-baseline="auto">Service-type headways × 1.25</text>
+<line x1="330" y1="651.0" x2="960" y2="651.0" stroke="#e1e0d9" stroke-width="1"/>
+<circle cx="887.5" cy="651.0" r="5" fill="#2a78d6" stroke="#ffffff" stroke-width="2"/>
+<text x="898.5" y="655.0" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#52514e" text-anchor="start" font-weight="normal" dominant-baseline="auto">0.88</text>
+<line x1="330" y1="678" x2="960" y2="678" stroke="#c3c2b7" stroke-width="1"/>
+<text x="330.0" y="694.0" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#898781" text-anchor="middle" font-weight="normal" dominant-baseline="auto">0.0</text>
+<text x="456.0" y="694.0" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#898781" text-anchor="middle" font-weight="normal" dominant-baseline="auto">0.2</text>
+<text x="582.0" y="694.0" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#898781" text-anchor="middle" font-weight="normal" dominant-baseline="auto">0.4</text>
+<text x="708.0" y="694.0" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#898781" text-anchor="middle" font-weight="normal" dominant-baseline="auto">0.6</text>
+<text x="834.0" y="694.0" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#898781" text-anchor="middle" font-weight="normal" dominant-baseline="auto">0.8</text>
+<text x="960.0" y="694.0" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#898781" text-anchor="middle" font-weight="normal" dominant-baseline="auto">1.0</text>
+<text x="645.0" y="710.0" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#52514e" text-anchor="middle" font-weight="normal" dominant-baseline="auto">Gain in the capped average door-to-door time (minutes)</text>
+<text x="815.4" y="42.0" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#52514e" text-anchor="start" font-weight="normal" dominant-baseline="auto">default run 0.76</text>
+</svg>

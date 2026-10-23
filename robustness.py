@@ -59,6 +59,13 @@ VARIANTS = [
     ("seed_23", "Another search sample of the same size: seed 23 instead of 11", ["redesign_seed=23"]),
     ("nobody_loses_stop", "No change may leave anyone without a stop within reach",
      ["redesign_max_people_losing_stop=0", "redesign_max_people_losing_stop_total=0"]),
+    ("no_shifts", "No bus shifts: merges, drops, straightenings and stop balancing only", ["redesign_shift_rounds=0"]),
+    ("zone_headways_0_8", "Routes without counts run more often: service-type headways times 0.8",
+     ['headway_by_zone={"Şəhərdaxili" = 8, "Şəhərdaxili (ekspres)" = 12, "Şəhərətrafı" = 12, '
+      '"Şəhərətrafı (ekspres)" = 16, "Qəsəbədaxili" = 16, "Qəsəbələrarası" = 16, "Şəhərlərarası" = 24}']),
+    ("zone_headways_1_25", "Routes without counts run less often: service-type headways times 1.25",
+     ['headway_by_zone={"Şəhərdaxili" = 12.5, "Şəhərdaxili (ekspres)" = 18.75, "Şəhərətrafı" = 18.75, '
+      '"Şəhərətrafı (ekspres)" = 25, "Qəsəbədaxili" = 25, "Qəsəbələrarası" = 25, "Şəhərlərarası" = 37.5}']),
 ]
 
 

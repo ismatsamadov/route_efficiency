@@ -128,7 +128,7 @@ Taylor & Francis give nothing for Azerbaijan. Elsevier words its eligibility aro
 
 | Venue | Cost | Fit and limits |
 |---|---|---|
-| **Case Studies on Transport Policy** (Elsevier, World Conference on Transport Research Society) | Free under the subscription option; open access USD 1,800–1,950 (the journal's pages disagree) | Strongest fit by name and scope: field experience, context variables, transferable lessons. Under 7,000 words; highlights (3–5 bullets of at most 85 characters); double-anonymised review; Impact Factor 3.3; about 180 days to acceptance |
+| **Case Studies on Transport Policy** (Elsevier, World Conference on Transport Research Society) | Free under the subscription option; open access USD 1,800–1,950 (the journal's pages disagree) | Strongest fit by name and scope: field experience, context variables, transferable lessons. Under 7,000 words; mandatory highlights (3–5 bullets; Elsevier's convention is at most 85 characters each); double-anonymised review; Impact Factor 3.3; about 180 days to acceptance |
 | **Public Transport** (Springer) | Free under the subscription option; open access £2,590 / USD 3,490 | Strong: "theoretical papers, case studies, and applications" with computer-aided methods; Impact Factor 3.2. No length limit; abstract 150–250 words. Its guidelines expressly provide for unaffiliated authors (city and country only). Manuscripts go to the editor by e-mail; the Editorial Manager site said "under development", so I would ask which route is live |
 | **Journal of Transport Geography** (Elsevier) | Free under subscription; open access USD 3,080 | Possible with an accessibility framing; 4,000–6,000 words; Impact Factor 6.8. Also runs *Visualising Transport Geography*: one map with at most 1,200 words, a possible second output |
 | **Transport Policy** (Elsevier) | Free under subscription; open access USD 3,190 | Possible with a policy framing; Impact Factor 6.2 |
@@ -294,8 +294,11 @@ point.
    is in [`paper/manuscript.md`](../paper/manuscript.md), written as the anonymised
    review copy for Case Studies on Transport Policy, with the author details and the
    identifying declarations in [`paper/title-page.md`](../paper/title-page.md); every
-   number in it was checked against `output/`, and the four figures still have to be
-   drawn. Ask two readers (a transport planner and a quantitative researcher) to
+   number in it was checked against `output/`, and `python3 paper/figures.py` draws its
+   four figures as SVG into `paper/figures/` from the committed outputs (convert them to
+   PDF or EPS for submission); `python3 paper/check.py` reports the word counts, the
+   length of each highlight and whether every citation has a reference entry, and
+   `--wrap` re-wraps the prose. Ask two readers (a transport planner and a quantitative researcher) to
    comment.
 4. Post a preprint: engrXiv (no endorsement needed), or arXiv physics.soc-ph with an
    endorsement; record the DOI in the README and ORCID.
@@ -321,13 +324,13 @@ point.
       manuscript says so)
 - [x] OpenStreetMap credit on every map; Kontur and opendata.az cited as datasets
 - [x] Data-availability statement covering the AYNA snapshot's missing licence
-- [ ] Ethics, competing-interests, funding, contributions and AI-use statements (all
-      written except the generative-AI declaration, which is a placeholder in the
-      manuscript's Declarations for me to complete in the journal's wording)
-- [ ] Word count, abstract length, highlights and reference style of the chosen journal
-      (highlights are 70–83 characters, the abstract 246 words, the main text about
-      6,700 words without tables and references; whether the journal counts tables or
-      references toward its 7,000 is to be checked in the live Guide for Authors)
+- [x] Ethics, competing-interests, funding, contributions and AI-use statements
+- [x] Word count, abstract length, highlights and reference style of the chosen journal
+      (the journal's guide, checked 24 October 2026, asks for under 7,000 words and
+      mandatory highlights with no character limit of its own; the 85 characters per
+      bullet is Elsevier's general convention. The main text is about 6,800 words
+      without tables and references, the abstract 248 words, the highlights 70–83
+      characters)
 - [x] Anonymised review copy where the journal is double-blind (`paper/manuscript.md`
       with `paper/title-page.md`)
 - [ ] Three to five suggested reviewers

@@ -33,8 +33,9 @@ minutes door to door, and only 29% of trips can be made within 45 minutes.
 The redesign helps, but only a little. With the same fleet it shortens the average trip
 from 51.8 to 50.9 minutes; alternatively it gives today's travel times with about 12%
 fewer buses and 12% less fuel and CO₂. The gain is small but it holds up: on ten samples of trips
-the redesign saves 0.68 to 0.81 minutes a trip (mean 0.77), under eleven other
-assumptions 0.58 to 0.84, and today's travel times then need 87 to 90% of the buses
+the redesign saves 0.68 to 0.81 minutes a trip (mean 0.77), under fourteen other
+assumptions 0.46 to 0.88 (the smallest without the bus shifts), and today's travel
+times then need 87 to 93% of the buses
 ([how robust the results are](#how-robust-the-results-are)). I treat the changes as
 candidates to review, not a plan; [what to check first](#check-these-before-acting) is
 listed below.
@@ -449,16 +450,27 @@ pass.
 | A search sample twice as large: 200 origins instead of 100 | 32 (7 merges, 3 drops, 17 straightened, 4 shifts) | 191 | 1,133 | 74.82 → 73.99 | 0.84 | 87% | 13.1% |
 | Another search sample of the same size: seed 23 instead of 11 | 33 (8 merges, 4 drops, 16 straightened, 4 shifts) | 189 | 1,986 | 74.82 → 74.03 | 0.79 | 88% | 12.5% |
 | No change may leave anyone without a stop within reach | 24 (3 merges, 2 drops, 14 straightened, 4 shifts) | 196 | 0 | 74.82 → 74.05 | 0.77 | 88% | 11.6% |
+| No bus shifts: merges, drops, straightenings and stop balancing only | 23 (5 merges, 3 drops, 14 straightened, no shifts) | 193 | 976 | 74.82 → 74.37 | 0.46 | 93% | 7.3% |
+| Routes without counts run more often: service-type headways times 0.8 | 26 (5 merges, 2 drops, 14 straightened, 4 shifts) | 194 | 828 | 74.03 → 73.35 | 0.68 | 88% | 11.6% |
+| Routes without counts run less often: service-type headways times 1.25 | 28 (5 merges, 4 drops, 14 straightened, 4 shifts) | 192 | 976 | 75.71 → 74.83 | 0.88 | 88% | 12.4% |
 
-The gain stays between 0.58 and 0.84 minutes, and today's travel times need 87 to 90%
-of the buses in every run (10 to 13% less fuel), so the direction of the result does not
-depend on any one assumption. The smallest gains come with shorter trips (decay 4 km)
-and shorter walks (400 m), the largest with a search sample twice as large.
+The gain stays between 0.46 and 0.88 minutes, and today's travel times need 87 to 93%
+of the buses in every run (7 to 13% less fuel), so the direction of the result does not
+depend on any one assumption. The smallest gain is the run without bus shifts: the 23
+structural changes alone gain 0.46 minutes, three fifths of the default run's 0.76, and
+give today's travel times with 93% of the buses, so the shifts, which rest on riders per
+route that are estimates for 145 routes, add the other 0.30 minutes and 5 points of
+fleet. Among the runs with shifts the smallest gains come with shorter trips (decay 4
+km) and shorter walks (400 m), the largest with the service-type headways times 1.25
+and with a search sample twice as large. Scaling the service-type headway table, which
+sets 145 of the 201 headways, by 0.8 or 1.25 moves today's capped average from 74.82
+to 74.03 or 75.71 minutes but leaves the gain at 0.68 and 0.88 and the fleet share at
+88%, so the fleet saving does not hinge on that table.
 
 What the search keeps is also stable: two to four drops, 12 to 17 straightened detours,
-one stop-balancing pass and four bus shifts in every run, and five merges in nine of
-the twelve (three under the strict coverage guard, seven and eight with the larger and
-the other search sample). A larger search sample (200 origins) or a different one (seed
+one stop-balancing pass and, where allowed, four bus shifts in every run, and five
+merges in twelve of the fifteen (three under the strict coverage guard, seven and eight
+with the larger and the other search sample). A larger search sample (200 origins) or a different one (seed
 23) keeps 32 or 33 changes instead of 27, with the same gain on the independent sample,
 which tells me the search sample decides the changes at the margin, not the effect.
 Those two runs also strand more people (1,133 and 1,986), still within the 3,000

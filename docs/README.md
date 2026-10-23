@@ -17,7 +17,7 @@ assumption in one settings file, and a search that changes the network step by s
 with today's fleet, keeping a change only if trips get faster without cutting people
 off. The redesign shortens the average trip from 51.8 to 50.9 minutes with the same
 buses, or matches today's trip times with about 12% fewer buses and 12% less fuel, and
-the gain holds on ten samples of trips and under eleven other assumptions. I treat its
+the gain holds on ten samples of trips and under fourteen other assumptions. I treat its
 changes as candidates for review, not a plan; [results.md](results.md#check-these-before-acting)
 lists what to check first.
 
@@ -45,7 +45,7 @@ lists what to check first.
 ```sh
 python3 measure.py --scenario stop-balancing --min-gap 250   # measure today's network (about 12 s)
 python3 redesign.py                                          # search for a better one (about 2 minutes)
-python3 robustness.py                                        # the results under other samples and assumptions (about 10 minutes)
+python3 robustness.py                                        # the results under other samples and assumptions (about 15 minutes)
 ```
 
 All three read `busnet.toml` and the data committed under `data/`, need only Python 3.11

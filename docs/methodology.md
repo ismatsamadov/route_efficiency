@@ -201,10 +201,11 @@ within `max_access_walk_m` is protected and the pass runs again.
   with destinations). Each row gives the average door-to-door minutes counting a trip
   that cannot be made within 2 hours as 120, as the search does, and the gain. Seed 7 is
   the independent check that `redesign.py` reports.
-- **Other assumptions.** `redesign.py` runs again, in parallel processes, under eleven
+- **Other assumptions.** `redesign.py` runs again, in parallel processes, under fourteen
   changed settings (transfer penalty 2 and 8 minutes; distance decay 4 and 9 km; homes
   only; 45 and 80 boardings per trip; 400 m walks; a search sample of 200 origins and
-  one with another seed; nobody may lose a stop), plus the committed settings. Each row
+  one with another seed; nobody may lose a stop; no bus shifts; the service-type headway
+  table times 0.8 and times 1.25), plus the committed settings. Each row
   reports what the search kept, its independent check and its fleet-saving option, from
   that run's `summary.json` and `changes.csv`.
 
@@ -218,4 +219,4 @@ within `max_access_walk_m` is protected and the pass runs again.
 - **Checks**: average speed calibrated to the reported 22 km/h; implied fleet 2,015 against
   2,300 reported; the population grid's 3.04 million against official 3.22 million; model
   ridership ranking 0.58 against observed; the redesign's gain on ten trip samples and
-  under eleven other settings ([results.md](results.md#how-robust-the-results-are)).
+  under fourteen other settings ([results.md](results.md#how-robust-the-results-are)).

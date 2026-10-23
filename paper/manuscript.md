@@ -8,7 +8,7 @@
 - 271 detours add 939 km to a trip each way; 217 serve nobody who lacks another route
 - A gravity demand model built from open data ranks routes against counts at 0.58
 - A fleet-neutral redesign gives today's modelled travel times with 12% fewer buses
-- The gain holds on 10 trip samples and under 11 alternative assumptions
+- The gain holds on 10 trip samples and under 14 alternative assumptions
 
 ## Abstract
 
@@ -26,10 +26,10 @@ greedy search that keeps today's fleet and applies the changes used by redesigns
 elsewhere shortens the average possible trip from 51.8 to 50.9 minutes (0.76 minutes
 with impossible trips counted at 120), or delivers today's modelled travel times with
 about 12% fewer buses than the estimated headways imply. On 10 independent trip samples
-the gain counted that way is 0.68 to 0.81 minutes, and under 11 alternative assumptions
-0.58 to 0.84; a stricter rule under which nobody loses a stop gains as much as the
-default. The pipeline, data and results are released to regenerate or, with a reader for
-another map format, apply to other cities that publish only a map.
+the gain counted that way is 0.68 to 0.81 minutes, and under 14 alternative assumptions
+0.46 to 0.88, the smallest without bus shifts; a stricter rule that strands nobody gains
+as much as the default. The pipeline, data and results are released to regenerate or,
+with a reader for another map format, apply to other cities that publish only a map.
 
 Keywords: bus network design; public transport; open data; accessibility; Baku; transit
 network design problem
@@ -109,16 +109,16 @@ services on one day in 2004 into trunk and feeder routes with median bus lanes, 
 and operators paid per vehicle-kilometre; bus speeds rose from 11 to 22 km/h by 2010 and
 passengers by 20% (Allen, 2013). Houston redrew nearly every route in 2015 within about
 the same budget, moving 80% of resources to ridership and 20% to coverage; local
-ridership rose 1.2% in the first year, Saturdays 13% and Sundays 34% (Schmitt, 2016;
-Walker, 2014, 2015). Barcelona's Nova Xarxa replaced the old lines with 28 grid lines
-designed for 3- to 8-minute headways, with service added; ridership on replaced
-corridors rose 6% to 24%, with about 26% of trips involving a transfer (Badia et al.,
-2016; Lynn, 2017). Dublin, redesigning area by area since 2021 with added service,
-reports boardings up 48% in redesigned areas against 8% elsewhere (BusConnects, 2025).
-In Tbilisi and Tashkent, two other post-Soviet capitals, the first cut back minibuses
-and added large buses and the second bought 1,000 buses and cut headways from 18 to 20
-minutes to 8 to 10; they report ridership up 30% and 26% (EBRD, 2024; Kun.uz, 2026). How
-much each gained went with whether service was added at the same time.
+ridership rose 1.2% in the first year and 34% on Sundays (Schmitt, 2016; Walker, 2014,
+2015). Barcelona's Nova Xarxa replaced the old lines with 28 grid lines designed for 3-
+to 8-minute headways, with service added; ridership on replaced corridors rose 6% to
+24%, with about 26% of trips involving a transfer (Badia et al., 2016; Lynn, 2017).
+Dublin, redesigning area by area since 2021 with added service, reports boardings up 48%
+in redesigned areas against 8% elsewhere (BusConnects, 2025). In Tbilisi and Tashkent,
+two other post-Soviet capitals, the first cut back minibuses and added large buses and
+the second bought 1,000 buses and cut headways from 18 to 20 minutes to 8 to 10; they
+report ridership up 30% and 26% (EBRD, 2024; Kun.uz, 2026). How much each gained went
+with whether service was added at the same time.
 
 Planning guidelines elsewhere judge a network from two sides. For riders, the
 door-to-door time of walking, waiting, riding and changing, with a penalty per change,
@@ -367,12 +367,13 @@ percentage point.
 
 Three checks ask how much the result depends on the sample and the assumptions. The
 redesign and today's network are scored on 10 samples of 300 origins, one of them the
-independent check itself. The search is run again under 11 changed settings: a transfer
+independent check itself. The search is run again under 14 changed settings: a transfer
 penalty of 2 and of 8 minutes, distance decay of 4 and of 9 km, trips to homes only, 45
 and 80 boardings per trip, an access radius of 400 m instead of 500, a search sample of
-200 origins, another search sample of 100, and the coverage guard tightened so that
-nobody loses a stop; none of them varies the service-type headway table or the speeds.
-And coverage is measured at 300, 400, 500, 800 and 1,000 m.
+200 origins, another search sample of 100, the coverage guard tightened so that nobody
+loses a stop, no bus shifts, and the service-type headway table scaled by 0.8 and by
+1.25; the speeds are never varied. And coverage is measured at 300, 400, 500, 800 and
+1,000 m.
 
 ## 5. Results
 
@@ -517,15 +518,20 @@ Scored on 10 samples of 300 origins, one of them the independent check, the rede
 gain in the capped average is 0.68 to 0.81 minutes, mean 0.77 with a standard deviation
 of 0.04, and positive in every sample (Figure 4); the level itself moves by about 4
 minutes between samples (73.6 to 77.5 for today's network), so the gain should be quoted
-with its range and the level not to two decimals. Under the 11 changed settings (Table
-4) the capped gain stays between 0.58 and 0.84 minutes and today's travel times need 87
-to 90% of the buses in every run (10 to 13% less fuel); it is smallest with shorter
-trips or a shorter access radius and largest with a larger search sample. What the
-search keeps is also stable: two to four drops, 12 to 17 straightened detours, one
-stop-balancing pass and four shifts in every run, and five merges in nine of the 12. A
-larger or a different search sample keeps 32 or 33 changes instead of 27 with the same
-gain on the independent check, so the sample decides the changes at the margin, not the
-effect.
+with its range and the level not to two decimals. Under the 14 changed settings (Table
+4) the capped gain stays between 0.46 and 0.88 minutes and today's travel times need 87
+to 93% of the buses in every run (7 to 13% less fuel). It is smallest without the bus
+shifts: the 23 structural changes alone gain 0.46 minutes, three fifths of the default
+run's 0.76, and give today's travel times with 93% of the buses, so the shifts add the
+remaining 0.30 minutes and 5 points of fleet. Among the runs with shifts it is smallest
+with shorter trips or a shorter access radius and largest with the service-type headways
+scaled by 1.25 or a larger search sample; scaling that table, which sets 145 of the 201
+headways, by 0.8 or 1.25 leaves the gain at 0.68 and 0.88 minutes and the fleet share at
+88%. What the search keeps is also stable: two to four drops, 12 to 17 straightened
+detours, one stop-balancing pass and, where allowed, four shifts in every run, and five
+merges in 12 of the 15. A larger or a different search sample keeps 32 or 33 changes
+instead of 27 with the same gain on the independent check, so the sample decides the
+changes at the margin, not the effect.
 
 Under a strict coverage guard, in which no change may leave anyone without a stop within
 500 m, the search keeps 24 changes and gains 0.77 minutes, as much as the default run's
@@ -548,6 +554,9 @@ independent check and the share of the fleet that gives today's travel times.
 | Search sample of 200 origins | 32 | 0.84 | 87% |
 | Search sample with another seed | 33 | 0.79 | 88% |
 | Nobody may lose a stop | 24 | 0.77 | 88% |
+| No bus shifts | 23 | 0.46 | 93% |
+| Service-type headways scaled by 0.8 | 26 | 0.68 | 88% |
+| Service-type headways scaled by 1.25 | 28 | 0.88 | 88% |
 
 ### 5.7 Changes that rest on thin evidence
 
@@ -581,9 +590,8 @@ anything that depends on data it has and this work does not.
 
 The results are not forecasts. Headways are estimated for 200 of 201 routes; the implied
 fleet of 2,015 lands near the 2,300 reported, so the headways are plausible overall
-though individual routes can be far off, and the 11 alternative settings never vary the
-service-type table that sets 145 of the headways and more than half of the implied
-fleet, so whether the 88% fleet share survives a change to it was not tested. The demand
+though individual routes can be far off, and scaling the service-type table that sets
+145 of the headways by 0.8 or 1.25 leaves the fleet share at 88% (Table 4). The demand
 model ranks routes at 0.58; the metro is not in the travel graph, so trips that would
 use it look slower or impossible by bus; there is no vehicle capacity or crowding, so
 busy routes look better than they are and a shift can overload them; there is one
@@ -597,8 +605,8 @@ the search is greedy over existing routes, so it finds improvements, not the bes
 network, and invents no routes. The bus shifts, which give 54% of the gain on the search
 sample, rank routes by riders per route, estimated for 145 of them; every one of the 32
 routes that gives up buses in the default run has estimated riders, so the shifts are
-the least certain part of the result, and the structural changes alone have not been
-scored on the independent check. The gain of about a minute per trip is small; what the
+the least certain part of the result; without them three fifths of the gain and a 7%
+fleet saving remain (Table 4). The gain of about a minute per trip is small; what the
 robustness checks establish is its sign and its order of magnitude, not its second
 decimal.
 
@@ -654,17 +662,18 @@ well, and says so. Within that limit, a cautious redesign that keeps every bus, 
 near-duplicates, drops three lightly used routes, straightens detours, balances stops
 and moves buses to where they save the most waiting delivers today's modelled travel
 times with about 12% fewer buses than the estimated headways imply, or trips about a
-minute shorter, and the gain survives other samples and other assumptions. The strict
-version that strands nobody gives up none of it. When the agency's map carries the new
-network, the same pipeline will score it against this baseline. The pipeline, data and
-results are released so that the results can be regenerated, the assumptions changed,
-and the method applied, once a reader for its map format is added, to the next city
-whose agency publishes a map and nothing else.
+minute shorter, and the gain survives other samples and other assumptions; three fifths
+of it remains without the bus shifts, the part that rests on estimated riders. The
+strict version that strands nobody gives up none of it. When the agency's map carries
+the new network, the same pipeline will score it against this baseline. The pipeline,
+data and results are released so that the results can be regenerated, the assumptions
+changed, and the method applied, once a reader for its map format is added, to the next
+city whose agency publishes a map and nothing else.
 
 ## Declarations
 
 Data and code availability: every input, setting, script and result, including today's
-network and the redesign as GTFS feeds, is in a public repository (release v1.0.0)
+network and the redesign as GTFS feeds, is in a public repository (release v1.1.0)
 archived with a DOI; the repository name and the DOI identify the author and are
 withheld for double-anonymised review (they are on the title page and will be restored
 on acceptance). The code is under the MIT License; OpenStreetMap extracts are ©
@@ -678,30 +687,33 @@ Ethics: this study analysed only publicly available, aggregated, non-personal da
 routes and stops, a population grid, daily boardings per route). No human participants
 were involved and no ethics approval was required.
 
-Declaration of generative AI and AI-assisted technologies in the writing process:
-[During the preparation of this work the author used [tool(s)] in order to [purpose].
-After using [this tool/these tools], the author reviewed and edited the content as
-needed and takes full responsibility for the content of the publication. To be completed
-by the author in the journal's wording.]
+Declaration of generative AI and AI-assisted technologies in the writing process: during
+the preparation of this work the author used Claude (Anthropic), through the Claude Code
+command-line tool, to write and test the code of the repository, to draft and edit the
+text of this manuscript, to check every reported number against the repository's outputs
+and to review the manuscript. After using this tool, the author reviewed and edited the
+content as needed and takes full responsibility for the content of the publication.
 
 ## Figures
 
-Figure 1. Baku's bus network today, each route coloured by its shape class (direct,
-indirect, very indirect, loop), both directions drawn. Source: shape class from
-output/routes.csv; today's route geometry from output/redesign/gtfs_today.zip
-(shapes.txt).
+Figure 1. Baku's bus network today, both directions of each route coloured by the
+route's shape class (direct, indirect, very indirect, loop), over the population grid in
+grey (darker where more people live). Drawn by paper/figures.py from the repaired route
+geometry, output/routes.csv and Kontur Population.
 
 Figure 2. Overlap: the 21 trunk corridors where eight or more routes share every link,
-line width by routes per link. Source: output/corridors.csv.
+line width by routes per link, over every route in grey. Drawn from output/corridors.csv
+and the repaired route geometry.
 
-Figure 3. The redesign: kept route directions in blue, straightened ones in green,
-dropped or merged ones in red. Source: output/redesign/network.geojson.
+Figure 3. The redesign: kept route directions in grey, straightened ones in blue (the
+new path), dropped or merged ones in orange. Drawn from output/redesign/network.geojson.
 
-Figure 4. Gain of the redesign in the capped average on 10 trip samples (left) and under
-11 alternative settings (right), with the default run marked. Source:
+Figure 4. Gain of the redesign in the capped average on 10 trip samples (top) and under
+14 alternative settings (bottom), with the default run marked. Source:
 output/robustness/redesign_seeds.csv and redesign_settings.csv.
 
-All maps carry: © OpenStreetMap contributors, ODbL, openstreetmap.org/copyright.
+The maps draw the agency's route geometry and the Kontur population grid (CC BY); no
+OpenStreetMap data is drawn.
 
 ## References
 

@@ -202,7 +202,7 @@ is the independent check in `redesign/summary.json`.
 | `mean_possible_before`, `mean_possible_after` | Average over the trips that can be made |
 | `reachable_before`, `reachable_after` | Share of trips that can be made within 2 hours |
 
-## output/robustness/redesign_settings.csv — the search under other assumptions (12 rows)
+## output/robustness/redesign_settings.csv — the search under other assumptions (15 rows)
 
 One row per run of `redesign.py`, the first with the committed settings.
 

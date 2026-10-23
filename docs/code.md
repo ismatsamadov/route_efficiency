@@ -10,6 +10,8 @@ the tests; see [Checking a change](#checking-a-change).
 measure.py            measure today's network            -> output/
 redesign.py           search for a better network        -> output/redesign/
 robustness.py         the results under other trip samples and assumptions -> output/robustness/
+paper/figures.py      the manuscript's figures, drawn from output/ as SVG -> paper/figures/
+paper/check.py        word counts, highlight lengths and citation checks of paper/manuscript.md
 busnet.toml           settings: data paths and every assumption
 busnet/
   assumptions.py      Assumptions: the default value of every assumption
