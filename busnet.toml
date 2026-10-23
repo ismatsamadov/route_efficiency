@@ -1,0 +1,95 @@
+# Settings for measure.py. Every value here can be changed without touching code;
+# delete a line to fall back to the default in busnet/assumptions.py, or override a
+# single value for one run:  python3 measure.py --set default_headway_min=10
+#
+# Real data always beats an assumption: a route listed in data/headways.csv uses that
+# headway, observed boardings refine headways for BakuBus routes, and destinations from
+# OpenStreetMap and the metro shape where trips go.
+
+[data]
+db = "data/ayna.db"
+population = "data/external/kontur/kontur_population_AZ_20231101.gpkg"
+ridership = "data/external/opendata/bakubus_passenger-2026.csv"
+headways = "data/headways.csv"                      # route,headway_min[,source]; add real values here
+destinations = [
+    "data/external/osm/osm_education.json",
+    "data/external/osm/osm_health.json",
+    "data/external/osm/osm_shopping.json",
+    "data/external/osm/osm_offices.json",
+    "data/external/osm/osm_transport.json",
+]
+metro_passengers = "data/external/opendata/metro_passengers-2026.csv"
+metro_exits = "data/external/opendata/metro_exits.csv"
+
+[walking]
+walk_speed_mps = 1.25            # about 4.5 km/h
+walk_detour = 1.3                # street distance / straight-line distance
+max_access_walk_m = 500          # furthest walk to or from a stop
+max_transfer_walk_m = 300        # furthest walk between stops to change buses
+coverage_radius_m = 400          # "served" = a stop within this distance (TCQSM convention)
+
+[service]
+# No public source gives route headways (checked: AYNA map API, opendata.az, OpenStreetMap,
+# BakuBus and AYNA sites). Order used: data/headways.csv, then observed boardings, then zone.
+default_headway_min = 12
+headway_from_ridership = true    # BakuBus routes: enough trips to carry their observed boardings
+boardings_per_trip = 60          # average boardings on one one-way trip of a 12 m bus
+service_hours = 17               # 06:00 to 23:00
+min_headway_min = 3
+max_headway_min = 30
+transfer_penalty_min = 5         # perceived cost of each change, on top of waiting
+layover_share = 0.15             # recovery time at terminals, for fleet size
+reference_fleet = 2300           # buses in daily service, all operators (Ministry, January 2026)
+
+[headway_by_zone]                # minutes between buses, for routes without better data
+"Şəhərdaxili" = 10               # urban
+"Şəhərdaxili (ekspres)" = 15     # urban express
+"Şəhərətrafı" = 15               # suburban
+"Şəhərətrafı (ekspres)" = 20     # suburban express
+"Qəsəbədaxili" = 20              # within a settlement
+"Qəsəbələrarası" = 20            # between settlements
+"Şəhərlərarası" = 30             # intercity
+
+[speed]
+# Calibrated so the network-wide average is 22 km/h, the bus speed AYNA reported (Nov 2024).
+default_cruise_kmh = 25
+stop_loss_s = 20                 # slowing, serving and accelerating (nMotion 2015; WMATA 10-20 s)
+
+[cruise_kmh]                     # moving speed between stops
+"Şəhərdaxili" = 22
+"Şəhərdaxili (ekspres)" = 29
+"Şəhərətrafı" = 29
+"Şəhərətrafı (ekspres)" = 36
+"Qəsəbədaxili" = 25
+"Qəsəbələrarası" = 31
+"Şəhərlərarası" = 40
+
+[fuel]
+# 43 L/100 km at 2.65 stops/km, matching the Braunschweig cycle for 12 m diesel buses (VTT 2012).
+fuel_l_per_km = 0.30             # diesel-equivalent litres per km of steady driving
+fuel_l_per_stop = 0.05           # one stop-start cycle (VTT: 0.03-0.07 L)
+co2_kg_per_l = 2.67              # diesel, tank-to-wheel (IPCC 2006)
+
+[demand]
+trip_decay_km = 6.0              # trips fall off as exp(-distance / this); the official average bus
+                                 # trip is 15.6 km (2025) but that includes intercity buses
+max_trip_min = 120               # longer door-to-door times count as "not reachable"
+destination_share = 0.5          # share of trip ends drawn to destinations rather than homes
+metro_weight_per_1000_entries = 2.0
+
+[destination_weights]            # pull of one OpenStreetMap feature of each kind
+office = 1
+townhall = 3
+courthouse = 3
+kindergarten = 1
+school = 3
+college = 5
+university = 10
+clinic = 2
+hospital = 8
+supermarket = 2
+department_store = 4
+mall = 10
+marketplace = 8
+station = 5
+bus_station = 5
