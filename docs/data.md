@@ -21,34 +21,29 @@ how the code uses it, what is wrong with it and what is still missing.
 ## The AYNA bus network snapshot (`data/ayna.db`)
 
 A SQLite database built from AYNA's public map API (`map-api.ayna.gov.az`, an
-unauthenticated OpenAPI service), taken from the `data/ayna.sqlite` snapshot in
-github.com/samirmehd1yev/best_route_finding (added in commit `8010c00` on 6 May 2026,
-coordinates repaired in commit `b8c51d5` on 11 October 2026). Its `meta` table records:
-scraped 6 May 2026, coordinates repaired 11 October 2026, database built 23 October 2026.
-`data/ayna_scraper.py` is the script that builds this kind of database from the API; the
-committed database was built by the snapshot's own pipeline (it has a `meta` table the
-script does not write).
+unauthenticated OpenAPI service) by `data/ayna_scraper.py` on 23 October 2026. An
+earlier copy of the same data, scraped on 6 May 2026 and kept in
+github.com/samirmehd1yev/best_route_finding, is identical row for row (every route,
+stop, coordinate, stop sequence and shape point), so the API did not change between
+the two dates. The API returns an error for one of its 209 route ids (96, route 144),
+in both scrapes.
 
 **Licence.** None is published. The data is AYNA's; neither AYNA's website nor the API
-states terms of use, and the snapshot repository has no licence file (the "ISC" in its
-README, in its `package.json` and in the `meta` table's source field is that repository's
-code licence, not a data licence). I keep the database here as a research snapshot with
-attribution to AYNA; this repository's licence does not extend to it. For publication I
-would cite AYNA as the source and the snapshot repository at the commits above, or take
-a fresh snapshot with `data/ayna_scraper.py` so that the provenance is my own. AYNA also
-publishes its route lines (KMZ) and bus stations on opendata.az under CC0
-(`data/external/opendata/`), a cleaner source for route geometry if a future snapshot
-can be built from them.
+states terms of use. I keep the database here as a research snapshot with attribution
+to AYNA; this repository's licence does not extend to it. AYNA also publishes its route
+lines (KMZ) and bus stations on opendata.az under CC0 (`data/external/opendata/`), a
+cleaner source for route geometry if a future snapshot can be built from them.
 
 ### When the data is from
 
-Every result describes the network as it was on 6 May 2026. AYNA's new network began
-launching in January 2026 ([research.md](research.md#4-bakus-own-programme)), and the
-BakuBus counts I use for ridership are from September 2026, so the two describe the
-network some months apart: eight routes in the counts (M2, M3, M4, M5, M6, 500, 149E,
-195E) do not exist in the snapshot. Before building on the results I would take a new
-snapshot and rerun the tools ([roadmap.md](roadmap.md#when-new-data-arrives)); the
-repairs are detected from the data, so they adapt to it.
+Every result describes the network as AYNA's map API publishes it, and the API returned
+exactly the same data on 23 October 2026 as on 6 May 2026, although AYNA's new network
+began launching in January 2026 ([research.md](research.md#4-bakus-own-programme)). The
+BakuBus counts I use for ridership are from September 2026 and include eight routes
+(M2, M3, M4, M5, M6, 500, 149E, 195E) that the map does not carry, so the map lags the
+network on the street. When the API changes, a new scrape and a rerun of the three
+scripts ([roadmap.md](roadmap.md#when-new-data-arrives)) will show which findings
+survive; the repairs are detected from the data, so they adapt to it.
 
 | Table | Rows | Contents |
 |---|---|---|
@@ -57,7 +52,6 @@ repairs are detected from the data, so they adapt to it.
 | `bus_stops` | 11,786 | Ordered stops for each route and direction (1 = outbound, 2 = return) |
 | `routes` | 398 | One shape per route direction, as GeoJSON, with a destination label |
 | `route_points` | 109,147 | The same shapes, one row per vertex |
-| `meta` | 4 | Source and dates |
 
 Working zones: `Şəhərdaxili` urban (69 routes), `Şəhərətrafı` suburban (101), `Qəsəbələrarası`
 between settlements (20), `Qəsəbədaxili` within a settlement (7), `Şəhərdaxili (ekspres)`

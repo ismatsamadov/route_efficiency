@@ -11,7 +11,7 @@ here.
 
 | File | Contents | Source | Licence |
 |---|---|---|---|
-| `ayna.db` | 208 routes, 3,841 stops, stop sequences and route shapes | AYNA map API (`map-api.ayna.gov.az`, an unauthenticated OpenAPI service), via the `data/ayna.sqlite` snapshot in github.com/samirmehd1yev/best_route_finding (scraped and committed 6 May 2026, commit `8010c00`; coordinates repaired 11 October 2026, commit `b8c51d5`) | None. The data is AYNA's; neither AYNA nor the API publishes terms of use (ayna.gov.az states only "All rights reserved"). The snapshot repository has no licence file; the "ISC" in its README, `package.json` and the `meta` table covers its code, not AYNA's data. Redistributed here as a research snapshot with attribution to AYNA; this repository's licence does not extend to it |
+| `ayna.db` | 208 routes, 3,841 stops, stop sequences and route shapes | AYNA map API (`map-api.ayna.gov.az`, an unauthenticated OpenAPI service), scraped 23 October 2026 with `ayna_scraper.py`; identical to the snapshot of 6 May 2026 kept in github.com/samirmehd1yev/best_route_finding | None. The data is AYNA's; neither AYNA nor the API publishes terms of use (ayna.gov.az states only "All rights reserved"). Redistributed here as a research snapshot with attribution to AYNA; this repository's licence does not extend to it |
 | `ayna_scraper.py` | Script that builds `ayna.db` from the AYNA API | This repository | |
 | `headways.csv` | Real headways where a public source gives one; add rows as data arrives | See the `source` column ([airport.az, August 2024](https://www.airport.az/en/press-release/h1-airport-express-route-will-now-operate-24-7-for-the-convenience-of-passengers/)) | |
 

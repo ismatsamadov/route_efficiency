@@ -14,16 +14,17 @@ every 3 minutes. Nothing I can do with public data fixes this, and the data that
 be obtained from AYNA, so the estimates are what the work has to live with and the
 paper has to say so plainly.
 
-Until that data exists there are three things I can do alone that would change the
-answer. The first is a new snapshot. The network is from 6 May 2026 and AYNA has been
-launching a new one since January ([data.md](data.md#when-the-data-is-from)), so I do
-not know which findings still hold; scraping the map again and rerunning the three
-scripts would tell me, and it would turn this snapshot into the "before" of a
-before-and-after study. The second is the metro. Today metro stations only attract
-trips, but many Baku trips combine bus and metro and some bus routes exist mainly to
-feed it, so trips that would use the metro look slower or impossible by bus. The third
-is vehicle capacity: a maximum-load rule (buses needed = peak load ÷ bus capacity) so
-that a frequency shift cannot hand a route more riders than its buses carry.
+Until that data exists there are two things I can do alone that would change the
+answer, and one I have to wait for. The wait is for the map: AYNA has been launching a
+new network since January 2026, but on 23 October 2026 the map API still returned
+exactly the data of 6 May ([data.md](data.md#when-the-data-is-from)), so the
+before-and-after study has to wait until the API changes; when it does, a new scrape
+and a rerun of the three scripts will show which findings survive. The first thing I
+can do now is the metro. Today metro stations only attract trips, but many Baku trips
+combine bus and metro and some bus routes exist mainly to feed it, so trips that would
+use the metro look slower or impossible by bus. The second is vehicle capacity: a
+maximum-load rule (buses needed = peak load ÷ bus capacity) so that a frequency shift
+cannot hand a route more riders than its buses carry.
 
 I would also calibrate the demand model properly: fit `trip_decay_km`,
 `destination_share` and `destination_weights` against the observed boardings, try a
@@ -54,9 +55,10 @@ change in `busnet/optimize.py` and to the GTFS writer.
   look shorter than they are; and speeds are set by service type, not by street.
 - Observed boardings exist only for BakuBus, so 145 routes of other carriers have
   nothing to check against.
-- The snapshot is from 6 May 2026 and may mix old and new routes; 7 routes have no
-  stops, and route 180 (Pirallahı) looks cut off because its connecting routes are
-  missing from the data.
+- The map API returned the same data on 23 October 2026 as on 6 May, while AYNA has
+  been launching a new network since January, so the map may lag the street and mix
+  old and new routes; 7 routes have no stops, and route 180 (Pirallahı) looks cut off
+  because its connecting routes are missing from the data.
 - The population grid is from November 2023: 3.04 million people in the study area
   against 3.22 million official for 2026.
 - The search is greedy and only changes existing routes, so it finds improvements, not

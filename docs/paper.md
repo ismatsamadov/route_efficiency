@@ -26,8 +26,10 @@ settings file.
 
 What it is not, and what the paper must say plainly: not a forecast (headways and
 demand are estimates), not a methods contribution (a greedy search with no benchmark
-comparison), and a description of the network on 6 May 2026, which AYNA has been
-changing since January 2026 ([data.md](data.md#when-the-data-is-from)).
+comparison), and a description of the network as AYNA's map API publishes it, which was
+the same on 23 October 2026 as on 6 May 2026 even though AYNA has been launching a new
+network since January 2026 ([data.md](data.md#when-the-data-is-from)): the map lags the
+street.
 
 One thing reviewers will find if they search my name: my earlier GitHub report *Baku
 Public Transit Network Optimization: Strategic Analysis & Implementation Roadmap*
@@ -46,9 +48,10 @@ one of the venues in section 4. I expect two to four weeks of writing and a week
 figures and statements.
 
 The second is to strengthen the work first, for a stronger venue. Each of these is two
-to six weeks: a new AYNA snapshot and a rerun of the three scripts, which would show
-which findings survive the network AYNA is launching and turn the snapshot into a
-before-and-after comparison; the metro in the travel graph, the most obvious model gap
+to six weeks: a rerun on a new AYNA snapshot once the map API changes (on 23 October
+2026 it still returned the May data), which would show which findings survive the
+network AYNA is launching and turn the snapshot into a before-and-after comparison;
+the metro in the travel graph, the most obvious model gap
 for Baku; vehicle capacity in the frequency setting, which answers the "you overload
 busy routes" objection; calibration of the demand model with routes held out, which
 would raise the fair 0.58 and make the validation standard; and the evaluator on the
@@ -58,8 +61,8 @@ All of them are in [roadmap.md](roadmap.md#what-i-would-do-next).
 The third is a pivot that reuses the pipeline. The strongest is a before-and-after
 study of Baku's 2026 network reform: AYNA's new network is rolling out now, measuring
 the old network (this snapshot) and the new one with the same pipeline is a natural
-experiment few cities offer, and it needs only a second snapshot and the counts for the
-same months. Others: an accessibility and equity paper (who is within reach of a stop,
+experiment few cities offer, and it needs only a second snapshot, as soon as the map API
+shows the new network, and the counts for the same months. Others: an accessibility and equity paper (who is within reach of a stop,
 by district and by travel time, before and after the redesign; the population grid,
 the coverage curve and the door-to-door model already support it, and it fits the
 Journal of Transport Geography or the Journal of Transport and Land Use); a data and
@@ -284,9 +287,9 @@ point.
 1. Repository: note at the top of the February 2026 GitHub report that this work
    supersedes it (`LICENSE`, `CITATION.cff`, the Licensing section of the README and the
    Zenodo DOI of release v1.0.0 are in place).
-2. Decide between the three ways forward in section 2. For the paper as it is, take a
-   new snapshot only if it can be done within a week; otherwise state the date clearly
-   and list it as future work.
+2. Decide between the three ways forward in section 2. For the paper as it is, state
+   that the map API was unchanged between May and October 2026 and list the
+   before-and-after comparison as future work.
 3. Write the paper from section 3, 6,000–7,000 words, figures from `output/`. Ask two
    readers (a transport planner and a quantitative researcher) to comment.
 4. Post a preprint: engrXiv (no endorsement needed), or arXiv physics.soc-ph with an
