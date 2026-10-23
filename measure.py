@@ -36,15 +36,10 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent
 sys.path.insert(0, str(ROOT))
 
-from busnet import load_network                                               # noqa: E402
-from busnet.config import load_config                                          # noqa: E402
-from busnet.destinations import metro_points, osm_points, zone_attraction      # noqa: E402
+from busnet.inputs import load_inputs                                          # noqa: E402
 from busnet.metrics import (compare_ridership, detour_table, near_duplicates,  # noqa: E402
                             network_summary, route_table, trunk_corridors)
-from busnet.population import load_population, stops_bbox                     # noqa: E402
-from busnet.ridership import latest_month, load_daily_boardings, weekday_mean  # noqa: E402
 from busnet.scenarios import balance_stops                                     # noqa: E402
-from busnet.service import load_headways, route_headways                       # noqa: E402
 
 
 def write_csv(path, rows):
@@ -74,15 +69,6 @@ def split_modelled(summary):
     return acc.pop("modelled_boardings", None) if acc else None
 
 
-def available(path, what, inputs):
-    """True if the file exists; otherwise note that an assumption stands in for it."""
-    ok = bool(path) and Path(path).exists()
-    inputs[what] = str(Path(path).relative_to(ROOT)) if ok and Path(path).is_relative_to(ROOT) else (path if ok else None)
-    if path and not ok:
-        print(f"  missing {what}: {path} (using assumptions instead)")
-    return ok
-
-
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--config", default=str(ROOT / "busnet.toml"), help="settings file (TOML); 'none' for defaults only")
@@ -98,50 +84,25 @@ def main():
     args = ap.parse_args()
 
     config = None if args.config.lower() == "none" or not Path(args.config).exists() else args.config
-    try:
-        a, data = load_config(config, args.set)
-    except (ValueError, TypeError) as e:
-        sys.exit(f"Settings error: {e}")
     out = Path(args.out)
     out.mkdir(parents=True, exist_ok=True)
     t0 = time.time()
-    inputs = {}
     print(f"Settings: {config or 'built-in defaults'}" + (f" with {len(args.set)} override(s)" if args.set else ""))
-
-    db = data.get("db", str(ROOT / "data" / "ayna.db"))
-    available(db, "db", inputs)
-    net = load_network(db, repair=not args.no_repair)
+    try:
+        inp = load_inputs(ROOT, config, args.set, repair=not args.no_repair)
+    except (ValueError, TypeError) as e:
+        sys.exit(f"Settings error: {e}")
+    a, net, zones, observed, headways, attraction = inp.a, inp.network, inp.zones, inp.observed, inp.headways, inp.attraction
     (out / "repairs.txt").write_text("\n".join(net.repairs) + "\n", encoding="utf-8")
     print(f"Loaded {len(net.routes)} routes, {len(net.patterns)} route directions; {len(net.repairs)} repairs")
-
-    zones = None
-    if available(data.get("population"), "population", inputs):
-        zones = load_population(data["population"], stops_bbox(net))
+    if zones:
         print(f"Population zones: {len(zones):,} with {sum(z[2] for z in zones):,.0f} people")
-    observed = None
-    if available(data.get("ridership"), "ridership", inputs):
-        daily = load_daily_boardings(data["ridership"])
-        year, month = latest_month(daily)
-        observed = weekday_mean(daily, year, month)
-        print(f"Ridership: {len(observed)} routes, weekday means for {year}-{month:02d}")
-    supplied = load_headways(data["headways"]) if available(data.get("headways"), "headways", inputs) else None
-    headways = route_headways(net, a, observed, supplied)
+    if observed:
+        print(f"Ridership: {len(observed)} routes, weekday means for {inp.observed_month}")
     sources = {s: sum(1 for h in headways.values() if h[1] == s) for s in ("supplied", "ridership", "zone", "default")}
     print(f"Headways by source: {sources}")
-
-    points = []
-    found = [p for p in data.get("destinations", []) if available(p, f"destinations:{Path(p).name}", inputs)]
-    if found:
-        points += osm_points(found, a.destination_weights)
-    if available(data.get("metro_passengers"), "metro_passengers", inputs) and \
-            available(data.get("metro_exits"), "metro_exits", inputs):
-        metro, unmatched = metro_points(data["metro_passengers"], data["metro_exits"], a.metro_weight_per_1000_entries)
-        points += metro
-        if unmatched:
-            print(f"  metro stations without exit coordinates: {', '.join(unmatched)}")
-    attraction = zone_attraction(zones, points, a.destination_share) if zones else None
-    if points:
-        print(f"Destinations: {len(points):,} points" + ("" if attraction else " (not used: no population zones)"))
+    if inp.points:
+        print(f"Destinations: {len(inp.points):,} points" + ("" if attraction else " (not used: no population zones)"))
 
     write_csv(out / "routes.csv", route_table(net, a, zones, observed, headways))
     write_csv(out / "detours.csv", detour_table(net, a, zones))
@@ -153,7 +114,7 @@ def main():
         rows, fit = compare_ridership(net, modelled, observed)
         write_csv(out / "ridership_check.csv", rows)
         summary["ridership_fit"] = fit
-    report = {"network": summary, "inputs": inputs, "settings": asdict(a),
+    report = {"network": summary, "inputs": inp.found, "settings": asdict(a),
               "headway_sources": sources, "repairs": net.repairs}
     (out / "network.json").write_text(json.dumps(report, ensure_ascii=False, indent=1), encoding="utf-8")
     show("Network", summary)
