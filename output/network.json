@@ -136,7 +136,11 @@
   "redesign_max_people_losing_stop": 500,
   "redesign_max_people_losing_stop_total": 3000,
   "redesign_shift_share": 0.2,
-  "redesign_shift_rounds": 4
+  "redesign_shift_rounds": 4,
+  "redesign_protect_boardings": 1000,
+  "redesign_protected_routes": [
+   "180"
+  ]
  },
  "headway_sources": {
   "supplied": 1,

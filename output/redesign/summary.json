@@ -1,10 +1,10 @@
 {
  "fleet_buses": 1916.2103707137212,
  "routes_before": 201,
- "routes_after": 192,
+ "routes_after": 193,
  "changes": {
   "merge": 5,
-  "drop": 4,
+  "drop": 3,
   "straighten": 14,
   "stops": 1,
   "shift": 4
@@ -13,34 +13,34 @@
   "origins": 100,
   "seed": 11,
   "minutes_before": 79.6614670170443,
-  "minutes_after": 78.37706382198739,
+  "minutes_after": 78.31211764839466,
   "unreachable_before": 0.370264684375594,
-  "unreachable_after": 0.3642697284047525
+  "unreachable_after": 0.363709542863952
  },
  "minutes_counting_impossible_trips_at_limit": {
   "before": 74.82339838725969,
-  "after": 74.09172506653744
+  "after": 74.06248917999199
  },
  "share_of_fleet_for_todays_travel_time": {
   "independent_check": 0.8828125,
-  "search_sample": 0.80078125
+  "search_sample": 0.791015625
  },
  "fleet_saving_option": {
   "buses": 1691.654467895707,
   "operations": {
-   "trips_per_day": 30514.03097231033,
-   "bus_hours_per_day": 25007.066047153923,
-   "bus_km_per_day": 525341.1241270626,
-   "fleet": 1794,
-   "fuel_l_per_day": 199789.3026878292,
-   "co2_t_per_day": 533.4374381765039,
-   "fleet_vs_reference": 0.78,
+   "trips_per_day": 30384.5729695667,
+   "bus_hours_per_day": 25007.06604715393,
+   "bus_km_per_day": 526922.7612963892,
+   "fleet": 1796,
+   "fuel_l_per_day": 200140.24036900833,
+   "co2_t_per_day": 534.3744417852522,
+   "fleet_vs_reference": 0.7808695652173913,
    "headway_sources": {
     "supplied": 0,
     "ridership": 0,
     "zone": 0,
     "default": 0,
-    "plan": 192
+    "plan": 193
    }
   }
  },
@@ -90,44 +90,44 @@
   "after": {
    "accessibility": {
     "origins_sampled": 300,
-    "mean_door_to_door_min": 50.8842823854822,
-    "share_reachable": 0.664223370862021,
-    "share_within_30_min": 0.16534393740782893,
-    "share_within_45_min": 0.30320849751058365,
-    "share_within_60_min": 0.43334111776408585,
-    "share_trips_without_stop_nearby": 0.3487881354278071,
+    "mean_door_to_door_min": 50.85783659140471,
+    "share_reachable": 0.6643921531430903,
+    "share_within_30_min": 0.1656433234702912,
+    "share_within_45_min": 0.3031956358964238,
+    "share_within_60_min": 0.433904016706013,
+    "share_trips_without_stop_nearby": 0.34879379859831394,
     "mean_trip_km_straight_line": 7.989950382646035,
     "transfers": {
-     "0": 0.2877621554340183,
-     "1": 0.4262406751282921,
-     "2": 0.1551320975642986,
-     "3+": 0.01856293705400689,
-     "walk only": 0.11230213481941612
+     "0": 0.2874942682309483,
+     "1": 0.4268126854765761,
+     "2": 0.15552376817544,
+     "3+": 0.017978114765297912,
+     "walk only": 0.11219116335176518
     }
    },
    "operations": {
-    "trips_per_day": 34564.566057130294,
-    "bus_hours_per_day": 28326.588088811517,
-    "bus_km_per_day": 595076.6715775578,
-    "fleet": 2010,
-    "fuel_l_per_day": 226310.00658444353,
-    "co2_t_per_day": 604.2477175804642,
-    "fleet_vs_reference": 0.8739130434782608,
+    "trips_per_day": 34417.923363756956,
+    "bus_hours_per_day": 28326.588088811528,
+    "bus_km_per_day": 596868.2605835204,
+    "fleet": 2017,
+    "fuel_l_per_day": 226707.5289135669,
+    "co2_t_per_day": 605.3091021992236,
+    "fleet_vs_reference": 0.8769565217391304,
     "headway_sources": {
      "supplied": 0,
      "ridership": 0,
      "zone": 0,
      "default": 0,
-     "plan": 192
+     "plan": 193
     }
    },
-   "served_stops": 3103,
-   "route_km_one_way_total": 6905.8198828275,
-   "corridor_km": 3650.6480405225034,
-   "duplication_ratio": 1.8916695902131109,
-   "median_stop_gap_m": 468.9396452884848,
-   "share_stop_gaps_under_300m": 0.14696517412935323,
-   "share_population_covered": 0.6580166412171312
+   "served_stops": 3105,
+   "route_km_one_way_total": 6970.3712117691875,
+   "corridor_km": 3677.892780219401,
+   "duplication_ratio": 1.8952078345669927,
+   "median_stop_gap_m": 470.33663555803923,
+   "share_stop_gaps_under_300m": 0.14569273521238588,
+   "share_population_covered": 0.6579665057575036
   }
  },
  "settings": {
@@ -197,7 +197,11 @@
   "redesign_max_people_losing_stop": 500,
   "redesign_max_people_losing_stop_total": 3000,
   "redesign_shift_share": 0.2,
-  "redesign_shift_rounds": 4
+  "redesign_shift_rounds": 4,
+  "redesign_protect_boardings": 1000,
+  "redesign_protected_routes": [
+   "180"
+  ]
  },
  "inputs": {
   "db": "data/ayna.db",
