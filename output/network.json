@@ -127,7 +127,20 @@
    "station": 5,
    "bus_station": 5
   },
-  "metro_weight_per_1000_entries": 2.0
+  "metro_weight_per_1000_entries": 2.0,
+  "redesign_origins": 100,
+  "redesign_seed": 11,
+  "redesign_min_gain_min": 0.005,
+  "redesign_max_straighten": 80,
+  "redesign_max_drop": 20,
+  "redesign_max_people_losing_stop": 500,
+  "redesign_max_people_losing_stop_total": 3000,
+  "redesign_shift_share": 0.2,
+  "redesign_shift_rounds": 4,
+  "redesign_protect_boardings": 1000,
+  "redesign_protected_routes": [
+   "180"
+  ]
  },
  "headway_sources": {
   "supplied": 1,

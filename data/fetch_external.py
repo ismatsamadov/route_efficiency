@@ -22,7 +22,7 @@ import urllib.request
 from pathlib import Path
 
 OUT = Path(__file__).resolve().parent / "external"
-HEADERS = {"User-Agent": "router_algorithm/0.1 (bus network research)", "Accept": "*/*"}
+HEADERS = {"User-Agent": "route_efficiency/0.1 (bus network research)", "Accept": "*/*"}
 OPENDATA = "https://admin.opendata.az/dataset"
 AZSTAT = "https://www.azstat.gov.az/AsisOpenDataApi/csv?lang=az&table_id="
 

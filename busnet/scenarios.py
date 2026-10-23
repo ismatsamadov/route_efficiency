@@ -8,11 +8,11 @@ from collections import defaultdict
 from .model import Pattern
 
 
-def balance_stops(network, min_gap_m=250.0, max_gap_after_m=700.0):
+def balance_stops(network, min_gap_m=250.0, max_gap_after_m=700.0, protect=()):
     """Remove closely spaced stops, the way stop-balancing programmes do.
 
     A stop is removed only when, on every route direction that uses it:
-      - it is not the first or last stop, and is not a flagged interchange hub,
+      - it is not the first or last stop, a flagged interchange hub, or in `protect`,
       - it sits less than min_gap_m along the path from the previous or next kept stop,
       - removing it leaves no gap longer than max_gap_after_m.
     Stops served by fewer routes go first, so busy transfer stops are kept."""
@@ -22,6 +22,7 @@ def balance_stops(network, min_gap_m=250.0, max_gap_after_m=700.0):
             uses[s].append((key, i))
     protected = {s for p in network.patterns.values() for s in (p.stop_ids[0], p.stop_ids[-1])}
     protected |= {s for s in uses if network.stops[s].is_hub}
+    protected |= set(protect)
     kept = {key: [True] * len(p.stop_ids) for key, p in network.patterns.items()}
 
     def neighbours(key, i):

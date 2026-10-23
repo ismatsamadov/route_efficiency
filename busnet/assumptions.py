@@ -71,6 +71,22 @@ class Assumptions:
     })
     metro_weight_per_1000_entries: float = 2.0   # weight of a metro station per 1,000 daily entries
 
+    # Redesign search (redesign.py). The fleet stays at today's size; a change is kept only if
+    # it shortens average door-to-door time and leaves no more than the allowed number of
+    # people without a stop within max_access_walk_m.
+    redesign_origins: int = 100                  # trip origins in the search sample
+    redesign_seed: int = 11                      # which origins; the final check uses another sample
+    redesign_min_gain_min: float = 0.005         # smallest improvement worth keeping, minutes
+    redesign_max_straighten: int = 80            # detours to try straightening
+    redesign_max_drop: int = 20                  # least-used routes to try dropping
+    redesign_max_people_losing_stop: int = 500   # per change
+    redesign_max_people_losing_stop_total: int = 3000
+    redesign_shift_share: float = 0.2            # share of a route's buses moved in one shift
+    redesign_shift_rounds: int = 4
+    redesign_protect_boardings: float = 1000     # never drop a route with at least this many counted weekday boardings
+    redesign_protected_routes: list = field(default_factory=lambda: ["180"])   # left as they are; 180 (Pirallahı):
+                                                 # its connecting routes are missing from the data
+
     def cruise_mps(self, zone):
         return self.cruise_kmh.get(zone, self.default_cruise_kmh) / 3.6
 
