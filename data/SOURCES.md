@@ -1,0 +1,56 @@
+# Data sources
+
+Every file the measurements read is committed here, so `python3 measure.py` reproduces
+every result without downloading anything. `python3 data/fetch_external.py --refresh`
+downloads the external files again from the sources below. Retrieved 23 October 2026
+unless noted.
+
+## Bus network
+
+| File | Contents | Source | Licence |
+|---|---|---|---|
+| `ayna.db` | 208 routes, 3,841 stops, stop sequences and route shapes | AYNA map API (map-api.ayna.gov.az), via a snapshot in github.com/samirmehd1yev/best_route_finding, scraped 6 May 2026 | The database's `meta` table says ISC; the snapshot repository has no licence file, so check before redistributing |
+| `ayna_scraper.py` | Script that builds `ayna.db` from the AYNA API | This repository | |
+| `headways.csv` | Real headways where a public source gives one; add rows as data arrives | See the `source` column | |
+
+## Population
+
+| File | Contents | Source | Licence |
+|---|---|---|---|
+| `external/kontur/kontur_population_AZ_20231101.gpkg` | Population on H3 hexagons (~0.74 km²), 10.48 million people in Azerbaijan | Kontur Population, release 2023-11-01, [HDX](https://data.humdata.org/dataset/kontur-population-azerbaijan) | CC BY 4.0 |
+| `external/stat/population_by_district_2026.xls` | Official population by city and district, 1 January 2026 | State Statistical Committee, [table 1.15](https://www.stat.gov.az/source/demoqraphy/en/001_15en.xls) | Official statistics; no licence stated |
+
+## Ridership and travel
+
+| File | Contents | Source | Licence |
+|---|---|---|---|
+| `external/opendata/bakubus_passenger-2026.csv` | Daily boardings per BakuBus route, January to September 2026 | Bakı Metropoliteni via [opendata.az](https://admin.opendata.az/dataset/32766a9d-479c-41ff-a660-7b739b4ff034) | CC BY |
+| `external/opendata/bakubus_payment_type-2026.csv` | Monthly share of payment types per BakuBus route | Bakı Metropoliteni via [opendata.az](https://admin.opendata.az/dataset/a98b2492-680a-401a-ab39-4e2b6ad0f270) | CC BY |
+| `external/opendata/metro_passengers-2025.csv`, `metro_passengers-2026.csv` | Daily entries per metro station | Bakı Metropoliteni via [opendata.az](https://admin.opendata.az/dataset/66051a52-1172-4c59-8ea2-1062562c991f) | CC BY |
+| `external/opendata/metro_payment_type-2026.csv` | Monthly share of payment types per metro station | Bakı Metropoliteni via [opendata.az](https://admin.opendata.az/dataset/2d3f1d95-5465-4e54-a14e-555c02785729) | CC BY |
+| `external/opendata/metro_exits.csv` | Coordinates of 98 metro exits | Bakı Metropoliteni via [opendata.az](https://admin.opendata.az/dataset/3108fb32-8483-4126-8283-17f2f1452548) | CC BY |
+| `external/opendata/ayna_buslines.kmz` | Official bus route lines, November 2025 | AYNA via [opendata.az](https://admin.opendata.az/dataset/366c03c3-f60a-4198-b8e4-959af2082296) | CC0 |
+| `external/opendata/ayna_bus_stations.geojson` | Intercity bus stations and their coordinates | AYNA via [opendata.az](https://admin.opendata.az/dataset/0d42439f-191f-40f5-82df-21742123465e) | CC0 |
+| `external/opendata/stat_avg_trip_distance.csv` | Average trip length per passenger by mode and year | State Statistical Committee, table DT_BJ_050 | CC0 |
+| `external/opendata/stat_passengers_by_mode.csv` | Passengers carried by mode and year | State Statistical Committee, table DT_BJ_004 | CC0 |
+| `external/opendata/stat_urban_electric_transport.csv` | Urban electric transport statistics | State Statistical Committee, table DT_BJ_049 | CC0 |
+
+## Destinations (OpenStreetMap)
+
+Queried through the Overpass API for the box 39.9–40.7 N, 49.3–50.45 E. Data © OpenStreetMap contributors, available under the [Open Database Licence](https://www.openstreetmap.org/copyright).
+
+| File | Contents |
+|---|---|
+| `external/osm/osm_bus_routes_tags.json` | Tags of 249 bus route relations (only route M5 has an interval tag) |
+| `external/osm/osm_education.json` | Schools, colleges, universities, kindergartens |
+| `external/osm/osm_health.json` | Hospitals and clinics |
+| `external/osm/osm_shopping.json` | Malls, supermarkets, department stores, markets |
+| `external/osm/osm_offices.json` | Offices, town halls, courthouses |
+| `external/osm/osm_transport.json` | Railway and bus stations |
+
+## Searched for and not found
+
+No public source gives route headways or timetables, vehicle positions, or ticket
+validations by stop. Checked: the AYNA map API, opendata.az (69 transport datasets),
+OpenStreetMap, the BakuBus and AYNA websites, and news reports. Until AYNA or the
+operators share them, `busnet.toml` holds the assumptions that stand in for them.
