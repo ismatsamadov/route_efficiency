@@ -34,6 +34,7 @@ lists what to check first.
 | Change or extend the code | [code.md](code.md) |
 | See the research and other cities' experience behind the approach | [research.md](research.md) |
 | Know what comes next, the limitations and the open questions | [roadmap.md](roadmap.md) |
+| Turn the work into a research paper: outline, venues, format, steps for an independent researcher | [paper.md](paper.md) |
 | Look up a term | [glossary.md](glossary.md) |
 | See what was built, in which order | [changelog.md](changelog.md) |
 
