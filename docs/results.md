@@ -350,7 +350,7 @@ same reason as above.
 
 ### What changed from the first version
 
-My first run of the search (commit `fe1a6f1`) ranked routes by modelled riders only. It
+My first run of the search (commit `15473b6`) ranked routes by modelled riders only. It
 dropped routes 595, 149 and 140E, which carry about 10,100 counted boardings a weekday,
 and cut route 180 to Pirallahı from every 20 to every 30 minutes, which told me that the
 model could not be allowed to overrule a count. The current version uses counts where
