@@ -79,5 +79,7 @@ def operations(network, a, headways):
             total[k] += row[k]
     total["co2_t_per_day"] = total["fuel_l_per_day"] * a.co2_kg_per_l / 1000
     total["fleet_vs_reference"] = total["fleet"] / a.reference_fleet if a.reference_fleet else None
-    total["headway_sources"] = {s: sum(1 for h in headways.values() if h[1] == s) for s in SOURCES}
+    total["headway_sources"] = {s: 0 for s in SOURCES}
+    for _, source in headways.values():
+        total["headway_sources"][source] = total["headway_sources"].get(source, 0) + 1
     return per_route, total
