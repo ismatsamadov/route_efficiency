@@ -112,11 +112,13 @@ common unit.
 | `redesign_seed` | 11 | Which origins are sampled; the final check uses another sample |
 | `redesign_min_gain_min` | 0.005 | Smallest improvement in average minutes worth keeping |
 | `redesign_max_straighten` | 80 | Detours to try straightening (the ones saving most time first) |
-| `redesign_max_drop` | 20 | Routes with the fewest modelled riders per bus to try dropping |
+| `redesign_max_drop` | 20 | Routes with the fewest boardings a day per bus (counted where known, otherwise estimated) to try dropping |
 | `redesign_max_people_losing_stop` | 500 | People one change may leave without any stop within `max_access_walk_m` |
 | `redesign_max_people_losing_stop_total` | 3000 | The same, for all changes together |
 | `redesign_shift_share` | 0.2 | Share of a route's buses moved in one frequency shift |
 | `redesign_shift_rounds` | 4 | Rounds of frequency shifts |
+| `redesign_protect_boardings` | 1000 | A route with at least this many counted weekday boardings is never dropped, because the model cannot tell where its riders would go. Merging it into a route that serves 85% of its stops is still allowed |
+| `redesign_protected_routes` | `["180"]` | Route numbers the search leaves as they are: never merged, dropped, straightened, stop-balanced or thinned out (they can still gain buses). 180 serves Pirallahı, whose connecting routes have no stops in the data, so the model cannot see its riders |
 
 ## Which results depend on which settings
 
@@ -144,4 +146,7 @@ python3 redesign.py --set redesign_origins=200
 
 # trips end at homes only
 python3 measure.py --set destination_share=0
+
+# keep routes 180 and 519 exactly as they are
+python3 redesign.py --set 'redesign_protected_routes=["180", "519"]'
 ```

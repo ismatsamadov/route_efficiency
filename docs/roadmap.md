@@ -14,57 +14,50 @@ cannot do, and which decisions and data are needed from people outside the code.
 | Every input committed; every assumption in `busnet.toml`; results regenerate byte for byte | `data/`, `busnet.toml` |
 | Stop-balancing scenario | `measure.py --scenario stop-balancing` |
 | GTFS export of today's network and of the redesign | `busnet/gtfs.py` |
-| First redesign search, with an independent check and a fleet-saving option | `busnet/optimize.py`, `redesign.py`, [results.md](results.md#the-first-redesign) |
+| Redesign search, with an independent check and a fleet-saving option | `busnet/optimize.py`, `redesign.py`, [results.md](results.md#the-redesign) |
+| The redesign ranks routes by counted boardings where they exist, never drops a route with 1,000 or more counted boardings, moves buses by the waiting they save, and leaves protected routes (180) alone | `busnet/optimize.py`, [redesign.md](redesign.md#riders-per-route) |
+| Published efficiency report updated with the redesign, including a map view of it | [Efficiency study](https://claude.ai/artifact/546fAb5SJaTSBKkZ53XY1L) |
 | Documentation | `docs/` |
 
 ## Next, in order of value
 
-1. **Use observed ridership in the redesign.** The search dropped routes 595, 149 and
-   140E, which carry about 10,100 boardings a weekday that the model does not see
-   ([results.md](results.md#check-these-before-acting)). Two changes would fix this:
-   - In `optimize.candidates()`, never offer a route with observed boardings as a drop
-     unless its observed boardings per bus are also low.
-   - In `Shift`, rank routes by observed boardings where they exist.
-2. **Fix the riders-per-bus ranking.** It favours very short routes: route 519, with 3
-   stops, ends up every 3.7 minutes. Better options:
-   - rank by the time a bus would save riders, not by riders per bus;
-   - or cap the frequency gain of short routes.
-3. **Ask AYNA for data** ([list below](#data-to-request-from-ayna-and-the-operators)).
-   Real headways alone would replace 200 estimates.
-4. **Improve the demand model.** Raise the fair ridership correlation (0.58) by calibrating
+1. **Ask AYNA for data** ([list below](#data-to-request-from-ayna-and-the-operators)).
+   - Real headways would replace 200 estimates.
+   - Boardings for the other carriers' routes would replace the model's estimates for
+     145 routes. One of them is route 519, which the redesign runs every 3 minutes on an
+     estimate of 14,700 boardings a day.
+2. **Improve the demand model.** Raise the fair ridership correlation (0.58) by calibrating
    `trip_decay_km`, `destination_share` and `destination_weights` against the observed
    boardings, and by trying a doubly constrained gravity model. Keep part of the routes
    aside for checking, so the fit is not tuned to the data that judges it.
-5. **Add the metro to the travel model.** Today metro stations only attract trips. Many
+3. **Add the metro to the travel model.** Today metro stations only attract trips. Many
    Baku trips combine bus and metro, and some bus routes exist mainly to feed it.
-6. **Add vehicle capacity.** Set frequencies with a maximum-load rule (buses needed =
+4. **Add vehicle capacity.** Set frequencies with a maximum-load rule (buses needed =
    peak load ÷ bus capacity), so no route is given more riders than it can carry.
-7. **Generate new routes.** So far the search only changes existing routes. New
+5. **Generate new routes.** So far the search only changes existing routes. New
    candidates could come from:
    - k-shortest paths between busy terminals, metro stations and destinations;
    - splitting long routes;
    - cutting loops.
-8. **Search better.** Try simulated annealing, or NSGA-II from pymoo, to trade rider time
+6. **Search better.** Try simulated annealing, or NSGA-II from pymoo, to trade rider time
    against bus-hours. Both can also undo earlier changes, which the greedy search never
    does.
-9. **Check against benchmarks.** Run the evaluator on the Mandl and Mumford test networks
+7. **Check against benchmarks.** Run the evaluator on the Mandl and Mumford test networks
    and compare with published results ([research.md](research.md#5-designing-a-network-by-computer)).
-10. **Add tests.**
-    - Unit tests for `geo.match_stops`, `service.route_headways`, `config.load_config`
-      errors and `Plan` arithmetic.
-    - A regression test that regenerates `output/` and compares it with the committed
-      files.
-11. **Validate the GTFS feeds** with the MobilityData validator. Compare travel times with
-    r5py.
-12. **Update the published efficiency report** with the redesign and its map. The export
-    script for the report already includes the redesign data.
+8. **Add tests.**
+   - Unit tests for `geo.match_stops`, `service.route_headways`, `config.load_config`
+     errors and `Plan` arithmetic.
+   - A regression test that regenerates `output/` and compares it with the committed
+     files.
+9. **Validate the GTFS feeds** with the MobilityData validator. Compare travel times with
+   r5py.
 
 ## Limitations of the current version
 
 | Limitation | Effect |
 |---|---|
 | Headways are estimated: 1 published, 55 from boardings, 145 by service type | Waiting times, fleet, bus-hours and fuel per route are approximate |
-| Demand comes from a gravity model, which ranks routes with a correlation of 0.58 | Modelled riders per route can be far off. The redesign trusts them for drops and shifts |
+| Demand comes from a gravity model, which ranks routes with a correlation of 0.58 | Estimated riders per route can be far off. The redesign uses counts for the 56 BakuBus routes and these estimates for the other 145 |
 | No metro in the travel graph | Trips that would use the metro look slower or impossible by bus |
 | No vehicle capacity or crowding | Busy routes look better than they are; frequency shifts can overload them |
 | One all-day average, weekdays only | No peak or night service; no weekend pattern |
@@ -92,7 +85,7 @@ answer.
    minutes on top of waiting (`transfer_penalty_min`). A survey or AYNA's own model
    could set this for Baku.
 4. **Which routes are fixed?** For example express routes, school services, or routes
-   bound by contracts. A list of protected routes could be added as a setting.
+   bound by contracts. List them in `redesign_protected_routes`; today it holds only 180.
 5. **Can routes of different carriers be merged?** 59 of the 72 near-duplicate pairs
    involve two carriers. The gross-cost contracts AYNA plans would make this easier.
 6. **How does this compare with AYNA's own redesign?** Its consultant's network needs
