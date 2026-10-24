@@ -1,7 +1,8 @@
 # Outputs
 
 `measure.py` writes `output/`; `redesign.py` writes `output/redesign/`; `robustness.py`
-writes `output/robustness/`. CSV files are UTF-8 with a byte-order mark, so Excel shows
+writes `output/robustness/`; `site/build.py` writes the page's files in `site/`
+([below](#sitedatajs-and-the-checklist-workbooks)). CSV files are UTF-8 with a byte-order mark, so Excel shows
 Azerbaijani letters correctly. Shares are
 fractions between 0 and 1; distances are km or m as named; times are minutes unless named
 otherwise. Blank cells mean "not defined" (for example the circuity of a loop route).
@@ -224,3 +225,39 @@ One row per run of `redesign.py`, the first with the committed settings.
 lists. `redesign_seeds`: an object with `origins_per_sample` (300), `rows` (the table)
 and `gain_min` (the mean, standard deviation, minimum, maximum, count of positive gains
 and number of samples). Then the `settings` and `inputs` used.
+
+## site/data.js and the checklist workbooks
+
+`site/build.py` writes three files for the page in `index.html`; none of them is read by
+the other scripts.
+
+`site/data.js` assigns one object to `window.SITE_DATA`. `meta` holds the dates of the
+map data (`scraped`, `same_as`), the month of the BakuBus counts, the coverage radius and
+the links. `summary` holds the figures the page quotes, taken from `network.json` and the
+CSV files: routes, directions and stops, routes per shape class, detours and their extra
+km, the detours where nobody depends on the route alone, near-duplicate pairs and those
+with two carriers, corridors, routes per link, population and covered population.
+`issues` holds `repairs` (each line of `repairs.txt` as route, direction, kind and text)
+and the defects the repairs do not cover: `no_stops` and `no_shape` (route numbers),
+`straight_directions`, `length_round_trip_median`, `duration_formula` (routes whose
+`duration_min` equals `floor(route_length_km / 0.6)`, of `routes_in_table`),
+`missing_from_map` (counted routes that are not in the map data), `cyrillic_names`,
+`shared_names`, `shared_names_far_apart` and `unnamed_unused_stops`. Then the data the
+map draws: `stops` (served stops as latitude, longitude and name, referred to by
+position), `routes` (one object per route with the figures of `routes.csv` and, for each
+direction, its line and its stops), `detours` (the rows of `detours.csv` with their line
+and end stops), `duplicates`, `corridors` (with their line and routes) and `hexes`
+(each population hexagon with people farther than the coverage radius from a stop: its
+outline, those people and everyone in it). Lines are encoded polylines with 5 decimals.
+
+`site/checklist-az.xlsx` and `site/checklist-en.xlsx` hold the same lists in
+Azerbaijani and in English, one sheet each, with frozen headers and filters:
+
+| Sheet | Rows | Columns |
+|---|---|---|
+| About (Haqqında) | the source, the dates and the definitions | one |
+| Data issues (Məlumat xətaları) | 40: the 23 repairs, the 2 routes without a line, the 7 without stops and the 8 counted routes missing from the map | route, direction, issue, what would fix it |
+| Detours (Dolamalar) | 271, longest extra time first | route, direction, from and to stop, stops inside and those only this route serves, km along the route and in a straight line, extra km, extra minutes per trip (an estimate), residents only this route reaches, whether everyone inside has another route |
+| Near-duplicate routes (Təkrarlanan marşrutlar) | 72 | route and carrier, the route that serves most of its stops and its carrier, share of stops shared, stops of each, same carrier |
+| Corridors (Dəhlizlər) | 21 | from, to, turning point, km, stops, routes per link (mean and busiest link), routes |
+| Routes (Marşrutlar) | 201 | the measured columns of `routes.csv`, without the modelled headways, fleet and fuel |

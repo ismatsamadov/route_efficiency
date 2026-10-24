@@ -23,6 +23,7 @@ python3 robustness.py
 | `python3 measure.py --scenario stop-balancing --min-gap 250` | the same, plus `output/scenario.json` and `output/scenario_removed_stops.csv` | about 12 s |
 | `python3 redesign.py` | `output/redesign/` | about 2 minutes |
 | `python3 robustness.py` | `output/robustness/`: the results on other trip samples and under other assumptions | about 15 minutes (8 processes) |
+| `python3 site/build.py` | `site/data.js` and `site/checklist-{az,en}.xlsx`, the page's data, from `output/` | about 3 s |
 
 The committed `output/` folder was produced by exactly these three commands. Running
 them again gives byte-identical files: random sampling uses fixed seeds and every list
@@ -38,8 +39,21 @@ BUSNET_SLOW_TESTS=1 python3 -m unittest        # also regenerates the redesign a
 ```
 
 The tests check the geometry, the headway and daily-service rules, the settings reader
-and the redesign's plan arithmetic on a small made-up network, and regenerate `output/`
-to compare it with the committed files ([code.md](code.md#checking-a-change)).
+and the redesign's plan arithmetic on a small made-up network, regenerate `output/`
+to compare it with the committed files, and rebuild the page's data and checklists to
+compare them with the committed ones ([code.md](code.md#checking-a-change)).
+
+## See the page
+
+```sh
+python3 site/build.py          # after any change to output/
+python3 -m http.server         # then open http://localhost:8000/
+```
+
+`index.html` is the page for readers of the results ([code.md](code.md#the-page)). It
+needs an internet connection for the map library and the base map tiles; everything
+else is in the repository. GitHub Pages publishes it when Settings → Pages is set to
+deploy from the branch `main`, folder `/ (root)`.
 
 ## Change something and see the effect
 

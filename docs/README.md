@@ -39,6 +39,7 @@ lists what to check first.
 | Turn the work into a research paper: outline, venues, format, steps for an independent researcher | [paper.md](paper.md) |
 | Read the manuscript draft and its title page | [../paper/manuscript.md](../paper/manuscript.md), [../paper/title-page.md](../paper/title-page.md) |
 | Use the route planner built on the same data | [birjob.com/aletler/avtobus-marsrutu](https://www.birjob.com/aletler/avtobus-marsrutu) (in Azerbaijani) |
+| Show the findings to people who will act on them: a map, a card per route, the data defects and the checklists | [../index.html](../index.html), served at [ismatsamadov.github.io/route_efficiency](https://ismatsamadov.github.io/route_efficiency/); how it is built: [code.md](code.md#the-page) |
 | Look up a term | [glossary.md](glossary.md) |
 
 ## Three commands
@@ -51,4 +52,4 @@ python3 robustness.py                                        # the results under
 
 All three read `busnet.toml` and the data committed under `data/`, need only Python 3.11
 or newer, and give byte-identical results on every run. `python3 -m unittest` runs the
-tests.
+tests. `python3 site/build.py` then rebuilds the page's data from `output/` (about 3 s).
