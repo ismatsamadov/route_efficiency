@@ -1,5 +1,5 @@
 /*
- * The logic of index.html: the map and its seven views, the guided tour, route cards with
+ * The logic of index.html: the map and its eight views, the guided tour, route cards with
  * their shorter paths and overlaps, reach from a stop, the data issues and the checklist
  * tables. Everything shown comes from site/data.js, which site/build.py writes from
  * output/. Text that comes from the data (stop names, carriers) goes into the page with
@@ -36,20 +36,20 @@
     views: {
       directness: {
         name: "Directness",
-        text: "Each route is coloured by how many times longer its path is than the straight line between its end stops (the more roundabout of its two directions). Darker means more roundabout.",
+        text: "Each route is coloured by path length relative to the straight line between its end stops, using the less direct direction. Darker means more roundabout. This describes geometry, not service quality.",
         fact: "Together the routes run {route_km} km of route over only {street_km} km of distinct links between stops: {per_link} routes on each link on average."
       },
       detours: {
         name: "Detours",
-        text: "Stretches where the bus travels at least 2.5 times the straight line between two of its stops, and at least 1.5 km more. Hover a detour: the dashed line is the straight way, the green one a path along streets buses already use.",
-        fact: "Together the detours add {km} km to one trip each way on every route. {with} of them have a path along today's bus streets at least 0.5 km shorter. The longest is on route {route}: about {minutes} minutes per trip.",
-        nobody: "Everyone inside has another route within 400 m",
-        some: "Some residents are reached only by this route",
-        fix: "Shorter path along streets buses already use"
+        text: "Segments at least 2.5 times the straight line between two stops, and at least 1.5 km longer. Select a segment to inspect it. Green shows a shorter graph path; legal turns, one-way streets and skipped stops need review.",
+        fact: "The flagged segments total {km} km beyond their straight-line distances across all route directions, counted once each. This is not an achievable saving. {with} have a graph path at least 0.5 km shorter. The largest modelled excess time is on route {route}: about {minutes} minutes per trip, under assumed speeds.",
+        nobody: "No population uniquely covered in the grid model",
+        some: "Some population uniquely covered in the grid model",
+        fix: "Shorter graph path · requires road review"
       },
       duplication: {
         name: "Overlap",
-        text: "At least 85% of the stops of each orange route are also served by another route (express routes are left out). Blue routes are the ones that contain them. Open a route and press Compare to see the shared stops.",
+        text: "At least 85% of each orange route's stops are shared with another route; express routes are excluded. Blue routes contain those stops. Open a route and press Compare. Overlap alone does not establish that a route is redundant.",
         fact: "There are {pairs} such pairs; in {two} of them the two routes have different carriers.",
         inside: "Mostly inside another route",
         host: "Contains such a route"
@@ -62,18 +62,18 @@
       },
       coverage: {
         name: "Coverage",
-        text: "Residents who live more than {radius} m in a straight line from the nearest stop, per hexagon (about 0.74 km²). The darker the hexagon, the more such residents.",
-        fact: "{covered} of {population} residents ({share}) live within {radius} m of a stop. Population: Kontur, November 2023.",
-        legend: "Such residents per hexagon",
+        text: "Estimated population more than {radius} m in a straight line from the nearest served stop, per hexagon (about 0.74 km²). Darker means more people. This uses a 2023 grid, not observed household locations or walking paths.",
+        fact: "An estimated {covered} of {population} people ({share}) in the study area fall within {radius} m of a served stop. Population: Kontur, November 2023.",
+        legend: "Estimated people beyond the radius per hexagon",
         bins: ["fewer than 100", "100 to 500", "500 to 2,000", "more than 2,000"],
         people: "{n} residents"
       },
       spacing: {
         name: "Stop spacing",
         text: "Orange stops are less than {gap} m along the route from a neighbouring stop on every route that uses them, and removing them would leave no gap longer than {max} m. Terminals and interchange hubs are kept.",
-        close: "Could go",
+        close: "Flagged by the spacing scenario",
         other: "Other stops",
-        fact: "Removing all {n} would take {visits} stops off one trip each way on every route: about {hours} hours of running time at an assumed {loss} seconds per stop. {lost} residents would no longer have a stop within {radius} m."
+        fact: "In the scenario, removing {n} stops eliminates {visits} stop visits across one trip in every route direction: about {hours} modelled hours at {loss} seconds per stop. An estimated {lost} people lose coverage within {radius} m. Accessibility and rider impacts need review."
       },
       reach: {
         name: "Reach",
@@ -106,19 +106,19 @@
       clear: "Pick another stop"
     },
     tip: {
-      detour: "+{min} min per trip · {km} km extra",
+      detour: "+{min} min modelled excess · {km} km beyond straight line",
       alt: "a path along bus streets is {km} km shorter",
       corridor: "{mean} routes per link on average · {km} km",
-      hex: "{n} residents farther than {radius} m",
+      hex: "Estimated {n} people beyond {radius} m",
       inside: "{share} of its stops are on route {r}",
-      gap: "{gap} m to its nearest neighbour · could go"
+      gap: "{gap} m to its nearest neighbour · spacing candidate"
     },
     popup: {
-      hex: "{n} residents live more than {radius} m from the nearest stop.",
-      hexTotal: "{n} residents live in this hexagon.",
+      hex: "Estimated {n} people beyond {radius} m straight-line distance from a served stop.",
+      hexTotal: "Estimated population in this hexagon: {n}.",
       corridor: "{km} km · {stops} stops · {mean} routes per link on average, {max} at most",
       corridorRoutes: "Routes on this corridor:",
-      gap: "{gap} m along the route from its nearest neighbour; it could go without leaving a gap over {max} m.",
+      gap: "{gap} m along the route from its nearest neighbour. The spacing scenario leaves no gap over {max} m; removal still needs local review.",
       reach: "Show its reach"
     },
     card: {
@@ -131,21 +131,21 @@
       spacing: "Stop spacing, median",
       short: "Gaps under 200 m",
       shared: "Path shared with other routes",
-      residents: "Residents within {radius} m",
-      only: "Residents only this route reaches",
+      residents: "Estimated population within {radius} m",
+      only: "Population uniquely covered (estimate)",
       boardings: "Weekday boardings per day",
       boardingsNote: "BakuBus, {month}",
       notPublished: "Not published",
       notPublishedNote: "only BakuBus publishes counts",
-      closeStops: "Stops that could go",
+      closeStops: "Stop-spacing candidates",
       closeNote: "orange on the map",
       detours: "Detours",
       noDetours: "This route has no detours.",
-      detourMeta: "+{min} min per trip (estimate) · {km} km extra",
-      nobody: "everyone inside has another route",
-      some: "{n} residents reached only by this route",
-      alt: "Shorter path: {km} km instead of {along} km, about {min} min less per trip (estimate), skipping {dropped} stops",
-      altNone: "No path along today's bus streets is 0.5 km shorter.",
+      detourMeta: "+{min} min modelled excess · {km} km beyond straight line",
+      nobody: "no uniquely covered population in the grid model",
+      some: "{n} people uniquely covered in the grid model",
+      alt: "Graph candidate: {km} km instead of {along} km; modelled difference {min} min per trip, skipping {dropped} stops. Road legality and rider impacts are unverified.",
+      altNone: "The graph search found no candidate at least 0.5 km shorter.",
       overlap: "Overlap",
       inside: "Most of its stops are also served by:",
       contains: "It contains most of the stops of:",
@@ -165,7 +165,7 @@
       repeated_stops: "The stop list of direction {d} is repeated twice",
       no_shape: "The route has no line"
     },
-    groups: { lines: "Route lines", table: "Route table", stops: "Stops", fresh: "Up to date" },
+    groups: { lines: "Route lines", table: "Route table", stops: "Stops", fresh: "Snapshot completeness" },
     units: { routes: "routes", directions: "directions", names: "names", stops: "stops", changes: "changes", of: "/ {n}" },
     issues: {
       wrong_direction: ["Lines under the wrong direction", "A direction's line is stored under the other direction, so a map showing one direction draws the other one's streets."],
@@ -179,24 +179,24 @@
       no_shape: ["No line", "The route has stops but no line; this page draws it with straight lines between stops."],
       no_stops: ["Routes without stops", "These routes are listed, but have no stops and no line."],
       cutoff: " 150A and 446 connect Pirallahı with the city, so route 180 looks cut off on the map.",
-      length: ["route_length_km is the round trip", "The field is a median {x} times the one-way line, so it is the round-trip length. Its name or description should say so."],
-      duration: ["duration_min is not a real time", "On all {n} routes the field equals floor(route_length_km / 0.6): a fixed 36 km/h over the round trip."],
+      length: ["Length field appears to describe a round trip", "The field is a median {x} times the one-way geometry. This is consistent with round-trip length; the API's intended meaning needs confirmation."],
+      duration: ["Duration follows a fixed formula", "On all {n} routes the field equals floor(route_length_km / 0.6), equivalent to a fixed 36 km/h. It is not used as observed travel time in this study."],
       api: ["One route does not come through", "For one of its 209 route ids (id 96, route 144) the API returns an error instead of data."],
       cyrillic: ["Names with Cyrillic letters", "In {n} stop names the letter ə, Ə or X is the Cyrillic look-alike, not the Latin one. It looks the same, but a text search can miss these names."],
       shared: ["Shared stop names", "{n} names are used by more than one stop; {far} of them by stops more than 1 km apart."],
       unnamed: ["Unnamed stops", "{n} stops have coordinates but no name and no route."],
-      unchanged: ["The map does not show the new network", "On {scraped} the API returned exactly the data of {same_as}, while the new network has been launching in stages since January 2026."],
+      unchanged: ["The two captured snapshots match", "The API data captured on {scraped} is identical to the copy from {same_as}. This comparison alone does not establish what happened between the two dates."],
       missing: ["Counted, but not on the map", "BakuBus publishes boardings for these routes for {month}, but AYNA's map does not carry them."]
     },
     tables: {
       detours: {
-        title: "The longest detours where everyone inside has another route",
-        note: "The extra time is an estimate from speeds assumed by type of service. The shorter path runs along streets buses already use.",
-        cols: ["Route", "From → to", "Extra distance", "Extra per trip", "Shorter path saves"]
+        title: "Flagged detours with no uniquely covered population",
+        note: "Based on the population grid and 400 m radius. Excess is relative to a straight line; times use assumed speeds. Graph alternatives require road and rider review.",
+        cols: ["Route", "From → to", "Beyond straight line", "Modelled excess time", "Graph path difference"]
       },
       duplicates: {
         title: "The most overlapping routes",
-        note: "The share of the first route's stops that the second also serves.",
+        note: "The share of the first route's stops that the second also serves. Shared stops do not establish interchangeable service.",
         cols: ["Route", "Mostly inside", "Shared stops", "Carriers"],
         same: "same", different: "different", of: "{b} of {a} stops"
       },
@@ -205,7 +205,7 @@
         note: "Every route with stops on the map. Click a column to sort, type to filter, and open any route on the map.",
         filter: "Filter by route, end stop or carrier",
         shown: "{n} of {total} routes",
-        cols: ["Route", "From — to", "Carrier", "Shape", "Path / straight line", "One way", "Stops", "Detours", "Detour km", "Shared path", "Close stops", "Residents within {radius} m", "Only this route", "Weekday boardings"]
+        cols: ["Route", "From — to", "Carrier", "Shape", "Path / straight line", "One way", "Stops", "Detours", "Detour km", "Shared path", "Close stops", "Population within {radius} m (est.)", "Unique coverage (est.)", "Weekday boardings"]
       },
       carriers: {
         title: "By carrier",
@@ -229,16 +229,16 @@
       issues: "See the data issues",
       checklist: "Download the checklist",
       overview: ["{routes} routes, {direct} of them direct", "Each line is a bus route, coloured by how roundabout it is. Only {direct} of {routes} routes run at most 1.4 times the straight line between their end stops; {loops} are loops."],
-      detour: ["A {min}-minute detour", "Between {from} and {to}, route {r} travels {along} km where the straight line is {straight} km: about {min} extra minutes on every trip (an estimate). Everyone who lives along it has another route within 400 m."],
-      detourFix: " The green dashed line runs along streets buses already use: {alt} km instead of {along} km.",
+      detour: ["About {min} minutes of modelled excess", "Between {from} and {to}, route {r} travels {along} km against a {straight} km straight line. Assumed speeds imply {min} excess minutes, not an achievable saving. The grid model finds no uniquely covered population near its inner stops at 400 m."],
+      detourFix: " The green graph candidate is {alt} km instead of {along} km; legal turns and skipped stops need checking.",
       overlap: ["Two routes, one set of stops", "{all} stops of route {a} are also served by route {b}{carrier}. Orange stops are on both."],
       overlapAll: "All {n}",
       overlapShare: "{share} of the {n}",
       sameCarrier: ", run by the same carrier, {c}",
       otherCarrier: ", run by a different carrier",
-      corridor: ["{routes} routes along one corridor","Between {from} and {to}, {routes} routes share {km} km of street, {mean} on every link on average. Stretches like this are the usual candidates for bus lanes or a single frequent trunk line."],
-      spacing: ["{n} stops too close together", "Orange stops sit less than {gap} m from the next stop on every route that uses them. Removing them would leave no gap over {max} m and save about {hours} hours on one trip each way of every route (an estimate)."],
-      coverage: ["{people} people, no stop within {radius} m", "In this hexagon {people} residents live more than {radius} m in a straight line from the nearest stop. Across the city, {uncovered} of {population} residents do."],
+      corridor: ["{routes} routes along one corridor","Between {from} and {to}, {routes} routes share {km} km of mapped links, {mean} on each link on average. Counts and operational evidence would be needed to assess bus lanes or service changes."],
+      spacing: ["{n} stop-spacing candidates", "Orange stops sit less than {gap} m from a neighbour on every route using them. The scenario leaves no gap over {max} m; {hours} hours across one trip per route direction is a model estimate. Local accessibility needs review."],
+      coverage: ["An estimated {people} people beyond {radius} m", "The 2023 population grid estimates {people} people beyond {radius} m straight-line distance from a served stop in this hexagon. Across the study area, the estimate is {uncovered} of {population}. This is not a walking-access measure."],
       reach: ["From {stop}", "{k} routes stop here. Without changing buses they reach {n0} stops; with one change, walking up to {walk} m between stops, {n1} of all {total}."],
       fixes: ["Fixable at the source", "AYNA's own map data has {defects} defects, from route lines filed under the wrong direction to {missing} counted routes missing from the map. They are listed below with the routes they affect."]
     }
@@ -777,7 +777,10 @@
     if (next !== "reach" && next !== "time") origin = null;
     view = next;
     document.querySelectorAll("[data-view]").forEach(function (b) {
-      b.setAttribute("aria-selected", String(b.getAttribute("data-view") === view));
+      var active = b.getAttribute("data-view") === view;
+      b.setAttribute("aria-selected", String(active));
+      b.tabIndex = active ? 0 : -1;
+      if (active) document.getElementById("map-view-panel").setAttribute("aria-labelledby", b.id);
     });
     if (map) {
       refreshOverlay();
@@ -895,15 +898,18 @@
 
   // A detour, corridor or hexagon drawn on top until something else is chosen.
   function focusDetour(d) {
+    if (!map) return;
     layers.focus.clearLayers();
     layers.focus.addLayer(L.polyline([[stops[d.a][0], stops[d.a][1]], [stops[d.b][0], stops[d.b][1]]],
       lineOpts(C.ink, 2, { dashArray: "5 6", renderer: R.hover })));
   }
   function focusCorridor(k) {
+    if (!map) return;
     layers.focus.clearLayers();
     layers.focus.addLayer(L.polyline(k.ll, lineOpts(C.ink, corridorWidth(k.mean) + 3, { opacity: 0.3, renderer: R.hover })));
   }
   function focusHex(h) {
+    if (!map) return;
     layers.focus.clearLayers();
     layers.focus.addLayer(L.polygon(h.ll, { renderer: R.hover, interactive: false, color: C.ink, weight: 2.5, fill: false }));
   }
@@ -1524,7 +1530,7 @@
     return el("article", { class: "table-card" }, [
       el("h3", { text: spec.title }),
       el("p", { class: "table-note", text: spec.note }),
-      el("div", { class: "table-scroll" }, [el("table", null, [
+      el("div", { class: "table-scroll", tabindex: "0", role: "region", "aria-label": spec.title + " — scroll for all columns" }, [el("table", { "aria-label": spec.title }, [
         el("thead", null, [el("tr", null, head.map(function (h) { return el("th", { class: h.num ? "num" : null, text: h.label }); }).concat([el("th")]))]),
         el("tbody", null, rows.map(function (row) {
           return el("tr", null, row.cells.map(function (cell, i) {
@@ -1586,7 +1592,7 @@
   function sortableTable(box, spec) {
     var state = { col: spec.sortBy || 0, dir: spec.sortDir || 1, q: "" };
     var input = el("input", { type: "search", class: "table-filter", placeholder: spec.filter, "aria-label": spec.filter, autocomplete: "off", spellcheck: "false" });
-    var count = el("span", { class: "table-count" });
+    var count = el("span", { class: "table-count", role: "status" });
     var thead = el("thead"), tbody = el("tbody");
     function header() {
       clear(thead);
@@ -1629,11 +1635,12 @@
       el("h3", { text: spec.title }),
       el("p", { class: "table-note", text: spec.note }),
       el("div", { class: "table-tools" }, [input, count]),
-      el("div", { class: "table-scroll table-tall" }, [el("table", { class: "sortable-table" }, [thead, tbody])])
+      el("div", { class: "table-scroll table-tall", tabindex: "0", role: "region", "aria-label": spec.title + " — scroll for all columns" }, [el("table", { class: "sortable-table", "aria-label": spec.title }, [thead, tbody])])
     ]));
   }
 
   function focusCarrier(c) {
+    if (!map) return;
     select(null);
     showView("directness");
     var boxes = [];
@@ -1851,7 +1858,42 @@
     if (focusable) focusable.focus({ preventScroll: true });
   }
 
-  // ---------------------------------------------------------------- the network behind the title
+  // ---------------------------------------------------------------- recorded coverage sensitivity
+
+  function renderCoverageLab() {
+    var options = document.querySelector(".radius-options");
+    var chart = document.querySelector(".coverage-chart");
+    var result = document.querySelector(".coverage-result");
+    if (!options || !chart || !result) return;
+    var rows = D.coverage_sensitivity;
+    if (!rows || !rows.length) {
+      result.textContent = "Coverage sensitivity results are unavailable. Download the recorded results below.";
+      return;
+    }
+    function label(r) { return r.radius_m === 1000 ? "1 km" : r.radius_m + " m"; }
+    function choose(row) {
+      options.querySelectorAll("button").forEach(function (b) { b.setAttribute("aria-pressed", String(+b.dataset.radius === row.radius_m)); });
+      chart.querySelectorAll("button").forEach(function (b) { b.setAttribute("aria-pressed", String(+b.dataset.radius === row.radius_m)); });
+      clear(result);
+      result.appendChild(el("span", { class: "coverage-number", text: fmt(100 * row.share, 1) + "%" }));
+      result.appendChild(el("p", null, [
+        el("strong", { text: "within " + label(row) + " of a served stop" }),
+        el("br"),
+        "Estimated population: " + millions(row.population_within) + "; " + millions(S.population - row.population_within) + " beyond the radius."
+      ]));
+    }
+    rows.forEach(function (r) {
+      options.appendChild(el("button", { type: "button", "data-radius": r.radius_m, "aria-pressed": "false", text: label(r), onclick: function () { choose(r); } }));
+      chart.appendChild(el("button", { type: "button", class: "coverage-bar", "data-radius": r.radius_m, "aria-pressed": "false", "aria-label": label(r) + ": " + fmt(100 * r.share, 1) + "% estimated population coverage", onclick: function () { choose(r); } }, [
+        el("span", { text: label(r) }),
+        el("span", { class: "bar-track", "aria-hidden": "true" }, [el("span", { class: "bar-fill", style: "--coverage:" + (100 * r.share) + "%" })]),
+        el("span", { text: fmt(100 * r.share, 1) + "%" })
+      ]));
+    });
+    choose(rows.filter(function (r) { return r.radius_m === D.meta.radius_m; })[0] || rows[0]);
+  }
+
+  // ---------------------------------------------------------------- the network figure
 
   function drawHeroNetwork() {
     var canvas = document.querySelector(".hero-net");
@@ -1863,18 +1905,15 @@
     var ctx = canvas.getContext("2d");
     ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
     ctx.clearRect(0, 0, rect.width, rect.height);
-    // Fit the whole network above the figures, against the right edge.
+    // Fit actual snapshot geometry inside the dedicated figure at every viewport.
     var b = NETWORK_BOX, kx = Math.cos((b[0] + b[1]) / 2 * Math.PI / 180);
     var w = (b[3] - b[2]) * kx, h = b[1] - b[0];
-    var narrow = rect.width < 700;
-    var statsEl = document.querySelector(".stats");
-    var bottom = statsEl ? statsEl.getBoundingClientRect().top - rect.top - 16 : rect.height;
-    var areaW = rect.width * (narrow ? 1.05 : 0.66), areaH = Math.max(120, bottom - 24);
+    var areaW = Math.max(1, rect.width - 36), areaH = Math.max(1, rect.height - 20);
     var scale = Math.min(areaW / w, areaH / h);
-    var x0 = rect.width - w * scale - (narrow ? -rect.width * 0.04 : rect.width * 0.03), y0 = 12 + (areaH - h * scale) / 2;
-    ctx.lineWidth = 1;
+    var x0 = (rect.width - w * scale) / 2, y0 = (rect.height - h * scale) / 2;
+    ctx.lineWidth = 1.1;
     ctx.lineJoin = "round";
-    ctx.globalAlpha = 0.5;
+    ctx.globalAlpha = 0.8;
     SHAPES.forEach(function (cls) {
       ctx.strokeStyle = C.ramp[cls];
       ctx.beginPath();
@@ -1925,12 +1964,35 @@
   // ---------------------------------------------------------------- start
 
   document.querySelectorAll("[data-view]").forEach(function (b) {
+    b.id = "map-tab-" + b.getAttribute("data-view");
+    b.setAttribute("aria-controls", "map-view-panel");
     b.addEventListener("click", function () { if (tour.on) endTour(); showView(b.getAttribute("data-view")); });
+    b.addEventListener("keydown", function (e) {
+      var i = VIEWS.indexOf(b.getAttribute("data-view")), next;
+      if (e.key === "ArrowRight") next = (i + 1) % VIEWS.length;
+      else if (e.key === "ArrowLeft") next = (i + VIEWS.length - 1) % VIEWS.length;
+      else if (e.key === "Home") next = 0;
+      else if (e.key === "End") next = VIEWS.length - 1;
+      else return;
+      e.preventDefault();
+      if (tour.on) endTour();
+      showView(VIEWS[next]);
+      document.querySelector('[data-view="' + VIEWS[next] + '"]').focus({ preventScroll: true });
+    });
   });
   document.querySelectorAll("[data-tour]").forEach(function (b) {
     b.addEventListener("click", function (e) { e.preventDefault(); startTour(); });
   });
   var search = document.getElementById("route-search");
+  function layoutFinder() {
+    var finder = document.querySelector(".finder"), mobile = document.querySelector(".mobile-finder");
+    var panel = document.querySelector(".panel");
+    var narrow = window.matchMedia("(max-width: 1000px)").matches;
+    if (narrow && finder.parentNode !== mobile) mobile.appendChild(finder);
+    else if (!narrow && finder.parentNode !== panel) panel.insertBefore(finder, panel.firstChild);
+    mobile.hidden = !narrow;
+  }
+  layoutFinder();
   search.addEventListener("input", renderChips);
   search.addEventListener("keydown", function (e) {
     if (e.key !== "Enter") return;
@@ -1948,6 +2010,7 @@
   renderIssues();
   renderTables();
   renderAllTables();
+  renderCoverageLab();
   showView(view, true);
   if (applyHash()) {
     setTimeout(scrollToMap, 0);
@@ -1956,7 +2019,20 @@
   drawHeroNetwork();
   var resizeTimer = null;
   window.addEventListener("resize", function () {
+    layoutFinder();
     clearTimeout(resizeTimer);
     resizeTimer = setTimeout(drawHeroNetwork, 150);
   });
+  if (window.IntersectionObserver) {
+    var sectionObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        document.querySelectorAll(".nav a").forEach(function (a) {
+          if (a.getAttribute("href") === "#" + entry.target.id) a.setAttribute("aria-current", "location");
+          else a.removeAttribute("aria-current");
+        });
+      });
+    }, { rootMargin: "-15% 0px -65% 0px" });
+    document.querySelectorAll("main > section[id]").forEach(function (section) { sectionObserver.observe(section); });
+  }
 })();

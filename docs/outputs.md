@@ -239,6 +239,11 @@ CSV files: routes, directions and stops, routes per shape class, detours and the
 km, the detours where nobody depends on the route alone and those with a shorter path,
 near-duplicate pairs and those with two carriers, corridors, routes per link, closely
 spaced stops, population and covered population.
+`coverage_sensitivity` holds five recorded results from
+`output/robustness/coverage_radius.csv`: `radius_m`, `population_within` and `share`.
+The coverage lab displays these values without interpolating or changing the map's
+default-radius layer. Population is estimated from the 2023 grid; distances are
+straight-line radii, not verified walking access.
 `issues` holds `repairs` (each line of `repairs.txt` as route, direction, kind and text)
 and the defects the repairs do not cover: `no_stops` and `no_shape` (route numbers),
 `straight_directions`, `length_round_trip_median`, `duration_formula` (routes whose
@@ -267,7 +272,7 @@ only one of its routes reaches, and counted boardings). Lines are encoded polyli
 |---|---|---|
 | About | the source, the dates and the definitions | one |
 | Data issues | 40: the 23 repairs, the 2 routes without a line, the 7 without stops and the 8 counted routes missing from the map | route, direction, issue, what would fix it |
-| Detours | 271, longest extra time first | route, direction, from and to stop, stops inside and those only this route serves, km along the route and in a straight line, extra km, extra minutes per trip (an estimate), residents only this route reaches, whether everyone inside has another route; for the 134 with a shorter path its km, the km and minutes (an estimate) it saves and the stops it skips |
+| Detours | 271, longest modelled excess time first | route, direction, end stops, inner stops, km along the route and in a straight line, excess km and modelled minutes, estimated uniquely covered population, whether the grid model finds no uniquely covered population; for the 134 graph candidates, their km, the distance and modelled time differences, and skipped stops. These are unverified alternatives, not established savings |
 | Near-duplicate routes | 72 | route and carrier, the route that serves most of its stops and its carrier, share of stops shared, stops of each, same carrier |
 | Corridors | 21 | from, to, turning point, km, stops, routes per link (mean and busiest link), routes |
 | Close stops | 351, closest first | stop name, AYNA stop id, shortest distance along a route to a neighbouring stop, routes |

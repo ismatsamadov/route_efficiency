@@ -225,6 +225,15 @@ XML writer with fixed dates, so the same input gives the same file. With `--og` 
 runs headless Chrome on `site/og.html`, which draws the network and three figures from
 `data.js`, to write `site/og.png` at 1200 × 630 pixels.
 
+The coverage lab reads the five recorded radii from
+`output/robustness/coverage_radius.csv`. The build checks each coverage share against
+the study-area population and checks the default-radius result against the recomputed
+coverage. Selecting a radius only changes this sensitivity panel; the map's coverage
+layer retains its configured radius. The page labels straight-line coverage as an
+estimate and distinguishes snapshot measurements from model estimates and questions
+requiring field validation. On narrow screens the route finder moves before the map;
+the eight layer tabs and wide tables also support keyboard navigation.
+
 `site/app.js` reads `window.SITE_DATA`. It draws the map with Leaflet 1.9.4 from cdnjs
 (pinned with an integrity hash) on OpenStreetMap's tiles, which `style.css` greys so that
 only the routes carry colour. The colours come from a validated palette: an ordinal blue

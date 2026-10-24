@@ -465,6 +465,15 @@ def build(out_dir):
     issues = map_issues(net, data["db"], data["ridership"], routes_csv)
     shapes = Counter(r["shape"] for r in routes)
     carriers = carriers_table(routes, duplicates, [s for s, _ in close])
+    coverage_sensitivity = [
+        {"radius_m": int(r["radius_m"]), "population_within": float(r["population_within"]),
+         "share": float(r["share_population_covered"])}
+        for r in read_csv(out / "robustness" / "coverage_radius.csv")
+    ]
+    for row in coverage_sensitivity:
+        check("coverage sensitivity share", row["population_within"] / total, row["share"], 5e-5)
+        if row["radius_m"] == radius:
+            check("coverage sensitivity baseline", row["population_within"], covered, 1e-9)
     site = {
         "meta": {
             "scraped": SCRAPED, "same_as": SAME_AS, "counts_month": issues["counts_month"],
@@ -504,6 +513,7 @@ def build(out_dir):
         "corridors": corridors,
         "spacing": spacing,
         "carriers": carriers,
+        "coverage_sensitivity": coverage_sensitivity,
         "hexes": hexes,
     }
     out_dir.mkdir(parents=True, exist_ok=True)
@@ -534,6 +544,11 @@ TEXT = {
         "to a copy taken on {same_as}.",
         "These lists are candidates to check, not recommendations. Every line needs checking on the "
         "ground by someone who knows the city.",
+        "Coverage uses the November 2023 population grid and straight-line distance, not walking "
+        "access. Finding no uniquely covered population does not establish that riders are unaffected. "
+        "Geometric detour excess is relative to a straight line, not an achievable saving. "
+        "Shorter graph paths need checks for legal turns, one-way streets and skipped stops. "
+        "Shared stops alone do not establish redundant service; close stops are scenario candidates.",
         "Data issues: defects found in AYNA's map data that could be fixed at the source.",
         "Detours: stretches where the bus travels at least 2.5 times the straight line between two of "
         "its stops, and at least 1.5 km more. Extra minutes are estimates from assumed speeds. The "
@@ -562,8 +577,8 @@ TEXT = {
     "detour_cols": ["Route", "Direction", "From stop", "To stop", "Stops inside",
                     "Stops inside served only by this route", "Along the route, km", "Straight line, km",
                     "Extra distance, km", "Extra minutes per trip (estimate)",
-                    "Residents only this route reaches", "Everyone inside has another route",
-                    "Shorter path, km", "Saved by it, km", "Saved by it, minutes (estimate)",
+                    "Population uniquely covered (estimate)", "No uniquely covered population (grid model)",
+                    "Graph candidate, km", "Graph distance difference, km", "Modelled time difference, minutes",
                     "Stops it would no longer serve"],
     "dup_cols": ["Route", "Carrier", "Its stops are mostly on route", "Carrier", "Share of stops shared",
                  "Stops of the route", "Stops of the other route", "Same carrier"],
