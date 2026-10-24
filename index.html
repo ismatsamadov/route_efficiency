@@ -4,37 +4,38 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Baku bus network</title>
-<meta name="description" content="Explore Baku's 201 bus routes through open data: route directness, detours, overlaps, corridors, stop coverage and map data issues.">
+<meta name="description" content="Explore Baku's 201 bus routes through open data: route directness, detours and shorter paths, overlaps, corridors, stop spacing, reach, stop coverage and map data issues.">
 <meta name="color-scheme" content="light">
 <meta name="theme-color" content="#f5f7fc">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Baku bus network">
 <meta property="og:description" content="Where Baku's bus routes wander, where they overlap, and whom they miss. An interactive exploration of open data.">
 <meta property="og:url" content="https://ismatsamadov.github.io/route_efficiency/">
-<meta property="og:image" content="https://ismatsamadov.github.io/route_efficiency/paper/post/figure-1.png">
+<meta property="og:image" content="https://ismatsamadov.github.io/route_efficiency/site/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Baku's bus network drawn route by route, with 29 of 201 routes direct, 271 detours and 66% of residents within 400 m of a stop">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://ismatsamadov.github.io/route_efficiency/site/og.png">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231c5cab'/%3E%3Cpath d='M7 23c3-9 6 1 9-7s6-2 9-8' fill='none' stroke='%23fff' stroke-width='3' stroke-linecap='round'/%3E%3Ccircle cx='7' cy='23' r='2.6' fill='%23fff'/%3E%3Ccircle cx='25' cy='8' r='2.6' fill='%23fff'/%3E%3C/svg%3E">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" integrity="sha384-c6Rcwz4e4CITMbu/NBmnNS8yN2sC3cUElMEMfP3vqqKFp7GOYaaBBCqmaWBjmkjb" crossorigin="anonymous" referrerpolicy="no-referrer">
 <link rel="stylesheet" href="site/style.css">
 </head>
 <body>
-<a class="skip" href="#main"><span lang="az">Əsas məzmuna keç</span><span lang="en">Skip to content</span></a>
+<a class="skip" href="#main">Skip to content</a>
 
 <header class="topbar">
   <div class="wrap topbar-inner">
     <a class="brand" href="#top">
       <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8"/><path d="M7 23c3-9 6 1 9-7s6-2 9-8"/><circle cx="7" cy="23" r="2.6"/><circle cx="25" cy="8" r="2.6"/></svg>
-      <span lang="az">Bakı avtobus şəbəkəsi</span><span lang="en">Baku bus network</span>
+      Baku bus network
     </a>
-    <nav class="nav" aria-label="Bölmələr / Sections">
-      <a href="#map"><span lang="az">Xəritə</span><span lang="en">Map</span></a>
-      <a href="#issues"><span lang="az">Məlumat xətaları</span><span lang="en">Data issues</span></a>
-      <a href="#checklist"><span lang="az">Yoxlama siyahısı</span><span lang="en">Checklist</span></a>
-      <a href="#method"><span lang="az">Metod</span><span lang="en">Method</span></a>
+    <nav class="nav" aria-label="Sections">
+      <a href="#map">Map</a>
+      <a href="#issues">Data issues</a>
+      <a href="#checklist">Checklist</a>
+      <a href="#method">Method</a>
     </nav>
-    <div class="lang" hidden role="group" aria-label="Dil / Language">
-      <button type="button" data-set-lang="az" aria-pressed="true">AZ</button>
-      <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
-    </div>
   </div>
 </header>
 
@@ -43,56 +44,41 @@
 <section class="hero" id="top">
   <canvas class="hero-net" aria-hidden="true"></canvas>
   <div class="wrap hero-inner">
-    <p class="eyebrow">
-      <span lang="az">AYNA-nın ictimai xəritəsi · <span data-date="meta.scraped"></span></span>
-      <span lang="en">AYNA's public map · <span data-date="meta.scraped"></span></span>
-    </p>
-    <h1>
-      <span lang="az">Bakının avtobus marşrutları harada dolanır, harada təkrarlanır və kimə çatmır</span>
-      <span lang="en">Where Baku's bus routes wander, where they repeat each other, and whom they miss</span>
-    </h1>
-    <p class="lede" lang="az">AYNA-nın ictimai xəritəsindəki <b data-v="summary.routes"></b> marşrutun yalnız açıq məlumatla ölçülməsi. Marşrutlar və dayanacaqlar xəritədən, sakinlər Kontur əhali şəbəkəsindən, sərnişin sayları BakuBus-dan götürülüb, ona görə hər rəqəm yoxlana bilər. Bu səhifə plan deyil: şəhəri tanıyan mütəxəssislərin yoxlaması üçün siyahıdır.</p>
-    <p class="lede" lang="en">A measurement of the <b data-v="summary.routes"></b> routes on AYNA's public map, from open data alone. Routes and stops come from the map, residents from the Kontur population grid and boardings from BakuBus, so every number can be checked. This page is not a plan: it is a list for people who know the city to check.</p>
+    <p class="eyebrow"><span>AYNA's public map · <span data-date="meta.scraped"></span></span></p>
+    <h1>Where Baku's bus routes wander, where they repeat each other, and whom they miss</h1>
+    <p class="lede">A measurement of the <b data-v="summary.routes"></b> routes on AYNA's public map, from open data alone. Routes and stops come from the map, residents from the Kontur population grid and boardings from BakuBus, so every number can be checked. This page is not a plan: it is a list for people who know the city to check.</p>
     <div class="cta">
-      <a class="btn btn-primary" href="#map"><span lang="az">Xəritəni aç</span><span lang="en">Open the map</span></a>
-      <a class="btn" data-download href="site/checklist-en.xlsx" download>
+      <a class="btn btn-primary btn-tour" href="#tour" data-tour>
+        <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M7 4.8v10.4L15.5 10z"/></svg>
+        Take the 60-second tour
+      </a>
+      <a class="btn" href="#map">Open the map</a>
+      <a class="btn" href="site/checklist.xlsx" download>
         <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 3v10m0 0 4-4m-4 4-4-4M4 16h12"/></svg>
-        <span lang="az">Yoxlama siyahısı (Excel)</span><span lang="en">Checklist (Excel)</span>
+        Checklist (Excel)
       </a>
     </div>
 
     <dl class="stats">
       <div class="stat">
-        <dt><span lang="az">birbaşa marşrut</span><span lang="en">direct routes</span></dt>
+        <dt>direct routes</dt>
         <dd class="stat-value"><span data-v="summary.shapes.direct"></span><span class="stat-of"> / <span data-v="summary.routes"></span></span></dd>
-        <dd class="stat-note">
-          <span lang="az">Qalanlarının yolu uc dayanacaqları arasındakı düz xəttdən 1,4 dəfədən çox uzundur.</span>
-          <span lang="en">Every other route's path is more than 1.4 times the straight line between its end stops.</span>
-        </dd>
+        <dd class="stat-note">Every other route's path is more than 1.4 times the straight line between its end stops.</dd>
       </div>
       <div class="stat">
-        <dt><span lang="az">dolama</span><span lang="en">detours</span></dt>
+        <dt>detours</dt>
         <dd class="stat-value" data-v="summary.detours"></dd>
-        <dd class="stat-note">
-          <span lang="az">Birlikdə hər marşrutun hər istiqamətdə bir reysinə <b data-v="summary.detour_km"></b> km artıq yol əlavə edir. <b data-v="summary.detours_nobody_only"></b> dolamada içəridəki hər kəsin 400 m-də başqa marşrutu var.</span>
-          <span lang="en">Together they add <b data-v="summary.detour_km"></b> km to one trip each way on every route. In <b data-v="summary.detours_nobody_only"></b> of them everyone inside has another route within 400 m.</span>
-        </dd>
+        <dd class="stat-note">Together they add <b data-v="summary.detour_km"></b> km to one trip each way on every route. In <b data-v="summary.detours_nobody_only"></b> of them everyone inside has another route within 400 m.</dd>
       </div>
       <div class="stat">
-        <dt><span lang="az">təkrarlanan marşrut cütü</span><span lang="en">near-duplicate pairs</span></dt>
+        <dt>near-duplicate pairs</dt>
         <dd class="stat-value" data-v="summary.duplicate_pairs"></dd>
-        <dd class="stat-note">
-          <span lang="az">Bir marşrutun dayanacaqlarının ən azı 85%-i digərində də var. <b data-v="summary.duplicate_pairs_two_carriers"></b> cütdə marşrutları fərqli daşıyıcılar işlədir.</span>
-          <span lang="en">At least 85% of one route's stops are on the other. In <b data-v="summary.duplicate_pairs_two_carriers"></b> pairs the two routes have different carriers.</span>
-        </dd>
+        <dd class="stat-note">At least 85% of one route's stops are on the other. In <b data-v="summary.duplicate_pairs_two_carriers"></b> pairs the two routes have different carriers.</dd>
       </div>
       <div class="stat">
-        <dt><span lang="az">sakinin 400 m-də dayanacağı var</span><span lang="en">of residents live within 400 m of a stop</span></dt>
+        <dt>of residents live within 400 m of a stop</dt>
         <dd class="stat-value" data-v="summary.covered" data-f="share"></dd>
-        <dd class="stat-note">
-          <span lang="az"><b data-v="summary.population" data-f="millions"></b> sakindən <b data-v="summary.uncovered" data-f="millions"></b> nəfər ən yaxın dayanacaqdan daha uzaqda yaşayır.</span>
-          <span lang="en"><b data-v="summary.uncovered" data-f="millions"></b> of <b data-v="summary.population" data-f="millions"></b> residents live farther from the nearest stop.</span>
-        </dd>
+        <dd class="stat-note"><b data-v="summary.uncovered" data-f="millions"></b> of <b data-v="summary.population" data-f="millions"></b> residents live farther from the nearest stop.</dd>
       </div>
     </dl>
   </div>
@@ -101,35 +87,40 @@
 <section class="section map-section" id="map">
   <div class="wrap">
     <div class="section-head">
-      <h2><span lang="az">Xəritə</span><span lang="en">Map</span></h2>
-      <p lang="az">Görünüşü seçin. Marşrutun üzərinə klikləyin və ya nömrəsini yazın: kartında onun ölçüləri, dolamaları və təkrarlandığı marşrutlar görünəcək.</p>
-      <p lang="en">Pick a view. Click a route or type its number to see its measurements, its detours and the routes it overlaps.</p>
+      <h2>Map</h2>
+      <p>Pick a view, or take the tour. Click a route or type its number to see its measurements, its detours with a shorter path where one exists, and the routes it overlaps. Type a stop name to see how far its buses go.</p>
     </div>
-    <div class="views" role="tablist" aria-label="Görünüş / View">
-      <button type="button" role="tab" data-view="directness"><span lang="az">Birbaşalıq</span><span lang="en">Directness</span></button>
-      <button type="button" role="tab" data-view="detours"><span lang="az">Dolamalar</span><span lang="en">Detours</span></button>
-      <button type="button" role="tab" data-view="duplication"><span lang="az">Təkrarlanma</span><span lang="en">Overlap</span></button>
-      <button type="button" role="tab" data-view="corridors"><span lang="az">Dəhlizlər</span><span lang="en">Corridors</span></button>
-      <button type="button" role="tab" data-view="coverage"><span lang="az">Əhatə</span><span lang="en">Coverage</span></button>
+    <div class="map-toolbar">
+      <div class="views" role="tablist" aria-label="View">
+        <button type="button" role="tab" data-view="directness">Directness</button>
+        <button type="button" role="tab" data-view="detours">Detours</button>
+        <button type="button" role="tab" data-view="duplication">Overlap</button>
+        <button type="button" role="tab" data-view="corridors">Corridors</button>
+        <button type="button" role="tab" data-view="coverage">Coverage</button>
+        <button type="button" role="tab" data-view="spacing">Stop spacing</button>
+        <button type="button" role="tab" data-view="reach">Reach</button>
+      </div>
+      <button type="button" class="tour-start" data-tour>
+        <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M7 4.8v10.4L15.5 10z"/></svg>
+        Tour
+      </button>
     </div>
   </div>
   <div class="wrap wrap-wide map-layout">
     <div class="map-frame">
-      <div id="leaflet" role="region" aria-label="Xəritə / Map"></div>
+      <div id="leaflet" role="region" aria-label="Map"></div>
       <div class="map-tip" hidden></div>
       <div class="map-selected" hidden></div>
-      <p class="map-fallback" hidden>
-        <span lang="az">Xəritə yüklənmədi. Aşağıdakı siyahılar və Excel faylı eyni məlumatı verir.</span>
-        <span lang="en">The map could not load. The lists below and the Excel file hold the same information.</span>
-      </p>
+      <p class="map-fallback" hidden>The map could not load. The lists below and the Excel file hold the same information.</p>
     </div>
     <aside class="panel" aria-live="polite">
       <div class="finder">
-        <label for="route-search"><span lang="az">Marşrutu tap</span><span lang="en">Find a route</span></label>
+        <label for="route-search">Find a route or a stop</label>
         <div class="finder-row">
-          <input id="route-search" type="search" autocomplete="off" spellcheck="false" placeholder="177">
+          <input id="route-search" type="search" autocomplete="off" spellcheck="false" placeholder="Route number or stop name">
         </div>
         <div class="chips route-chips" role="list"></div>
+        <div class="stop-results" hidden></div>
       </div>
       <div class="panel-view"></div>
       <div class="card" hidden></div>
@@ -140,9 +131,8 @@
 <section class="section" id="issues">
   <div class="wrap">
     <div class="section-head">
-      <h2><span lang="az">AYNA-nın xəritə məlumatında düzəldilməli olanlar</span><span lang="en">What to fix in AYNA's map data</span></h2>
-      <p lang="az">Bu xətalar ictimai xəritə API-sinin (map-api.ayna.gov.az) məlumatındadır. Bu səhifə onları avtomatik düzəldib, amma mənbədə düzəldilsə, xəritədən istifadə edən hər sərnişin və bu məlumatla işləyən hər proqram üçün düzələr. Hər birinin yanında aid olduğu marşrutlar var; marşrutun üzərinə klikləsəniz, xəritədə açılar.</p>
-      <p lang="en">These defects are in the data of the public map API (map-api.ayna.gov.az). This page repairs them automatically, but fixing them at the source would fix them for every rider who uses the map and every app built on it. Each comes with the routes it affects; click a route to open it on the map.</p>
+      <h2>What to fix in AYNA's map data</h2>
+      <p>These defects are in the data of the public map API (map-api.ayna.gov.az). This page repairs them automatically, but fixing them at the source would fix them for every rider who uses the map and every app built on it. Each comes with the routes it affects; click a route to open it on the map.</p>
     </div>
     <div class="issues"></div>
   </div>
@@ -152,18 +142,13 @@
   <div class="wrap">
     <div class="section-head section-head-row">
       <div>
-        <h2><span lang="az">Yoxlama siyahısı</span><span lang="en">Checklist</span></h2>
-        <p lang="az">Hər siyahının ilk on sətri. Tam siyahılar Excel faylındadır, hər sətir ayrıca yoxlanılsın deyə: <span data-v="summary.detours"></span> dolama, <span data-v="summary.duplicate_pairs"></span> marşrut cütü, <span data-v="summary.corridors"></span> dəhliz, <span data-v="summary.routes"></span> marşrutun ölçüləri və xəritə məlumatının xətaları.</p>
-        <p lang="en">The first ten lines of each list. The full lists are in the Excel file, one line per item to check: <span data-v="summary.detours"></span> detours, <span data-v="summary.duplicate_pairs"></span> pairs of routes, <span data-v="summary.corridors"></span> corridors, the measurements of all <span data-v="summary.routes"></span> routes and the defects in the map data.</p>
+        <h2>Checklist</h2>
+        <p>The first ten lines of each list. The full lists are in the Excel file, one line per item to check: <span data-v="summary.detours"></span> detours with their shorter paths, <span data-v="summary.duplicate_pairs"></span> pairs of routes, <span data-v="summary.corridors"></span> corridors, <span data-v="summary.close_stops"></span> stops that could go, the measurements of all <span data-v="summary.routes"></span> routes and the defects in the map data.</p>
       </div>
       <div class="downloads">
-        <a class="btn btn-primary" href="site/checklist-az.xlsx" download hidden>
+        <a class="btn btn-primary" href="site/checklist.xlsx" download>
           <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 3v10m0 0 4-4m-4 4-4-4M4 16h12"/></svg>
-          Excel · Azərbaycanca
-        </a>
-        <a class="btn btn-primary" href="site/checklist-en.xlsx" download>
-          <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 3v10m0 0 4-4m-4 4-4-4M4 16h12"/></svg>
-          Excel · English
+          Download the checklist (Excel)
         </a>
       </div>
     </div>
@@ -174,43 +159,32 @@
 <section class="section" id="method">
   <div class="wrap method">
     <div class="method-text">
-      <h2><span lang="az">Necə ölçülüb</span><span lang="en">How it was measured</span></h2>
-      <div lang="az">
-        <p>Marşrutlar, dayanacaqlar və marşrut xətləri AYNA-nın ictimai xəritə API-sindən <span data-date="meta.scraped"></span> tarixində götürülüb; məlumat <span data-date="meta.same_as"></span> tarixli nüsxə ilə sətir-sətir eynidir. Xəritə məlumatındakı xətalar yuxarıdakı kimi avtomatik aşkarlanıb və düzəldilib. Sakinlər Kontur əhali şəbəkəsindən (noyabr 2023, təxminən 0,74 km²-lik altıbucaqlılar), sərnişin sayları isə BakuBus-un opendata.az-da dərc etdiyi gündəlik saylardan (<span data-month="meta.counts_month"></span>, həftəiçi orta) götürülüb.</p>
-        <dl class="defs">
-          <dt>Birbaşa marşrut</dt><dd>Hər iki istiqamətdə yolu uc dayanacaqları arasındakı düz xəttdən ən çoxu 1,4 dəfə uzundur. Dolayı: 1,4–2 dəfə, çox dolayı: 2–3 dəfə, dairəvi: 3 dəfədən çox və ya ucları bir-birinə 1 km-dən yaxın.</dd>
-          <dt>Dolama</dt><dd>Avtobusun iki dayanacağı arasında düz xəttin ən azı 2,5 qatı və ən azı 1,5 km artıq yol getdiyi hissə (ən çoxu 12 dayanacaq). Əlavə dəqiqələr xidmət növünə görə güman edilən sürətlə hesablanmış təxminlərdir.</dd>
-          <dt>Təkrarlanan marşrut</dt><dd>Ən azı 10 dayanacağı olan marşrutun dayanacaqlarının ən azı 85%-i başqa bir marşrutda da var. Ekspres marşrutlar daxil deyil: dayanacaqları buraxmaq onların işidir.</dd>
-          <dt>Dəhliz</dt><dd>Ən azı 1 km uzunluğunda küçə hissəsi ki, onun hər dayanacaqlararası hissəsindən ən azı 8 marşrut keçir.</dd>
-          <dt>Əhatə</dt><dd>Sakinin ən yaxın dayanacağa düz xətlə 400 m-dən az məsafədə yaşaması. Hər altıbucaqlı yeddi hissəyə bölünüb ki, əhatə yalnız mərkəzinə görə qiymətləndirilməsin.</dd>
-        </dl>
-        <p>Hesablamalar xəritənin həndəsəsinə əsaslanır: hərəkət cədvəlləri, avtobusların real mövqeyi və sərnişinlərin hara getdiyi ictimai deyil. Xəritə 2026-cı ilin yanvarından işə düşən yeni şəbəkəni hələ göstərmir, ona görə nəticələr xəritənin indi göstərdiyi şəbəkəni təsvir edir.</p>
-        <p>Məqalədə eyni avtobus sayı ilə şəbəkəni yenidən quran bir axtarış da var. Onun nəticəsi təxmini intervallara və tələb modelinə əsaslanır, ona görə burada göstərilmir; məqalədə öz şərtləri ilə verilib.</p>
-      </div>
-      <div lang="en">
-        <p>Routes, stops and route lines come from AYNA's public map API, taken on <span data-date="meta.scraped"></span>; the data is identical, row for row, to a copy taken on <span data-date="meta.same_as"></span>. Defects in the map data were detected and repaired automatically, as listed above. Residents come from the Kontur population grid (November 2023, hexagons of about 0.74 km²) and boardings from the daily counts BakuBus publishes on opendata.az (<span data-month="meta.counts_month"></span>, weekday average).</p>
-        <dl class="defs">
-          <dt>Direct route</dt><dd>In both directions the path is at most 1.4 times the straight line between the end stops. Indirect: 1.4 to 2 times, very indirect: 2 to 3 times, loop: more than 3 times, or ends less than 1 km apart.</dd>
-          <dt>Detour</dt><dd>A stretch where the bus travels at least 2.5 times the straight line between two of its stops, and at least 1.5 km more (12 stops at most). The extra minutes are estimates from speeds assumed by type of service.</dd>
-          <dt>Near-duplicate</dt><dd>At least 85% of the stops of a route with 10 or more stops are also served by one other route. Express routes are left out: skipping stops is what they are for.</dd>
-          <dt>Corridor</dt><dd>A stretch of street of at least 1 km where every link between consecutive stops carries at least 8 routes.</dd>
-          <dt>Coverage</dt><dd>A resident lives less than 400 m in a straight line from the nearest stop. Each hexagon is split into seven parts so that coverage is not judged from its centre alone.</dd>
-        </dl>
-        <p>Everything rests on the geometry of the map: timetables, vehicle positions and where riders travel are not public. The map does not yet show the new network that has been launching since January 2026, so the results describe the network the map shows today.</p>
-        <p>The paper also includes a search that redesigns the network with the same number of buses. Its result rests on estimated headways and a demand model, so it is not shown here; the paper gives it with its conditions.</p>
-      </div>
+      <h2>How it was measured</h2>
+      <p>Routes, stops and route lines come from AYNA's public map API, taken on <span data-date="meta.scraped"></span>; the data is identical, row for row, to a copy taken on <span data-date="meta.same_as"></span>. Defects in the map data were detected and repaired automatically, as listed above. Residents come from the Kontur population grid (November 2023, hexagons of about 0.74 km²) and boardings from the daily counts BakuBus publishes on opendata.az (<span data-month="meta.counts_month"></span>, weekday average).</p>
+      <dl class="defs">
+        <dt>Direct route</dt><dd>In both directions the path is at most 1.4 times the straight line between the end stops. Indirect: 1.4 to 2 times, very indirect: 2 to 3 times, loop: more than 3 times, or ends less than 1 km apart.</dd>
+        <dt>Detour</dt><dd>A stretch where the bus travels at least 2.5 times the straight line between two of its stops, and at least 1.5 km more (12 stops at most). The extra minutes are estimates from speeds assumed by type of service.</dd>
+        <dt>Shorter path</dt><dd>The shortest way between a detour's two ends along the links between stops that buses drive today, as the paper's redesign search finds it. It is shown when it is at least 0.5 km shorter; the minutes it saves are estimates, counting 20 seconds for every stop it skips.</dd>
+        <dt>Near-duplicate</dt><dd>At least 85% of the stops of a route with 10 or more stops are also served by one other route. Express routes are left out: skipping stops is what they are for.</dd>
+        <dt>Corridor</dt><dd>A stretch of street of at least 1 km where every link between consecutive stops carries at least 8 routes.</dd>
+        <dt>Stop spacing</dt><dd>A stop could go when, on every route that uses it, it lies less than 250 m along the route from a neighbouring stop and removing it leaves no gap over 700 m. Terminals and interchange hubs are kept, and stops served by fewer routes go first. This is the stop-balancing scenario of the paper.</dd>
+        <dt>Reach</dt><dd>The stops on the routes that stop at a given stop; with one change, also the stops of every route that stops within 300 m of those. It counts connections, not travel times, which would need timetables.</dd>
+        <dt>Coverage</dt><dd>A resident lives less than 400 m in a straight line from the nearest stop. Each hexagon is split into seven parts so that coverage is not judged from its centre alone.</dd>
+      </dl>
+      <p>Everything rests on the geometry of the map: timetables, vehicle positions and where riders travel are not public. The map does not yet show the new network that has been launching since January 2026, so the results describe the network the map shows today.</p>
+      <p>The paper also includes a search that redesigns the network with the same number of buses. Its result rests on estimated headways and a demand model, so only its shorter paths, which need neither, are shown here; the paper gives the rest with its conditions.</p>
     </div>
     <aside class="links">
-      <h3><span lang="az">Məqalə, kod və məlumat</span><span lang="en">Paper, code and data</span></h3>
+      <h3>Paper, code and data</h3>
       <ul>
-        <li><a href="paper/submission/preprint.pdf"><span lang="az">Məqalə (preprint, PDF)</span><span lang="en">Paper (preprint, PDF)</span></a></li>
-        <li><a href="https://github.com/ismatsamadov/route_efficiency"><span lang="az">Kod, məlumat və nəticələr (GitHub)</span><span lang="en">Code, data and results (GitHub)</span></a></li>
-        <li><a href="https://doi.org/10.5281/zenodo.23604370"><span lang="az">Arxiv nüsxəsi (Zenodo)</span><span lang="en">Archived release (Zenodo)</span></a></li>
-        <li><a href="https://doi.org/10.34740/KAGGLE/DSV/21173689"><span lang="az">AYNA xəritə məlumatının nüsxəsi (Kaggle)</span><span lang="en">The AYNA map snapshot (Kaggle)</span></a></li>
-        <li><a href="https://www.birjob.com/aletler/avtobus-marsrutu"><span lang="az">Eyni məlumatla işləyən marşrut planlayıcısı</span><span lang="en">A route planner built on the same data</span></a></li>
+        <li><a href="paper/submission/preprint.pdf">Paper (preprint, PDF)</a></li>
+        <li><a href="https://github.com/ismatsamadov/route_efficiency">Code, data and results (GitHub)</a></li>
+        <li><a href="https://doi.org/10.5281/zenodo.23604370">Archived release (Zenodo)</a></li>
+        <li><a href="https://doi.org/10.34740/KAGGLE/DSV/21173689">The AYNA map snapshot (Kaggle)</a></li>
+        <li><a href="https://www.birjob.com/aletler/avtobus-marsrutu">A route planner built on the same data</a></li>
       </ul>
       <p class="author">
-        <span lang="az">İsmət Səmədov, müstəqil tədqiqatçı, Bakı</span><span lang="en">Ismat Samadov, independent researcher, Baku</span><br>
+        Ismat Samadov, independent researcher, Baku<br>
         <a href="mailto:ismetsemedov@gmail.com">ismetsemedov@gmail.com</a> · <a href="https://orcid.org/0009-0007-7919-4950">ORCID</a>
       </p>
     </aside>
@@ -221,8 +195,7 @@
 
 <footer class="footer">
   <div class="wrap">
-    <p lang="az">Marşrut məlumatı: AYNA. Altlıq xəritə: © OpenStreetMap iştirakçıları. Sakinlər: Kontur Population (CC BY). Sərnişin sayları: BakuBus, opendata.az (CC BY). Mətn CC BY 4.0, kod MIT lisenziyası ilə.</p>
-    <p lang="en">Route data: AYNA. Base map: © OpenStreetMap contributors. Residents: Kontur Population (CC BY). Boardings: BakuBus, opendata.az (CC BY). Text under CC BY 4.0, code under the MIT licence.</p>
+    <p>Route data: AYNA. Base map: © OpenStreetMap contributors. Residents: Kontur Population (CC BY). Boardings: BakuBus, opendata.az (CC BY). Text under CC BY 4.0, code under the MIT licence.</p>
   </div>
 </footer>
 

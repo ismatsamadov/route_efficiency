@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Baku bus network: link preview</title>
+<!-- site/build.py --og screenshots this page at 1200x630 into og.png, the picture link previews show. -->
+<style>
+  html, body { margin: 0; width: 1200px; height: 630px; overflow: hidden; }
+  body {
+    position: relative; color: #172b4d;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background: radial-gradient(ellipse at 78% 30%, #dde8ff 0, transparent 55%), linear-gradient(135deg, #ffffff, #f2f6ff);
+  }
+  body::before {
+    content: ""; position: absolute; inset: 0; opacity: .25;
+    background-image: radial-gradient(#a6bce0 1px, transparent 1px); background-size: 24px 24px;
+  }
+  canvas { position: absolute; inset: 0; }
+  .text { position: absolute; left: 72px; top: 56px; width: 600px; }
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 10px; padding: 8px 14px; border: 1px solid #dbe5f5;
+    border-radius: 8px; background: #ffffffe0; font-size: 15px; font-weight: 650; letter-spacing: .09em;
+    text-transform: uppercase; color: #385a8d;
+  }
+  .eyebrow::before { content: ""; width: 9px; height: 9px; border-radius: 50%; background: #2c9a80; }
+  h1 { margin: 28px 0 0; font-size: 82px; line-height: 1; letter-spacing: -.055em; font-weight: 800; }
+  .sub { margin: 22px 0 0; font-size: 27px; line-height: 1.35; color: #52637c; max-width: 520px; }
+  .stats { position: absolute; left: 72px; bottom: 56px; display: flex; gap: 16px; }
+  .stat { padding: 18px 22px 20px; background: #ffffffee; border: 1px solid #dfe7f3; border-radius: 16px; min-width: 150px;
+          box-shadow: 0 16px 40px #2039600d; }
+  .stat i { display: block; width: 26px; height: 4px; border-radius: 4px; margin-bottom: 14px; }
+  .stat b { display: block; font-size: 42px; letter-spacing: -.045em; line-height: 1; }
+  .stat b small { font-size: 22px; color: #52637c; letter-spacing: 0; }
+  .stat > span { display: block; margin-top: 8px; font-size: 16px; color: #52637c; }
+  .url { position: absolute; right: 60px; bottom: 30px; font-size: 16px; font-weight: 600; color: #385a8d; }
+</style>
+</head>
+<body>
+<canvas width="1200" height="630"></canvas>
+<div class="text">
+  <div class="eyebrow">AYNA's public map · open data</div>
+  <h1>Baku bus network</h1>
+  <p class="sub">Where <span id="routes"></span> bus routes wander, overlap and miss residents</p>
+</div>
+<div class="stats">
+  <div class="stat"><i style="background:#245eea"></i><b><span id="direct"></span><small> / <span id="all"></span></small></b><span>direct routes</span></div>
+  <div class="stat"><i style="background:#eb6834"></i><b id="detours"></b><span>detours</span></div>
+  <div class="stat"><i style="background:#259981"></i><b id="covered"></b><span>live within 400 m of a stop</span></div>
+</div>
+<div class="url">ismatsamadov.github.io/route_efficiency</div>
+<script src="data.js"></script>
+<script>
+  (function () {
+    var D = window.SITE_DATA, S = D.summary;
+    function set(id, v) { document.getElementById(id).textContent = v; }
+    set("routes", S.routes);
+    set("all", S.routes);
+    set("direct", S.shapes.direct);
+    set("detours", S.detours);
+    set("covered", Math.round(100 * S.covered / S.population) + "%");
+
+    function decode(str) {
+      var pts = [], i = 0, lat = 0, lon = 0;
+      while (i < str.length) {
+        var r = 0, s = 0, b;
+        do { b = str.charCodeAt(i++) - 63; r |= (b & 0x1f) << s; s += 5; } while (b >= 0x20);
+        lat += (r & 1) ? ~(r >> 1) : (r >> 1);
+        r = 0; s = 0;
+        do { b = str.charCodeAt(i++) - 63; r |= (b & 0x1f) << s; s += 5; } while (b >= 0x20);
+        lon += (r & 1) ? ~(r >> 1) : (r >> 1);
+        pts.push([lat / 1e5, lon / 1e5]);
+      }
+      return pts;
+    }
+    // The network, coloured by how direct each route is, fitted into the right-hand side.
+    var lines = [], box = [90, -90, 180, -180];
+    D.routes.forEach(function (r) {
+      r.dirs.forEach(function (d) {
+        var ll = decode(d.line);
+        ll.forEach(function (p) {
+          box[0] = Math.min(box[0], p[0]); box[1] = Math.max(box[1], p[0]);
+          box[2] = Math.min(box[2], p[1]); box[3] = Math.max(box[3], p[1]);
+        });
+        lines.push([r.shape, ll]);
+      });
+    });
+    var kx = Math.cos((box[0] + box[1]) / 2 * Math.PI / 180);
+    var w = (box[3] - box[2]) * kx, h = box[1] - box[0];
+    var area = { x: 600, y: 24, w: 580, h: 520 };
+    var scale = Math.min(area.w / w, area.h / h);
+    var x0 = area.x + (area.w - w * scale), y0 = area.y + (area.h - h * scale) / 2;
+    var ramp = { direct: "#86b6ef", indirect: "#3987e5", "very indirect": "#1c5cab", loop: "#0d366b" };
+    var ctx = document.querySelector("canvas").getContext("2d");
+    ctx.lineJoin = "round";
+    ctx.lineWidth = 1.3;
+    ctx.globalAlpha = 0.85;
+    ["direct", "indirect", "very indirect", "loop"].forEach(function (cls) {
+      ctx.strokeStyle = ramp[cls];
+      ctx.beginPath();
+      lines.forEach(function (l) {
+        if (l[0] !== cls) return;
+        l[1].forEach(function (p, i) {
+          var x = x0 + (p[1] - box[2]) * kx * scale, y = y0 + (box[1] - p[0]) * scale;
+          if (i) ctx.lineTo(x, y); else ctx.moveTo(x, y);
+        });
+      });
+      ctx.stroke();
+    });
+  })();
+</script>
+</body>
+</html>

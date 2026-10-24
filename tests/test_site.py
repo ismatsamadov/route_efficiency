@@ -2,11 +2,13 @@
 do what the page expects, and every local file the page links to exists.
 
 The build takes about three seconds and always runs. Its data must match the committed
-data.js to within rounding (see test_regression.py), and the workbooks part for part."""
+data.js to within rounding (see test_regression.py), and the workbook part for part. The
+link-preview picture (og.png) needs Chrome to draw, so only its size is checked."""
 
 import importlib.util
 import json
 import re
+import struct
 import tempfile
 import unittest
 import zipfile
@@ -36,9 +38,24 @@ class CommittedSite(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             build.build(Path(tmp))
             self.assertTrue(_same(page_data(ROOT / "site" / "data.js"), page_data(Path(tmp) / "data.js"), 1e-9))
-            for lang in ("az", "en"):
-                name = f"checklist-{lang}.xlsx"
-                self.assertEqual(parts(ROOT / "site" / name), parts(Path(tmp) / name), name)
+            self.assertEqual(parts(ROOT / "site" / "checklist.xlsx"), parts(Path(tmp) / "checklist.xlsx"))
+
+    def test_data_holds_what_the_page_shows(self):
+        data = page_data(ROOT / "site" / "data.js")
+        scenario = json.loads((ROOT / "output" / "scenario.json").read_text(encoding="utf-8"))
+        self.assertEqual(len(data["spacing"]["stops"]), scenario["details"]["removed_stops"])
+        self.assertTrue(all(0 < gap <= scenario["details"]["min_gap_m"] for _, gap in data["spacing"]["stops"]))
+        shorter = [d for d in data["detours"] if d["alt"]]
+        self.assertTrue(shorter)
+        for d in shorter:          # a shorter path saves at least 0.5 km and is shorter than the detour
+            self.assertGreaterEqual(d["alt"]["saved_km"], 0.5 - 1e-9)
+            self.assertAlmostEqual(d["alt"]["km"] + d["alt"]["saved_km"], d["along"], delta=0.01)
+        self.assertEqual(len({s[3] for s in data["stops"]}), len(data["stops"]))      # AYNA stop ids, for links
+
+    def test_link_preview_picture_is_1200_by_630(self):
+        with open(ROOT / "site" / "og.png", "rb") as f:
+            f.read(16)
+            self.assertEqual(struct.unpack(">II", f.read(8)), (1200, 630))
 
     def test_page_links_to_files_that_exist(self):
         html = (ROOT / "index.html").read_text(encoding="utf-8")

@@ -4,19 +4,23 @@ Build the data behind index.html, the one-page summary of the results served by 
 
 Reads the committed results in output/ and the network in data/ayna.db, repaired the same
 way measure.py repairs it, and writes to ./site/ (or --out):
-  data.js             routes, stops, detours, near-duplicates, corridors, the people who live
-                      farther than coverage_radius_m from a stop, and the defects found in
-                      AYNA's map data, as one JavaScript object that index.html reads
-  checklist-az.xlsx   the same lists as a workbook to go through line by line, in Azerbaijani
-  checklist-en.xlsx   the same workbook in English
+  data.js         routes, stops, detours with a shorter path where streets allow one,
+                  near-duplicates, corridors, closely spaced stops, the people who live
+                  farther than coverage_radius_m from a stop, and the defects found in
+                  AYNA's map data, as one JavaScript object that index.html reads
+  checklist.xlsx  the same lists as a workbook to go through line by line
+  og.png          with --og: the 1200x630 picture that link previews show, drawn from
+                  site/og.html by Google Chrome, headless
 
 The numbers come from output/. What the page needs beyond them (route geometry, where each
-detour runs, people per population hexagon) is recomputed with the code that wrote output/,
-and the script stops if a recomputed figure disagrees with output/. Run measure.py first
-after any change to the data or the settings.
+detour runs and the shorter path the redesign search would use, the gap at each closely
+spaced stop, people per population hexagon) is recomputed with the code that wrote output/,
+and the script stops if a recomputed figure disagrees with output/. Run measure.py with
+--scenario stop-balancing --min-gap 250 first after any change to the data or the settings.
 
-Standard library only. Usage:
+Standard library only (Chrome only for --og). Usage:
   python3 site/build.py
+  python3 site/build.py --og
 """
 
 import argparse
@@ -27,6 +31,7 @@ import re
 import sqlite3
 import statistics
 import struct
+import subprocess
 import sys
 import zipfile
 from collections import Counter, defaultdict
@@ -41,6 +46,7 @@ from busnet.geo import PROJ, Polyline, haversine_m                              
 from busnet.graph import StopIndex                                              # noqa: E402
 from busnet.metrics import ZONE_EN, _route_key, find_detours                    # noqa: E402
 from busnet.model import load_network                                           # noqa: E402
+from busnet.optimize import Streets                                             # noqa: E402
 from busnet.population import SPLIT, _gpkg_shape, _mercator_to_latlon, stops_bbox  # noqa: E402
 from busnet.ridership import latest_month, load_daily_boardings, weekday_mean  # noqa: E402
 
@@ -49,9 +55,11 @@ SCRAPED = "2026-10-23"
 SAME_AS = "2026-05-06"
 REPOSITORY = "https://github.com/ismatsamadov/route_efficiency"
 PAGE = "https://ismatsamadov.github.io/route_efficiency/"
+CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 SHAPE_CLASSES = ["direct", "indirect", "very indirect", "loop"]
 REGION_EN = {"Bakı": "Baku", "Sumqayıt": "Sumqayit"}
 LINE_TOLERANCE_M = 6.0        # simplification of route lines; invisible below street level
+SHORTER_BY_M = 500.0          # a shorter path counts only if it saves this much, as in optimize.candidates
 
 
 # ---------------------------------------------------------------- reading output/
@@ -258,15 +266,42 @@ def map_issues(net, db_path, ridership_path, routes_csv):
 
 # ---------------------------------------------------------------- the page's data
 
+def shorter_path(net, streets, a, p, i, j):
+    """The path the redesign search would straighten a detour to, or None: the shortest way
+    along links buses drive today, if it saves at least SHORTER_BY_M (optimize.candidates)."""
+    along = p.chainage_m[j] - p.chainage_m[i]
+    path = streets.path(p.stop_ids[i], p.stop_ids[j], along - SHORTER_BY_M)
+    if not path:
+        return None
+    new = sum(h for _, h, _ in path)
+    speed = a.cruise_mps(net.routes[p.route_id].zone)
+    saved_s = (along - new) / speed + max(0, (j - i - 1) - (len(path) - 2)) * a.stop_loss_s
+    kept = {s for s, _, _ in path}
+    return {"line": line(streets.geometry(path)), "km": new / 1000, "saved_km": (along - new) / 1000,
+            "saved_min": saved_s / 60, "dropped": sum(1 for s in p.stop_ids[i + 1:j] if s not in kept)}
+
+
+def tightest_gap(net, stop_id):
+    """The shortest distance along any route from this stop to the stop before or after it."""
+    best = math.inf
+    for p in net.patterns.values():
+        for i, s in enumerate(p.stop_ids):
+            if s == stop_id and 0 < i < len(p.stop_ids) - 1:
+                best = min(best, p.chainage_m[i] - p.chainage_m[i - 1], p.chainage_m[i + 1] - p.chainage_m[i])
+    return best
+
+
 def build(out_dir):
     a, data = load_config(ROOT / "busnet.toml")
     net = load_network(data["db"])
     out = ROOT / "output"
     summary = json.loads((out / "network.json").read_text(encoding="utf-8"))["network"]
+    scenario = json.loads((out / "scenario.json").read_text(encoding="utf-8"))
     routes_csv = read_csv(out / "routes.csv")
     detours_csv = read_csv(out / "detours.csv")
     duplicates_csv = read_csv(out / "duplicates.csv")
     corridors_csv = read_csv(out / "corridors.csv")
+    removed_csv = read_csv(out / "scenario_removed_stops.csv")
     repairs = parse_repairs((out / "repairs.txt").read_text(encoding="utf-8").splitlines())
     if [r for r in net.repairs] != (out / "repairs.txt").read_text(encoding="utf-8").splitlines():
         sys.exit("output/repairs.txt does not match the repairs of data/ayna.db; run measure.py first")
@@ -274,23 +309,22 @@ def build(out_dir):
     # Stops: every served stop once, referred to by its position in this list.
     served = sorted(net.served_stop_ids())
     stop_ix = {s: i for i, s in enumerate(served)}
-    stops = [[round(net.stops[s].lat, 5), round(net.stops[s].lon, 5), net.stops[s].name or ""] for s in served]
+    stops = [[round(net.stops[s].lat, 5), round(net.stops[s].lon, 5), net.stops[s].name or "", s] for s in served]
 
     # Routes, in route-number order, with both directions.
     row_of = {r["route"]: r for r in routes_csv}
     paths = Paths()
-    routes, route_ix = [], {}
+    routes = []
     for route in sorted(net.routes.values(), key=lambda r: _route_key(r.number)):
         pats = net.patterns_of(route.id)
         if not pats:
             continue
         row = row_of[route.number]
-        route_ix[route.number] = len(routes)
         routes.append({
             "n": route.number,
             "from": route.first_point or "", "to": route.last_point or "",
-            "carrier": route.carrier, "zone": route.zone, "zone_en": ZONE_EN.get(route.zone, route.zone),
-            "region": route.region, "region_en": REGION_EN.get(route.region, route.region),
+            "carrier": route.carrier, "zone": ZONE_EN.get(route.zone, route.zone),
+            "region": REGION_EN.get(route.region, route.region),
             "fare": route.fare_azn,
             "shape": row["shape"], "km": num(row["one_way_km"]),
             "circuity": num(row["end_to_end_circuity"]),
@@ -307,13 +341,15 @@ def build(out_dir):
     check("routes with stops", len(routes), summary["routes_with_stops"])
     check("route directions", sum(len(r["dirs"]) for r in routes), summary["route_directions"])
 
-    # Detours: found again on the same patterns, in the order detour_table writes them.
+    # Detours: found again on the same patterns, in the order detour_table writes them, each
+    # with the shorter path along today's bus links where one saves at least 500 m.
     found = []
     for _, p in sorted(net.patterns.items()):
         pts = [(net.stops[s].lat, net.stops[s].lon) for s in p.stop_ids]
         found += [(p, d) for d in find_detours(p, pts)]
     if len(found) != len(detours_csv):
         sys.exit(f"detours: found {len(found)} but output/detours.csv has {len(detours_csv)}; run measure.py first")
+    streets = Streets(net)
     detours = []
     for (p, d), row in zip(found, detours_csv):
         i, j = d["from_index"], d["to_index"]
@@ -327,6 +363,7 @@ def build(out_dir):
             "along": num(row["along_km"]), "straight": num(row["straight_km"]), "excess": num(row["excess_km"]),
             "minutes": num(row["extra_min_per_trip"]), "pop_only": num(row["population_only_this_route"]),
             "line": line(paths.between(p, i, j)),
+            "alt": shorter_path(net, streets, a, p, i, j),
         })
 
     duplicates = [{
@@ -355,6 +392,19 @@ def build(out_dir):
             "routes": row["routes"].split(), "line": line(pts),
         })
 
+    # Closely spaced stops: the ones stop balancing removes (measure.py --scenario stop-balancing).
+    details = scenario["details"]
+    if len(removed_csv) != details["removed_stops"]:
+        sys.exit("output/scenario_removed_stops.csv does not match output/scenario.json; run measure.py first")
+    close = [[stop_ix[int(r["stop_id"])], round(tightest_gap(net, int(r["stop_id"])))] for r in removed_csv]
+    before, after = scenario["before"], scenario["after"]
+    spacing = {
+        "stops": close, "visits": details["removed_stop_visits"],
+        "min_gap_m": details["min_gap_m"], "max_gap_after_m": details["max_gap_after_m"],
+        "hours_saved": before["hours_one_trip_each_direction_every_route"] - after["hours_one_trip_each_direction_every_route"],
+        "residents_losing": before["population_within_coverage_radius"] - after["population_within_coverage_radius"],
+    }
+
     # People farther than the coverage radius from a served stop, per population hexagon.
     index = StopIndex([net.stops[s] for s in served])
     radius = a.coverage_radius_m
@@ -374,13 +424,15 @@ def build(out_dir):
     site = {
         "meta": {
             "scraped": SCRAPED, "same_as": SAME_AS, "counts_month": issues["counts_month"],
-            "radius_m": radius, "repository": REPOSITORY, "page": PAGE,
+            "radius_m": radius, "transfer_walk_m": a.max_transfer_walk_m, "stop_loss_s": a.stop_loss_s,
+            "repository": REPOSITORY, "page": PAGE,
         },
         "summary": {
             "routes": len(routes), "directions": summary["route_directions"], "stops": summary["served_stops"],
             "shapes": {k: shapes[k] for k in SHAPE_CLASSES},
             "detours": len(detours), "detour_km": sum(d["excess"] for d in detours),
             "detours_nobody_only": sum(1 for d in detours if d["pop_only"] == 0),
+            "detours_with_shorter_path": sum(1 for d in detours if d["alt"]),
             "duplicate_pairs": len(duplicates),
             "duplicate_pairs_two_carriers": sum(1 for d in duplicates if not d["same"]),
             "duplicate_routes": len({d["r"] for d in duplicates}),
@@ -390,6 +442,7 @@ def build(out_dir):
             "route_km": summary["route_km_one_way_total"], "street_km": summary["corridor_km"],
             "median_stop_gap_m": summary["median_stop_gap_m"],
             "share_gaps_under_200m": summary["share_stop_gaps_under_200m"],
+            "close_stops": len(close),
             "population": summary["population_in_study_area"],
             "covered": summary["population_within_coverage_radius"],
             "routes_with_counts": sum(1 for r in routes if r["boardings"] is not None),
@@ -400,6 +453,7 @@ def build(out_dir):
         "detours": detours,
         "duplicates": duplicates,
         "corridors": corridors,
+        "spacing": spacing,
         "hexes": hexes,
     }
     out_dir.mkdir(parents=True, exist_ok=True)
@@ -407,137 +461,97 @@ def build(out_dir):
     (out_dir / "data.js").write_text(
         "// Generated by site/build.py from output/ and data/; do not edit.\n"
         f"window.SITE_DATA = {text};\n", encoding="utf-8")
-    for lang in ("az", "en"):
-        write_xlsx(out_dir / f"checklist-{lang}.xlsx", workbook(site, net, lang))
+    write_xlsx(out_dir / "checklist.xlsx", workbook(site))
     return site
+
+
+def write_og(site_dir):
+    """site/og.png, the link-preview picture, from site/og.html (which reads data.js)."""
+    if not Path(CHROME).exists():
+        print("  (Google Chrome not found; og.png not written)")
+        return
+    subprocess.run([CHROME, "--headless=new", "--disable-gpu", "--hide-scrollbars", "--force-device-scale-factor=1",
+                    "--window-size=1200,630", "--virtual-time-budget=5000", f"--screenshot={site_dir / 'og.png'}",
+                    (site_dir / "og.html").resolve().as_uri()], check=True, capture_output=True)
 
 
 # ---------------------------------------------------------------- the checklist workbook
 
 TEXT = {
-    "az": {
-        "about": "Haqqında", "issues": "Məlumat xətaları", "detours": "Dolamalar",
-        "duplicates": "Təkrarlanan marşrutlar", "corridors": "Dəhlizlər", "routes": "Marşrutlar",
-        "title": "Bakı avtobus şəbəkəsi: yoxlama siyahısı",
-        "lines": [
-            "Mənbə: AYNA-nın ictimai xəritəsi (map-api.ayna.gov.az), {scraped} tarixində götürülüb; "
-            "məlumat {same_as} tarixli nüsxə ilə eynidir.",
-            "Bu siyahılar yoxlanılmalı namizədlərdir, tövsiyə deyil. Hər sətir şəhəri tanıyan "
-            "mütəxəssis tərəfindən yerində yoxlanılmalıdır.",
-            "Məlumat xətaları: AYNA-nın xəritə məlumatında tapılan və düzəldilməli olan xətalar.",
-            "Dolamalar: avtobusun iki dayanacağı arasında düz xəttdən ən azı 2,5 dəfə uzun və ən azı "
-            "1,5 km artıq yol getdiyi hissələr. Əlavə dəqiqə təxminidir: güman edilən sürətlə hesablanıb.",
-            "Təkrarlanan marşrutlar: bir marşrutun dayanacaqlarının ən azı 85%-i başqa bir marşrutda da "
-            "var (ekspres marşrutlar daxil deyil).",
-            "Dəhlizlər: ən azı 1 km uzunluğunda küçə hissələri ki, onların hər bir dayanacaqlararası "
-            "hissəsindən ən azı 8 marşrut keçir.",
-            "Marşrutlar: hər marşrutun ölçülən göstəriciləri. Sakinlər {radius} m radiusda sayılıb; "
-            "sərnişin sayı yalnız BakuBus marşrutları üçün dərc olunur.",
-            "Səhifə: {page}",
-            "Kod, məlumat və məqalə: {repository}",
-        ],
-        "issue_cols": ["Marşrut", "İstiqamət", "Problem", "Nə etmək olar"],
-        "detour_cols": ["Marşrut", "İstiqamət", "Haradan (dayanacaq)", "Haraya (dayanacaq)",
-                        "İçindəki dayanacaqlar", "İçində yalnız bu marşrutun dayanacaqları", "Yol boyu, km",
-                        "Düz xətlə, km", "Artıq yol, km", "Hər reysə əlavə dəqiqə (təxmini)",
-                        "Yalnız bu marşrutla əhatə olunan sakinlər", "İçindəki hər kəsin başqa marşrutu var"],
-        "dup_cols": ["Marşrut", "Daşıyıcı", "Dayanacaqları əsasən bu marşrutda", "Daşıyıcı",
-                     "Ortaq dayanacaqların payı", "Marşrutun dayanacaqları", "Digər marşrutun dayanacaqları",
-                     "Eyni daşıyıcı"],
-        "corridor_cols": ["Haradan", "Haraya", "Dönüş nöqtəsi", "Uzunluq, km", "Dayanacaqlar",
-                          "Hər hissədə orta hesabla marşrut", "Bir hissədə ən çox marşrut", "Marşrutlar"],
-        "route_cols": ["Marşrut", "Haradan", "Haraya", "Daşıyıcı", "Zona", "Region", "Gediş haqqı, AZN",
-                       "Bir istiqamətdə km", "Forma", "Yol / uclar arası düz xətt",
-                       "Dayanacaqlar arası median məsafə, m", "200 m-dən qısa aralıqlar", "Dolamalar",
-                       "Dolamaların artıq yolu, km", "Başqa marşrutlarla ortaq yol payı",
-                       "{radius} m-də yaşayan sakinlər", "Yalnız bu marşrutla əhatə olunan sakinlər",
-                       "Həftəiçi gündəlik sərnişin (BakuBus, {month})"],
-        "yes": "Bəli", "no": "Xeyr", "both": "hər iki", "jump": "{km} km-lik düz sıçrayış",
-        "shapes": {"direct": "birbaşa", "indirect": "dolayı", "very indirect": "çox dolayı", "loop": "dairəvi"},
-        "kinds": {
-            "repeated_stops": ("Dayanacaq siyahısı ardıcıl iki dəfə təkrarlanır", "Bir nüsxəni saxlamaq"),
-            "wrong_direction": ("Marşrut xətti səhv istiqamətə yazılıb",
-                                "Xətti düzgün istiqamətə yazmaq"),
-            "backwards": ("Xətt tərs ardıcıllıqla saxlanılıb", "Nöqtələrin ardıcıllığını çevirmək"),
-            "swapped": ("Xəttin enlik və uzunluğu yerini dəyişib", "Koordinatları yerinə qaytarmaq"),
-            "lat_equals_lon": ("Xəttin hər nöqtəsində enlik uzunluğa bərabərdir",
-                               "Xətti yenidən çəkmək"),
-            "scrambled": ("Xətt dayanacaqların ardıcıllığına uyğun gəlmir", "Xətti yenidən çəkmək"),
-            "far": ("Xətt marşrutun dayanacaqlarından çox uzaqdadır", "Xətti yenidən çəkmək"),
-            "other": ("Başqa xəta", "Yoxlamaq"),
-            "no_shape": ("Marşrutun xətti yoxdur", "Xətti əlavə etmək"),
-            "no_stops": ("Marşrut cədvəldədir, amma nə dayanacağı, nə xətti var",
-                         "Dayanacaqları və xətti əlavə etmək və ya marşrutu silmək"),
-            "missing_from_map": ("BakuBus-un sərnişin saylarında var, xəritədə yoxdur ({month})",
-                                 "Marşrutu xəritəyə əlavə etmək"),
-        },
-    },
-    "en": {
-        "about": "About", "issues": "Data issues", "detours": "Detours",
-        "duplicates": "Near-duplicate routes", "corridors": "Corridors", "routes": "Routes",
-        "title": "Baku bus network: checklist",
-        "lines": [
-            "Source: AYNA's public map (map-api.ayna.gov.az), taken on {scraped}; the data is identical "
-            "to a copy taken on {same_as}.",
-            "These lists are candidates to check, not recommendations. Every line needs checking on the "
-            "ground by someone who knows the city.",
-            "Data issues: defects found in AYNA's map data that could be fixed at the source.",
-            "Detours: stretches where the bus travels at least 2.5 times the straight line between two of "
-            "its stops, and at least 1.5 km more. Extra minutes are estimates from assumed speeds.",
-            "Near-duplicate routes: at least 85% of one route's stops are also served by another route "
-            "(express routes are left out).",
-            "Corridors: stretches of at least 1 km where every link between consecutive stops carries at "
-            "least 8 routes.",
-            "Routes: the measured figures for every route. Residents are counted within {radius} m; "
-            "boardings are published for BakuBus routes only.",
-            "Page: {page}",
-            "Code, data and paper: {repository}",
-        ],
-        "issue_cols": ["Route", "Direction", "Issue", "What would fix it"],
-        "detour_cols": ["Route", "Direction", "From stop", "To stop", "Stops inside",
-                        "Stops inside served only by this route", "Along the route, km", "Straight line, km",
-                        "Extra distance, km", "Extra minutes per trip (estimate)",
-                        "Residents only this route reaches", "Everyone inside has another route"],
-        "dup_cols": ["Route", "Carrier", "Its stops are mostly on route", "Carrier", "Share of stops shared",
-                     "Stops of the route", "Stops of the other route", "Same carrier"],
-        "corridor_cols": ["From", "To", "Turns at", "Length, km", "Stops", "Routes per link, mean",
-                          "Routes on the busiest link", "Routes"],
-        "route_cols": ["Route", "From", "To", "Carrier", "Zone", "Region", "Fare, AZN", "One-way km", "Shape",
-                       "Path / straight line between ends", "Median stop spacing, m", "Stop gaps under 200 m",
-                       "Detours", "Detour extra distance, km", "Share of path shared with other routes",
-                       "Residents within {radius} m", "Residents only this route reaches",
-                       "Weekday boardings (BakuBus, {month})"],
-        "yes": "Yes", "no": "No", "both": "both", "jump": "a straight jump of {km} km",
-        "shapes": {"direct": "direct", "indirect": "indirect", "very indirect": "very indirect", "loop": "loop"},
-        "kinds": {
-            "repeated_stops": ("The stop list is repeated twice in a row", "Keep one copy"),
-            "wrong_direction": ("A route line is filed under the wrong direction",
-                                "File the line under the right direction"),
-            "backwards": ("The line is stored backwards", "Reverse the order of its points"),
-            "swapped": ("The line has latitude and longitude swapped", "Swap the coordinates back"),
-            "lat_equals_lon": ("Latitude equals longitude at every point of the line", "Redraw the line"),
-            "scrambled": ("The line does not follow the order of the stops", "Redraw the line"),
-            "far": ("The line lies far from the route's stops", "Redraw the line"),
-            "other": ("Other defect", "Check it"),
-            "no_shape": ("The route has no line", "Add the line"),
-            "no_stops": ("The route is listed but has no stops and no line",
-                         "Add its stops and line, or remove the route"),
-            "missing_from_map": ("In BakuBus's boarding counts but not on the map ({month})",
-                                 "Add the route to the map"),
-        },
+    "title": "Baku bus network: checklist",
+    "lines": [
+        "Source: AYNA's public map (map-api.ayna.gov.az), taken on {scraped}; the data is identical "
+        "to a copy taken on {same_as}.",
+        "These lists are candidates to check, not recommendations. Every line needs checking on the "
+        "ground by someone who knows the city.",
+        "Data issues: defects found in AYNA's map data that could be fixed at the source.",
+        "Detours: stretches where the bus travels at least 2.5 times the straight line between two of "
+        "its stops, and at least 1.5 km more. Extra minutes are estimates from assumed speeds. The "
+        "shorter path runs along links buses already drive and is listed when it saves at least 0.5 km.",
+        "Near-duplicate routes: at least 85% of one route's stops are also served by another route "
+        "(express routes are left out).",
+        "Corridors: stretches of at least 1 km where every link between consecutive stops carries at "
+        "least 8 routes.",
+        "Close stops: stops less than {gap} m along the route from the next stop on every route that "
+        "uses them, whose removal leaves no gap over {max_gap} m. Terminals and interchange hubs are kept.",
+        "Routes: the measured figures for every route. Residents are counted within {radius} m; "
+        "boardings are published for BakuBus routes only.",
+        "Page: {page}",
+        "Code, data and paper: {repository}",
+    ],
+    "sheets": ["About", "Data issues", "Detours", "Near-duplicate routes", "Corridors", "Close stops", "Routes"],
+    "issue_cols": ["Route", "Direction", "Issue", "What would fix it"],
+    "detour_cols": ["Route", "Direction", "From stop", "To stop", "Stops inside",
+                    "Stops inside served only by this route", "Along the route, km", "Straight line, km",
+                    "Extra distance, km", "Extra minutes per trip (estimate)",
+                    "Residents only this route reaches", "Everyone inside has another route",
+                    "Shorter path, km", "Saved by it, km", "Saved by it, minutes (estimate)",
+                    "Stops it would no longer serve"],
+    "dup_cols": ["Route", "Carrier", "Its stops are mostly on route", "Carrier", "Share of stops shared",
+                 "Stops of the route", "Stops of the other route", "Same carrier"],
+    "corridor_cols": ["From", "To", "Turns at", "Length, km", "Stops", "Routes per link, mean",
+                      "Routes on the busiest link", "Routes"],
+    "close_cols": ["Stop", "AYNA stop id", "Nearest stop along a route, m", "Routes"],
+    "route_cols": ["Route", "From", "To", "Carrier", "Zone", "Region", "Fare, AZN", "One-way km", "Shape",
+                   "Path / straight line between ends", "Median stop spacing, m", "Stop gaps under 200 m",
+                   "Detours", "Detour extra distance, km", "Share of path shared with other routes",
+                   "Residents within {radius} m", "Residents only this route reaches",
+                   "Weekday boardings (BakuBus, {month})"],
+    "yes": "Yes", "no": "No", "both": "both", "jump": "a straight jump of {km} km",
+    "kinds": {
+        "repeated_stops": ("The stop list is repeated twice in a row", "Keep one copy"),
+        "wrong_direction": ("A route line is filed under the wrong direction",
+                            "File the line under the right direction"),
+        "backwards": ("The line is stored backwards", "Reverse the order of its points"),
+        "swapped": ("The line has latitude and longitude swapped", "Swap the coordinates back"),
+        "lat_equals_lon": ("Latitude equals longitude at every point of the line", "Redraw the line"),
+        "scrambled": ("The line does not follow the order of the stops", "Redraw the line"),
+        "far": ("The line lies far from the route's stops", "Redraw the line"),
+        "other": ("Other defect", "Check it"),
+        "no_shape": ("The route has no line", "Add the line"),
+        "no_stops": ("The route is listed but has no stops and no line",
+                     "Add its stops and line, or remove the route"),
+        "missing_from_map": ("In BakuBus's boarding counts but not on the map ({month})",
+                             "Add the route to the map"),
     },
 }
 
 
-def workbook(site, net, lang):
-    """[(sheet name, column widths, rows, style per column)] for one language."""
-    t = TEXT[lang]
-    meta, issues = site["meta"], site["issues"]
+def workbook(site):
+    """[(sheet name, column widths, rows, style per column, is a table)]."""
+    t = TEXT
+    meta, issues, spacing = site["meta"], site["issues"], site["spacing"]
     fill = {"scraped": meta["scraped"], "same_as": meta["same_as"], "radius": meta["radius_m"],
-            "page": meta["page"], "repository": meta["repository"], "month": meta["counts_month"]}
+            "page": meta["page"], "repository": meta["repository"], "month": meta["counts_month"],
+            "gap": round(spacing["min_gap_m"]), "max_gap": round(spacing["max_gap_after_m"])}
     carrier = {r["n"]: r["carrier"] for r in site["routes"]}
     stops = site["stops"]
     yes_no = {True: t["yes"], False: t["no"]}
+    at_stop = defaultdict(set)
+    for r in site["routes"]:
+        for d in r["dirs"]:
+            for s in d["stops"]:
+                at_stop[s].add(r["n"])
 
     about = [[t["title"]], []] + [[s.format(**fill)] for s in t["lines"]]
 
@@ -547,7 +561,7 @@ def workbook(site, net, lang):
         if r["kind"] == "other":
             what = r["text"]
         elif r["jump_km"]:
-            jump = f"{r['jump_km']:.1f}".replace(".", "," if lang == "az" else ".")
+            jump = f"{r['jump_km']:.1f}"
             what += f" ({t['jump'].format(km=jump)})"
         issue_rows.append([r["route"], r["direction"] or t["both"], what, fix])
     for kind in ("no_shape", "no_stops", "missing_from_map"):
@@ -555,31 +569,39 @@ def workbook(site, net, lang):
         for n in issues[kind]:
             issue_rows.append([n, t["both"] if kind != "missing_from_map" else "", what.format(**fill), fix])
 
-    detour_rows = [[d["r"], d["d"], stops[d["a"]][2], stops[d["b"]][2], d["inside"], d["inside_only"],
-                    d["along"], d["straight"], d["excess"], d["minutes"], d["pop_only"], yes_no[d["pop_only"] == 0]]
-                   for d in sorted(site["detours"], key=lambda d: -d["minutes"])]
+    detour_rows = []
+    for d in sorted(site["detours"], key=lambda d: -d["minutes"]):
+        alt = d["alt"] or {}
+        detour_rows.append([d["r"], d["d"], stops[d["a"]][2], stops[d["b"]][2], d["inside"], d["inside_only"],
+                            d["along"], d["straight"], d["excess"], d["minutes"], d["pop_only"],
+                            yes_no[d["pop_only"] == 0], alt.get("km"), alt.get("saved_km"), alt.get("saved_min"),
+                            alt.get("dropped")])
     dup_rows = [[d["r"], carrier[d["r"]], d["in"], carrier[d["in"]], d["share"], d["stops"], d["other_stops"],
                  yes_no[d["same"]]] for d in site["duplicates"]]
     corridor_rows = [[c["from"], c["to"], c["via"], c["km"], c["stops"], c["mean"], c["max"], " ".join(c["routes"])]
                      for c in site["corridors"]]
-    route_rows = [[r["n"], r["from"], r["to"], r["carrier"], r["zone"] if lang == "az" else r["zone_en"],
-                   r["region"] if lang == "az" else r["region_en"], r["fare"], r["km"], t["shapes"][r["shape"]],
+    close_rows = [[stops[s][2], stops[s][3], gap, " ".join(sorted(at_stop[s], key=_route_key))]
+                  for s, gap in sorted(spacing["stops"], key=lambda x: (x[1], stops[x[0]][2]))]
+    route_rows = [[r["n"], r["from"], r["to"], r["carrier"], r["zone"], r["region"], r["fare"], r["km"], r["shape"],
                    r["circuity"], r["gap"], r["gaps200"], r["detours"], r["detour_km"], r["shared"], r["pop"],
                    r["pop_only"], r["boardings"]] for r in site["routes"]]
 
     def cols(names):
         return [c.format(**fill) for c in names]
 
+    names = t["sheets"]
     return [
-        (t["about"], [110], about, ["title"] + ["wrap"] * 20, False),
-        (t["issues"], [10, 10, 60, 45], [cols(t["issue_cols"])] + issue_rows, ["text", "text", "wrap", "wrap"], True),
-        (t["detours"], [9, 10, 34, 34, 10, 12, 10, 10, 10, 12, 14, 14], [cols(t["detour_cols"])] + detour_rows,
-         ["text", "int", "wrap", "wrap", "int", "int", "1", "1", "1", "1", "int", "text"], True),
-        (t["duplicates"], [9, 30, 12, 30, 12, 12, 12, 10], [cols(t["dup_cols"])] + dup_rows,
+        (names[0], [110], about, ["title"] + ["wrap"] * 20, False),
+        (names[1], [10, 10, 60, 45], [cols(t["issue_cols"])] + issue_rows, ["text", "text", "wrap", "wrap"], True),
+        (names[2], [9, 10, 34, 34, 10, 12, 10, 10, 10, 12, 14, 14, 10, 10, 12, 12],
+         [cols(t["detour_cols"])] + detour_rows,
+         ["text", "int", "wrap", "wrap", "int", "int", "1", "1", "1", "1", "int", "text", "1", "1", "1", "int"], True),
+        (names[3], [9, 30, 12, 30, 12, 12, 12, 10], [cols(t["dup_cols"])] + dup_rows,
          ["text", "wrap", "text", "wrap", "pct", "int", "int", "text"], True),
-        (t["corridors"], [34, 34, 26, 10, 10, 12, 12, 60], [cols(t["corridor_cols"])] + corridor_rows,
+        (names[4], [34, 34, 26, 10, 10, 12, 12, 60], [cols(t["corridor_cols"])] + corridor_rows,
          ["wrap", "wrap", "wrap", "1", "int", "1", "int", "wrap"], True),
-        (t["routes"], [9, 26, 26, 26, 18, 10, 9, 10, 12, 12, 12, 10, 9, 10, 12, 12, 12, 14],
+        (names[5], [40, 12, 16, 40], [cols(t["close_cols"])] + close_rows, ["wrap", "int", "int", "wrap"], True),
+        (names[6], [9, 26, 26, 26, 18, 10, 9, 10, 12, 12, 12, 10, 9, 10, 12, 12, 12, 14],
          [cols(t["route_cols"])] + route_rows,
          ["text", "wrap", "wrap", "wrap", "text", "text", "2", "1", "text", "2", "int", "int", "int", "1", "pct",
           "int", "int", "int"], True),
@@ -724,14 +746,18 @@ def write_xlsx(path, sheets):
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--out", default=str(ROOT / "site"))
+    ap.add_argument("--og", action="store_true", help="also draw og.png, the link-preview picture (needs Chrome)")
     args = ap.parse_args()
     site = build(Path(args.out))
     s, i = site["summary"], site["issues"]
-    print(f"{s['routes']} routes, {len(site['stops']):,} stops, {s['detours']} detours, "
-          f"{s['duplicate_pairs']} near-duplicate pairs, {s['corridors']} corridors, "
+    print(f"{s['routes']} routes, {len(site['stops']):,} stops, {s['detours']} detours "
+          f"({s['detours_with_shorter_path']} with a shorter path), {s['duplicate_pairs']} near-duplicate pairs, "
+          f"{s['corridors']} corridors, {s['close_stops']} close stops, "
           f"{len(site['hexes']):,} hexagons with people farther than {site['meta']['radius_m']} m from a stop")
     print(f"Map data: {len(i['repairs'])} repairs, {len(i['no_stops'])} routes without stops, "
           f"{len(i['missing_from_map'])} counted routes missing from the map")
+    if args.og:
+        write_og(Path(args.out))
     print(f"Wrote {Path(args.out).resolve()}")
 
 
