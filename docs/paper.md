@@ -317,8 +317,10 @@ point.
    (the anonymised review copy), `title-page.docx`, `highlights.docx`,
    `cover-letter.docx` (from `paper/cover-letter.md`) and `preprint.pdf`, with the
    figures to upload separately from `paper/figures/figure-1.pdf` to `figure-4.pdf`.
-   The reviewers to suggest are in `paper/reviewers.md`. What remains is done in the
-   journal's Editorial Manager with my own account: upload the files, enter the
+   The reviewers to suggest are in `paper/reviewers.md`, and
+   `paper/submission/fields.md` is a paste sheet with the exact value of every form
+   field for engrXiv and Editorial Manager. What remains is done in the journal's
+   Editorial Manager with my own account: upload the files, enter the
    reviewers with their institutional e-mails, add the preprint DOI to the title page
    and the cover letter, and answer the submission questionnaire.
 7. After acceptance: add the reference to the preprint, update `CITATION.cff` with
