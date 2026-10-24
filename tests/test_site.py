@@ -51,6 +51,14 @@ class CommittedSite(unittest.TestCase):
             self.assertGreaterEqual(d["alt"]["saved_km"], 0.5 - 1e-9)
             self.assertAlmostEqual(d["alt"]["km"] + d["alt"]["saved_km"], d["along"], delta=0.01)
         self.assertEqual(len({s[3] for s in data["stops"]}), len(data["stops"]))      # AYNA stop ids, for links
+        for r in data["routes"]:   # what the page's travel model needs: a headway, a speed, every hop's length
+            self.assertGreater(r["headway"], 0)
+            self.assertGreater(r["speed"], 0)
+            for d in r["dirs"]:
+                self.assertEqual(len(d["hops"]), len(d["stops"]) - 1)
+        carried = sorted(n for c in data["carriers"] for n in c["routes"])
+        self.assertEqual(carried, sorted(r["n"] for r in data["routes"]))           # every route under one carrier
+        self.assertEqual(len(data["carriers"]), data["summary"]["carriers"])
 
     def test_link_preview_picture_is_1200_by_630(self):
         with open(ROOT / "site" / "og.png", "rb") as f:
@@ -87,6 +95,12 @@ class Helpers(unittest.TestCase):
                          [("120A", 1, "repeated_stops"), ("4", None, "wrong_direction"),
                           ("550", 1, "scrambled"), ("9", 2, "other")])
         self.assertEqual(rows[2]["jump_km"], 17.7)
+
+    def test_carrier_names_that_differ_only_in_spelling_are_one_carrier(self):
+        self.assertEqual(build.carrier_key("SAHİL MMC"), build.carrier_key("Sahil MMC"))
+        self.assertEqual(build.carrier_key("XAN NƏQLİYYAT MMC"), build.carrier_key("Xan Nəqliyyat MMC"))
+        self.assertEqual(build.carrier_key("General - Auto - Company firması"), build.carrier_key("General-Auto-Company firması"))
+        self.assertNotEqual(build.carrier_key("Vətən firması"), build.carrier_key("Vətən.Az-Trans MMC"))
 
     def test_workbook_is_a_well_formed_package(self):
         with tempfile.TemporaryDirectory() as tmp:

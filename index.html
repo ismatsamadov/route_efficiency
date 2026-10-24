@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Baku bus network</title>
-<meta name="description" content="Explore Baku's 201 bus routes through open data: route directness, detours and shorter paths, overlaps, corridors, stop spacing, reach, stop coverage and map data issues.">
+<meta name="description" content="Explore Baku's 201 bus routes through open data: route directness, detours and shorter paths, overlaps, corridors, stop spacing, reach, travel times, stop coverage, carriers and map data issues.">
 <meta name="color-scheme" content="light">
 <meta name="theme-color" content="#f5f7fc">
 <meta property="og:type" content="website">
@@ -34,6 +34,7 @@
       <a href="#map">Map</a>
       <a href="#issues">Data issues</a>
       <a href="#checklist">Checklist</a>
+      <a href="#routes">Routes</a>
       <a href="#method">Method</a>
     </nav>
   </div>
@@ -99,6 +100,7 @@
         <button type="button" role="tab" data-view="coverage">Coverage</button>
         <button type="button" role="tab" data-view="spacing">Stop spacing</button>
         <button type="button" role="tab" data-view="reach">Reach</button>
+        <button type="button" role="tab" data-view="time">Travel time</button>
       </div>
       <button type="button" class="tour-start" data-tour>
         <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M7 4.8v10.4L15.5 10z"/></svg>
@@ -156,6 +158,16 @@
   </div>
 </section>
 
+<section class="section" id="routes">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>All routes and carriers</h2>
+      <p>Every route the map carries, with what it measures, and the same figures added up for each carrier that runs them. Sort by any column to find the most roundabout routes, the longest detours or the routes that depend on no one else.</p>
+    </div>
+    <div class="tables all-tables"></div>
+  </div>
+</section>
+
 <section class="section" id="method">
   <div class="wrap method">
     <div class="method-text">
@@ -168,7 +180,9 @@
         <dt>Near-duplicate</dt><dd>At least 85% of the stops of a route with 10 or more stops are also served by one other route. Express routes are left out: skipping stops is what they are for.</dd>
         <dt>Corridor</dt><dd>A stretch of street of at least 1 km where every link between consecutive stops carries at least 8 routes.</dd>
         <dt>Stop spacing</dt><dd>A stop could go when, on every route that uses it, it lies less than 250 m along the route from a neighbouring stop and removing it leaves no gap over 700 m. Terminals and interchange hubs are kept, and stops served by fewer routes go first. This is the stop-balancing scenario of the paper.</dd>
-        <dt>Reach</dt><dd>The stops on the routes that stop at a given stop; with one change, also the stops of every route that stops within 300 m of those. It counts connections, not travel times, which would need timetables.</dd>
+        <dt>Reach</dt><dd>The stops on the routes that stop at a given stop; with one change, also the stops of every route that stops within 300 m of those. It counts connections, not minutes.</dd>
+        <dt>Travel time</dt><dd>Estimated minutes by bus from a stop, from the paper's travel model: half a route's headway of waiting at each boarding, the ride at speeds set by type of service with 20 seconds lost at each stop, and walks of up to 300 m between stops to change buses, which are avoided as if each change cost 5 minutes. Headways are estimated for 200 of the 201 routes, so the minutes are estimates.</dd>
+        <dt>Carriers</dt><dd>The routes each carrier runs, as AYNA's map assigns them, with their figures added up. AYNA plans the routes, so the figures describe the routes, not how well a carrier runs them. Names that differ only in spelling are counted once, which gives the paper's 39 carriers.</dd>
         <dt>Coverage</dt><dd>A resident lives less than 400 m in a straight line from the nearest stop. Each hexagon is split into seven parts so that coverage is not judged from its centre alone.</dd>
       </dl>
       <p>Everything rests on the geometry of the map: timetables, vehicle positions and where riders travel are not public. The map does not yet show the new network that has been launching since January 2026, so the results describe the network the map shows today.</p>

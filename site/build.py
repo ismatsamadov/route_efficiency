@@ -291,6 +291,45 @@ def tightest_gap(net, stop_id):
     return best
 
 
+def carrier_key(name):
+    """Carrier names that differ only in case, spaces, hyphens or the dot of İ are one carrier
+    (SAHİL MMC and Sahil MMC): 42 names in the data, 39 carriers, as the paper counts them."""
+    return re.sub(r"[\s\-]+", "", name.replace("İ", "I").replace("ı", "i").upper())
+
+
+def carriers_table(routes, duplicates, close_stops):
+    """One row per carrier: the routes it runs and what they measure, from the route rows."""
+    by_number = {r["n"]: r for r in routes}
+    groups = defaultdict(list)
+    for r in routes:
+        groups[carrier_key(r["carrier"])].append(r)
+    close = set(close_stops)
+    out = []
+    for rs in groups.values():
+        names = Counter(r["carrier"] for r in rs)
+        name = sorted(names, key=lambda n: (-names[n], n))[0]
+        key = carrier_key(name)
+        inside = [d for d in duplicates if carrier_key(by_number[d["r"]]["carrier"]) == key]
+        counted = [r["boardings"] for r in rs if r["boardings"] is not None]
+        circuity = [r["circuity"] for r in rs if r["circuity"] is not None]
+        stops_served = {s for r in rs for d in r["dirs"] for s in d["stops"]}
+        out.append({
+            "name": name, "variants": sorted(names) if len(names) > 1 else [],
+            "routes": sorted((r["n"] for r in rs), key=_route_key),
+            "km": sum(r["km"] for r in rs),
+            "direct": sum(1 for r in rs if r["shape"] == "direct"),
+            "circuity": statistics.median(circuity) if circuity else None,
+            "detours": sum(r["detours"] for r in rs), "detour_km": sum(r["detour_km"] for r in rs),
+            "inside": len({d["r"] for d in inside}),
+            "inside_other": len({d["r"] for d in inside if carrier_key(by_number[d["in"]]["carrier"]) != key}),
+            "close_stops": len(stops_served & close),
+            "pop_only": sum(r["pop_only"] for r in rs),
+            "boardings": sum(counted) if counted else None,
+        })
+    out.sort(key=lambda c: (-len(c["routes"]), c["name"]))
+    return out
+
+
 def build(out_dir):
     a, data = load_config(ROOT / "busnet.toml")
     net = load_network(data["db"])
@@ -309,7 +348,8 @@ def build(out_dir):
     # Stops: every served stop once, referred to by its position in this list.
     served = sorted(net.served_stop_ids())
     stop_ix = {s: i for i, s in enumerate(served)}
-    stops = [[round(net.stops[s].lat, 5), round(net.stops[s].lon, 5), net.stops[s].name or "", s] for s in served]
+    # Six decimals (about 10 cm): the walks between stops the travel model allows end at 300 m exactly.
+    stops = [[round(net.stops[s].lat, 6), round(net.stops[s].lon, 6), net.stops[s].name or "", s] for s in served]
 
     # Routes, in route-number order, with both directions.
     row_of = {r["route"]: r for r in routes_csv}
@@ -334,8 +374,11 @@ def build(out_dir):
             "shared": num(row["shared_share"]),
             "pop": num(row["population_within_radius"]), "pop_only": num(row["population_only_this_route"]),
             "boardings": num(row["weekday_boardings"]),
+            "headway": num(row["headway_min"]), "headway_source": row["headway_source"],
+            "speed": round(a.cruise_mps(route.zone), 9),
             "straight": [p.direction for p in pats if p.path_source == "stops"],
-            "dirs": [{"d": p.direction, "line": line(p.path), "stops": [stop_ix[s] for s in p.stop_ids]}
+            "dirs": [{"d": p.direction, "line": line(p.path), "stops": [stop_ix[s] for s in p.stop_ids],
+                      "hops": [round(h, 3) for _, _, h in p.hops()]}
                      for p in pats],
         })
     check("routes with stops", len(routes), summary["routes_with_stops"])
@@ -421,10 +464,14 @@ def build(out_dir):
 
     issues = map_issues(net, data["db"], data["ridership"], routes_csv)
     shapes = Counter(r["shape"] for r in routes)
+    carriers = carriers_table(routes, duplicates, [s for s, _ in close])
     site = {
         "meta": {
             "scraped": SCRAPED, "same_as": SAME_AS, "counts_month": issues["counts_month"],
             "radius_m": radius, "transfer_walk_m": a.max_transfer_walk_m, "stop_loss_s": a.stop_loss_s,
+            "walk_speed_mps": a.walk_speed_mps, "walk_detour": a.walk_detour,
+            "transfer_penalty_s": a.transfer_penalty_s, "max_trip_min": a.max_trip_min,
+            "headway_sources": json.loads((out / "network.json").read_text(encoding="utf-8"))["headway_sources"],
             "repository": REPOSITORY, "page": PAGE,
         },
         "summary": {
@@ -443,6 +490,8 @@ def build(out_dir):
             "median_stop_gap_m": summary["median_stop_gap_m"],
             "share_gaps_under_200m": summary["share_stop_gaps_under_200m"],
             "close_stops": len(close),
+            "carriers": len(carriers),
+            "carrier_names": len({r["carrier"] for r in routes}),
             "population": summary["population_in_study_area"],
             "covered": summary["population_within_coverage_radius"],
             "routes_with_counts": sum(1 for r in routes if r["boardings"] is not None),
@@ -454,6 +503,7 @@ def build(out_dir):
         "duplicates": duplicates,
         "corridors": corridors,
         "spacing": spacing,
+        "carriers": carriers,
         "hexes": hexes,
     }
     out_dir.mkdir(parents=True, exist_ok=True)
@@ -494,12 +544,20 @@ TEXT = {
         "least 8 routes.",
         "Close stops: stops less than {gap} m along the route from the next stop on every route that "
         "uses them, whose removal leaves no gap over {max_gap} m. Terminals and interchange hubs are kept.",
+        "Carriers: the routes each carrier runs and what they measure. AYNA plans the routes, so these "
+        "figures describe the routes, not how well a carrier runs them. Names that differ only in "
+        "spelling are counted once.",
         "Routes: the measured figures for every route. Residents are counted within {radius} m; "
         "boardings are published for BakuBus routes only.",
         "Page: {page}",
         "Code, data and paper: {repository}",
     ],
-    "sheets": ["About", "Data issues", "Detours", "Near-duplicate routes", "Corridors", "Close stops", "Routes"],
+    "sheets": ["About", "Data issues", "Detours", "Near-duplicate routes", "Corridors", "Close stops", "Carriers",
+               "Routes"],
+    "carrier_cols": ["Carrier", "Also spelled", "Routes", "Route numbers", "One-way km", "Direct routes",
+                     "Median path / straight line", "Detours", "Detour extra km",
+                     "Routes mostly inside another route", "… inside another carrier's route", "Close stops served",
+                     "Residents only one of its routes reaches", "Weekday boardings (BakuBus, {month})"],
     "issue_cols": ["Route", "Direction", "Issue", "What would fix it"],
     "detour_cols": ["Route", "Direction", "From stop", "To stop", "Stops inside",
                     "Stops inside served only by this route", "Along the route, km", "Straight line, km",
@@ -582,6 +640,10 @@ def workbook(site):
                      for c in site["corridors"]]
     close_rows = [[stops[s][2], stops[s][3], gap, " ".join(sorted(at_stop[s], key=_route_key))]
                   for s, gap in sorted(spacing["stops"], key=lambda x: (x[1], stops[x[0]][2]))]
+    carrier_rows = [[c["name"], ", ".join(v for v in c["variants"] if v != c["name"]), len(c["routes"]),
+                     " ".join(c["routes"]), c["km"], c["direct"], c["circuity"], c["detours"], c["detour_km"],
+                     c["inside"], c["inside_other"], c["close_stops"], c["pop_only"], c["boardings"]]
+                    for c in site["carriers"]]
     route_rows = [[r["n"], r["from"], r["to"], r["carrier"], r["zone"], r["region"], r["fare"], r["km"], r["shape"],
                    r["circuity"], r["gap"], r["gaps200"], r["detours"], r["detour_km"], r["shared"], r["pop"],
                    r["pop_only"], r["boardings"]] for r in site["routes"]]
@@ -601,7 +663,9 @@ def workbook(site):
         (names[4], [34, 34, 26, 10, 10, 12, 12, 60], [cols(t["corridor_cols"])] + corridor_rows,
          ["wrap", "wrap", "wrap", "1", "int", "1", "int", "wrap"], True),
         (names[5], [40, 12, 16, 40], [cols(t["close_cols"])] + close_rows, ["wrap", "int", "int", "wrap"], True),
-        (names[6], [9, 26, 26, 26, 18, 10, 9, 10, 12, 12, 12, 10, 9, 10, 12, 12, 12, 14],
+        (names[6], [30, 24, 8, 40, 10, 9, 12, 9, 10, 12, 12, 10, 14, 14], [cols(t["carrier_cols"])] + carrier_rows,
+         ["wrap", "wrap", "int", "wrap", "1", "int", "2", "int", "1", "int", "int", "int", "int", "int"], True),
+        (names[7], [9, 26, 26, 26, 18, 10, 9, 10, 12, 12, 12, 10, 9, 10, 12, 12, 12, 14],
          [cols(t["route_cols"])] + route_rows,
          ["text", "wrap", "wrap", "wrap", "text", "text", "2", "1", "text", "2", "int", "int", "int", "1", "pct",
           "int", "int", "int"], True),

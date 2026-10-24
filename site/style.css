@@ -537,7 +537,32 @@ tbody tr:hover td { background: #edf3ff; }
 .compare-note { margin-top: 10px; padding: 8px 12px; border-radius: 10px; background: #fff4ee; color: #8a3a17; }
 .item-meta .tag-fix { width: 14px; background: repeating-linear-gradient(90deg, #1baf7a 0 5px, transparent 5px 8px); }
 
+.caveat { margin-top: 14px; padding: 10px 12px; border-radius: 10px; background: #f5f7fc; border: 1px solid var(--hairline); color: var(--ink-2); font-size: .8rem; line-height: 1.6; }
+.all-tables { gap: 28px; }
+.table-tools { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; padding: 14px 24px 0; }
+.table-filter {
+  flex: 1 1 260px; max-width: 420px; height: 42px; padding: 0 14px; border-radius: 10px; border: 1px solid var(--border);
+  background: #f5f7fc; color: var(--ink); font: inherit; font-size: .92rem;
+}
+.table-filter:focus { outline: 2px solid var(--focus); outline-offset: 0; border-color: transparent; }
+.table-count { color: var(--ink-2); font-size: .84rem; }
+.table-tall { max-height: 620px; overflow: auto; }
+.sortable-table thead th { position: sticky; top: 0; z-index: 1; background: #f1f5fb; }
+.sortable-table th.sortable button {
+  display: inline-flex; align-items: center; gap: 2px; padding: 0; border: 0; background: none; cursor: pointer;
+  font: inherit; font-weight: 650; color: inherit; text-align: inherit; white-space: nowrap;
+}
+.sortable-table th.num button { justify-content: flex-end; }
+.sortable-table th[aria-sort="ascending"], .sortable-table th[aria-sort="descending"] { color: var(--accent); }
+.sortable-table td { font-size: .88rem; }
+.sortable-table td.nowrap { white-space: nowrap; }
+.sortable-table .ends { display: block; min-width: 220px; max-width: 320px; }
+.shape-cell { display: inline-flex; align-items: center; gap: 7px; white-space: nowrap; }
+.sortable-table td.carrier-cell { min-width: 240px; }
+.shape-cell i { width: 16px; height: 4px; border-radius: 4px; display: inline-block; }
+
 @media (max-width: 760px) {
+  .table-tools { padding: 12px 16px 0; }
   .map-toolbar { gap: 8px; }
   .tour { left: 8px; right: 8px; bottom: 8px; width: auto; padding: 14px 16px; }
   .tour-title { font-size: 1.05rem; }

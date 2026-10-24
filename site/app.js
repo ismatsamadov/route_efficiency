@@ -93,6 +93,18 @@
         clear: "Pick another stop"
       }
     },
+    time: {
+      name: "Travel time",
+      text: "Click any stop, or search for one, to see the estimated minutes by bus from it to every other stop.",
+      caveat: "Model estimates, like the paper's: at each boarding the wait is half the route's headway, which is estimated for {estimated} of {routes} routes ({ridership} from BakuBus boardings, {zone} by type of service); buses run at speeds set by type of service and lose {loss} seconds at each stop; changes of bus allow a walk of up to {walk} m and are avoided as if each cost {penalty} minutes, which the minutes shown leave out.",
+      title: "From {stop}",
+      within: "Within {m} minutes",
+      bins: ["up to 15 minutes", "15 to 30", "30 to 45", "45 to 60", "over 60", "not reached within {max} minutes"],
+      minutes: "about {m} min by bus",
+      changes: ["no change", "1 change", "{n} changes"],
+      start: "Start from {stop}",
+      clear: "Pick another stop"
+    },
     tip: {
       detour: "+{min} min per trip · {km} km extra",
       alt: "a path along bus streets is {km} km shorter",
@@ -188,6 +200,20 @@
         cols: ["Route", "Mostly inside", "Shared stops", "Carriers"],
         same: "same", different: "different", of: "{b} of {a} stops"
       },
+      routes: {
+        title: "All routes",
+        note: "Every route with stops on the map. Click a column to sort, type to filter, and open any route on the map.",
+        filter: "Filter by route, end stop or carrier",
+        shown: "{n} of {total} routes",
+        cols: ["Route", "From — to", "Carrier", "Shape", "Path / straight line", "One way", "Stops", "Detours", "Detour km", "Shared path", "Close stops", "Residents within {radius} m", "Only this route", "Weekday boardings"]
+      },
+      carriers: {
+        title: "By carrier",
+        note: "AYNA plans the routes and the carriers run them, so these figures describe the routes each carrier runs, not how well it runs them. Names that differ only in spelling are counted once: {merged}.",
+        filter: "Filter by carrier",
+        shown: "{n} of {total} carriers",
+        cols: ["Carrier", "Routes", "One way, km", "Direct", "Median path / straight line", "Detours", "Detour km", "Mostly inside another route", "Close stops", "Residents only one of its routes reaches", "Weekday boardings"]
+      },
       corridors: {
         title: "The busiest corridors",
         note: "Ranked by length times the number of routes per link.",
@@ -220,7 +246,8 @@
 
   // ---------------------------------------------------------------- state
 
-  var VIEWS = ["directness", "detours", "duplication", "corridors", "coverage", "spacing", "reach"];
+  var VIEWS = ["directness", "detours", "duplication", "corridors", "coverage", "spacing", "reach", "time"];
+  var TIME_BINS = [15, 30, 45, 60];
   var SHAPES = ["direct", "indirect", "very indirect", "loop"];
   var HEX_BINS = [100, 500, 2000];
   var ROUTE_BINS = [2, 4, 8];
@@ -230,7 +257,8 @@
   var view = "directness";
   var selected = null;        // the route whose card is open
   var compareWith = null;     // the route compared with it
-  var reachFrom = null;       // the stop the reach view starts from
+  var origin = null;       // the stop the reach view starts from
+  var focusLabel = null;   // what the focus layer shows, when it is not a route
   var map = null;
   var R = {};
   var layers = {};
@@ -239,6 +267,7 @@
     ramp: { direct: "#86b6ef", indirect: "#3987e5", "very indirect": "#1c5cab", loop: "#0d366b" },
     hex: ["#cde2fb", "#86b6ef", "#3987e5", "#1c5cab"],
     stopRamp: ["#86b6ef", "#3987e5", "#1c5cab", "#0d366b"],
+    timeRamp: ["#86b6ef", "#3987e5", "#256abf", "#184f95", "#0d366b"],
     base: "#bdbcb4", one: "#2a78d6", two: "#eb6834", fix: "#1baf7a", ink: "#0b0b0b", casing: "#ffffff",
     stop: "#52514e", faint: "#a9b1bf", near: "#9ec5f4"
   };
@@ -423,6 +452,94 @@
     return { routes: r0, none: s0, one: s1, nNone: Object.keys(s0).length, nOne: Object.keys(s1).length };
   }
 
+  // The paper's door-to-door graph (busnet/graph.py, TransitGraph), rebuilt here: an arrival
+  // and a departure node per stop, an on-board node per stop of every route direction.
+  // Boarding costs half the headway plus the change penalty; riding a hop costs its length
+  // at the route's speed plus the time lost at a stop; walks of up to transfer_walk_m join
+  // arrivals to departures. Paths are chosen by that cost, as the model chooses them; the
+  // minutes shown leave the penalties out.
+  var graph = null;
+  function haversine(i, j) {
+    var a = stops[i], b = stops[j], rad = Math.PI / 180;
+    var dLat = (b[0] - a[0]) * rad, dLon = (b[1] - a[1]) * rad;
+    var h = Math.sin(dLat / 2) * Math.sin(dLat / 2) + Math.cos(a[0] * rad) * Math.cos(b[0] * rad) * Math.sin(dLon / 2) * Math.sin(dLon / 2);
+    return 2 * 6371008.8 * Math.asin(Math.min(1, Math.sqrt(h)));
+  }
+  function travelGraph() {
+    if (graph) return graph;
+    var m = D.meta, n = stops.length, total = 2 * n, adj = [], k;
+    routes.forEach(function (r) { r.dirs.forEach(function (d) { d.base = total; total += d.stops.length; }); });
+    for (k = 0; k < total; k++) adj.push([]);
+    for (k = 0; k < n; k++) {
+      adj[k].push(n + k, 0, 0);
+      nearStops(k, m.transfer_walk_m + 5).forEach(function (t) {
+        var d = t === k ? Infinity : haversine(k, t);          // the model's own test: great-circle metres
+        if (d <= m.transfer_walk_m) adj[k].push(n + t, d * m.walk_detour / m.walk_speed_mps, 0);
+      });
+    }
+    routes.forEach(function (r) {
+      var board = r.headway * 30 + m.transfer_penalty_s;
+      r.dirs.forEach(function (d) {
+        var last = d.stops.length - 1;
+        d.stops.forEach(function (s, i) {
+          if (i < last) {
+            adj[n + s].push(d.base + i, board, 1);
+            adj[d.base + i].push(d.base + i + 1, d.hops[i] / r.speed + m.stop_loss_s, 0);
+          }
+          if (i > 0) adj[d.base + i].push(s, 0, 0);
+        });
+      });
+    });
+    graph = { n: n, total: total, adj: adj };
+    return graph;
+  }
+  var timesCache = {};
+  // {min: minutes to each stop's arrival (Infinity if not reached), changes: boardings - 1}.
+  function travelTimes(from) {
+    if (timesCache[from]) return timesCache[from];
+    var g = travelGraph(), cut = D.meta.max_trip_min * 60 + 3 * D.meta.transfer_penalty_s;
+    var cost = new Float64Array(g.total).fill(Infinity), boards = new Uint16Array(g.total);
+    var heap = [[0, from]];
+    cost[from] = 0;
+    function push(c, v) {
+      heap.push([c, v]);
+      var i = heap.length - 1;
+      while (i > 0) { var p = (i - 1) >> 1; if (heap[p][0] <= heap[i][0]) break; var t = heap[p]; heap[p] = heap[i]; heap[i] = t; i = p; }
+    }
+    function pop() {
+      var top = heap[0], end = heap.pop();
+      if (heap.length) {
+        heap[0] = end;
+        var i = 0;
+        for (;;) {
+          var l = 2 * i + 1, r = l + 1, m = i;
+          if (l < heap.length && heap[l][0] < heap[m][0]) m = l;
+          if (r < heap.length && heap[r][0] < heap[m][0]) m = r;
+          if (m === i) break;
+          var t = heap[m]; heap[m] = heap[i]; heap[i] = t; i = m;
+        }
+      }
+      return top;
+    }
+    while (heap.length) {
+      var top = pop(), c = top[0], u = top[1];
+      if (c > cost[u] || c > cut) continue;
+      var e = g.adj[u];
+      for (var k = 0; k < e.length; k += 3) {
+        var v = e[k], nc = c + e[k + 1];
+        if (nc < cost[v]) { cost[v] = nc; boards[v] = boards[u] + e[k + 2]; push(nc, v); }
+      }
+    }
+    var out = { min: new Float64Array(g.n), changes: new Int16Array(g.n) };
+    for (var i = 0; i < g.n; i++) {
+      var real = (cost[i] - boards[i] * D.meta.transfer_penalty_s) / 60;
+      out.min[i] = cost[i] === Infinity || real > D.meta.max_trip_min ? Infinity : real;
+      out.changes[i] = Math.max(0, boards[i] - 1);
+    }
+    timesCache[from] = out;
+    return out;
+  }
+
   // ---------------------------------------------------------------- static text
 
   function get(path) {
@@ -544,14 +661,14 @@
 
   function styleRoutes() {
     if (!map) return;
-    var w = routeWeight(), dim = selected || reachFrom !== null ? 0.55 : 1;
+    var w = routeWeight(), dim = selected || origin !== null ? 0.55 : 1;
     // A view's own layer steps back while a route is open, except the reach it draws.
-    map.getPane("overlay").style.opacity = selected && view !== "reach" ? "0.4" : "1";
+    map.getPane("overlay").style.opacity = selected && !fromStop() ? "0.4" : "1";
     layers.routes.forEach(function (line) {
       if (view === "directness") {
         line.setStyle({ color: C.ramp[line.route.shape], weight: w, opacity: 0.92 * dim });
       } else {
-        var quiet = view === "coverage" || view === "spacing" || view === "reach";
+        var quiet = view === "coverage" || view === "spacing" || fromStop();
         line.setStyle({ color: C.base, weight: Math.max(1.2, w - 0.6), opacity: (quiet ? 0.55 : 0.85) * dim });
       }
     });
@@ -607,15 +724,29 @@
       D.spacing.stops.forEach(function (x) {
         g.addLayer(dot(x[0], { radius: 4.4, color: C.casing, weight: 1.5, fillColor: C.two, fillOpacity: 1 }));
       });
+    } else if (name === "time") {
+      if (origin === null) {
+        stops.forEach(function (s, i) { g.addLayer(dot(i, { radius: 2, stroke: false, fillColor: C.one, fillOpacity: 0.55 })); });
+      } else {
+        var times = travelTimes(origin);
+        var order = stops.map(function (s, i) { return i; }).sort(function (a, b) { return times.min[b] - times.min[a]; });
+        order.forEach(function (i) {
+          if (i === origin) return;
+          var m = times.min[i];
+          g.addLayer(dot(i, m === Infinity ? { radius: 1.6, stroke: false, fillColor: C.faint, fillOpacity: 0.8 }
+                                           : { radius: 3.2, stroke: false, fillColor: C.timeRamp[bin(m, TIME_BINS)], fillOpacity: 0.95 }));
+        });
+        g.addLayer(dot(origin, { radius: 8, color: C.casing, weight: 3, fillColor: C.ink, fillOpacity: 1 }));
+      }
     } else if (name === "reach") {
-      if (reachFrom === null) {
+      if (origin === null) {
         var order = stops.map(function (s, i) { return i; }).sort(function (a, b) { return atStop[a].length - atStop[b].length; });
         order.forEach(function (i) {
           var k = bin(atStop[i].length, ROUTE_BINS);
           g.addLayer(dot(i, { radius: [1.8, 2.3, 3, 3.8][k], stroke: false, fillColor: C.stopRamp[k], fillOpacity: 0.95 }));
         });
       } else {
-        var reach = reachOf(reachFrom);
+        var reach = reachOf(origin);
         reach.routes.forEach(function (n) {
           byNumber[n].dirs.forEach(function (d) {
             g.addLayer(L.polyline(d.ll, { renderer: R.overlay, interactive: false, color: C.one, weight: 2.4, opacity: 0.75, lineCap: "round" }));
@@ -629,7 +760,7 @@
         Object.keys(reach.none).forEach(function (i) {
           g.addLayer(dot(+i, { radius: 3, stroke: false, fillColor: C.one, fillOpacity: 1 }));
         });
-        g.addLayer(dot(reachFrom, { radius: 8, color: C.casing, weight: 3, fillColor: C.ink, fillOpacity: 1 }));
+        g.addLayer(dot(origin, { radius: 8, color: C.casing, weight: 3, fillColor: C.ink, fillOpacity: 1 }));
       }
     }
     return g;
@@ -643,7 +774,7 @@
 
   function showView(name, keepHash) {
     var next = VIEWS.indexOf(name) >= 0 ? name : "directness";
-    if (next !== "reach") reachFrom = null;
+    if (next !== "reach" && next !== "time") origin = null;
     view = next;
     document.querySelectorAll("[data-view]").forEach(function (b) {
       b.setAttribute("aria-selected", String(b.getAttribute("data-view") === view));
@@ -652,6 +783,8 @@
       refreshOverlay();
       layers.hover.clearLayers();
       layers.focus.clearLayers();
+      focusLabel = null;
+      setSelectedChip();
       map.closePopup();
       styleRoutes();
     }
@@ -666,7 +799,7 @@
     var r = byNumber[n] || null;
     selected = r;
     compareWith = r && opts.compare && byNumber[opts.compare] ? opts.compare : null;
-    if (!opts.keepFocus && layers.focus) layers.focus.clearLayers();
+    if (!opts.keepFocus && layers.focus) { layers.focus.clearLayers(); focusLabel = null; }
     drawSelection();
     renderCard();
     renderChips();
@@ -734,22 +867,30 @@
     var box = document.querySelector(".map-selected");
     if (!box) return;
     clear(box);
-    if (!selected || !map) { box.hidden = true; return; }
-    box.appendChild(el("span", { text: fill(T.routeN, { n: selected.n }) }));
-    box.appendChild(el("button", { type: "button", "aria-label": T.close, text: "×", onclick: function () { select(null); } }));
+    if (!map || (!selected && !focusLabel)) { box.hidden = true; return; }
+    box.appendChild(el("span", { text: selected ? fill(T.routeN, { n: selected.n }) : focusLabel }));
+    box.appendChild(el("button", { type: "button", "aria-label": T.close, text: "×", onclick: function () {
+      if (selected) { select(null); return; }
+      focusLabel = null;
+      layers.focus.clearLayers();
+      setSelectedChip();
+    } }));
     box.hidden = false;
   }
 
+  function fromStop() { return view === "reach" || view === "time"; }
+
+  // Start the reach or the travel-time view from stop i (the reach view unless one is open).
   function setReach(i, opts) {
     opts = opts || {};
-    if (view !== "reach") showView("reach", true);
-    reachFrom = i;
+    if (!fromStop()) showView("reach", true);
+    origin = i;
     if (selected && !opts.keepRoute) { selected = null; compareWith = null; drawSelection(); renderCard(); setSelectedChip(); renderChips(); }
     refreshOverlay();
     styleRoutes();
     renderPanel();
     updateHash();
-    if (map && i !== null && opts.zoom) fly(pointBox(stops[i][0], stops[i][1], 1500), 15);
+    if (map && i !== null && opts.zoom) fly(pointBox(stops[i][0], stops[i][1], 7000), 12.5, 20);
   }
 
   // A detour, corridor or hexagon drawn on top until something else is chosen.
@@ -808,7 +949,7 @@
       var dx = (stops[s][1] - lon) * kx, dy = (stops[s][0] - lat) * ky, m = Math.sqrt(dx * dx + dy * dy);
       if (m <= limit) out.push({ type: "stop", item: s, d: m });
     }
-    if (view === "spacing" || view === "reach") {
+    if (view === "spacing" || fromStop()) {
       var best = null;
       for (var i = 0; i < stops.length; i++) {
         var s = stops[i];
@@ -876,6 +1017,12 @@
     return n === 1 ? T.stopRoute : fill(T.stopRoutes, { n: fmt(n) });
   }
 
+  function timeLine(i) {
+    var t = travelTimes(origin), m = t.min[i], c = t.changes[i];
+    if (m === Infinity) return fill(T.time.bins[5], { max: fmt(D.meta.max_trip_min) });
+    return fill(T.time.minutes, { m: fmt(m) }) + " · " + fill(T.time.changes[Math.min(c, 2)], { n: fmt(c) });
+  }
+
   function showTip(e, hits) {
     var tip = document.querySelector(".map-tip");
     layers.hover.clearLayers();
@@ -884,7 +1031,8 @@
     map.getContainer().style.cursor = h.type === "hex" ? "" : "pointer";
     if (h.type === "stop") {
       title = stops[h.item][2] || "–";
-      sub = view === "spacing" && h.item in closeGap ? fill(T.tip.gap, { gap: fmt(closeGap[h.item]) }) : stopLine(h.item);
+      sub = view === "spacing" && h.item in closeGap ? fill(T.tip.gap, { gap: fmt(closeGap[h.item]) })
+        : view === "time" && origin !== null ? timeLine(h.item) : stopLine(h.item);
     } else if (h.type === "detour") {
       var d = h.item;
       title = fill(T.routeN, { n: d.r }) + " · " + stops[d.a][2] + " → " + stops[d.b][2];
@@ -956,7 +1104,7 @@
     var h = hits[0];
     function pick(n) { map.closePopup(); select(n); }
     if (h.type === "stop") {
-      if (view === "reach") { setReach(h.item); return; }
+      if (fromStop()) { setReach(h.item); return; }
       var nodes = [el("div", { class: "popup-title", text: stops[h.item][2] || "–" }),
         el("div", { class: "popup-meta", text: stopLine(h.item) })];
       if (h.item in closeGap) {
@@ -1004,7 +1152,8 @@
     box.hidden = !!selected;
     if (selected) return;
     var v = T.views[view], list = el("ul", { class: "legend" }), radius = fmt(D.meta.radius_m);
-    if (view === "reach" && reachFrom !== null) { renderReachPanel(box); return; }
+    if (view === "reach" && origin !== null) { renderReachPanel(box); return; }
+    if (view === "time") { renderTimePanel(box); return; }
     box.appendChild(el("h3", { text: v.name }));
     if (view === "directness") {
       box.appendChild(el("p", { text: v.text }));
@@ -1073,8 +1222,51 @@
     }
   }
 
+  function renderTimePanel(box) {
+    var v = T.time, m = D.meta, hs = m.headway_sources;
+    var caveat = el("p", { class: "caveat", text: fill(v.caveat, { estimated: fmt(S.routes - hs.supplied), routes: fmt(S.routes),
+      ridership: fmt(hs.ridership), zone: fmt(hs.zone + hs["default"]), loss: fmt(m.stop_loss_s), walk: fmt(m.transfer_walk_m),
+      penalty: fmt(m.transfer_penalty_s / 60) }) });
+    if (origin === null) {
+      var hub = 0;
+      atStop.forEach(function (rs, i) { if (rs.length > atStop[hub].length) hub = i; });
+      box.appendChild(el("h3", { text: v.name }));
+      box.appendChild(el("p", { text: v.text }));
+      box.appendChild(caveat);
+      box.appendChild(el("button", { type: "button", class: "btn btn-small", text: fill(v.start, { stop: stops[hub][2] }), onclick: function () { setReach(hub, { zoom: false }); } }));
+      return;
+    }
+    var t = travelTimes(origin), counts = [0, 0, 0, 0, 0, 0], within30 = 0, within60 = 0;
+    for (var i = 0; i < stops.length; i++) {
+      if (i === origin) continue;
+      var x = t.min[i];
+      if (x === Infinity) { counts[5]++; continue; }
+      counts[bin(x, TIME_BINS)]++;
+      if (x <= 30) within30++;
+      if (x <= 60) within60++;
+    }
+    box.appendChild(el("p", { class: "eyebrow-small", text: v.name }));
+    box.appendChild(el("h3", { text: fill(v.title, { stop: stops[origin][2] || "–" }) }));
+    box.appendChild(el("dl", { class: "reach-stats" }, [
+      el("div", null, [el("dt", { text: fill(v.within, { m: 30 }) }), el("dd", null, [fill(T.views.reach.of, { n: fmt(within30) }),
+        el("small", { text: fill(T.views.reach.share, { p: pct(within30 / stops.length), total: fmt(stops.length) }) })])]),
+      el("div", null, [el("dt", { text: fill(v.within, { m: 60 }) }), el("dd", null, [fill(T.views.reach.of, { n: fmt(within60) }),
+        el("small", { text: fill(T.views.reach.share, { p: pct(within60 / stops.length), total: fmt(stops.length) }) })])])
+    ]));
+    var list = el("ul", { class: "legend" });
+    v.bins.forEach(function (label, k) {
+      list.appendChild(legendItem(keyDot(k < 5 ? C.timeRamp[k] : C.faint, k < 5 ? 10 : 6), fill(label, { max: fmt(m.max_trip_min) }), fill(T.stopsCount, { n: fmt(counts[k]) })));
+    });
+    box.appendChild(list);
+    box.appendChild(caveat);
+    box.appendChild(el("div", { class: "card-actions" }, [
+      el("button", { type: "button", class: "btn btn-small", text: v.clear, onclick: function () { setReach(null); } }),
+      copyButton()
+    ]));
+  }
+
   function renderReachPanel(box) {
-    var v = T.views.reach, i = reachFrom, reach = reachOf(i), total = stops.length, walk = fmt(D.meta.transfer_walk_m);
+    var v = T.views.reach, i = origin, reach = reachOf(i), total = stops.length, walk = fmt(D.meta.transfer_walk_m);
     box.appendChild(el("p", { class: "eyebrow-small", text: v.name }));
     box.appendChild(el("h3", { text: fill(v.title, { stop: stops[i][2] || "–" }) }));
     box.appendChild(el("dl", { class: "reach-stats" }, [
@@ -1387,6 +1579,136 @@
       })));
   }
 
+  // ---------------------------------------------------------------- all routes and carriers
+
+  // A table that sorts on any column and filters on its text; rows keep the data's order
+  // until a column is chosen, and empty values sort last both ways.
+  function sortableTable(box, spec) {
+    var state = { col: spec.sortBy || 0, dir: spec.sortDir || 1, q: "" };
+    var input = el("input", { type: "search", class: "table-filter", placeholder: spec.filter, "aria-label": spec.filter, autocomplete: "off", spellcheck: "false" });
+    var count = el("span", { class: "table-count" });
+    var thead = el("thead"), tbody = el("tbody");
+    function header() {
+      clear(thead);
+      thead.appendChild(el("tr", null, spec.columns.map(function (c, i) {
+        var on = state.col === i;
+        return el("th", { class: (c.num ? "num " : "") + "sortable", "aria-sort": on ? (state.dir > 0 ? "ascending" : "descending") : "none" }, [
+          el("button", { type: "button", onclick: function () {
+            if (state.col === i) state.dir = -state.dir;
+            else { state.col = i; state.dir = c.num ? -1 : 1; }
+            header();
+            body();
+          } }, [c.label, el("span", { class: "sort-mark", "aria-hidden": "true", text: on ? (state.dir > 0 ? " ↑" : " ↓") : "" })])
+        ]);
+      }).concat([el("th")])));
+    }
+    function body() {
+      var q = fold(state.q.trim()), col = spec.columns[state.col];
+      var rows = spec.rows.filter(function (r) { return !q || fold(spec.text(r)).indexOf(q) >= 0; });
+      rows.sort(function (a, b) {
+        var x = col.get(a), y = col.get(b);
+        if (x === y) return 0;
+        if (x === null || x === undefined) return 1;
+        if (y === null || y === undefined) return -1;
+        var o = typeof x === "string" ? x.localeCompare(y, "en", { numeric: true }) : (x < y ? -1 : 1);
+        return o * state.dir;
+      });
+      clear(tbody);
+      rows.forEach(function (r) {
+        tbody.appendChild(el("tr", null, spec.columns.map(function (c) {
+          var v = c.show ? c.show(r) : c.get(r);
+          return el("td", { class: (c.num ? "num" : "") + (c.cls ? " " + c.cls : "") }, Array.isArray(v) ? v : [v === null || v === undefined ? "–" : String(v)]);
+        }).concat([el("td", { class: "num" }, [goButton(function () { spec.open(r); })])])));
+      });
+      count.textContent = fill(spec.shown, { n: fmt(rows.length), total: fmt(spec.rows.length) });
+    }
+    input.addEventListener("input", function () { state.q = input.value; body(); });
+    header();
+    body();
+    box.appendChild(el("article", { class: "table-card" }, [
+      el("h3", { text: spec.title }),
+      el("p", { class: "table-note", text: spec.note }),
+      el("div", { class: "table-tools" }, [input, count]),
+      el("div", { class: "table-scroll table-tall" }, [el("table", { class: "sortable-table" }, [thead, tbody])])
+    ]));
+  }
+
+  function focusCarrier(c) {
+    select(null);
+    showView("directness");
+    var boxes = [];
+    c.routes.forEach(function (n) {
+      var r = byNumber[n];
+      boxes.push(r.box);
+      r.dirs.forEach(function (d) {
+        layers.focus.addLayer(L.polyline(d.ll, lineOpts(C.casing, 7, { renderer: R.hover })));
+        layers.focus.addLayer(L.polyline(d.ll, lineOpts(C.ink, 3, { renderer: R.hover })));
+      });
+    });
+    focusLabel = c.name;
+    setSelectedChip();
+    scrollToMap();
+    fly(joinBoxes(boxes), 14, 40);
+  }
+
+  function renderAllTables() {
+    var box = document.querySelector(".all-tables");
+    if (!box) return;
+    clear(box);
+    var t = T.tables, closeCount = {};
+    routes.forEach(function (r) { closeCount[r.n] = r.stopList.filter(function (s) { return s in closeGap; }).length; });
+    var order = {};
+    routes.forEach(function (r, i) { order[r.n] = i; });
+    var rc = t.routes.cols.map(function (c) { return fill(c, { radius: fmt(D.meta.radius_m) }); });
+    sortableTable(box, {
+      title: t.routes.title, note: t.routes.note, filter: t.routes.filter, shown: t.routes.shown, rows: routes,
+      text: function (r) { return r.n + " " + r.from + " " + r.to + " " + r.carrier; },
+      open: function (r) { select(r.n, { scroll: true }); },
+      columns: [
+        { label: rc[0], get: function (r) { return order[r.n]; }, show: function (r) { return r.n; }, cls: "route" },
+        { label: rc[1], get: function (r) { return r.from; }, show: function (r) { return [el("span", { class: "ends", text: (r.from || "–") + " — " + (r.to || "–") })]; } },
+        { label: rc[2], get: function (r) { return r.carrier; }, cls: "nowrap" },
+        { label: rc[3], get: function (r) { return SHAPES.indexOf(r.shape); }, show: function (r) {
+          return [el("span", { class: "shape-cell" }, [el("i", { style: "background:" + C.ramp[r.shape] }), T.shapes[r.shape]])];
+        } },
+        { label: rc[4], num: true, get: function (r) { return r.circuity; }, show: function (r) { return r.circuity === null ? "–" : fmt(r.circuity, 2) + "×"; } },
+        { label: rc[5], num: true, get: function (r) { return r.km; }, show: function (r) { return fmt(r.km, 1) + " km"; } },
+        { label: rc[6], num: true, get: function (r) { return r.dirs.reduce(function (a, d) { return a + d.stops.length; }, 0) / r.dirs.length; },
+          show: function (r) { return r.dirs.map(function (d) { return fmt(d.stops.length); }).join(" · "); } },
+        { label: rc[7], num: true, get: function (r) { return r.detours; }, show: function (r) { return fmt(r.detours); } },
+        { label: rc[8], num: true, get: function (r) { return r.detour_km; }, show: function (r) { return r.detours ? fmt(r.detour_km, 1) : "–"; } },
+        { label: rc[9], num: true, get: function (r) { return r.shared; }, show: function (r) { return pct(r.shared); } },
+        { label: rc[10], num: true, get: function (r) { return closeCount[r.n]; }, show: function (r) { return fmt(closeCount[r.n]); } },
+        { label: rc[11], num: true, get: function (r) { return r.pop; }, show: function (r) { return fmt(r.pop); } },
+        { label: rc[12], num: true, get: function (r) { return r.pop_only; }, show: function (r) { return fmt(r.pop_only); } },
+        { label: rc[13], num: true, get: function (r) { return r.boardings; }, show: function (r) { return r.boardings === null ? "–" : fmt(r.boardings); } }
+      ]
+    });
+    var cc = t.carriers.cols, merged = D.carriers.filter(function (c) { return c.variants.length; })
+      .map(function (c) { return c.variants.join(" and "); }).join("; ");
+    sortableTable(box, {
+      title: t.carriers.title, note: fill(t.carriers.note, { merged: merged }), filter: t.carriers.filter, shown: t.carriers.shown, rows: D.carriers,
+      sortBy: 1, sortDir: -1,
+      text: function (c) { return c.name + " " + c.variants.join(" ") + " " + c.routes.join(" "); },
+      open: focusCarrier,
+      columns: [
+        { label: cc[0], cls: "carrier-cell", get: function (c) { return c.name; }, show: function (c) {
+          return [el("b", { text: c.name }), el("span", { class: "sub", text: c.routes.slice(0, 10).join(", ") + (c.routes.length > 10 ? " +" + (c.routes.length - 10) : "") })];
+        } },
+        { label: cc[1], num: true, get: function (c) { return c.routes.length; } },
+        { label: cc[2], num: true, get: function (c) { return c.km; }, show: function (c) { return fmt(c.km, 1); } },
+        { label: cc[3], num: true, get: function (c) { return c.direct / c.routes.length; }, show: function (c) { return fmt(c.direct) + " / " + fmt(c.routes.length); } },
+        { label: cc[4], num: true, get: function (c) { return c.circuity; }, show: function (c) { return c.circuity === null ? "–" : fmt(c.circuity, 2) + "×"; } },
+        { label: cc[5], num: true, get: function (c) { return c.detours; }, show: function (c) { return fmt(c.detours); } },
+        { label: cc[6], num: true, get: function (c) { return c.detour_km; }, show: function (c) { return fmt(c.detour_km, 1); } },
+        { label: cc[7], num: true, get: function (c) { return c.inside; }, show: function (c) { return fmt(c.inside); } },
+        { label: cc[8], num: true, get: function (c) { return c.close_stops; }, show: function (c) { return fmt(c.close_stops); } },
+        { label: cc[9], num: true, get: function (c) { return c.pop_only; }, show: function (c) { return fmt(c.pop_only); } },
+        { label: cc[10], num: true, get: function (c) { return c.boardings; }, show: function (c) { return c.boardings === null ? "–" : fmt(c.boardings); } }
+      ]
+    });
+  }
+
   // ---------------------------------------------------------------- the guided tour
 
   var tour = { on: false, i: 0, steps: [], box: null };
@@ -1577,7 +1899,7 @@
     if (view !== "directness") parts.push("view=" + view);
     if (selected) parts.push("route=" + encodeURIComponent(selected.n));
     if (compareWith) parts.push("compare=" + encodeURIComponent(compareWith));
-    if (view === "reach" && reachFrom !== null) parts.push("stop=" + stops[reachFrom][3]);
+    if (fromStop() && origin !== null) parts.push("stop=" + stops[origin][3]);
     var url = window.location.pathname + window.location.search + (parts.length ? "#" + parts.join("&") : "");
     try { window.history.replaceState(null, "", url); } catch (e) { /* file:// in some browsers */ }
   }
@@ -1625,6 +1947,7 @@
   renderChips();
   renderIssues();
   renderTables();
+  renderAllTables();
   showView(view, true);
   if (applyHash()) {
     setTimeout(scrollToMap, 0);
