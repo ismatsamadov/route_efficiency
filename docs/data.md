@@ -1,8 +1,8 @@
 # Data
 
 Every file the tools read is committed under `data/`, including everything in
-`data/external/`; `.gitignore` excludes only Python caches, virtual environments and the
-macOS `.DS_Store` files that Finder creates. [data/SOURCES.md](../data/SOURCES.md)
+`data/external/`; `.gitignore` excludes only Python caches, virtual environments, the
+macOS `.DS_Store` files that Finder creates and the `emails/` folder of letter drafts. [data/SOURCES.md](../data/SOURCES.md)
 lists each file with its source and licence; this page explains what each one contains,
 how the code uses it, what is wrong with it and what is still missing.
 

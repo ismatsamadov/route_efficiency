@@ -48,7 +48,8 @@ CITATION.cff          how to cite the repository; GitHub shows it and Zenodo rea
 ```
 
 `.gitignore` excludes only Python caches (`__pycache__/`, `*.pyc`), virtual environments
-(`.venv/`) and macOS `.DS_Store` files. All data and all results are tracked.
+(`.venv/`), macOS `.DS_Store` files and `emails/`, where drafts of letters to researchers
+are kept until they are sent. All data and all results are tracked.
 
 ## How the pieces fit
 

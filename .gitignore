@@ -5,3 +5,6 @@ __pycache__/
 
 # macOS
 .DS_Store
+
+# Email drafts to researchers, sent by hand; not part of the study
+emails/
