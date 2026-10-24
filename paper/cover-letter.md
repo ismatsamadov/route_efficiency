@@ -43,9 +43,6 @@ received no funding. I am the sole author, writing as an independent researcher;
 use of an AI writing tool is declared in the manuscript. The earlier, unreviewed GitHub
 report on the same data that the manuscript cites and supersedes is my own.
 
-Suggested reviewers are entered in the submission system; none has any connection to
-me.
-
 Yours sincerely,
 
 Ismat Samadov

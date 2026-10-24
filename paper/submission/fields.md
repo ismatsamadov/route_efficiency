@@ -43,7 +43,7 @@ After posting, put the preprint DOI on the title page ("Preprint: ..." line in
 | Previously published | No (an earlier unreviewed GitHub report on the same data is cited and superseded in section 2.1) |
 | Generative AI | Declared in the manuscript's Declarations (Claude via Claude Code, for code, drafting, number checks and review; the author takes full responsibility) |
 | Review type | Not anonymised: upload `manuscript-full.docx`, which carries the author line and all declarations |
-| Suggested reviewers | block D below; take each e-mail from the official page listed in `paper/reviewers.md` |
+| Suggested reviewers | optional; block D below if the form asks, with each e-mail from the official page listed in `paper/reviewers.md` |
 | Cover letter | block E below (also `paper/submission/cover-letter.docx`) |
 
 Files to upload, in the order the system lists them:
@@ -95,8 +95,6 @@ Baku, a city of 2.4 million, is redesigning its network of about 200 bus routes,
 The paper suits the journal's interest in case studies and applications of computer-aided methods in public transport planning: the travel model, the search and the robustness checks are all implemented in a standard-library Python pipeline, and today's network and the redesign are written as GTFS feeds. Every input and every result are released with a DOI (10.5281/zenodo.23604370), so the measurements can be regenerated and the method applied to other cities that publish only a map, once a reader for their map format is written. The manuscript is about 6,600 words with four tables and four figures.
 
 The manuscript is not under consideration elsewhere and has not been published before. A preprint was submitted to engrXiv on 24 October 2026 (submission 8632) and its DOI will be given on the title page once assigned. I have no competing interests and received no funding. I am the sole author, writing as an independent researcher; the use of an AI writing tool is declared in the manuscript. The earlier, unreviewed GitHub report on the same data that the manuscript cites and supersedes is my own.
-
-Suggested reviewers are entered in the submission system; none has any connection to me.
 
 Yours sincerely,
 
