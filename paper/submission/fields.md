@@ -25,18 +25,16 @@ if the manuscript changes.
 After posting, put the preprint DOI on the title page ("Preprint: ..." line in
 `paper/title-page.md`) and in `paper/cover-letter.md`, then rebuild.
 
-## 2. Case Studies on Transport Policy (Elsevier Editorial Manager)
+## 2. Public Transport (Springer, Editorial Manager) — the journal chosen
 
 | Field | Value |
 |---|---|
-| Article type | Research article (case study) |
+| Article type | Case Study and Application |
 | Title | How efficient are Baku's bus routes? An open-data measurement and a fleet-neutral redesign |
-| Short title (if asked) | Baku's bus routes from open data |
 | Abstract | block A below |
 | Keywords | bus network design; public transport; open data; accessibility; Baku; transit network design problem |
-| Highlights | block B below, in the separate file `paper/submission/highlights.docx` |
-| Corresponding author | Ismat Samadov, Independent researcher, Baku, Azerbaijan; ORCID 0009-0007-7919-4950; ismetsemedov@gmail.com |
-| Affiliation field | choose "Not affiliated to an organization" if offered; otherwise "Independent researcher", city Baku, country Azerbaijan |
+| Author | Ismat Samadov, Independent researcher, Baku, Azerbaijan; ORCID 0009-0007-7919-4950; ismetsemedov@gmail.com; corresponding author |
+| Institution field | "Independent researcher" as free text; city Baku; country Azerbaijan |
 | Funding | None. "This research did not receive any specific grant from funding agencies in the public, commercial, or not-for-profit sectors." |
 | Declaration of interests | The author declares no known competing financial interests or personal relationships that could have appeared to influence the work reported in this paper. |
 | Data availability | block C below |
@@ -44,17 +42,19 @@ After posting, put the preprint DOI on the title page ("Preprint: ..." line in
 | Under consideration elsewhere | No |
 | Previously published | No (an earlier unreviewed GitHub report on the same data is cited and superseded in section 2.1) |
 | Generative AI | Declared in the manuscript's Declarations (Claude via Claude Code, for code, drafting, number checks and review; the author takes full responsibility) |
-| Review type | Double-anonymised: upload `manuscript.docx` as the anonymised manuscript and `title-page.docx` as the title page |
+| Review type | Not anonymised: upload `manuscript-full.docx`, which carries the author line and all declarations |
 | Suggested reviewers | block D below; take each e-mail from the official page listed in `paper/reviewers.md` |
 | Cover letter | block E below (also `paper/submission/cover-letter.docx`) |
 
-Files to upload, in the order Editorial Manager lists them:
+Files to upload, in the order the system lists them:
 1. Cover letter: `paper/submission/cover-letter.docx`
-2. Title page (with author details): `paper/submission/title-page.docx`
-3. Highlights: `paper/submission/highlights.docx`
-4. Manuscript (anonymised): `paper/submission/manuscript.docx`
-5. Figures: `paper/figures/figure-1.pdf`, `figure-2.pdf`, `figure-3.pdf`, `figure-4.pdf`
-6. Declaration of interests form, if the system asks for Elsevier's template: state "none"
+2. Manuscript: `paper/submission/manuscript-full.docx`
+3. Figures: `paper/figures/figure-1.pdf`, `figure-2.pdf`, `figure-3.pdf`, `figure-4.pdf`
+No highlights file and no separate title page are needed here.
+
+### Fallback: Case Studies on Transport Policy (Elsevier)
+
+If the paper goes to Elsevier instead: article type "Research Paper"; double-anonymised, so upload `manuscript.docx` (anonymised) with `title-page.docx`, `highlights.docx` and `cover-letter.docx` re-addressed to that journal; the other answers above are the same.
 
 ## Block A — Abstract (248 words)
 
@@ -84,22 +84,20 @@ every input, setting, script and result, including today's network and the redes
 
 ## Block E — Cover letter
 
-To the Editor-in-Chief, Case Studies on Transport Policy
+To the Editor-in-Chief, Public Transport
 
 Dear Editor,
 
-I submit the article "How efficient are Baku's bus routes? An open-data measurement and a fleet-neutral redesign" for consideration in Case Studies on Transport Policy.
+I submit the manuscript "How efficient are Baku's bus routes? An open-data measurement and a fleet-neutral redesign" for consideration in Public Transport as a Case Study and Application.
 
-Baku, a city of 2.4 million, is redesigning its network of about 200 bus routes, but no evaluation of the network has been published and the data that one would normally rest on (timetables, vehicle positions, where riders travel) is not public. The paper asks how much can be measured, and how far a redesign can be tested, from public data alone, and answers with three results. First, the inherited network is measured from the agency's public map after its undocumented defects are repaired: only 29 of 201 routes are direct, 271 detours add 939 km to one trip in each direction of every route, and 66% of residents live within 400 m of a stop. Second, a door-to-door travel model built from public data ranks routes against observed boardings at a Spearman correlation of 0.58, and the paper says so rather than assuming the model is right. Third, a fleet-neutral redesign search shortens the average trip by about a minute or gives today's modelled travel times with about 12% fewer buses, a gain that holds on 10 independent trip samples and under 14 alternative assumptions, including a run without the least certain kind of change.
+Baku, a city of 2.4 million, is redesigning its network of about 200 bus routes, but no evaluation of the network has been published and the data that one would normally rest on (timetables, vehicle positions, where riders travel) is not public. The paper asks how much can be measured, and how far a redesign can be tested, from public data alone, and answers with three results. First, the inherited network is measured from the agency's public map after its undocumented defects are repaired: only 29 of 201 routes are direct, 271 detours add 939 km to one trip in each direction of every route, and 66% of residents live within 400 m of a stop. Second, a door-to-door travel model built from public data ranks routes against observed boardings at a Spearman correlation of 0.58, and the paper states that agreement rather than assuming the model is right. Third, a fleet-neutral greedy search, which applies the changes used by network redesigns elsewhere, shortens the average trip by about a minute or gives today's modelled travel times with about 12% fewer buses; the gain holds on 10 independent trip samples and under 14 alternative assumptions, including a run without the least certain kind of change.
 
-The paper fits the journal's remit as a case study whose lessons travel: many cities publish a map and little else, and the pipeline, every input and every result are released with a DOI (10.5281/zenodo.23604370) so that the measurements can be regenerated and the method applied elsewhere once a reader for another map format is written. The manuscript is about 6,600 words with four tables and four figures. It is not under consideration elsewhere and has not been published before; a preprint will be posted on engrXiv and its DOI given on the title page. I have no competing interests and received no funding. I am the sole author, writing as an independent researcher. The earlier, unreviewed GitHub report on the same data that the manuscript cites and supersedes is my own.
+The paper suits the journal's interest in case studies and applications of computer-aided methods in public transport planning: the travel model, the search and the robustness checks are all implemented in a standard-library Python pipeline, and today's network and the redesign are written as GTFS feeds. Every input and every result are released with a DOI (10.5281/zenodo.23604370), so the measurements can be regenerated and the method applied to other cities that publish only a map, once a reader for their map format is written. The manuscript is about 6,600 words with four tables and four figures.
+
+The manuscript is not under consideration elsewhere and has not been published before. A preprint was submitted to engrXiv on 24 October 2026 (submission 8632) and its DOI will be given on the title page once assigned. I have no competing interests and received no funding. I am the sole author, writing as an independent researcher; the use of an AI writing tool is declared in the manuscript. The earlier, unreviewed GitHub report on the same data that the manuscript cites and supersedes is my own.
 
 Suggested reviewers are entered in the submission system; none has any connection to me.
 
 Yours sincerely,
 
 Ismat Samadov
-
-## Block F — Comments for the engrXiv moderator
-
-This is an original research manuscript, not yet peer reviewed, prepared for submission to a transport journal (Case Studies on Transport Policy). It measures Baku's bus network from public data, builds a travel model checked against observed ridership, and tests a fleet-neutral redesign. I am the sole author, an independent researcher in Baku, Azerbaijan (ORCID 0009-0007-7919-4950). Every input, the code and every result are archived with a DOI (10.5281/zenodo.23604370) and on GitHub (ismatsamadov/route_efficiency), so all numbers can be regenerated. The manuscript cites and supersedes an earlier unreviewed report of mine on the same data. No funding, no competing interests; the use of an AI writing tool is declared in the manuscript. Licence CC BY 4.0. Contact: ismetsemedov@gmail.com.

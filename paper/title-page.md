@@ -6,10 +6,11 @@ redesign
 Ismat Samadov, Independent researcher, Baku, Azerbaijan. ORCID 0009-0007-7919-4950.
 E-mail: ismetsemedov@gmail.com.
 
-Submission note: Case Studies on Transport Policy (article). The manuscript
-(manuscript.md) is the review copy for double-anonymised review and carries no author
-details; this page carries the author details and the declarations that identify the
-author. Both are restored into the manuscript on acceptance. Numbers are those of
+Submission note: Public Transport (Springer), article type Case Study and Application.
+Review there is not anonymised, so the submitted manuscript is the full version
+(submission/manuscript-full.docx) with the author line and these declarations in it;
+manuscript.md stays the anonymised copy for a journal that needs one, with this page as
+its title page. Numbers are those of
 release v1.1.0 of the repository, and every one of them can be regenerated from it.
 Length: about 6,600 words from the Introduction to the Conclusions, tables and
 references excluded; under 7,000 even with the title, abstract, keywords and figure

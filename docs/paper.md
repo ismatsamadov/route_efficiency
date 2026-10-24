@@ -305,8 +305,9 @@ point.
    to upload is `paper/submission/preprint.pdf` (the full paper with the author line
    and the figures, built by `python3 paper/build.py`); Elsevier's sharing policy allows
    a preprint on any server at any time, so posting it before submission is fine.
-5. Submit, in this order of fit and cost: Case Studies on Transport Policy (subscription
-   option, free) or Public Transport (subscription option, free); if a free open-access
+5. Submit, in this order of fit and cost: Public Transport (subscription option, free;
+   chosen on 24 October 2026, article type Case Study and Application, through its
+   Editorial Manager site) or Case Studies on Transport Policy (subscription option, free); if a free open-access
    paper matters more than the journal's standing, Periodica Polytechnica Transportation
    Engineering or Transactions on Transport Sciences. Send one sharp result to Findings
    at the same time only if the journals allow it.
