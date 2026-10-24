@@ -157,9 +157,8 @@ service (`app-api.metro.gov.az`) that the operator's website and journey planner
 `data/metro_scraper.py` saves its answers to `data/external/metro_api/`: the stations,
 the train services on each line, the service notices, the two departure lists it
 publishes, the operator's answers to frequent questions, and its journey planner timed
-along every service in both directions. I scraped it on 25 October 2026. The same API
-also carries the operator's administration functions; the scraper only reads, and
-calls the planner the way the public site does. `data/build_metro.py` joins those
+along every service in both directions. I scraped it on 25 October 2026; the scraper
+only reads, and calls the planner the way the public site does. `data/build_metro.py` joins those
 answers with OpenStreetMap (track geometry and entrances), Wikidata (opening dates) and
 the opendata.az files into the tables in `data/metro/`, and `tests/test_metro.py`
 checks that it regenerates them byte for byte.
