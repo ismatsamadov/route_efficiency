@@ -1,0 +1,4924 @@
+{
+  "head" : {
+    "vars" : [ "item", "az", "en", "line", "opened", "coord", "adj", "towards" ]
+  },
+  "results" : {
+    "bindings" : [ {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q110105167"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "Qış Bulvarı metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q16413573"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q25547220"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1109176"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "Ulduz metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1125310"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832654"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Ulduz"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2427287"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1970-05-05T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.892222222 40.414722222)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1109176"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "Ulduz metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1125310"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832654"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Ulduz"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025554"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1970-05-05T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.892222222 40.414722222)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1109176"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "Ulduz metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3024716"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832654"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Ulduz"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2020145"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1970-05-05T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.892222222 40.414722222)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1109176"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "Ulduz metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1125310"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832656"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Ulduz"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2427287"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1970-05-05T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.892222222 40.414722222)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1109176"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "Ulduz metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1125310"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832656"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Ulduz"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025554"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1970-05-05T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.892222222 40.414722222)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1109176"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "Ulduz metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3024716"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832656"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Ulduz"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2020145"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1970-05-05T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.892222222 40.414722222)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1125310"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "Nəriman Nərimanov metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1109176"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832654"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Nariman Narimanov"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2020145"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1967-11-06T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.870555555 40.402777777)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1125310"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "Nəriman Nərimanov metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025343"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832654"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Nariman Narimanov"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025343"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1967-11-06T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.870555555 40.402777777)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1125310"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "Nəriman Nərimanov metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q616786"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832654"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Nariman Narimanov"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2427287"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1967-11-06T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.870555555 40.402777777)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1125310"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "Nəriman Nərimanov metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q616786"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832654"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Nariman Narimanov"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025554"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1967-11-06T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.870555555 40.402777777)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1125310"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "Nəriman Nərimanov metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1109176"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832656"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Nariman Narimanov"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2020145"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1967-11-06T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.870555555 40.402777777)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1125310"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "Nəriman Nərimanov metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025343"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832656"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Nariman Narimanov"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025343"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1967-11-06T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.870555555 40.402777777)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1125310"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "Nəriman Nərimanov metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q616786"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832656"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Nariman Narimanov"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2427287"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1967-11-06T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.870555555 40.402777777)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1125310"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "Nəriman Nərimanov metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q616786"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832656"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Nariman Narimanov"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025554"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1967-11-06T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.870555555 40.402777777)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q114472656"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "Xocəsən metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12836192"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q25547220"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Khojasan"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q16413570"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "2022-12-23T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.7790664 40.4211517)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12836192"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "Avtovağzal metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q114472656"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q25547220"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Avtovaghzal"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q114472656"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "2016-04-19T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.794722222 40.421388888)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12836192"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "Avtovağzal metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q4159673"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q25547220"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Avtovaghzal"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q16413570"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "2016-04-19T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.794722222 40.421388888)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q16413570"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "8 Noyabr"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q16413573"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q25547220"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "8 November (Baku Metro)"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "2021-05-29T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.821666666 40.401111111)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q16413570"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "8 Noyabr"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q4159673"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q25547220"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "8 November (Baku Metro)"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q114472656"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "2021-05-29T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.821666666 40.401111111)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q16413573"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "B-4 (Cəlil Məmmədquluzadə) metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q110105167"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q25547220"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "2026-01-01T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.828611111 40.3925)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q16413573"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "B-4 (Cəlil Məmmədquluzadə) metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q16413570"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q25547220"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "2026-01-01T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.828611111 40.3925)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2008806"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "Neftçilər metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3024561"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832654"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Neftchilar"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2020145"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1970-11-06T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.9429 40.4112)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2008806"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "Neftçilər metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3024561"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832654"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Neftchilar"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2020145"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1970-11-06T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.9429 40.4112)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2008806"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "Neftçilər metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3024692"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832654"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Neftchilar"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2427287"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1970-11-06T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.9429 40.4112)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2008806"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "Neftçilər metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3024692"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832654"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Neftchilar"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025554"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1970-11-06T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.9429 40.4112)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2008806"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "Neftçilər metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3024561"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832656"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Neftchilar"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2020145"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1970-11-06T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.9429 40.4112)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2008806"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "Neftçilər metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3024561"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832656"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Neftchilar"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2020145"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1970-11-06T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.9429 40.4112)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2008806"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "Neftçilər metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3024692"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832656"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Neftchilar"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2427287"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1970-11-06T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.9429 40.4112)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2008806"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "Neftçilər metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3024692"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832656"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Neftchilar"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025554"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1970-11-06T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.9429 40.4112)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2020145"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "Həzi Aslanov metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3024552"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832654"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Həzi Aslanov"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2427287"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "2002-12-10T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.953888888 40.373611111)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2020145"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "Həzi Aslanov metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3024552"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832654"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Həzi Aslanov"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025554"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "2002-12-10T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.953888888 40.373611111)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2020145"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "Həzi Aslanov metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3024552"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832656"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Həzi Aslanov"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2427287"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "2002-12-10T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.953888888 40.373611111)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2020145"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "Həzi Aslanov metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3024552"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832656"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Həzi Aslanov"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025554"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "2002-12-10T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.953888888 40.373611111)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2427287"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "İçərişəhər metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025366"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832654"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Icheri Sheher"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2020145"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1967-11-06T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.83173 40.365963)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2427287"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "İçərişəhər metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025366"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832654"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Icheri Sheher"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025343"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1967-11-06T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.83173 40.365963)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q25394155"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "Məhəmməd Hadi metrostansiyası"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832656"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Mehemmed Hadi"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.953888888 40.373611111)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q28671178"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "Ağ Şəhər metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025592"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832656"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Ah Sheher"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.890641666 40.378925)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3024552"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "Əhmədli metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2020145"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832654"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Ahmedli"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2020145"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1989-04-28T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.953918 40.385648)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3024552"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "Əhmədli metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2020145"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832654"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Ahmedli"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2020145"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1989-04-28T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.953918 40.385648)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3024552"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "Əhmədli metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3024561"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832654"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Ahmedli"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2427287"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1989-04-28T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.953918 40.385648)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3024552"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "Əhmədli metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3024561"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832654"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Ahmedli"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025554"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1989-04-28T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.953918 40.385648)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3024552"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "Əhmədli metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2020145"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832656"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Ahmedli"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2020145"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1989-04-28T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.953918 40.385648)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3024552"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "Əhmədli metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2020145"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832656"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Ahmedli"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2020145"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1989-04-28T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.953918 40.385648)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3024552"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "Əhmədli metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3024561"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832656"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Ahmedli"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2427287"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1989-04-28T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.953918 40.385648)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3024552"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "Əhmədli metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3024561"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832656"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Ahmedli"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025554"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1989-04-28T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.953918 40.385648)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3024561"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "Xalqlar Dostluğu metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2008806"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832654"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Halglar Dostlugu (Baku Metro)"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2427287"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1989-04-28T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.952922 40.39693)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3024561"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "Xalqlar Dostluğu metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2008806"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832654"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Halglar Dostlugu (Baku Metro)"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025554"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1989-04-28T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.952922 40.39693)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3024561"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "Xalqlar Dostluğu metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3024552"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832654"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Halglar Dostlugu (Baku Metro)"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2020145"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1989-04-28T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.952922 40.39693)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3024561"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "Xalqlar Dostluğu metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3024552"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832654"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Halglar Dostlugu (Baku Metro)"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2020145"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1989-04-28T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.952922 40.39693)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3024561"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "Xalqlar Dostluğu metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2008806"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832656"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Halglar Dostlugu (Baku Metro)"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2427287"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1989-04-28T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.952922 40.39693)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3024561"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "Xalqlar Dostluğu metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2008806"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832656"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Halglar Dostlugu (Baku Metro)"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025554"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1989-04-28T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.952922 40.39693)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3024561"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "Xalqlar Dostluğu metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3024552"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832656"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Halglar Dostlugu (Baku Metro)"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2020145"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1989-04-28T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.952922 40.39693)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3024561"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "Xalqlar Dostluğu metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3024552"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832656"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Halglar Dostlugu (Baku Metro)"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2020145"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1989-04-28T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.952922 40.39693)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3024692"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "Qara Qarayev metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2008806"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832654"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Qara Qarayev"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2020145"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1972-11-06T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.9342 40.4177)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3024692"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "Qara Qarayev metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2008806"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832654"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Qara Qarayev"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2020145"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1972-11-06T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.9342 40.4177)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3024692"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "Qara Qarayev metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3024716"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832654"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Qara Qarayev"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2427287"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1972-11-06T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.9342 40.4177)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3024692"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "Qara Qarayev metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3024716"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832654"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Qara Qarayev"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025554"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1972-11-06T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.9342 40.4177)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3024692"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "Qara Qarayev metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2008806"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832656"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Qara Qarayev"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2020145"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1972-11-06T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.9342 40.4177)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3024692"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "Qara Qarayev metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2008806"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832656"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Qara Qarayev"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2020145"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1972-11-06T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.9342 40.4177)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3024692"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "Qara Qarayev metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3024716"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832656"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Qara Qarayev"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2427287"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1972-11-06T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.9342 40.4177)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3024692"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "Qara Qarayev metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3024716"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832656"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Qara Qarayev"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025554"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1972-11-06T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.9342 40.4177)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3024716"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "Koroğlu metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1109176"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832654"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Koroğlu"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2427287"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1972-11-06T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.918222222 40.420916666)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3024716"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "Koroğlu metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1109176"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832654"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Koroğlu"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025554"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1972-11-06T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.918222222 40.420916666)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3024716"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "Koroğlu metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3024692"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832654"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Koroğlu"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2020145"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1972-11-06T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.918222222 40.420916666)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3024716"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "Koroğlu metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3024692"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832654"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Koroğlu"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2020145"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1972-11-06T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.918222222 40.420916666)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3024716"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "Koroğlu metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1109176"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832656"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Koroğlu"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2427287"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1972-11-06T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.918222222 40.420916666)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3024716"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "Koroğlu metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1109176"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832656"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Koroğlu"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025554"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1972-11-06T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.918222222 40.420916666)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3024716"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "Koroğlu metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3024692"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832656"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Koroğlu"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2020145"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1972-11-06T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.918222222 40.420916666)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3024716"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "Koroğlu metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3024692"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832656"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Koroğlu"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2020145"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1972-11-06T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.918222222 40.420916666)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025343"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "Bakmil metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1125310"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832654"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Bakmil"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2427287"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1979-03-28T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.8791 40.4137)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025343"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "Bakmil metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1125310"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832654"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Bakmil"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025554"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1979-03-28T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.8791 40.4137)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025343"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "Bakmil metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q25381791"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832654"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Bakmil"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1979-03-28T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.8791 40.4137)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025343"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "Bakmil metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1125310"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832656"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Bakmil"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2427287"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1979-03-28T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.8791 40.4137)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025343"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "Bakmil metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1125310"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832656"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Bakmil"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025554"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1979-03-28T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.8791 40.4137)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025343"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "Bakmil metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q25381791"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832656"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Bakmil"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1979-03-28T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.8791 40.4137)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025366"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "Sahil metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2427287"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832654"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Sahil"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2427287"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1967-11-06T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.844539 40.371739)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025366"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "Sahil metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025367"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832654"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Sahil"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2020145"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1967-11-06T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.844539 40.371739)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025366"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "Sahil metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025367"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832654"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Sahil"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025343"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1967-11-06T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.844539 40.371739)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025367"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "28 May metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025366"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832654"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "28 May"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2427287"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1967-11-06T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.848966666 40.379986111)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025367"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "28 May metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025411"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832654"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "28 May"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025554"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1967-11-06T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.848966666 40.379986111)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025367"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "28 May metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q616786"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832654"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "28 May"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2020145"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1967-11-06T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.848966666 40.379986111)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025367"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "28 May metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q616786"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832654"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "28 May"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2020145"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1967-11-06T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.848966666 40.379986111)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025367"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "28 May metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q616786"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832654"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "28 May"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025343"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1967-11-06T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.848966666 40.379986111)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025367"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "28 May metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q616786"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832654"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "28 May"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025343"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1967-11-06T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.848966666 40.379986111)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025367"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "28 May metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025366"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832656"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "28 May"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2427287"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1967-11-06T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.848966666 40.379986111)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025367"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "28 May metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025411"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832656"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "28 May"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025554"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1967-11-06T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.848966666 40.379986111)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025367"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "28 May metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q616786"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832656"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "28 May"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2020145"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1967-11-06T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.848966666 40.379986111)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025367"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "28 May metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q616786"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832656"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "28 May"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2020145"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1967-11-06T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.848966666 40.379986111)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025367"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "28 May metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q616786"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832656"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "28 May"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025343"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1967-11-06T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.848966666 40.379986111)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025367"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "28 May metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q616786"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832656"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "28 May"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025343"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1967-11-06T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.848966666 40.379986111)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025411"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "Nizami metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025367"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832656"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Nizami Gəncəvi"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2020145"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1976-12-31T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.829722222 40.379444444)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025411"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "Nizami metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025367"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832656"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Nizami Gəncəvi"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025343"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1976-12-31T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.829722222 40.379444444)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025411"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "Nizami metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025421"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832656"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Nizami Gəncəvi"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025554"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1976-12-31T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.829722222 40.379444444)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025411"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "Nizami metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025580"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832656"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Nizami Gəncəvi"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2020145"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1976-12-31T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.829722222 40.379444444)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025411"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "Nizami metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025580"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832656"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Nizami Gəncəvi"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025343"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1976-12-31T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.829722222 40.379444444)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025421"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "Elmlər Akademiyası metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025411"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832656"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Elmlər Akademiyası"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2020145"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1985-12-31T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.81527778 40.375)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025421"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "Elmlər Akademiyası metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025411"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832656"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Elmlər Akademiyası"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025343"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1985-12-31T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.81527778 40.375)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025421"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "Elmlər Akademiyası metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025436"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832656"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Elmlər Akademiyası"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025554"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1985-12-31T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.81527778 40.375)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025436"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "İnşaatçılar metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025421"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832656"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "İnşaatçılar"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2020145"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1985-12-31T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.8025 40.388888888)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025436"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "İnşaatçılar metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025421"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832656"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "İnşaatçılar"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025343"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1985-12-31T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.8025 40.388888888)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025436"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "İnşaatçılar metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025472"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832656"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "İnşaatçılar"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025554"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1985-12-31T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.8025 40.388888888)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025472"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "20 yanvar metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025436"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832656"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "20 Yanvar"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2020145"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1985-12-31T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.807569444 40.404077777)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025472"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "20 yanvar metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025436"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832656"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "20 Yanvar"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025343"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1985-12-31T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.807569444 40.404077777)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025472"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "20 yanvar metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025490"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832656"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "20 Yanvar"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025554"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1985-12-31T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.807569444 40.404077777)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025490"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "Memar Əcəmi metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025472"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832656"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Memar Ajami"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2020145"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1985-12-31T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.81411 40.41058)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025490"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "Memar Əcəmi metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025472"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832656"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Memar Ajami"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025343"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1985-12-31T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.81411 40.41058)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025490"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "Memar Əcəmi metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025513"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832656"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Memar Ajami"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025554"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1985-12-31T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.81411 40.41058)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025513"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "Nəsimi metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025490"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832656"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Nəsimi"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2020145"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "2008-10-09T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.824297222 40.424675)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025513"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "Nəsimi metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025490"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832656"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Nəsimi"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025343"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "2008-10-09T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.824297222 40.424675)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025513"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "Nəsimi metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025522"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832656"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Nəsimi"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025554"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "2008-10-09T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.824297222 40.424675)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025522"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "Azadlıq prospekti metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025513"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832656"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Azadlig Avenue"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2020145"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "2009-12-30T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.84293 40.42596)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025522"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "Azadlıq prospekti metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025513"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832656"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Azadlig Avenue"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025343"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "2009-12-30T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.84293 40.42596)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025522"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "Azadlıq prospekti metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025554"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832656"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Azadlig Avenue"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025554"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "2009-12-30T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.84293 40.42596)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025554"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "Dərnəgül metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q136431064"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832656"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Dərnəgül (Baku Metro)"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "2011-06-29T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.860555555 40.425555555)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025554"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "Dərnəgül metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025522"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832656"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Dərnəgül (Baku Metro)"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2020145"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "2011-06-29T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.860555555 40.425555555)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025554"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "Dərnəgül metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025522"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832656"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Dərnəgül (Baku Metro)"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025343"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "2011-06-29T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.860555555 40.425555555)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025580"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "Cəfər Cabbarlı metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025411"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832656"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Cəfər Cabbarlı"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025554"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1993-10-27T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.84888889 40.37944444)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025580"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "Cəfər Cabbarlı metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025592"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832656"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Cəfər Cabbarlı"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025592"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1993-10-27T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.84888889 40.37944444)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025592"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "Xətai metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q28671178"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832656"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Şah İsmail Xətai"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1968-02-22T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.871944444 40.382777777)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025592"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "Xətai metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025580"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832656"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Şah İsmail Xətai"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025580"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1968-02-22T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.871944444 40.382777777)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q4159673"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "Memar Əcəmi-2 metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12836192"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q25547220"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Memar Əcəmi-2 (Baku Metro)"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q114472656"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "2016-04-19T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.81248 40.41053)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q4159673"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "Memar Əcəmi-2 metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q16413570"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q25547220"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Memar Əcəmi-2 (Baku Metro)"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q16413570"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "2016-04-19T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.81248 40.41053)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q616786"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "Gənclik metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1125310"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832654"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Ganjlik"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2020145"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1967-11-06T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.851145 40.39981)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q616786"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "Gənclik metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1125310"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832654"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Ganjlik"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2020145"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1967-11-06T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.851145 40.39981)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q616786"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "Gənclik metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1125310"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832654"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Ganjlik"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025343"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1967-11-06T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.851145 40.39981)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q616786"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "Gənclik metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1125310"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832654"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Ganjlik"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025343"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1967-11-06T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.851145 40.39981)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q616786"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "Gənclik metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025367"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832654"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Ganjlik"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2427287"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1967-11-06T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.851145 40.39981)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q616786"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "Gənclik metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025367"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832654"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Ganjlik"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025554"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1967-11-06T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.851145 40.39981)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q616786"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "Gənclik metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1125310"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832656"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Ganjlik"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2020145"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1967-11-06T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.851145 40.39981)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q616786"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "Gənclik metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1125310"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832656"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Ganjlik"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2020145"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1967-11-06T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.851145 40.39981)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q616786"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "Gənclik metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1125310"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832656"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Ganjlik"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025343"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1967-11-06T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.851145 40.39981)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q616786"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "Gənclik metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1125310"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832656"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Ganjlik"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025343"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1967-11-06T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.851145 40.39981)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q616786"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "Gənclik metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025367"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832656"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Ganjlik"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2427287"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1967-11-06T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.851145 40.39981)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q616786"
+      },
+      "az" : {
+        "xml:lang" : "az",
+        "type" : "literal",
+        "value" : "Gənclik metrostansiyası"
+      },
+      "adj" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025367"
+      },
+      "line" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832656"
+      },
+      "en" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Ganjlik"
+      },
+      "towards" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3025554"
+      },
+      "opened" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1967-11-06T00:00:00Z"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(49.851145 40.39981)"
+      }
+    } ]
+  }
+}

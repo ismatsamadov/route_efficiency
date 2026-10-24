@@ -9,7 +9,7 @@ licences are listed in data/SOURCES.md.
 Standard library only. Usage (from the repository root):
   python3 data/fetch_external.py                 # download files that are missing
   python3 data/fetch_external.py --refresh       # download everything again
-  python3 data/fetch_external.py --only osm      # one group: kontur, opendata, stat, osm
+  python3 data/fetch_external.py --only osm      # one group: kontur, opendata, stat, osm, wikidata
 """
 
 import argparse
@@ -25,6 +25,22 @@ OUT = Path(__file__).resolve().parent / "external"
 HEADERS = {"User-Agent": "route_efficiency/0.1 (bus network research)", "Accept": "*/*"}
 OPENDATA = "https://admin.opendata.az/dataset"
 AZSTAT = "https://www.azstat.gov.az/AsisOpenDataApi/csv?lang=az&table_id="
+
+# Wikidata: every station on the three Baku Metro lines (red Q3832654, green Q3832656,
+# purple Q25547220), with opening date and neighbouring stations.
+METRO_SPARQL = """
+SELECT ?item ?az ?en ?line ?opened ?coord ?adj ?towards WHERE {
+  VALUES ?line { wd:Q3832654 wd:Q3832656 wd:Q25547220 }
+  ?item wdt:P81 ?line .
+  OPTIONAL { ?item wdt:P1619 ?opened }
+  OPTIONAL { ?item wdt:P625 ?coord }
+  OPTIONAL { ?item p:P197 ?a . ?a ps:P197 ?adj . OPTIONAL { ?a pq:P5051 ?towards } }
+  OPTIONAL { ?item rdfs:label ?az FILTER(LANG(?az) = "az") }
+  OPTIONAL { ?item rdfs:label ?en FILTER(LANG(?en) = "en") }
+}
+ORDER BY ?item ?line ?adj ?towards
+"""
+WIKIDATA = "https://query.wikidata.org/sparql?format=json&query=" + urllib.parse.quote(METRO_SPARQL)
 
 FILES = [
     # group, path under data/external, url
@@ -50,6 +66,7 @@ FILES = [
     ("opendata", "opendata/stat_passengers_by_mode.csv", AZSTAT + "DT_BJ_004"),
     ("opendata", "opendata/stat_urban_electric_transport.csv", AZSTAT + "DT_BJ_049"),
     ("stat", "stat/population_by_district_2026.xls", "https://www.stat.gov.az/source/demoqraphy/en/001_15en.xls"),
+    ("wikidata", "wikidata/metro_stations.json", WIKIDATA),
 ]
 
 # OpenStreetMap through the Overpass API, for the Absheron peninsula.
@@ -67,6 +84,12 @@ OSM_QUERIES = [
                               f'nwr["amenity"="marketplace"]({BBOX}););out center tags;'),
     ("osm/osm_offices.json", f'(nwr["office"]({BBOX});nwr["amenity"~"^(townhall|courthouse)$"]({BBOX}););out center tags;'),
     ("osm/osm_transport.json", f'(nwr["railway"="station"]({BBOX});nwr["amenity"="bus_station"]({BBOX}););out center tags;'),
+    # The metro: route relations with their stops in order and the track geometry, then
+    # stations, stop positions and entrances.
+    ("osm/osm_metro_routes.json", f'(relation["route"="subway"]({BBOX});relation["route_master"="subway"]({BBOX}););out body geom;'),
+    ("osm/osm_metro_stations.json", f'(nwr["railway"="station"]["station"="subway"]({BBOX});'
+                                    f'node["public_transport"="stop_position"]["subway"="yes"]({BBOX});'
+                                    f'nwr["railway"="subway_entrance"]({BBOX}););out body center;'),
 ]
 
 
@@ -92,13 +115,16 @@ def save(path, body):
 
 
 def overpass(query):
-    """Run a query on the first Overpass server that answers with valid JSON."""
+    """Run a query on the first Overpass server that answers with valid JSON.
+
+    Mirrors can lag the main server by months, so the date of the data is printed."""
     body = urllib.parse.urlencode({"data": f"[out:json][timeout:280];{query}"}).encode()
     errors = []
     for server in OVERPASS_SERVERS:
         try:
             raw = fetch(server, body, timeout=320, tries=2)
-            json.loads(raw)
+            osm_date = json.loads(raw).get("osm3s", {}).get("timestamp_osm_base", "unknown")
+            print(f"  {server}: OpenStreetMap data as of {osm_date}")
             return raw
         except (RuntimeError, ValueError) as e:
             errors.append(f"{server}: {e}")
@@ -108,7 +134,7 @@ def overpass(query):
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--refresh", action="store_true", help="download files that already exist too")
-    ap.add_argument("--only", choices=["kontur", "opendata", "stat", "osm"])
+    ap.add_argument("--only", choices=["kontur", "opendata", "stat", "osm", "wikidata"])
     args = ap.parse_args()
     failed = []
     for group, rel, url in FILES:

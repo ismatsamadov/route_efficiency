@@ -1,0 +1,132 @@
+[
+ {
+  "id": 0,
+  "message": null,
+  "messageType": null,
+  "isActive": false,
+  "validFrom": "0001-01-01T00:00:00",
+  "validTo": "0001-01-01T00:00:00",
+  "fromStationId": 19,
+  "toStationId": 18,
+  "fromStationName": null,
+  "toStationName": null,
+  "warningTranslations": [
+   {
+    "language": "en",
+    "name": "Repair works are being carried out in the turnback siding at Hazi Aslanov station. As a result, a shuttle train service has been introduced between Ahmadli and Hazi Aslanov stations."
+   },
+   {
+    "language": "ru",
+    "name": "В оборотном тупике станции «Ази Асланов» проводятся ремонтные работы. В связи с этим на участке «Ахмедлы — Ази Асланов» организовано челночное движение поездов."
+   },
+   {
+    "language": "az",
+    "name": "“Həzi Aslanov” stansiyasının dalanında təmir işləri aparılır. Bu səbəbdən də “Əhmədli-Həzi Aslanov” istiqamətində məkik hərəkət təşkil olunub."
+   }
+  ]
+ },
+ {
+  "id": 0,
+  "message": null,
+  "messageType": null,
+  "isActive": false,
+  "validFrom": "0001-01-01T00:00:00",
+  "validTo": "0001-01-01T00:00:00",
+  "fromStationId": 2,
+  "toStationId": 1,
+  "fromStationName": null,
+  "toStationName": null,
+  "warningTranslations": [
+   {
+    "language": "en",
+    "name": ""
+   },
+   {
+    "language": "ru",
+    "name": ""
+   },
+   {
+    "language": "az",
+    "name": ""
+   }
+  ]
+ },
+ {
+  "id": 0,
+  "message": null,
+  "messageType": null,
+  "isActive": false,
+  "validFrom": "0001-01-01T00:00:00",
+  "validTo": "0001-01-01T00:00:00",
+  "fromStationId": 25,
+  "toStationId": 24,
+  "fromStationName": null,
+  "toStationName": null,
+  "warningTranslations": [
+   {
+    "language": "en",
+    "name": ""
+   },
+   {
+    "language": "ru",
+    "name": ""
+   },
+   {
+    "language": "az",
+    "name": ""
+   }
+  ]
+ },
+ {
+  "id": 0,
+  "message": null,
+  "messageType": null,
+  "isActive": false,
+  "validFrom": "0001-01-01T00:00:00",
+  "validTo": "0001-01-01T00:00:00",
+  "fromStationId": 8,
+  "toStationId": 9,
+  "fromStationName": null,
+  "toStationName": null,
+  "warningTranslations": [
+   {
+    "language": "en",
+    "name": "From 15 August 2026, train service is temporarily suspended between 28 May and Nizami due to construction. Green Line trains operate between Darnagul and Nizami only. Passengers travelling from the Red Line toward Darnagul or the Green Line should exit at 28 May and continue by the special express buses. Passengers travelling from the Green Line toward 28 May or the Red Line should exit at Nizami and continue by the special express buses. Express buses operate from 06:00 to 00:00."
+   },
+   {
+    "language": "ru",
+    "name": "С 15 августа 2026 года движение поездов между станциями «28 Мая» и «Низами» временно приостановлено в связи со строительными работами. Поезда Зелёной линии курсируют по маршруту «Дарнагюль–Низами». Пассажирам, следующим с Красной линии в направлении «Дарнагюль» и Зелёной линии, необходимо выйти на станции «28 Мая» и продолжить поездку на специальных экспресс-автобусах. Пассажирам, следующим с Зелёной линии в направлении станции «28 Мая» и Красной линии, необходимо выйти на станции «Низами» и продолжить поездку на специальных экспресс-автобусах. Экспресс-автобусы курсируют с 06:00 до 00:00."
+   },
+   {
+    "language": "az",
+    "name": "15 avqust 2026-cı ildən tikinti işləri ilə əlaqədar \"28 May\" və \"Nizami\" stansiyaları arasında qatarların hərəkəti müvəqqəti dayandırılıb. Yaşıl xətt üzrə qatarlar \"Dərnəgül–Nizami\" marşrutu ilə işləyir. Qırmızı xətdən \"Dərnəgül\" və Yaşıl xətt istiqamətinə gedən sərnişinlər \"28 May\" stansiyasında qatardan düşərək xüsusi ekspres avtobuslarla davam etməlidirlər. Yaşıl xətdən \"28 May\" və Qırmızı xətt istiqamətinə gedən sərnişinlər \"Nizami\" stansiyasında qatardan düşərək xüsusi ekspres avtobuslarla davam etməlidirlər. Ekspres avtobuslar 06:00–00:00 saatlarında fəaliyyət göstərir."
+   }
+  ]
+ },
+ {
+  "id": 0,
+  "message": null,
+  "messageType": null,
+  "isActive": false,
+  "validFrom": "0001-01-01T00:00:00",
+  "validTo": "0001-01-01T00:00:00",
+  "fromStationId": 11,
+  "toStationId": 13,
+  "fromStationName": null,
+  "toStationName": null,
+  "warningTranslations": [
+   {
+    "language": "en",
+    "name": "Due to reconstruction works being carried out in the capital, Exit No. 3 of Narimanov station has been temporarily closed since 20 July to ensure the safe movement of passengers."
+   },
+   {
+    "language": "ru",
+    "name": "В связи с проводимыми в столице реконструкционными работами выход № 3 станции «Нариманов» временно закрыт с 20 июля в целях обеспечения безопасного передвижения пассажиров."
+   },
+   {
+    "language": "az",
+    "name": "Paytaxtımızda həyata keçirilən yenidənqurma işləri ilə əlaqədar olaraq \"Nərimanov\" stansiyasının 3 nömrəli çıxışı sərnişinlərin təhlükəsiz hərəkətinin təmin edilməsi məqsədilə 20 iyul tarixindən müvəqqəti bağlanıb."
+   }
+  ]
+ }
+]

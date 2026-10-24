@@ -1,0 +1,240 @@
+{
+ "lineId": 2,
+ "lineName": "Qırmızı xətt",
+ "lineColor": "#FF0000",
+ "segments": [
+  {
+   "segmentNumber": 0,
+   "startStation": "Nərimanov",
+   "endStation": "Bakmil",
+   "stationCount": 0,
+   "stations": [
+    {
+     "id": 11,
+     "name": "Nərimanov",
+     "order": 0,
+     "isTransferStation": true,
+     "isFavorite": false,
+     "stationType": "Transfer",
+     "exits": [],
+     "transferConnections": []
+    },
+    {
+     "id": 12,
+     "name": "Bakmil",
+     "order": 0,
+     "isTransferStation": false,
+     "isFavorite": false,
+     "stationType": "Direct",
+     "exits": [],
+     "transferConnections": []
+    }
+   ]
+  },
+  {
+   "segmentNumber": 0,
+   "startStation": "İçərişəhər",
+   "endStation": "Həzi Aslanov",
+   "stationCount": 0,
+   "stations": [
+    {
+     "id": 21,
+     "name": "İçərişəhər",
+     "order": 0,
+     "isTransferStation": false,
+     "isFavorite": false,
+     "stationType": "Direct",
+     "exits": [],
+     "transferConnections": []
+    },
+    {
+     "id": 20,
+     "name": "Sahil",
+     "order": 0,
+     "isTransferStation": false,
+     "isFavorite": false,
+     "stationType": "Direct",
+     "exits": [],
+     "transferConnections": []
+    },
+    {
+     "id": 9,
+     "name": "28 May",
+     "order": 0,
+     "isTransferStation": true,
+     "isFavorite": false,
+     "stationType": "Transfer",
+     "exits": [],
+     "transferConnections": []
+    },
+    {
+     "id": 10,
+     "name": "Gənclik",
+     "order": 0,
+     "isTransferStation": false,
+     "isFavorite": false,
+     "stationType": "Direct",
+     "exits": [],
+     "transferConnections": []
+    },
+    {
+     "id": 11,
+     "name": "Nərimanov",
+     "order": 0,
+     "isTransferStation": true,
+     "isFavorite": false,
+     "stationType": "Transfer",
+     "exits": [],
+     "transferConnections": []
+    },
+    {
+     "id": 13,
+     "name": "Ulduz",
+     "order": 0,
+     "isTransferStation": false,
+     "isFavorite": false,
+     "stationType": "Direct",
+     "exits": [],
+     "transferConnections": []
+    },
+    {
+     "id": 14,
+     "name": "Koroğlu",
+     "order": 0,
+     "isTransferStation": false,
+     "isFavorite": false,
+     "stationType": "Direct",
+     "exits": [],
+     "transferConnections": []
+    },
+    {
+     "id": 15,
+     "name": "Qara Qarayev",
+     "order": 0,
+     "isTransferStation": false,
+     "isFavorite": false,
+     "stationType": "Direct",
+     "exits": [],
+     "transferConnections": []
+    },
+    {
+     "id": 16,
+     "name": "Neftçilər",
+     "order": 0,
+     "isTransferStation": false,
+     "isFavorite": false,
+     "stationType": "Direct",
+     "exits": [],
+     "transferConnections": []
+    },
+    {
+     "id": 17,
+     "name": "Xalqlar Dostluğu",
+     "order": 0,
+     "isTransferStation": false,
+     "isFavorite": false,
+     "stationType": "Direct",
+     "exits": [],
+     "transferConnections": []
+    },
+    {
+     "id": 18,
+     "name": "Əhmədli",
+     "order": 0,
+     "isTransferStation": false,
+     "isFavorite": false,
+     "stationType": "Direct",
+     "exits": [],
+     "transferConnections": []
+    },
+    {
+     "id": 19,
+     "name": "Həzi Aslanov",
+     "order": 0,
+     "isTransferStation": false,
+     "isFavorite": false,
+     "stationType": "Direct",
+     "exits": [],
+     "transferConnections": []
+    }
+   ]
+  }
+ ],
+ "warningMessages": [
+  {
+   "id": 0,
+   "message": "Paytaxtımızda həyata keçirilən yenidənqurma işləri ilə əlaqədar olaraq \"Nərimanov\" stansiyasının 3 nömrəli çıxışı sərnişinlərin təhlükəsiz hərəkətinin təmin edilməsi məqsədilə 20 iyul tarixindən müvəqqəti bağlanıb.",
+   "messageType": "Alert",
+   "isActive": false,
+   "validFrom": null,
+   "validTo": null,
+   "fromStationId": 11,
+   "toStationId": 13,
+   "fromStationName": null,
+   "toStationName": null,
+   "warningTranslations": null
+  }
+ ],
+ "metroLineDtoStationInfos": [
+  {
+   "fromStation": 11,
+   "toStation": 12,
+   "averageArrivalTime": 2.7533657745336586
+  },
+  {
+   "fromStation": 21,
+   "toStation": 20,
+   "averageArrivalTime": 2.777227722772277
+  },
+  {
+   "fromStation": 20,
+   "toStation": 9,
+   "averageArrivalTime": 2.776732673267327
+  },
+  {
+   "fromStation": 9,
+   "toStation": 10,
+   "averageArrivalTime": 1.2145653735632183
+  },
+  {
+   "fromStation": 10,
+   "toStation": 11,
+   "averageArrivalTime": 2.7823045267489697
+  },
+  {
+   "fromStation": 11,
+   "toStation": 13,
+   "averageArrivalTime": 2.7533657745336586
+  },
+  {
+   "fromStation": 13,
+   "toStation": 14,
+   "averageArrivalTime": 3.1349206349206353
+  },
+  {
+   "fromStation": 14,
+   "toStation": 15,
+   "averageArrivalTime": 3.1354748603351976
+  },
+  {
+   "fromStation": 15,
+   "toStation": 16,
+   "averageArrivalTime": 3.1354748603351954
+  },
+  {
+   "fromStation": 16,
+   "toStation": 17,
+   "averageArrivalTime": 3.116343490304708
+  },
+  {
+   "fromStation": 17,
+   "toStation": 18,
+   "averageArrivalTime": 3.136244131455401
+  },
+  {
+   "fromStation": 18,
+   "toStation": 19,
+   "averageArrivalTime": 1.5735294117647058
+  }
+ ]
+}

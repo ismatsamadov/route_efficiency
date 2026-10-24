@@ -1,0 +1,1243 @@
+[
+ {
+  "id": 1,
+  "fromStationId": 1,
+  "fromStationName": "Dərnəgül",
+  "toStationId": 2,
+  "toStationName": "Azadlıq Prospekti",
+  "road": 1,
+  "connectionLineColors": [
+   {
+    "color": "#41A317"
+   }
+  ],
+  "hasColor": false,
+  "byWalk": false,
+  "walkDistanceInMeters": 0,
+  "weight": 10,
+  "warning": null,
+  "info": null,
+  "headerWarningEnum": null,
+  "headerWarningDescription": null,
+  "connectionTransferSteps": []
+ },
+ {
+  "id": 2,
+  "fromStationId": 2,
+  "fromStationName": "Azadlıq Prospekti",
+  "toStationId": 1,
+  "toStationName": "Dərnəgül",
+  "road": 2,
+  "connectionLineColors": [
+   {
+    "color": "#41A317"
+   }
+  ],
+  "hasColor": false,
+  "byWalk": false,
+  "walkDistanceInMeters": 0.0,
+  "weight": 10.0,
+  "warning": {
+   "enWarning": "",
+   "ruWarning": "",
+   "azWarning": "",
+   "type": ""
+  },
+  "info": null,
+  "headerWarningEnum": null,
+  "headerWarningDescription": null,
+  "connectionTransferSteps": []
+ },
+ {
+  "id": 3,
+  "fromStationId": 2,
+  "fromStationName": "Azadlıq Prospekti",
+  "toStationId": 3,
+  "toStationName": "Nəsimi",
+  "road": 1,
+  "connectionLineColors": [
+   {
+    "color": "#41A317"
+   }
+  ],
+  "hasColor": false,
+  "byWalk": false,
+  "walkDistanceInMeters": 0.0,
+  "weight": 10.0,
+  "warning": null,
+  "info": null,
+  "headerWarningEnum": null,
+  "headerWarningDescription": null,
+  "connectionTransferSteps": []
+ },
+ {
+  "id": 4,
+  "fromStationId": 3,
+  "fromStationName": "Nəsimi",
+  "toStationId": 2,
+  "toStationName": "Azadlıq Prospekti",
+  "road": 2,
+  "connectionLineColors": [
+   {
+    "color": "#41A317"
+   }
+  ],
+  "hasColor": false,
+  "byWalk": false,
+  "walkDistanceInMeters": 0.0,
+  "weight": 10.0,
+  "warning": null,
+  "info": null,
+  "headerWarningEnum": null,
+  "headerWarningDescription": null,
+  "connectionTransferSteps": []
+ },
+ {
+  "id": 5,
+  "fromStationId": 3,
+  "fromStationName": "Nəsimi",
+  "toStationId": 4,
+  "toStationName": "Memar Əcəmi",
+  "road": 1,
+  "connectionLineColors": [
+   {
+    "color": "#41A317"
+   }
+  ],
+  "hasColor": false,
+  "byWalk": false,
+  "walkDistanceInMeters": 0.0,
+  "weight": 10.0,
+  "warning": null,
+  "info": null,
+  "headerWarningEnum": null,
+  "headerWarningDescription": null,
+  "connectionTransferSteps": []
+ },
+ {
+  "id": 6,
+  "fromStationId": 4,
+  "fromStationName": "Memar Əcəmi",
+  "toStationId": 3,
+  "toStationName": "Nəsimi",
+  "road": 2,
+  "connectionLineColors": [
+   {
+    "color": "#41A317"
+   }
+  ],
+  "hasColor": true,
+  "byWalk": false,
+  "walkDistanceInMeters": 0.0,
+  "weight": 10.0,
+  "warning": null,
+  "info": null,
+  "headerWarningEnum": null,
+  "headerWarningDescription": null,
+  "connectionTransferSteps": []
+ },
+ {
+  "id": 7,
+  "fromStationId": 4,
+  "fromStationName": "Memar Əcəmi",
+  "toStationId": 5,
+  "toStationName": "20 Yanvar",
+  "road": 1,
+  "connectionLineColors": [
+   {
+    "color": "#41A317"
+   }
+  ],
+  "hasColor": true,
+  "byWalk": false,
+  "walkDistanceInMeters": 0.0,
+  "weight": 10.0,
+  "warning": null,
+  "info": null,
+  "headerWarningEnum": null,
+  "headerWarningDescription": null,
+  "connectionTransferSteps": []
+ },
+ {
+  "id": 8,
+  "fromStationId": 5,
+  "fromStationName": "20 Yanvar",
+  "toStationId": 4,
+  "toStationName": "Memar Əcəmi",
+  "road": 2,
+  "connectionLineColors": [
+   {
+    "color": "#41A317"
+   }
+  ],
+  "hasColor": false,
+  "byWalk": false,
+  "walkDistanceInMeters": 0.0,
+  "weight": 10.0,
+  "warning": null,
+  "info": null,
+  "headerWarningEnum": null,
+  "headerWarningDescription": null,
+  "connectionTransferSteps": []
+ },
+ {
+  "id": 9,
+  "fromStationId": 5,
+  "fromStationName": "20 Yanvar",
+  "toStationId": 6,
+  "toStationName": "İnşaatçılar",
+  "road": 1,
+  "connectionLineColors": [
+   {
+    "color": "#41A317"
+   }
+  ],
+  "hasColor": false,
+  "byWalk": false,
+  "walkDistanceInMeters": 0.0,
+  "weight": 10.0,
+  "warning": null,
+  "info": null,
+  "headerWarningEnum": null,
+  "headerWarningDescription": null,
+  "connectionTransferSteps": []
+ },
+ {
+  "id": 10,
+  "fromStationId": 6,
+  "fromStationName": "İnşaatçılar",
+  "toStationId": 5,
+  "toStationName": "20 Yanvar",
+  "road": 2,
+  "connectionLineColors": [
+   {
+    "color": "#41A317"
+   }
+  ],
+  "hasColor": false,
+  "byWalk": false,
+  "walkDistanceInMeters": 0.0,
+  "weight": 10.0,
+  "warning": null,
+  "info": null,
+  "headerWarningEnum": null,
+  "headerWarningDescription": null,
+  "connectionTransferSteps": []
+ },
+ {
+  "id": 11,
+  "fromStationId": 6,
+  "fromStationName": "İnşaatçılar",
+  "toStationId": 7,
+  "toStationName": "Elmlər Akademiyası",
+  "road": 1,
+  "connectionLineColors": [
+   {
+    "color": "#41A317"
+   }
+  ],
+  "hasColor": false,
+  "byWalk": false,
+  "walkDistanceInMeters": 0.0,
+  "weight": 10.0,
+  "warning": null,
+  "info": null,
+  "headerWarningEnum": null,
+  "headerWarningDescription": null,
+  "connectionTransferSteps": []
+ },
+ {
+  "id": 12,
+  "fromStationId": 7,
+  "fromStationName": "Elmlər Akademiyası",
+  "toStationId": 6,
+  "toStationName": "İnşaatçılar",
+  "road": 2,
+  "connectionLineColors": [
+   {
+    "color": "#41A317"
+   }
+  ],
+  "hasColor": false,
+  "byWalk": false,
+  "walkDistanceInMeters": 0.0,
+  "weight": 10.0,
+  "warning": null,
+  "info": null,
+  "headerWarningEnum": null,
+  "headerWarningDescription": null,
+  "connectionTransferSteps": []
+ },
+ {
+  "id": 13,
+  "fromStationId": 7,
+  "fromStationName": "Elmlər Akademiyası",
+  "toStationId": 8,
+  "toStationName": "Nizami",
+  "road": 1,
+  "connectionLineColors": [
+   {
+    "color": "#41A317"
+   }
+  ],
+  "hasColor": false,
+  "byWalk": false,
+  "walkDistanceInMeters": 0.0,
+  "weight": 10.0,
+  "warning": null,
+  "info": null,
+  "headerWarningEnum": null,
+  "headerWarningDescription": null,
+  "connectionTransferSteps": []
+ },
+ {
+  "id": 14,
+  "fromStationId": 8,
+  "fromStationName": "Nizami",
+  "toStationId": 7,
+  "toStationName": "Elmlər Akademiyası",
+  "road": 2,
+  "connectionLineColors": [
+   {
+    "color": "#41A317"
+   }
+  ],
+  "hasColor": false,
+  "byWalk": false,
+  "walkDistanceInMeters": 0.0,
+  "weight": 10.0,
+  "warning": null,
+  "info": null,
+  "headerWarningEnum": null,
+  "headerWarningDescription": null,
+  "connectionTransferSteps": []
+ },
+ {
+  "id": 15,
+  "fromStationId": 8,
+  "fromStationName": "Nizami",
+  "toStationId": 9,
+  "toStationName": "28 May",
+  "road": 1,
+  "connectionLineColors": [
+   {
+    "color": "#41A317"
+   }
+  ],
+  "hasColor": false,
+  "byWalk": false,
+  "walkDistanceInMeters": 0.0,
+  "weight": 10.0,
+  "warning": {
+   "enWarning": "From 15 August 2026, train service is temporarily suspended between 28 May and Nizami due to construction. Green Line trains operate between Darnagul and Nizami only. Passengers travelling from the Red Line toward Darnagul or the Green Line should exit at 28 May and continue by the special express buses. Passengers travelling from the Green Line toward 28 May or the Red Line should exit at Nizami and continue by the special express buses. Express buses operate from 06:00 to 00:00.",
+   "ruWarning": "С 15 августа 2026 года движение поездов между станциями «28 Мая» и «Низами» временно приостановлено в связи со строительными работами. Поезда Зелёной линии курсируют по маршруту «Дарнагюль–Низами». Пассажирам, следующим с Красной линии в направлении «Дарнагюль» и Зелёной линии, необходимо выйти на станции «28 Мая» и продолжить поездку на специальных экспресс-автобусах. Пассажирам, следующим с Зелёной линии в направлении станции «28 Мая» и Красной линии, необходимо выйти на станции «Низами» и продолжить поездку на специальных экспресс-автобусах. Экспресс-автобусы курсируют с 06:00 до 00:00.",
+   "azWarning": "15 avqust 2026-cı ildən tikinti işləri ilə əlaqədar \"28 May\" və \"Nizami\" stansiyaları arasında qatarların hərəkəti müvəqqəti dayandırılıb. Yaşıl xətt üzrə qatarlar \"Dərnəgül–Nizami\" marşrutu ilə işləyir. Qırmızı xətdən \"Dərnəgül\" və Yaşıl xətt istiqamətinə gedən sərnişinlər \"28 May\" stansiyasında qatardan düşərək xüsusi ekspres avtobuslarla davam etməlidirlər. Yaşıl xətdən \"28 May\" və Qırmızı xətt istiqamətinə gedən sərnişinlər \"Nizami\" stansiyasında qatardan düşərək xüsusi ekspres avtobuslarla davam etməlidirlər. Ekspres avtobuslar 06:00–00:00 saatlarında fəaliyyət göstərir.",
+   "type": "Alert"
+  },
+  "info": null,
+  "headerWarningEnum": "Fixing",
+  "headerWarningDescription": {
+   "azName": "15 avqust 2026-cı ildən tikinti işləri ilə əlaqədar \"28 May\" və \"Nizami\" stansiyaları arasında qatarların hərəkəti müvəqqəti dayandırılıb. Yaşıl xətt üzrə qatarlar \"Dərnəgül–Nizami\" marşrutu ilə işləyir. Qırmızı xətdən \"Dərnəgül\" və Yaşıl xətt istiqamətinə gedən sərnişinlər \"28 May\" stansiyasında qatardan düşərək xüsusi ekspres avtobuslarla davam etməlidirlər. Yaşıl xətdən \"28 May\" və Qırmızı xətt istiqamətinə gedən sərnişinlər \"Nizami\" stansiyasında qatardan düşərək xüsusi ekspres avtobuslarla davam etməlidirlər. Ekspres avtobuslar 06:00–00:00 saatlarında fəaliyyət göstərir.",
+   "enName": "From 15 August 2026, train service is temporarily suspended between 28 May and Nizami due to construction. Green Line trains operate between Darnagul and Nizami only. Passengers travelling from the Red Line toward Darnagul or the Green Line should exit at 28 May and continue by the special express buses. Passengers travelling from the Green Line toward 28 May or the Red Line should exit at Nizami and continue by the special express buses. Express buses operate from 06:00 to 00:00.",
+   "ruName": "С 15 августа 2026 года движение поездов между станциями «28 Мая» и «Низами» временно приостановлено в связи со строительными работами. Поезда Зелёной линии курсируют по маршруту «Дарнагюль–Низами». Пассажирам, следующим с Красной линии в направлении «Дарнагюль» и Зелёной линии, необходимо выйти на станции «28 Мая» и продолжить поездку на специальных экспресс-автобусах. Пассажирам, следующим с Зелёной линии в направлении станции «28 Мая» и Красной линии, необходимо выйти на станции «Низами» и продолжить поездку на специальных экспресс-автобусах. Экспресс-автобусы курсируют с 06:00 до 00:00."
+  },
+  "connectionTransferSteps": [
+   {
+    "order": 1,
+    "type": "ExitStation",
+    "enInstruction": "Exit the station.",
+    "azInstruction": "Stansiyadan çıxın.",
+    "ruInstruction": "Выйдите из станции."
+   },
+   {
+    "order": 2,
+    "type": "FollowSigns",
+    "enInstruction": "Continue your journey to 28 May station using the M2 or M3 express bus.",
+    "azInstruction": "\"M2\" və ya \"M3\" ekspres avtobusundan istifadə edərək \"28  May\" stansiyasına səfərinizi davam edin.",
+    "ruInstruction": "Продолжите поездку до станции «28 Мая» на экспресс-автобусе M2 или M3"
+   }
+  ]
+ },
+ {
+  "id": 16,
+  "fromStationId": 9,
+  "fromStationName": "28 May",
+  "toStationId": 8,
+  "toStationName": "Nizami",
+  "road": 2,
+  "connectionLineColors": [
+   {
+    "color": "#41A317"
+   }
+  ],
+  "hasColor": true,
+  "byWalk": false,
+  "walkDistanceInMeters": 0.0,
+  "weight": 10.0,
+  "warning": null,
+  "info": null,
+  "headerWarningEnum": "Fixing",
+  "headerWarningDescription": {
+   "azName": "15 avqust 2026-cı ildən tikinti işləri ilə əlaqədar \"28 May\" və \"Nizami\" stansiyaları arasında qatarların hərəkəti müvəqqəti dayandırılıb. Yaşıl xətt üzrə qatarlar \"Dərnəgül–Nizami\" marşrutu ilə işləyir. Qırmızı xətdən \"Dərnəgül\" və Yaşıl xətt istiqamətinə gedən sərnişinlər \"28 May\" stansiyasında qatardan düşərək xüsusi ekspres avtobuslarla davam etməlidirlər. Yaşıl xətdən \"28 May\" və Qırmızı xətt istiqamətinə gedən sərnişinlər \"Nizami\" stansiyasında qatardan düşərək xüsusi ekspres avtobuslarla davam etməlidirlər. Ekspres avtobuslar 06:00–00:00 saatlarında fəaliyyət göstərir.",
+   "enName": "From 15 August 2026, train service is temporarily suspended between 28 May and Nizami due to construction. Green Line trains operate between Darnagul and Nizami only. Passengers travelling from the Red Line toward Darnagul or the Green Line should exit at 28 May and continue by the special express buses. Passengers travelling from the Green Line toward 28 May or the Red Line should exit at Nizami and continue by the special express buses. Express buses operate from 06:00 to 00:00.",
+   "ruName": "С 15 августа 2026 года движение поездов между станциями «28 Мая» и «Низами» временно приостановлено в связи со строительными работами. Поезда Зелёной линии курсируют по маршруту «Дарнагюль–Низами». Пассажирам, следующим с Красной линии в направлении «Дарнагюль» и Зелёной линии, необходимо выйти на станции «28 Мая» и продолжить поездку на специальных экспресс-автобусах. Пассажирам, следующим с Зелёной линии в направлении станции «28 Мая» и Красной линии, необходимо выйти на станции «Низами» и продолжить поездку на специальных экспресс-автобусах. Экспресс-автобусы курсируют с 06:00 до 00:00."
+  },
+  "connectionTransferSteps": []
+ },
+ {
+  "id": 17,
+  "fromStationId": 24,
+  "fromStationName": "Xocəsən",
+  "toStationId": 25,
+  "toStationName": "Avtovağzal",
+  "road": 1,
+  "connectionLineColors": [
+   {
+    "color": "#870AE0"
+   }
+  ],
+  "hasColor": false,
+  "byWalk": false,
+  "walkDistanceInMeters": 0.0,
+  "weight": 10.0,
+  "warning": null,
+  "info": {
+   "enWarning": "Access to the “Khojasan” station is free of charge for a temporary period.",
+   "ruWarning": "Вход на станцию ​​«Ходжасан» в течение определенного периода времени осуществляется бесплатно.",
+   "azWarning": "“Xocəsən” stansiyasına giriş müvəqqəti müddət üçün ödənişsizdir.",
+   "type": "Info"
+  },
+  "headerWarningEnum": null,
+  "headerWarningDescription": null,
+  "connectionTransferSteps": []
+ },
+ {
+  "id": 18,
+  "fromStationId": 25,
+  "fromStationName": "Avtovağzal",
+  "toStationId": 24,
+  "toStationName": "Xocəsən",
+  "road": 2,
+  "connectionLineColors": [
+   {
+    "color": "#870AE0"
+   }
+  ],
+  "hasColor": false,
+  "byWalk": false,
+  "walkDistanceInMeters": 0.0,
+  "weight": 10.0,
+  "warning": {
+   "enWarning": "",
+   "ruWarning": "",
+   "azWarning": "",
+   "type": ""
+  },
+  "info": {
+   "enWarning": "Access to the “Avtovaghzal” station is free of charge for a temporary period.",
+   "ruWarning": "Вход на станцию ​​«Автовокзал» в течение определенного периода времени осуществляется бесплатно.",
+   "azWarning": "“Avtovağzal” stansiyasına giriş müvəqqəti müddət üçün ödənişsizdir.",
+   "type": "Info"
+  },
+  "headerWarningEnum": null,
+  "headerWarningDescription": null,
+  "connectionTransferSteps": []
+ },
+ {
+  "id": 19,
+  "fromStationId": 25,
+  "fromStationName": "Avtovağzal",
+  "toStationId": 4,
+  "toStationName": "Memar Əcəmi",
+  "road": 1,
+  "connectionLineColors": [
+   {
+    "color": "#870AE0"
+   }
+  ],
+  "hasColor": false,
+  "byWalk": false,
+  "walkDistanceInMeters": 0.0,
+  "weight": 10.0,
+  "warning": null,
+  "info": null,
+  "headerWarningEnum": null,
+  "headerWarningDescription": null,
+  "connectionTransferSteps": []
+ },
+ {
+  "id": 20,
+  "fromStationId": 4,
+  "fromStationName": "Memar Əcəmi",
+  "toStationId": 25,
+  "toStationName": "Avtovağzal",
+  "road": 2,
+  "connectionLineColors": [
+   {
+    "color": "#870AE0"
+   }
+  ],
+  "hasColor": false,
+  "byWalk": false,
+  "walkDistanceInMeters": 0.0,
+  "weight": 10.0,
+  "warning": null,
+  "info": null,
+  "headerWarningEnum": null,
+  "headerWarningDescription": null,
+  "connectionTransferSteps": []
+ },
+ {
+  "id": 21,
+  "fromStationId": 4,
+  "fromStationName": "Memar Əcəmi",
+  "toStationId": 26,
+  "toStationName": "8 Noyabr",
+  "road": 1,
+  "connectionLineColors": [
+   {
+    "color": "#870AE0"
+   }
+  ],
+  "hasColor": false,
+  "byWalk": false,
+  "walkDistanceInMeters": 0.0,
+  "weight": 10.0,
+  "warning": null,
+  "info": null,
+  "headerWarningEnum": null,
+  "headerWarningDescription": null,
+  "connectionTransferSteps": []
+ },
+ {
+  "id": 22,
+  "fromStationId": 26,
+  "fromStationName": "8 Noyabr",
+  "toStationId": 4,
+  "toStationName": "Memar Əcəmi",
+  "road": 2,
+  "connectionLineColors": [
+   {
+    "color": "#870AE0"
+   }
+  ],
+  "hasColor": false,
+  "byWalk": false,
+  "walkDistanceInMeters": 0.0,
+  "weight": 10.0,
+  "warning": null,
+  "info": null,
+  "headerWarningEnum": null,
+  "headerWarningDescription": null,
+  "connectionTransferSteps": []
+ },
+ {
+  "id": 23,
+  "fromStationId": 9,
+  "fromStationName": "28 May",
+  "toStationId": 20,
+  "toStationName": "Sahil",
+  "road": 2,
+  "connectionLineColors": [
+   {
+    "color": "#FF0000"
+   },
+   {
+    "color": "#0000FF"
+   }
+  ],
+  "hasColor": true,
+  "byWalk": false,
+  "walkDistanceInMeters": 0.0,
+  "weight": 10.0,
+  "warning": null,
+  "info": null,
+  "headerWarningEnum": null,
+  "headerWarningDescription": null,
+  "connectionTransferSteps": []
+ },
+ {
+  "id": 24,
+  "fromStationId": 20,
+  "fromStationName": "Sahil",
+  "toStationId": 9,
+  "toStationName": "28 May",
+  "road": 1,
+  "connectionLineColors": [
+   {
+    "color": "#FF0000"
+   },
+   {
+    "color": "#0000FF"
+   }
+  ],
+  "hasColor": false,
+  "byWalk": false,
+  "walkDistanceInMeters": 0.0,
+  "weight": 10.0,
+  "warning": null,
+  "info": null,
+  "headerWarningEnum": null,
+  "headerWarningDescription": null,
+  "connectionTransferSteps": []
+ },
+ {
+  "id": 25,
+  "fromStationId": 20,
+  "fromStationName": "Sahil",
+  "toStationId": 21,
+  "toStationName": "İçərişəhər",
+  "road": 2,
+  "connectionLineColors": [
+   {
+    "color": "#FF0000"
+   },
+   {
+    "color": "#0000FF"
+   }
+  ],
+  "hasColor": false,
+  "byWalk": false,
+  "walkDistanceInMeters": 0.0,
+  "weight": 10.0,
+  "warning": null,
+  "info": null,
+  "headerWarningEnum": null,
+  "headerWarningDescription": null,
+  "connectionTransferSteps": []
+ },
+ {
+  "id": 26,
+  "fromStationId": 21,
+  "fromStationName": "İçərişəhər",
+  "toStationId": 20,
+  "toStationName": "Sahil",
+  "road": 1,
+  "connectionLineColors": [
+   {
+    "color": "#FF0000"
+   },
+   {
+    "color": "#0000FF"
+   }
+  ],
+  "hasColor": false,
+  "byWalk": false,
+  "walkDistanceInMeters": 0.0,
+  "weight": 10.0,
+  "warning": null,
+  "info": null,
+  "headerWarningEnum": null,
+  "headerWarningDescription": null,
+  "connectionTransferSteps": []
+ },
+ {
+  "id": 27,
+  "fromStationId": 9,
+  "fromStationName": "28 May",
+  "toStationId": 10,
+  "toStationName": "Gənclik",
+  "road": 1,
+  "connectionLineColors": [
+   {
+    "color": "#41A317"
+   },
+   {
+    "color": "#0000FF"
+   }
+  ],
+  "hasColor": false,
+  "byWalk": false,
+  "walkDistanceInMeters": 0.0,
+  "weight": 10.0,
+  "warning": null,
+  "info": null,
+  "headerWarningEnum": "Fixing",
+  "headerWarningDescription": {
+   "azName": "-",
+   "enName": "-",
+   "ruName": "-"
+  },
+  "connectionTransferSteps": []
+ },
+ {
+  "id": 28,
+  "fromStationId": 10,
+  "fromStationName": "Gənclik",
+  "toStationId": 9,
+  "toStationName": "28 May",
+  "road": 2,
+  "connectionLineColors": [
+   {
+    "color": "#41A317"
+   },
+   {
+    "color": "#0000FF"
+   }
+  ],
+  "hasColor": false,
+  "byWalk": false,
+  "walkDistanceInMeters": 0.0,
+  "weight": 10.0,
+  "warning": null,
+  "info": null,
+  "headerWarningEnum": null,
+  "headerWarningDescription": null,
+  "connectionTransferSteps": []
+ },
+ {
+  "id": 29,
+  "fromStationId": 10,
+  "fromStationName": "Gənclik",
+  "toStationId": 11,
+  "toStationName": "Nərimanov",
+  "road": 1,
+  "connectionLineColors": [
+   {
+    "color": "#41A317"
+   },
+   {
+    "color": "#0000FF"
+   },
+   {
+    "color": "#FF0000"
+   }
+  ],
+  "hasColor": false,
+  "byWalk": false,
+  "walkDistanceInMeters": 0.0,
+  "weight": 10.0,
+  "warning": null,
+  "info": null,
+  "headerWarningEnum": "Fixing",
+  "headerWarningDescription": {
+   "azName": "Paytaxtımızda həyata keçirilən yenidənqurma işləri ilə əlaqədar olaraq \"Nərimanov\" stansiyasının 3 nömrəli çıxışı sərnişinlərin təhlükəsiz hərəkətinin təmin edilməsi məqsədilə 20 iyul tarixindən müvəqqəti bağlanıb.",
+   "enName": "Due to reconstruction works being carried out in the capital, Exit No. 3 of Narimanov station has been temporarily closed since 20 July to ensure the safe movement of passengers.",
+   "ruName": "В связи с проводимыми в столице реконструкционными работами выход № 3 станции «Нариманов» временно закрыт с 20 июля в целях обеспечения безопасного передвижения пассажиров."
+  },
+  "connectionTransferSteps": []
+ },
+ {
+  "id": 30,
+  "fromStationId": 11,
+  "fromStationName": "Nərimanov",
+  "toStationId": 10,
+  "toStationName": "Gənclik",
+  "road": 2,
+  "connectionLineColors": [
+   {
+    "color": "#41A317"
+   },
+   {
+    "color": "#0000FF"
+   },
+   {
+    "color": "#FF0000"
+   }
+  ],
+  "hasColor": false,
+  "byWalk": false,
+  "walkDistanceInMeters": 0.0,
+  "weight": 10.0,
+  "warning": null,
+  "info": null,
+  "headerWarningEnum": null,
+  "headerWarningDescription": null,
+  "connectionTransferSteps": []
+ },
+ {
+  "id": 31,
+  "fromStationId": 11,
+  "fromStationName": "Nərimanov",
+  "toStationId": 12,
+  "toStationName": "Bakmil",
+  "road": 1,
+  "connectionLineColors": [
+   {
+    "color": "#FF0000"
+   }
+  ],
+  "hasColor": true,
+  "byWalk": false,
+  "walkDistanceInMeters": 0.0,
+  "weight": 10.0,
+  "warning": null,
+  "info": null,
+  "headerWarningEnum": null,
+  "headerWarningDescription": null,
+  "connectionTransferSteps": []
+ },
+ {
+  "id": 32,
+  "fromStationId": 12,
+  "fromStationName": "Bakmil",
+  "toStationId": 11,
+  "toStationName": "Nərimanov",
+  "road": 2,
+  "connectionLineColors": [
+   {
+    "color": "#FF0000"
+   }
+  ],
+  "hasColor": false,
+  "byWalk": false,
+  "walkDistanceInMeters": 0.0,
+  "weight": 10.0,
+  "warning": null,
+  "info": null,
+  "headerWarningEnum": null,
+  "headerWarningDescription": null,
+  "connectionTransferSteps": []
+ },
+ {
+  "id": 33,
+  "fromStationId": 11,
+  "fromStationName": "Nərimanov",
+  "toStationId": 13,
+  "toStationName": "Ulduz",
+  "road": 1,
+  "connectionLineColors": [
+   {
+    "color": "#41A317"
+   },
+   {
+    "color": "#0000FF"
+   }
+  ],
+  "hasColor": true,
+  "byWalk": false,
+  "walkDistanceInMeters": 0.0,
+  "weight": 10.0,
+  "warning": {
+   "enWarning": "Due to reconstruction works being carried out in the capital, Exit No. 3 of Narimanov station has been temporarily closed since 20 July to ensure the safe movement of passengers.",
+   "ruWarning": "В связи с проводимыми в столице реконструкционными работами выход № 3 станции «Нариманов» временно закрыт с 20 июля в целях обеспечения безопасного передвижения пассажиров.",
+   "azWarning": "Paytaxtımızda həyata keçirilən yenidənqurma işləri ilə əlaqədar olaraq \"Nərimanov\" stansiyasının 3 nömrəli çıxışı sərnişinlərin təhlükəsiz hərəkətinin təmin edilməsi məqsədilə 20 iyul tarixindən müvəqqəti bağlanıb.",
+   "type": "Alert"
+  },
+  "info": null,
+  "headerWarningEnum": "Fixing",
+  "headerWarningDescription": {
+   "azName": "Paytaxtımızda həyata keçirilən yenidənqurma işləri ilə əlaqədar olaraq \"Nərimanov\" stansiyasının 3 nömrəli çıxışı sərnişinlərin təhlükəsiz hərəkətinin təmin edilməsi məqsədilə 20 iyul tarixindən müvəqqəti bağlanıb.",
+   "enName": "Due to reconstruction works being carried out in the capital, Exit No. 3 of Narimanov station has been temporarily closed since 20 July to ensure the safe movement of passengers.",
+   "ruName": "В связи с проводимыми в столице реконструкционными работами выход № 3 станции «Нариманов» временно закрыт с 20 июля в целях обеспечения безопасного передвижения пассажиров."
+  },
+  "connectionTransferSteps": []
+ },
+ {
+  "id": 34,
+  "fromStationId": 13,
+  "fromStationName": "Ulduz",
+  "toStationId": 11,
+  "toStationName": "Nərimanov",
+  "road": 2,
+  "connectionLineColors": [
+   {
+    "color": "#41A317"
+   },
+   {
+    "color": "#0000FF"
+   }
+  ],
+  "hasColor": false,
+  "byWalk": false,
+  "walkDistanceInMeters": 0.0,
+  "weight": 10.0,
+  "warning": null,
+  "info": null,
+  "headerWarningEnum": null,
+  "headerWarningDescription": null,
+  "connectionTransferSteps": []
+ },
+ {
+  "id": 35,
+  "fromStationId": 13,
+  "fromStationName": "Ulduz",
+  "toStationId": 14,
+  "toStationName": "Koroğlu",
+  "road": 1,
+  "connectionLineColors": [
+   {
+    "color": "#41A317"
+   },
+   {
+    "color": "#0000FF"
+   }
+  ],
+  "hasColor": false,
+  "byWalk": false,
+  "walkDistanceInMeters": 0.0,
+  "weight": 10.0,
+  "warning": null,
+  "info": null,
+  "headerWarningEnum": null,
+  "headerWarningDescription": null,
+  "connectionTransferSteps": []
+ },
+ {
+  "id": 36,
+  "fromStationId": 14,
+  "fromStationName": "Koroğlu",
+  "toStationId": 13,
+  "toStationName": "Ulduz",
+  "road": 2,
+  "connectionLineColors": [
+   {
+    "color": "#41A317"
+   },
+   {
+    "color": "#0000FF"
+   }
+  ],
+  "hasColor": false,
+  "byWalk": false,
+  "walkDistanceInMeters": 0.0,
+  "weight": 10.0,
+  "warning": null,
+  "info": null,
+  "headerWarningEnum": null,
+  "headerWarningDescription": null,
+  "connectionTransferSteps": []
+ },
+ {
+  "id": 37,
+  "fromStationId": 14,
+  "fromStationName": "Koroğlu",
+  "toStationId": 15,
+  "toStationName": "Qara Qarayev",
+  "road": 1,
+  "connectionLineColors": [
+   {
+    "color": "#41A317"
+   },
+   {
+    "color": "#0000FF"
+   }
+  ],
+  "hasColor": false,
+  "byWalk": false,
+  "walkDistanceInMeters": 0.0,
+  "weight": 10.0,
+  "warning": null,
+  "info": null,
+  "headerWarningEnum": null,
+  "headerWarningDescription": null,
+  "connectionTransferSteps": []
+ },
+ {
+  "id": 38,
+  "fromStationId": 15,
+  "fromStationName": "Qara Qarayev",
+  "toStationId": 14,
+  "toStationName": "Koroğlu",
+  "road": 2,
+  "connectionLineColors": [
+   {
+    "color": "#41A317"
+   },
+   {
+    "color": "#0000FF"
+   }
+  ],
+  "hasColor": false,
+  "byWalk": false,
+  "walkDistanceInMeters": 0.0,
+  "weight": 10.0,
+  "warning": null,
+  "info": null,
+  "headerWarningEnum": null,
+  "headerWarningDescription": null,
+  "connectionTransferSteps": []
+ },
+ {
+  "id": 39,
+  "fromStationId": 15,
+  "fromStationName": "Qara Qarayev",
+  "toStationId": 16,
+  "toStationName": "Neftçilər",
+  "road": 1,
+  "connectionLineColors": [
+   {
+    "color": "#41A317"
+   },
+   {
+    "color": "#0000FF"
+   }
+  ],
+  "hasColor": false,
+  "byWalk": false,
+  "walkDistanceInMeters": 0.0,
+  "weight": 10.0,
+  "warning": null,
+  "info": null,
+  "headerWarningEnum": null,
+  "headerWarningDescription": null,
+  "connectionTransferSteps": []
+ },
+ {
+  "id": 40,
+  "fromStationId": 16,
+  "fromStationName": "Neftçilər",
+  "toStationId": 15,
+  "toStationName": "Qara Qarayev",
+  "road": 2,
+  "connectionLineColors": [
+   {
+    "color": "#41A317"
+   },
+   {
+    "color": "#0000FF"
+   }
+  ],
+  "hasColor": false,
+  "byWalk": false,
+  "walkDistanceInMeters": 0.0,
+  "weight": 10.0,
+  "warning": null,
+  "info": null,
+  "headerWarningEnum": null,
+  "headerWarningDescription": null,
+  "connectionTransferSteps": []
+ },
+ {
+  "id": 41,
+  "fromStationId": 16,
+  "fromStationName": "Neftçilər",
+  "toStationId": 17,
+  "toStationName": "Xalqlar Dostluğu",
+  "road": 1,
+  "connectionLineColors": [
+   {
+    "color": "#41A317"
+   },
+   {
+    "color": "#0000FF"
+   }
+  ],
+  "hasColor": false,
+  "byWalk": false,
+  "walkDistanceInMeters": 0.0,
+  "weight": 10.0,
+  "warning": null,
+  "info": null,
+  "headerWarningEnum": null,
+  "headerWarningDescription": null,
+  "connectionTransferSteps": []
+ },
+ {
+  "id": 42,
+  "fromStationId": 17,
+  "fromStationName": "Xalqlar Dostluğu",
+  "toStationId": 16,
+  "toStationName": "Neftçilər",
+  "road": 2,
+  "connectionLineColors": [
+   {
+    "color": "#41A317"
+   },
+   {
+    "color": "#0000FF"
+   }
+  ],
+  "hasColor": false,
+  "byWalk": false,
+  "walkDistanceInMeters": 0.0,
+  "weight": 10.0,
+  "warning": null,
+  "info": null,
+  "headerWarningEnum": null,
+  "headerWarningDescription": null,
+  "connectionTransferSteps": []
+ },
+ {
+  "id": 43,
+  "fromStationId": 17,
+  "fromStationName": "Xalqlar Dostluğu",
+  "toStationId": 18,
+  "toStationName": "Əhmədli",
+  "road": 1,
+  "connectionLineColors": [
+   {
+    "color": "#41A317"
+   },
+   {
+    "color": "#0000FF"
+   }
+  ],
+  "hasColor": false,
+  "byWalk": false,
+  "walkDistanceInMeters": 0.0,
+  "weight": 10.0,
+  "warning": null,
+  "info": null,
+  "headerWarningEnum": null,
+  "headerWarningDescription": null,
+  "connectionTransferSteps": []
+ },
+ {
+  "id": 44,
+  "fromStationId": 18,
+  "fromStationName": "Əhmədli",
+  "toStationId": 17,
+  "toStationName": "Xalqlar Dostluğu",
+  "road": 2,
+  "connectionLineColors": [
+   {
+    "color": "#41A317"
+   },
+   {
+    "color": "#0000FF"
+   }
+  ],
+  "hasColor": false,
+  "byWalk": false,
+  "walkDistanceInMeters": 0.0,
+  "weight": 10.0,
+  "warning": null,
+  "info": null,
+  "headerWarningEnum": null,
+  "headerWarningDescription": null,
+  "connectionTransferSteps": []
+ },
+ {
+  "id": 45,
+  "fromStationId": 18,
+  "fromStationName": "Əhmədli",
+  "toStationId": 19,
+  "toStationName": "Həzi Aslanov",
+  "road": 1,
+  "connectionLineColors": [
+   {
+    "color": "#41A317"
+   },
+   {
+    "color": "#0000FF"
+   },
+   {
+    "color": "#FF0000"
+   }
+  ],
+  "hasColor": false,
+  "byWalk": false,
+  "walkDistanceInMeters": 0.0,
+  "weight": 10.0,
+  "warning": null,
+  "info": null,
+  "headerWarningEnum": null,
+  "headerWarningDescription": null,
+  "connectionTransferSteps": []
+ },
+ {
+  "id": 46,
+  "fromStationId": 19,
+  "fromStationName": "Həzi Aslanov",
+  "toStationId": 18,
+  "toStationName": "Əhmədli",
+  "road": 2,
+  "connectionLineColors": [
+   {
+    "color": "#41A317"
+   },
+   {
+    "color": "#0000FF"
+   }
+  ],
+  "hasColor": false,
+  "byWalk": false,
+  "walkDistanceInMeters": 0.0,
+  "weight": 10.0,
+  "warning": {
+   "enWarning": "Repair works are being carried out in the turnback siding at Hazi Aslanov station. As a result, a shuttle train service has been introduced between Ahmadli and Hazi Aslanov stations.",
+   "ruWarning": "В оборотном тупике станции «Ази Асланов» проводятся ремонтные работы. В связи с этим на участке «Ахмедлы — Ази Асланов» организовано челночное движение поездов.",
+   "azWarning": "“Həzi Aslanov” stansiyasının dalanında təmir işləri aparılır. Bu səbəbdən də “Əhmədli-Həzi Aslanov” istiqamətində məkik hərəkət təşkil olunub.",
+   "type": "Alert"
+  },
+  "info": null,
+  "headerWarningEnum": "Fixing",
+  "headerWarningDescription": {
+   "azName": "“Həzi Aslanov” stansiyasının dalanında təmir işləri aparılır. Bu səbəbdən də “Əhmədli-Həzi Aslanov” istiqamətində məkik hərəkət təşkil olunub.",
+   "enName": "Repair works are being carried out in the turnback siding at Hazi Aslanov station. As a result, a shuttle train service has been introduced between Ahmadli and Hazi Aslanov stations.",
+   "ruName": "В оборотном тупике станции «Ази Асланов» проводятся ремонтные работы. В связи с этим на участке «Ахмедлы — Ази Асланов» организовано челночное движение поездов."
+  },
+  "connectionTransferSteps": []
+ },
+ {
+  "id": 47,
+  "fromStationId": 9,
+  "fromStationName": "28 May",
+  "toStationId": 22,
+  "toStationName": "Cəfər Cabbarlı",
+  "road": 2,
+  "connectionLineColors": [],
+  "hasColor": false,
+  "byWalk": true,
+  "walkDistanceInMeters": 0.0,
+  "weight": 10.0,
+  "warning": null,
+  "info": null,
+  "headerWarningEnum": null,
+  "headerWarningDescription": null,
+  "connectionTransferSteps": []
+ },
+ {
+  "id": 48,
+  "fromStationId": 22,
+  "fromStationName": "Cəfər Cabbarlı",
+  "toStationId": 9,
+  "toStationName": "28 May",
+  "road": 2,
+  "connectionLineColors": [],
+  "hasColor": false,
+  "byWalk": true,
+  "walkDistanceInMeters": 0.0,
+  "weight": 10.0,
+  "warning": null,
+  "info": null,
+  "headerWarningEnum": null,
+  "headerWarningDescription": null,
+  "connectionTransferSteps": []
+ },
+ {
+  "id": 49,
+  "fromStationId": 22,
+  "fromStationName": "Cəfər Cabbarlı",
+  "toStationId": 23,
+  "toStationName": "Xətai",
+  "road": 2,
+  "connectionLineColors": [
+   {
+    "color": "#41A317"
+   }
+  ],
+  "hasColor": false,
+  "byWalk": false,
+  "walkDistanceInMeters": 0.0,
+  "weight": 10.0,
+  "warning": null,
+  "info": null,
+  "headerWarningEnum": null,
+  "headerWarningDescription": null,
+  "connectionTransferSteps": []
+ },
+ {
+  "id": 50,
+  "fromStationId": 23,
+  "fromStationName": "Xətai",
+  "toStationId": 22,
+  "toStationName": "Cəfər Cabbarlı",
+  "road": 2,
+  "connectionLineColors": [
+   {
+    "color": "#41A317"
+   }
+  ],
+  "hasColor": false,
+  "byWalk": false,
+  "walkDistanceInMeters": 0.0,
+  "weight": 10.0,
+  "warning": null,
+  "info": null,
+  "headerWarningEnum": null,
+  "headerWarningDescription": null,
+  "connectionTransferSteps": []
+ }
+]

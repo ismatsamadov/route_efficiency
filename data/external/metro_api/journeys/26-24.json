@@ -1,0 +1,281 @@
+{
+ "metroJourneyBusData": null,
+ "metroJourneyBusDatas": [],
+ "journeyId": "none",
+ "fromStation": "8 Noyabr",
+ "toStation": "Xocəsən",
+ "totalEstimatedTime": 19,
+ "arrivalTime": "06:25:00",
+ "lines": [
+  {
+   "startMetroJourneyBusData": null,
+   "startWalkByInfo": null,
+   "endWalkByInfo": null,
+   "lineId": "default",
+   "stations": [
+    {
+     "stationId": 26,
+     "name": "8 Noyabr",
+     "arrivalTime": "06:06:00",
+     "arrivalTimeDatetime": "2026-10-25T06:06:00",
+     "stationToInfo": null,
+     "stationType": "Direct",
+     "amenities": null,
+     "stationCrowdInfo": {
+      "generalLevel": "Normal",
+      "lowestCrowdedPlatforms": null
+     }
+    },
+    {
+     "stationId": 4,
+     "name": "Memar Əcəmi",
+     "arrivalTime": "06:08:44",
+     "arrivalTimeDatetime": "2026-10-25T06:08:44",
+     "stationToInfo": null,
+     "stationType": "Direct",
+     "amenities": null,
+     "stationCrowdInfo": {
+      "generalLevel": "Normal",
+      "lowestCrowdedPlatforms": null
+     }
+    },
+    {
+     "stationId": 25,
+     "name": "Avtovağzal",
+     "arrivalTime": "06:12:00",
+     "arrivalTimeDatetime": "2026-10-25T06:12:00",
+     "stationToInfo": null,
+     "stationType": "Direct",
+     "amenities": null,
+     "stationCrowdInfo": {
+      "generalLevel": "Normal",
+      "lowestCrowdedPlatforms": null
+     }
+    }
+   ],
+   "lineColor": "#870AE0",
+   "transferInstructions": null,
+   "transferSteps": [],
+   "exits": [
+    {
+     "exitNumber": 1,
+     "side": "stright",
+     "hasApar": false,
+     "capabilities": [
+      "StairsElevator",
+      "Stairs",
+      "Escalator",
+      "Elevator",
+      "WheelchairAccessible"
+     ],
+     "places": [
+      {
+       "name": "Biləcəri qəsəbəsi"
+      },
+      {
+       "name": "Sumqayıt şossesi"
+      }
+     ]
+    },
+    {
+     "exitNumber": 2,
+     "side": "stright",
+     "hasApar": false,
+     "capabilities": [
+      "StairsElevator",
+      "Escalator",
+      "Travolator",
+      "Stairs",
+      "WheelchairAccessible"
+     ],
+     "places": [
+      {
+       "name": "Sumqayıt şossesi"
+      },
+      {
+       "name": "Avtobus dayanacağı"
+      }
+     ]
+    },
+    {
+     "exitNumber": 3,
+     "side": "stright",
+     "hasApar": false,
+     "capabilities": [
+      "StairsElevator",
+      "Escalator",
+      "Stairs",
+      "WheelchairAccessible"
+     ],
+     "places": [
+      {
+       "name": "Taksi dayanacağı"
+      },
+      {
+       "name": "Avtobus dayanacağı"
+      }
+     ]
+    },
+    {
+     "exitNumber": 4,
+     "side": "stright",
+     "hasApar": false,
+     "capabilities": [
+      "Escalator",
+      "Elevator",
+      "Stairs",
+      "TactilePaving"
+     ],
+     "places": [
+      {
+       "name": "Taksi dayanacağı"
+      },
+      {
+       "name": "Beynəlxalq Avtovağzal"
+      },
+      {
+       "name": "Sumqayıt şossesi"
+      },
+      {
+       "name": "Biləcəri dairəsi"
+      },
+      {
+       "name": "Avtobus dayanacağı"
+      }
+     ]
+    }
+   ],
+   "aparAvailableExits": [],
+   "train": {
+    "arrivalCountdown": 164,
+    "travelTimeToNextStation": 164,
+    "wagonCrowdness": [
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "amenities": null,
+    "lineId": 7,
+    "lineColor": "#870AE0",
+    "direction": "Xocasən",
+    "arrivalTime": "2026-10-25T02:38:18.0242542Z",
+    "arrivalTimeForCalculate": "2026-10-25T02:35:34.0242542Z"
+   },
+   "nextTrainSchedules": [
+    "06:12:00",
+    "06:19:00",
+    "06:26:00"
+   ],
+   "endMetroJourneyBusData": null
+  },
+  {
+   "startMetroJourneyBusData": null,
+   "startWalkByInfo": null,
+   "endWalkByInfo": null,
+   "lineId": "default",
+   "stations": [
+    {
+     "stationId": 25,
+     "name": "Avtovağzal",
+     "arrivalTime": "06:17:58",
+     "arrivalTimeDatetime": "2026-10-25T06:17:58",
+     "stationToInfo": null,
+     "stationType": "Transfer",
+     "amenities": null,
+     "stationCrowdInfo": {
+      "generalLevel": "Normal",
+      "lowestCrowdedPlatforms": null
+     }
+    },
+    {
+     "stationId": 24,
+     "name": "Xocəsən",
+     "arrivalTime": "06:25:00",
+     "arrivalTimeDatetime": "2026-10-25T06:25:00",
+     "stationToInfo": null,
+     "stationType": "Direct",
+     "amenities": null,
+     "stationCrowdInfo": {
+      "generalLevel": "Normal",
+      "lowestCrowdedPlatforms": null
+     }
+    }
+   ],
+   "lineColor": "#870AE0",
+   "transferInstructions": null,
+   "transferSteps": [],
+   "exits": [
+    {
+     "exitNumber": 1,
+     "side": "Right",
+     "hasApar": false,
+     "capabilities": [],
+     "places": [
+      {
+       "name": "Xocasən"
+      }
+     ]
+    }
+   ],
+   "aparAvailableExits": [],
+   "train": {
+    "arrivalCountdown": 422,
+    "travelTimeToNextStation": 422,
+    "wagonCrowdness": [
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "amenities": null,
+    "lineId": 7,
+    "lineColor": "#870AE0",
+    "direction": "Xocasən",
+    "arrivalTime": "2026-10-25T02:42:36.0242542Z",
+    "arrivalTimeForCalculate": "2026-10-25T06:25:00Z"
+   },
+   "nextTrainSchedules": [
+    "06:25:00",
+    "06:30:00",
+    "06:31:58"
+   ],
+   "endMetroJourneyBusData": null
+  }
+ ],
+ "trains": [],
+ "lineGeometries": [],
+ "stationAmenities": [
+  {
+   "station": "Starting",
+   "exitCapabilities": {
+    "StairsElevator": [
+     1,
+     2,
+     3,
+     4
+    ],
+    "Stairs": [
+     1
+    ],
+    "Elevator": [
+     1
+    ],
+    "Escalator": [
+     2,
+     3,
+     4
+    ],
+    "WheelchairAccessible": [
+     3
+    ]
+   }
+  },
+  {
+   "station": "Ending",
+   "exitCapabilities": {}
+  }
+ ]
+}

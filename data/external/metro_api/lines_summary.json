@@ -1,0 +1,88 @@
+[
+ {
+  "id": 2,
+  "name": "Qırmızı xətt",
+  "color": "#FF0000",
+  "totalStations": 13,
+  "segments": [
+   {
+    "startStation": "Nərimanov",
+    "endStation": "Bakmil"
+   },
+   {
+    "startStation": "İçərişəhər",
+    "endStation": "Həzi Aslanov"
+   }
+  ],
+  "warningSegments": [
+   {
+    "from": "28 May",
+    "to": "Nizami",
+    "warningHeaderEnum": "Fixing",
+    "description": "15 avqust 2026-cı ildən tikinti işləri ilə əlaqədar \"28 May\" və \"Nizami\" stansiyaları arasında qatarların hərəkəti müvəqqəti dayandırılıb. Yaşıl xətt üzrə qatarlar \"Dərnəgül–Nizami\" marşrutu ilə işləyir. Qırmızı xətdən \"Dərnəgül\" və Yaşıl xətt istiqamətinə gedən sərnişinlər \"28 May\" stansiyasında qatardan düşərək xüsusi ekspres avtobuslarla davam etməlidirlər. Yaşıl xətdən \"28 May\" və Qırmızı xətt istiqamətinə gedən sərnişinlər \"Nizami\" stansiyasında qatardan düşərək xüsusi ekspres avtobuslarla davam etməlidirlər. Ekspres avtobuslar 06:00–00:00 saatlarında fəaliyyət göstərir."
+   },
+   {
+    "from": "Həzi Aslanov",
+    "to": "Əhmədli",
+    "warningHeaderEnum": "Fixing",
+    "description": "“Həzi Aslanov” stansiyasının dalanında təmir işləri aparılır. Bu səbəbdən də “Əhmədli-Həzi Aslanov” istiqamətində məkik hərəkət təşkil olunub."
+   }
+  ]
+ },
+ {
+  "id": 3,
+  "name": "Yaşıl xətt",
+  "color": "#41A317",
+  "totalStations": 10,
+  "segments": [
+   {
+    "startStation": "Dərnəgül",
+    "endStation": "Nizami"
+   },
+   {
+    "startStation": "Cəfər Cabbarlı",
+    "endStation": "Xətai"
+   }
+  ],
+  "warningSegments": [
+   {
+    "from": "Nizami",
+    "to": "28 May",
+    "warningHeaderEnum": "Fixing",
+    "description": "15 avqust 2026-cı ildən tikinti işləri ilə əlaqədar \"28 May\" və \"Nizami\" stansiyaları arasında qatarların hərəkəti müvəqqəti dayandırılıb. Yaşıl xətt üzrə qatarlar \"Dərnəgül–Nizami\" marşrutu ilə işləyir. Qırmızı xətdən \"Dərnəgül\" və Yaşıl xətt istiqamətinə gedən sərnişinlər \"28 May\" stansiyasında qatardan düşərək xüsusi ekspres avtobuslarla davam etməlidirlər. Yaşıl xətdən \"28 May\" və Qırmızı xətt istiqamətinə gedən sərnişinlər \"Nizami\" stansiyasında qatardan düşərək xüsusi ekspres avtobuslarla davam etməlidirlər. Ekspres avtobuslar 06:00–00:00 saatlarında fəaliyyət göstərir."
+   },
+   {
+    "from": "28 May",
+    "to": "Nizami",
+    "warningHeaderEnum": "Fixing",
+    "description": "15 avqust 2026-cı ildən tikinti işləri ilə əlaqədar \"28 May\" və \"Nizami\" stansiyaları arasında qatarların hərəkəti müvəqqəti dayandırılıb. Yaşıl xətt üzrə qatarlar \"Dərnəgül–Nizami\" marşrutu ilə işləyir. Qırmızı xətdən \"Dərnəgül\" və Yaşıl xətt istiqamətinə gedən sərnişinlər \"28 May\" stansiyasında qatardan düşərək xüsusi ekspres avtobuslarla davam etməlidirlər. Yaşıl xətdən \"28 May\" və Qırmızı xətt istiqamətinə gedən sərnişinlər \"Nizami\" stansiyasında qatardan düşərək xüsusi ekspres avtobuslarla davam etməlidirlər. Ekspres avtobuslar 06:00–00:00 saatlarında fəaliyyət göstərir."
+   }
+  ]
+ },
+ {
+  "id": 7,
+  "name": "Bənövşəyi xətt",
+  "color": "#870AE0",
+  "totalStations": 4,
+  "segments": [
+   {
+    "startStation": "Xocəsən",
+    "endStation": "8 Noyabr"
+   }
+  ],
+  "warningSegments": [
+   {
+    "from": "Xocəsən",
+    "to": "Avtovağzal",
+    "warningHeaderEnum": "Info",
+    "description": "“Xocəsən” stansiyasına giriş müvəqqəti müddət üçün ödənişsizdir."
+   },
+   {
+    "from": "Avtovağzal",
+    "to": "Xocəsən",
+    "warningHeaderEnum": "Info",
+    "description": "“Avtovağzal” stansiyasına giriş müvəqqəti müddət üçün ödənişsizdir."
+   }
+  ]
+ }
+]

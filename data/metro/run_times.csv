@@ -1,0 +1,64 @@
+service,line,direction,seq,station,arrival,s_from_previous,km_from_previous,by
+Nəriman Nərimanov – Bakmil,red,Nəriman Nərimanov → Bakmil,1,Nəriman Nərimanov,06:22:00,0,,start
+Nəriman Nərimanov – Bakmil,red,Nəriman Nərimanov → Bakmil,2,Bakmil,06:26:30,270,1.691,train
+Nəriman Nərimanov – Bakmil,red,Bakmil → Nəriman Nərimanov,1,Bakmil,06:15:00,0,,start
+Nəriman Nərimanov – Bakmil,red,Bakmil → Nəriman Nərimanov,2,Nəriman Nərimanov,06:20:00,300,1.691,train
+İçərişəhər – Həzi Aslanov,red,İçərişəhər → Həzi Aslanov,1,İçərişəhər,06:02:00,0,,start
+İçərişəhər – Həzi Aslanov,red,İçərişəhər → Həzi Aslanov,2,Sahil,06:04:33,153,1.317,train
+İçərişəhər – Həzi Aslanov,red,İçərişəhər → Həzi Aslanov,3,28 May,06:06:45,132,1.010,train
+İçərişəhər – Həzi Aslanov,red,İçərişəhər → Həzi Aslanov,4,Gənclik,06:10:19,214,2.654,train
+İçərişəhər – Həzi Aslanov,red,İçərişəhər → Həzi Aslanov,5,Nəriman Nərimanov,06:12:52,153,1.742,train
+İçərişəhər – Həzi Aslanov,red,İçərişəhər → Həzi Aslanov,6,Ulduz,06:16:16,204,2.276,train
+İçərişəhər – Həzi Aslanov,red,İçərişəhər → Həzi Aslanov,7,Koroğlu,06:19:40,204,2.381,train
+İçərişəhər – Həzi Aslanov,red,İçərişəhər → Həzi Aslanov,8,Qara Qarayev,06:21:42,122,1.408,train
+İçərişəhər – Həzi Aslanov,red,İçərişəhər → Həzi Aslanov,9,Neftçilər,06:23:45,123,1.100,train
+İçərişəhər – Həzi Aslanov,red,İçərişəhər → Həzi Aslanov,10,Xalqlar Dostluğu,06:26:18,153,1.816,train
+İçərişəhər – Həzi Aslanov,red,İçərişəhər → Həzi Aslanov,11,Əhmədli,06:28:30,132,1.278,train
+İçərişəhər – Həzi Aslanov,red,İçərişəhər → Həzi Aslanov,12,Əhmədli,06:31:00,150,,wait
+İçərişəhər – Həzi Aslanov,red,İçərişəhər → Həzi Aslanov,13,Həzi Aslanov,06:33:30,150,1.393,train
+İçərişəhər – Həzi Aslanov,red,Həzi Aslanov → İçərişəhər,1,Həzi Aslanov,06:05:30,0,,start
+İçərişəhər – Həzi Aslanov,red,Həzi Aslanov → İçərişəhər,2,Əhmədli,06:10:30,300,1.393,train
+İçərişəhər – Həzi Aslanov,red,Həzi Aslanov → İçərişəhər,3,Əhmədli,06:15:00,270,,wait
+İçərişəhər – Həzi Aslanov,red,Həzi Aslanov → İçərişəhər,4,Xalqlar Dostluğu,06:17:08,128,1.278,train
+İçərişəhər – Həzi Aslanov,red,Həzi Aslanov → İçərişəhər,5,Neftçilər,06:19:35,147,1.816,train
+İçərişəhər – Həzi Aslanov,red,Həzi Aslanov → İçərişəhər,6,Qara Qarayev,06:21:32,117,1.100,train
+İçərişəhər – Həzi Aslanov,red,Həzi Aslanov → İçərişəhər,7,Koroğlu,06:23:30,118,1.408,train
+İçərişəhər – Həzi Aslanov,red,Həzi Aslanov → İçərişəhər,8,Ulduz,06:26:46,196,2.381,train
+İçərişəhər – Həzi Aslanov,red,Həzi Aslanov → İçərişəhər,9,Nəriman Nərimanov,06:30:02,196,2.276,train
+İçərişəhər – Həzi Aslanov,red,Həzi Aslanov → İçərişəhər,10,Gənclik,06:32:29,147,1.742,train
+İçərişəhər – Həzi Aslanov,red,Həzi Aslanov → İçərişəhər,11,28 May,06:35:55,206,2.654,train
+İçərişəhər – Həzi Aslanov,red,Həzi Aslanov → İçərişəhər,12,Sahil,06:38:03,128,1.010,train
+İçərişəhər – Həzi Aslanov,red,Həzi Aslanov → İçərişəhər,13,İçərişəhər,06:40:30,147,1.317,train
+Dərnəgül – 28 May,green,Dərnəgül → 28 May,1,Dərnəgül,06:00:00,0,,start
+Dərnəgül – 28 May,green,Dərnəgül → 28 May,2,Azadlıq prospekti,06:02:49,169,1.598,train
+Dərnəgül – 28 May,green,Dərnəgül → 28 May,3,Nəsimi,06:05:19,150,1.418,train
+Dərnəgül – 28 May,green,Dərnəgül → 28 May,4,Memar Əcəmi,06:08:19,180,2.025,train
+Dərnəgül – 28 May,green,Dərnəgül → 28 May,5,20 Yanvar,06:10:26,127,0.913,train
+Dərnəgül – 28 May,green,Dərnəgül → 28 May,6,İnşaatçılar,06:13:06,160,1.964,train
+Dərnəgül – 28 May,green,Dərnəgül → 28 May,7,Elmlər Akademiyası,06:16:48,222,2.096,train
+Dərnəgül – 28 May,green,Dərnəgül → 28 May,8,Nizami,06:20:00,192,1.325,train
+Dərnəgül – 28 May,green,Dərnəgül → 28 May,9,Nizami,06:21:00,60,,wait
+Dərnəgül – 28 May,green,Dərnəgül → 28 May,10,28 May,06:24:00,180,,bus M1/M2
+Dərnəgül – 28 May,green,28 May → Dərnəgül,1,28 May,06:03:58,0,,start
+Dərnəgül – 28 May,green,28 May → Dərnəgül,2,Nizami,06:06:58,180,,bus M1/M2
+Dərnəgül – 28 May,green,28 May → Dərnəgül,3,Nizami,06:07:30,32,,wait
+Dərnəgül – 28 May,green,28 May → Dərnəgül,4,Elmlər Akademiyası,06:10:32,182,1.325,train
+Dərnəgül – 28 May,green,28 May → Dərnəgül,5,İnşaatçılar,06:14:03,211,2.096,train
+Dərnəgül – 28 May,green,28 May → Dərnəgül,6,20 Yanvar,06:16:35,152,1.964,train
+Dərnəgül – 28 May,green,28 May → Dərnəgül,7,Memar Əcəmi,06:18:36,121,0.913,train
+Dərnəgül – 28 May,green,28 May → Dərnəgül,8,Nəsimi,06:21:27,171,2.025,train
+Dərnəgül – 28 May,green,28 May → Dərnəgül,9,Azadlıq prospekti,06:23:49,142,1.418,train
+Dərnəgül – 28 May,green,28 May → Dərnəgül,10,Dərnəgül,06:26:30,161,1.598,train
+Cəfər Cabbarlı – Şah İsmayıl Xətai,green,Cəfər Cabbarlı → Şah İsmayıl Xətai,1,Cəfər Cabbarlı,06:06:30,0,,start
+Cəfər Cabbarlı – Şah İsmayıl Xətai,green,Cəfər Cabbarlı → Şah İsmayıl Xətai,2,Şah İsmayıl Xətai,06:09:30,180,2.172,train
+Cəfər Cabbarlı – Şah İsmayıl Xətai,green,Şah İsmayıl Xətai → Cəfər Cabbarlı,1,Şah İsmayıl Xətai,06:00:00,0,,start
+Cəfər Cabbarlı – Şah İsmayıl Xətai,green,Şah İsmayıl Xətai → Cəfər Cabbarlı,2,Cəfər Cabbarlı,06:06:30,390,2.172,train
+Xocəsən – 8 Noyabr,purple,Xocəsən → 8 Noyabr,1,Xocəsən,06:03:00,0,,start
+Xocəsən – 8 Noyabr,purple,Xocəsən → 8 Noyabr,2,Avtovağzal,06:09:46,406,2.339,train
+Xocəsən – 8 Noyabr,purple,Xocəsən → 8 Noyabr,3,Memar Əcəmi-2,06:12:54,188,2.072,train
+Xocəsən – 8 Noyabr,purple,Xocəsən → 8 Noyabr,4,8 Noyabr,06:15:30,156,1.444,train
+Xocəsən – 8 Noyabr,purple,8 Noyabr → Xocəsən,1,8 Noyabr,06:06:00,0,,start
+Xocəsən – 8 Noyabr,purple,8 Noyabr → Xocəsən,2,Memar Əcəmi-2,06:08:44,164,1.444,train
+Xocəsən – 8 Noyabr,purple,8 Noyabr → Xocəsən,3,Avtovağzal,06:12:00,196,2.072,train
+Xocəsən – 8 Noyabr,purple,8 Noyabr → Xocəsən,4,Avtovağzal,06:17:58,358,,wait
+Xocəsən – 8 Noyabr,purple,8 Noyabr → Xocəsən,5,Xocəsən,06:25:00,422,2.339,train

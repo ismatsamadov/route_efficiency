@@ -1,0 +1,239 @@
+{
+ "metroJourneyBusData": null,
+ "metroJourneyBusDatas": [],
+ "journeyId": "none",
+ "fromStation": "Xocəsən",
+ "toStation": "8 Noyabr",
+ "totalEstimatedTime": 12.5,
+ "arrivalTime": "06:15:30",
+ "lines": [
+  {
+   "startMetroJourneyBusData": null,
+   "startWalkByInfo": null,
+   "endWalkByInfo": null,
+   "lineId": "default",
+   "stations": [
+    {
+     "stationId": 24,
+     "name": "Xocəsən",
+     "arrivalTime": "06:03:00",
+     "arrivalTimeDatetime": "2026-10-25T06:03:00",
+     "stationToInfo": null,
+     "stationType": "Direct",
+     "amenities": null,
+     "stationCrowdInfo": {
+      "generalLevel": "Normal",
+      "lowestCrowdedPlatforms": null
+     }
+    },
+    {
+     "stationId": 25,
+     "name": "Avtovağzal",
+     "arrivalTime": "06:09:46",
+     "arrivalTimeDatetime": "2026-10-25T06:09:46",
+     "stationToInfo": null,
+     "stationType": "Direct",
+     "amenities": null,
+     "stationCrowdInfo": {
+      "generalLevel": "Normal",
+      "lowestCrowdedPlatforms": null
+     }
+    },
+    {
+     "stationId": 4,
+     "name": "Memar Əcəmi",
+     "arrivalTime": "06:12:54",
+     "arrivalTimeDatetime": "2026-10-25T06:12:54",
+     "stationToInfo": null,
+     "stationType": "Direct",
+     "amenities": null,
+     "stationCrowdInfo": {
+      "generalLevel": "Normal",
+      "lowestCrowdedPlatforms": null
+     }
+    },
+    {
+     "stationId": 26,
+     "name": "8 Noyabr",
+     "arrivalTime": "06:15:30",
+     "arrivalTimeDatetime": "2026-10-25T06:15:30",
+     "stationToInfo": null,
+     "stationType": "Direct",
+     "amenities": null,
+     "stationCrowdInfo": {
+      "generalLevel": "Normal",
+      "lowestCrowdedPlatforms": null
+     }
+    }
+   ],
+   "lineColor": "#870AE0",
+   "transferInstructions": null,
+   "transferSteps": [],
+   "exits": [
+    {
+     "exitNumber": 1,
+     "side": "stright",
+     "hasApar": false,
+     "capabilities": [
+      "StairsElevator",
+      "Stairs",
+      "Elevator"
+     ],
+     "places": [
+      {
+       "name": "Mərkəzi Hərbi Klinik Hospital "
+      },
+      {
+       "name": "Ceyhun Səlimov küç."
+      },
+      {
+       "name": "(Dəri-zövhəri, infeksiya şöbəsi)"
+      },
+      {
+       "name": "Əbdülvahab Salamzadə küç."
+      },
+      {
+       "name": "3-cü mikrorayon dairəsi"
+      }
+     ]
+    },
+    {
+     "exitNumber": 2,
+     "side": "stright",
+     "hasApar": false,
+     "capabilities": [
+      "StairsElevator",
+      "Escalator"
+     ],
+     "places": [
+      {
+       "name": "Hərbi Tibbi Kafedra"
+      },
+      {
+       "name": "Ceyhun Səlimov küç."
+      },
+      {
+       "name": "Mərkəzi Hərbi Klinik Hospital"
+      },
+      {
+       "name": "Yusif Vəzir Çəmənzəminli küç."
+      },
+      {
+       "name": "Cəlil Məmmədquluzadə küç."
+      },
+      {
+       "name": "Hərbi Stomatoloji Poliklinika"
+      }
+     ]
+    },
+    {
+     "exitNumber": 3,
+     "side": "stright",
+     "hasApar": false,
+     "capabilities": [
+      "StairsElevator",
+      "Escalator",
+      "WheelchairAccessible"
+     ],
+     "places": [
+      {
+       "name": "Mərkəzi Hərbi Poliklinika"
+      },
+      {
+       "name": "Ceyhun Səlimov küç."
+      },
+      {
+       "name": "Mərkəzi Hərbi Klinik Hospital"
+      },
+      {
+       "name": "Azər Əliyev küç."
+      }
+     ]
+    },
+    {
+     "exitNumber": 4,
+     "side": "stright",
+     "hasApar": false,
+     "capabilities": [
+      "StairsElevator",
+      "Escalator"
+     ],
+     "places": [
+      {
+       "name": "Nəsimi Rayon Məhkəməsi"
+      },
+      {
+       "name": "Əbdülvahab Salamzadə küç."
+      },
+      {
+       "name": "Bakı Asiya Universiteti"
+      },
+      {
+       "name": "Ceyhun Səlimov küç."
+      },
+      {
+       "name": "3-cü mikrorayon dairəsi"
+      }
+     ]
+    }
+   ],
+   "aparAvailableExits": [],
+   "train": {
+    "arrivalCountdown": 406,
+    "travelTimeToNextStation": 406,
+    "wagonCrowdness": [
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "amenities": null,
+    "lineId": 7,
+    "lineColor": "#870AE0",
+    "direction": "Xocasən",
+    "arrivalTime": "2026-10-25T02:42:18.8972834Z",
+    "arrivalTimeForCalculate": "2026-10-25T02:35:32.8972834Z"
+   },
+   "nextTrainSchedules": [
+    "06:16:00",
+    "06:30:00",
+    "06:44:00"
+   ],
+   "endMetroJourneyBusData": null
+  }
+ ],
+ "trains": [],
+ "lineGeometries": [],
+ "stationAmenities": [
+  {
+   "station": "Starting",
+   "exitCapabilities": {}
+  },
+  {
+   "station": "Ending",
+   "exitCapabilities": {
+    "StairsElevator": [
+     1,
+     2,
+     3,
+     4
+    ],
+    "Stairs": [
+     1
+    ],
+    "Elevator": [
+     1
+    ],
+    "Escalator": [
+     2,
+     3,
+     4
+    ],
+    "WheelchairAccessible": [
+     3
+    ]
+   }
+  }
+ ]
+}

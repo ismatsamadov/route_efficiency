@@ -1,0 +1,139 @@
+{
+ "metroJourneyBusData": null,
+ "metroJourneyBusDatas": [],
+ "journeyId": "none",
+ "fromStation": "Cəfər Cabbarlı",
+ "toStation": "Xətai",
+ "totalEstimatedTime": 3,
+ "arrivalTime": "06:09:30",
+ "lines": [
+  {
+   "startMetroJourneyBusData": null,
+   "startWalkByInfo": null,
+   "endWalkByInfo": null,
+   "lineId": "default",
+   "stations": [
+    {
+     "stationId": 22,
+     "name": "Cəfər Cabbarlı",
+     "arrivalTime": "06:06:30",
+     "arrivalTimeDatetime": "2026-10-25T06:06:30",
+     "stationToInfo": null,
+     "stationType": "Direct",
+     "amenities": null,
+     "stationCrowdInfo": {
+      "generalLevel": "Normal",
+      "lowestCrowdedPlatforms": null
+     }
+    },
+    {
+     "stationId": 23,
+     "name": "Xətai",
+     "arrivalTime": "06:09:30",
+     "arrivalTimeDatetime": "2026-10-25T06:09:30",
+     "stationToInfo": null,
+     "stationType": "Direct",
+     "amenities": null,
+     "stationCrowdInfo": {
+      "generalLevel": "Normal",
+      "lowestCrowdedPlatforms": null
+     }
+    }
+   ],
+   "lineColor": "#41A317",
+   "transferInstructions": null,
+   "transferSteps": [],
+   "exits": [
+    {
+     "exitNumber": 1,
+     "side": "stright",
+     "hasApar": false,
+     "capabilities": [
+      "Escalator",
+      "TactilePaving"
+     ],
+     "places": [
+      {
+       "name": "Xətai Rayon İcra Hakimiyyəti"
+      },
+      {
+       "name": "Xocalı prospekti"
+      },
+      {
+       "name": "Xocalı parkı"
+      },
+      {
+       "name": "Ayaz İsmayılov küçəsi"
+      },
+      {
+       "name": "Sənan Kərimov küçəsi"
+      },
+      {
+       "name": "Natiq Əliyev küçəsi"
+      },
+      {
+       "name": "Neft Kimya prosesləri İnstitutu"
+      },
+      {
+       "name": "Bakı Ali Neft məktəbi"
+      }
+     ]
+    }
+   ],
+   "aparAvailableExits": [
+    1
+   ],
+   "train": {
+    "arrivalCountdown": 180,
+    "travelTimeToNextStation": 180,
+    "wagonCrowdness": [
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "amenities": null,
+    "lineId": 3,
+    "lineColor": "#41A317",
+    "direction": "Xətai",
+    "arrivalTime": "2026-10-25T02:38:29.7589569Z",
+    "arrivalTimeForCalculate": "2026-10-25T02:35:29.7589569Z"
+   },
+   "nextTrainSchedules": [
+    "06:13:30",
+    "06:20:30",
+    "06:27:30"
+   ],
+   "endMetroJourneyBusData": null
+  }
+ ],
+ "trains": [],
+ "lineGeometries": [],
+ "stationAmenities": [
+  {
+   "station": "Starting",
+   "exitCapabilities": {
+    "Stairs": [
+     1,
+     2
+    ],
+    "Escalator": [
+     1,
+     2
+    ]
+   }
+  },
+  {
+   "station": "Ending",
+   "exitCapabilities": {
+    "Escalator": [
+     1
+    ],
+    "TactilePaving": [
+     1
+    ]
+   }
+  }
+ ]
+}

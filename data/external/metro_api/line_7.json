@@ -1,0 +1,87 @@
+{
+ "lineId": 7,
+ "lineName": "Bənövşəyi xətt",
+ "lineColor": "#870AE0",
+ "segments": [
+  {
+   "segmentNumber": 0,
+   "startStation": "Xocəsən",
+   "endStation": "8 Noyabr",
+   "stationCount": 0,
+   "stations": [
+    {
+     "id": 24,
+     "name": "Xocəsən",
+     "order": 0,
+     "isTransferStation": false,
+     "isFavorite": false,
+     "stationType": "Direct",
+     "exits": [],
+     "transferConnections": []
+    },
+    {
+     "id": 25,
+     "name": "Avtovağzal",
+     "order": 0,
+     "isTransferStation": false,
+     "isFavorite": false,
+     "stationType": "Direct",
+     "exits": [],
+     "transferConnections": []
+    },
+    {
+     "id": 4,
+     "name": "Memar Əcəmi",
+     "order": 0,
+     "isTransferStation": true,
+     "isFavorite": false,
+     "stationType": "Transfer",
+     "exits": [],
+     "transferConnections": []
+    },
+    {
+     "id": 26,
+     "name": "8 Noyabr",
+     "order": 0,
+     "isTransferStation": false,
+     "isFavorite": false,
+     "stationType": "Direct",
+     "exits": [],
+     "transferConnections": []
+    }
+   ]
+  }
+ ],
+ "warningMessages": [
+  {
+   "id": 0,
+   "message": "“Xocəsən” stansiyasına giriş müvəqqəti müddət üçün ödənişsizdir.",
+   "messageType": "Info",
+   "isActive": false,
+   "validFrom": null,
+   "validTo": null,
+   "fromStationId": 24,
+   "toStationId": 25,
+   "fromStationName": null,
+   "toStationName": null,
+   "warningTranslations": null
+  }
+ ],
+ "metroLineDtoStationInfos": [
+  {
+   "fromStation": 24,
+   "toStation": 25,
+   "averageArrivalTime": 13.790123456790123
+  },
+  {
+   "fromStation": 25,
+   "toStation": 4,
+   "averageArrivalTime": 6.765060240963855
+  },
+  {
+   "fromStation": 4,
+   "toStation": 26,
+   "averageArrivalTime": 2.6599603174603175
+  }
+ ]
+}

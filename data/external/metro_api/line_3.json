@@ -1,0 +1,195 @@
+{
+ "lineId": 3,
+ "lineName": "Yaşıl xətt",
+ "lineColor": "#41A317",
+ "segments": [
+  {
+   "segmentNumber": 0,
+   "startStation": "Dərnəgül",
+   "endStation": "Nizami",
+   "stationCount": 0,
+   "stations": [
+    {
+     "id": 1,
+     "name": "Dərnəgül",
+     "order": 0,
+     "isTransferStation": false,
+     "isFavorite": false,
+     "stationType": "Direct",
+     "exits": [],
+     "transferConnections": []
+    },
+    {
+     "id": 2,
+     "name": "Azadlıq Prospekti",
+     "order": 0,
+     "isTransferStation": false,
+     "isFavorite": false,
+     "stationType": "Direct",
+     "exits": [],
+     "transferConnections": []
+    },
+    {
+     "id": 3,
+     "name": "Nəsimi",
+     "order": 0,
+     "isTransferStation": false,
+     "isFavorite": false,
+     "stationType": "Direct",
+     "exits": [],
+     "transferConnections": []
+    },
+    {
+     "id": 4,
+     "name": "Memar Əcəmi",
+     "order": 0,
+     "isTransferStation": true,
+     "isFavorite": false,
+     "stationType": "Transfer",
+     "exits": [],
+     "transferConnections": []
+    },
+    {
+     "id": 5,
+     "name": "20 Yanvar",
+     "order": 0,
+     "isTransferStation": false,
+     "isFavorite": false,
+     "stationType": "Direct",
+     "exits": [],
+     "transferConnections": []
+    },
+    {
+     "id": 6,
+     "name": "İnşaatçılar",
+     "order": 0,
+     "isTransferStation": false,
+     "isFavorite": false,
+     "stationType": "Direct",
+     "exits": [],
+     "transferConnections": []
+    },
+    {
+     "id": 7,
+     "name": "Elmlər Akademiyası",
+     "order": 0,
+     "isTransferStation": false,
+     "isFavorite": false,
+     "stationType": "Direct",
+     "exits": [],
+     "transferConnections": []
+    },
+    {
+     "id": 8,
+     "name": "Nizami",
+     "order": 0,
+     "isTransferStation": false,
+     "isFavorite": false,
+     "stationType": "Direct",
+     "exits": [],
+     "transferConnections": []
+    },
+    {
+     "id": 9,
+     "name": "28 May",
+     "order": 0,
+     "isTransferStation": true,
+     "isFavorite": false,
+     "stationType": "Transfer",
+     "exits": [],
+     "transferConnections": []
+    }
+   ]
+  },
+  {
+   "segmentNumber": 0,
+   "startStation": "Cəfər Cabbarlı",
+   "endStation": "Xətai",
+   "stationCount": 0,
+   "stations": [
+    {
+     "id": 22,
+     "name": "Cəfər Cabbarlı",
+     "order": 0,
+     "isTransferStation": false,
+     "isFavorite": false,
+     "stationType": "Direct",
+     "exits": [],
+     "transferConnections": []
+    },
+    {
+     "id": 23,
+     "name": "Xətai",
+     "order": 0,
+     "isTransferStation": false,
+     "isFavorite": false,
+     "stationType": "Direct",
+     "exits": [],
+     "transferConnections": []
+    }
+   ]
+  }
+ ],
+ "warningMessages": [
+  {
+   "id": 0,
+   "message": "15 avqust 2026-cı ildən tikinti işləri ilə əlaqədar \"28 May\" və \"Nizami\" stansiyaları arasında qatarların hərəkəti müvəqqəti dayandırılıb. Yaşıl xətt üzrə qatarlar \"Dərnəgül–Nizami\" marşrutu ilə işləyir. Qırmızı xətdən \"Dərnəgül\" və Yaşıl xətt istiqamətinə gedən sərnişinlər \"28 May\" stansiyasında qatardan düşərək xüsusi ekspres avtobuslarla davam etməlidirlər. Yaşıl xətdən \"28 May\" və Qırmızı xətt istiqamətinə gedən sərnişinlər \"Nizami\" stansiyasında qatardan düşərək xüsusi ekspres avtobuslarla davam etməlidirlər. Ekspres avtobuslar 06:00–00:00 saatlarında fəaliyyət göstərir.",
+   "messageType": "Alert",
+   "isActive": false,
+   "validFrom": null,
+   "validTo": null,
+   "fromStationId": 8,
+   "toStationId": 9,
+   "fromStationName": null,
+   "toStationName": null,
+   "warningTranslations": null
+  }
+ ],
+ "metroLineDtoStationInfos": [
+  {
+   "fromStation": 1,
+   "toStation": 2,
+   "averageArrivalTime": 4.586776859504132
+  },
+  {
+   "fromStation": 2,
+   "toStation": 3,
+   "averageArrivalTime": 4.050729927007299
+  },
+  {
+   "fromStation": 3,
+   "toStation": 4,
+   "averageArrivalTime": 4.304247104247105
+  },
+  {
+   "fromStation": 4,
+   "toStation": 5,
+   "averageArrivalTime": 2.6599603174603175
+  },
+  {
+   "fromStation": 5,
+   "toStation": 6,
+   "averageArrivalTime": 4.288695090439276
+  },
+  {
+   "fromStation": 6,
+   "toStation": 7,
+   "averageArrivalTime": 4.28875968992248
+  },
+  {
+   "fromStation": 7,
+   "toStation": 8,
+   "averageArrivalTime": 4.291505791505792
+  },
+  {
+   "fromStation": 8,
+   "toStation": 9,
+   "averageArrivalTime": 1.073346116970278
+  },
+  {
+   "fromStation": 22,
+   "toStation": 23,
+   "averageArrivalTime": 7
+  }
+ ]
+}

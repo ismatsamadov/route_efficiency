@@ -15,6 +15,15 @@ here.
 | `ayna_scraper.py` | Script that builds `ayna.db` from the AYNA API | This repository | |
 | `headways.csv` | Real headways where a public source gives one; add rows as data arrives | See the `source` column ([airport.az, August 2024](https://www.airport.az/en/press-release/h1-airport-express-route-will-now-operate-24-7-for-the-convenience-of-passengers/)) | |
 
+## Metro network
+
+| File | Contents | Source | Licence |
+|---|---|---|---|
+| `external/metro_api/` | The metro API's answers: 26 stations, the train services on each line, service notices, two departure lists, the operator's answers to frequent questions, and journey-planner timings of every service both ways | Bakı Metropoliteni's API behind metro.gov.az (`app-api.metro.gov.az`, unauthenticated), read on 25 October 2026 with `metro_scraper.py` (read-only requests and the public journey planner) | None published; metro.gov.az states "Bütün hüquqlar qorunur" (all rights reserved). Redistributed here as a research snapshot with attribution to Bakı Metropoliteni, like `ayna.db`; this repository's licence does not extend to it |
+| `metro_scraper.py`, `build_metro.py` | Scripts that download the API's answers and build `metro/` | This repository | |
+| `metro/` | 27 stations with their names in every source, OpenStreetMap's route variants with track distances, route tracks, the timed services and the published departures | Built by `build_metro.py` from `external/metro_api/`, the OpenStreetMap and Wikidata files below and the opendata.az metro files | Mixed: coordinates, track geometry and distances come from OpenStreetMap and are under the ODbL; services, times and departures are Bakı Metropoliteni's (as `external/metro_api/`); opening dates are Wikidata's (CC0) |
+| `metro_headways.csv` | Train intervals the operator has published, each with its source | Bakı Metropoliteni: metro.gov.az news of 14 September and 23 October 2026, the route-change page and the answers to frequent questions, read 25 October 2026 | Short quotations from the operator |
+
 The licences of the opendata.az datasets below come from the portal's CKAN metadata
 (`https://admin.opendata.az/api/3/action/package_show?id=<dataset id>`), which records
 the generic Open Definition `cc-by` and `cc-zero` entries without a version; the dataset
@@ -58,10 +67,25 @@ Queried through the Overpass API for the box 39.9–40.7 N, 49.3–50.45 E. Data
 | `external/osm/osm_shopping.json` | Malls, supermarkets, department stores, markets |
 | `external/osm/osm_offices.json` | Offices, town halls, courthouses |
 | `external/osm/osm_transport.json` | Railway and bus stations |
+| `external/osm/osm_metro_routes.json` | The 12 metro route relations with their stops in order and track geometry (retrieved 25 October 2026) |
+| `external/osm/osm_metro_stations.json` | Metro stations, stop positions and 107 entrances (retrieved 25 October 2026) |
+
+Each file records the date of the OpenStreetMap data in it (`osm3s.timestamp_osm_base`).
+`osm_health.json` was answered by a mirror server with data as of 15 July 2026; the
+others hold data as of the day they were retrieved.
+
+## Wikidata
+
+| File | Contents | Source | Licence |
+|---|---|---|---|
+| `external/wikidata/metro_stations.json` | The stations on the three Baku Metro lines (31 items, four of them not yet open), with opening dates, coordinates and neighbouring stations | Wikidata Query Service, 25 October 2026 (query in `fetch_external.py`) | CC0 |
 
 ## Searched for and not found
 
 No public source gives route headways or timetables, vehicle positions, or ticket
 validations by stop. Checked: the AYNA map API, opendata.az (69 transport datasets),
 OpenStreetMap, the BakuBus and AYNA websites, and news reports. Until AYNA or the
-operators share them, `busnet.toml` holds the assumptions that stand in for them.
+operators share them, `busnet.toml` holds the assumptions that stand in for them. For the
+metro, intervals and running times are published (above), but no full timetable, no
+exit counts, no flows between stations and no GTFS feed: the Mobility Database catalogue
+(3,613 feeds on 25 October 2026) has none for Azerbaijan.

@@ -1,0 +1,79 @@
+route,line,direction,seq,station,km_from_previous,km_from_start
+456668,1,İçərişəhər → Həzi Aslanov,1,İçərişəhər,,0.000
+456668,1,İçərişəhər → Həzi Aslanov,2,Sahil,1.317,1.317
+456668,1,İçərişəhər → Həzi Aslanov,3,28 May,1.009,2.326
+456668,1,İçərişəhər → Həzi Aslanov,4,Gənclik,2.652,4.979
+456668,1,İçərişəhər → Həzi Aslanov,5,Nəriman Nərimanov,1.742,6.720
+456668,1,İçərişəhər → Həzi Aslanov,6,Ulduz,2.275,8.995
+456668,1,İçərişəhər → Həzi Aslanov,7,Koroğlu,2.381,11.376
+456668,1,İçərişəhər → Həzi Aslanov,8,Qara Qarayev,1.409,12.785
+456668,1,İçərişəhər → Həzi Aslanov,9,Neftçilər,1.101,13.885
+456668,1,İçərişəhər → Həzi Aslanov,10,Xalqlar Dostluğu,1.818,15.703
+456668,1,İçərişəhər → Həzi Aslanov,11,Əhmədli,1.279,16.982
+456668,1,İçərişəhər → Həzi Aslanov,12,Həzi Aslanov,1.395,18.377
+7680413,1,İçərişəhər → Bakmil,1,İçərişəhər,,0.000
+7680413,1,İçərişəhər → Bakmil,2,Sahil,1.318,1.318
+7680413,1,İçərişəhər → Bakmil,3,28 May,1.015,2.333
+7680413,1,İçərişəhər → Bakmil,4,Gənclik,2.648,4.981
+7680413,1,İçərişəhər → Bakmil,5,Nəriman Nərimanov,1.747,6.728
+7680413,1,İçərişəhər → Bakmil,6,Bakmil,1.714,8.442
+7792470,1,Həzi Aslanov → İçərişəhər,1,Həzi Aslanov,,0.000
+7792470,1,Həzi Aslanov → İçərişəhər,2,Əhmədli,1.393,1.393
+7792470,1,Həzi Aslanov → İçərişəhər,3,Xalqlar Dostluğu,1.278,2.671
+7792470,1,Həzi Aslanov → İçərişəhər,4,Neftçilər,1.816,4.486
+7792470,1,Həzi Aslanov → İçərişəhər,5,Qara Qarayev,1.100,5.586
+7792470,1,Həzi Aslanov → İçərişəhər,6,Koroğlu,1.408,6.995
+7792470,1,Həzi Aslanov → İçərişəhər,7,Ulduz,2.381,9.376
+7792470,1,Həzi Aslanov → İçərişəhər,8,Nəriman Nərimanov,2.276,11.652
+7792470,1,Həzi Aslanov → İçərişəhər,9,Gənclik,1.742,13.395
+7792470,1,Həzi Aslanov → İçərişəhər,10,28 May,2.655,16.050
+7792470,1,Həzi Aslanov → İçərişəhər,11,Sahil,1.010,17.060
+7792470,1,Həzi Aslanov → İçərişəhər,12,İçərişəhər,1.318,18.378
+7792471,1,Bakmil → İçərişəhər,1,Bakmil,,0.000
+7792471,1,Bakmil → İçərişəhər,2,Nəriman Nərimanov,1.691,1.691
+7792471,1,Bakmil → İçərişəhər,3,Gənclik,1.742,3.433
+7792471,1,Bakmil → İçərişəhər,4,28 May,2.654,6.086
+7792471,1,Bakmil → İçərişəhər,5,Sahil,1.010,7.096
+7792471,1,Bakmil → İçərişəhər,6,İçərişəhər,1.317,8.414
+456667,2,Dərnəgül → Nizami,1,Dərnəgül,,0.000
+456667,2,Dərnəgül → Nizami,2,Azadlıq prospekti,1.598,1.598
+456667,2,Dərnəgül → Nizami,3,Nəsimi,1.418,3.016
+456667,2,Dərnəgül → Nizami,4,Memar Əcəmi,2.027,5.042
+456667,2,Dərnəgül → Nizami,5,20 Yanvar,0.914,5.956
+456667,2,Dərnəgül → Nizami,6,İnşaatçılar,1.966,7.922
+456667,2,Dərnəgül → Nizami,7,Elmlər Akademiyası,2.098,10.020
+456667,2,Dərnəgül → Nizami,8,Nizami,1.324,11.344
+7680414,2,Azadlıq prospekti → Nizami,1,Azadlıq prospekti,,0.000
+7680414,2,Azadlıq prospekti → Nizami,2,Nəsimi,1.418,1.418
+7680414,2,Azadlıq prospekti → Nizami,3,Memar Əcəmi,2.026,3.444
+7680414,2,Azadlıq prospekti → Nizami,4,20 Yanvar,0.913,4.357
+7680414,2,Azadlıq prospekti → Nizami,5,İnşaatçılar,1.966,6.323
+7680414,2,Azadlıq prospekti → Nizami,6,Elmlər Akademiyası,2.097,8.421
+7680414,2,Azadlıq prospekti → Nizami,7,Nizami,1.324,9.745
+7792468,2,Nizami → Dərnəgül,1,Nizami,,0.000
+7792468,2,Nizami → Dərnəgül,2,Elmlər Akademiyası,1.325,1.325
+7792468,2,Nizami → Dərnəgül,3,İnşaatçılar,2.096,3.421
+7792468,2,Nizami → Dərnəgül,4,20 Yanvar,1.964,5.385
+7792468,2,Nizami → Dərnəgül,5,Memar Əcəmi,0.913,6.298
+7792468,2,Nizami → Dərnəgül,6,Nəsimi,2.025,8.323
+7792468,2,Nizami → Dərnəgül,7,Azadlıq prospekti,1.418,9.740
+7792468,2,Nizami → Dərnəgül,8,Dərnəgül,1.598,11.338
+7792469,2,Nizami → Azadlıq prospekti,1,Nizami,,0.000
+7792469,2,Nizami → Azadlıq prospekti,2,Elmlər Akademiyası,1.325,1.325
+7792469,2,Nizami → Azadlıq prospekti,3,İnşaatçılar,2.096,3.421
+7792469,2,Nizami → Azadlıq prospekti,4,20 Yanvar,1.964,5.385
+7792469,2,Nizami → Azadlıq prospekti,5,Memar Əcəmi,0.913,6.298
+7792469,2,Nizami → Azadlıq prospekti,6,Nəsimi,2.025,8.323
+7792469,2,Nizami → Azadlıq prospekti,7,Azadlıq prospekti,1.418,9.740
+7664611,2B,Şah İsmayıl Xətai → Cəfər Cabbarlı,1,Şah İsmayıl Xətai,,0.000
+7664611,2B,Şah İsmayıl Xətai → Cəfər Cabbarlı,2,Cəfər Cabbarlı,2.173,2.173
+7792467,2B,Cəfər Cabbarlı → Şah İsmayıl Xətai,1,Cəfər Cabbarlı,,0.000
+7792467,2B,Cəfər Cabbarlı → Şah İsmayıl Xətai,2,Şah İsmayıl Xətai,2.172,2.172
+7664626,3,Xocəsən → 8 Noyabr,1,Xocəsən,,0.000
+7664626,3,Xocəsən → 8 Noyabr,2,Avtovağzal,2.323,2.323
+7664626,3,Xocəsən → 8 Noyabr,3,Memar Əcəmi-2,2.081,4.403
+7664626,3,Xocəsən → 8 Noyabr,4,8 Noyabr,1.446,5.850
+7792466,3,8 Noyabr → Xocəsən,1,8 Noyabr,,0.000
+7792466,3,8 Noyabr → Xocəsən,2,Memar Əcəmi-2,1.444,1.444
+7792466,3,8 Noyabr → Xocəsən,3,Avtovağzal,2.072,3.516
+7792466,3,8 Noyabr → Xocəsən,4,Xocəsən,2.339,5.855

@@ -1,0 +1,481 @@
+{
+ "metroJourneyBusData": null,
+ "metroJourneyBusDatas": [],
+ "journeyId": "none",
+ "fromStation": "İçərişəhər",
+ "toStation": "Həzi Aslanov",
+ "totalEstimatedTime": 31.5,
+ "arrivalTime": "06:33:30",
+ "lines": [
+  {
+   "startMetroJourneyBusData": null,
+   "startWalkByInfo": null,
+   "endWalkByInfo": null,
+   "lineId": "default",
+   "stations": [
+    {
+     "stationId": 21,
+     "name": "İçərişəhər",
+     "arrivalTime": "06:02:00",
+     "arrivalTimeDatetime": "2026-10-25T06:02:00",
+     "stationToInfo": null,
+     "stationType": "Direct",
+     "amenities": null,
+     "stationCrowdInfo": {
+      "generalLevel": "Normal",
+      "lowestCrowdedPlatforms": null
+     }
+    },
+    {
+     "stationId": 20,
+     "name": "Sahil",
+     "arrivalTime": "06:04:33",
+     "arrivalTimeDatetime": "2026-10-25T06:04:33",
+     "stationToInfo": null,
+     "stationType": "Direct",
+     "amenities": null,
+     "stationCrowdInfo": {
+      "generalLevel": "Normal",
+      "lowestCrowdedPlatforms": null
+     }
+    },
+    {
+     "stationId": 9,
+     "name": "28 May",
+     "arrivalTime": "06:06:45",
+     "arrivalTimeDatetime": "2026-10-25T06:06:45",
+     "stationToInfo": null,
+     "stationType": "Direct",
+     "amenities": null,
+     "stationCrowdInfo": {
+      "generalLevel": "Normal",
+      "lowestCrowdedPlatforms": null
+     }
+    },
+    {
+     "stationId": 10,
+     "name": "Gənclik",
+     "arrivalTime": "06:10:19",
+     "arrivalTimeDatetime": "2026-10-25T06:10:19",
+     "stationToInfo": null,
+     "stationType": "Direct",
+     "amenities": null,
+     "stationCrowdInfo": {
+      "generalLevel": "Normal",
+      "lowestCrowdedPlatforms": null
+     }
+    },
+    {
+     "stationId": 11,
+     "name": "Nərimanov",
+     "arrivalTime": "06:12:52",
+     "arrivalTimeDatetime": "2026-10-25T06:12:52",
+     "stationToInfo": null,
+     "stationType": "Direct",
+     "amenities": null,
+     "stationCrowdInfo": {
+      "generalLevel": "Normal",
+      "lowestCrowdedPlatforms": null
+     }
+    },
+    {
+     "stationId": 13,
+     "name": "Ulduz",
+     "arrivalTime": "06:16:16",
+     "arrivalTimeDatetime": "2026-10-25T06:16:16",
+     "stationToInfo": null,
+     "stationType": "Direct",
+     "amenities": null,
+     "stationCrowdInfo": {
+      "generalLevel": "Normal",
+      "lowestCrowdedPlatforms": null
+     }
+    },
+    {
+     "stationId": 14,
+     "name": "Koroğlu",
+     "arrivalTime": "06:19:40",
+     "arrivalTimeDatetime": "2026-10-25T06:19:40",
+     "stationToInfo": null,
+     "stationType": "Direct",
+     "amenities": null,
+     "stationCrowdInfo": {
+      "generalLevel": "Normal",
+      "lowestCrowdedPlatforms": null
+     }
+    },
+    {
+     "stationId": 15,
+     "name": "Qara Qarayev",
+     "arrivalTime": "06:21:42",
+     "arrivalTimeDatetime": "2026-10-25T06:21:42",
+     "stationToInfo": null,
+     "stationType": "Direct",
+     "amenities": null,
+     "stationCrowdInfo": {
+      "generalLevel": "Normal",
+      "lowestCrowdedPlatforms": null
+     }
+    },
+    {
+     "stationId": 16,
+     "name": "Neftçilər",
+     "arrivalTime": "06:23:45",
+     "arrivalTimeDatetime": "2026-10-25T06:23:45",
+     "stationToInfo": null,
+     "stationType": "Direct",
+     "amenities": null,
+     "stationCrowdInfo": {
+      "generalLevel": "Normal",
+      "lowestCrowdedPlatforms": null
+     }
+    },
+    {
+     "stationId": 17,
+     "name": "Xalqlar Dostluğu",
+     "arrivalTime": "06:26:18",
+     "arrivalTimeDatetime": "2026-10-25T06:26:18",
+     "stationToInfo": null,
+     "stationType": "Direct",
+     "amenities": null,
+     "stationCrowdInfo": {
+      "generalLevel": "Normal",
+      "lowestCrowdedPlatforms": null
+     }
+    },
+    {
+     "stationId": 18,
+     "name": "Əhmədli",
+     "arrivalTime": "06:28:30",
+     "arrivalTimeDatetime": "2026-10-25T06:28:30",
+     "stationToInfo": null,
+     "stationType": "Direct",
+     "amenities": null,
+     "stationCrowdInfo": {
+      "generalLevel": "Normal",
+      "lowestCrowdedPlatforms": null
+     }
+    }
+   ],
+   "lineColor": "#FF0000",
+   "transferInstructions": null,
+   "transferSteps": [],
+   "exits": [
+    {
+     "exitNumber": 1,
+     "side": "Left",
+     "hasApar": false,
+     "capabilities": [
+      "Stairs"
+     ],
+     "places": [
+      {
+       "name": "Kənd Əhmədli qəsəbəsi"
+      },
+      {
+       "name": "Məhəmməd Hadi küçəsi"
+      },
+      {
+       "name": "Şahin Səmədov küçəsi"
+      }
+     ]
+    },
+    {
+     "exitNumber": 2,
+     "side": "Right",
+     "hasApar": false,
+     "capabilities": [
+      "Stairs"
+     ],
+     "places": [
+      {
+       "name": "\"Bakı\" kinoteatrı"
+      },
+      {
+       "name": "Məhəmməd Hadi küçəsi"
+      },
+      {
+       "name": "Sarayevo küçəsi"
+      }
+     ]
+    },
+    {
+     "exitNumber": 3,
+     "side": "Left",
+     "hasApar": false,
+     "capabilities": [
+      "Stairs"
+     ],
+     "places": [
+      {
+       "name": "Ukrayna dairəsi"
+      },
+      {
+       "name": "Məhəmməd Hadi küçəsi"
+      },
+      {
+       "name": "Heydər Əliyev parkı"
+      }
+     ]
+    },
+    {
+     "exitNumber": 4,
+     "side": "Right",
+     "hasApar": false,
+     "capabilities": [
+      "Stairs"
+     ],
+     "places": [
+      {
+       "name": "Kənd Əhmədli qəsəbəsi"
+      },
+      {
+       "name": "Məhəmməd Hadi küçəsi"
+      },
+      {
+       "name": "Ukrayna dairəsi"
+      }
+     ]
+    }
+   ],
+   "aparAvailableExits": [
+    1,
+    2,
+    4
+   ],
+   "train": {
+    "arrivalCountdown": 153,
+    "travelTimeToNextStation": 153,
+    "wagonCrowdness": [
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "amenities": null,
+    "lineId": 2,
+    "lineColor": "#41A317",
+    "direction": "Həzi Aslanov",
+    "arrivalTime": "2026-10-25T02:37:57.2652667Z",
+    "arrivalTimeForCalculate": "2026-10-25T02:35:24.2652667Z"
+   },
+   "nextTrainSchedules": [
+    "06:06:00",
+    "06:10:00",
+    "06:13:30"
+   ],
+   "endMetroJourneyBusData": null
+  },
+  {
+   "startMetroJourneyBusData": null,
+   "startWalkByInfo": null,
+   "endWalkByInfo": null,
+   "lineId": "default",
+   "stations": [
+    {
+     "stationId": 18,
+     "name": "Əhmədli",
+     "arrivalTime": "06:31:00",
+     "arrivalTimeDatetime": "2026-10-25T06:31:00",
+     "stationToInfo": null,
+     "stationType": "Transfer",
+     "amenities": null,
+     "stationCrowdInfo": {
+      "generalLevel": "Normal",
+      "lowestCrowdedPlatforms": null
+     }
+    },
+    {
+     "stationId": 19,
+     "name": "Həzi Aslanov",
+     "arrivalTime": "06:33:30",
+     "arrivalTimeDatetime": "2026-10-25T06:33:30",
+     "stationToInfo": null,
+     "stationType": "Direct",
+     "amenities": null,
+     "stationCrowdInfo": {
+      "generalLevel": "Normal",
+      "lowestCrowdedPlatforms": null
+     }
+    }
+   ],
+   "lineColor": "#FF0000",
+   "transferInstructions": null,
+   "transferSteps": [],
+   "exits": [
+    {
+     "exitNumber": 1,
+     "side": "Left",
+     "hasApar": false,
+     "capabilities": [
+      "StairsElevator",
+      "Stairs"
+     ],
+     "places": [
+      {
+       "name": "Ukrayna dairəsi"
+      },
+      {
+       "name": "Məhəmməd Hadi küçəsi"
+      },
+      {
+       "name": "7 saylı Təcili və Təxirə Salınmaz Tibbi Yardım Stansiya bölməsi"
+      }
+     ]
+    },
+    {
+     "exitNumber": 2,
+     "side": "Left",
+     "hasApar": false,
+     "capabilities": [
+      "StairsElevator",
+      "Stairs"
+     ],
+     "places": [
+      {
+       "name": "6 saylı \"ASAN xidmət\" mərkəzi"
+      },
+      {
+       "name": "Məhəmməd Hadi küçəsi"
+      },
+      {
+       "name": "Ukrayna dairəsi"
+      },
+      {
+       "name": "7 saylı Təcili və Təxirə Salınmaz Tibbi Yardım Stansiya bölməsi"
+      }
+     ]
+    },
+    {
+     "exitNumber": 3,
+     "side": "Left",
+     "hasApar": false,
+     "capabilities": [
+      "StairsElevator",
+      "Stairs"
+     ],
+     "places": [
+      {
+       "name": "Dövlət Sərhəd Xidməti Akademiyası"
+      },
+      {
+       "name": "Məhəmməd Hadi küçəsi"
+      },
+      {
+       "name": "6 saylı ASAN xidmət mərkəzi"
+      },
+      {
+       "name": "Ukrayna dairəsi"
+      },
+      {
+       "name": "Heydər Əliyev parkı"
+      },
+      {
+       "name": "Uşaq Vərəm Dispanseri"
+      }
+     ]
+    },
+    {
+     "exitNumber": 4,
+     "side": "Left",
+     "hasApar": false,
+     "capabilities": [
+      "StairsElevator",
+      "Stairs"
+     ],
+     "places": [
+      {
+       "name": "Neyrocərrahiyyə Xəstəxanası"
+      },
+      {
+       "name": "Məhəmməd Hadi küçəsi"
+      },
+      {
+       "name": "Xudu Məmmədov küçəsi"
+      },
+      {
+       "name": "Dövlət Sərhəd Xidməti Akademiyası"
+      }
+     ]
+    },
+    {
+     "exitNumber": 5,
+     "side": "stright",
+     "hasApar": false,
+     "capabilities": [
+      "Stairs",
+      "Escalator"
+     ],
+     "places": [
+      {
+       "name": "Neyrocərrahiyyə Xəstəxanası"
+      }
+     ]
+    }
+   ],
+   "aparAvailableExits": [
+    4
+   ],
+   "train": {
+    "arrivalCountdown": 150,
+    "travelTimeToNextStation": 150,
+    "wagonCrowdness": [
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "amenities": null,
+    "lineId": 2,
+    "lineColor": "#41A317",
+    "direction": "Həzi Aslanov",
+    "arrivalTime": "2026-10-25T02:37:54.2652667Z",
+    "arrivalTimeForCalculate": "2026-10-25T06:33:30Z"
+   },
+   "nextTrainSchedules": [
+    "06:33:00",
+    "06:35:00",
+    "06:36:30"
+   ],
+   "endMetroJourneyBusData": null
+  }
+ ],
+ "trains": [],
+ "lineGeometries": [],
+ "stationAmenities": [
+  {
+   "station": "Starting",
+   "exitCapabilities": {
+    "Escalator": [
+     1
+    ],
+    "WheelchairAccessible": [
+     1
+    ]
+   }
+  },
+  {
+   "station": "Ending",
+   "exitCapabilities": {
+    "StairsElevator": [
+     1,
+     2,
+     3,
+     4
+    ],
+    "Stairs": [
+     1,
+     2,
+     3,
+     4,
+     5
+    ],
+    "Escalator": [
+     5
+    ]
+   }
+  }
+ ]
+}

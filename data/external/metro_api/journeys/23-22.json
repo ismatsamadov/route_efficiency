@@ -1,0 +1,166 @@
+{
+ "metroJourneyBusData": null,
+ "metroJourneyBusDatas": [],
+ "journeyId": "none",
+ "fromStation": "Xətai",
+ "toStation": "Cəfər Cabbarlı",
+ "totalEstimatedTime": 6.5,
+ "arrivalTime": "06:06:30",
+ "lines": [
+  {
+   "startMetroJourneyBusData": null,
+   "startWalkByInfo": null,
+   "endWalkByInfo": null,
+   "lineId": "default",
+   "stations": [
+    {
+     "stationId": 23,
+     "name": "Xətai",
+     "arrivalTime": "06:00:00",
+     "arrivalTimeDatetime": "2026-10-25T06:00:00",
+     "stationToInfo": null,
+     "stationType": "Direct",
+     "amenities": null,
+     "stationCrowdInfo": {
+      "generalLevel": "Normal",
+      "lowestCrowdedPlatforms": null
+     }
+    },
+    {
+     "stationId": 22,
+     "name": "Cəfər Cabbarlı",
+     "arrivalTime": "06:06:30",
+     "arrivalTimeDatetime": "2026-10-25T06:06:30",
+     "stationToInfo": null,
+     "stationType": "Direct",
+     "amenities": null,
+     "stationCrowdInfo": {
+      "generalLevel": "Normal",
+      "lowestCrowdedPlatforms": null
+     }
+    }
+   ],
+   "lineColor": "#41A317",
+   "transferInstructions": null,
+   "transferSteps": [],
+   "exits": [
+    {
+     "exitNumber": 1,
+     "side": "Left",
+     "hasApar": false,
+     "capabilities": [
+      "Stairs",
+      "Escalator"
+     ],
+     "places": [
+      {
+       "name": "Dəmiryol vağzalı"
+      },
+      {
+       "name": "Cəfər Cabbarlı meydanı"
+      },
+      {
+       "name": "Dövlət Neft və Sənaye Universiteti"
+      },
+      {
+       "name": "Dilarə Əliyeva küç."
+      },
+      {
+       "name": "Azadlıq prospekti"
+      },
+      {
+       "name": "Heydər Əliyev Sarayı"
+      },
+      {
+       "name": "Səməd Vurğun bağı"
+      }
+     ]
+    },
+    {
+     "exitNumber": 2,
+     "side": "Right",
+     "hasApar": false,
+     "capabilities": [
+      "Stairs",
+      "Escalator"
+     ],
+     "places": [
+      {
+       "name": "Dəmiryol vağzalı"
+      },
+      {
+       "name": "Cəfər Cabbarlı meydanı"
+      },
+      {
+       "name": "Dövlət Neft və Sənaye Universiteti"
+      },
+      {
+       "name": "Dilarə Əliyeva küç."
+      },
+      {
+       "name": "Azadlıq prospekti"
+      },
+      {
+       "name": "Heydər Əliyev Sarayı"
+      },
+      {
+       "name": "Səməd Vurğun bağı"
+      }
+     ]
+    }
+   ],
+   "aparAvailableExits": [],
+   "train": {
+    "arrivalCountdown": 390,
+    "travelTimeToNextStation": 390,
+    "wagonCrowdness": [
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "amenities": null,
+    "lineId": 3,
+    "lineColor": "#41A317",
+    "direction": "Xətai",
+    "arrivalTime": "2026-10-25T02:42:00.8040848Z",
+    "arrivalTimeForCalculate": "2026-10-25T02:35:30.8040848Z"
+   },
+   "nextTrainSchedules": [
+    "06:03:00",
+    "06:09:30",
+    "06:10:00"
+   ],
+   "endMetroJourneyBusData": null
+  }
+ ],
+ "trains": [],
+ "lineGeometries": [],
+ "stationAmenities": [
+  {
+   "station": "Starting",
+   "exitCapabilities": {
+    "Escalator": [
+     1
+    ],
+    "TactilePaving": [
+     1
+    ]
+   }
+  },
+  {
+   "station": "Ending",
+   "exitCapabilities": {
+    "Stairs": [
+     1,
+     2
+    ],
+    "Escalator": [
+     1,
+     2
+    ]
+   }
+  }
+ ]
+}

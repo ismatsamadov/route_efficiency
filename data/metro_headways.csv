@@ -1,0 +1,9 @@
+line,stretch,period,headway_min,since,source
+red,İçərişəhər – Əhmədli,peak hours,2,2026-09-15,"metro.gov.az/news/327, 14 September 2026: from 15 September, ""pik saatlarda 2 dəqiqəlik intervalla"""
+red,İçərişəhər – Əhmədli,other times,2.5,2026-08-15,"metro.gov.az/az/route-change, read 25 October 2026: ""2 dəqiqə 30 saniyə intervalla""; FAQ item 122 in data/external/metro_api/faq.json"
+red,Əhmədli – Həzi Aslanov,all day,,2026-08-15,"Shuttle while the Həzi Aslanov turnback siding is repaired; no interval published. metro.gov.az/news/360, 23 October 2026: the shuttle ends ""yaxın günlərdə"", after which İçərişəhər – Həzi Aslanov runs every 2 minutes at peaks and 2 minutes 30 seconds at other times"
+green,Dərnəgül – Nizami,all day,3.5,2026-08-15,"metro.gov.az/az/route-change, read 25 October 2026: ""3 dəqiqə 30 saniyə intervalla""; FAQ item 121. metro.gov.az/news/327: 3 minutes if demand requires"
+green,Cəfər Cabbarlı – Şah İsmayıl Xətai,all day,8,,"FAQ item 121: ""mövcud olan 8 dəqiqəlik interval""; metro.gov.az/az/route-change: unchanged since 15 August 2026"
+purple,Avtovağzal – 8 Noyabr,autumn and winter timetable,5,2026-09-15,"metro.gov.az/news/327, 14 September 2026: ""Avtovağzal–8 Noyabr sahəsində 5 dəqiqə"""
+purple,Xocəsən – Avtovağzal,autumn and winter timetable,10,2026-09-15,"metro.gov.az/news/327, 14 September 2026: ""Xocəsən–Avtovağzal sahəsində isə 10 dəqiqəlik interval""; the weekday departures from Xocəsən in data/metro/departures.csv are 10 minutes apart from 07:00 to 20:00"
+purple,Xocəsən – 8 Noyabr,summer timetable,8,,"FAQ item 90 and metro.gov.az/az/route-change: ""interval 8 dəqiqə"""

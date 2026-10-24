@@ -1,0 +1,714 @@
+{
+ "data": [
+  {
+   "id": 71,
+   "faqCategoryId": 42,
+   "faqCategoryName": "Təhlükəsizlik",
+   "faqPageName": "Sərnişin Qaydaları Səhifəsi",
+   "order": 1,
+   "isMain": true,
+   "translations": [
+    {
+     "question": "Stansiya yoluna düşən əşya necə çıxarılır?",
+     "answer": "Stansiya yoluna hər hansı əşya düşdükdə, sərnişinlərin özləri müdaxilə etməsi təhlükəlidir. Bu halda platforma nəzarətçisinə və ya yaxınlıqdakı metropoliten əməkdaşına müraciət etmək kifayətdir.\nƏşyanın dərhal götürülməsi mümkündürsə, metropoliten əməkdaşları onu xüsusi qurğular vasitəsilə təhlükəsiz şəkildə çıxarırlar. Bu mümkün olmadıqda isə əşya gecə növbəsində, gərginlik çıxarıldıqdan sonra götürülür və aidiyyəti üzrə polis şöbəsinə təhvil verilir.\nUnutmayın: stansiya yoluna düşən hər hansı əşya ilə bağlı mütləq metropoliten əməkdaşına məlumat verilməlidir.\n",
+     "languageId": 1
+    }
+   ]
+  },
+  {
+   "id": 75,
+   "faqCategoryId": 44,
+   "faqCategoryName": "Əlçatan Metro",
+   "faqPageName": "Əlçatanlıq Səhifəsi",
+   "order": 1,
+   "isMain": true,
+   "translations": [
+    {
+     "question": "“Əlçatan metro” xidmətindən necə istifadə edə bilərəm?",
+     "answer": "Bunun üçün 1–24 saat əvvəl 964 Əlaqə mərkəzinə zəng etməklə sifarişinizin tarixi, vaxtı və səfərin hansı stansiyalar arasında olması barədə məlumat verə bilərsiniz. Qeyd edilən vaxtda və tarixdə Bakı Metropoliteninin “Əlçatan metro” xidmətinin mobil qrupu tərəfindən köməyə ehtiyacı olan sərnişin qarşılanaraq gedəcəyi stansiyanın çıxışına qədər müşayiət olunacaq. ",
+     "languageId": 1
+    }
+   ]
+  },
+  {
+   "id": 80,
+   "faqCategoryId": 45,
+   "faqCategoryName": "Sərnişin Qaydaları",
+   "faqPageName": "Sərnişin Qaydaları Səhifəsi",
+   "order": 1,
+   "isMain": true,
+   "translations": [
+    {
+     "question": "Skuterin metro vasitəsilə daşınmasına icazə verilir?",
+     "answer": "Bakı metropolitenində sadə mexaniki skuterlərin yığılmış vəziyyətdə, icazə verilən  ölçülərdə və çexolda  olmaq şərti ilə daşınması mümkündür. Lakin elektrikli skuterlərin enerji daşıyıcıları tezalışan kimyəvi maddələrdən ibarət olduğundan, onların alışma ehtimalı nəzərə alınaraq, təhlükəsizlik baxımından metropolitendə daşınmasına icazə verilmir.",
+     "languageId": 1
+    }
+   ]
+  },
+  {
+   "id": 85,
+   "faqCategoryId": 46,
+   "faqCategoryName": "TOP 10",
+   "faqPageName": "Ana Səhifə",
+   "order": 1,
+   "isMain": true,
+   "translations": [
+    {
+     "question": "Metropolitendə itirilən əşyalarla bağlı haraya müraciət etmək lazımdır?",
+     "answer": "Stansiya və qatarlarda itən və ya unudulan əşyalarla bağlı Zərgərpalan küçəsi 135 ünvanında (\"Nizami\" stansiyasının girişi yaxınlığında) yerləşən Bakı Metropolitenində Polis İdarəsinə müraciət edə bilərsiniz. ",
+     "languageId": 1
+    }
+   ]
+  },
+  {
+   "id": 91,
+   "faqCategoryId": 50,
+   "faqCategoryName": "Xətlərin ayrılması",
+   "faqPageName": "Marşrut dəyişikliyi Səhifəsi",
+   "order": 1,
+   "isMain": false,
+   "translations": [
+    {
+     "question": "Xətlərin ayrılması layihəsi nədir?",
+     "answer": "Bakı şəhərində nəqliyyat infrastrukturunun təkmilləşdirilməsi istiqamətində 2025-2030-cu illəri əhatə edən Dövlət Proqramına əsasən Yaşıl (“Həzi Aslanov-Dərnəgül”) və Qırmızı (“Həzi Aslanov-İçərişəhər”) xətlərinin ayrılması nəzərdə tutulur. Kompleks tədbirlərə “Dərnəgül” elektrik deposunun tikintisinin tamamlanması, Yaşıl xətt üzrə “Cəfər Cabbarlı-Nizami” istiqamətində birləşdirici 200 m-lik tunelin və “28 May-Cəfər Cabbarlı” stansiyaları arasında daha 1 piyada keçidinin inşası, “İçərişəhər” dönmə kamerasının tikilməsi, habelə 2 yeni dartı elektrik yarımstansiyasının inşası və mövcud dartı elektrik yarımstansiyasının yenidənqurulması nəzərdə tutulub. \nAvqustun 15-dən xətlərin ayrılması layihəsi çərçivəsində “Cəfər Cabbarlı” və “Nizami” stansiyaları arasında təxminən 200 metr uzunluğunda birləşdirici tunellərin tikinti-quraşdırma işlərinə başlanılıb. Bununla əlaqədar, avqustun 15-i saat 06:00-dan etibarən qatarların \"28 May\"–\"Nizami\" mənzili üzrə hərəkəti tam dayandırılıb. Birləşdirici tunellərin tikinti-quraşdırma işlərinin 10–11 ay ərzində başa çatdırılması nəzərdə tutulur.\n",
+     "languageId": 1
+    }
+   ]
+  },
+  {
+   "id": 102,
+   "faqCategoryId": 47,
+   "faqCategoryName": "Bilet sistemi və tariflər",
+   "faqPageName": "Tez-tez Verilən Suallar Səhifəsi",
+   "order": 1,
+   "isMain": true,
+   "translations": [
+    {
+     "question": "Bakı Metropolitenində hansı ödəniş sistemləri mövcuddur?",
+     "answer": "Bakı Metropolitenində gediş haqqını “BakıKart” plastik kartları, “BakıKart” “Birbank” və “m10” tətbiqləri, NFC-ni dəstəkləyən yerli və xarici bank kartları, həmçinin bank kartınızı bərkitdiyiniz cihazla (telefon, saat və s.) ödəyə bilərsiniz.",
+     "languageId": 1
+    }
+   ]
+  },
+  {
+   "id": 72,
+   "faqCategoryId": 42,
+   "faqCategoryName": "Təhlükəsizlik",
+   "faqPageName": "Sərnişin Qaydaları Səhifəsi",
+   "order": 2,
+   "isMain": true,
+   "translations": [
+    {
+     "question": "Eskalatorda necə dayanmaq tövsiyə olunur?",
+     "answer": "Eskalatordan istifadə zamanı təhlükəsizlik üçün sərnişinlərə hərəkət istiqamətində sağ tərəfdə dayanmaq, sürahidən tutmaq tövsiyə olunur.\nEskalatorda ehtiyac olmadıqca hərəkət etməmək daha təhlükəsizdir. Qəfil dayanma hallarında isə tarazlığı qorumaq üçün bu qaydalara riayət etmək vacibdir.",
+     "languageId": 1
+    }
+   ]
+  },
+  {
+   "id": 76,
+   "faqCategoryId": 44,
+   "faqCategoryName": "Əlçatan Metro",
+   "faqPageName": "Əlçatanlıq Səhifəsi",
+   "order": 2,
+   "isMain": true,
+   "translations": [
+    {
+     "question": "Hansı sosial qruplar (Kimlər) “Əlçatan metro” xidmətindən istifadə edə bilər?",
+     "answer": "Əlilliyi olan və ya sağlamlıq imkanları məhdud şəxslər (metropolitendən istifadə imkanları məhdud olan), ahıllar, eləcə də əl yükü olan hamilə qadınlar metroya daxil olmadan 1–24 saat əvvəl 964 Əlaqə mərkəzinə zəng edərək sifarişin tarixi, vaxtı və səfərin hansı stansiyalar arasında həyata keçiriləcəyi barədə məlumat verməklə “Əlçatan metro” xidmətindən yararlana bilərlər.\nSifarişdə hər hansı dəyişiklik və ya imtina barədə məlumatın ən azı 20 dəqiqə öncə bildirilməsi xahiş olunur.\n",
+     "languageId": 1
+    }
+   ]
+  },
+  {
+   "id": 81,
+   "faqCategoryId": 45,
+   "faqCategoryName": "Sərnişin Qaydaları",
+   "faqPageName": "Sərnişin Qaydaları Səhifəsi",
+   "order": 2,
+   "isMain": true,
+   "translations": [
+    {
+     "question": "Velosipedin hansı vəziyyətdə metro vasitəsilə daşınmasına icazə verilir?",
+     "answer": "Təhlükəsizlik qaydalarına uyğun olaraq Bakı metropoliteninə velosipedlə birbaşa daxil olmağa icazə verilmir. Velosiped və digər fərdi təkərli nəqliyyat vasitələri açıq vəziyyətdə daşına bilməz. Yalnız müəyyən ölçülərə uyğun, yığılmış və çexolda yerləşdirilmiş velosiped və digər fərdi nəqliyyat vasitələrinin daşınmasına icazə verilir.",
+     "languageId": 1
+    }
+   ]
+  },
+  {
+   "id": 86,
+   "faqCategoryId": 46,
+   "faqCategoryName": "TOP 10",
+   "faqPageName": "Ana Səhifə",
+   "order": 2,
+   "isMain": true,
+   "translations": [
+    {
+     "question": "Bakı Metropolitenində vakansiya seçimində necə iştirak edə bilərəm?",
+     "answer": "Bunun üçün Bakı Metropoliteninin rəsmi karyera (https://hr.metro.gov.az/) portalına daxil olaraq mövcud vakansiyalarla və onların tələbləri ilə tanış ola, uyğun vakansiya üzrə müraciət edə bilərsiniz.",
+     "languageId": 1
+    }
+   ]
+  },
+  {
+   "id": 103,
+   "faqCategoryId": 47,
+   "faqCategoryName": "Bilet sistemi və tariflər",
+   "faqPageName": "Tez-tez Verilən Suallar Səhifəsi",
+   "order": 2,
+   "isMain": true,
+   "translations": [
+    {
+     "question": "Bank kartları vasitəsilə təmassız ödəniş etdikdə kart balansından əlavə vəsait silinir?",
+     "answer": "Bakı Metropolitenində istifadə üsulundan asılı olmayaraq bir gediş haqqı 0,60 qəpik təşkil edir.",
+     "languageId": 1
+    }
+   ]
+  },
+  {
+   "id": 113,
+   "faqCategoryId": 50,
+   "faqCategoryName": "Xətlərin ayrılması",
+   "faqPageName": "Marşrut dəyişikliyi Səhifəsi",
+   "order": 2,
+   "isMain": false,
+   "translations": [
+    {
+     "question": "Tikinti işləri nə vaxt tamamlanacaq?",
+     "answer": "Xətlərin ayrılması layihəsi çərçivəsində “Cəfər Cabbarlı” və “Nizami” stansiyaları arasında təxminən 200 metr uzunluğunda birləşdirici tunellərin tikintisinin 10–11 ay ərzində başa çatdırılması nəzərdə tutulur.\n",
+     "languageId": 1
+    }
+   ]
+  },
+  {
+   "id": 73,
+   "faqCategoryId": 42,
+   "faqCategoryName": "Təhlükəsizlik",
+   "faqPageName": "Sərnişin Qaydaları Səhifəsi",
+   "order": 3,
+   "isMain": false,
+   "translations": [
+    {
+     "question": "Qatarda texniki nasazlıq olarsa, nə etmək lazımdır?",
+     "answer": "Qatarda texniki nasazlıq baş verərəsə, ən doğru addım maşinistin və metropoliten əməkdaşlarının göstərişlərinə əməl etməkdir. Sərnişinlərin qapıları açmağa cəhd etməsi təhlükəlidir. Təmkinli və səbirli olmaq, ətrafdakı sərnişinləri də sakitliyə dəvət etmək tövsiyə olunur.\n\nƏmin ola bilərsiniz ki, Bakı Metropoliteninin əməkdaşları hər zaman sərnişinlərin təhlükəsizliyi və rahatlığı üçün operativ tədbirlər görür və vəziyyəti nəzarətdə saxlayır.\n",
+     "languageId": 1
+    }
+   ]
+  },
+  {
+   "id": 77,
+   "faqCategoryId": 44,
+   "faqCategoryName": "Əlçatan Metro",
+   "faqPageName": "Əlçatanlıq Səhifəsi",
+   "order": 3,
+   "isMain": true,
+   "translations": [
+    {
+     "question": "Bakı Metropoliteninin stansiyalarında sağlamlıq imkanları məhdud olan şəxslərin rahat hərəkətini təmin etmək üçün niyə lift və panduslar mövcud deyil?",
+     "answer": "Bakı Metropoliteninin mövcud infrastrukturunun texniki imkanları çərçivəsində sağlamlıq imkanları məhdud şəxslər “Əlçatan metro” xidməti vasitəsilə metropolitendən istifadə edə bilərlər. Bunun üçün 1–24 saat əvvəl 964 Əlaqə mərkəzinə müraciət edə bilərsiniz. Hazırda Bakı Metropoliteninin Bənövşəyi xəttində yerləşən “Avtovağzal”, “Memar Əcəmi” və “8 Noyabr” stansiyalarında liftlər quraşdırılıb. İnşa ediləcək bütün yeni stansiyaların da liftlərlə təmin edilməsi nəzərdə tutulur. Bundan əlavə, digər mümkün tədbirlərin görülməsi istiqamətində işlər davam etdirilir.",
+     "languageId": 1
+    }
+   ]
+  },
+  {
+   "id": 87,
+   "faqCategoryId": 46,
+   "faqCategoryName": "TOP 10",
+   "faqPageName": "Ana Səhifə",
+   "order": 3,
+   "isMain": true,
+   "translations": [
+    {
+     "question": "Stansiyalarda “X-Ray” aparatlarının sayı necə tənzimlənir?",
+     "answer": "“X-Ray” aparatlarının ən optimal sayda yerləşdirilməsi Bakı Metropoliteninin stansiyalarında vestibüllərin texniki infrastruktur imkanları və təhlükəsizlik tələbləri nəzərə alınmaqla tənzimlənir. ",
+     "languageId": 1
+    }
+   ]
+  },
+  {
+   "id": 104,
+   "faqCategoryId": 47,
+   "faqCategoryName": "Bilet sistemi və tariflər",
+   "faqPageName": "Tez-tez Verilən Suallar Səhifəsi",
+   "order": 3,
+   "isMain": true,
+   "translations": [
+    {
+     "question": "Bakı Metropolitenində ödənişsiz keçid hansı kateqoriyalara şamil olunur?",
+     "answer": "Azərbaycan Respublikası qanunvericiliyi və hüquqi normativlərə əsasən 7 yaşadək uşaqlar, vəzifə səlahiyyətini icra etdiyi müddətdə polis əməkdaşları, müddətli həqiqi hərbi xidmət qulluqçuları, həmçinin metropoliten işçiləri və veteranları, metrodan pulsuz istifadə edə bilərlər.",
+     "languageId": 1
+    }
+   ]
+  },
+  {
+   "id": 125,
+   "faqCategoryId": 50,
+   "faqCategoryName": "Xətlərin ayrılması",
+   "faqPageName": "Marşrut dəyişikliyi Səhifəsi",
+   "order": 3,
+   "isMain": true,
+   "translations": [
+    {
+     "question": "Xətlərin ayrılması metropolitenə nə qazandıracaq?",
+     "answer": "Xətlərin müstəqil fəaliyyəti təmin olunacaq. Bununla hər bir xəttin öz infrastrukturu və sərnişin tələbatına uyğun qatarların hərəkət intervalının azaldılmasına imkan verəcək. Xətdən xəttə keçən sənişinlər Yaşıl xətt üzrə “Dərnəgül” və “Xətai” istiqamətləri üçün “Cəfər Cabbarlı” stansiyasından, Qırmızı xətt üzrə “İçərişəhər” və “Həzi Aslanov” istiqamətində “28 May” stansiyasından istifadə edəcəklər. “28 May” və “Cəfər Cabbarlı” stansiyaları arasında yuxarı vestibül və platforma səviyyələrinin  hər birində yerləşən 2 piyada pilləkəni vasitəsilə keçid imkanı mövcud olacaq.\nNəticədə, “28 May” stansiyasının platformasında sərnişin sıxlığı azaldılacaq və axınların bir platformada qarışmasının qarşısı alınacaq. Bununla sərnişin axınları bölünəcək, minib-düşmə prosesi daha rahat və nizamlı təşkil olunacaq. Xətlərdə qatarların hərəkəti, infrastruktur və s. səbəblərdən yaranan nasazlıq və çətinliklər digər xətlərə təsir etməyəcək",
+     "languageId": 1
+    }
+   ]
+  },
+  {
+   "id": 74,
+   "faqCategoryId": 42,
+   "faqCategoryName": "Təhlükəsizlik",
+   "faqPageName": "Sərnişin Qaydaları Səhifəsi",
+   "order": 4,
+   "isMain": true,
+   "translations": [
+    {
+     "question": "Qatarda və ya stansiyada sahibsiz əşya görərsinizsə, nə etməlisiniz?",
+     "answer": "Əgər qatarda sahibsiz əşya görsəniz, dərhal “maşinistlə əlaqə” rabitəsi vasitəsilə maşinistə məlumat verin.\nSahibsiz əşya stansiyada aşkar edildikdə isə metropoliten əməkdaşına və ya polis əməkdaşına müraciət etmək kifayətdir.\nBu cür hallarda operativ məlumat vermək həm sizin, həm də digər sərnişinlərin təhlükəsizliyi üçün çox önəmlidir.\n",
+     "languageId": 1
+    }
+   ]
+  },
+  {
+   "id": 78,
+   "faqCategoryId": 44,
+   "faqCategoryName": "Əlçatan Metro",
+   "faqPageName": "Əlçatanlıq Səhifəsi",
+   "order": 4,
+   "isMain": true,
+   "translations": [
+    {
+     "question": "Bakı Metropolitenində uşaq arabası ilə hərəkət edən sərnişinlərə necə kömək göstərilir?",
+     "answer": "Bakı Metropolitenindən istifadə edərkən, körpə ananın qucağında, uşaq arabasının isə yığılmış vəziyyətdə daşınması tövsiyə olunur. Bu sizin və körpənizin təhlükəsizliyinin təmin edilməsi baxımından vacibdir. Körpə ilə metropolitendən istifadə edən valideynlər “Əlçatan metro” xidməti vasitəsilə metropoliten əməkdaşlarının köməyindən yararlana bilərlər. \nBunun üçün sifarişi 1-24 saat əvvəl 964 Əlaqə mərkəzinə yönləndirə bilərsiniz.  Sifarişdə hər hansı dəyişiklik və ya imtina barədə məlumatın ən azı 20 dəqiqə öncə bildirilməsi xahiş olunur.\n",
+     "languageId": 1
+    }
+   ]
+  },
+  {
+   "id": 82,
+   "faqCategoryId": 45,
+   "faqCategoryName": "Sərnişin Qaydaları",
+   "faqPageName": "Sərnişin Qaydaları Səhifəsi",
+   "order": 4,
+   "isMain": true,
+   "translations": [
+    {
+     "question": "Əl yükünün ölçüləri nə qədər olmalıdır?",
+     "answer": "Bakı Metropolitenindən istifadə qaydalarına əsasən, sərnişinlər uzunluğu, eni və hündürlüyünün cəmi 121 sm-dən 200 sm-ə qədər olan, eləcə də uzunluğu 151 sm-dən 220 sm-ə qədər olan əl yükünü əlavə gedişhaqqı ödəməklə metropoliten vasitəsi ilə daşıya bilərlər. Lakin bu tələblərə uyğun olan əl yükünün sayı 2-dən çox olmamalıdır. Bununla yanaşı, stansiyalara daxil olan zaman polis əməkdaşları tərəfindən çantalara baxış keçirilə bilər. ",
+     "languageId": 1
+    }
+   ]
+  },
+  {
+   "id": 88,
+   "faqCategoryId": 46,
+   "faqCategoryName": "TOP 10",
+   "faqPageName": "Ana Səhifə",
+   "order": 4,
+   "isMain": true,
+   "translations": [
+    {
+     "question": "Xətlər ayrıldıqdan sonra Qırmızı xətt üzrə interval nə qədər olacaq?",
+     "answer": "Qırmızı xətt üzrə qatarlararası interval 2 dəqiqə 30 saniyə təşkil edəcək. \"İçərişəhər\" stansiyasının dönmə kamerası istifadəyə verildikdən sonra Qırmızı xətt üzrə interval 2 dəqiqədən artıq olmayacaq.",
+     "languageId": 1
+    }
+   ]
+  },
+  {
+   "id": 105,
+   "faqCategoryId": 47,
+   "faqCategoryName": "Bilet sistemi və tariflər",
+   "faqPageName": "Tez-tez Verilən Suallar Səhifəsi",
+   "order": 4,
+   "isMain": true,
+   "translations": [
+    {
+     "question": "NFC ödəniş sistemi nədir? Bakı Metropolitenində necə işləyir?",
+     "answer": "NFC qısa məsafədə (adətən simsiz) məlumat mübadiləsi texnologiyası əsasında işləyən kontaktsız ödəniş mexanizmidir. Ödəniş etmək üçün  NFC dəstəkləyən bank kartınızı, eləcə də kartın bərkidildiyi cihazı (telefon, saat və s.) turniketin oxuyucu hissəsinə yaxınlaşdıra bilərsiniz.",
+     "languageId": 1
+    }
+   ]
+  },
+  {
+   "id": 126,
+   "faqCategoryId": 46,
+   "faqCategoryName": "TOP 10",
+   "faqPageName": "Ana Səhifə",
+   "order": 4,
+   "isMain": true,
+   "translations": [
+    {
+     "question": "“Bakmil–Nərimanov” və əks istiqamətdə qatarların hərəkət qrafiki ilə bağlı necə məlumat əldə edə bilərəm?",
+     "answer": "Bakı Metropoliteninin rəsmi saytına daxil olaraq “Qrafik” bölməsindən (https://metro.gov.az/train-timetable) qatarların hərəkət qrafiki barədə ətraflı məlumat əldə edə bilərsiniz.",
+     "languageId": 1
+    }
+   ]
+  },
+  {
+   "id": 79,
+   "faqCategoryId": 44,
+   "faqCategoryName": "Əlçatan Metro",
+   "faqPageName": "Əlçatanlıq Səhifəsi",
+   "order": 5,
+   "isMain": true,
+   "translations": [
+    {
+     "question": "Sağlamlıq imkanları məhdud olan şəxslər əlil arabası üçün Bakı Metropolitenindən istifadə edərkən əlavə gediş haqqı ödəməlidir?",
+     "answer": "Əlil arabası ilə Bakı metropolitenindən istifadə edən şərnişinlər üçün əlavə gediş haqqı nəzərdə tutulmur. Onlar yalnız bir gediş haqqı (0,60 qəpik) ödəyir.",
+     "languageId": 1
+    }
+   ]
+  },
+  {
+   "id": 89,
+   "faqCategoryId": 46,
+   "faqCategoryName": "TOP 10",
+   "faqPageName": "Ana Səhifə",
+   "order": 5,
+   "isMain": true,
+   "translations": [
+    {
+     "question": "Yaşıl xətt üzrə intervalın azaldılması nə vaxt təmin olunacaq?",
+     "answer": "Bakı Metropoliteninin “28 May–Dərnəgül” istiqamətlərində pik saatlarda interval 3 dəqiqə 30 saniyə, digər saatlarda isə 5–7 dəqiqə aralığındadır. Hazırda Bakı metropolitenində intervallar texniki imkanların ən optimal həddinə çatdırılıb. Gələcəkdə xətlərin ayrılması layihəsi tam icra olunduqdan, “Dərnəgül” elektrik deposunun tikintisi tam başa çatdırıldıqdan sonra qatarlararası intervalların daha da azaldılması nəzərdə tutulur.",
+     "languageId": 1
+    }
+   ]
+  },
+  {
+   "id": 106,
+   "faqCategoryId": 47,
+   "faqCategoryName": "Bilet sistemi və tariflər",
+   "faqPageName": "Tez-tez Verilən Suallar Səhifəsi",
+   "order": 5,
+   "isMain": true,
+   "translations": [
+    {
+     "question": "“QR bilet” vasitəsilə necə ödəniş etmək mümkündür?",
+     "answer": "Bunun üçün “BakıKart”, “Birbank” və “m10” tətbiqləri vasitəsilə QR bilet yaratmaq lazımdır. “QR bilet” yalnız bir gediş üçün nəzərdə tutulur və hər keçid üçün yeni bilet yaratmaq lazımdır. QR bilet vasitəsilə turniketdən keçid zamanı 5 dəqiqə ərzində istifadə edilməyən gediş haqqı 72 saat ərzində kart balansına geri köçürülür.",
+     "languageId": 1
+    }
+   ]
+  },
+  {
+   "id": 117,
+   "faqCategoryId": 50,
+   "faqCategoryName": "Xətlərin ayrılması",
+   "faqPageName": "Marşrut dəyişikliyi Səhifəsi",
+   "order": 5,
+   "isMain": false,
+   "translations": [
+    {
+     "question": "“28 May” və “Cəfər Cabbarlı” stansiyaları arasında sərnişinlərin hərəkəti necə tənzimlənəcək?",
+     "answer": "Xətlərin ayrılması layihəsi çərçivəsində \"28 May\" və \"Cəfər Cabbarlı\" stansiyalarının platformasında ikinci piyada pilləkəninin tikintisi yekunlaşmaq üzrədir. Layihə başa çatdıqdan sonra sərnişinlər hər iki pilləkəndən istifadə edərək stansiyalar arasında daha rahat və sürətli hərəkət edə biləcəklər.",
+     "languageId": 1
+    }
+   ]
+  },
+  {
+   "id": 127,
+   "faqCategoryId": 50,
+   "faqCategoryName": "Xətlərin ayrılması",
+   "faqPageName": "Marşrut dəyişikliyi Səhifəsi",
+   "order": 5,
+   "isMain": false,
+   "translations": [
+    {
+     "question": "“Həzi Aslanov” stansiyasının dalanında təmir işləri nə vaxt tamamlanacaq?",
+     "answer": "Bakı Metropoliteninin “Həzi Aslanov” stansiyasının dalan yolunda aparılan yenidənqurma işlərinin 2026-cı ilin noyabr ayının sonunadək tamamlanması planlaşdırılır.",
+     "languageId": 1
+    }
+   ]
+  },
+  {
+   "id": 84,
+   "faqCategoryId": 45,
+   "faqCategoryName": "Sərnişin Qaydaları",
+   "faqPageName": "Sərnişin Qaydaları Səhifəsi",
+   "order": 6,
+   "isMain": true,
+   "translations": [
+    {
+     "question": "Bakı Metropoliteni ərazisində telefonumu harda şarj edə bilərəm?",
+     "answer": "Yeni nəsil qatarlarda mövcud olan USB portlar vasitəsilə sərnişinlər telefonlarını şarj edə bilərlər. Lakin stansiyalarda olan elektrik qovşaqlarından istifadə edilməsi tövsiyə olunmur. ",
+     "languageId": 1
+    }
+   ]
+  },
+  {
+   "id": 90,
+   "faqCategoryId": 46,
+   "faqCategoryName": "TOP 10",
+   "faqPageName": "Ana Səhifə",
+   "order": 6,
+   "isMain": true,
+   "translations": [
+    {
+     "question": "Bənövşəyi xətt üzrə intervalın azaldılması nə vaxt təmin olunacaq?",
+     "answer": "Yay qrafikinə uyğun olaraq, Bənövşəyi xətt üzrə (“Xocəsən-8 Noyabr”) hərəkət intervalı 8 dəqiqə təşkil edir. Ümumilikdə Bənövşəyi xətt üzrə intervalın əsaslı şəkildə azaldılması yeni stansiyaların tikintisi, o cümlədən sərnişin axınının və tələbatın artması ilə əlaqədar olaraq təmin ediləcək.",
+     "languageId": 1
+    }
+   ]
+  },
+  {
+   "id": 107,
+   "faqCategoryId": 47,
+   "faqCategoryName": "Bilet sistemi və tariflər",
+   "faqPageName": "Tez-tez Verilən Suallar Səhifəsi",
+   "order": 6,
+   "isMain": true,
+   "translations": [
+    {
+     "question": "Təmassız ödəniş zamanı hansı halda bank kartı məhdudlaşdırıla bilər?",
+     "answer": "Bakı Metropolitenindən bank kartında kifayət qədər vəsait olmadığı halda istifadə edildikdən sonra kart üzrə məhdudiyyət tətbiq olunur. Bank tərəfindən gediş haqqının silinməsi ilə bağlı ilk bildiriş 8 saat sonra göndərilir. Növbəti bildirişlər isə mərhələli şəkildə 3, 7 və 30 gün sonra yenidən təqdim edilir. Zəhmət olmasa, kartınıza tətbiq edilən məhdudiyyətin aradan qaldırılması üçün balansınızda kifayət qədər vəsait saxlayasınız.",
+     "languageId": 1
+    }
+   ]
+  },
+  {
+   "id": 118,
+   "faqCategoryId": 50,
+   "faqCategoryName": "Xətlərin ayrılması",
+   "faqPageName": "Marşrut dəyişikliyi Səhifəsi",
+   "order": 6,
+   "isMain": false,
+   "translations": [
+    {
+     "question": "Yaşıl xətt üzrə qatarların hərəkəti necə təmin ediləcək?",
+     "answer": "Xətlərin ayrılması layihəsi çərçivəsində “Cəfər Cabbarlı-Nizami” mənzilində  200 metrlik birləşdirici tunelin inşası dövründə qatarlar \"Dərnəgül” və \"Nizami\" stansiyaları arasında hərəkət edəcək. Tikinti işlərinin təxminən 10–11 ay davam etməsi nəzərdə tutulur. Daha sonra qatarlar Yaşıl xətt üzrə “Dərnəgül-Xətai” marşrutu üzrə müntəzəm hərəkət edəcək. \n",
+     "languageId": 1
+    }
+   ]
+  },
+  {
+   "id": 134,
+   "faqCategoryId": 50,
+   "faqCategoryName": "Xətlərin ayrılması",
+   "faqPageName": "Marşrut dəyişikliyi Səhifəsi",
+   "order": 6,
+   "isMain": false,
+   "translations": [
+    {
+     "question": "Xətlər ayrıldıqdan sonra Yaşıl xətdə yaranan çətinlik Qırmızı xəttə təsir etməyəcək?",
+     "answer": "Xətlərin ayrılması layihəsi icra olunduqdan sonra xətlərdən birində yaranan hər hansı çətinlik digər xətlərin fəaliyyətinə təsir göstərməyəcək. Çünki hər bir xətt müstəqil olacaq və infrastrukturu, vaqon parkı ayrı fəaliyyət göstərəcək. Hər xətt üzrə hərəkət intervalı müvafiq infrastruktur və sərnişin tələbatı imkanlarına görə müəyyən ediləcək.",
+     "languageId": 1
+    }
+   ]
+  },
+  {
+   "id": 108,
+   "faqCategoryId": 47,
+   "faqCategoryName": "Bilet sistemi və tariflər",
+   "faqPageName": "Tez-tez Verilən Suallar Səhifəsi",
+   "order": 7,
+   "isMain": true,
+   "translations": [
+    {
+     "question": "Bakı Metropolitenində diferensial ödəniş üsulunun tətbiq edilməsi mümkündür?",
+     "answer": "Hazırda bu istiqamətdə müvafiq təhlillər aparılır. Metropolitenin mövcud infrastrukturu, texniki imkanları və sərnişinlər üçün ən uyğun diferensial ödəniş modelinin tətbiqi perspektivləri öyrənilir. Ödəniş sistemilə bağlı qərar qəbul edilərsə, ictimaiyyətə ətraflı məlumat veriləcək.",
+     "languageId": 1
+    }
+   ]
+  },
+  {
+   "id": 130,
+   "faqCategoryId": 50,
+   "faqCategoryName": "Xətlərin ayrılması",
+   "faqPageName": "Marşrut dəyişikliyi Səhifəsi",
+   "order": 7,
+   "isMain": false,
+   "translations": [
+    {
+     "question": "Gələcəkdə “28 May” stansiyasının platformasındakı sıxlıq azala bilər?",
+     "answer": "Xətlərin ayrılması layihəsi tamamlandıqdan sonra “Dərnəgül” və “Xətai” stansiyaları istiqamətində səfər etmək üçün “Cəfər Cabbarlı” stansiyasının platformalarından, “İçərişəhər” və “Həzi Aslanov” stansiyaları  istiqamətində səfər etmək üçün “28 May” stansiyasının platformalarından istifadə ediləcək. Qatarların hərəkəti bir istiqamətdə təşkil olunduğuna görə sərnişinlər stansiyaya daxil olan hər qatarla səfərlərini davam etdirə biləcəklər. Bu da platformalarda sıxlığın yaranmasının əsas səbəbi olan sərnişin axınlarının qarışmasının, həmçinin qatara minib-düşmə prosesinin ləngiməsinin və qrafik pozuntularının qarşısını almağa imkan verəcək.",
+     "languageId": 1
+    }
+   ]
+  },
+  {
+   "id": 131,
+   "faqCategoryId": 50,
+   "faqCategoryName": "Xətlərin ayrılması",
+   "faqPageName": "Marşrut dəyişikliyi Səhifəsi",
+   "order": 7,
+   "isMain": false,
+   "translations": [
+    {
+     "question": "Tıxaclara qarşı hansı tədbirləri nəzərə almısınız?",
+     "answer": "Bakı Metropolitenində xətlərin ayrılması ilə əlaqədar AYNA tərəfindən 6 istiqamət üzrə ekspres marşrut xətti təşkil edilib. Sərnişindaşıma imkanlarının artırılması məqsədilə digər müntəzəm marşrutlar üzrə avtobusların sayı artırılaraq gücləndirilmiş iş rejimində hərəkəti təmin olunur. Həmçinin marşrutlar üzrə müntəzəm monitorinqlər aparılır və zərurət yarandıqda, istiqamətlər və marşrutlar üzrə dəyişikliklərin edilməsi mümkündür.",
+     "languageId": 1
+    }
+   ]
+  },
+  {
+   "id": 133,
+   "faqCategoryId": 50,
+   "faqCategoryName": "Xətlərin ayrılması",
+   "faqPageName": "Marşrut dəyişikliyi Səhifəsi",
+   "order": 7,
+   "isMain": false,
+   "translations": [
+    {
+     "question": "Yaşıl və Qırmızı xətlərin ayrılması üzrə tikinti işləri niyə 11 ay davam edəcək?",
+     "answer": "“Cəfər Cabbarlı–Nizami” mənzilinin yerləşdiyi ərazinin mürəkkəb hidrogeoloji quruluşu nəzərə alınaraq, tikinti işlərinin təxminən 11 ay davam etməsi nəzərdə tutulur. ",
+     "languageId": 1
+    }
+   ]
+  },
+  {
+   "id": 122,
+   "faqCategoryId": 50,
+   "faqCategoryName": "Xətlərin ayrılması",
+   "faqPageName": "Marşrut dəyişikliyi Səhifəsi",
+   "order": 8,
+   "isMain": false,
+   "translations": [
+    {
+     "question": "Hazırda Qırmızı xətt üzrə interval nə qədərdir?",
+     "answer": "Xətlərin ayrılmasına başlanılması ilə əlaqədar qatarlar Qırmızı xətt üzrə “İçərişəhər-Həzi Aslanov” və əks istiqamətdə hərəkət edir. Hazırda qatarlararası interval 2 dəqiqə 30 saniyə təşkil edir. Xətt müstəqil fəaliyyətə başladığından texniki imkanların optimallaşdırılması ilə intervalın daha da azaldılması istiqamətində işlər aparılır. \"İçərişəhər\" stansiyasının dönmə kamerası istifadəyə verildikdən sonra Qırmızı xətt üzrə interval maksimal interval 2 dəqiqə olacaq.",
+     "languageId": 1
+    }
+   ]
+  },
+  {
+   "id": 135,
+   "faqCategoryId": 50,
+   "faqCategoryName": "Xətlərin ayrılması",
+   "faqPageName": "Marşrut dəyişikliyi Səhifəsi",
+   "order": 8,
+   "isMain": false,
+   "translations": [
+    {
+     "question": "“28 May- Nizami” tunelindən müvəqqəti olaraq qatarların hərəkəti mümkündür?",
+     "answer": "Xətlərin ayrılması layihəsi çərçivəsində “Cəfər Cabbarlı-Nizami” stansiyaları arasında qatarların hərəkəti dayandırılıb. Hazırda tikinti işləri “28 May–Nizami” mənzilində qatarların əvvəllər hərəkət etdiyi sahədə aparılır. Qeyd edək ki, qatarlar Yaşıl xətt üzrə “Dərnəgül–Nizami–Dərnəgül” istiqamətində hərəkət edir.",
+     "languageId": 1
+    }
+   ]
+  },
+  {
+   "id": 100,
+   "faqCategoryId": 46,
+   "faqCategoryName": "TOP 10",
+   "faqPageName": "Ana Səhifə",
+   "order": 9,
+   "isMain": true,
+   "translations": [
+    {
+     "question": "Metroda foto və video çəkiliş aparmaq üçün necə müraciət edə bilərəm?",
+     "answer": "Metropoliten ərazisində foto və video çəkilişlər Azərbaycan Respublikasının Nazirlər Kabinetinin təsdiq etdiyi qaydalara əsasən Bakı Metropoliteni tərəfindən verilən müvafiq icazə əsasında aparılır. İcazələr “Bakı Metropoliteni” QSC-yə yazılı və ya rəsmi elektron poçt ünvanı (info@metro.gov.az) vasitəsilə müraciət əsasında alına bilər.",
+     "languageId": 1
+    }
+   ]
+  },
+  {
+   "id": 121,
+   "faqCategoryId": 50,
+   "faqCategoryName": "Xətlərin ayrılması",
+   "faqPageName": "Marşrut dəyişikliyi Səhifəsi",
+   "order": 9,
+   "isMain": false,
+   "translations": [
+    {
+     "question": "Yaşıl xətt və “Cəfər-Cabbarlı-Xətai” mənzili üzrə qatarlararası interval nə qədər olacaq?",
+     "answer": "Xətlərin ayrılmasının ilk mərhələsində Yaşıl xətt üzrə qatar intervalı 3 dəqiqə 30 saniyə təşkil edəcək. Bununla da \"Cəfər Cabbarlı–Xətai\" sahəsində mövcud olan 8 dəqiqəlik interval azaldılacaq. Növbəti mərhələdə yeni stansiyalar və dönmə infrastrukturu inşa edildikdən sonra intervalın 2 dəqiqəyədək azaldılması nəzərdə tutulur.\n",
+     "languageId": 1
+    }
+   ]
+  },
+  {
+   "id": 128,
+   "faqCategoryId": 46,
+   "faqCategoryName": "TOP 10",
+   "faqPageName": "Ana Səhifə",
+   "order": 9,
+   "isMain": true,
+   "translations": [
+    {
+     "question": "Stansiyalarda olan köşkləri necə icarəyə götürmək olar?",
+     "answer": "Bakı Metropolitenində kommersiya təklifləri ilə bağlı commerce@metro.gov.az elektron ünvanına yaza və ya +994 10 232 02 22 nömrəsinə zəng edə bilərsiniz. Həmçinin stansiyalarda kommersiya obyektlərini (commerce@metro.gov.az) veb-saytı vasitəsilə seçməyiniz tövsiyə olunur. Müraciətiniz üçün təşəkkür edirik.",
+     "languageId": 1
+    }
+   ]
+  },
+  {
+   "id": 101,
+   "faqCategoryId": 50,
+   "faqCategoryName": "Xətlərin ayrılması",
+   "faqPageName": "Marşrut dəyişikliyi Səhifəsi",
+   "order": 10,
+   "isMain": false,
+   "translations": [
+    {
+     "question": "Xətlərin ayrılması layihəsinin icrası zamanı hərəkət necə təşkil olunur?",
+     "answer": "Layihənin icrası dövründə “28 May” stansiyasında hərəkət məhdudlaşdırılmayıb. Qırmızı xətdə (\"İçərişəhər-Həzi Aslanov\") hər iki istiqamətdə qatarların hərəkətində heç bir məhdudiyyət yoxdur. 200 m tunelin inşası zamanı Yaşıl xətt üzrə qatarlar “Dərnəgül-Nizami” istiqamətində hərəkət edir. Həmin müddətdə “Nizami” və “28 May” stansiyaları arasında sərnişinlərin yerüstü ictimai nəqliyyatdan istifadəsi üçün ekspres marşrutlar təşkil olunub.  Xətlər ayrıldıqdan sonra Yaşıl xətt üzrə “Dərnəgül-Xətai” istiqamətində müstəqil hərəkət təşkil olunacaq. Sərnişinlər Yaşıl və Qırmızı xətlər arasında “28 May-Cəfər Cabbarlı” stansiyalarında keçid edə biləcəklər. ",
+     "languageId": 1
+    }
+   ]
+  },
+  {
+   "id": 129,
+   "faqCategoryId": 46,
+   "faqCategoryName": "TOP 10",
+   "faqPageName": "Ana Səhifə",
+   "order": 10,
+   "isMain": true,
+   "translations": [
+    {
+     "question": "Səlahiyyətli şəxslə görüş üçün necə qeydiyyatdan keçə bilərəm?",
+     "answer": "Bakı Metropoliteninin səlahiyyətli şəxslərlə görüşdə iştirak etmək üçün info@metro.gov.az elektron ünvanına müraciət edə bilərsiniz. Həmçinin, \"28 May\" stansiyasının yaxınlığında yerləşən Nəsimi rayonu, Mikayıl Rəfili küçəsi 16 ünvanına yaxınlaşaraq \"Vətəndaşların qəbulu\" şöbəsindən qəbul günləri barədə ətraflı məlumat ala bilərsiniz.",
+     "languageId": 1
+    }
+   ]
+  },
+  {
+   "id": 114,
+   "faqCategoryId": 50,
+   "faqCategoryName": "Xətlərin ayrılması",
+   "faqPageName": "Marşrut dəyişikliyi Səhifəsi",
+   "order": 12,
+   "isMain": false,
+   "translations": [
+    {
+     "question": "ADNSU və Bakı Dəmiryol Vağzalının yaxınlığında aparılan tikinti nə ilə bağlıdır?",
+     "answer": "ADNSU və Bakı Dəmiryol Vağzalının yaxınlığında hasarlanmış sahələrdə xətlərin ayrılması layihəsi çərçivəsində “Cəfər Cabbarlı” və “Nizami” stansiyaları arasında inşa ediləcək təxminən 200 metr uzunluğunda birləşdirici tunellər üçün hazırlıq şaxtaları qazılıb. Həmin şaxtalar vasitəsilə tikinti-qazıntı işlərinin aparılması məqsədilə xüsusi texnika, maşın-mexanizmlər və avadanlıqların qazıntı sahəsinə endirilməsi təmin olunur. Tikinti işləri başa çatdıqdan sonra isə bu müvəqqəti hazırlıq şaxtaları ləğv ediləcək.\n",
+     "languageId": 1
+    }
+   ]
+  },
+  {
+   "id": 123,
+   "faqCategoryId": 50,
+   "faqCategoryName": "Xətlərin ayrılması",
+   "faqPageName": "Marşrut dəyişikliyi Səhifəsi",
+   "order": 12,
+   "isMain": false,
+   "translations": [
+    {
+     "question": "“İçərişəhər” stansiyasında dönmə kamerasında tikinti işləri nə vaxt tamamlanacaq?",
+     "answer": "“İçərişəhər” dönmə kamerasında aparılan tikinti işlərinin 2028-ci ilin ikinci yarısında tamamlanması nəzərdə tutulur.\n",
+     "languageId": 1
+    }
+   ]
+  },
+  {
+   "id": 124,
+   "faqCategoryId": 50,
+   "faqCategoryName": "Xətlərin ayrılması",
+   "faqPageName": "Marşrut dəyişikliyi Səhifəsi",
+   "order": 13,
+   "isMain": false,
+   "translations": [
+    {
+     "question": "\"Həzi Aslanov–Nizami–Dərnəgül\" və \"8 Noyabr–Xocəsən\" istiqamətində qatarların hərəkəti necə təmin ediləcək?",
+     "answer": "\"Həzi Aslanov–Nizami–Dərnəgül\", həmçinin Bənövşəyi xəttin \"8 Noyabr–Xocəsən\" istiqamətlərində birbaşa metro əlaqəsi müvəqqəti təmin edilməyəcək. Sərnişinlərin rahat hərəkətini təmin etmək məqsədilə aparılan birgə təhlillər əsasında AYNA tərəfindən alternativ yerüstü ictimai nəqliyyat marşrutlarının təşkili nəzərdə tutulur.\n",
+     "languageId": 1
+    }
+   ]
+  }
+ ],
+ "totalCount": 47,
+ "isSuccess": true,
+ "statusCode": 200,
+ "message": "The operation was completed successfully.",
+ "innerMessage": null
+}

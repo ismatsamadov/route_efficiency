@@ -1,0 +1,217 @@
+{
+ "metroJourneyBusData": null,
+ "metroJourneyBusDatas": [],
+ "journeyId": "none",
+ "fromStation": "Bakmil",
+ "toStation": "Nərimanov",
+ "totalEstimatedTime": 5,
+ "arrivalTime": "06:20:00",
+ "lines": [
+  {
+   "startMetroJourneyBusData": null,
+   "startWalkByInfo": null,
+   "endWalkByInfo": null,
+   "lineId": "default",
+   "stations": [
+    {
+     "stationId": 12,
+     "name": "Bakmil",
+     "arrivalTime": "06:15:00",
+     "arrivalTimeDatetime": "2026-10-25T06:15:00",
+     "stationToInfo": null,
+     "stationType": "Direct",
+     "amenities": null,
+     "stationCrowdInfo": {
+      "generalLevel": "Normal",
+      "lowestCrowdedPlatforms": null
+     }
+    },
+    {
+     "stationId": 11,
+     "name": "Nərimanov",
+     "arrivalTime": "06:20:00",
+     "arrivalTimeDatetime": "2026-10-25T06:20:00",
+     "stationToInfo": null,
+     "stationType": "Direct",
+     "amenities": null,
+     "stationCrowdInfo": {
+      "generalLevel": "Normal",
+      "lowestCrowdedPlatforms": null
+     }
+    }
+   ],
+   "lineColor": "#FF0000",
+   "transferInstructions": null,
+   "transferSteps": [],
+   "exits": [
+    {
+     "exitNumber": 1,
+     "side": "Left",
+     "hasApar": false,
+     "capabilities": [
+      "StairsElevator",
+      "Stairs",
+      "TactilePaving"
+     ],
+     "places": [
+      {
+       "name": "Təbriz küç."
+      },
+      {
+       "name": "Mirzəbala Məmmədzadə küç."
+      },
+      {
+       "name": "Heydər Əliyev Mərkəzi"
+      },
+      {
+       "name": "Uşaq stomatoloji poliklinikası"
+      }
+     ]
+    },
+    {
+     "exitNumber": 2,
+     "side": "Left",
+     "hasApar": false,
+     "capabilities": [
+      "StairsElevator"
+     ],
+     "places": [
+      {
+       "name": "Əhməd Rəcəbli küç."
+      },
+      {
+       "name": "Təbriz küç."
+      },
+      {
+       "name": "58 saylı uşaq bağçası"
+      }
+     ]
+    },
+    {
+     "exitNumber": 3,
+     "side": "Left",
+     "hasApar": false,
+     "capabilities": [
+      "StairsElevator",
+      "Stairs"
+     ],
+     "places": [
+      {
+       "name": "Ağa Nemətulla küç."
+      },
+      {
+       "name": "Təbriz küç."
+      }
+     ]
+    },
+    {
+     "exitNumber": 4,
+     "side": "Left",
+     "hasApar": false,
+     "capabilities": [
+      "StairsElevator",
+      "Stairs"
+     ],
+     "places": [
+      {
+       "name": "Bakı Vergilər Departamenti"
+      },
+      {
+       "name": "Metropark TM"
+      },
+      {
+       "name": "Təbriz küç."
+      },
+      {
+       "name": "Ağa Nemətulla küç."
+      },
+      {
+       "name": "Nərimanov parkı"
+      }
+     ]
+    },
+    {
+     "exitNumber": 5,
+     "side": "Right",
+     "hasApar": false,
+     "capabilities": [
+      "Stairs"
+     ],
+     "places": [
+      {
+       "name": "Bakı Vergilər Departamenti"
+      }
+     ]
+    }
+   ],
+   "aparAvailableExits": [
+    1,
+    3
+   ],
+   "train": {
+    "arrivalCountdown": 300,
+    "travelTimeToNextStation": 300,
+    "wagonCrowdness": [
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "amenities": null,
+    "lineId": 2,
+    "lineColor": "#FF0000",
+    "direction": "Bakmil",
+    "arrivalTime": "2026-10-25T02:40:23.2164016Z",
+    "arrivalTimeForCalculate": "2026-10-25T02:35:23.2164016Z"
+   },
+   "nextTrainSchedules": [
+    "06:28:30",
+    "06:33:30",
+    "06:38:30"
+   ],
+   "endMetroJourneyBusData": null
+  }
+ ],
+ "trains": [],
+ "lineGeometries": [],
+ "stationAmenities": [
+  {
+   "station": "Starting",
+   "exitCapabilities": {
+    "StairsElevator": [
+     1
+    ],
+    "Stairs": [
+     1
+    ],
+    "WheelchairAccessible": [
+     1
+    ],
+    "TactilePaving": [
+     1
+    ]
+   }
+  },
+  {
+   "station": "Ending",
+   "exitCapabilities": {
+    "StairsElevator": [
+     1,
+     2,
+     3,
+     4
+    ],
+    "Stairs": [
+     1,
+     3,
+     4,
+     5
+    ],
+    "TactilePaving": [
+     1
+    ]
+   }
+  }
+ ]
+}

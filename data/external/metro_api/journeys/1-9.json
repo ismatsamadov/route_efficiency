@@ -1,0 +1,395 @@
+{
+ "metroJourneyBusData": null,
+ "metroJourneyBusDatas": [],
+ "journeyId": "none",
+ "fromStation": "Dərnəgül",
+ "toStation": "28 May",
+ "totalEstimatedTime": 24,
+ "arrivalTime": "06:24:00",
+ "lines": [
+  {
+   "startMetroJourneyBusData": null,
+   "startWalkByInfo": null,
+   "endWalkByInfo": null,
+   "lineId": "default",
+   "stations": [
+    {
+     "stationId": 1,
+     "name": "Dərnəgül",
+     "arrivalTime": "06:00:00",
+     "arrivalTimeDatetime": "2026-10-25T06:00:00",
+     "stationToInfo": null,
+     "stationType": "Direct",
+     "amenities": null,
+     "stationCrowdInfo": {
+      "generalLevel": "Normal",
+      "lowestCrowdedPlatforms": null
+     }
+    },
+    {
+     "stationId": 2,
+     "name": "Azadlıq Prospekti",
+     "arrivalTime": "06:02:49",
+     "arrivalTimeDatetime": "2026-10-25T06:02:49",
+     "stationToInfo": null,
+     "stationType": "Direct",
+     "amenities": null,
+     "stationCrowdInfo": {
+      "generalLevel": "Normal",
+      "lowestCrowdedPlatforms": null
+     }
+    },
+    {
+     "stationId": 3,
+     "name": "Nəsimi",
+     "arrivalTime": "06:05:19",
+     "arrivalTimeDatetime": "2026-10-25T06:05:19",
+     "stationToInfo": null,
+     "stationType": "Direct",
+     "amenities": null,
+     "stationCrowdInfo": {
+      "generalLevel": "Normal",
+      "lowestCrowdedPlatforms": null
+     }
+    },
+    {
+     "stationId": 4,
+     "name": "Memar Əcəmi",
+     "arrivalTime": "06:08:19",
+     "arrivalTimeDatetime": "2026-10-25T06:08:19",
+     "stationToInfo": null,
+     "stationType": "Direct",
+     "amenities": null,
+     "stationCrowdInfo": {
+      "generalLevel": "Normal",
+      "lowestCrowdedPlatforms": null
+     }
+    },
+    {
+     "stationId": 5,
+     "name": "20 Yanvar",
+     "arrivalTime": "06:10:26",
+     "arrivalTimeDatetime": "2026-10-25T06:10:26",
+     "stationToInfo": null,
+     "stationType": "Direct",
+     "amenities": null,
+     "stationCrowdInfo": {
+      "generalLevel": "Normal",
+      "lowestCrowdedPlatforms": null
+     }
+    },
+    {
+     "stationId": 6,
+     "name": "İnşaatçılar",
+     "arrivalTime": "06:13:06",
+     "arrivalTimeDatetime": "2026-10-25T06:13:06",
+     "stationToInfo": null,
+     "stationType": "Direct",
+     "amenities": null,
+     "stationCrowdInfo": {
+      "generalLevel": "Normal",
+      "lowestCrowdedPlatforms": null
+     }
+    },
+    {
+     "stationId": 7,
+     "name": "Elmlər Akademiyası",
+     "arrivalTime": "06:16:48",
+     "arrivalTimeDatetime": "2026-10-25T06:16:48",
+     "stationToInfo": null,
+     "stationType": "Direct",
+     "amenities": null,
+     "stationCrowdInfo": {
+      "generalLevel": "Normal",
+      "lowestCrowdedPlatforms": null
+     }
+    },
+    {
+     "stationId": 8,
+     "name": "Nizami",
+     "arrivalTime": "06:20:00",
+     "arrivalTimeDatetime": "2026-10-25T06:20:00",
+     "stationToInfo": null,
+     "stationType": "Direct",
+     "amenities": null,
+     "stationCrowdInfo": {
+      "generalLevel": "Normal",
+      "lowestCrowdedPlatforms": null
+     }
+    }
+   ],
+   "lineColor": "#41A317",
+   "transferInstructions": null,
+   "transferSteps": [
+    {
+     "order": 1,
+     "instruction": "Stansiyadan çıxın.",
+     "transferInstructionType": "ExitStation"
+    },
+    {
+     "order": 2,
+     "instruction": "\"M2\" və ya \"M3\" ekspres avtobusundan istifadə edərək \"28  May\" stansiyasına səfərinizi davam edin.",
+     "transferInstructionType": "FollowSigns"
+    }
+   ],
+   "exits": [
+    {
+     "exitNumber": 1,
+     "side": "stright",
+     "hasApar": false,
+     "capabilities": [
+      "Escalator"
+     ],
+     "places": [
+      {
+       "name": "Əmək və Əhalinin Sosial Müdafiəsi Nazirliyi"
+      },
+      {
+       "name": "Cəfər Cabbarlı küç."
+      },
+      {
+       "name": "Murtuza Muxtarov küç."
+      },
+      {
+       "name": "Həmidağa Hüseynzadə küç."
+      },
+      {
+       "name": "Salatın Əsgərova küç."
+      },
+      {
+       "name": "Əli bəy Hüseunzadə küç."
+      },
+      {
+       "name": "Şıxəli Qurbanov küç."
+      },
+      {
+       "name": "Bakı Metropolitenində Polis İdarəsi"
+      },
+      {
+       "name": "Xarici İşlər Nazirliyi"
+      },
+      {
+       "name": "Üzeyir Hacıbəylinin ev-muzeyi"
+      }
+     ]
+    }
+   ],
+   "aparAvailableExits": [
+    1
+   ],
+   "train": {
+    "arrivalCountdown": 169,
+    "travelTimeToNextStation": 169,
+    "wagonCrowdness": [
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "amenities": null,
+    "lineId": 3,
+    "lineColor": "#41A317",
+    "direction": "Dərnəgül",
+    "arrivalTime": "2026-10-25T02:38:16.450441Z",
+    "arrivalTimeForCalculate": "2026-10-25T02:35:27.450441Z"
+   },
+   "nextTrainSchedules": [
+    "06:05:00",
+    "06:10:00",
+    "06:15:00"
+   ],
+   "endMetroJourneyBusData": null
+  },
+  {
+   "startMetroJourneyBusData": null,
+   "startWalkByInfo": null,
+   "endWalkByInfo": null,
+   "lineId": "default",
+   "stations": [
+    {
+     "stationId": 8,
+     "name": "Nizami",
+     "arrivalTime": "06:21:00",
+     "arrivalTimeDatetime": "2026-10-25T06:21:00",
+     "stationToInfo": {
+      "header": {
+       "az": "Müvəqqəti avtobusla hərəkəti davam etdirin",
+       "en": "Continue your journey by temporary bus service",
+       "ru": "Продолжите движение на временном автобусе"
+      },
+      "body": {
+       "az": "Nizami stansiyasından \"28 May\"a gediş ekspres avtobuslarla həyata keçirilir",
+       "en": "Travel from Nizami station to 28 May is provided by express buses",
+       "ru": "Проезд от станции «Низами» до станции «28 Мая» осуществляется экспресс-автобусами"
+      },
+      "busRoutes": [
+       {
+        "routeName": "M2",
+        "color": "#F51D1A",
+        "header": {
+         "az": "Nizami-28 May",
+         "en": "Nizami-28 May",
+         "ru": "Nizami-28 May"
+        }
+       },
+       {
+        "routeName": "M1",
+        "color": "#9A1C81",
+        "header": {
+         "az": "Nizami-28 May",
+         "en": "Nizami-28 May",
+         "ru": "Nizami-28 May"
+        }
+       }
+      ]
+     },
+     "stationType": "Transfer",
+     "amenities": null,
+     "stationCrowdInfo": {
+      "generalLevel": "Normal",
+      "lowestCrowdedPlatforms": null
+     }
+    },
+    {
+     "stationId": 9,
+     "name": "28 May",
+     "arrivalTime": "06:24:00",
+     "arrivalTimeDatetime": "2026-10-25T06:24:00",
+     "stationToInfo": null,
+     "stationType": "Direct",
+     "amenities": null,
+     "stationCrowdInfo": {
+      "generalLevel": "Normal",
+      "lowestCrowdedPlatforms": null
+     }
+    }
+   ],
+   "lineColor": "#41A317",
+   "transferInstructions": null,
+   "transferSteps": [],
+   "exits": [
+    {
+     "exitNumber": 1,
+     "side": "Left",
+     "hasApar": false,
+     "capabilities": [
+      "Stairs",
+      "Escalator"
+     ],
+     "places": [
+      {
+       "name": "Dəmiryol vağzalı"
+      },
+      {
+       "name": "2 saylı \"ASAN kommunal\""
+      },
+      {
+       "name": "Azadlıq prospekti"
+      },
+      {
+       "name": "Cəfər Cabbarlı meydanı"
+      },
+      {
+       "name": "Neft və Sənaye Universiteti"
+      },
+      {
+       "name": "Səməd Vurğun bağı"
+      },
+      {
+       "name": "Dilarə Əliyeva küç."
+      }
+     ]
+    },
+    {
+     "exitNumber": 2,
+     "side": "Left",
+     "hasApar": false,
+     "capabilities": [
+      "Stairs",
+      "Escalator"
+     ],
+     "places": [
+      {
+       "name": "Salatın Əsgərova küç."
+      },
+      {
+       "name": "Azadlıq prospekti"
+      },
+      {
+       "name": "Mikayıl Rəfili küç."
+      },
+      {
+       "name": "Mirəli Qaşqay küç."
+      },
+      {
+       "name": "Azərbaycan Dillər Universiteti"
+      },
+      {
+       "name": "\"Bakı Metropoliteni\" QSC"
+      }
+     ]
+    }
+   ],
+   "aparAvailableExits": [],
+   "train": {
+    "arrivalCountdown": 180,
+    "travelTimeToNextStation": 180,
+    "wagonCrowdness": [
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "amenities": null,
+    "lineId": 3,
+    "lineColor": "#41A317",
+    "direction": "Dərnəgül",
+    "arrivalTime": "2026-10-25T02:38:27.450441Z",
+    "arrivalTimeForCalculate": "2026-10-25T06:24:00Z"
+   },
+   "nextTrainSchedules": [
+    "06:22:30",
+    "06:25:00",
+    "06:27:30"
+   ],
+   "endMetroJourneyBusData": null
+  }
+ ],
+ "trains": [],
+ "lineGeometries": [],
+ "stationAmenities": [
+  {
+   "station": "Starting",
+   "exitCapabilities": {
+    "Escalator": [
+     1
+    ],
+    "Stairs": [
+     1,
+     2,
+     3,
+     4
+    ],
+    "StairsElevator": [
+     2,
+     3
+    ]
+   }
+  },
+  {
+   "station": "Ending",
+   "exitCapabilities": {
+    "Stairs": [
+     1,
+     2
+    ],
+    "Escalator": [
+     1,
+     2
+    ]
+   }
+  }
+ ]
+}

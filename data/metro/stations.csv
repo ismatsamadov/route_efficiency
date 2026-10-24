@@ -1,0 +1,28 @@
+station,lines,lat,lon,opened,opened_osm,exits,entrances_osm,name_en,name_exits_az,name_exits_en,name_entries_2025,name_entries_2026,name_metro_api,metro_api_id,osm_node,wikidata
+Xocəsən,3,40.421193,49.778966,2022-12-23,,1,1,Khojasan,Xocəsən,Khojasan,Xocəsən,Khocasen,Xocəsən,24,14255299687,Q114472656
+Avtovağzal,3,40.421508,49.795215,2016-04-19,2016-04-19,4,8,Avtovaghzal,Avtovağzal,Avtovaghzal,Avtovağzal,Avtovaghzal,Avtovağzal,25,4168101319,Q12836192
+Memar Əcəmi,2,40.410681,49.813944,1985-12-31,1985-12-31,4,6,Memar Ajami,Memar Əcəmi,Memar Ajami,Memar Əcəmi,Memar Ajami,Memar Əcəmi,4,4161594118,Q3025490
+Memar Əcəmi-2,3,40.410482,49.812446,2016-04-19,2016-04-19,2,2,Memar Ajami 2,Memar Əcəmi 2,Memar Ajami 2,Memar Əcəmi-2,Memar Ajami 2,Memar Əcəmi,4,7279336593,Q4159673
+8 Noyabr,3,40.401867,49.820509,2021-05-29,2021-05-29,4,4,8 Novabr,8 Noyabr,8 Novabr,8 Noyabr,8 Noyabr,8 Noyabr,26,6010348738,Q16413570
+Nəsimi,2,40.424645,49.826280,2008-10-09,2008-10-09,4,4,Nasimi,Nəsimi,Nasimi,Nəsimi,Nasimi,Nəsimi,3,670217698,Q3025513
+Azadlıq prospekti,2,40.425962,49.842926,2009-12-30,2009-12-30,4,4,Azadliq prospekti,Azadlıq prospekti,Azadliq prospekti,Azadlıq prospekti,Azadlig Prospekti,Azadlıq Prospekti,2,1148914625,Q3025522
+Dərnəgül,2,40.425402,49.861788,2011-06-29,2011-06-29,4,4,Darnagul,Dərnəgül,Darnagul,Dərnəgül,Darnagul,Dərnəgül,1,1924834867,Q3025554
+20 Yanvar,2,40.404139,49.807702,1985-12-31,1985-12-31,7,6,20 Yanvar,20 Yanvar,20 Yanvar,20 Yanvar,20 Yanvar,20 Yanvar,5,1930089762,Q3025472
+İnşaatçılar,2,40.389094,49.802357,1985-12-31,1985-12-31,4,4,Insahatchilar,İnşaatçılar,Insahatchilar,İnşaatçılar,Inshaatchilar,İnşaatçılar,6,670217274,Q3025436
+Elmlər Akademiyası,2,40.375152,49.815484,1985-12-31,1985-12-31,5,5,Elmler Akademiyasi,Elmlər Akademiyası,Elmler Akademiyasi,Elmlər Akademiyası,Elmlar Akademiyasi,Elmlər Akademiyası,7,670217100,Q3025421
+Nizami,2,40.379319,49.830019,1976-12-31,1976-12-31,1,1,Nizami,Nizami,Nizami,Nizami,Nizami,Nizami,8,670216816,Q3025411
+28 May,1,40.379862,49.848636,1967-11-06,1967-11-06,2,2,28 May,28.05.2026 00:00:00,28 May,28 May,28-May,28 May,9,5188836356,Q3025367
+Gənclik,1,40.399879,49.850956,1967-11-06,1967-11-06,6,6,Ganjlik,Gənclik,Ganjlik,Gənclik,Ganjlik,Gənclik,10,11622641264,Q616786
+Nəriman Nərimanov,1,40.402822,49.870638,1967-11-06,1967-11-06,4,5,Nariman Narimanov,Nəriman Nərimanov,Nariman Narimanov,Nəriman Nərimanov,Nariman Narimanov,Nərimanov,11,11622641263,Q1125310
+Ulduz,1,40.414963,49.891435,1970-05-05,1970-05-05,4,5,Ulduz,Ulduz,Ulduz,Ulduz,Ulduz,Ulduz,13,3896778915,Q1109176
+Koroğlu,1,40.420864,49.918094,1972-11-06,1972-11-06,7,7,Koroglu,Koroğlu,Koroglu,Koroglu,Koroghlu,Koroğlu,14,670220312,Q3024716
+Qara Qarayev,1,40.417612,49.933959,1972-11-06,1972-11-06,6,6,Gara Garayev,Qara Qarayev,Gara Garayev,Qara Qarayev,Gara Garayev,Qara Qarayev,15,670220397,Q3024692
+Neftçilər,1,40.411155,49.942568,1970-11-06,1972-11-06,6,6,Neftchilar,Neftçilər,Neftchilar,Neftçilər,Neftchilar,Neftçilər,16,670220410,Q2008806
+Xalqlar Dostluğu,1,40.396885,49.952986,1989-04-28,1989-04-28,4,4,Khalglar Dostlughu,Xalqlar Dostluğu,Khalglar Dostlughu,Xalqlar Dostluğu,Khalglar Dostlughu,Xalqlar Dostluğu,17,670220733,Q3024561
+Əhmədli,1,40.385558,49.953945,1989-04-28,1989-04-28,4,4,Akhmedli,Əhmədli,Akhmedli,Əhmədli,Akhmedli,Əhmədli,18,670220979,Q3024552
+Həzi Aslanov,1,40.373038,49.953574,2002-12-10,2002-12-10,5,4,Hazi Aslanov,Həzi Aslanov,Hazi Aslanov,Həzi Aslanov,Hazi Aslanov,Həzi Aslanov,19,670220993,Q2020145
+Sahil,1,40.371726,49.844572,1967-11-06,1967-11-06,1,2,Sahil,Sahil,Sahil,Sahil,Sahil,Sahil,20,11622641266,Q3025366
+İçərişəhər,1,40.365959,49.831647,1967-11-06,1967-11-06,1,1,Icherisheher,İçərişəhər,Icherisheher,İçərişəhər,Icherisheher,İçərişəhər,21,11622641267,Q2427287
+Cəfər Cabbarlı,2B,40.379652,49.848950,1993-10-27,,2,2,Jafar Jabbarly,Cəfər Cabbarlı,Jafar Jabbarly,Cəfər Cabbarlı,Jafar Jabbarli,Cəfər Cabbarlı,22,2295524457,Q3025580
+Şah İsmayıl Xətai,2B,40.383263,49.872143,1968-02-22,,1,2,Shah Ismail Khatai,Şah İsmayıl Xətai,Shah Ismail Khatai,Xətai,Khatai,Xətai,23,670199298,Q3025592
+Bakmil,1,40.414140,49.878796,1979-03-28,1979-12-31,1,2,Bakmil,Bakmil,Bakmil,Bakmil,Bakmil,Bakmil,12,670220144,Q3025343
