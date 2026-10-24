@@ -44,9 +44,12 @@ It is not a plan and not a forecast. Headways are estimated for 200 of the 201 r
 
 What it is: a measured baseline. When the map carries the new network, the same three commands will score it on the same measures, which no other public source allows. Every input, every setting and every result are in the repository, and every number in the paper regenerates from it.
 
+The same repaired network data also runs a small tool anyone in Baku can use today: a free route planner at [birjob.com/aletler/avtobus-marsrutu](https://www.birjob.com/aletler/avtobus-marsrutu) that finds the way between two stops with the fewest changes of bus, or draws any line stop by stop with its length. It is not a timetable, since none is published, but it is the same map, with the same repairs, that the paper measures.
+
 ## Where to read more
 
 - The paper: preprint on engrXiv (submission 8632; the DOI will appear here once it is posted) and submitted to the journal *Public Transport*.
 - The code, data and results: https://github.com/ismatsamadov/route_efficiency, archived at https://doi.org/10.5281/zenodo.23604370.
+- The route planner built on the same data: https://www.birjob.com/aletler/avtobus-marsrutu (in Azerbaijani).
 
 *Text and figures are CC BY 4.0. The maps draw the agency's route geometry and the Kontur population grid.*

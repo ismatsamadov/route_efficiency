@@ -327,9 +327,10 @@ point.
    and the cover letter, and answer the submission questionnaire.
 7. While the journal reviews: a plain-language post for Medium is drafted in
    [`paper/post/medium-post.md`](../paper/post/medium-post.md) with the two figures it
-   uses as PNG beside it; the Zenodo record and the preprint go into my ORCID works, the
-   preprint PDF onto ResearchGate and Academia.edu, and a Google Scholar profile is
-   created.
+   uses as PNG beside it and a paragraph on the route planner that runs on the same
+   data (birjob.com/aletler/avtobus-marsrutu); the Zenodo record and the preprint go
+   into my ORCID works, the preprint PDF onto ResearchGate and Academia.edu, and a
+   Google Scholar profile is created.
 8. After acceptance: add the reference to the preprint, update `CITATION.cff` with
    `preferred-citation`, make a new release if anything changed, add the paper to ORCID.
 

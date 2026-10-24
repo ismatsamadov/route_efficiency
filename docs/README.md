@@ -38,6 +38,7 @@ lists what to check first.
 | Know what comes next, the limitations and the open questions | [roadmap.md](roadmap.md) |
 | Turn the work into a research paper: outline, venues, format, steps for an independent researcher | [paper.md](paper.md) |
 | Read the manuscript draft and its title page | [../paper/manuscript.md](../paper/manuscript.md), [../paper/title-page.md](../paper/title-page.md) |
+| Use the route planner built on the same data | [birjob.com/aletler/avtobus-marsrutu](https://www.birjob.com/aletler/avtobus-marsrutu) (in Azerbaijani) |
 | Look up a term | [glossary.md](glossary.md) |
 
 ## Three commands

@@ -101,6 +101,14 @@ the estimates. `python3 measure.py --config none` runs with the built-in default
 | `repairs.txt` | Data defects fixed automatically before measuring |
 | `robustness/` | The redesign on other trip samples and under other assumptions, the model's fit as inputs are added, coverage by radius |
 
+## A planner built on the same data
+
+The repaired network also runs a free route planner for Baku, in Azerbaijani, at
+[birjob.com/aletler/avtobus-marsrutu](https://www.birjob.com/aletler/avtobus-marsrutu):
+it finds the way between two stops with the fewest changes of bus, or draws any line
+stop by stop with its length and approximate time. It is not a timetable, since none is
+published, and its data is a snapshot that is not updated automatically.
+
 ## Licensing
 
 The code is mine and is under the MIT License ([LICENSE](LICENSE)): `busnet/`,
