@@ -12,6 +12,7 @@ redesign.py           search for a better network        -> output/redesign/
 robustness.py         the results under other trip samples and assumptions -> output/robustness/
 paper/figures.py      the manuscript's figures, drawn from output/ as SVG and PDF -> paper/figures/
 paper/check.py        word counts, highlight lengths and citation checks of paper/manuscript.md
+paper/build.py        the submission files (Word, preprint PDF) from the Markdown -> paper/submission/
 busnet.toml           settings: data paths and every assumption
 busnet/
   assumptions.py      Assumptions: the default value of every assumption

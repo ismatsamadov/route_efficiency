@@ -301,7 +301,10 @@ point.
    `--wrap` re-wraps the prose. Ask two readers (a transport planner and a quantitative researcher) to
    comment.
 4. Post a preprint: engrXiv (no endorsement needed), or arXiv physics.soc-ph with an
-   endorsement; record the DOI in the README and ORCID.
+   endorsement; record the DOI in the README, on the title page and in ORCID. The file
+   to upload is `paper/submission/preprint.pdf` (the full paper with the author line
+   and the figures, built by `python3 paper/build.py`); Elsevier's sharing policy allows
+   a preprint on any server at any time, so posting it before submission is fine.
 5. Submit, in this order of fit and cost: Case Studies on Transport Policy (subscription
    option, free) or Public Transport (subscription option, free); if a free open-access
    paper matters more than the journal's standing, Periodica Polytechnica Transportation
@@ -310,6 +313,14 @@ point.
 6. Prepare the package: cover letter (aims, three findings, fit, novelty, not under
    review elsewhere, preprint DOI, Zenodo DOI), title page with affiliation and ORCID,
    anonymised manuscript where required, highlights, declarations, data statement.
+   `python3 paper/build.py` writes all of it to `paper/submission/`: `manuscript.docx`
+   (the anonymised review copy), `title-page.docx`, `highlights.docx`,
+   `cover-letter.docx` (from `paper/cover-letter.md`) and `preprint.pdf`, with the
+   figures to upload separately from `paper/figures/figure-1.pdf` to `figure-4.pdf`.
+   The reviewers to suggest are in `paper/reviewers.md`. What remains is done in the
+   journal's Editorial Manager with my own account: upload the files, enter the
+   reviewers with their institutional e-mails, add the preprint DOI to the title page
+   and the cover letter, and answer the submission questionnaire.
 7. After acceptance: add the reference to the preprint, update `CITATION.cff` with
    `preferred-citation`, make a new release if anything changed, add the paper to ORCID.
 
@@ -333,5 +344,5 @@ point.
       figure captions, the abstract 248 words, the highlights 70–83 characters)
 - [x] Anonymised review copy where the journal is double-blind (`paper/manuscript.md`
       with `paper/title-page.md`)
-- [ ] Three to five suggested reviewers
-- [ ] Journal's preprint policy checked against the preprint posted
+- [x] Three to five suggested reviewers (`paper/reviewers.md`; e-mails from their official pages at submission)
+- [x] Journal's preprint policy checked (Elsevier allows preprints on any server at any time; the preprint still has to be posted and its DOI recorded)
