@@ -77,13 +77,17 @@ defaults (and then finds no data files except `data/ayna.db`).
 ```sh
 python3 data/fetch_external.py             # download only files that are missing
 python3 data/fetch_external.py --refresh   # download everything again
-python3 data/fetch_external.py --only osm  # one group: kontur, opendata, stat or osm
+python3 data/fetch_external.py --only osm  # one group: kontur, opendata, stat, osm or wikidata
+python3 data/metro_scraper.py              # the metro's own API again (about 20 requests)
+python3 data/build_metro.py                # rebuild data/metro/ from the downloads
 ```
 
 Refreshing changes the inputs, so results will change. Commit refreshed data and the
 regenerated `output/` together. OpenStreetMap queries go through public Overpass servers,
 which are sometimes slow; the script retries and tries three servers, and you can run it
-again for anything that failed.
+again for anything that failed. It prints the date of the OpenStreetMap data each server
+answered with: a mirror can be months behind, and then the file is better fetched again
+later. Nothing reads `data/metro/` yet, so the metro scripts do not change the results.
 
 ## Messages you may see
 

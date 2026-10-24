@@ -22,9 +22,16 @@ before-and-after study has to wait until the API changes; when it does, a new sc
 and a rerun of the three scripts will show which findings survive. The first thing I
 can do now is the metro. Today metro stations only attract trips, but many Baku trips
 combine bus and metro and some bus routes exist mainly to feed it, so trips that would
-use the metro look slower or impossible by bus. The second is vehicle capacity: a
-maximum-load rule (buses needed = peak load ÷ bus capacity) so that a frequency shift
-cannot hand a route more riders than its buses carry.
+use the metro look slower or impossible by bus. Its data is now in place
+([data.md](data.md#metro)): stations, the five train services, running times from the
+operator's own journey planner, published intervals and track distances, in
+`data/metro/` and `data/metro_headways.csv`. What remains is to put them into the travel
+graph, with walking links between stations and bus stops, and to decide which metro to
+model: the one before 15 August 2026, with green trains running through to Həzi
+Aslanov, or today's, cut between Nizami and 28 May for the 11 months the works are
+planned to take. The second is vehicle capacity: a maximum-load rule (buses needed =
+peak load ÷ bus capacity) so that a frequency shift cannot hand a route more riders
+than its buses carry.
 
 I would also calibrate the demand model properly: fit `trip_decay_km`,
 `destination_share` and `destination_weights` against the observed boardings, try a
@@ -95,6 +102,7 @@ network snapshot, run `python3 <repository>/data/ayna_scraper.py` in an empty fo
 outside the repository (it writes `ayna_data/ayna.db` there), replace `data/ayna.db`
 with that file and rerun the three scripts; the repairs are detected from the data, so
 they adapt to the new snapshot, and `output/repairs.txt` shows any new ones. Fresh
-public data comes from `python3 data/fetch_external.py --refresh`. Whatever changes, I
+public data comes from `python3 data/fetch_external.py --refresh`, and a fresh metro
+from `python3 data/metro_scraper.py` followed by `python3 data/build_metro.py`. Whatever changes, I
 commit the new data and the regenerated `output/` together, so results always match
 their inputs.

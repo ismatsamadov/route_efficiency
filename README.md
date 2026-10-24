@@ -74,9 +74,11 @@ the estimates. `python3 measure.py --config none` runs with the built-in default
 | Path | Contents |
 |---|---|
 | `data/ayna.db`, `data/ayna_scraper.py` | Bus network snapshot from the AYNA map API, and the script that builds it |
-| `data/external/` | Public datasets: population, ridership, metro, statistics, OpenStreetMap |
+| `data/external/` | Public datasets: population, ridership, metro, statistics, OpenStreetMap, Wikidata, and the answers of the metro's own API |
 | `data/headways.csv` | Real headways where known |
 | `data/fetch_external.py` | Downloads the public datasets again |
+| `data/metro/`, `data/metro_scraper.py`, `data/build_metro.py` | The metro network (stations, train services, running times, departures), not yet used by the model; the scripts that read the metro's API and build the tables |
+| `data/metro_headways.csv` | Metro train intervals the operator has published, with sources |
 | `busnet.toml` | Settings: data paths and every assumption |
 | `busnet/` | The package: load and repair the network, headways and daily service, demand, metrics, scenarios, the redesign search, GTFS export |
 | `measure.py` | Measures the network and writes `output/` |
@@ -152,7 +154,7 @@ published, and its data is a snapshot that is not updated automatically.
 
 The code is mine and is under the MIT License ([LICENSE](LICENSE)): `busnet/`,
 `measure.py`, `redesign.py`, `robustness.py`, `paper/figures.py`, `paper/check.py`, `paper/build.py`, `tests/`, `data/ayna_scraper.py`,
-`data/fetch_external.py`, `busnet.toml`, `index.html`, `site/build.py`, `site/app.js`,
+`data/fetch_external.py`, `data/metro_scraper.py`, `data/build_metro.py`, `busnet.toml`, `index.html`, `site/build.py`, `site/app.js`,
 `site/style.css` and `site/og.html`. The page loads Leaflet 1.9.4 (BSD-2-Clause) from cdnjs and draws its
 base map from OpenStreetMap's tiles, credited on the map. The documentation in `docs/` is under
 [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). [CITATION.cff](CITATION.cff)
@@ -173,6 +175,10 @@ The data keep their own terms, listed file by file in [data/SOURCES.md](data/SOU
 - `data/ayna.db`: a snapshot of AYNA's public map API with no published licence,
   redistributed as a research snapshot with attribution to AYNA; the licences above do
   not extend to it ([docs/data.md](docs/data.md#the-ayna-bus-network-snapshot-dataaynadb)).
+- `data/external/metro_api/`: the same for the metro's API, Bakı Metropoliteni's data.
+  `data/metro/` is built from it and from OpenStreetMap, whose part (coordinates, track
+  geometry, distances) is under the ODbL.
+- `data/external/wikidata/`: Wikidata, CC0.
 
 The results in `output/` are derived from those data and carry the same terms: the
 files that contain AYNA's routes and stops (the GTFS feeds, `network.geojson` and the

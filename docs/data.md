@@ -15,6 +15,8 @@ how the code uses it, what is wrong with it and what is still missing.
 | Population | `data/external/kontur/*.gpkg` | `busnet/population.py` | Coverage, trip origins and destinations |
 | BakuBus boardings | `data/external/opendata/bakubus_passenger-2026.csv` | `busnet/ridership.py` | Headway estimates, ridership columns, model check |
 | Metro entries and exits | `data/external/opendata/metro_passengers-2026.csv`, `metro_exits.csv` | `busnet/destinations.py` | Trip destinations |
+| Metro network | `data/metro/`, built by `data/build_metro.py` from the metro's own API, OpenStreetMap and Wikidata | not read yet | Stations, train services, running times and departures, for putting the metro into the travel graph |
+| Metro intervals | `data/metro_headways.csv` | not read yet | Train intervals the operator has published, with sources |
 | OpenStreetMap destinations | `data/external/osm/osm_{education,health,shopping,offices,transport}.json` | `busnet/destinations.py` | Trip destinations |
 | Reference only | AYNA route lines (`ayna_buslines.kmz`), bus stations, payment types, metro 2025, OSM route tags, statistics tables, district population | not read | Cross-checks and calibration targets |
 
@@ -40,11 +42,20 @@ cleaner source for route geometry if a future snapshot can be built from them.
 Every result describes the network as AYNA's map API publishes it, and the API returned
 exactly the same data on 23 October 2026 as on 6 May 2026, although AYNA's new network
 began launching in January 2026 ([research.md](research.md#4-bakus-own-programme)). The
-BakuBus counts I use for ridership are from September 2026 and include eight routes
-(M2, M3, M4, M5, M6, 500, 149E, 195E) that the map does not carry, so the map lags the
-network on the street. When the API changes, a new scrape and a rerun of the three
-scripts ([roadmap.md](roadmap.md#when-new-data-arrives)) will show which findings
-survive; the repairs are detected from the data, so they adapt to it.
+BakuBus counts I use for ridership are from September 2026 and include eight routes that
+the map does not carry, so the map lags the network on the street: 500 is counted all
+year, 149E from 22 June and 195E from 28 July, and M2 to M6 from 14 and 15 August, when
+AYNA started express bus routes "in 6 directions" for the works that closed the metro
+between 28 May and Nizami ([Metro](#metro)). September is therefore a month of metro
+works. The ranking of routes
+by boardings hardly moves (the weekday averages of May and September 2026 rank the 55
+routes counted in both months at a Spearman correlation of 0.976), but some routes
+gained far more than the rest: 14 by 70%, 7A and 17 by 65% and 2 by 36%, against 13%
+for the 55 together. Routes 14 and 2 pass within 200 m of both Nizami and 28 May, and
+17 joins Elmlər Akademiyası to Gənclik, so they carry riders around the closed section.
+When the API changes, a new scrape and a rerun of the three scripts
+([roadmap.md](roadmap.md#when-new-data-arrives)) will show which findings survive; the
+repairs are detected from the data, so they adapt to it.
 
 | Table | Rows | Contents |
 |---|---|---|
@@ -119,27 +130,106 @@ Columns: date, route number, daily boardings.
 - The tools use the weekday average of the latest month: 768,253 boardings a day in
   September 2026.
 - 56 of those routes are in the AYNA snapshot with stops (692,288 boardings a day). Eight
-  newer routes in the file are not in the snapshot: M2, M3, M4, M5, M6, 500, 149E, 195E.
+  routes in the file are not in the snapshot: 500, 149E, 195E, and M2 to M6, express
+  buses AYNA has run for the metro works since mid-August 2026 (65,618 boardings a
+  weekday between them in September).
   One counted route, 49, is listed under another carrier (Azlənd Plaza MMC) in the AYNA
   data, which is why the snapshot shows 55 BakuBus routes but 56 routes have counts.
 - Only BakuBus routes are covered; the other carriers' routes have no observed boardings.
 
 ## Metro
 
-From Bakı Metropoliteni on opendata.az (CC BY):
+The model uses the metro only as a place trips go to, from two files Bakı Metropoliteni
+publishes on opendata.az (CC BY):
 
-- `metro_passengers-2026.csv`: daily entries per station, January to September 2026. The
-  weekday average of the latest month is used.
+- `metro_passengers-2026.csv`: daily entries per station, January to September 2026
+  (`metro_passengers-2025.csv` has all of 2025). The weekday average of the latest month
+  is used.
 - `metro_exits.csv`: 98 exits of 27 stations with coordinates (stored as integers times
   one million). Station names differ between the two files ("Koroghlu" and "Koroglu",
   "8 Noyabr" and "8 Novabr", "Khatai" and "Shah Ismail Khatai"); `busnet/destinations.py`
   matches them exactly, by containment or by close spelling, and all 27 match.
 - Each station's entries are split evenly across its exits and act as trip destinations.
 
+To put the metro into the travel graph I collected the network itself, the way AYNA's
+map API gives the buses. The metro has its own API: behind metro.gov.az is an open JSON
+service (`app-api.metro.gov.az`) that the operator's website and journey planner use.
+`data/metro_scraper.py` saves its answers to `data/external/metro_api/`: the stations,
+the train services on each line, the service notices, the two departure lists it
+publishes, the operator's answers to frequent questions, and its journey planner timed
+along every service in both directions. I scraped it on 25 October 2026. The same API
+also carries the operator's administration functions; the scraper only reads, and
+calls the planner the way the public site does. `data/build_metro.py` joins those
+answers with OpenStreetMap (track geometry and entrances), Wikidata (opening dates) and
+the opendata.az files into the tables in `data/metro/`, and `tests/test_metro.py`
+checks that it regenerates them byte for byte.
+
+The network has 27 stations on three lines and 40.7 km of line, and carried 226.8
+million passengers in 2025 (State Statistical Committee, in
+`stat_urban_electric_transport.csv`, which also counts 376 cars and 612 thousand train
+runs made to timetable; `stat_avg_trip_distance.csv` gives an average metro trip of 11.8
+km).
+Since 15 August 2026 it has not run as it used to. The red and green lines are being
+separated, and trains no longer run between 28 May and Nizami; until then green trains
+ran from Dərnəgül through 28 May onto the red line's track to Həzi Aslanov. On 25
+October 2026 the operator ran five services:
+
+| Line | Service | Interval (`data/metro_headways.csv`) | End to end in the planner, there and back |
+|---|---|---|---|
+| Red | İçərişəhər – Həzi Aslanov | 2 min at peak hours, 2.5 otherwise | 31.5 and 35.0 min, with a change at Əhmədli to a shuttle while the turnback siding at Həzi Aslanov is repaired |
+| Red | Nəriman Nərimanov – Bakmil | irregular, 3 to 51 min apart; every departure is published | 4.5 and 5.0 min |
+| Green | Dərnəgül – Nizami, then express bus M1 or M2 to 28 May | 3.5 min | 20.0 and 19.0 min to and from Nizami, and 3 min by bus |
+| Green | Cəfər Cabbarlı – Şah İsmayıl Xətai | 8 min | 3.0 and 6.5 min |
+| Purple | Xocəsən – 8 Noyabr | 5 min Avtovağzal – 8 Noyabr, 10 min Xocəsən – Avtovağzal (autumn and winter timetable) | 12.5 and 19.0 min, the second with a 6-minute wait at Avtovağzal |
+
+On the track distances from OpenStreetMap, the planner's times give an average speed,
+stops included, of 36 to 38 km/h on the red line, 34 to 36 on the green and 27 to 28 on
+the purple. A
+trip costs 0.60 AZN, whatever the means of payment (the operator's answers to frequent
+questions).
+
+| File | Contents |
+|---|---|
+| `data/metro/stations.csv` | The 27 stations: lines, coordinates (OpenStreetMap), opening date (Wikidata, and OpenStreetMap's), exits (operator) and entrances (OpenStreetMap), the station's name in each source (English, exits file, 2025 and 2026 counts, API), its OpenStreetMap node and Wikidata item |
+| `data/metro/route_stops.csv` | OpenStreetMap's 12 route variants, stops in order, with the distance along the track from the previous stop |
+| `data/metro/routes.geojson` | The track of each route variant |
+| `data/metro/run_times.csv` | Each service end to end both ways as the operator's planner times it: arrival at every station, seconds and track kilometres from the previous one, and whether that step is a train, a bus, a wait or the start |
+| `data/metro/departures.csv` | The departure lists the operator publishes: Xocəsən on weekdays and the Bakmil shuttle both ways, 414 departures |
+| `data/metro_headways.csv` | Every interval the operator has published, with its source and date; written by hand, like `data/headways.csv` |
+| `data/external/metro_api/` | The API's answers as downloaded |
+| `data/external/osm/osm_metro_routes.json`, `osm_metro_stations.json` | OpenStreetMap's metro routes, stations and entrances, as of 24 October 2026 |
+| `data/external/wikidata/metro_stations.json` | Wikidata's items for the stations on the three lines, with opening dates and neighbouring stations |
+
+A few things to know before using them. The sources spell the stations differently, so
+`stations.csv` keeps every spelling and a join never has to guess. The Azerbaijani
+column of the exits file turned "28 May" into the date 28.05.2026. The API has one
+station, Memar Əcəmi, for the two that the counts and OpenStreetMap keep apart (Memar
+Əcəmi on the green line, Memar Əcəmi-2 on the purple); the builder tells them apart by
+the line of the service. OpenStreetMap tags the purple-line one with the green station's
+Wikidata item, and the builder takes the right item by name. OpenStreetMap already ends
+the green line at Nizami, though its track runs on 1.8 km to 28 May, and still has an
+İçərişəhər – Bakmil variant where the operator runs a shuttle from Nəriman Nərimanov; its
+distances are right either way, but the services come from the operator. The planner
+answers for the next trains whatever time it is asked for, so at night it times the
+first morning trains; the running times should not depend on that, but its waits do.
+Its 6.5 minutes from Şah İsmayıl Xətai to Cəfər Cabbarlı, against 3.0 the other way over
+the same 2.2 km, looks like an error in the planner; I keep what it says. Wikidata and
+OpenStreetMap disagree on two opening dates (Neftçilər 1970 or 1972, Bakmil March or
+December 1979), and the table keeps both.
+
+Not published anywhere I looked: a full timetable beyond the two departure lists,
+weekend and evening intervals for the red and green lines, exit counts (only entries),
+flows between stations, and train positions. Nor is there a GTFS feed for Baku: the
+Mobility Database catalogue, 3,613 feeds on 25 October 2026, has none for Azerbaijan.
+
 ## OpenStreetMap destinations
 
 Queried through the Overpass API for the box 39.9 to 40.7 N, 49.3 to 50.45 E on
-23 October 2026. Data © OpenStreetMap contributors, Open Database Licence.
+23 October 2026. Data © OpenStreetMap contributors, Open Database Licence. Each file
+records the date of the OpenStreetMap data it holds (`osm3s.timestamp_osm_base`): 23
+October 2026 for all of them except `osm_health.json`, which a mirror server answered
+with data as of 15 July 2026. `fetch_external.py` now prints that date for every query,
+since a lagging mirror is otherwise easy to miss.
 
 | File | Features | Kinds |
 |---|---|---|
@@ -166,10 +256,15 @@ validations by stop, or origin-destination data. I checked the AYNA map API (it 
 only routes, stops and shapes), the 69 transport datasets on opendata.az, OpenStreetMap
 (249 bus routes; only M5 carries an interval tag), the BakuBus and AYNA websites, and
 news reports. The settings in `busnet.toml` stand in for them, and since such data
-cannot be obtained from AYNA, they will stay estimates.
+cannot be obtained from AYNA, they will stay estimates. The metro is better served: its
+operator publishes intervals, running times through its journey planner and two
+departure lists ([Metro](#metro)), though no full timetable and no GTFS feed.
 
 ## Refreshing
 
 `python3 data/fetch_external.py --refresh` downloads every external file again from the
 URLs in the script. OpenStreetMap and the opendata.az files change over time, so results
 change after a refresh; commit the new data and the regenerated `output/` together.
+`python3 data/metro_scraper.py` asks the metro's API again and `python3
+data/build_metro.py` rebuilds `data/metro/` from whatever is in `data/external/`; nothing
+reads `data/metro/` yet, so the results do not change.
