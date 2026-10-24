@@ -24,7 +24,7 @@ release v1.1.0, archived at https://doi.org/10.5281/zenodo.23604370 (all version
 https://doi.org/10.5281/zenodo.23602093). The release holds the map database scraped on
 23 October 2026, identical in every table to the public snapshot of 6 May 2026.
 
-Competing interests: none. Declaration of interests: the author declares no known competing financial interests or personal relationships that could have appeared to influence the work reported in this paper.
+Declaration of interests: none; the author declares no known competing financial interests or personal relationships that could have appeared to influence the work reported in this paper.
 
 Funding: this research did not receive any specific grant from funding agencies in the public, commercial, or not-for-profit sectors.
 

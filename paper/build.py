@@ -27,11 +27,17 @@ OUT = HERE / "submission"
 CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 
 CSS = """
-@page { size: A4; margin: 25mm 22mm; }
+@page { size: A4; margin: 25mm 22mm; @bottom-center { content: counter(page); font-family: Georgia, serif; font-size: 9pt; color: #555; } }
 body { font-family: Georgia, 'Times New Roman', serif; font-size: 11pt; line-height: 1.45; color: #111; max-width: 170mm; margin: 0 auto; }
 h1 { font-size: 17pt; line-height: 1.25; margin: 0 0 8pt; }
 h2 { font-size: 13pt; margin: 20pt 0 6pt; }
 h3 { font-size: 11.5pt; margin: 14pt 0 4pt; }
+h1, h2, h3, p.caption { page-break-after: avoid; break-after: avoid; }
+tr { page-break-inside: avoid; break-inside: avoid; }
+table:first-of-type th:nth-child(1) { width: 30%; } table:first-of-type th:nth-child(2) { width: 40%; }
+table:first-of-type th:nth-child(3) { width: 15%; } table:first-of-type th:nth-child(4) { width: 15%; }
+.refs a { overflow-wrap: anywhere; word-break: break-all; }
+p.note { font-size: 10pt; color: #444; margin: 0 0 16pt; }
 p { margin: 0 0 8pt; text-align: left; }
 table { border-collapse: collapse; margin: 6pt 0 12pt; font-size: 9.5pt; width: 100%; }
 th, td { border-top: 1px solid #999; border-bottom: 1px solid #999; padding: 3pt 6pt; text-align: left; vertical-align: top; }
@@ -101,7 +107,11 @@ def html_of(blocks, figures_dir=None, title=None):
                 out.append(f'<figure><img src="{figures_dir}/figure-{m.group(1)}.svg" alt="Figure {m.group(1)}">'
                            f"<figcaption>{inline(text)}</figcaption></figure>")
             elif text.startswith("Ismat Samadov,") or text.startswith("E-mail:"):
-                out.append(f'<p class="author">{inline(text)}</p>')
+                out.append(f'<p class="author">{inline(text).replace("E-mail", "E&#8209;mail")}</p>')
+            elif text.startswith("Preprint of "):
+                out.append(f'<p class="note">{inline(text)}</p>')
+            elif re.match(r"Table \d\. ", text):
+                out.append(f'<p class="caption">{inline(text)}</p>')
             else:
                 out.append(f"<p>{inline(text)}</p>")
     if in_refs:
@@ -237,12 +247,13 @@ def to_pdf(html_path, pdf_path):
                    check=True, capture_output=True)
 
 
-def preprint_blocks(manuscript, title_page):
+def preprint_blocks(manuscript, title_page, date):
     """The manuscript with the author line and the identifying declarations put back."""
     title = next(b for b in manuscript if b[0] == "h" and b[1] == 1)
     author = [b for b in title_page if b[0] == "p" and (b[1].startswith("Ismat Samadov,"))]
-    decl = {b[1].split(":")[0]: b[1] for b in title_page if b[0] == "p" and ":" in b[1]}
-    out = [title] + author
+    def decl(key):
+        return next((b[1] for b in title_page if b[0] == "p" and b[1].startswith(key)), None)
+    out = [title] + author + [("p", f"Preprint of {date}, not yet peer reviewed. Prepared for submission to a journal.")]
     skip = False
     for b in manuscript:
         if b[0] == "h" and b[1] == 1:
@@ -255,13 +266,13 @@ def preprint_blocks(manuscript, title_page):
         if skip:
             continue
         if b[0] == "p" and b[1].startswith("Data and code availability:"):
-            out.append(("p", decl["Data and code availability"]))
+            out.append(("p", decl("Data and code availability")))
             continue
         if b[0] == "p" and b[1].startswith("Ethics:"):
             out.append(b)
-            for key in ("Competing interests", "Funding", "Author contributions"):
-                if key in decl:
-                    out.append(("p", decl[key]))
+            for key in ("Declaration of interests", "Funding", "Author contributions"):
+                if decl(key):
+                    out.append(("p", decl(key)))
             continue
         out.append(b)
     return out
@@ -290,7 +301,9 @@ def main():
     for f in figures.glob("figure-*.svg"):
         shutil.copy(f, OUT / "figures" / f.name)
     pre = OUT / "preprint.html"
-    pre.write_text(html_of(preprint_blocks(manuscript, title_page), figures_dir="figures", title=title), encoding="utf-8")
+    date = subprocess.run(["git", "log", "-1", "--format=%ad", "--date=format:%-d %B %Y", "--", str(HERE / "manuscript.md")],
+                          capture_output=True, text=True, cwd=HERE).stdout.strip() or "today"
+    pre.write_text(html_of(preprint_blocks(manuscript, title_page, date), figures_dir="figures", title=title), encoding="utf-8")
     to_pdf(pre, OUT / "preprint.pdf")
     print("  preprint.html, preprint.pdf")
 

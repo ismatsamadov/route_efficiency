@@ -1,10 +1,16 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><title>Cover letter</title><style>
-@page { size: A4; margin: 25mm 22mm; }
+@page { size: A4; margin: 25mm 22mm; @bottom-center { content: counter(page); font-family: Georgia, serif; font-size: 9pt; color: #555; } }
 body { font-family: Georgia, 'Times New Roman', serif; font-size: 11pt; line-height: 1.45; color: #111; max-width: 170mm; margin: 0 auto; }
 h1 { font-size: 17pt; line-height: 1.25; margin: 0 0 8pt; }
 h2 { font-size: 13pt; margin: 20pt 0 6pt; }
 h3 { font-size: 11.5pt; margin: 14pt 0 4pt; }
+h1, h2, h3, p.caption { page-break-after: avoid; break-after: avoid; }
+tr { page-break-inside: avoid; break-inside: avoid; }
+table:first-of-type th:nth-child(1) { width: 30%; } table:first-of-type th:nth-child(2) { width: 40%; }
+table:first-of-type th:nth-child(3) { width: 15%; } table:first-of-type th:nth-child(4) { width: 15%; }
+.refs a { overflow-wrap: anywhere; word-break: break-all; }
+p.note { font-size: 10pt; color: #444; margin: 0 0 16pt; }
 p { margin: 0 0 8pt; text-align: left; }
 table { border-collapse: collapse; margin: 6pt 0 12pt; font-size: 9.5pt; width: 100%; }
 th, td { border-top: 1px solid #999; border-bottom: 1px solid #999; padding: 3pt 6pt; text-align: left; vertical-align: top; }
@@ -19,7 +25,7 @@ figcaption { font-size: 9.5pt; margin-top: 4pt; }
 a { color: inherit; text-decoration: none; }
 </style></head><body>
 <h1>Cover letter</h1>
-<p class="author">Ismat Samadov, Independent researcher, Baku, Azerbaijan. ORCID 0009-0007-7919-4950. E-mail: ismetsemedov@gmail.com.</p>
+<p class="author">Ismat Samadov, Independent researcher, Baku, Azerbaijan. ORCID 0009-0007-7919-4950. E&#8209;mail: ismetsemedov@gmail.com.</p>
 <p>To the Editor-in-Chief, Case Studies on Transport Policy</p>
 <p>Dear Editor,</p>
 <p>I submit the article "How efficient are Baku's bus routes? An open-data measurement and a fleet-neutral redesign" for consideration in Case Studies on Transport Policy.</p>
