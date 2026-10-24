@@ -7,6 +7,7 @@
   title-page.docx     author details and the declarations that identify the author
   highlights.docx     the highlights, in their own file as Elsevier asks
   cover-letter.docx   the cover letter
+  manuscript-full.docx the manuscript with the author line and all declarations, for journals without anonymised review
   preprint.pdf        the full paper with the author line and the figures, for a preprint server
   *.html              the same documents as HTML, which the Word and PDF files are made from
 
@@ -300,9 +301,13 @@ def main():
     (OUT / "figures").mkdir(exist_ok=True)
     for f in figures.glob("figure-*.svg"):
         shutil.copy(f, OUT / "figures" / f.name)
+    full = preprint_blocks(manuscript, title_page, date := subprocess.run(
+        ["git", "log", "-1", "--format=%ad", "--date=format:%-d %B %Y", "--", str(HERE / "manuscript.md")],
+        capture_output=True, text=True, cwd=HERE).stdout.strip() or "today")
+    full = [b for b in full if not (b[0] == "p" and b[1].startswith("Preprint of "))]
+    docx_of(full, OUT / "manuscript-full.docx")                 # author line and declarations restored, for journals
+    print("  manuscript-full.docx")                              # that do not anonymise review
     pre = OUT / "preprint.html"
-    date = subprocess.run(["git", "log", "-1", "--format=%ad", "--date=format:%-d %B %Y", "--", str(HERE / "manuscript.md")],
-                          capture_output=True, text=True, cwd=HERE).stdout.strip() or "today"
     pre.write_text(html_of(preprint_blocks(manuscript, title_page, date), figures_dir="figures", title=title), encoding="utf-8")
     to_pdf(pre, OUT / "preprint.pdf")
     print("  preprint.html, preprint.pdf")
