@@ -11,8 +11,8 @@ Submission note: Case Studies on Transport Policy (article). The manuscript
 details; this page carries the author details and the declarations that identify the
 author. Both are restored into the manuscript on acceptance. Numbers are those of
 release v1.1.0 of the repository, and every one of them can be regenerated from it.
-Length: about 6,800 words from the Introduction to the Conclusions, tables and
-references excluded; about 7,200 with the title, abstract, keywords and figure
+Length: about 6,600 words from the Introduction to the Conclusions, tables and
+references excluded; under 7,000 even with the title, abstract, keywords and figure
 captions.
 
 ## Declarations that identify the author

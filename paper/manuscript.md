@@ -81,13 +81,13 @@ BakuBus boardings, route 49, is listed on the map under another carrier. About 2
 buses were in daily service in January 2026, up from 1,720 in 2022 (Ministry of Digital
 Development and Transport, 2026). In December 2023 the Ministry presented the Mobility
 Transformation Program, under which AYNA and an international consultant analysed all
-routes and now optimise them on a digital twin of Baku, and reported 1.6 million bus
-trips a day (Ministry of Digital Development and Transport, 2023). By November 2024 bus
-lanes and route optimisation had raised bus speeds in Baku from 18 to 22 km/h
-(Report.az, 2024). In September 2025 the consultant reported weak integration between
-Baku and Absheron routes, overlapping routes, and 17% of residents with limited access;
-the new network, launched from January 2026 with eight routes, was expected to need
-about 2,800 buses, and gross-cost contracts were planned (APA, 2025).
+routes on a digital twin of Baku, with 1.6 million bus trips a day reported (Ministry of
+Digital Development and Transport, 2023). By November 2024 bus lanes and route
+optimisation had raised bus speeds in Baku from 18 to 22 km/h (Report.az, 2024). In
+September 2025 the consultant reported weak integration between Baku and Absheron
+routes, overlapping routes, and 17% of residents with limited access; the new network,
+launched from January 2026 with eight routes, was expected to need about 2,800 buses,
+and gross-cost contracts were planned (APA, 2025).
 
 None of the consultant's data is public. The agency's map API publishes routes, stops,
 stop sequences and route shapes, and the state operator's daily boardings per route are
@@ -105,36 +105,32 @@ regenerable, and supersede it.
 Whole-network redesigns elsewhere followed a similar recipe: fewer, straighter routes
 that run more often, overlapping routes merged into frequent trunks, stops spaced
 further apart, and bus lanes where routes stack up. Seoul reorganised all its bus
-services on one day in 2004 into trunk and feeder routes with median bus lanes, one fare
-and operators paid per vehicle-kilometre; bus speeds rose from 11 to 22 km/h by 2010 and
-passengers by 20% (Allen, 2013). Houston redrew nearly every route in 2015 within about
-the same budget, moving 80% of resources to ridership and 20% to coverage; local
-ridership rose 1.2% in the first year and 34% on Sundays (Schmitt, 2016; Walker, 2014,
-2015). Barcelona's Nova Xarxa replaced the old lines with 28 grid lines designed for 3-
-to 8-minute headways, with service added; ridership on replaced corridors rose 6% to
-24%, with about 26% of trips involving a transfer (Badia et al., 2016; Lynn, 2017).
-Dublin, redesigning area by area since 2021 with added service, reports boardings up 48%
-in redesigned areas against 8% elsewhere (BusConnects, 2025). In Tbilisi and Tashkent,
-two other post-Soviet capitals, the first cut back minibuses and added large buses and
-the second bought 1,000 buses and cut headways from 18 to 20 minutes to 8 to 10; they
-report ridership up 30% and 26% (EBRD, 2024; Kun.uz, 2026). How much each gained went
-with whether service was added at the same time.
+services in one day in 2004 into trunk and feeder routes with median bus lanes and one
+fare; bus speeds rose from 11 to 22 km/h by 2010 and passengers by 20% (Allen, 2013).
+Houston redrew nearly every route in 2015 within about the same budget, moving 80% of
+resources to ridership and 20% to coverage, and local ridership rose 1.2% in the first
+year (Schmitt, 2016; Walker, 2014, 2015). Barcelona's Nova Xarxa replaced the old lines
+with 28 grid lines at 3- to 8-minute headways, with service added; ridership on replaced
+corridors rose 6% to 24% (Badia et al., 2016; Lynn, 2017). Dublin, redesigning area by
+area since 2021 with added service, reports boardings up 48% in redesigned areas against
+8% elsewhere (BusConnects, 2025). In Tbilisi and Tashkent, two other post-Soviet
+capitals, minibuses gave way to large buses and 1,000 new buses cut headways from 18 to
+20 minutes to 8 to 10; they report ridership up 30% and 26% (EBRD, 2024; Kun.uz, 2026).
+How much each gained went with whether service was added.
 
 Planning guidelines elsewhere judge a network from two sides. For riders, the
 door-to-door time of walking, waiting, riding and changing, with a penalty per change,
 and the share of residents within walking distance of a stop: the Transit Capacity and
 Quality of Service Manual defines a bus route's coverage area as 400 m from a stop
-(Kittelson & Associates et al., 2003), and Montreal data put the 85th percentile of
-home-based walks to a bus at 524 m (El-Geneidy et al., 2014). For operators, bus-hours,
-bus-kilometres and the fleet needed. Guidelines also exist for network shape. A Soviet
-planning norm of 1981, since repealed, limited a route to 1.2 to 1.3 times the straight
-line between its ends, loops excepted (RSFSR Ministry of Motor Transport, 1981).
-Miami-Dade keeps a detour only if the rider-minutes it adds to through riders (through
-riders times minutes added), divided by the riders it serves, stay under 5 minutes;
-Denver's threshold is 3 (Miami-Dade Transit, 2005). Average stop spacing, weighted by
-how often buses pass, is about 352 m in the United States and 359 m across 38 cities
-elsewhere, or 401 and 403 m when every route segment counts once (Devunuri et al.,
-2023); agencies such as TriMet and TransLink aim for 240 to 400 m on local routes
+(Kittelson & Associates et al., 2003). For operators, bus-hours, bus-kilometres and the
+fleet needed. A Soviet planning norm of 1981, since repealed, limited a route to 1.2 to
+1.3 times the straight line between its ends, loops excepted (RSFSR Ministry of Motor
+Transport, 1981). Miami-Dade keeps a detour only if the rider-minutes it adds to through
+riders (through riders times minutes added), divided by the riders it serves, stay under
+5 minutes; Denver's threshold is 3 (Miami-Dade Transit, 2005). Average stop spacing,
+weighted by how often buses pass, is about 352 m in the United States and 359 m across
+38 cities elsewhere, or 401 and 403 m when every route segment counts once (Devunuri et
+al., 2023); agencies such as TriMet and TransLink aim for 240 to 400 m on local routes
 (nMotion, 2015; TransLink, 2018), and removing closely spaced stops saved TriMet nearly
 6% of running time with no significant ridership loss (El-Geneidy et al., 2006). King
 County Metro's guidelines keep parallel routes at least half a mile apart (King County
@@ -146,19 +142,17 @@ Choosing a set of bus routes is the transit network design problem; choosing the
 frequencies as well is the transit network design and frequency setting problem. Both
 are NP-hard, and the literature searches rather than enumerates (Kepaptsoglou &
 Karlaftis, 2009; Farahani et al., 2013; Ibarra-Rojas et al., 2015; Durán-Micco &
-Vansteenwegen, 2022). Objectives are riders' time, including waiting and a transfer
-penalty of about 5 minutes, the shares of demand served directly or with one or two
-changes, and operator cost; constraints are the number and length of routes, coverage of
-all stops, the fleet and a minimum frequency. Methods range from choosing routes from a
-candidate pool, through local search, simulated annealing and tabu search, to
-evolutionary algorithms and, recently, graph neural networks trained by reinforcement
-learning (Holliday et al., 2025). The standard test networks (Mandl's 15 nodes and
-Mumford's 30 to 127) are far smaller than Baku's 3,456 stops (Mandl, 1980; Mumford,
-2013).
+Vansteenwegen, 2022). Objectives are riders' time, with a transfer penalty of about 5
+minutes, and operator cost; constraints are the number and length of routes, coverage,
+the fleet and a minimum frequency. Methods range from choosing routes from a candidate
+pool, through local search, simulated annealing and tabu search, to evolutionary
+algorithms and, recently, graph neural networks trained by reinforcement learning
+(Holliday et al., 2025). The standard test networks (Mandl's 15 nodes and Mumford's 30
+to 127) are far smaller than Baku's 3,456 stops (Mandl, 1980; Mumford, 2013).
 
-I use a greedy local search for three reasons. It is transparent: every kept change can
-be explained in one sentence, which matters when people have to approve it. It runs on a
-laptop in minutes. And the quality of the answer depends far more on the demand data
+I use a greedy local search because it is transparent (every kept change can be
+explained in one sentence, which matters when people have to approve it), it runs on a
+laptop in minutes, and the quality of the answer depends far more on the demand data
 than on the search: without origin–destination data, a better optimiser would only
 optimise the same gravity model more thoroughly. The demand model is a gravity model
 (Wilson, 1967) of the kind implemented in scikit-mobility (Pappalardo et al., 2022); the
@@ -172,8 +166,8 @@ Baku does not have.
 
 ### 3.1 Sources
 
-Table 1 lists every input. All are public; all are committed in the repository with
-their licences, so the results regenerate without network access.
+Table 1 lists every input; all are public and committed in the repository with their
+licences, so the results regenerate without network access.
 
 Table 1. Data sources.
 
@@ -217,9 +211,9 @@ breaks by at least the larger of two and 20% of the route's stops, or no more br
 a median offset below 70% of the current one. A shape that still cannot explain its
 stops (more than the larger of two and 10% of its stops out of order, a median offset
 over 60 m or a straight segment over 5 km) is dropped and that direction is drawn as
-straight lines between stops. The 23 repairs are logged. After them, 394 of 402 route
-directions use real shapes, the median stop sits 7.2 m from its line and 90% sit within
-13.7 m, and three directions keep one stop slightly out of order.
+straight lines between stops. After the 23 repairs, 394 of 402 route directions use real
+shapes, the median stop sits 7.2 m from its line and 90% sit within 13.7 m, and three
+directions keep one stop slightly out of order.
 
 ### 3.3 The period described
 
@@ -267,9 +261,9 @@ factor of 74,100 kg per TJ at 43.0 TJ/Gg and a diesel density of about 0.84 kg/L
 speeds by service type (22 km/h urban, 29 suburban and urban express, 36 suburban
 express, 25 within and 31 between settlements, 40 intercity) were set so that total
 route-kilometres divided by total running time over all directions equals the 22 km/h
-the agency reported. Fuel is kept in diesel-equivalent litres because no split of the
-fleet by fuel is published and compressed natural gas and diesel emit roughly the same
-CO₂ per kilometre.
+the agency reported. Fuel is in diesel-equivalent litres: no split of the fleet by fuel
+is published, and compressed natural gas and diesel emit about the same CO₂ per
+kilometre.
 
 Each route's headway is the first of: a published value (one route); an estimate from
 observed boardings where they exist, as trips per direction equal to weekday boardings
@@ -278,8 +272,7 @@ divided by two and by 60 boardings per trip, over 17 service hours, kept between
 urban express, 20 suburban express and settlement routes, 30 intercity (145 routes).
 Trips a day, bus-hours, bus-kilometres and fuel follow from the headway, the round-trip
 running time and length; buses needed per route are round-trip time times 1.15 for
-layover divided by headway, rounded up. The implied fleet is compared with the 2,300
-buses reported in service.
+layover divided by headway, rounded up.
 
 ### 4.3 Demand
 
@@ -330,12 +323,12 @@ never below 3 minutes, so a route that gets shorter keeps its buses and runs mor
 The objective is the average door-to-door time over a fixed sample of trips, with a trip
 impossible within 120 minutes counted at 120 (below, the capped average, as distinct
 from the average over possible trips of Section 4.4), from 100 origins drawn by
-population with one point per hexagon; scoring a plan takes under a second. The fleet
-never changes. A change is kept only if it lowers the capped average by at least 0.005
-minutes and passes a coverage guard: it may leave no more than 500 people without any
-stop within 500 m, and no more than 3,000 across all changes, counted on the finer
-seven-point population. No route is made to run less often than every 30 minutes by
-losing buses, and no route gets more buses than it can use at 3 minutes.
+population with one point per hexagon. The fleet never changes. A change is kept only if
+it lowers the capped average by at least 0.005 minutes and passes a coverage guard: it
+may leave no more than 500 people without any stop within 500 m, and no more than 3,000
+across all changes, counted on the finer seven-point population. No route is made to run
+less often than every 30 minutes by losing buses, and no route gets more buses than it
+can use at 3 minutes.
 
 Riders per route are counted where counts exist and otherwise estimated as the model's
 boardings scaled so that, over the counted routes, model and counts agree in total; a
@@ -385,10 +378,8 @@ The median route is 1.77 times the straight line between its ends, and only 20 o
 182 non-loop routes meet the 1.3 limit of the Soviet norm. The median route is 21%
 longer than the shortest path buses could take between its ends on links they already
 drive, and for a rider the median route covers 1.45 times the straight-line distance
-between any two of its stops at least 1 km apart. Indirect routes carry many riders: six
-of the 20 busiest BakuBus routes are very indirect or loops, including the busiest,
-route 14, with 31,303 boardings a weekday. The least direct routes are loops: 517 at 9.3
-times the straight line, 4 at 7.8 and 155 at 6.2.
+between any two of its stops at least 1 km apart. Six of the 20 busiest BakuBus routes
+are very indirect or loops, including the busiest, route 14.
 
 Table 2. Directness of the 201 routes, from the less direct direction of each.
 
@@ -407,8 +398,8 @@ Olympic Stadium and along the Zabrat highway, to the State Customs Committee Aca
 with 15.8 routes per link on average and 27 routes using it, and the busiest, 3.5 km
 between the Xətai district court and Neftçilər metro station, is used by 29 routes with
 up to 25 on one link. Twenty-five routes are near-duplicates, in 72 pairs, 59 of them
-between carriers: route 190 has 100% of its stops on route 160, 120A has 96% on 149 and
-on 205, and 173A and 173B have 94% on each other.
+between carriers: route 190 has 100% of its stops on route 160, and 173A and 173B have
+94% on each other.
 
 Detours are common and mostly unnecessary. There are 271 on 139 routes; together they
 add 939 km to one trip in each direction of every route. For 217 of them, 719 km on 118
@@ -445,31 +436,29 @@ ranking of the 56 counted routes improves as inputs are added: a flat 12-minute 
 for every route gives a Spearman correlation of 0.41, headways by service type 0.56,
 destinations 0.58, and headways from the boardings themselves 0.77, which is circular.
 The fair figure is 0.58. In that run (its route-by-route table regenerates with one
-setting changed, headways by service type instead of from boardings) the model overrates
-the express and long suburban routes E1 (6.4 times its observed share), 205 (3.4), 120E
-(2.6) and 72 (2.2), and gives the suburban routes 139, 141E, 189 and 163 and the express
-140E under 15% of their observed shares.
+setting changed) the model overrates the express and long suburban routes E1 (6.4 times
+its observed share), 205 (3.4), 120E (2.6) and 72 (2.2), and gives the suburban routes
+139, 141E, 189 and 163 and the express 140E under 15% of their observed shares.
 
 ### 5.4 Stop balancing alone
 
 Stop balancing alone, removing stops closer than 250 m to a neighbour on every route
 that uses them while keeping terminals and hubs and never leaving a gap over 700 m,
-removes 351 stops: the median gap rises from 420 to 473 m, the share under 300 m falls
-from 23.9% to 14.2%, the share of people within 400 m of a stop falls by 0.15 points, 28
-fewer buses are needed at today's headways, bus-hours fall 1.5% and fuel 1.7%, and the
-average door-to-door trip shortens from 51.8 to 51.6 minutes.
+removes 351 stops: the median gap rises from 420 to 473 m, the share of people within
+400 m of a stop falls by 0.15 points, 28 fewer buses are needed at today's headways,
+bus-hours fall 1.5% and fuel 1.7%, and the average door-to-door trip shortens from 51.8
+to 51.6 minutes.
 
 ### 5.5 The redesign
 
 With the default settings the search keeps 27 changes: five merges (114B into 114A, 100
 into 108B, 173A into 173B, 210 into 215, 169 into 168), three drops (164, 39 and 150E),
 14 straightened detours on 12 routes, one stop-balancing pass removing 338 stops, and
-four shifts moving 25, 19, 19 and 14 bus-equivalents from the 20 routes where a bus
-saves riders the least waiting to the 20 where it saves the most. Routes go from 201 to
-193 (Figure 3). Seven of the eight removed routes have estimated rather than counted
-riders; the eighth, 150E, is the only counted route with under 1,000 boardings a
-weekday. On the search sample the capped average falls by 1.35 minutes, of which the bus
-shifts give 54%, stop balancing 16%, straightening 15%, merges 11% and drops 5%.
+four shifts moving 25, 19, 19 and 14 bus-equivalents. Routes go from 201 to 193 (Figure
+3). Seven of the eight removed routes have estimated rather than counted riders; the
+eighth, 150E, is the only counted route with under 1,000 boardings a weekday. On the
+search sample the capped average falls by 1.35 minutes, of which the bus shifts give
+54%, stop balancing 16%, straightening 15%, merges 11% and drops 5%.
 
 On the independent check (Table 3), the average possible trip shortens by about a minute
 and the capped average by 0.76 minutes; the shares within 30, 45 and 60 minutes rise
@@ -517,21 +506,21 @@ fuel from 226,592 to 200,140 litres (−11.7%) and CO₂ from 605 to 534 tonnes 
 Scored on 10 samples of 300 origins, one of them the independent check, the redesign's
 gain in the capped average is 0.68 to 0.81 minutes, mean 0.77 with a standard deviation
 of 0.04, and positive in every sample (Figure 4); the level itself moves by about 4
-minutes between samples (73.6 to 77.5 for today's network), so the gain should be quoted
-with its range and the level not to two decimals. Under the 14 changed settings (Table
-4) the capped gain stays between 0.46 and 0.88 minutes and today's travel times need 87
-to 93% of the buses in every run (7 to 13% less fuel). It is smallest without the bus
-shifts: the 23 structural changes alone gain 0.46 minutes, three fifths of the default
-run's 0.76, and give today's travel times with 93% of the buses, so the shifts add the
-remaining 0.30 minutes and 5 points of fleet. Among the runs with shifts it is smallest
-with shorter trips or a shorter access radius and largest with the service-type headways
-scaled by 1.25 or a larger search sample; scaling that table, which sets 145 of the 201
-headways, by 0.8 or 1.25 leaves the gain at 0.68 and 0.88 minutes and the fleet share at
-88%. What the search keeps is also stable: two to four drops, 12 to 17 straightened
-detours, one stop-balancing pass and, where allowed, four shifts in every run, and five
-merges in 12 of the 15. A larger or a different search sample keeps 32 or 33 changes
-instead of 27 with the same gain on the independent check, so the sample decides the
-changes at the margin, not the effect.
+minutes between samples, so the gain should be quoted with its range and the level not
+to two decimals. Under the 14 changed settings (Table 4) the capped gain stays between
+0.46 and 0.88 minutes and today's travel times need 87 to 93% of the buses in every run
+(7 to 13% less fuel). It is smallest without the bus shifts: the 23 structural changes
+alone gain 0.46 minutes, three fifths of the default run's 0.76, and give today's travel
+times with 93% of the buses, so the shifts add the remaining 0.30 minutes and 5 points
+of fleet. Among the runs with shifts it is smallest with shorter trips or a shorter
+access radius and largest with the service-type headways scaled by 1.25 or a larger
+search sample; scaling that table, which sets 145 of the 201 headways, by 0.8 or 1.25
+leaves the gain at 0.68 and 0.88 minutes and the fleet share at 88%. What the search
+keeps is also stable: two to four drops, 12 to 17 straightened detours, one
+stop-balancing pass and, where allowed, four shifts in every run, and five merges in 12
+of the 15. A larger or a different search sample keeps 32 or 33 changes instead of 27
+with the same gain on the independent check, so the sample decides the changes at the
+margin, not the effect.
 
 Under a strict coverage guard, in which no change may leave anyone without a stop within
 500 m, the search keeps 24 changes and gains 0.77 minutes, as much as the default run's
@@ -595,20 +584,18 @@ though individual routes can be far off, and scaling the service-type table that
 model ranks routes at 0.58; the metro is not in the travel graph, so trips that would
 use it look slower or impossible by bus; there is no vehicle capacity or crowding, so
 busy routes look better than they are and a shift can overload them; there is one
-all-day weekday average, walking at 1.3 times the straight line, which makes walks
-across rail lines, motorways or the shore look shorter than they are, and speeds by
-service type rather than by street; counts exist for one operator only and describe
-today's routes, so a merge that moves riders onto a counted route does not raise its
-count, and counts only steer which changes are tried while the model's demand decides
-which are kept; the population grid is two years older than the official figures; and
-the search is greedy over existing routes, so it finds improvements, not the best
-network, and invents no routes. The bus shifts, which give 54% of the gain on the search
-sample, rank routes by riders per route, estimated for 145 of them; every one of the 32
-routes that gives up buses in the default run has estimated riders, so the shifts are
-the least certain part of the result; without them three fifths of the gain and a 7%
-fleet saving remain (Table 4). The gain of about a minute per trip is small; what the
-robustness checks establish is its sign and its order of magnitude, not its second
-decimal.
+all-day weekday average, walking at 1.3 times the straight line regardless of barriers,
+and speeds by service type rather than by street; counts exist for one operator only and
+describe today's routes, so a merge that moves riders onto a counted route does not
+raise its count, and counts only steer which changes are tried while the model's demand
+decides which are kept; the population grid is two years older than the official
+figures; and the search is greedy over existing routes, so it finds improvements, not
+the best network, and invents no routes. The bus shifts, which give 54% of the gain on
+the search sample, rank routes by riders per route, estimated for 145 of them; every one
+of the 32 routes that gives up buses in the default run has estimated riders, so the
+shifts are the least certain part of the result; without them three fifths of the gain
+and a 7% fleet saving remain (Table 4). The gain of about a minute per trip is small;
+the robustness checks establish its sign and order of magnitude, not its second decimal.
 
 ### 6.3 Transferability
 
@@ -624,8 +611,8 @@ and a reader for another format, GTFS for example, replaces them; the repairs, m
 travel model and search work on the routes, stops and shapes the reader returns, and the
 service types that key the headway and speed settings are renamed to the new city's. The
 method's weakest link travels with it: without origin–destination data the demand model
-is a gravity model, and the checks in Section 5.6 are the minimum that should accompany
-any such estimate.
+is a gravity model, and checks like those of Section 5.6 should accompany any such
+estimate.
 
 ### 6.4 Choices that are not the model's to make
 
@@ -634,23 +621,22 @@ is taken as faster trips or fewer buses; how many people may lose a stop within 
 distance so that others travel faster, where the strict answer of none costs nothing
 here; how much riders mind changing buses; which routes are fixed by contracts or school
 service; and whether routes of different carriers can be merged at all, which matters
-because 59 of the 72 near-duplicate pairs involve two carriers and the gross-cost
-contracts the agency plans would make it easier.
+because 59 of the 72 near-duplicate pairs involve two carriers and the planned
+gross-cost contracts would make it easier.
 
 ### 6.5 What this offers the agency
 
 For the agency this work offers two things. The first is a measured baseline: when the
 map API carries the new network, the same three commands will score it on the same
-measures and the same 300-origin check, which no other public source allows. The changes
-of Section 5.7 are candidates for people who know the city to review against that
-network, with the strict coverage guard of Section 5.6, which costs nothing, as the
-safer rule; route 519's riders should be counted before a bus is added, and each
-straightened path checked on the ground. The second is a statement of what the estimates
-stand in for: a public timetable or GTFS feed would replace the headway estimates for
-200 of 201 routes and the repair of the map's defects, and boardings per route for all
-carriers would replace the model's ranking for the 145 routes without counts. The
-pipeline already writes today's network and the redesign as GTFS feeds that open in
-standard tools.
+measures and the same 300-origin check. The changes of Section 5.7 are candidates for
+people who know the city to review against that network, with the strict coverage guard
+of Section 5.6, which costs nothing, as the safer rule; route 519's riders should be
+counted before a bus is added, and each straightened path checked on the ground. The
+second is a statement of what the estimates stand in for: a public timetable or GTFS
+feed would replace the headway estimates for 200 of 201 routes and the repair of the
+map's defects, and boardings per route for all carriers would replace the model's
+ranking for the 145 routes without counts. The pipeline already writes today's network
+and the redesign as GTFS feeds.
 
 ## 7. Conclusions
 
@@ -696,14 +682,14 @@ content as needed and takes full responsibility for the content of the publicati
 
 ## Figures
 
-Figure 1. Baku's bus network today, both directions of each route coloured by the
-route's shape class (direct, indirect, very indirect, loop), over the population grid in
-grey (darker where more people live). Drawn by paper/figures.py from the repaired route
-geometry, output/routes.csv and Kontur Population.
+Figure 1. Baku's bus network today, each route direction coloured by the route's shape
+class, over the population grid in grey (darker where more people live). Drawn by
+paper/figures.py from the repaired route geometry, output/routes.csv and Kontur
+Population.
 
-Figure 2. Overlap: the 21 trunk corridors where eight or more routes share every link,
-line width by routes per link, over every route in grey. Drawn from output/corridors.csv
-and the repaired route geometry.
+Figure 2. The 21 trunk corridors where eight or more routes share every link, line width
+by routes per link, over every route in grey. Drawn from output/corridors.csv and the
+repaired route geometry.
 
 Figure 3. The redesign: kept route directions in grey, straightened ones in blue (the
 new path), dropped or merged ones in orange. Drawn from output/redesign/network.geojson.
@@ -712,7 +698,7 @@ Figure 4. Gain of the redesign in the capped average on 10 trip samples (top) an
 14 alternative settings (bottom), with the default run marked. Source:
 output/robustness/redesign_seeds.csv and redesign_settings.csv.
 
-The maps draw the agency's route geometry and the Kontur population grid (CC BY); no
+The maps draw the agency's route geometry and the Kontur population grid; no
 OpenStreetMap data is drawn.
 
 ## References
@@ -740,8 +726,6 @@ Durán-Micco, J., & Vansteenwegen, P. (2022). A survey on the transit network de
 EBRD (2024). Tbilisi gets greener and more inclusive. https://www.ebrd.com/news/2024/tbilisi-gets-greener-and-more-inclusive.html
 
 El-Geneidy, A. M., Strathman, J. G., Kimpel, T. J., & Crout, D. T. (2006). Effects of bus stop consolidation on passenger activity and transit operations. Transportation Research Record, 1971, 32–41.
-
-El-Geneidy, A., Grimsrud, M., Wasfi, R., Tétreault, P., & Surprenant-Legault, J. (2014). New evidence on walking distances to transit stops: Identifying redundancies and gaps using variable service areas. Transportation, 41(1), 193–210. https://doi.org/10.1007/s11116-013-9508-z
 
 Farahani, R. Z., Miandoabchi, E., Szeto, W. Y., & Rashidi, H. (2013). A review of urban transportation network design problems. European Journal of Operational Research, 229(2), 281–302. https://doi.org/10.1016/j.ejor.2013.01.001
 

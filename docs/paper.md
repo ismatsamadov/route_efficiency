@@ -295,8 +295,8 @@ point.
    review copy for Case Studies on Transport Policy, with the author details and the
    identifying declarations in [`paper/title-page.md`](../paper/title-page.md); every
    number in it was checked against `output/`, and `python3 paper/figures.py` draws its
-   four figures as SVG into `paper/figures/` from the committed outputs (convert them to
-   PDF or EPS for submission); `python3 paper/check.py` reports the word counts, the
+   four figures as SVG and PDF into `paper/figures/` from the committed outputs, with the
+   standard library only; `python3 paper/check.py` reports the word counts, the
    length of each highlight and whether every citation has a reference entry, and
    `--wrap` re-wraps the prose. Ask two readers (a transport planner and a quantitative researcher) to
    comment.
@@ -328,9 +328,9 @@ point.
 - [x] Word count, abstract length, highlights and reference style of the chosen journal
       (the journal's guide, checked 24 October 2026, asks for under 7,000 words and
       mandatory highlights with no character limit of its own; the 85 characters per
-      bullet is Elsevier's general convention. The main text is about 6,800 words
-      without tables and references, the abstract 248 words, the highlights 70–83
-      characters)
+      bullet is Elsevier's general convention. The main text is about 6,600 words
+      without tables and references and under 7,000 even with the abstract and the
+      figure captions, the abstract 248 words, the highlights 70–83 characters)
 - [x] Anonymised review copy where the journal is double-blind (`paper/manuscript.md`
       with `paper/title-page.md`)
 - [ ] Three to five suggested reviewers

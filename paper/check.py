@@ -76,8 +76,9 @@ def main():
     print("reference entries:", len(entries))
     print("entries never cited:", never_cited or "none")
     print("citations without an entry:", no_entry or "none")
-    figures = re.findall(r"Figure (\d)", body.split("## Figures")[0])
-    tables = re.findall(r"Table (\d)", body)
+    joined = re.sub(r"\n(?!\n)", " ", body)                 # citations may break across lines
+    figures = re.findall(r"Figure (\d)", joined.split("## Figures")[0])
+    tables = re.findall(r"Table (\d)", joined)
     print("figures in order of first citation:", figures)
     print("tables in order of first citation:", tables)
     long_lines = [i + 1 for i, l in enumerate(body.split("\n")) if len(l) > WIDTH and not l.startswith(("|", "#", "<!--"))]

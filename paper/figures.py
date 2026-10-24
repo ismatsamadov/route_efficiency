@@ -8,15 +8,17 @@ Figure 2  the trunk corridors where eight or more routes share every link, width
 Figure 3  the redesign: kept, straightened, and dropped or merged route directions
 Figure 4  the gain of the redesign on ten trip samples and under the alternative settings
 
-Standard library only, like the rest of the repository. The maps use the same flat
-projection as the measurements (busnet.geo.PROJ) and the repaired geometry the
-measurements use, so they show exactly what was measured. Convert to PDF or EPS for a
-journal with any SVG-capable tool (a browser's print dialog, Inkscape, rsvg-convert).
+Each figure is written as SVG and as PDF (vector, Helvetica, one page at the SVG's size),
+the form journals ask for. Standard library only, like the rest of the repository. The
+maps use the same flat projection as the measurements (busnet.geo.PROJ) and the repaired
+geometry the measurements use, so they show exactly what was measured.
 """
 import csv
 import json
 import math
 import sys
+import xml.etree.ElementTree as ET
+import zlib
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -327,6 +329,135 @@ def figure_4(seeds, settings, check_seed=7):
     return svg(width, height + 10, parts)
 
 
+# ---------------------------------------------------------------- SVG to PDF
+
+# Helvetica advance widths (AFM, per 1000 units) for the characters the figures use.
+_W = [278, 278, 355, 556, 556, 889, 667, 191, 333, 333, 389, 584, 278, 333, 278, 278, 556, 556, 556, 556,
+      556, 556, 556, 556, 556, 556, 278, 278, 584, 584, 584, 556, 1015, 667, 667, 722, 722, 667, 611, 778,
+      722, 278, 500, 667, 556, 833, 722, 778, 667, 778, 722, 667, 611, 722, 667, 944, 667, 667, 611, 278,
+      278, 278, 469, 556, 333, 556, 556, 500, 556, 556, 278, 556, 556, 222, 222, 500, 222, 833, 556, 556,
+      556, 556, 333, 500, 278, 556, 500, 722, 500, 500, 500, 334, 260, 334, 584]
+HELVETICA = {chr(32 + i): w for i, w in enumerate(_W)}
+HELVETICA.update({"×": 584, "–": 556, "²": 333, "°": 400})
+
+
+def text_width(s, size, bold=False):
+    return sum(HELVETICA.get(ch, 556) for ch in s) / 1000 * size * (1.08 if bold else 1.0)
+
+
+def _rgb(hex_colour):
+    h = hex_colour.lstrip("#")
+    return " ".join(f"{int(h[i:i + 2], 16) / 255:.3f}" for i in (0, 2, 4))
+
+
+def _pdf_string(s):
+    raw = s.encode("cp1252", "replace")
+    return b"(" + raw.replace(b"\\", b"\\\\").replace(b"(", b"\\(").replace(b")", b"\\)") + b")"
+
+
+class PdfPage:
+    """A one-page PDF built from the SVG elements figures.py emits: rect, circle, line,
+    polyline, polygon, text, and a clipPath on a group. The content stream works in SVG
+    coordinates (y down) under a flipped matrix; text is flipped back by its own matrix."""
+
+    def __init__(self, width, height):
+        self.w, self.h = width, height
+        self.ops = [f"1 0 0 -1 0 {height} cm 1 J 1 j".encode()]
+        self.states = {}
+
+    def alpha(self, stroke_a, fill_a):
+        key = (round(float(stroke_a), 3), round(float(fill_a), 3))
+        if key not in self.states:
+            self.states[key] = f"GS{len(self.states)}"
+        self.ops.append(f"/{self.states[key]} gs".encode())
+
+    def element(self, el, clips):
+        tag, g = el.tag.split("}")[-1], el.get
+        if tag == "g":
+            ref = g("clip-path", "")
+            if ref.startswith("url(#"):
+                x, y, w, h = clips[ref[5:-1]]
+                self.ops.append(f"q {x} {y} {w} {h} re W n".encode())
+            for child in el:
+                self.element(child, clips)
+            if ref:
+                self.ops.append(b"Q")
+            return
+        if tag == "clipPath":
+            r = el.find("{http://www.w3.org/2000/svg}rect")
+            clips[g("id")] = tuple(float(r.get(k)) for k in ("x", "y", "width", "height"))
+            return
+        fill, stroke = g("fill", "none"), g("stroke")
+        self.alpha(g("stroke-opacity", 1), g("fill-opacity", 1))
+        if tag == "rect":
+            x, y, w, h = (float(g(k)) for k in ("x", "y", "width", "height"))
+            if fill != "none":
+                self.ops.append(f"{_rgb(fill)} rg {x} {y} {w} {h} re f".encode())
+            if stroke:
+                self.ops.append(f"{_rgb(stroke)} RG {g('stroke-width', 1)} w {x} {y} {w} {h} re S".encode())
+        elif tag == "circle":
+            cx, cy, r = float(g("cx")), float(g("cy")), float(g("r"))
+            k = 0.5523 * r
+            path = (f"{cx + r} {cy} m {cx + r} {cy + k} {cx + k} {cy + r} {cx} {cy + r} c "
+                    f"{cx - k} {cy + r} {cx - r} {cy + k} {cx - r} {cy} c "
+                    f"{cx - r} {cy - k} {cx - k} {cy - r} {cx} {cy - r} c "
+                    f"{cx + k} {cy - r} {cx + r} {cy - k} {cx + r} {cy} c")
+            op = "B" if stroke and fill != "none" else "S" if stroke else "f"
+            pre = (f"{_rgb(fill)} rg " if fill != "none" else "") + (f"{_rgb(stroke)} RG {g('stroke-width', 1)} w " if stroke else "")
+            self.ops.append(f"{pre}{path} {op}".encode())
+        elif tag == "line":
+            dash = f"[{g('stroke-dasharray').replace(' ', ' ')}] 0 d " if g("stroke-dasharray") else ""
+            self.ops.append(f"{dash}{_rgb(stroke)} RG {g('stroke-width', 1)} w {g('x1')} {g('y1')} m {g('x2')} {g('y2')} l S"
+                            f"{' [] 0 d' if dash else ''}".encode())
+        elif tag in ("polyline", "polygon"):
+            pts = [p.split(",") for p in g("points").split()]
+            path = f"{pts[0][0]} {pts[0][1]} m " + " ".join(f"{x} {y} l" for x, y in pts[1:])
+            if tag == "polygon":
+                op = "b" if stroke and fill != "none" else "s" if stroke else "f"      # closed
+            else:
+                op = "S"
+            pre = (f"{_rgb(fill)} rg " if fill != "none" else "") + (f"{_rgb(stroke)} RG {g('stroke-width', 1)} w " if stroke else "")
+            self.ops.append(f"{pre}{path} {op}".encode())
+        elif tag == "text":
+            size, bold = float(g("font-size", 14)), g("font-weight") == "bold"
+            x, y, s = float(g("x")), float(g("y")), el.text or ""
+            width = text_width(s, size, bold)
+            x -= width / 2 if g("text-anchor") == "middle" else width if g("text-anchor") == "end" else 0
+            self.ops.append(b"BT /%s %s Tf %s rg 1 0 0 -1 %s %s Tm " % (b"F2" if bold else b"F1", f"{size:g}".encode(),
+                            _rgb(g("fill", INK)).encode(), f"{x:.1f}".encode(), f"{y:.1f}".encode()) + _pdf_string(s) + b" Tj ET")
+
+    def build(self):
+        content = zlib.compress(b"\n".join(self.ops))
+        gstates = " ".join(f"/{name} {7 + i} 0 R" for i, name in enumerate(self.states.values()))
+        objects = [
+            b"<< /Type /Catalog /Pages 2 0 R >>",
+            b"<< /Type /Pages /Kids [3 0 R] /Count 1 >>",
+            (f"<< /Type /Page /Parent 2 0 R /MediaBox [0 0 {self.w} {self.h}] /Contents 4 0 R "
+             f"/Resources << /Font << /F1 5 0 R /F2 6 0 R >> /ExtGState << {gstates} >> >> >>").encode(),
+            b"<< /Length %d /Filter /FlateDecode >>\nstream\n" % len(content) + content + b"\nendstream",
+            b"<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>",
+            b"<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>",
+        ] + [f"<< /Type /ExtGState /CA {sa} /ca {fa} >>".encode() for sa, fa in self.states]
+        out, offsets = bytearray(b"%PDF-1.4\n%\xe2\xe3\xcf\xd3\n"), []
+        for i, obj in enumerate(objects, 1):
+            offsets.append(len(out))
+            out += b"%d 0 obj\n" % i + obj + b"\nendobj\n"
+        xref = len(out)
+        out += b"xref\n0 %d\n0000000000 65535 f \n" % (len(objects) + 1)
+        out += b"".join(b"%010d 00000 n \n" % o for o in offsets)
+        out += b"trailer\n<< /Size %d /Root 1 0 R >>\nstartxref\n%d\n%%%%EOF\n" % (len(objects) + 1, xref)
+        return bytes(out)
+
+
+def svg_to_pdf(svg_text):
+    root = ET.fromstring(svg_text)
+    page = PdfPage(float(root.get("width")), float(root.get("height")))
+    clips = {}
+    for el in root:
+        page.element(el, clips)
+    return page.build()
+
+
 def main():
     OUT.mkdir(parents=True, exist_ok=True)
     inp = load_inputs(ROOT, ROOT / "busnet.toml", (), repair=True, split=False, say=lambda *a, **k: None)
@@ -344,7 +475,9 @@ def main():
     }
     for name, body in figures.items():
         (OUT / name).write_text(body, encoding="utf-8")
-        print(f"{OUT / name}  {len(body) / 1024:.0f} KB")
+        pdf = svg_to_pdf(body)
+        (OUT / name.replace(".svg", ".pdf")).write_bytes(pdf)
+        print(f"{OUT / name}  {len(body) / 1024:.0f} KB, and as PDF {len(pdf) / 1024:.0f} KB")
 
 
 if __name__ == "__main__":
