@@ -170,13 +170,18 @@ NUMBERING = f"""<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 </w:abstractNum><w:num w:numId="1"><w:abstractNumId w:val="0"/></w:num></w:numbering>"""
 
 
-def _run(text, bold=False):
-    return f'<w:r><w:rPr>{"<w:b/>" if bold else ""}</w:rPr><w:t xml:space="preserve">{esc(text)}</w:t></w:r>'
+HEADING_SIZE = {"Title": 32, "Heading1": 28, "Heading2": 26, "Heading3": 24}
 
 
-def _para(text, style=None, bold=False):
+def _run(text, bold=False, size=None):
+    rpr = ("<w:b/>" if bold else "") + (f'<w:sz w:val="{size}"/><w:szCs w:val="{size}"/>' if size else "")
+    return f'<w:r><w:rPr>{rpr}</w:rPr><w:t xml:space="preserve">{esc(text)}</w:t></w:r>'
+
+
+def _para(text, style=None):
+    """Headings carry their size and weight on the run too, so they survive a reader that ignores styles."""
     ppr = f'<w:pPr><w:pStyle w:val="{style}"/></w:pPr>' if style else ""
-    return f"<w:p>{ppr}{_run(text, bold)}</w:p>"
+    return f"<w:p>{ppr}{_run(text, style in HEADING_SIZE, HEADING_SIZE.get(style))}</w:p>"
 
 
 def _table(rows):
