@@ -233,7 +233,8 @@ with `--og` the link-preview picture `og.png`; none of them is read by the other
 
 `site/data.js` assigns one object to `window.SITE_DATA`. `meta` holds the dates of the
 map data (`scraped`, `same_as`), the month of the BakuBus counts, the coverage radius, the
-transfer walk and the time lost per stop (from the settings) and the links. `summary` holds the figures the page quotes, taken from `network.json` and the
+transfer walk and the time lost per stop (from the settings) and the links, and the travel model's settings (walking speed and detour, change penalty,
+longest trip, and how many headways come from each source). `summary` holds the figures the page quotes, taken from `network.json` and the
 CSV files: routes, directions and stops, routes per shape class, detours and their extra
 km, the detours where nobody depends on the route alone and those with a shorter path,
 near-duplicate pairs and those with two carriers, corridors, routes per link, closely
@@ -245,15 +246,20 @@ and the defects the repairs do not cover: `no_stops` and `no_shape` (route numbe
 `missing_from_map` (counted routes that are not in the map data), `cyrillic_names`,
 `shared_names`, `shared_names_far_apart` and `unnamed_unused_stops`. Then the data the
 map draws: `stops` (served stops as latitude, longitude, name and AYNA stop id, referred
-to by position), `routes` (one object per route with the figures of `routes.csv` and, for
-each direction, its line and its stops), `detours` (the rows of `detours.csv` with their
+to by position), `routes` (one object per route with the figures of `routes.csv`, its
+estimated headway and its source, its cruise speed and, for each direction, its line, its
+stops and the length of every hop), `detours` (the rows of `detours.csv` with their
 line and end stops, and `alt`: the shorter path's line, km, km and minutes saved and the
 stops it skips, or null), `duplicates`, `corridors` (with their line and routes),
 `spacing` (the stops stop balancing removes, each with its shortest distance along a route
 to a neighbour, and the scenario's stop visits, hours saved and residents left without a
 stop within the coverage radius, from `scenario.json`) and `hexes` (each population
 hexagon with people farther than the coverage radius from a stop: its outline, those
-people and everyone in it). Lines are encoded polylines with 5 decimals.
+people and everyone in it), and `carriers` (one row per carrier, spelling variants
+combined: its routes, one-way km, direct routes, median path / straight line, detours and
+their km, routes mostly inside another route, closely spaced stops it serves, residents
+only one of its routes reaches, and counted boardings). Lines are encoded polylines with
+5 decimals; stop coordinates have 6.
 
 `site/checklist.xlsx` holds the lists, one sheet each, with frozen headers and filters:
 
@@ -265,4 +271,5 @@ people and everyone in it). Lines are encoded polylines with 5 decimals.
 | Near-duplicate routes | 72 | route and carrier, the route that serves most of its stops and its carrier, share of stops shared, stops of each, same carrier |
 | Corridors | 21 | from, to, turning point, km, stops, routes per link (mean and busiest link), routes |
 | Close stops | 351, closest first | stop name, AYNA stop id, shortest distance along a route to a neighbouring stop, routes |
+| Carriers | 39, most routes first | carrier, other spellings, routes and their numbers, one-way km, direct routes, median path / straight line, detours and their km, routes mostly inside another route and those inside another carrier's, close stops served, residents only one of its routes reaches, weekday boardings |
 | Routes | 201 | the measured columns of `routes.csv`, without the modelled headways, fleet and fuel |

@@ -39,7 +39,7 @@ lists what to check first.
 | Turn the work into a research paper: outline, venues, format, steps for an independent researcher | [paper.md](paper.md) |
 | Read the manuscript draft and its title page | [../paper/manuscript.md](../paper/manuscript.md), [../paper/title-page.md](../paper/title-page.md) |
 | Use the route planner built on the same data | [birjob.com/aletler/avtobus-marsrutu](https://www.birjob.com/aletler/avtobus-marsrutu) (in Azerbaijani) |
-| Show the findings to people who will act on them: a guided tour, a map with seven views, a card per route, the data defects and the checklist | [../index.html](../index.html), served at [ismatsamadov.github.io/route_efficiency](https://ismatsamadov.github.io/route_efficiency/); how it is built: [code.md](code.md#the-page) |
+| Show the findings to people who will act on them: a guided tour, a map with eight views, a card per route, the data defects, the checklist and tables of all routes and carriers | [../index.html](../index.html), served at [ismatsamadov.github.io/route_efficiency](https://ismatsamadov.github.io/route_efficiency/); how it is built: [code.md](code.md#the-page) |
 | Look up a term | [glossary.md](glossary.md) |
 
 ## Three commands

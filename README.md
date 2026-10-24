@@ -111,15 +111,16 @@ CSV and the known defects described: https://doi.org/10.34740/KAGGLE/DSV/2117368
 
 [index.html](index.html) shows the results to people who will act on them rather than
 rerun them. A 60-second guided tour flies the map through eight findings. The map has
-seven views: how direct each route is, detours with the shorter path along streets
+eight views: how direct each route is, detours with the shorter path along streets
 buses already use where one exists, routes that repeat each other, the busiest
 corridors, the residents farther than 400 m from a stop, the stops that sit too close
-together, and the reach of any stop (the stops its buses serve without a change and with
-one). Every route has a card, with a Compare button for the routes it overlaps; stops
+together, the reach of any stop (the stops its buses serve without a change and with
+one), and the estimated travel time by bus from any stop, from the paper's own travel
+model. Every route has a card, with a Compare button for the routes it overlaps; stops
 can be searched by name. Below the map come the defects in AYNA's map data with the
-routes they affect, and the checklists, also as an Excel workbook. The page is in
-English. The address bar keeps what is on screen, so a link can point at one finding:
-`#route=177`, `#view=detours`, `#view=reach&stop=60` (an AYNA stop id),
+routes they affect, the checklists (also as an Excel workbook), and sortable tables of
+all 201 routes and of the 39 carriers that run them. The page is in English. The address bar keeps what is on screen, so a link can point at one finding:
+`#route=177`, `#view=detours`, `#view=reach&stop=60` or `#view=time&stop=60` (an AYNA stop id),
 `#route=190&compare=160`, or `#tour`.
 
 ```sh

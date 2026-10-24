@@ -235,14 +235,27 @@ is drawn on canvas and none listens for the pointer; the page finds what is unde
 pointer itself, within 10 pixels, so that a click on several overlapping routes lists
 them all. Reach is counted in the browser: the stops of every route at a stop, and with
 one change the stops of every route at any stop within `max_transfer_walk_m` (300 m)
-of those. The guided tour picks its examples from the data when it starts (the longest
+of those. Travel time is the paper's travel model rebuilt in the browser: the same
+graph as `graph.TransitGraph` (arrival, departure and on-board nodes; boarding at half
+the route's headway plus `transfer_penalty_min`; each hop at the route's cruise speed
+plus `stop_loss_s`; walks of up to `max_transfer_walk_m` at `walk_speed_mps` times
+`walk_detour`), searched with Dijkstra from the chosen stop. Paths are chosen by the
+model's cost, and the minutes shown leave the change penalties out. For that, `data.js`
+carries each route's headway and speed and every hop's length, and stop coordinates to
+six decimals so that walks end at 300 m exactly where the model's do. Checked against
+`TransitGraph` from 15 stops, the stops reached within 30 and 60 minutes and in every
+15-minute band were identical. The tables of all routes and carriers sort on any column
+(empty values last) and filter on their text; a carrier's row draws all its routes on
+the map. Carriers are grouped by `site/build.py`: names that differ only in case, spaces,
+hyphens or the dot of İ are one carrier, which turns the 42 names in the data into the
+paper's 39. The guided tour picks its examples from the data when it starts (the longest
 detour where nobody depends on the route alone, the first near-duplicate pair, the
 first corridor, the densest square kilometre of close stops, the hexagon with most
 residents beyond 400 m, the stop with most routes), so it follows the data after a
 rebuild. Text from the data goes in with `textContent` only; the page's own text is in
 the `T` table at the top of `app.js`. Stop search ignores Azerbaijani accents and the
 Cyrillic look-alikes some names use. The address bar keeps the state
-(`#view=detours&route=177`, `#route=190&compare=160`, `#view=reach&stop=60`), and
+(`#view=detours&route=177`, `#route=190&compare=160`, `#view=reach&stop=60`, `#view=time&stop=60`), and
 `#tour` starts the tour.
 
 ## Checking a change
