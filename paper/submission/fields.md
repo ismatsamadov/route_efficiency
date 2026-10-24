@@ -20,6 +20,7 @@ if the manuscript changes.
 | Has data, code or materials | Yes: https://doi.org/10.5281/zenodo.23604370 (all versions https://doi.org/10.5281/zenodo.23602093); https://github.com/ismatsamadov/route_efficiency |
 | Published DOI / journal | None yet (not yet peer reviewed; prepared for submission to a journal) |
 | Supplementary links | https://github.com/ismatsamadov/route_efficiency |
+| Comments for the moderator | block F below |
 
 After posting, put the preprint DOI on the title page ("Preprint: ..." line in
 `paper/title-page.md`) and in `paper/cover-letter.md`, then rebuild.
@@ -98,3 +99,7 @@ Suggested reviewers are entered in the submission system; none has any connectio
 Yours sincerely,
 
 Ismat Samadov
+
+## Block F — Comments for the engrXiv moderator
+
+This is an original research manuscript, not yet peer reviewed, prepared for submission to a transport journal (Case Studies on Transport Policy). It measures Baku's bus network from public data, builds a travel model checked against observed ridership, and tests a fleet-neutral redesign. I am the sole author, an independent researcher in Baku, Azerbaijan (ORCID 0009-0007-7919-4950). Every input, the code and every result are archived with a DOI (10.5281/zenodo.23604370) and on GitHub (ismatsamadov/route_efficiency), so all numbers can be regenerated. The manuscript cites and supersedes an earlier unreviewed report of mine on the same data. No funding, no competing interests; the use of an AI writing tool is declared in the manuscript. Licence CC BY 4.0. Contact: ismetsemedov@gmail.com.
