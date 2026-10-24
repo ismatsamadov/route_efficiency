@@ -30,4 +30,5 @@ Funding: this research did not receive any specific grant from funding agencies 
 
 Author contributions (CRediT): Ismat Samadov: conceptualization, methodology, software, validation, formal analysis, data curation, writing (original draft), visualization. Single author.
 
-Preprint: to be posted on engrXiv before submission; its DOI goes here.
+Preprint: submitted to engrXiv on 24 October 2026 (submission 8632); its DOI will be
+added here once the moderator posts it.

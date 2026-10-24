@@ -40,7 +40,7 @@ After posting, put the preprint DOI on the title page ("Preprint: ..." line in
 | Funding | None. "This research did not receive any specific grant from funding agencies in the public, commercial, or not-for-profit sectors." |
 | Declaration of interests | The author declares no known competing financial interests or personal relationships that could have appeared to influence the work reported in this paper. |
 | Data availability | block C below |
-| Preprint | Yes, on engrXiv, DOI [insert after posting] |
+| Preprint | Yes: submitted to engrXiv on 24 October 2026 (submission 8632), DOI pending; expected 10.31224/8632 |
 | Under consideration elsewhere | No |
 | Previously published | No (an earlier unreviewed GitHub report on the same data is cited and superseded in section 2.1) |
 | Generative AI | Declared in the manuscript's Declarations (Claude via Claude Code, for code, drafting, number checks and review; the author takes full responsibility) |

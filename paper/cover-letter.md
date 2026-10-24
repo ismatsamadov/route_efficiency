@@ -30,8 +30,9 @@ publish a map and little else, and the pipeline, every input and every result ar
 released with a DOI (10.5281/zenodo.23604370) so that the measurements can be
 regenerated and the method applied elsewhere once a reader for another map format is
 written. The manuscript is about 6,600 words with four tables and four figures. It is
-not under consideration elsewhere and has not been published before; a preprint will be
-posted on engrXiv and its DOI given on the title page. I have no competing interests and
+not under consideration elsewhere and has not been published before; a preprint was
+submitted to engrXiv on 24 October 2026 (submission 8632) and its DOI will be given on
+the title page once assigned. I have no competing interests and
 received no funding. I am the sole author, writing as an independent researcher. The
 earlier, unreviewed GitHub report on the same data that the manuscript cites and
 supersedes is my own.
