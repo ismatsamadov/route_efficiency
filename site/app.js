@@ -338,19 +338,10 @@
 
   function C() { return COLORS[theme]; }
   function tr() { return T[lang]; }
-  function currentTheme() { return darkQuery && darkQuery.matches ? "dark" : "light"; }
+  function currentTheme() { return "light"; }
   function reduceMotion() { return !!(motionQuery && motionQuery.matches); }
 
-  function initialLang() {
-    var q = null;
-    try { q = new URLSearchParams(window.location.search).get("lang"); } catch (e) { q = null; }
-    if (LANGS.indexOf(q) >= 0) return q;
-    try {
-      var saved = window.localStorage.getItem("lang");
-      if (LANGS.indexOf(saved) >= 0) return saved;
-    } catch (e) { /* storage blocked: use the default */ }
-    return "az";
-  }
+  function initialLang() { return "en"; }
 
   // ---------------------------------------------------------------- formatting
 

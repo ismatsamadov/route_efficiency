@@ -1,16 +1,15 @@
 <!doctype html>
-<html lang="az">
+<html lang="en" data-theme="light">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Bakı avtobus şəbəkəsi</title>
-<meta name="description" content="Bakının 201 avtobus marşrutunun açıq məlumatla ölçülməsi: dolamalar, təkrarlanan marşrutlar, dəhlizlər, dayanacaqlara çatım və AYNA-nın xəritə məlumatındakı xətalar. A measurement of Baku's 201 bus routes from open data.">
-<meta name="color-scheme" content="light dark">
-<meta name="theme-color" content="#f9f9f7" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#0d0d0d" media="(prefers-color-scheme: dark)">
+<title>Baku bus network</title>
+<meta name="description" content="Explore Baku's 201 bus routes through open data: route directness, detours, overlaps, corridors, stop coverage and map data issues.">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#f5f7fc">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Bakı avtobus şəbəkəsi · Baku bus network">
-<meta property="og:description" content="Bakının 201 avtobus marşrutu harada dolanır, harada təkrarlanır və kimə çatmır: açıq məlumatla ölçmə.">
+<meta property="og:title" content="Baku bus network">
+<meta property="og:description" content="Where Baku's bus routes wander, where they overlap, and whom they miss. An interactive exploration of open data.">
 <meta property="og:url" content="https://ismatsamadov.github.io/route_efficiency/">
 <meta property="og:image" content="https://ismatsamadov.github.io/route_efficiency/paper/post/figure-1.png">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231c5cab'/%3E%3Cpath d='M7 23c3-9 6 1 9-7s6-2 9-8' fill='none' stroke='%23fff' stroke-width='3' stroke-linecap='round'/%3E%3Ccircle cx='7' cy='23' r='2.6' fill='%23fff'/%3E%3Ccircle cx='25' cy='8' r='2.6' fill='%23fff'/%3E%3C/svg%3E">
@@ -32,7 +31,7 @@
       <a href="#checklist"><span lang="az">Yoxlama siyahısı</span><span lang="en">Checklist</span></a>
       <a href="#method"><span lang="az">Metod</span><span lang="en">Method</span></a>
     </nav>
-    <div class="lang" role="group" aria-label="Dil / Language">
+    <div class="lang" hidden role="group" aria-label="Dil / Language">
       <button type="button" data-set-lang="az" aria-pressed="true">AZ</button>
       <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
     </div>
@@ -56,7 +55,7 @@
     <p class="lede" lang="en">A measurement of the <b data-v="summary.routes"></b> routes on AYNA's public map, from open data alone. Routes and stops come from the map, residents from the Kontur population grid and boardings from BakuBus, so every number can be checked. This page is not a plan: it is a list for people who know the city to check.</p>
     <div class="cta">
       <a class="btn btn-primary" href="#map"><span lang="az">Xəritəni aç</span><span lang="en">Open the map</span></a>
-      <a class="btn" data-download href="site/checklist-az.xlsx" download>
+      <a class="btn" data-download href="site/checklist-en.xlsx" download>
         <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 3v10m0 0 4-4m-4 4-4-4M4 16h12"/></svg>
         <span lang="az">Yoxlama siyahısı (Excel)</span><span lang="en">Checklist (Excel)</span>
       </a>
@@ -158,11 +157,11 @@
         <p lang="en">The first ten lines of each list. The full lists are in the Excel file, one line per item to check: <span data-v="summary.detours"></span> detours, <span data-v="summary.duplicate_pairs"></span> pairs of routes, <span data-v="summary.corridors"></span> corridors, the measurements of all <span data-v="summary.routes"></span> routes and the defects in the map data.</p>
       </div>
       <div class="downloads">
-        <a class="btn btn-primary" href="site/checklist-az.xlsx" download>
+        <a class="btn btn-primary" href="site/checklist-az.xlsx" download hidden>
           <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 3v10m0 0 4-4m-4 4-4-4M4 16h12"/></svg>
           Excel · Azərbaycanca
         </a>
-        <a class="btn" href="site/checklist-en.xlsx" download>
+        <a class="btn btn-primary" href="site/checklist-en.xlsx" download>
           <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 3v10m0 0 4-4m-4 4-4-4M4 16h12"/></svg>
           Excel · English
         </a>
