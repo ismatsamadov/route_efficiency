@@ -26,7 +26,8 @@ earlier copy of the same data, scraped on 6 May 2026 and kept in
 github.com/samirmehd1yev/best_route_finding, is identical row for row (every route,
 stop, coordinate, stop sequence and shape point), so the API did not change between
 the two dates. The API returns an error for one of its 209 route ids (96, route 144),
-in both scrapes.
+in both scrapes. The same snapshot is published on Kaggle with its tables as CSV
+(https://doi.org/10.34740/KAGGLE/DSV/21173689).
 
 **Licence.** None is published. The data is AYNA's; neither AYNA's website nor the API
 states terms of use. I keep the database here as a research snapshot with attribution

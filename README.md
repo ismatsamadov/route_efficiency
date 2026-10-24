@@ -101,6 +101,11 @@ the estimates. `python3 measure.py --config none` runs with the built-in default
 | `repairs.txt` | Data defects fixed automatically before measuring |
 | `robustness/` | The redesign on other trip samples and under other assumptions, the model's fit as inputs are added, coverage by radius |
 
+## The snapshot on Kaggle
+
+The AYNA snapshot `data/ayna.db` is also published on Kaggle, with its five tables as
+CSV and the known defects described: https://doi.org/10.34740/KAGGLE/DSV/21173689.
+
 ## A planner built on the same data
 
 The repaired network also runs a free route planner for Baku, in Azerbaijani, at
