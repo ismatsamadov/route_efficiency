@@ -5,9 +5,10 @@ Build the data behind index.html, the one-page summary of the results served by 
 Reads the committed results in output/ and the network in data/ayna.db, repaired the same
 way measure.py repairs it, and writes to ./site/ (or --out):
   data.js         routes, stops, detours with a shorter path where streets allow one,
-                  near-duplicates, corridors, closely spaced stops, the people who live
-                  farther than coverage_radius_m from a stop, and the defects found in
-                  AYNA's map data, as one JavaScript object that index.html reads
+                  near-duplicates, corridors, closely spaced stops, carriers, the people
+                  who live farther than coverage_radius_m from a stop, the coverage at the
+                  five radii recorded in output/robustness/coverage_radius.csv, and the
+                  defects found in AYNA's map data, as one JavaScript object that index.html reads
   checklist.xlsx  the same lists as a workbook to go through line by line
   og.png          with --og: the 1200x630 picture that link previews show, drawn from
                   site/og.html by Google Chrome, headless

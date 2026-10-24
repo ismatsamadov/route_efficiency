@@ -31,8 +31,8 @@
     compare: "Compare",
     shapes: { direct: "Direct", indirect: "Indirect", "very indirect": "Very indirect", loop: "Loop" },
     ranges: { direct: "at most 1.4 times the straight line", indirect: "1.4 to 2 times", "very indirect": "2 to 3 times", loop: "over 3 times, or ends close together" },
-    routesCount: "{n} routes",
-    stopsCount: "{n} stops",
+    routesCount: ["{n} route", "{n} routes"],
+    stopsCount: ["{n} stop", "{n} stops"],
     views: {
       directness: {
         name: "Directness",
@@ -166,7 +166,7 @@
       no_shape: "The route has no line"
     },
     groups: { lines: "Route lines", table: "Route table", stops: "Stops", fresh: "Snapshot completeness" },
-    units: { routes: "routes", directions: "directions", names: "names", stops: "stops", changes: "changes", of: "/ {n}" },
+    units: { routes: ["route", "routes"], directions: ["direction", "directions"], names: ["name", "names"], stops: ["stop", "stops"], changes: ["change", "changes"], of: "/ {n}" },
     issues: {
       wrong_direction: ["Lines under the wrong direction", "A direction's line is stored under the other direction, so a map showing one direction draws the other one's streets."],
       backwards: ["Line stored backwards", "The line's points run from the last stop to the first, while the stops run from the first to the last."],
@@ -285,6 +285,9 @@
     return (x < 0 ? "−" : "") + whole + (digits ? "." + parts[1] : "");
   }
   function pct(x) { return fmt(Math.round(100 * x)) + "%"; }
+  // A count with its noun: one form for exactly one, the other for every other number.
+  function plural(forms, n) { return forms[n === 1 ? 0 : 1]; }
+  function countOf(forms, n) { return fill(plural(forms, n), { n: fmt(n) }); }
   function millions(x) { return fmt(x / 1e6, 2) + " " + T.million; }
   function dayText(iso) { var p = iso.split("-"); return +p[2] + " " + MONTHS[+p[1] - 1] + " " + p[0]; }
   function monthText(ym) { var p = ym.split("-"); return MONTHS[+p[1] - 1] + " " + p[0]; }
@@ -1163,7 +1166,7 @@
     box.appendChild(el("h3", { text: v.name }));
     if (view === "directness") {
       box.appendChild(el("p", { text: v.text }));
-      SHAPES.forEach(function (s) { list.appendChild(legendItem(keyLine(C.ramp[s]), T.shapes[s], fill(T.routesCount, { n: fmt(S.shapes[s]) }), T.ranges[s])); });
+      SHAPES.forEach(function (s) { list.appendChild(legendItem(keyLine(C.ramp[s]), T.shapes[s], countOf(T.routesCount, S.shapes[s]), T.ranges[s])); });
       box.appendChild(list);
       box.appendChild(el("p", { class: "fact" }, [rich(v.fact, { route_km: fmt(S.route_km), street_km: fmt(S.street_km), per_link: fmt(S.routes_per_link, 2) })]));
     } else if (view === "detours") {
@@ -1179,8 +1182,8 @@
       var inside = {}, host = {};
       D.duplicates.forEach(function (p) { inside[p.r] = true; host[p["in"]] = true; });
       var hosts = Object.keys(host).filter(function (n) { return !inside[n]; }).length;
-      list.appendChild(legendItem(keyLine(C.two), v.inside, fill(T.routesCount, { n: fmt(Object.keys(inside).length) })));
-      list.appendChild(legendItem(keyLine(C.one), v.host, fill(T.routesCount, { n: fmt(hosts) })));
+      list.appendChild(legendItem(keyLine(C.two), v.inside, countOf(T.routesCount, Object.keys(inside).length)));
+      list.appendChild(legendItem(keyLine(C.one), v.host, countOf(T.routesCount, hosts)));
       box.appendChild(list);
       box.appendChild(el("p", { class: "fact" }, [rich(v.fact, { pairs: fmt(S.duplicate_pairs), two: fmt(S.duplicate_pairs_two_carriers) })]));
     } else if (view === "corridors") {
@@ -1204,8 +1207,8 @@
     } else if (view === "spacing") {
       var sp = D.spacing;
       box.appendChild(el("p", { text: fill(v.text, { gap: fmt(sp.min_gap_m), max: fmt(sp.max_gap_after_m) }) }));
-      list.appendChild(legendItem(keyDot(C.two, 11), v.close, fill(T.stopsCount, { n: fmt(sp.stops.length) })));
-      list.appendChild(legendItem(keyDot(C.faint, 6), v.other, fill(T.stopsCount, { n: fmt(stops.length - sp.stops.length) })));
+      list.appendChild(legendItem(keyDot(C.two, 11), v.close, countOf(T.stopsCount, sp.stops.length)));
+      list.appendChild(legendItem(keyDot(C.faint, 6), v.other, countOf(T.stopsCount, stops.length - sp.stops.length)));
       box.appendChild(list);
       box.appendChild(el("p", { class: "fact" }, [rich(v.fact, { n: fmt(sp.stops.length), visits: fmt(sp.visits), hours: fmt(sp.hours_saved, 1),
         loss: fmt(D.meta.stop_loss_s), lost: fmt(sp.residents_losing), radius: radius })]));
@@ -1219,7 +1222,7 @@
       });
       box.appendChild(el("p", { class: "legend-title", text: v.legend }));
       v.bins.forEach(function (label, i) {
-        list.appendChild(legendItem(keyDot(C.stopRamp[i], [7, 8, 10, 12][i]), label, fill(T.stopsCount, { n: fmt(counts[i]) })));
+        list.appendChild(legendItem(keyDot(C.stopRamp[i], [7, 8, 10, 12][i]), label, countOf(T.stopsCount, counts[i])));
       });
       box.appendChild(list);
       var fact = el("p", { class: "fact" }, [rich(v.fact, { name: stops[hub][2], n: fmt(atStop[hub].length), single: fmt(single) })]);
@@ -1261,7 +1264,7 @@
     ]));
     var list = el("ul", { class: "legend" });
     v.bins.forEach(function (label, k) {
-      list.appendChild(legendItem(keyDot(k < 5 ? C.timeRamp[k] : C.faint, k < 5 ? 10 : 6), fill(label, { max: fmt(m.max_trip_min) }), fill(T.stopsCount, { n: fmt(counts[k]) })));
+      list.appendChild(legendItem(keyDot(k < 5 ? C.timeRamp[k] : C.faint, k < 5 ? 10 : 6), fill(label, { max: fmt(m.max_trip_min) }), countOf(T.stopsCount, counts[k])));
     });
     box.appendChild(list);
     box.appendChild(caveat);
@@ -1487,26 +1490,26 @@
       }
       var shown = kind === "repeated_stops" ? list.filter(function (f, i) { return list.findIndex(function (g) { return g.route === f.route; }) === i; })
         .map(function (f) { return { route: f.route, direction: null }; }) : list;
-      lines.push(issueCard(kind, fmt(count), perRoute ? u.routes : u.directions, fill(T.issues[kind][1], vals), repairChips(shown)));
+      lines.push(issueCard(kind, fmt(count), plural(perRoute ? u.routes : u.directions, count), fill(T.issues[kind][1], vals), repairChips(shown)));
     });
-    if (I.no_shape.length) lines.push(issueCard("no_shape", fmt(I.no_shape.length), u.routes, T.issues.no_shape[1], routeChips(I.no_shape, goTo)));
+    if (I.no_shape.length) lines.push(issueCard("no_shape", fmt(I.no_shape.length), plural(u.routes, I.no_shape.length), T.issues.no_shape[1], routeChips(I.no_shape, goTo)));
 
     var table = [];
     var cut = I.no_stops.indexOf("150A") >= 0 && I.no_stops.indexOf("446") >= 0 && byNumber["180"];
-    table.push(issueCard("no_stops", fmt(I.no_stops.length), u.routes, T.issues.no_stops[1] + (cut ? T.issues.cutoff : ""), routeChips(I.no_stops, goTo)));
+    table.push(issueCard("no_stops", fmt(I.no_stops.length), plural(u.routes, I.no_stops.length), T.issues.no_stops[1] + (cut ? T.issues.cutoff : ""), routeChips(I.no_stops, goTo)));
     table.push(issueCard("length", fmt(I.length_round_trip_median, 2) + "×", null, fill(T.issues.length[1], { x: fmt(I.length_round_trip_median, 2) })));
     table.push(issueCard("duration", fmt(I.duration_formula), fill(u.of, { n: fmt(I.routes_in_table) }), fill(T.issues.duration[1], { n: fmt(I.routes_in_table) })));
 
     var stopsGroup = [
-      issueCard("cyrillic", fmt(I.cyrillic_names), u.names, fill(T.issues.cyrillic[1], { n: fmt(I.cyrillic_names) })),
-      issueCard("shared", fmt(I.shared_names), u.names, fill(T.issues.shared[1], { n: fmt(I.shared_names), far: fmt(I.shared_names_far_apart) })),
-      issueCard("unnamed", fmt(I.unnamed_unused_stops), u.stops, fill(T.issues.unnamed[1], { n: fmt(I.unnamed_unused_stops) }))
+      issueCard("cyrillic", fmt(I.cyrillic_names), plural(u.names, I.cyrillic_names), fill(T.issues.cyrillic[1], { n: fmt(I.cyrillic_names) })),
+      issueCard("shared", fmt(I.shared_names), plural(u.names, I.shared_names), fill(T.issues.shared[1], { n: fmt(I.shared_names), far: fmt(I.shared_names_far_apart) })),
+      issueCard("unnamed", fmt(I.unnamed_unused_stops), plural(u.stops, I.unnamed_unused_stops), fill(T.issues.unnamed[1], { n: fmt(I.unnamed_unused_stops) }))
     ];
 
     var fresh = [
-      issueCard("unchanged", "0", u.changes, fill(T.issues.unchanged[1], { scraped: dayText(D.meta.scraped), same_as: dayText(D.meta.same_as) })),
-      issueCard("missing", fmt(I.missing_from_map.length), u.routes, fill(T.issues.missing[1], { month: monthText(I.counts_month) }), routeChips(I.missing_from_map, goTo)),
-      issueCard("api", "1", u.routes, T.issues.api[1])
+      issueCard("unchanged", "0", plural(u.changes, 0), fill(T.issues.unchanged[1], { scraped: dayText(D.meta.scraped), same_as: dayText(D.meta.same_as) })),
+      issueCard("missing", fmt(I.missing_from_map.length), plural(u.routes, I.missing_from_map.length), fill(T.issues.missing[1], { month: monthText(I.counts_month) }), routeChips(I.missing_from_map, goTo)),
+      issueCard("api", "1", plural(u.routes, 1), T.issues.api[1])
     ];
 
     [["lines", lines], ["table", table], ["fresh", fresh], ["stops", stopsGroup]].forEach(function (g) {

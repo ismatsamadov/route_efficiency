@@ -296,6 +296,7 @@ span.chip { cursor: default; }
 .table-scroll { overflow-x: auto; margin-top: 10px; }
 table { width: 100%; border-collapse: collapse; font-size: 0.93rem; }
 @media (max-width: 700px) { .table-scroll table { min-width: 660px; } }
+@media (max-width: 700px) { .tables:not(.all-tables) td:nth-child(2) { min-width: 210px; } }
 th, td { padding: 11px 14px; text-align: left; vertical-align: top; }
 th:first-child, td:first-child { padding-left: 20px; }
 th:last-child, td:last-child { padding-right: 20px; }
@@ -495,6 +496,8 @@ tbody tr:nth-child(even) { background: #f9faf7; }
   .brand { width: 100%; font-size: 1rem; }
   .brand-mark { width: 28px; height: 28px; }
   .nav { width: 100%; min-width: 0; margin: 0; overflow-x: auto; scrollbar-width: thin; }
+  /* The menu scrolls sideways here: a fade at the right edge shows there is more. */
+  .nav { padding-right: 24px; -webkit-mask-image: linear-gradient(90deg, #000 calc(100% - 28px), transparent); mask-image: linear-gradient(90deg, #000 calc(100% - 28px), transparent); }
   .nav a { min-height: 40px; padding-inline: 10px; }
   .hero { padding-top: 36px; }
   .hero-grid { grid-template-columns: 1fr; gap: 30px; }
@@ -676,7 +679,7 @@ tbody tr:nth-child(even) { background: #f9faf7; }
   }
   @page { margin: 14mm 14mm 16mm; }
   body { font-size: 10pt; background: #fff; }
-  .topbar, .skip, .cta, .paper-link, .network-figure, .map-section, .downloads, .go, .chips button, .tour, .radius-options { display: none !important; }
+  .topbar, .skip, .cta, .paper-link, .network-figure, .map-section, .downloads, .go, .chips button, .tour, .radius-options, #routes, .table-tools { display: none !important; }
   .hero-grid, .coverage-layout { grid-template-columns: 1fr; }
   .coverage-section { break-inside: avoid; }
   .coverage-explorer { padding: 12px; }
