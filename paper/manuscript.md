@@ -197,16 +197,17 @@ straight-line radius, the convention of the guidelines above. The straight line 
 proxy for the walk, and rail lines, motorways, the bay and long blocks make it too
 short, so the same walk is also measured along the streets and paths in OpenStreetMap:
 every way tagged as a highway in the study area, keeping those a pedestrian may use (the
-filter of OSMnx's walk network: no motorways, busways, raceways, platforms, cycleways
-without a foot permission or ways planned, under construction or gone, and none tagged
-foot=no, service=private, or access=no or access=private without a foot permission). The
-ways form an undirected graph of 562,117 nodes and 602,943 segments with great-circle
-lengths, 98.4% of its nodes in one connected piece. Each stop and each population point
-joins the graph at the nearest point of the nearest segment, walking that gap in a
-straight line (the median gap is 7 m for stops and 15 m for population points), and one
-run of Dijkstra's algorithm from all stops at once gives the walk from every point to
-its nearest stop, up to 2 km. Footpaths are patchy in OpenStreetMap's Baku, so where a
-shortcut is unmapped the walk is overstated; the two measures bracket the truth.
+filter of OSMnx's walk network (Boeing, 2025): no motorways, busways, raceways,
+platforms, cycleways without a foot permission or ways planned, under construction or
+gone, and none tagged foot=no, service=private, or access=no or access=private without a
+foot permission). The ways form an undirected graph of 562,117 nodes and 602,943
+segments with great-circle lengths, 98.4% of its nodes in one connected piece. Each stop
+and each population point joins the graph at the nearest point of the nearest segment,
+walking that gap in a straight line (the median gap is 7 m for stops and 15 m for
+population points), and one run of Dijkstra's algorithm from all stops at once gives the
+walk from every point to its nearest stop, up to 2 km. Footpaths are patchy in
+OpenStreetMap's Baku, so where a shortcut is unmapped the walk is overstated; the two
+measures bracket the truth.
 
 ### 3.2 Defects and repairs
 
@@ -745,6 +746,8 @@ Bakı Metropoliteni (2026b). Daily passengers per metro station [dataset]. opend
 Bakı Metropoliteni (2026c). Metro exits [dataset]. opendata.az, dataset 3108fb32-8483-4126-8283-17f2f1452548. https://admin.opendata.az/dataset/3108fb32-8483-4126-8283-17f2f1452548
 
 Berlingerio, M., Calabrese, F., Di Lorenzo, G., Nair, R., Pinelli, F., & Sbodio, M. L. (2013). AllAboard: A system for exploring urban mobility and optimizing public transport using cellphone data. In Data for Development (D4D) Challenge, NetMob 2013. https://perso.uclouvain.be/vincent.blondel/netmob/2013/D4D-book.pdf
+
+Boeing, G. (2025). Modeling and analyzing urban networks and amenities with OSMnx. Geographical Analysis, 57(4), 567–577. https://doi.org/10.1111/gean.70009
 
 BusConnects (2025). BusConnects Dublin progress report, March 2025. National Transport Authority. https://busconnects.ie/wp-content/uploads/2025/04/BusConnects-Dublin-Progress-Report-March-2025-WEB.pdf
 
