@@ -475,6 +475,23 @@ def build(out_dir):
         check("coverage sensitivity share", row["population_within"] / total, row["share"], 5e-5)
         if row["radius_m"] == radius:
             check("coverage sensitivity baseline", row["population_within"], covered, 1e-9)
+    # The same coverage with the walk measured along streets and paths, when robustness.py
+    # had the walking network: shown beside the straight line in the coverage lab.
+    walk_check = None
+    walk_csv = out / "robustness" / "coverage_walk.csv"
+    if walk_csv.exists():
+        by_radius = {int(r["radius_m"]): r for r in read_csv(walk_csv)}
+        for row in coverage_sensitivity:
+            w = by_radius.get(row["radius_m"])
+            if w:
+                check("walking check, straight-line population", float(w["population_within_line"]), row["population_within"], 1e-6)
+                row["population_within_walk"] = float(w["population_within_walk"])
+                row["share_walk"] = float(w["share_walk"])
+        rb = json.loads((out / "robustness" / "summary.json").read_text(encoding="utf-8")).get("coverage_walk") or {}
+        if rb:
+            walk_check = {"osm_date": rb["network"]["osm_date"][:10], "ways_walkable": rb["network"]["ways_walkable"],
+                          "median_ratio": rb["walk_over_line"]["median"],
+                          "share_over_detour": rb["walk_over_line"]["share_over_detour_setting"]}
     site = {
         "meta": {
             "scraped": SCRAPED, "same_as": SAME_AS, "counts_month": issues["counts_month"],
@@ -482,7 +499,7 @@ def build(out_dir):
             "walk_speed_mps": a.walk_speed_mps, "walk_detour": a.walk_detour,
             "transfer_penalty_s": a.transfer_penalty_s, "max_trip_min": a.max_trip_min,
             "headway_sources": json.loads((out / "network.json").read_text(encoding="utf-8"))["headway_sources"],
-            "repository": REPOSITORY, "page": PAGE,
+            "repository": REPOSITORY, "page": PAGE, "walk_check": walk_check,
         },
         "summary": {
             "routes": len(routes), "directions": summary["route_directions"], "stops": summary["served_stops"],

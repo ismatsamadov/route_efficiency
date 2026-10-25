@@ -6,6 +6,8 @@ results.md quotes four checks. This script runs them all and writes compact tabl
 ./output/robustness/ (or --out):
   fit_ladder.csv         how well the model ranks observed boardings as each input is added
   coverage_radius.csv    people within 300, 400, 500, 800 and 1,000 m of a served stop
+  coverage_walk.csv      the same with the walk measured along OpenStreetMap's streets and
+                         paths instead of the straight line
   redesign_seeds.csv     today's network against the redesign on other samples of trips
   redesign_settings.csv  the redesign search again under other assumptions
   summary.json           the same figures with their averages, and the settings used
@@ -14,13 +16,14 @@ Standard library only. The redesign variants run redesign.py in parallel process
 temporary folder; only the tables above are kept. With 8 processes the whole run takes
 about 10 minutes. Usage:
   python3 robustness.py
-  python3 robustness.py --skip-settings    # fit ladder, coverage and seeds only (about 5 minutes)
+  python3 robustness.py --skip-settings    # fit ladder, coverage, the walking check and seeds only (about 5 minutes)
   python3 robustness.py --jobs 4           # fewer parallel redesign runs
 """
 
 import argparse
 import csv
 import json
+import math
 import os
 import statistics
 import subprocess
@@ -35,13 +38,16 @@ ROOT = Path(__file__).resolve().parent
 sys.path.insert(0, str(ROOT))
 
 from busnet.destinations import zone_attraction                                # noqa: E402
+from busnet.graph import StopIndex                                             # noqa: E402
 from busnet.inputs import load_inputs                                          # noqa: E402
 from busnet.metrics import compare_ridership, coverage_by_route, evaluate_od   # noqa: E402
 from busnet.optimize import Context, Evaluator, Plan, search                   # noqa: E402
 from busnet.population import load_population, stops_bbox                     # noqa: E402
 from busnet.service import operations, route_headways                         # noqa: E402
+from busnet.walking import load_walk_network                                   # noqa: E402
 
 RADII = (300, 400, 500, 800, 1000)
+WALK_CUTOFF_M = 2 * max(RADII)           # walks longer than this are not measured
 CHECK_ORIGINS = 300                      # origins per trip sample, as in the independent check
 
 # The redesign search under other assumptions: (name, what it changes, --set overrides).
@@ -126,6 +132,66 @@ def coverage_curve(network, fine, say):
         rows.append({"radius_m": radius, "population_within": covered, "share_population_covered": covered / total})
         say(f"  within {radius:,} m: {covered / total:.1%}")
     return rows
+
+
+def weighted_quantile(pairs, q):
+    """The value below which a share q of the weight lies; pairs are (value, weight)."""
+    pairs = sorted(pairs)
+    target, acc = q * sum(w for _, w in pairs), 0.0
+    for value, w in pairs:
+        acc += w
+        if acc >= target:
+            return value
+    return pairs[-1][0]
+
+
+def coverage_walk(network, fine, a, walk_path, say):
+    """Coverage again with the walk measured along streets and paths, beside the straight
+    line, and how far the walk to the nearest stop exceeds the line.
+
+    Returns (rows per radius, details): the rows for coverage_walk.csv, and the network
+    the walk was measured on with the ratio of walk to line for the people within
+    1,000 m of a stop in a straight line."""
+    walk, info = load_walk_network(walk_path)
+    say(f"  streets and paths: {info['ways_walkable']:,} of {info['ways']:,} ways can be walked, "
+        f"{info['nodes']:,} nodes, {info['edges']:,} segments, OpenStreetMap data of {info['osm_date']}")
+    stops = [network.stops[s] for s in network.served_stop_ids()]
+    index = StopIndex(stops)
+    line = []
+    for lat, lon, _ in fine:
+        hit = index.nearest(lat, lon, max_m=4 * WALK_CUTOFF_M)
+        line.append(hit[0] if hit else math.inf)
+    walks = walk.walk_distances([(lat, lon) for lat, lon, _ in fine], [(s.lat, s.lon) for s in stops], WALK_CUTOFF_M)
+    total = sum(z[2] for z in fine)
+    rows = []
+    for r in RADII:
+        by_line = sum(p for (_, _, p), d in zip(fine, line) if d <= r)
+        by_walk = sum(p for (_, _, p), w in zip(fine, walks) if w <= r)
+        line_not_walk = sum(p for (_, _, p), d, w in zip(fine, line, walks) if d <= r < w)
+        beyond_detour = sum(p for (_, _, p), d, w in zip(fine, line, walks) if d <= r and w > a.walk_detour * r)
+        rows.append({"radius_m": r,
+                     "population_within_line": by_line, "share_line": by_line / total,
+                     "population_within_walk": by_walk, "share_walk": by_walk / total,
+                     "population_within_line_not_walk": line_not_walk,
+                     "share_of_line_covered_walking_over_detour": beyond_detour / by_line if by_line else None})
+        say(f"  within {r:,} m: {by_line / total:.1%} in a straight line, {by_walk / total:.1%} along streets and paths")
+    near = [(w / d, p) for (_, _, p), d, w in zip(fine, line, walks) if 0 < d <= max(RADII)]
+    people_near = sum(p for _, p in near)
+    ratio = {
+        "people_within_1000m_line": people_near,
+        "walk_detour_setting": a.walk_detour,
+        "median": weighted_quantile(near, 0.5),
+        "quartile_3": weighted_quantile(near, 0.75),
+        "percentile_90": weighted_quantile(near, 0.9),
+        "share_over_detour_setting": sum(p for x, p in near if x > a.walk_detour) / people_near,
+        "share_over_2": sum(p for x, p in near if x > 2) / people_near,
+        "share_walk_beyond_cutoff": sum(p for x, p in near if math.isinf(x)) / people_near,
+        "median_line_m": weighted_quantile([(d, p) for (_, _, p), d in zip(fine, line)], 0.5),
+        "median_walk_m": weighted_quantile([(w, p) for (_, _, p), w in zip(fine, walks)], 0.5),
+    }
+    say(f"  walk / straight line to the nearest stop, people within 1,000 m: median {ratio['median']:.2f}, "
+        f"{ratio['share_over_detour_setting']:.1%} over {a.walk_detour}")
+    return rows, {"network": info, "cutoff_m": WALK_CUTOFF_M, "walk_over_line": ratio}
 
 
 def redesign_seeds(inp, fine, fine_pull, seeds, say):
@@ -234,11 +300,17 @@ def main():
         ladder = fit_ladder(inp, fine, fine_pull, print)
         print("People within reach of a stop:")
         coverage = coverage_curve(net, fine, print)
+        walk_rows, walk_details = None, None
+        if inp.found.get("walk_network"):
+            print("The same with the walk measured along streets and paths:")
+            walk_rows, walk_details = coverage_walk(net, fine, a, inp.data["walk_network"], print)
         seeds = list(range(1, args.seeds + 1))
         print(f"The redesign on {len(seeds)} samples of {CHECK_ORIGINS} origins:")
         seed_rows = redesign_seeds(inp, fine, fine_pull, seeds, print)
         write_csv(out / "fit_ladder.csv", ladder)              # on disk before the slow runs are collected
         write_csv(out / "coverage_radius.csv", coverage)
+        if walk_rows:
+            write_csv(out / "coverage_walk.csv", walk_rows)
         write_csv(out / "redesign_seeds.csv", seed_rows)
 
         variants, failed = None, []
@@ -260,6 +332,7 @@ def main():
     summary = {
         "fit_ladder": ladder,
         "coverage_radius": coverage,
+        "coverage_walk": None if walk_rows is None else {"rows": walk_rows, **walk_details},
         "redesign_seeds": {
             "origins_per_sample": CHECK_ORIGINS, "rows": seed_rows,
             "gain_min": {"mean": statistics.mean(gains), "stdev": statistics.stdev(gains) if len(gains) > 1 else 0.0,

@@ -114,6 +114,21 @@ at a third of the hexagon's width around it, the way H3 divides a cell into seve
 - **Area within the radius**: 100 m grid cells whose centre is within the radius of a stop.
 - **People only one route serves**: people whose only routes within the radius are that one.
 
+The straight line is a proxy for the walk, and rail lines, motorways and the bay make
+it too short. As a check, `walking.py` measures the same walk along the streets and
+paths in OpenStreetMap (`walk_network` in the settings): every way tagged `highway` in
+the study area, keeping those a pedestrian may use. Following OSMnx's walk network, it
+drops motorways and their links, busways, raceways, platforms, cycleways without a
+`foot` permission and ways planned, under construction or gone, and any way tagged
+`foot=no`, `service=private`, or `access=no` or `access=private` without a `foot`
+permission. The ways become an undirected graph whose segments have great-circle
+lengths. Each served stop and each population point joins the graph at the nearest
+point of the nearest segment, walking that gap in a straight line, and one Dijkstra run
+from all the stops at once gives the walk from every point to its nearest stop, up to
+2 km. `robustness.py` reports, for each radius, the people within it in a straight line
+and along the network, and how far the walk exceeds the line (section 10). The straight
+line stays the measure in every other result, so the two can be compared.
+
 ## 6. Demand
 
 No origin-destination data is public, so trips are spread with a gravity model:
@@ -195,6 +210,12 @@ within `max_access_walk_m` is protected and the pass runs again.
   `evaluate_od` on the same 300 origins as `measure.py` and compares the modelled
   boardings with the observed ones. H1 keeps its published headway from step 2 on.
 - **Coverage by radius.** The coverage of section 5 at 300, 400, 500, 800 and 1,000 m.
+- **Coverage by walking distance.** The same five radii with the distance walked along
+  OpenStreetMap's streets and paths (section 5) beside the straight line, the people the
+  straight line counts whose walk is longer, and the ratio of walk to line for everyone
+  within 1,000 m of a stop: its population-weighted median, third quartile and 90th
+  percentile, and the share over `walk_detour`. Skipped when the settings name no
+  `walk_network` file.
 - **Other trip samples.** The redesign search runs exactly as in `redesign.py`, then
   today's network and the redesigned one are scored with `evaluate_od` on ten different
   samples of 300 origins (seeds 1 to 10, the seven-point population, the gravity model

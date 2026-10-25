@@ -65,4 +65,5 @@ def load_inputs(root, config=None, overrides=(), repair=True, split=True, say=pr
             say(f"  metro stations without exit coordinates: {', '.join(unmatched)}")
     if inp.zones:
         inp.attraction = zone_attraction(inp.zones, inp.points, a.destination_share)
+    available(data.get("walk_network"), "walk_network")      # read only by robustness.py, which loads it itself
     return inp

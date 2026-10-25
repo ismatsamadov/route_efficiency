@@ -21,15 +21,16 @@ one operator's daily boardings, I repair the route geometry, measure directness,
 duplication, detours, stop spacing and coverage, and build a door-to-door travel model
 whose gravity demand model ranks routes against observed boardings at a Spearman
 correlation of 0.58. Only 29 of 201 routes run within 1.4 times the straight line
-between their ends, and 66% of the 3.04 million residents live within 400 m of a stop. A
-greedy search that keeps today's fleet and applies the changes used by redesigns
-elsewhere shortens the average possible trip from 51.8 to 50.9 minutes (0.76 minutes
-with impossible trips counted at 120), or delivers today's modelled travel times with
-about 12% fewer buses than the estimated headways imply. On 10 independent trip samples
-the gain counted that way is 0.68 to 0.81 minutes, and under 14 alternative assumptions
-0.46 to 0.88, the smallest without bus shifts; a stricter rule that strands nobody gains
-as much as the default. The pipeline, data and results are released to regenerate or,
-with a reader for another map format, apply to other cities that publish only a map.
+between their ends, and 66% of the 3.04 million residents live within 400 m of a stop in
+a straight line, 45% walking along mapped streets. A greedy search that keeps today's
+fleet and applies the changes used by redesigns elsewhere shortens the average possible
+trip from 51.8 to 50.9 minutes (0.76 minutes with impossible trips counted at 120), or
+delivers today's modelled travel times with about 12% fewer buses than the estimated
+headways imply. On 10 independent trip samples the gain counted that way is 0.68 to 0.81
+minutes, and under 14 alternative assumptions 0.46 to 0.88, the smallest without bus
+shifts; a stricter rule that strands nobody gains as much as the default. The pipeline,
+data and results are released to regenerate or, with a reader for another map format,
+apply to other cities that publish only a map.
 
 Keywords: bus network design; public transport; open data; accessibility; Baku; transit
 network design problem
@@ -178,6 +179,7 @@ Table 1. Data sources.
 | Daily entries per metro station, and 98 exit coordinates of 27 stations | Bakı Metropoliteni (2026b, 2026c) via opendata.az | CC BY | Trip destinations |
 | Population on H3 hexagons of about 0.74 km² | Kontur Population, release 2023-11-01 (Kontur, 2023) | CC BY | Coverage, trip origins and destinations |
 | 5,471 weighted destinations (of 5,628 features downloaded): schools, kindergartens, colleges, universities, hospitals, clinics, supermarkets, department stores, malls, marketplaces, offices, town halls, courthouses, railway and bus stations | OpenStreetMap via the Overpass API, 23 October 2026 | Open Database License (ODbL) | Trip destinations |
+| Every way tagged as a highway in the study area: 99,185 ways and 570,706 nodes | OpenStreetMap, data of 24 October 2026, cut from Geofabrik's extract of Azerbaijan | ODbL | Walking distances along streets and paths, as a check on the straight line |
 | One published headway (route H1, every 20 minutes) | Heydar Aliyev International Airport (2024) | None stated (press release) | Headway where known |
 | Official population by city and district, 1 January 2026 | State Statistical Committee (2026a), table 1.15 | None stated (official statistics) | Check of the grid |
 | Average trip length per bus passenger, 2025 | State Statistical Committee (2026b), table DT_BJ_050 | CC0 | Check of the demand model's trip length |
@@ -189,6 +191,22 @@ Absheron district total 3.22 million, consistent with a grid two years older. Ea
 hexagon is split into seven points that share its population, its centre and six around
 it, the way H3 divides a cell into seven at the next resolution, so that coverage is not
 judged from one point per hexagon.
+
+Coverage is the share of these points' population with a served stop within a
+straight-line radius, the convention of the guidelines above. The straight line is a
+proxy for the walk, and rail lines, motorways, the bay and long blocks make it too
+short, so the same walk is also measured along the streets and paths in OpenStreetMap:
+every way tagged as a highway in the study area, keeping those a pedestrian may use (the
+filter of OSMnx's walk network: no motorways, busways, raceways, platforms, cycleways
+without a foot permission or ways planned, under construction or gone, and none tagged
+foot=no, service=private, or access=no or access=private without a foot permission). The
+ways form an undirected graph of 562,117 nodes and 602,943 segments with great-circle
+lengths, 98.4% of its nodes in one connected piece. Each stop and each population point
+joins the graph at the nearest point of the nearest segment, walking that gap in a
+straight line (the median gap is 7 m for stops and 15 m for population points), and one
+run of Dijkstra's algorithm from all stops at once gives the walk from every point to
+its nearest stop, up to 2 km. Footpaths are patchy in OpenStreetMap's Baku, so where a
+shortcut is unmapped the walk is overstated; the two measures bracket the truth.
 
 ### 3.2 Defects and repairs
 
@@ -366,7 +384,7 @@ and 80 boardings per trip, an access radius of 400 m instead of 500, a search sa
 200 origins, another search sample of 100, the coverage guard tightened so that nobody
 loses a stop, no bus shifts, and the service-type headway table scaled by 0.8 and by
 1.25; the speeds are never varied. And coverage is measured at 300, 400, 500, 800 and
-1,000 m.
+1,000 m, in a straight line and along the streets and paths of OpenStreetMap.
 
 ## 5. Results
 
@@ -415,8 +433,15 @@ stop, stopping takes an estimated 18.8% of running time and 20.4% of fuel.
 
 ### 5.2 Who the network reaches
 
-Of the 3.04 million people in the study area, 55.5% live within 300 m of a served stop,
-66.0% within 400 m, 73.4% within 500 m, 87.2% within 800 m and 91.5% within 1,000 m.
+Of the 3.04 million people in the study area, 55.5% live within 300 m of a served stop
+in a straight line, 66.0% within 400 m, 73.4% within 500 m, 87.2% within 800 m and 91.5%
+within 1,000 m. Walking along the streets and paths of OpenStreetMap, the shares are
+32.5%, 44.6%, 54.9%, 73.3% and 81.1%: of the 2.01 million people the straight line
+counts within 400 m, 0.65 million walk further than that to their nearest stop. For the
+people within 1,000 m of a stop in a straight line, the walk to the nearest stop is
+typically 1.54 times the line (the population-weighted median; a quarter walk more than
+twice the line), and for 80% of them more than the 1.3 the travel model assumes, so the
+straight-line shares are upper bounds on access and the model's walks are too short.
 Door to door, on 300 origins sampled by population, the average possible trip takes 51.8
 minutes; 16.2% of trips can be made within 30 minutes, 29.4% within 45, 42.2% within 60
 and 66.3% within 120; 34.6% of trips have no stop within 500 m at one end or both; the
@@ -568,12 +593,13 @@ Working only from public data, the diagnosis points the same way as the consulta
 overlapping routes, weak links between parts of the region, and a sizeable minority of
 residents with poor access. The consultant reported 17% with limited access, by a
 definition that is not public; here 12.8% live more than 800 m in a straight line from
-any served stop and 34% more than 400 m. The consultant's network needs about 2,800
-buses against about 2,300 in service; the fleet-neutral search finds that today's 2,015
-implied buses could be about 11% fewer (12% in bus-hours) at today's travel times, which
-is not a contradiction, since the consultant redesigns for growth and the search here
-only removes waste. Where the two disagree, the agency's model should be trusted on
-anything that depends on data it has and this work does not.
+any served stop and 34% more than 400 m (26.7% and 55.4% along mapped streets and
+paths). The consultant's network needs about 2,800 buses against about 2,300 in service;
+the fleet-neutral search finds that today's 2,015 implied buses could be about 11% fewer
+(12% in bus-hours) at today's travel times, which is not a contradiction, since the
+consultant redesigns for growth and the search here only removes waste. Where the two
+disagree, the agency's model should be trusted on anything that depends on data it has
+and this work does not.
 
 ### 6.2 Limitations
 
@@ -584,18 +610,20 @@ though individual routes can be far off, and scaling the service-type table that
 model ranks routes at 0.58; the metro is not in the travel graph, so trips that would
 use it look slower or impossible by bus; there is no vehicle capacity or crowding, so
 busy routes look better than they are and a shift can overload them; there is one
-all-day weekday average, walking at 1.3 times the straight line regardless of barriers,
-and speeds by service type rather than by street; counts exist for one operator only and
-describe today's routes, so a merge that moves riders onto a counted route does not
-raise its count, and counts only steer which changes are tried while the model's demand
-decides which are kept; the population grid is two years older than the official
-figures; and the search is greedy over existing routes, so it finds improvements, not
-the best network, and invents no routes. The bus shifts, which give 54% of the gain on
-the search sample, rank routes by riders per route, estimated for 145 of them; every one
-of the 32 routes that gives up buses in the default run has estimated riders, so the
-shifts are the least certain part of the result; without them three fifths of the gain
-and a 7% fleet saving remain (Table 4). The gain of about a minute per trip is small;
-the robustness checks establish its sign and order of magnitude, not its second decimal.
+all-day weekday average, walking at 1.3 times the straight line regardless of barriers
+where the mapped streets give a median of 1.54 (Section 5.2), so modelled walks are too
+short and the coverage shares are upper bounds, and speeds by service type rather than
+by street; counts exist for one operator only and describe today's routes, so a merge
+that moves riders onto a counted route does not raise its count, and counts only steer
+which changes are tried while the model's demand decides which are kept; the population
+grid is two years older than the official figures; and the search is greedy over
+existing routes, so it finds improvements, not the best network, and invents no routes.
+The bus shifts, which give 54% of the gain on the search sample, rank routes by riders
+per route, estimated for 145 of them; every one of the 32 routes that gives up buses in
+the default run has estimated riders, so the shifts are the least certain part of the
+result; without them three fifths of the gain and a 7% fleet saving remain (Table 4).
+The gain of about a minute per trip is small; the robustness checks establish its sign
+and order of magnitude, not its second decimal.
 
 ### 6.3 Transferability
 
@@ -642,19 +670,20 @@ and the redesign as GTFS feeds.
 
 From public data alone, Baku's bus routes can be shown to be indirect, heavily
 duplicated and full of detours, four in five of which serve nobody who lacks another
-route within 400 m, with a third of residents more than 400 m from any stop. A travel
-model built from the same data ranks routes against observed boardings only moderately
-well, and says so. Within that limit, a cautious redesign that keeps every bus, merges
-near-duplicates, drops three lightly used routes, straightens detours, balances stops
-and moves buses to where they save the most waiting delivers today's modelled travel
-times with about 12% fewer buses than the estimated headways imply, or trips about a
-minute shorter, and the gain survives other samples and other assumptions; three fifths
-of it remains without the bus shifts, the part that rests on estimated riders. The
-strict version that strands nobody gives up none of it. When the agency's map carries
-the new network, the same pipeline will score it against this baseline. The pipeline,
-data and results are released so that the results can be regenerated, the assumptions
-changed, and the method applied, once a reader for its map format is added, to the next
-city whose agency publishes a map and nothing else.
+route within 400 m, with a third of residents more than 400 m from any stop in a
+straight line and over half by the mapped streets. A travel model built from the same
+data ranks routes against observed boardings only moderately well, and says so. Within
+that limit, a cautious redesign that keeps every bus, merges near-duplicates, drops
+three lightly used routes, straightens detours, balances stops and moves buses to where
+they save the most waiting delivers today's modelled travel times with about 12% fewer
+buses than the estimated headways imply, or trips about a minute shorter, and the gain
+survives other samples and other assumptions; three fifths of it remains without the bus
+shifts, the part that rests on estimated riders. The strict version that strands nobody
+gives up none of it. When the agency's map carries the new network, the same pipeline
+will score it against this baseline. The pipeline, data and results are released so that
+the results can be regenerated, the assumptions changed, and the method applied, once a
+reader for its map format is added, to the next city whose agency publishes a map and
+nothing else.
 
 ## Declarations
 

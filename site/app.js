@@ -1879,20 +1879,41 @@
       chart.querySelectorAll("button").forEach(function (b) { b.setAttribute("aria-pressed", String(+b.dataset.radius === row.radius_m)); });
       clear(result);
       result.appendChild(el("span", { class: "coverage-number", text: fmt(100 * row.share, 1) + "%" }));
-      result.appendChild(el("p", null, [
-        el("strong", { text: "within " + label(row) + " of a served stop" }),
+      var lines = [
+        el("strong", { text: "within " + label(row) + " of a served stop, in a straight line" }),
         el("br"),
         "Estimated population: " + millions(row.population_within) + "; " + millions(S.population - row.population_within) + " beyond the radius."
-      ]));
+      ];
+      if (row.share_walk != null) {
+        lines.push(el("br"));
+        lines.push("Walking along streets and paths: " + fmt(100 * row.share_walk, 1) + "%, " + millions(row.population_within_walk) + "; " +
+          millions(row.population_within - row.population_within_walk) + " are within the straight-line distance but walk further.");
+      }
+      result.appendChild(el("p", null, lines));
     }
+    var walked = rows.some(function (r) { return r.share_walk != null; });
     rows.forEach(function (r) {
+      var described = label(r) + ": " + fmt(100 * r.share, 1) + "% estimated population coverage in a straight line" +
+        (r.share_walk != null ? ", " + fmt(100 * r.share_walk, 1) + "% walking along streets and paths" : "");
       options.appendChild(el("button", { type: "button", "data-radius": r.radius_m, "aria-pressed": "false", text: label(r), onclick: function () { choose(r); } }));
-      chart.appendChild(el("button", { type: "button", class: "coverage-bar", "data-radius": r.radius_m, "aria-pressed": "false", "aria-label": label(r) + ": " + fmt(100 * r.share, 1) + "% estimated population coverage", onclick: function () { choose(r); } }, [
+      chart.appendChild(el("button", { type: "button", class: "coverage-bar", "data-radius": r.radius_m, "aria-pressed": "false", "aria-label": described, onclick: function () { choose(r); } }, [
         el("span", { text: label(r) }),
-        el("span", { class: "bar-track", "aria-hidden": "true" }, [el("span", { class: "bar-fill", style: "--coverage:" + (100 * r.share) + "%" })]),
+        el("span", { class: "bar-track", "aria-hidden": "true" }, [
+          el("span", { class: "bar-fill", style: "--coverage:" + (100 * r.share) + "%" }),
+          r.share_walk != null ? el("span", { class: "bar-fill bar-walk", style: "--coverage:" + (100 * r.share_walk) + "%" }) : null
+        ]),
         el("span", { text: fmt(100 * r.share, 1) + "%" })
       ]));
     });
+    if (walked) {
+      var w = D.meta.walk_check;
+      chart.appendChild(el("p", { class: "chart-legend" }, [
+        el("span", { class: "legend-swatch", "aria-hidden": "true" }), "Straight line, the study's measure. ",
+        el("span", { class: "legend-swatch legend-walk", "aria-hidden": "true" }), "The same distance walked along OpenStreetMap's streets and paths" +
+        (w ? " (data of " + w.osm_date + "). For people within 1 km of a stop the walk is typically " + fmt(w.median_ratio, 2) +
+          " times the straight line; for " + fmt(100 * w.share_over_detour, 0) + "% it is over the model's factor of " + fmt(D.meta.walk_detour, 1) + "." : ".")
+      ]));
+    }
     choose(rows.filter(function (r) { return r.radius_m === D.meta.radius_m; })[0] || rows[0]);
   }
 

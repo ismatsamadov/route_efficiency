@@ -10,18 +10,29 @@ Standard library only. Usage (from the repository root):
   python3 data/fetch_external.py                 # download files that are missing
   python3 data/fetch_external.py --refresh       # download everything again
   python3 data/fetch_external.py --only osm      # one group: kontur, opendata, stat, osm, wikidata
+
+The walking network (osm/osm_walk_network.json.gz) is cut from Geofabrik's daily extract
+of Azerbaijan with osm_pbf.py, because a query for 100,000 ways is refused by the
+Overpass servers whenever they are busy; the 47 MB extract itself is not kept.
 """
 
 import argparse
 import gzip
+import http.client
 import json
+import sys
+import tempfile
 import time
 import urllib.error
 import urllib.parse
 import urllib.request
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import osm_pbf                                                                  # noqa: E402
+
 OUT = Path(__file__).resolve().parent / "external"
+GEOFABRIK = "https://download.geofabrik.de/asia/azerbaijan-latest.osm.pbf"
 HEADERS = {"User-Agent": "route_efficiency/0.1 (bus network research)", "Accept": "*/*"}
 OPENDATA = "https://admin.opendata.az/dataset"
 AZSTAT = "https://www.azstat.gov.az/AsisOpenDataApi/csv?lang=az&table_id="
@@ -71,6 +82,9 @@ FILES = [
 
 # OpenStreetMap through the Overpass API, for the Absheron peninsula.
 BBOX = "39.9,49.3,40.7,50.45"
+# The study area of the coverage measures: the served stops plus 2 km
+# (busnet.population.stops_bbox on data/ayna.db), rounded outwards.
+STUDY_BBOX = "39.92,49.37,40.66,50.39"
 OVERPASS_SERVERS = [
     "https://overpass-api.de/api/interpreter",
     "https://overpass.private.coffee/api/interpreter",
@@ -91,6 +105,10 @@ OSM_QUERIES = [
                                     f'node["public_transport"="stop_position"]["subway"="yes"]({BBOX});'
                                     f'nwr["railway"="subway_entrance"]({BBOX}););out body center;'),
 ]
+# Every highway in the study area with its tags and nodes, for walking distances along
+# streets and paths (busnet/walking.py decides which ways can be walked): about 100,000
+# ways and 570,000 nodes, in the shape of an Overpass answer, gzipped.
+WALK_NETWORK = "osm/osm_walk_network.json.gz"
 
 
 def fetch(url, data=None, timeout=300, tries=3):
@@ -100,14 +118,17 @@ def fetch(url, data=None, timeout=300, tries=3):
             req = urllib.request.Request(url, data=data, headers=HEADERS)
             with urllib.request.urlopen(req, timeout=timeout) as resp:
                 return resp.read()
-        except (urllib.error.URLError, TimeoutError) as e:
+        except (urllib.error.URLError, TimeoutError, http.client.HTTPException) as e:   # a dropped connection too
             last = e
             time.sleep(5 * (attempt + 1))
     raise RuntimeError(f"{url}: {last}")
 
 
 def save(path, body):
+    """Write body to path; a path ending in .gz is written gzip-compressed."""
     path.parent.mkdir(parents=True, exist_ok=True)
+    if path.suffix == ".gz":
+        body = gzip.compress(body, mtime=0)
     tmp = path.with_suffix(path.suffix + ".tmp")
     tmp.write_bytes(body)
     tmp.replace(path)
@@ -118,17 +139,31 @@ def overpass(query):
     """Run a query on the first Overpass server that answers with valid JSON.
 
     Mirrors can lag the main server by months, so the date of the data is printed."""
-    body = urllib.parse.urlencode({"data": f"[out:json][timeout:280];{query}"}).encode()
+    body = urllib.parse.urlencode({"data": f"[out:json][timeout:600][maxsize:1073741824];{query}"}).encode()
     errors = []
     for server in OVERPASS_SERVERS:
         try:
-            raw = fetch(server, body, timeout=320, tries=2)
-            osm_date = json.loads(raw).get("osm3s", {}).get("timestamp_osm_base", "unknown")
-            print(f"  {server}: OpenStreetMap data as of {osm_date}")
+            raw = fetch(server, body, timeout=640, tries=3)
+            answer = json.loads(raw)
+            if not answer.get("elements") and answer.get("remark"):     # ran out of time or memory
+                raise RuntimeError(answer["remark"])
+            print(f"  {server}: OpenStreetMap data as of {answer.get('osm3s', {}).get('timestamp_osm_base', 'unknown')}")
             return raw
         except (RuntimeError, ValueError) as e:
             errors.append(f"{server}: {e}")
     raise RuntimeError("; ".join(errors))
+
+
+def walk_network():
+    """Every highway in the study area, cut from Geofabrik's extract of Azerbaijan."""
+    with tempfile.TemporaryDirectory() as tmp:
+        pbf = Path(tmp) / GEOFABRIK.rsplit("/", 1)[1]
+        print(f"  downloading {GEOFABRIK}")
+        pbf.write_bytes(fetch(GEOFABRIK, timeout=900))
+        print(f"  {pbf.stat().st_size / 1e6:.1f} MB; reading it")
+        answer = osm_pbf.extract(pbf, STUDY_BBOX, lambda tags: "highway" in tags and tags.get("area") != "yes")
+    print(f"  OpenStreetMap data as of {answer['osm3s']['timestamp_osm_base']}")
+    return json.dumps(answer, ensure_ascii=False, separators=(",", ":")).encode("utf-8")
 
 
 def main():
@@ -157,6 +192,13 @@ def main():
         except RuntimeError as e:
             failed.append(f"{rel}: {e}")
         time.sleep(2)
+    path = OUT / WALK_NETWORK
+    if (not args.only or args.only == "osm") and (args.refresh or not path.exists()):
+        print(f"osm: {WALK_NETWORK}")
+        try:
+            save(path, walk_network())
+        except (RuntimeError, ValueError) as e:
+            failed.append(f"{WALK_NETWORK}: {e}")
     if failed:
         print("\nFailed (run again later):\n  " + "\n  ".join(failed))
     else:

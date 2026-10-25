@@ -78,6 +78,7 @@ defaults (and then finds no data files except `data/ayna.db`).
 python3 data/fetch_external.py             # download only files that are missing
 python3 data/fetch_external.py --refresh   # download everything again
 python3 data/fetch_external.py --only osm  # one group: kontur, opendata, stat, osm or wikidata
+                                           # (osm also cuts the walking network out of Geofabrik's 47 MB extract, about a minute)
 python3 data/metro_scraper.py              # the metro's own API again (about 20 requests)
 python3 data/build_metro.py                # rebuild data/metro/ from the downloads
 ```

@@ -330,7 +330,11 @@ point.
    uses as PNG beside it and a paragraph on the route planner that runs on the same
    data (birjob.com/aletler/avtobus-marsrutu); the Zenodo record and the preprint go
    into my ORCID works, the preprint PDF onto ResearchGate and Academia.edu, and a
-   Google Scholar profile is created.
+   Google Scholar profile is created. Material for the revision goes into
+   `paper/manuscript.md` as it arises, while `paper/submission/` stays as submitted
+   until the decision: on 25 October 2026 the walking check of the straight-line
+   coverage ([results.md](results.md#who-the-network-reaches)) went into the abstract,
+   Table 1, the method, Section 5.2, 6.1, 6.2 and the conclusions.
 8. After acceptance: add the reference to the preprint, update `CITATION.cff` with
    `preferred-citation`, make a new release if anything changed, add the paper to ORCID.
 

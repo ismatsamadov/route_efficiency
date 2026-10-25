@@ -64,6 +64,75 @@
    "share_population_covered": 0.9145388514135195
   }
  ],
+ "coverage_walk": {
+  "rows": [
+   {
+    "radius_m": 300,
+    "population_within_line": 1687968.4285714286,
+    "share_line": 0.5546718268009521,
+    "population_within_walk": 989004.2857142857,
+    "share_walk": 0.32498997290807446,
+    "population_within_line_not_walk": 698964.1428571428,
+    "share_of_line_covered_walking_over_detour": 0.23038167860113157
+   },
+   {
+    "radius_m": 400,
+    "population_within_line": 2007349.0,
+    "share_line": 0.6596213045284149,
+    "population_within_walk": 1356939.2857142857,
+    "share_walk": 0.4458945912288858,
+    "population_within_line_not_walk": 650409.7142857143,
+    "share_of_line_covered_walking_over_detour": 0.14728679467297415
+   },
+   {
+    "radius_m": 500,
+    "population_within_line": 2234751.4285714286,
+    "share_line": 0.7343464702007597,
+    "population_within_walk": 1670219.7142857143,
+    "share_walk": 0.5488395424942147,
+    "population_within_line_not_walk": 564531.7142857143,
+    "share_of_line_covered_walking_over_detour": 0.11662875896712066
+   },
+   {
+    "radius_m": 800,
+    "population_within_line": 2654451.285714286,
+    "share_line": 0.8722611862162413,
+    "population_within_walk": 2231883.714285714,
+    "share_walk": 0.733404130110343,
+    "population_within_line_not_walk": 422567.5714285714,
+    "share_of_line_covered_walking_over_detour": 0.06458020191313146
+   },
+   {
+    "radius_m": 1000,
+    "population_within_line": 2783110.0,
+    "share_line": 0.9145388514135195,
+    "population_within_walk": 2467146.4285714286,
+    "share_walk": 0.8107122108197955,
+    "population_within_line_not_walk": 315963.5714285714,
+    "share_of_line_covered_walking_over_detour": 0.043832464914635584
+   }
+  ],
+  "network": {
+   "osm_date": "2026-10-24T20:20:51Z",
+   "ways": 99185,
+   "ways_walkable": 97628,
+   "nodes": 562117,
+   "edges": 602943
+  },
+  "cutoff_m": 2000,
+  "walk_over_line": {
+   "people_within_1000m_line": 2783110.0,
+   "walk_detour_setting": 1.3,
+   "median": 1.543578229399708,
+   "quartile_3": 2.00254187681963,
+   "percentile_90": 2.886166001664565,
+   "share_over_detour_setting": 0.8021549889974062,
+   "share_over_2": 0.2506451415862111,
+   "share_walk_beyond_cutoff": 0.014051136010742352,
+   "median_line_m": 264.6192376231081,
+   "median_walk_m": 448.2828812136971
+  }
+ },
  "redesign_seeds": {
   "origins_per_sample": 300,
   "rows": [
@@ -623,6 +692,7 @@
   "destinations:osm_offices.json": "data/external/osm/osm_offices.json",
   "destinations:osm_transport.json": "data/external/osm/osm_transport.json",
   "metro_passengers": "data/external/opendata/metro_passengers-2026.csv",
-  "metro_exits": "data/external/opendata/metro_exits.csv"
+  "metro_exits": "data/external/opendata/metro_exits.csv",
+  "walk_network": "data/external/osm/osm_walk_network.json.gz"
  }
 }

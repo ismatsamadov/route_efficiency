@@ -14,6 +14,7 @@ Terms as they are used in this repository. Setting names are in `code` font
 | Bus-hours, bus-km | Hours and kilometres that buses drive in service in a day. The main operating costs |
 | Chainage | Distance along a route's path from its first stop, at each stop |
 | Circuity | Distance along the route ÷ straight-line distance. End-to-end circuity uses the two end stops; rider circuity averages over pairs of stops at least 1 km apart |
+| Coverage, straight line and walked | Coverage counts people with a served stop within a straight-line radius. The walking check in `robustness.py` measures the same distance along the streets and paths in OpenStreetMap, to show how much the straight line understates the walk |
 | CNG | Compressed natural gas; most BakuBus buses run on it |
 | Counted boardings | Boardings per route from the BakuBus counts on opendata.az, as opposed to estimated (modelled) boardings |
 | Coverage | The share of people with a served stop within `coverage_radius_m` (400 m) |

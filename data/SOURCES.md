@@ -71,6 +71,10 @@ Queried through the Overpass API for the box 39.9–40.7 N, 49.3–50.45 E. Data
 | `external/osm/osm_metro_stations.json` | Metro stations, stop positions and 107 entrances (retrieved 25 October 2026) |
 
 Each file records the date of the OpenStreetMap data in it (`osm3s.timestamp_osm_base`).
+
+| File | Contents | Source | Licence |
+|---|---|---|---|
+| `external/osm/osm_walk_network.json.gz` | Every way tagged `highway` in the study area (39.92–40.66 N, 49.37–50.39 E: the served stops plus 2 km) with its tags and nodes: 99,185 ways and 570,706 nodes, in the shape of an Overpass answer, gzipped. For walking distances along streets and paths (`busnet/walking.py`) | Cut by `osm_pbf.py` from Geofabrik's extract `asia/azerbaijan-latest.osm.pbf` (46.6 MB, OpenStreetMap data of 24 October 2026 20:20 UTC), downloaded 25 October 2026 by `fetch_external.py`; the extract itself is not kept | ODbL, © OpenStreetMap contributors |
 `osm_health.json` was answered by a mirror server with data as of 15 July 2026; the
 others hold data as of the day they were retrieved.
 
