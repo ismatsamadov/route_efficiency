@@ -37,10 +37,12 @@ their sources so they can be read and changed in one place.
 | `destinations` | five `data/external/osm/osm_*.json` files | OpenStreetMap features from Overpass |
 | `metro_passengers` | `data/external/opendata/metro_passengers-2026.csv` | Daily entries per metro station |
 | `metro_exits` | `data/external/opendata/metro_exits.csv` | Metro exit coordinates |
+| `walk_network` | `data/external/osm/osm_walk_network.json.gz` | Streets and paths from OpenStreetMap, read only by `robustness.py` for the walking check of coverage |
 
 A missing file is reported (`missing ...: (using assumptions instead)`) and the run goes on
 without it: no population means no coverage, access or redesign; no ridership means
-headways come from the zone table; no destinations means trips end at homes only.
+headways come from the zone table; no destinations means trips end at homes only; no
+walking network means `robustness.py` skips the walking check.
 
 ## Walking (`[walking]`)
 

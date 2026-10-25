@@ -27,8 +27,9 @@ to one trip in each direction of every route, and for 217 of them nobody near th
 inside the detour depends on that route alone. Stop spacing is uneven: the median gap
 is 420 m, but 23.9% of the gaps are under 300 m, and stopping takes an estimated 19% of
 the buses' running time and 20% of their fuel. And access is limited: 66% of the 3.04 million people
-around the network live within 400 m of a stop, the average modelled trip takes 52
-minutes door to door, and only 29% of trips can be made within 45 minutes.
+around the network live within 400 m of a stop in a straight line (45% along the mapped
+streets and paths), the average modelled trip takes 52 minutes door to door, and only
+29% of trips can be made within 45 minutes.
 
 The redesign helps, but only a little. With the same fleet it shortens the average trip
 from 51.8 to 50.9 minutes; alternatively it gives today's travel times with about 12%
@@ -136,18 +137,37 @@ The routes with the most detour length are 205 (5 detours, 26.0 km), 169 (3, 22.
 
 ### Who the network reaches
 
-| People within ... of a served stop | Share of 3.04 million |
-|---|---|
-| 300 m | 55.5% |
-| 400 m (the coverage setting) | 66.0% |
-| 500 m | 73.4% |
-| 800 m | 87.2% |
-| 1,000 m | 91.5% |
+| People within ... of a served stop | In a straight line | Along streets and paths |
+|---|---|---|
+| 300 m | 55.5% | 32.5% |
+| 400 m (the coverage setting) | 66.0% | 44.6% |
+| 500 m | 73.4% | 54.9% |
+| 800 m | 87.2% | 73.3% |
+| 1,000 m | 91.5% | 81.1% |
 
-`network.json` reports the 400 m value; `output/robustness/coverage_radius.csv` has all
-five (the same as runs with `--set coverage_radius_m=300` and so on). The 12.8% beyond
-800 m is close to the 17% with limited bus access that AYNA's consultant reported in
-2025, by a definition that is not public.
+`network.json` reports the straight-line 400 m value; `output/robustness/coverage_radius.csv`
+has all five (the same as runs with `--set coverage_radius_m=300` and so on) and
+`coverage_walk.csv` the walked ones. The 12.8% beyond 800 m in a straight line is close
+to the 17% with limited bus access that AYNA's consultant reported in 2025, by a
+definition that is not public; along the streets it is 26.7%.
+
+I measure coverage in a straight line, and the line is a proxy for the walk. The second
+column measures the same walk along the streets and paths in OpenStreetMap
+([methodology.md](methodology.md#5-population-and-coverage)): rail lines, motorways,
+the bay and long blocks make it longer, so the shares fall at every distance. Of the
+2.01 million people the straight line counts within 400 m, 0.65 million walk further
+than that to their nearest stop, and 0.30 million (14.7%) walk further than 520 m, the
+1.3 times the radius that the travel model allows. For the people within 1 km of a stop,
+the walk to the nearest stop is typically 1.54 times the straight line (the
+population-weighted median; a quarter walk more than twice the line and 1.4% more than
+2 km), and for 80% of them it is longer than the 1.3 times the model assumes for every
+walk. So I read the 66% as an upper bound on who can reach a stop within a 400 m walk,
+and the model's walks as too short. The walked figures lean the other way: footpaths
+are patchy in OpenStreetMap's Baku, so where a shortcut is unmapped the walk looks
+longer than it is. The truth lies between the two columns. Everything else on these
+pages uses the straight line, so the two can be compared;
+[roadmap.md](roadmap.md#what-i-would-do-next) says what putting the street network into
+the model would take.
 
 Door-to-door, on 300 origins sampled by population:
 
@@ -495,8 +515,26 @@ most (0.41 to 0.56), destinations a little more (0.58); the last step uses the c
 themselves and is not a fair test. 0.58 is the figure I quote for the model
 (`fit_ladder.csv`).
 
-### Coverage by walking distance
+### Coverage by distance, straight and walked
 
 The table in [Who the network reaches](#who-the-network-reaches) comes from
-`coverage_radius.csv`: 55.5% of people within 300 m of a served stop, 66.0% within
-400 m, 73.4% within 500 m, 87.2% within 800 m and 91.5% within 1,000 m.
+`coverage_radius.csv` and `coverage_walk.csv`: 55.5% of people within 300 m of a served
+stop in a straight line, 66.0% within 400 m, 73.4% within 500 m, 87.2% within 800 m and
+91.5% within 1,000 m; along OpenStreetMap's streets and paths 32.5%, 44.6%, 54.9%, 73.3%
+and 81.1%. The walked check uses 97,628 walkable ways (562,117 nodes, 602,943 segments)
+from the OpenStreetMap data of 24 October 2026 ([data.md](data.md#openstreetmap-streets-and-paths-dataexternalosmosm_walk_networkjsongz)).
+
+| Within ... in a straight line | People | Of them, walk longer than the radius | Walk longer than 1.3 times the radius |
+|---|---|---|---|
+| 300 m | 1.69 million | 0.70 million (41%) | 23.0% |
+| 400 m | 2.01 million | 0.65 million (32%) | 14.7% |
+| 500 m | 2.23 million | 0.56 million (25%) | 11.7% |
+| 800 m | 2.65 million | 0.42 million (16%) | 6.5% |
+| 1,000 m | 2.78 million | 0.32 million (11%) | 4.4% |
+
+For the 2.78 million people within 1 km of a stop in a straight line, the walk divided
+by the line has a population-weighted median of 1.54, a third quartile of 2.00 and a
+90th percentile of 2.89; 80.2% walk more than 1.3 times the line, 25.1% more than twice
+it, and 1.4% more than the 2 km up to which walks are measured. The median distance to
+the nearest stop is 265 m in a straight line and 448 m on foot (`summary.json`,
+`coverage_walk`).

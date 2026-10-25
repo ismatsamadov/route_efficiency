@@ -18,6 +18,7 @@ how the code uses it, what is wrong with it and what is still missing.
 | Metro network | `data/metro/`, built by `data/build_metro.py` from the metro's own API, OpenStreetMap and Wikidata | not read yet | Stations, train services, running times and departures, for putting the metro into the travel graph |
 | Metro intervals | `data/metro_headways.csv` | not read yet | Train intervals the operator has published, with sources |
 | OpenStreetMap destinations | `data/external/osm/osm_{education,health,shopping,offices,transport}.json` | `busnet/destinations.py` | Trip destinations |
+| OpenStreetMap streets and paths | `data/external/osm/osm_walk_network.json.gz` | `busnet/walking.py`, from `robustness.py` | Walking distances along streets, as a check on the straight-line coverage |
 | Reference only | AYNA route lines (`ayna_buslines.kmz`), bus stations, payment types, metro 2025, OSM route tags, statistics tables, district population | not read | Cross-checks and calibration targets |
 
 ## The AYNA bus network snapshot (`data/ayna.db`)
@@ -241,6 +242,29 @@ since a lagging mirror is otherwise easy to miss.
 Each feature weighs according to `destination_weights` in `busnet.toml`; kinds not listed
 there (such as shops tagged as offices) weigh nothing. With the 98 metro exits this gives
 5,569 destination points.
+
+## OpenStreetMap streets and paths (`data/external/osm/osm_walk_network.json.gz`)
+
+Every way tagged `highway` in the study area (39.92 to 40.66 N, 49.37 to 50.39 E, the
+served stops plus 2 km) with its tags and its nodes: 99,185 ways and 570,706 nodes,
+9.3 MB gzipped, in the shape of an Overpass answer. The Overpass servers refuse a query
+of this size whenever they are busy, so `fetch_external.py` cuts it out of Geofabrik's
+daily extract of Azerbaijan (`asia/azerbaijan-latest.osm.pbf`, 46.6 MB) with
+`data/osm_pbf.py`, a reader of the PBF format in the standard library; the extract
+itself is not kept. The committed file holds OpenStreetMap data of 24 October 2026,
+20:20 UTC. Data © OpenStreetMap contributors, Open Database Licence.
+
+`busnet/walking.py` keeps the 97,628 ways a pedestrian may use (it drops motorways and
+their links, busways, raceways, platforms, cycleways without a `foot` permission, ways
+planned, under construction or gone, and ways tagged `foot=no`, `service=private`, or
+`access=no` or `access=private` without `foot`), which gives a graph of 562,117 nodes
+and 602,943 segments; 98.4% of the nodes are in one connected piece. Every served stop
+is within 116 m of it (median 7 m), and the population points within 15 m (median);
+27,000 people, 0.9%, sit more than 300 m from any mapped way. The check that uses it is
+in [results.md](results.md#who-the-network-reaches); the method in
+[methodology.md](methodology.md#5-population-and-coverage). Footpaths are patchy in
+OpenStreetMap's Baku, so a walk along the mapped network is an upper bound where a
+shortcut is unmapped.
 
 ## Real headways (`data/headways.csv`)
 

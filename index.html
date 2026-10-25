@@ -148,9 +148,10 @@
     <div class="coverage-intro">
       <p class="section-kicker">02 / Test an assumption</p>
       <h2 id="coverage-heading">How near is<br><em>near a stop?</em></h2>
-      <p>Coverage depends on where you draw the line. Change the distance threshold to explore five recorded calculations from the same network and population grid.</p>
-      <div class="coverage-limit"><strong>Distance, not walking access.</strong> These are straight-line distances. Street crossings, terrain, footpaths and service frequency are not evaluated. The map’s coverage layer stays at 400 m.</div>
+      <p>Coverage depends on where you draw the line. Change the distance threshold to explore five recorded calculations from the same network and population grid, each measured two ways: in a straight line, and walking along the streets and paths in OpenStreetMap.</p>
+      <div class="coverage-limit"><strong>Distance, not walking access.</strong> The study’s measure is the straight line; the darker bars walk the same distance along mapped streets and paths, so the straight line’s error is visible. Street crossings, terrain, unmapped paths and service frequency are not evaluated. The map’s coverage layer stays at 400 m in a straight line.</div>
       <a class="text-link" href="output/robustness/coverage_radius.csv" download>Download the five results <span>CSV ↗</span></a>
+      <a class="text-link" href="output/robustness/coverage_walk.csv" download>Download the walking check <span>CSV ↗</span></a>
     </div>
     <div class="coverage-explorer">
       <p class="control-label" id="radius-label">Choose a straight-line distance</p>

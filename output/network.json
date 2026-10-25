@@ -67,7 +67,8 @@
   "destinations:osm_offices.json": "data/external/osm/osm_offices.json",
   "destinations:osm_transport.json": "data/external/osm/osm_transport.json",
   "metro_passengers": "data/external/opendata/metro_passengers-2026.csv",
-  "metro_exits": "data/external/opendata/metro_exits.csv"
+  "metro_exits": "data/external/opendata/metro_exits.csv",
+  "walk_network": "data/external/osm/osm_walk_network.json.gz"
  },
  "settings": {
   "walk_speed_mps": 1.25,

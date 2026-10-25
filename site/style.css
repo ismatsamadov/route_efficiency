@@ -419,6 +419,7 @@ h1 em, .coverage-intro h2 em { color: var(--accent); font-weight: 400; }
 .coverage-limit strong { color: var(--ink); }
 .text-link { display: inline-flex; flex-wrap: wrap; gap: 12px; margin-top: 22px; font-size: .77rem; text-decoration: none; font-weight: 600; }
 .text-link span { color: var(--ink-2); font-weight: 400; }
+.text-link + .text-link { margin-left: 18px; }
 .coverage-explorer { min-width: 0; padding: 28px 32px; background: #fbfcf9; border: 1px solid #d3dfd3; border-radius: 10px; }
 .control-label { font-size: .75rem; font-weight: 650; }
 .radius-options { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 5px; margin-top: 12px; }
@@ -430,10 +431,15 @@ h1 em, .coverage-intro h2 em { color: var(--accent); font-weight: 400; }
 .coverage-result strong { color: var(--ink); }
 .coverage-chart { display: grid; gap: 12px; margin-top: 24px; }
 .coverage-bar { display: grid; grid-template-columns: 46px minmax(0, 1fr) 44px; align-items: center; gap: 12px; width: 100%; min-height: 32px; padding: 0; border: 0; background: transparent; font: .74rem ui-monospace, SFMono-Regular, monospace; color: var(--ink-2); text-align: left; cursor: pointer; }
-.bar-track { height: 13px; overflow: hidden; background: #e8eee6; border-radius: 2px; }
-.bar-fill { display: block; width: var(--coverage); height: 100%; background: #a6bda9; border-radius: 2px; }
+.bar-track { position: relative; height: 13px; overflow: hidden; background: #e8eee6; border-radius: 2px; }
+.bar-fill { position: absolute; top: 0; left: 0; display: block; width: var(--coverage); height: 100%; background: #a6bda9; border-radius: 2px; }
+.bar-walk { background: #5f7f66; }
 .coverage-bar[aria-pressed="true"] { color: var(--accent); font-weight: 700; }
-.coverage-bar[aria-pressed="true"] .bar-fill { background: var(--accent); }
+.coverage-bar[aria-pressed="true"] .bar-fill { background: #7fa98f; }
+.coverage-bar[aria-pressed="true"] .bar-walk { background: var(--accent); }
+.chart-legend { margin: 4px 0 0; color: var(--ink-2); font-size: .72rem; line-height: 1.7; }
+.legend-swatch { display: inline-block; width: 11px; height: 11px; margin: 0 5px -1px 0; background: #a6bda9; border-radius: 2px; }
+.legend-walk { background: #5f7f66; }
 .coverage-bar > span:last-child { text-align: right; }
 .chart-source { margin-top: 23px; color: var(--ink-2); font-size: .72rem; line-height: 1.7; }
 #issues { background: var(--page); }

@@ -76,7 +76,7 @@ the estimates. `python3 measure.py --config none` runs with the built-in default
 | `data/ayna.db`, `data/ayna_scraper.py` | Bus network snapshot from the AYNA map API, and the script that builds it |
 | `data/external/` | Public datasets: population, ridership, metro, statistics, OpenStreetMap, Wikidata, and the answers of the metro's own API |
 | `data/headways.csv` | Real headways where known |
-| `data/fetch_external.py` | Downloads the public datasets again |
+| `data/fetch_external.py`, `data/osm_pbf.py` | Downloads the public datasets again; the reader of OpenStreetMap PBF extracts that cuts the walking network out of Geofabrik's |
 | `data/metro/`, `data/metro_scraper.py`, `data/build_metro.py` | The metro network (stations, train services, running times, departures), not yet used by the model; the scripts that read the metro's API and build the tables |
 | `data/metro_headways.csv` | Metro train intervals the operator has published, with sources |
 | `busnet.toml` | Settings: data paths and every assumption |
@@ -123,7 +123,9 @@ can be searched by name. A coverage sensitivity explorer lets readers select 300
 500, 800 or 1,000 m using the recorded results in
 `output/robustness/coverage_radius.csv`; it does not change the map's 400 m layer.
 Coverage is straight-line proximity using the 2023 population grid, not verified
-walking access. Snapshot geometry, model estimates and questions requiring field
+walking access; beside each straight-line figure the explorer shows the same distance
+walked along OpenStreetMap's streets and paths, which cuts the 400 m share from 66% to
+45% (`output/robustness/coverage_walk.csv`). Snapshot geometry, model estimates and questions requiring field
 validation are distinguished throughout. Below the map come the issues in AYNA's map data with the
 routes they affect, the checklists (also as an Excel workbook), and sortable tables of
 all 201 routes and of the 39 carriers that run them. The page is in English. The address bar keeps what is on screen, so a link can point at one finding:
@@ -154,7 +156,7 @@ published, and its data is a snapshot that is not updated automatically.
 
 The code is mine and is under the MIT License ([LICENSE](LICENSE)): `busnet/`,
 `measure.py`, `redesign.py`, `robustness.py`, `paper/figures.py`, `paper/check.py`, `paper/build.py`, `tests/`, `data/ayna_scraper.py`,
-`data/fetch_external.py`, `data/metro_scraper.py`, `data/build_metro.py`, `busnet.toml`, `index.html`, `site/build.py`, `site/app.js`,
+`data/fetch_external.py`, `data/osm_pbf.py`, `data/metro_scraper.py`, `data/build_metro.py`, `busnet.toml`, `index.html`, `site/build.py`, `site/app.js`,
 `site/style.css` and `site/og.html`. The page loads Leaflet 1.9.4 (BSD-2-Clause) from cdnjs and draws its
 base map from OpenStreetMap's tiles, credited on the map. The documentation in `docs/` is under
 [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). [CITATION.cff](CITATION.cff)

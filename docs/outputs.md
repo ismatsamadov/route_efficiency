@@ -191,6 +191,16 @@ official timetable.
 | `radius_m` | 300, 400, 500, 800 or 1,000 m |
 | `population_within`, `share_population_covered` | People, and their share of the study area, with a served stop within that distance |
 
+## output/robustness/coverage_walk.csv — the same, walking along streets and paths (5 rows)
+
+| Column | Meaning |
+|---|---|
+| `radius_m` | 300, 400, 500, 800 or 1,000 m |
+| `population_within_line`, `share_line` | People, and their share of the study area, with a served stop within that distance in a straight line (the same figures as `coverage_radius.csv`) |
+| `population_within_walk`, `share_walk` | The same with the distance walked along OpenStreetMap's streets and paths ([methodology.md](methodology.md#5-population-and-coverage)) |
+| `population_within_line_not_walk` | People the straight line counts whose walk to the nearest stop is longer than the radius |
+| `share_of_line_covered_walking_over_detour` | Of the people the straight line counts, the share whose walk exceeds `walk_detour` (1.3) times the radius |
+
 ## output/robustness/redesign_seeds.csv — the redesign on other samples of trips (10 rows)
 
 The search is the one `redesign.py` ran; only the trips it is checked on change. Seed 7
@@ -222,9 +232,17 @@ One row per run of `redesign.py`, the first with the committed settings.
 ## output/robustness/summary.json
 
 `fit_ladder`, `coverage_radius` and `redesign_settings`: the rows of those tables as
-lists. `redesign_seeds`: an object with `origins_per_sample` (300), `rows` (the table)
-and `gain_min` (the mean, standard deviation, minimum, maximum, count of positive gains
-and number of samples). Then the `settings` and `inputs` used.
+lists. `coverage_walk`: the `rows` of that table; the `network` they were measured on
+(the date of the OpenStreetMap data, the ways in the answer and how many can be walked,
+nodes and segments); `cutoff_m`, beyond which walks are not measured (2,000); and
+`walk_over_line`, for the people within 1,000 m of a stop in a straight line: the ratio
+of the walk to the line as a population-weighted `median`, `quartile_3` and
+`percentile_90`, the share over the `walk_detour` setting and over 2, the share whose
+walk is beyond the cutoff, and the median distances to the nearest stop both ways
+(`median_line_m`, `median_walk_m`). `redesign_seeds`: an object with
+`origins_per_sample` (300), `rows` (the table) and `gain_min` (the mean, standard
+deviation, minimum, maximum, count of positive gains and number of samples). Then the
+`settings` and `inputs` used.
 
 ## site/data.js and the checklist workbook
 
@@ -240,10 +258,14 @@ km, the detours where nobody depends on the route alone and those with a shorter
 near-duplicate pairs and those with two carriers, corridors, routes per link, closely
 spaced stops, population and covered population.
 `coverage_sensitivity` holds five recorded results from
-`output/robustness/coverage_radius.csv`: `radius_m`, `population_within` and `share`.
-The coverage lab displays these values without interpolating or changing the map's
-default-radius layer. Population is estimated from the 2023 grid; distances are
-straight-line radii, not verified walking access.
+`output/robustness/coverage_radius.csv`: `radius_m`, `population_within` and `share`,
+and from `coverage_walk.csv` the same two figures walked along streets and paths,
+`population_within_walk` and `share_walk`; `meta.walk_check` holds the date of the
+OpenStreetMap data, the walkable ways, and the median ratio of walk to line and the
+share over `walk_detour` from `summary.json`. The coverage lab displays these values
+without interpolating or changing the map's default-radius layer. Population is
+estimated from the 2023 grid; the straight-line radii are the study's measure, and the
+walked figures show their error, not verified walking access.
 `issues` holds `repairs` (each line of `repairs.txt` as route, direction, kind and text)
 and the defects the repairs do not cover: `no_stops` and `no_shape` (route numbers),
 `straight_directions`, `length_round_trip_median`, `duration_formula` (routes whose

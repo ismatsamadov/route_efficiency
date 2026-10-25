@@ -33,6 +33,15 @@ planned to take. The second is vehicle capacity: a maximum-load rule (buses need
 peak load ÷ bus capacity) so that a frequency shift cannot hand a route more riders
 than its buses carry.
 
+The walking check of 25 October 2026 ([results.md](results.md#who-the-network-reaches))
+adds a third: the streets and paths of OpenStreetMap are now in the repository
+(`data/external/osm/osm_walk_network.json.gz`, read by `busnet/walking.py`), and the
+walk to the nearest stop along them is typically 1.54 times the straight line, against
+the 1.3 the travel model assumes for every walk. Putting that network into the model's
+access and transfer walks, and into the redesign's coverage guard, would lengthen
+modelled trips and tighten the guard; the check measures the gap but does not yet close
+it.
+
 I would also calibrate the demand model properly: fit `trip_decay_km`,
 `destination_share` and `destination_weights` against the observed boardings, try a
 doubly constrained gravity model, and keep part of the routes aside for checking so the
@@ -59,7 +68,10 @@ change in `busnet/optimize.py` and to the GTFS writer.
 - The metro is not in the travel graph; there is no vehicle capacity or crowding; there
   is one all-day weekday average with no peak, night or weekend pattern; walking is
   straight-line distance times 1.3, so walks across rail lines, motorways or the sea
-  look shorter than they are; and speeds are set by service type, not by street.
+  look shorter than they are (along OpenStreetMap's streets and paths the walk to the
+  nearest stop is typically 1.54 times the line, and 66% of people within 400 m in a
+  straight line becomes 45%; [results.md](results.md#who-the-network-reaches)); and
+  speeds are set by service type, not by street.
 - Observed boardings exist only for BakuBus, so 145 routes of other carriers have
   nothing to check against.
 - The map API returned the same data on 23 October 2026 as on 6 May, while AYNA has
