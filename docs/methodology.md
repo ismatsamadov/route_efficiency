@@ -241,3 +241,35 @@ within `max_access_walk_m` is protected and the pass runs again.
   2,300 reported; the population grid's 3.04 million against official 3.22 million; model
   ridership ranking 0.58 against observed; the redesign's gain on ten trip samples and
   under fourteen other settings ([results.md](results.md#how-robust-the-results-are)).
+
+## 12. The benchmark networks
+
+`benchmark.py` with `busnet/utrp.py`; the reasons and the results are in
+[benchmark.md](benchmark.md).
+
+- **Data.** Mandl's network and Mumford0–3 from Mumford's (2013) supplement
+  (`data/external/utrp/CEC2013Supp.zip`): link times in minutes (`Inf` where there is no
+  link), trips between every pair of nodes, and the route sets best for passengers and
+  for the operator. Nodes are numbered from 1 in the files and from 0 in the code.
+- **Scoring.** One graph node per route and node on it, with links both ways along each
+  route, and one change node per network node that costs 5 minutes to reach and nothing
+  to leave. Dijkstra from every origin on (minutes, changes), so that of equally quick
+  paths the one with fewer changes counts. ATT = Σ trips × minutes ÷ Σ trips over all
+  pairs with trips; d0, d1 and d2 are the shares of trips whose path has 0, 1 or 2 changes
+  and dun the share with 3 or more; route time = the sum of link times along every route,
+  one way. A route set with a trip that has no path scores nothing.
+- **Rules.** Exactly the published number of routes (Mandl 6, Mumford0–3 12, 15, 56 and
+  60); between 2 and 8 nodes on a route on Mandl's network, 2 and 15 on Mumford0, 10 and
+  30 on Mumford1, 10 and 22 on Mumford2, 12 and 25 on Mumford3 (Mumford, 2013, Table
+  II); routes follow links and visit no node twice; every node on a route; every route
+  reachable from every other by changing at shared nodes.
+- **Straightening.** A detour is a stretch from node i to node j of a route, at most
+  max(3, min(12, 40% of the route's nodes)) apart, whose time along the route is longer
+  than the quickest path between i and j along any links; of overlapping stretches only
+  the one that wastes the most counts, as in `metrics.find_detours`. A change replaces
+  the stretch by the quickest path. A pass tries the 80 detours that save the most route
+  time, each alone, and keeps those that break no rule and lower ATT by more than 0.005
+  minutes; it then applies them in order of their gain, scores each again on the routes
+  as they are by then, and skips a change whose route has changed since it was found. The
+  80 and the 0.005 minutes are the redesign's defaults, `redesign_max_straighten` and
+  `redesign_min_gain_min`. The repeated search runs passes until one keeps nothing.

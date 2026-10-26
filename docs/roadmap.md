@@ -48,15 +48,22 @@ doubly constrained gravity model, and keep part of the routes aside for checking
 fit is not tuned to the data that judges it. That should raise the fair 0.58, but it
 would still be calibration against 56 routes of one carrier.
 
+The benchmark test of 27 October 2026 ([benchmark.md](benchmark.md)) suggests one
+cheap change to the search itself: on Mumford's networks, repeating the straightening
+passes until one keeps nothing adds a third to a half to the gain of a single pass, and
+`redesign.py` makes a single pass. Repeating its passes, and checking the gain on the
+independent sample as before, would show whether Baku's minute is an underestimate.
+
 Everything else can wait, because it would make the method look more serious without
 changing the answer much: generating new candidate routes (k-shortest paths between
 busy terminals, metro stations and destinations, splitting long routes, cutting loops),
 replacing the greedy search with simulated annealing or NSGA-II from pymoo, which can
-undo earlier changes, running the evaluator on the Mandl and Mumford benchmarks to
-compare with published results, comparing travel times with r5py, and extending the
-tests to the kinds of change in `busnet/optimize.py`. The GTFS feeds now pass
-MobilityData's validator with no errors (`validate_gtfs.py`); its remaining warnings are
-AYNA's, chiefly stops that sit far from their own route's line.
+undo earlier changes, comparing travel times with r5py, and extending the tests to the
+kinds of change in `busnet/optimize.py`. The benchmark networks showed what such
+methods buy: on Mumford's networks they reach far lower travel times than straightening
+a published route set does. The GTFS feeds now pass MobilityData's validator with no
+errors (`validate_gtfs.py`); its remaining warnings are AYNA's, chiefly stops that sit
+far from their own route's line.
 
 ## What this version cannot do
 
@@ -82,7 +89,9 @@ AYNA's, chiefly stops that sit far from their own route's line.
 - The population grid is from November 2023: 3.04 million people in the study area
   against 3.22 million official for 2026.
 - The search is greedy and only changes existing routes, so it finds improvements, not
-  the best network.
+  the best network. On the benchmark networks it improves published route sets on both
+  scores, but methods that build routes from the demand reach far lower travel times
+  ([benchmark.md](benchmark.md)).
 - Fuel is in diesel-equivalent litres; CNG and electric buses are not modelled
   separately.
 - The loader reads only AYNA's tables, so another city needs a reader for its own map

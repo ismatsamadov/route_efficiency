@@ -84,6 +84,12 @@ others hold data as of the day they were retrieved.
 |---|---|---|---|
 | `external/wikidata/metro_stations.json` | The stations on the three Baku Metro lines (31 items, four of them not yet open), with opening dates, coordinates and neighbouring stations | Wikidata Query Service, 25 October 2026 (query in `fetch_external.py`) | CC0 |
 
+## Benchmark networks
+
+| File | Contents | Source | Licence |
+|---|---|---|---|
+| `external/utrp/CEC2013Supp.zip` | Mandl's network and Mumford0–3 (link times, trips), the route sets best for passengers and for the operator, the score table (Table IV), Pareto fronts and supplementary text of Mumford (2013); SHA-256 `b483d39eb9cee5a9a6b5e5d3d1e0f4200569eef4d9dceecdd5cec87a21c25ca2` | C. L. Mumford's UTRP page at Cardiff University (`users.cs.cf.ac.uk/C.L.Mumford/Research Topics/UTRP/`), read from the [Wayback Machine copy of 16 December 2025](http://web.archive.org/web/20251216204206/https://users.cs.cf.ac.uk/C.L.Mumford/Research%20Topics/UTRP/CEC2013Supp.zip) on 27 October 2026 | None stated. Research data the author distributes with Mumford (2013), "New heuristic and evolutionary operators for the multi-objective urban transit routing problem", IEEE CEC 2013, [doi:10.1109/CEC.2013.6557668](https://doi.org/10.1109/CEC.2013.6557668), so that others can test on it; redistributed here unchanged with that attribution. Mandl's network is from Mandl (1980), EJOR 5(6), [doi:10.1016/0377-2217(80)90126-5](https://doi.org/10.1016/0377-2217(80)90126-5) |
+
 ## Searched for and not found
 
 No public source gives route headways or timetables, vehicle positions, or ticket

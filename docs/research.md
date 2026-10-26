@@ -111,7 +111,10 @@ surveys in section 9 describe the usual formulation:
   - Vehicle capacity.
 - **Benchmarks.** Researchers test their methods on the same small networks: Mandl (15
   nodes) and Mumford0–3 (30–127 nodes). These let an evaluator and an optimiser be
-  checked against published results.
+  checked against published results. My scoring reproduces Mumford's (2013) published
+  scores exactly, and the redesign's straightening improves her route sets best for
+  passengers on both scores, while methods published since reach far lower travel times
+  ([benchmark.md](benchmark.md)).
 - **Methods**, from simple to advanced:
   1. Build a pool of candidate routes, then choose from it, greedily or with integer
      programming.
@@ -209,9 +212,15 @@ In the order I would read them, for someone new to the field:
    Two earlier surveys.
 5. Mandl, 1980, EJOR 5(6):396–404 ([doi](https://doi.org/10.1016/0377-2217(80)90126-5))
    and Mumford, 2013, IEEE CEC ([doi](https://doi.org/10.1109/CEC.2013.6557668)). The
-   standard test networks.
+   standard test networks; John, Mumford & Lewis, 2014, EvoCOP, 49–60, and Ahmed,
+   Mumford & Kheiri, 2019, EJOR 274(2):545–559, improve on them, and Hüsselmann, van
+   Vuuren & Andersen, 2024, Computers & Operations Research 163:106481
+   ([doi](https://doi.org/10.1016/j.cor.2023.106481)), finds route sets much cheaper to
+   run ([benchmark.md](benchmark.md) compares them).
 6. Holliday, El-Geneidy & Dudek, 2025, Transportmetrica B
-   ([doi](https://doi.org/10.1080/21680566.2025.2561863)). The state of the art with
-   learned methods.
+   ([doi](https://doi.org/10.1080/21680566.2025.2561863); accepted manuscript
+   [arXiv:2404.05894](https://arxiv.org/abs/2404.05894)). The state of the art with
+   learned methods; its Table 3 collects the best published results on the benchmark
+   networks.
 7. Badia, Argote-Cabanero & Daganzo, 2016 ([link](https://its.berkeley.edu/node/4590)).
    What happened when Barcelona built a grid.
