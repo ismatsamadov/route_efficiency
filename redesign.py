@@ -177,8 +177,8 @@ def main():
     write_csv(out / "routes.csv", route_rows(today, plan, a, log, riders_today, ctx.observed, ctx.protected))
     (out / "summary.json").write_text(json.dumps(summary, ensure_ascii=False, indent=1), encoding="utf-8")
     (out / "network.geojson").write_text(json.dumps(geojson(today, plan), ensure_ascii=False), encoding="utf-8")
-    write_gtfs(out / "gtfs_today.zip", today.network, a, today.headways(a))
-    write_gtfs(out / "gtfs_redesign.zip", plan.network, a, plan.headways(a))
+    write_gtfs(out / "gtfs_today.zip", today.network, a, today.headways(a), "today")
+    write_gtfs(out / "gtfs_redesign.zip", plan.network, a, plan.headways(a), "redesign")
 
     b, f = check_before["accessibility"], check_after["accessibility"]
     print(f"\nIndependent check, before -> after:")

@@ -3,7 +3,12 @@
 Each route direction becomes one trip that repeats every headway between the start and
 end of service (frequencies.txt). Times between stops follow the same model as the
 metrics: distance at the zone's moving speed plus the fixed loss at each stop. A feed
-written with estimated headways describes the model, not an official timetable."""
+written with estimated headways describes the model, not an official timetable.
+
+Shapes are the repaired route lines with two changes the MobilityData GTFS validator asks
+for: a point that repeats the one before it is written once, and a line that ends before
+the last stops of its direction (or starts after the first) is carried on to them in
+straight lines, the way the model measures those hops."""
 
 import csv
 import io
@@ -11,14 +16,43 @@ import zipfile
 
 from .geo import Polyline
 
+FEED_URL = "https://github.com/ismatsamadov/route_efficiency"
+FAR_FROM_LINE_M = 100.0      # the validator's limit for a stop's distance from its trip's shape
+
 
 def _hms(seconds):
     seconds = int(round(seconds))
     return f"{seconds // 3600:02d}:{seconds % 3600 // 60:02d}:{seconds % 60:02d}"
 
 
-def write_gtfs(path, network, a, headways, start_hour=6, feed_name="Baku buses, modelled from AYNA data"):
-    """headways: {route id: (minutes, source)}; routes without one are left out."""
+def _beyond_ends(line, pts, far_m=FAR_FROM_LINE_M):
+    """How many stops at the start and at the end lie past the ends of the line: more than
+    far_m from it, with the line's first (or last) point the nearest point on it."""
+    def past(pt, at_end):
+        offset, chainage = min(line.project_all(*pt))
+        return offset > far_m and (chainage >= line.length_m - 1.0 if at_end else chainage <= 1.0)
+
+    lead = 0
+    while lead < len(pts) and past(pts[lead], False):
+        lead += 1
+    trail = 0
+    while trail < len(pts) - lead and past(pts[-1 - trail], True):
+        trail += 1
+    return lead, trail
+
+
+def shape_points(pattern, network):
+    """(lat, lon) points of a direction's shape, reaching its first and last stops."""
+    if len(pattern.path) < 2:
+        return list(pattern.path)
+    pts = [(network.stops[s].lat, network.stops[s].lon) for s in pattern.stop_ids]
+    lead, trail = _beyond_ends(Polyline(pattern.path), pts)
+    return pts[:lead] + list(pattern.path) + pts[len(pts) - trail:]
+
+
+def write_gtfs(path, network, a, headways, version, start_hour=6, feed_name="Baku buses, modelled from AYNA data"):
+    """headways: {route id: (minutes, source)}; routes without one are left out.
+    version names the network in feed_info.txt, e.g. "today" or "redesign"."""
     start = start_hour * 3600
     end = (start_hour + a.service_hours) * 3600
     served = sorted({s for (rid, _), p in network.patterns.items() if rid in headways for s in p.stop_ids})
@@ -34,14 +68,25 @@ def write_gtfs(path, network, a, headways, start_hour=6, feed_name="Baku buses, 
             if i:
                 t += (p.chainage_m[i] - p.chainage_m[i - 1]) / speed + a.stop_loss_s
             stop_times.append([trip, _hms(start + t), _hms(start + t), s, i + 1])
-        line = Polyline(p.path) if len(p.path) > 1 else None
-        for k, (lat, lon) in enumerate(p.path):
-            shapes.append([shape, f"{lat:.6f}", f"{lon:.6f}", k + 1, f"{line.cum[k]:.1f}" if line else "0"])
+        pts = shape_points(p, network)
+        line = Polyline(pts) if len(pts) > 1 else None
+        last, n = None, 0
+        for k, (lat, lon) in enumerate(pts):
+            dist = f"{line.cum[k]:.1f}" if line else "0"
+            if dist == last:                     # a repeated point, or one within 5 cm of the last
+                continue
+            n += 1
+            shapes.append([shape, f"{lat:.6f}", f"{lon:.6f}", n, dist])
+            last = dist
         freqs.append([trip, _hms(start), _hms(end), int(round(headways[rid][0] * 60)), 0])
 
     tables = {
         "agency.txt": (["agency_id", "agency_name", "agency_url", "agency_timezone"],
                        [["baku", feed_name, "https://ayna.gov.az", "Asia/Baku"]]),
+        "feed_info.txt": (["feed_publisher_name", "feed_publisher_url", "feed_lang", "feed_start_date",
+                           "feed_end_date", "feed_version", "feed_contact_url"],
+                          [["Ismat Samadov, independent researcher", FEED_URL, "az", "20260101", "20261231",
+                            version, f"{FEED_URL}/issues"]]),
         "stops.txt": (["stop_id", "stop_code", "stop_name", "stop_lat", "stop_lon"],
                       [[s, network.stops[s].code or "", network.stops[s].name or "",
                         f"{network.stops[s].lat:.6f}", f"{network.stops[s].lon:.6f}"] for s in served]),
