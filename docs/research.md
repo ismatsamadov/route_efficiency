@@ -182,7 +182,8 @@ diesel-equivalent litres as a common unit ([configuration.md](configuration.md#f
 | [Conveyal R5](https://github.com/conveyal/r5) and [r5py](https://github.com/r5py/r5py) | Travel-time matrices and accessibility before and after a change | MIT (r5py: MIT or GPL-3) |
 | OpenTripPlanner 2 | Journey planning on GTFS | LGPL-3 |
 | gtfs-kit | Analyses GTFS feeds in Python | MIT |
-| MobilityData GTFS validator | Checks a feed for errors | Apache-2.0 |
+| [MobilityData GTFS validator](https://github.com/MobilityData/gtfs-validator) | The canonical check of a feed for errors and warnings; `validate_gtfs.py` runs it on both feeds | Apache-2.0 |
+| [gtfstools](https://ipea.github.io/gtfstools/) | Edits and analyses GTFS feeds in R; its `validate_gtfs()` runs the MobilityData validator | MIT |
 | AequilibraE | Demand models and transit assignment in Python | Its own licence |
 | [pymoo](https://pymoo.org) | NSGA-II and other multi-objective search algorithms | Apache-2.0 |
 | [transit_learning](https://github.com/AHolliday/transit_learning) | The learned network-design method of Holliday et al. | GPL-3 |

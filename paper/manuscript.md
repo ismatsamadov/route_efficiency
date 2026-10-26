@@ -664,7 +664,7 @@ second is a statement of what the estimates stand in for: a public timetable or 
 feed would replace the headway estimates for 200 of 201 routes and the repair of the
 map's defects, and boardings per route for all carriers would replace the model's
 ranking for the 145 routes without counts. The pipeline already writes today's network
-and the redesign as GTFS feeds.
+and the redesign as GTFS feeds, which MobilityData's validator passes without errors.
 
 ## 7. Conclusions
 
