@@ -32,6 +32,7 @@ lists what to check first.
 | Change an assumption or a data path | [configuration.md](configuration.md) |
 | Know exactly how a number is computed | [methodology.md](methodology.md) |
 | Understand the redesign algorithm and how to tune it | [redesign.md](redesign.md) |
+| See how the search does on the benchmark networks of the literature, where the answers are known | [benchmark.md](benchmark.md) |
 | Read any output file, column by column | [outputs.md](outputs.md) |
 | Change or extend the code | [code.md](code.md) |
 | See the research and other cities' experience behind the approach | [research.md](research.md) |

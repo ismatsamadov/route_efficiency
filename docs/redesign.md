@@ -163,7 +163,11 @@ Use `--out output/redesign_<name>` to keep variants side by side.
 The search improves today's routes and invents none; generating new routes (for
 example k-shortest paths between busy places) is the next step in
 [roadmap.md](roadmap.md). It is greedy, keeping every improving change and never undoing
-one, so simulated annealing or NSGA-II could find better combinations. And some of the
+one, so simulated annealing or NSGA-II could find better combinations. The benchmark
+networks of the literature show both sides of that ([benchmark.md](benchmark.md)): its
+straightening improves Mumford's (2013) best route sets for passengers on both of their
+scores, a single pass leaves part of the gain for further passes, and methods that build
+routes from the demand reach far lower travel times. And some of the
 gain does not carry over to new trips: counting impossible trips at 120 minutes, the
 average improved by 1.35 minutes on the search sample (79.66 to 78.31) but by 0.76
 minutes on the independent check (74.82 to 74.06), which is the figure I quote.

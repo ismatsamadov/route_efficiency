@@ -19,6 +19,7 @@ how the code uses it, what is wrong with it and what is still missing.
 | Metro intervals | `data/metro_headways.csv` | not read yet | Train intervals the operator has published, with sources |
 | OpenStreetMap destinations | `data/external/osm/osm_{education,health,shopping,offices,transport}.json` | `busnet/destinations.py` | Trip destinations |
 | OpenStreetMap streets and paths | `data/external/osm/osm_walk_network.json.gz` | `busnet/walking.py`, from `robustness.py` | Walking distances along streets, as a check on the straight-line coverage |
+| Benchmark networks (Mandl, Mumford0–3) | `data/external/utrp/CEC2013Supp.zip` | `busnet/utrp.py`, from `benchmark.py` | Testing the redesign's search on networks with published answers ([benchmark.md](benchmark.md)) |
 | Reference only | AYNA route lines (`ayna_buslines.kmz`), bus stations, payment types, metro 2025, OSM route tags, statistics tables, district population | not read | Cross-checks and calibration targets |
 
 ## The AYNA bus network snapshot (`data/ayna.db`)
@@ -266,6 +267,32 @@ in [results.md](results.md#who-the-network-reaches); the method in
 OpenStreetMap's Baku, so a walk along the mapped network is an upper bound where a
 shortcut is unmapped.
 
+## Benchmark networks (`data/external/utrp/`)
+
+`CEC2013Supp.zip` (449 KB, SHA-256 `b483d39e…5ca2`) is the supplement to Mumford's
+(2013) paper: Mandl's network and Mumford0 to Mumford3 as three text files each (node
+coordinates, link times in minutes with `Inf` where there is no link, and trips between
+every pair of nodes), the route sets her algorithm found best for passengers and for the
+operator (`Results/MainResults/Best Route Sets.docx`, as Matlab lines), Table IV of her
+paper with their scores (`Results/MainResults/README.docx`), the Pareto fronts of her 20
+runs, and her paper's supplementary text. She published it on her Cardiff University
+page, which now opens only in a browser, so `fetch_external.py --only utrp` reads the
+copy that the Internet Archive's Wayback Machine took on 16 December 2025. The code
+reads the files inside the zip; nothing is unpacked.
+
+| Network | Nodes | Links | Trips | Routes | Nodes on a route |
+|---|---|---|---|---|---|
+| Mandl | 15 | 21 | 15,570 | 6 | 2–8 |
+| Mumford0 | 30 | 90 | 342,160 | 12 | 2–15 |
+| Mumford1 | 70 | 210 | 1,926,170 | 15 | 10–30 |
+| Mumford2 | 110 | 385 | 4,847,900 | 56 | 10–22 |
+| Mumford3 | 127 | 425 | 6,394,950 | 60 | 12–25 |
+
+Links and trips are counted from the files: every link time and every demand matrix is
+symmetric, and link times are whole minutes from 1 to 11. The numbers of routes and their
+bounds are Table II of Mumford (2013), repeated in Table 1 of John, Mumford and Lewis
+(2014); they are not in the files, so `busnet/utrp.py` holds them.
+
 ## Real headways (`data/headways.csv`)
 
 Columns `route`, `headway_min` and an optional `source`. A route listed here uses this
@@ -290,4 +317,5 @@ URLs in the script. OpenStreetMap and the opendata.az files change over time, so
 change after a refresh; commit the new data and the regenerated `output/` together.
 `python3 data/metro_scraper.py` asks the metro's API again and `python3
 data/build_metro.py` rebuilds `data/metro/` from whatever is in `data/external/`; nothing
-reads `data/metro/` yet, so the results do not change.
+reads `data/metro/` yet, so the results do not change. The benchmark supplement
+(`--only utrp`) comes from a fixed archived copy and should not change.

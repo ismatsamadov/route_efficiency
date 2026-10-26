@@ -9,7 +9,7 @@ licences are listed in data/SOURCES.md.
 Standard library only. Usage (from the repository root):
   python3 data/fetch_external.py                 # download files that are missing
   python3 data/fetch_external.py --refresh       # download everything again
-  python3 data/fetch_external.py --only osm      # one group: kontur, opendata, stat, osm, wikidata
+  python3 data/fetch_external.py --only osm      # one group: kontur, opendata, stat, osm, wikidata, utrp
 
 The walking network (osm/osm_walk_network.json.gz) is cut from Geofabrik's daily extract
 of Azerbaijan with osm_pbf.py, because a query for 100,000 ways is refused by the
@@ -78,6 +78,10 @@ FILES = [
     ("opendata", "opendata/stat_urban_electric_transport.csv", AZSTAT + "DT_BJ_049"),
     ("stat", "stat/population_by_district_2026.xls", "https://www.stat.gov.az/source/demoqraphy/en/001_15en.xls"),
     ("wikidata", "wikidata/metro_stations.json", WIKIDATA),
+    # Mumford's (2013) benchmark networks and best route sets. Her Cardiff page now sits behind a
+    # browser check, so the copy the Wayback Machine took on 16 December 2025 is read instead.
+    ("utrp", "utrp/CEC2013Supp.zip",
+     "http://web.archive.org/web/20251216204206id_/https://users.cs.cf.ac.uk/C.L.Mumford/Research%20Topics/UTRP/CEC2013Supp.zip"),
 ]
 
 # OpenStreetMap through the Overpass API, for the Absheron peninsula.
@@ -169,7 +173,7 @@ def walk_network():
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--refresh", action="store_true", help="download files that already exist too")
-    ap.add_argument("--only", choices=["kontur", "opendata", "stat", "osm", "wikidata"])
+    ap.add_argument("--only", choices=["kontur", "opendata", "stat", "osm", "wikidata", "utrp"])
     args = ap.parse_args()
     failed = []
     for group, rel, url in FILES:

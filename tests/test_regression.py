@@ -1,8 +1,8 @@
 """Regenerate the committed results and compare them with the committed files.
 
-The measurement run takes about 12 seconds and always runs. The redesign (about two
-minutes) and the robustness checks (about ten minutes) run only with
-BUSNET_SLOW_TESTS=1 in the environment.
+The measurement run takes about 12 seconds and always runs. The redesign and the
+benchmark (about two minutes each) and the robustness checks (about ten minutes) run
+only with BUSNET_SLOW_TESTS=1 in the environment.
 
 Files must match byte for byte, with one allowance: Python 3.12 changed how sum() adds
 floats, so an older Python can differ in the last digits. A CSV or JSON file that is not
@@ -87,6 +87,13 @@ class CommittedResults(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             regenerate("redesign.py", tmp)
             self.assertEqual(differences(ROOT / "output" / "redesign", Path(tmp)), [])
+
+    @unittest.skipUnless(SLOW, "set BUSNET_SLOW_TESTS=1 to run the two-minute benchmark")
+    def test_benchmark_regenerates_output(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            regenerate("benchmark.py", tmp)
+            for sub in ("", "route_sets"):
+                self.assertEqual(differences(ROOT / "output" / "benchmark" / sub, Path(tmp) / sub), [])
 
     @unittest.skipUnless(SLOW, "set BUSNET_SLOW_TESTS=1 to run the ten-minute robustness checks")
     def test_robustness_regenerates_output(self):

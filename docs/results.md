@@ -418,6 +418,13 @@ counts, GPS data or local knowledge, and [roadmap.md](roadmap.md) says what I wo
 want before trusting them further. The next section shows which of them survive other
 trip samples and other assumptions.
 
+On the small benchmark networks of the literature, where published answers exist, the
+search behaves as these results suggest ([benchmark.md](benchmark.md)): my scoring
+reproduces Mumford's (2013) published scores exactly, straightening improves her route
+sets best for passengers on both scores (on Mumford3, from 31.44 to 30.87 minutes a trip
+and from 6,665 to 6,047 minutes of route time), and methods that design routes from the
+demand reach far lower times. It improves a network; it does not design one.
+
 ## How robust the results are
 
 I wrote `robustness.py` to repeat the main results under other conditions

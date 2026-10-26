@@ -619,6 +619,10 @@ that moves riders onto a counted route does not raise its count, and counts only
 which changes are tried while the model's demand decides which are kept; the population
 grid is two years older than the official figures; and the search is greedy over
 existing routes, so it finds improvements, not the best network, and invents no routes.
+On four of the five standard benchmark networks (Mandl, 1980; Mumford, 2013), under
+their rules, its straightening lowers the average travel time of the published best
+route sets for passengers by 1.2 to 1.8% and their route time by 6 to 9%, while methods
+published since reach far lower travel times (Holliday et al., 2025).
 The bus shifts, which give 54% of the gain on the search sample, rank routes by riders
 per route, estimated for 145 of them; every one of the 32 routes that gives up buses in
 the default run has estimated riders, so the shifts are the least certain part of the

@@ -276,6 +276,45 @@ walk is beyond the cutoff, and the median distances to the nearest stop both way
 deviation, minimum, maximum, count of positive gains and number of samples). Then the
 `settings` and `inputs` used.
 
+## output/benchmark/ — the search on the benchmark networks
+
+Written by `benchmark.py` ([benchmark.md](benchmark.md)). ATT and route time are in
+minutes, the shares in %; nodes are numbered from 1, as in Mumford's files.
+
+`published.csv` has one row for each of the ten published route sets:
+
+| Column | Meaning |
+|---|---|
+| `network`, `route_set` | Mandl or Mumford0–3; `passenger` or `operator`, the set Mumford (2013) found best for them |
+| `routes`, `nodes_min`, `nodes_max` | Routes in the set, and the fewest and most nodes on one |
+| `rules_broken` | The benchmark rules the set breaks; empty for all ten |
+| `att`, `d0`, `d1`, `d2`, `dun`, `route_time` | The scores computed here |
+| `att_published` ... `route_time_published` | The same scores in Mumford's Table IV; rounded to two decimals, they equal the scores computed here |
+
+`search.csv` has one row for each published set and search (`one_pass`, as
+`redesign.py` searches, or `repeated`, with passes until one keeps nothing):
+
+| Column | Meaning |
+|---|---|
+| `passes` | Passes made; the last pass of a repeated search keeps nothing |
+| `candidates` | Detours tried, summed over the passes |
+| `breaking_a_rule` | Tries that would break a benchmark rule |
+| `better_alone` | Tries that lowered ATT on their own |
+| `changes` | Changes kept |
+| `att_before`, `att_after`, `att_change_pct` | ATT of the published set, after the search, and the change |
+| `route_time_before`, `route_time_after`, `route_time_change_pct` | The same for route time |
+| `d0_after`, `d1_after`, `d2_after`, `dun_after` | The shares of trips by number of changes after the search |
+
+`changes.csv` has one row per change kept, in order: `network`, `route_set`, `search`,
+`step`, `pass`, `route` (its number in the set), `from_node` and `to_node` (the ends of
+the stretch), `nodes_before` and `nodes_after` (the stretch before and after, ends
+included), `route_minutes_saved`, and ATT and route time before and after the change.
+
+`route_sets/` holds each route set a search changed, named
+`<network>_<route_set>_<search>.txt`, in the format of Mumford's supplement
+(`routeset(1).route = [30 11 17 ...];`) under two comment lines with its scores, so that
+other software can read and score it.
+
 ## site/data.js and the checklist workbook
 
 `site/build.py` writes `data.js` and `checklist.xlsx` for the page in `index.html`, and
