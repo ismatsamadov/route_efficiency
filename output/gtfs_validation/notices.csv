@@ -1,4 +1,4 @@
-feed,validator,severity,notice,count
+﻿feed,validator,severity,notice,count
 today,8.0.1,WARNING,mixed_case_recommended_field,445
 today,8.0.1,WARNING,stop_too_far_from_shape,19
 today,8.0.1,WARNING,stops_match_shape_out_of_order,1

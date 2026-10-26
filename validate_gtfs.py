@@ -51,7 +51,7 @@ def validate(java, jar, feed, date):
 
 
 def write_csv(path, header, rows):
-    with open(path, "w", newline="", encoding="utf-8") as f:
+    with open(path, "w", newline="", encoding="utf-8-sig") as f:            # like every output CSV, for Excel
         w = csv.writer(f, lineterminator="\n")
         w.writerow(header)
         w.writerows(rows)
