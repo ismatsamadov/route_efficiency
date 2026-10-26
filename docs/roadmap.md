@@ -53,9 +53,10 @@ changing the answer much: generating new candidate routes (k-shortest paths betw
 busy terminals, metro stations and destinations, splitting long routes, cutting loops),
 replacing the greedy search with simulated annealing or NSGA-II from pymoo, which can
 undo earlier changes, running the evaluator on the Mandl and Mumford benchmarks to
-compare with published results, validating the GTFS feeds with the MobilityData
-validator and comparing travel times with r5py, and extending the tests to the kinds of
-change in `busnet/optimize.py` and to the GTFS writer.
+compare with published results, comparing travel times with r5py, and extending the
+tests to the kinds of change in `busnet/optimize.py`. The GTFS feeds now pass
+MobilityData's validator with no errors (`validate_gtfs.py`); its remaining warnings are
+AYNA's, chiefly stops that sit far from their own route's line.
 
 ## What this version cannot do
 

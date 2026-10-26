@@ -1,0 +1,9 @@
+﻿feed,validator,severity,notice,count
+today,8.0.1,WARNING,mixed_case_recommended_field,445
+today,8.0.1,WARNING,stop_too_far_from_shape,19
+today,8.0.1,WARNING,stops_match_shape_out_of_order,1
+today,8.0.1,INFO,trip_headsign_matches_intermediate_stop,49
+redesign,8.0.1,WARNING,mixed_case_recommended_field,384
+redesign,8.0.1,WARNING,stop_too_far_from_shape,8
+redesign,8.0.1,WARNING,stops_match_shape_out_of_order,1
+redesign,8.0.1,INFO,trip_headsign_matches_intermediate_stop,44

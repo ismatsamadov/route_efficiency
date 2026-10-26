@@ -6,6 +6,8 @@
   arrived in 3.11.
 - Nothing else. The code uses only Python's standard library, and every input file is in
   the repository, so no internet connection is needed to regenerate results.
+- Only for the optional check of the GTFS feeds: Java 17 or newer and MobilityData's
+  validator ([below](#checking-the-gtfs-feeds)).
 
 ## Regenerate every result
 
@@ -54,6 +56,25 @@ python3 -m http.server         # then open http://localhost:8000/ (or /#tour for
 needs an internet connection for the map library and the base map tiles; everything
 else is in the repository. GitHub Pages publishes it when Settings → Pages is set to
 deploy from the branch `main`, folder `/ (root)`.
+
+## Checking the GTFS feeds
+
+The two feeds in `output/redesign/` can be checked with MobilityData's canonical GTFS
+validator, the same checker the R package gtfstools runs with `validate_gtfs()`. It is a
+Java program and not part of the repository: install Java 17 or newer, download
+`gtfs-validator-8.0.1-cli.jar` from the validator's
+[releases page](https://github.com/MobilityData/gtfs-validator/releases), then run
+
+```sh
+python3 validate_gtfs.py --jar path/to/gtfs-validator-8.0.1-cli.jar   # under a minute
+```
+
+`--java` names the Java executable if it is not on the PATH, and `--date` the date the
+validator's date rules use (26 October 2026 by default, so that a rerun gives the same
+files). It writes `output/gtfs_validation/notices.csv` and `stops_far_from_shape.csv`
+([outputs.md](outputs.md#outputgtfs_validation--what-the-gtfs-validator-says-about-the-feeds));
+run it again whenever `redesign.py` changes the feeds. Version 8.0.1 finds no errors in
+either feed.
 
 ## Change something and see the effect
 

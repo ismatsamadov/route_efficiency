@@ -168,11 +168,43 @@ Merged routes are drawn as `dropped`; `routes.csv` tells merges and drops apart.
 
 ## output/redesign/gtfs_today.zip and gtfs_redesign.zip
 
-GTFS feeds with `agency.txt`, `stops.txt`, `routes.txt`, `calendar.txt`, `trips.txt`,
-`stop_times.txt`, `shapes.txt` and `frequencies.txt`. Each route direction is one trip
-that repeats every headway from 06:00 to 23:00, every day of 2026. Stop and route ids are
-AYNA's. Stop times come from the travel model, so the feeds describe the model, not an
-official timetable.
+GTFS feeds with `agency.txt`, `feed_info.txt`, `stops.txt`, `routes.txt`, `calendar.txt`,
+`trips.txt`, `stop_times.txt`, `shapes.txt` and `frequencies.txt`. Each route direction is
+one trip that repeats every headway from 06:00 to 23:00, every day of 2026. Stop and route
+ids are AYNA's. Stop times come from the travel model, so the feeds describe the model,
+not an official timetable; `feed_info.txt` names the network (`feed_version` is `today`
+or `redesign`) and the repository as publisher.
+
+The shapes are the repaired route lines with two changes the validator below asks for: a
+point that repeats the one before it is written once (the repaired lines repeat a point
+5,914 times), and a line that ends before the last stops of its direction, or starts after the
+first, is carried on to them in straight lines, as the model measures those hops. Route
+44 direction 2 is the case that matters: AYNA's line ends 1.7 km before its last stop.
+
+## output/gtfs_validation/ — what the GTFS validator says about the feeds
+
+What MobilityData's canonical GTFS validator says about the two feeds, written by
+`validate_gtfs.py` ([getting-started.md](getting-started.md#checking-the-gtfs-feeds)).
+`notices.csv` has one row per feed and kind of notice:
+
+| Column | Meaning |
+|---|---|
+| `feed` | `today` or `redesign` |
+| `validator` | The validator's version (8.0.1 in the latest run) |
+| `severity` | `ERROR`, `WARNING` or `INFO`. Neither feed has an error |
+| `notice` | The validator's code for the notice |
+| `count` | How many times it was raised |
+
+The warnings left all come from AYNA's data. `mixed_case_recommended_field` (445 in
+today's feed) flags names with no capital letter, such as "226 nömrəli tam orta məktəb";
+they are written correctly and left as AYNA spells them. `stop_too_far_from_shape` (19)
+lists stops more than 100 m from their own route's line, in `stops_far_from_shape.csv`
+(`feed`, `route`, `direction`, `stop_id`, `stop_name`, `metres_from_shape`): nine of them
+are a loop through Masazır and Yeni Bakı that route 525's line in direction 1 does not
+draw, 0.2 to 1.1 km from it. `stops_match_shape_out_of_order` (1) is route 536 direction
+2, one of the three directions with a stop out of order along its line
+([data.md](data.md#defects-repaired-automatically)). `trip_headsign_matches_intermediate_stop`
+(information only) marks loop routes whose last stop shares its name with a stop on the way.
 
 ## output/robustness/fit_ladder.csv — the demand model as each input is added (4 rows)
 

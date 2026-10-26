@@ -1,0 +1,28 @@
+﻿feed,route,direction,stop_id,stop_name,metres_from_shape
+today,4,1,3092,1-ci Yaşıl Ada küç. 38,140
+today,11,2,190,Əhməd Rəcəbli küçəsi 269,587
+today,121E,1,377,Hatəm Allahverdiyev küçəsi,127
+today,506,1,3165,4 nömrəli tam orta məktəb,261
+today,506,1,3501,"İstiqlaliyyət küçəsi, giriş 292",183
+today,506,2,3165,4 nömrəli tam orta məktəb,265
+today,506,2,3501,"İstiqlaliyyət küçəsi, giriş 292",187
+today,525,1,3165,4 nömrəli tam orta məktəb,1140
+today,525,1,3501,"İstiqlaliyyət küçəsi, giriş 292",1061
+today,525,1,3812,Yeni Bakı parkı,899
+today,525,1,3814,Yeni Bakı yaşayış massivi,891
+today,525,1,3813,Yeni Bakı yaşayış kompleksi,737
+today,525,1,3572,Masazır qəs. 3 nömrəli tam orta məktəb,622
+today,525,1,3561,Masazır kənd 3 nömrəli tam orta məktəb,433
+today,525,1,3560,Masazır kənd 3 nömrəli tam orta məktəb,394
+today,525,1,3500,İstiqlaliyyət küç. 13,180
+today,537,2,3841,"Zabrat-Kürdəxanı şosesi, 18",1123
+today,553,1,2459,Motodrom y/m,114
+today,557,2,3613,Mikayıl Müşfiqin parkı,151
+redesign,4,1,3092,1-ci Yaşıl Ada küç. 38,140
+redesign,11,2,190,Əhməd Rəcəbli küçəsi 269,587
+redesign,121E,1,377,Hatəm Allahverdiyev küçəsi,127
+redesign,506,1,3165,4 nömrəli tam orta məktəb,261
+redesign,506,2,3165,4 nömrəli tam orta məktəb,265
+redesign,537,2,3841,"Zabrat-Kürdəxanı şosesi, 18",1123
+redesign,553,1,2459,Motodrom y/m,114
+redesign,557,2,3613,Mikayıl Müşfiqin parkı,151
