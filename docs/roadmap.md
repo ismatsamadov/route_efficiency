@@ -49,9 +49,9 @@ fit is not tuned to the data that judges it. That should raise the fair 0.58, bu
 would still be calibration against 56 routes of one carrier.
 
 The benchmark test of 27 October 2026 ([benchmark.md](benchmark.md)) suggests one
-cheap change to the search itself: on Mumford's networks, repeating the straightening
-passes until one keeps nothing adds a third to a half to the gain of a single pass, and
-`redesign.py` makes a single pass. Repeating its passes, and checking the gain on the
+cheap change to the search itself: on Mumford1 to Mumford3, repeating the
+straightening passes until one keeps nothing adds 34 to 53% to the gain in travel time
+of a single pass, and `redesign.py` makes a single pass. Repeating its passes, and checking the gain on the
 independent sample as before, would show whether Baku's minute is an underestimate.
 
 Everything else can wait, because it would make the method look more serious without
