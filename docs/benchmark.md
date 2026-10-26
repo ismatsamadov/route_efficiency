@@ -33,8 +33,9 @@ twice; every node must be on some route; and every node must be reachable from e
 other. The nodes are the network itself, so a search that removes one is solving a
 different problem.
 
-Under those rules only one of the redesign's four kinds of change survives. Merging a
-near-duplicate route and dropping a lightly used one both lower the number of routes,
+Under those rules only one of the redesign's five kinds of change
+([redesign.md](redesign.md#the-changes-it-tries)) survives. Merging a near-duplicate
+route and dropping a lightly used one both lower the number of routes,
 and the search never adds a route back. Stop balancing removes nodes. Moving buses needs
 frequencies. Straightening a detour survives: it replaces a stretch of a route by the
 quickest path between the stretch's ends, the route keeps its place in the count, and
@@ -49,12 +50,15 @@ what it shows is that the comparison below is made on the literature's own terms
 
 ## What straightening does to the published route sets
 
-I started from each published route set and ran the straightening exactly as
-`redesign.py` runs it: stretches at most 12 nodes apart and no more than 40% of the
-route, the 80 that save the most route time tried one at a time, those that lower ATT
-applied in order of their gain and each scored again on the routes as they are by then,
-and a change kept only if ATT falls by more than 0.005 minutes. Then I ran it again with
-the passes repeated until one keeps nothing, which `redesign.py` does not do.
+I started from each published route set and ran the straightening the way
+`redesign.py` runs it, with the one difference the data forces: a detour is a stretch
+whose time along the route is longer than the quickest path between its ends along the
+network's links, where in Baku a detour is measured against the straight line. Stretches
+are at most 12 nodes apart and no more than 40% of the route; the 80 that save the most
+route time are tried one at a time; those that lower ATT are applied in order of their
+gain, each scored again on the routes as they are by then; and a change is kept only if
+ATT falls by more than 0.005 minutes. Then I ran it again with the passes repeated until
+one keeps nothing, which `redesign.py` does not do.
 
 On the four Mumford networks, straightening improves the route sets that were best for
 passengers on both scores at once (ATT in minutes, then route time in minutes):
@@ -84,8 +88,8 @@ and neither do the seven that keep them on Mandl's best set for passengers.
 
 It shows that the search finds real improvements in a network it did not design,
 judged by the literature's own scores and rules. It does not show that the search designs
-good networks. Methods published since 2014 reach much lower ATT on the same networks,
-and on every Mumford network at least one of them beats the improved sets on both scores:
+good networks. Methods published since reach much lower ATT on the same networks, and on
+every Mumford network at least one of them beats the improved sets on both scores:
 
 | Network | Passes repeated, here | Lowest ATT reported since (method) | DBMOSA (Hüsselmann et al., 2024) |
 |---|---|---|---|
@@ -103,10 +107,11 @@ search finds improvements, not the best network.
 
 Two smaller lessons. On Mumford1 to Mumford3, repeating the passes adds 34 to 53% to
 the gain in ATT and 45 to 88% to the saving in route time, so a single pass leaves gains
-behind; `redesign.py` makes one pass, and repeating it there would be cheap to try. And the benchmark says nothing about the
-parts of the Baku result that carry most of the uncertainty: waiting times from
-estimated headways, walking, and a demand model that ranks routes at 0.58 against
-counted boardings. Those cannot be tested on a network whose demand is given.
+behind; `redesign.py` makes one pass, and repeating it there would be cheap to try. And
+the benchmark says nothing about the parts of the Baku result that carry most of the
+uncertainty: waiting times from estimated headways, walking, and a demand model that
+ranks routes at 0.58 against counted boardings. Those cannot be tested on a network
+whose demand is given.
 
 ## References
 
