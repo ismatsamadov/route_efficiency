@@ -18,7 +18,8 @@ how much can be measured, and how far a redesign can be tested, from public data
 and answers with three results. First, the inherited network is measured from the
 agency's public map after its undocumented defects are repaired: only 29 of 201 routes
 are direct, 271 detours add 939 km to one trip in each direction of every route, and
-66% of residents live within 400 m of a stop. Second, a door-to-door travel model built
+66% of residents live within 400 m of a stop in a straight line, 45% along mapped
+streets. Second, a door-to-door travel model built
 from public data ranks routes against observed boardings at a Spearman correlation of
 0.58, and the paper states that agreement rather than assuming the model is right.
 Third, a fleet-neutral greedy search, which applies the changes used by network
@@ -33,7 +34,7 @@ the robustness checks are all implemented in a standard-library Python pipeline,
 today's network and the redesign are written as GTFS feeds. Every input and every
 result are released with a DOI (10.5281/zenodo.23604370), so the measurements can be
 regenerated and the method applied to other cities that publish only a map, once a
-reader for their map format is written. The manuscript is about 6,600 words with four
+reader for their map format is written. The manuscript is about 7,000 words with four
 tables and four figures.
 
 The manuscript is not under consideration elsewhere and has not been published before.
