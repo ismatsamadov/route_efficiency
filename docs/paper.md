@@ -309,9 +309,11 @@ point.
    and the figures, built by `python3 paper/build.py`); Elsevier's sharing policy allows
    a preprint on any server at any time, so posting it before submission is fine.
 5. Submit, in this order of fit and cost: Public Transport (subscription option, free;
-   submitted on 24 October 2026 as a Case Study and Application through its Editorial
-   Manager site, provisional number PUTR-S-26-00312; the system's built PDF is kept at
-   `paper/submission/PUTR-S-26-00312.pdf`) or Case Studies on Transport Policy (subscription option, free); if a free open-access
+   started on 24 October 2026 as a Case Study and Application in its Editorial Manager
+   site, where the PDF was built, kept at `paper/submission/PUTR-S-26-00312.pdf`, but
+   never approved, so the journal recorded the submission as incomplete on 27 October
+   2026 and removes it if it is not completed by 10 November; it is to be completed with
+   the files rebuilt that day, see step 7) or Case Studies on Transport Policy (subscription option, free); if a free open-access
    paper matters more than the journal's standing, Periodica Polytechnica Transportation
    Engineering or Transactions on Transport Sciences. Send one sharp result to Findings
    at the same time only if the journals allow it.
@@ -322,12 +324,13 @@ point.
    (the anonymised review copy), `title-page.docx`, `highlights.docx`,
    `cover-letter.docx` (from `paper/cover-letter.md`) and `preprint.pdf`, with the
    figures to upload separately from `paper/figures/figure-1.pdf` to `figure-4.pdf`.
-   The reviewers to suggest are in `paper/reviewers.md`, and
    `paper/submission/fields.md` is a paste sheet with the exact value of every form
-   field for engrXiv and Editorial Manager. What remains is done in the journal's
-   Editorial Manager with my own account: upload the files, enter the
-   reviewers with their institutional e-mails, add the preprint DOI to the title page
-   and the cover letter, and answer the submission questionnaire.
+   field for engrXiv and Editorial Manager. Suggesting reviewers is optional at Public
+   Transport and the submission suggests none ([`paper/reviewers.md`](../paper/reviewers.md)
+   says why). What remains is done in the journal's Editorial Manager with my own
+   account: upload the files, answer the submission questionnaire, and view and approve
+   the PDF the system builds, without which the journal receives nothing; the preprint
+   DOI goes on the title page once engrXiv assigns it.
 7. While the journal reviews: a plain-language post for Medium is drafted in
    [`paper/post/medium-post.md`](../paper/post/medium-post.md) with the two figures it
    uses as PNG beside it and a paragraph on the route planner that runs on the same
@@ -335,9 +338,14 @@ point.
    into my ORCID works, the preprint PDF onto ResearchGate and Academia.edu, and a
    Google Scholar profile is created. Material for the revision goes into
    `paper/manuscript.md` as it arises, while `paper/submission/` stays as submitted
-   until the decision: on 25 October 2026 the walking check of the straight-line
-   coverage ([results.md](results.md#who-the-network-reaches)) went into the abstract,
-   Table 1, the method, Section 5.2, 6.1, 6.2 and the conclusions.
+   until the decision. Because the submission was still incomplete on 27 October 2026,
+   the files rebuilt that day carry what had gone into the manuscript since 24 October:
+   the walking check of the straight-line coverage
+   ([results.md](results.md#who-the-network-reaches)) in the abstract, Table 1, the
+   method, Sections 5.2, 6.1 and 6.2 and the conclusions, the benchmark test
+   ([benchmark.md](benchmark.md)) in Section 6.2 and the GTFS validation in Section 6.5,
+   with the abstract cut from 257 to 248 words for the journal's limit of 250. The
+   preprint on engrXiv is the 24 October version.
 8. After acceptance: add the reference to the preprint, update `CITATION.cff` with
    `preferred-citation`, make a new release if anything changed, add the paper to ORCID.
 
@@ -361,5 +369,5 @@ point.
       figure captions, the abstract 248 words, the highlights 70–83 characters)
 - [x] Anonymised review copy where the journal is double-blind (`paper/manuscript.md`
       with `paper/title-page.md`)
-- [x] Three to five suggested reviewers (`paper/reviewers.md`; e-mails from their official pages at submission)
+- [x] Suggested reviewers: none, the step being optional at Public Transport (`paper/reviewers.md` says why)
 - [x] Journal's preprint policy checked (Elsevier allows preprints on any server at any time; the preprint still has to be posted and its DOI recorded)
