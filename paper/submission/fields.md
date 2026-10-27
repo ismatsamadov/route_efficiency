@@ -49,7 +49,8 @@ After posting, put the preprint DOI on the title page ("Preprint: ..." line in
 Submitted on 27 October 2026 as PUTR-D-26-00254. A first attempt on 24 October had its files
 uploaded and its PDF built but was never approved; it was completed on 27 October with the
 cover letter and the manuscript rebuilt that day from the current manuscript (the figures
-unchanged), the abstract of block A and the institution corrected.
+unchanged), the abstract of block A and the institution corrected. The PDF the journal built
+is `paper/submission/PUTR-D-26-00254.pdf`.
 
 Files to upload, in the order the system lists them:
 1. Cover letter: `paper/submission/cover-letter.docx`

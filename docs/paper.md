@@ -310,7 +310,8 @@ point.
    a preprint on any server at any time, so posting it before submission is fine.
 5. Submit, in this order of fit and cost: Public Transport (subscription option, free;
    submitted on 27 October 2026 as a Case Study and Application through its Editorial
-   Manager site, submission PUTR-D-26-00254; a first attempt on 24 October had its PDF
+   Manager site, submission PUTR-D-26-00254, with the PDF the journal built kept at
+   `paper/submission/PUTR-D-26-00254.pdf`; a first attempt on 24 October had its PDF
    built but never approved, which the journal's reminder of 27 October brought to
    light) or Case Studies on Transport Policy (subscription option, free); if a free open-access
    paper matters more than the journal's standing, Periodica Polytechnica Transportation
