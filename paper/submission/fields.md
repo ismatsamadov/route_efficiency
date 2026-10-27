@@ -34,7 +34,7 @@ After posting, put the preprint DOI on the title page ("Preprint: ..." line in
 | Abstract | block A below |
 | Keywords | bus network design; public transport; open data; accessibility; Baku; transit network design problem |
 | Author | Ismat Samadov, Independent researcher, Baku, Azerbaijan; ORCID 0009-0007-7919-4950; ismetsemedov@gmail.com; corresponding author |
-| Institution field | "Independent researcher" as free text; city Baku; country Azerbaijan |
+| Institution field | "Independent researcher" as free text; city Baku; country Azerbaijan. The PDF built on 24 October showed "UNEC: Azerbaijan State University of Economics", taken from the Editorial Manager profile: change it under Manuscript Data → Authors (and in the profile) so that it matches the manuscript |
 | Funding | None. "This research did not receive any specific grant from funding agencies in the public, commercial, or not-for-profit sectors." |
 | Declaration of interests | The author declares no known competing financial interests or personal relationships that could have appeared to influence the work reported in this paper. |
 | Data availability | block C below |
@@ -43,8 +43,15 @@ After posting, put the preprint DOI on the title page ("Preprint: ..." line in
 | Previously published | No (an earlier unreviewed GitHub report on the same data is cited and superseded in section 2.1) |
 | Generative AI | Declared in the manuscript's Declarations (Claude via Claude Code, for code, drafting, number checks and review; the author takes full responsibility) |
 | Review type | Not anonymised: upload `manuscript-full.docx`, which carries the author line and all declarations |
-| Suggested reviewers | optional; block D below if the form asks, with each e-mail from the official page listed in `paper/reviewers.md` |
+| Suggested reviewers | none; the step is optional (block D) |
 | Cover letter | block E below (also `paper/submission/cover-letter.docx`) |
+
+On 24 October the files were uploaded and the PDF built, but the PDF was never approved, so on
+27 October 2026 the journal recorded the submission as incomplete (it is removed if not
+completed by 10 November). The files were rebuilt that day from the current manuscript. To
+complete it: replace the cover letter and the manuscript (the figures are unchanged), paste
+block A into the abstract field, correct the institution, build the PDF, view it and approve
+it; the confirmation e-mail gives the manuscript number.
 
 Files to upload, in the order the system lists them:
 1. Cover letter: `paper/submission/cover-letter.docx`
@@ -58,7 +65,7 @@ If the paper goes to Elsevier instead: article type "Research Paper"; double-ano
 
 ## Block A — Abstract (248 words)
 
-Baku's bus network of about 200 routes is being redesigned, but no peer-reviewed evaluation of it exists and the data needed for one (timetables, vehicle positions and origin–destination flows) is not published. This paper asks how much can be measured, and how far a redesign can be tested, from public data alone. From the transport agency's public map, a population grid, OpenStreetMap destinations, metro entries and one operator's daily boardings, I repair the route geometry, measure directness, duplication, detours, stop spacing and coverage, and build a door-to-door travel model whose gravity demand model ranks routes against observed boardings at a Spearman correlation of 0.58. Only 29 of 201 routes run within 1.4 times the straight line between their ends, and 66% of the 3.04 million residents live within 400 m of a stop. A greedy search that keeps today's fleet and applies the changes used by redesigns elsewhere shortens the average possible trip from 51.8 to 50.9 minutes (0.76 minutes with impossible trips counted at 120), or delivers today's modelled travel times with about 12% fewer buses than the estimated headways imply. On 10 independent trip samples the gain counted that way is 0.68 to 0.81 minutes, and under 14 alternative assumptions 0.46 to 0.88, the smallest without bus shifts; a stricter rule that strands nobody gains as much as the default. The pipeline, data and results are released to regenerate or, with a reader for another map format, apply to other cities that publish only a map.
+Baku's bus network of about 200 routes is being redesigned, but no peer-reviewed evaluation exists and the data needed for one (timetables, vehicle positions, origin–destination flows) is unpublished. I ask how much can be measured, and how far a redesign can be tested, from public data alone. From the transport agency's public map, a population grid, OpenStreetMap destinations, metro entries and one operator's daily boardings, I repair the route geometry, measure directness, duplication, detours, stop spacing and coverage, and build a door-to-door travel model whose gravity demand model ranks routes against observed boardings at a Spearman correlation of 0.58. Only 29 of 201 routes run within 1.4 times the straight line between their ends, and 66% of the 3.04 million residents live within 400 m of a stop in a straight line, 45% along mapped streets. A greedy search keeping today's fleet and applying changes used by redesigns elsewhere shortens the average possible trip from 51.8 to 50.9 minutes (0.76 minutes with impossible trips counted at 120), or delivers today's modelled travel times with about 12% fewer buses than the estimated headways imply. On 10 independent trip samples the gain counted that way is 0.68 to 0.81 minutes, and under 14 alternative assumptions 0.46 to 0.88, the smallest without bus shifts; a stricter rule that strands nobody gains as much as the default. The pipeline, data and results are released to regenerate or, with a reader for another map format, apply to other cities publishing only a map.
 
 ## Block B — Highlights
 
@@ -74,13 +81,10 @@ every input, setting, script and result, including today's network and the redes
 
 ## Block D — Suggested reviewers
 
-| Name | Affiliation | Expertise (for the "reason" field) |
-|---|---|---|
-| Pieter Vansteenwegen | KU Leuven, Institute for Mobility, Belgium | Transit network design and frequency setting; co-author of the survey the paper builds on |
-| Lewis J. Lehe | University of Illinois Urbana-Champaign, Civil and Environmental Engineering, USA | Bus stop spacing statistics; economics of urban travel |
-| Konstantinos Kepaptsoglou | National Technical University of Athens, Greece | Transit route network design reviews and metaheuristics |
-| Ahmed El-Geneidy | McGill University, School of Urban Planning, Canada | Bus stop consolidation, walking distances, accessibility |
-| Rafael H. M. Pereira | Institute for Applied Economic Research (Ipea), Brazil | Open-data, reproducible accessibility analysis of public transport |
+None. The step is optional (the PDF of 24 October was built without any), and the five
+candidates in `paper/reviewers.md` are no longer suggested, since I have been in touch with
+some of them about the work. If a form ever insists on names, they must be people I have had
+no contact with.
 
 ## Block E — Cover letter
 
@@ -90,9 +94,9 @@ Dear Editor,
 
 I submit the manuscript "How efficient are Baku's bus routes? An open-data measurement and a fleet-neutral redesign" for consideration in Public Transport as a Case Study and Application.
 
-Baku, a city of 2.4 million, is redesigning its network of about 200 bus routes, but no evaluation of the network has been published and the data that one would normally rest on (timetables, vehicle positions, where riders travel) is not public. The paper asks how much can be measured, and how far a redesign can be tested, from public data alone, and answers with three results. First, the inherited network is measured from the agency's public map after its undocumented defects are repaired: only 29 of 201 routes are direct, 271 detours add 939 km to one trip in each direction of every route, and 66% of residents live within 400 m of a stop. Second, a door-to-door travel model built from public data ranks routes against observed boardings at a Spearman correlation of 0.58, and the paper states that agreement rather than assuming the model is right. Third, a fleet-neutral greedy search, which applies the changes used by network redesigns elsewhere, shortens the average trip by about a minute or gives today's modelled travel times with about 12% fewer buses; the gain holds on 10 independent trip samples and under 14 alternative assumptions, including a run without the least certain kind of change.
+Baku, a city of 2.4 million, is redesigning its network of about 200 bus routes, but no evaluation of the network has been published and the data that one would normally rest on (timetables, vehicle positions, where riders travel) is not public. The paper asks how much can be measured, and how far a redesign can be tested, from public data alone, and answers with three results. First, the inherited network is measured from the agency's public map after its undocumented defects are repaired: only 29 of 201 routes are direct, 271 detours add 939 km to one trip in each direction of every route, and 66% of residents live within 400 m of a stop in a straight line, 45% along mapped streets. Second, a door-to-door travel model built from public data ranks routes against observed boardings at a Spearman correlation of 0.58, and the paper states that agreement rather than assuming the model is right. Third, a fleet-neutral greedy search, which applies the changes used by network redesigns elsewhere, shortens the average trip by about a minute or gives today's modelled travel times with about 12% fewer buses; the gain holds on 10 independent trip samples and under 14 alternative assumptions, including a run without the least certain kind of change.
 
-The paper suits the journal's interest in case studies and applications of computer-aided methods in public transport planning: the travel model, the search and the robustness checks are all implemented in a standard-library Python pipeline, and today's network and the redesign are written as GTFS feeds. Every input and every result are released with a DOI (10.5281/zenodo.23604370), so the measurements can be regenerated and the method applied to other cities that publish only a map, once a reader for their map format is written. The manuscript is about 6,600 words with four tables and four figures.
+The paper suits the journal's interest in case studies and applications of computer-aided methods in public transport planning: the travel model, the search and the robustness checks are all implemented in a standard-library Python pipeline, and today's network and the redesign are written as GTFS feeds. Every input and every result are released with a DOI (10.5281/zenodo.23604370), so the measurements can be regenerated and the method applied to other cities that publish only a map, once a reader for their map format is written. The manuscript is about 7,000 words with four tables and four figures.
 
 The manuscript is not under consideration elsewhere and has not been published before. A preprint was submitted to engrXiv on 24 October 2026 (submission 8632) and its DOI will be given on the title page once assigned. I have no competing interests and received no funding. I am the sole author, writing as an independent researcher; the use of an AI writing tool is declared in the manuscript. The earlier, unreviewed GitHub report on the same data that the manuscript cites and supersedes is my own.
 
