@@ -34,7 +34,7 @@ After posting, put the preprint DOI on the title page ("Preprint: ..." line in
 | Abstract | block A below |
 | Keywords | bus network design; public transport; open data; accessibility; Baku; transit network design problem |
 | Author | Ismat Samadov, Independent researcher, Baku, Azerbaijan; ORCID 0009-0007-7919-4950; ismetsemedov@gmail.com; corresponding author |
-| Institution field | "Independent researcher" as free text; city Baku; country Azerbaijan. The PDF built on 24 October showed "UNEC: Azerbaijan State University of Economics", taken from the Editorial Manager profile: change it under Manuscript Data → Authors (and in the profile) so that it matches the manuscript |
+| Institution field | "Independent researcher" as free text; city Baku; country Azerbaijan. The PDF built on 24 October showed "UNEC: Azerbaijan State University of Economics", taken from the Editorial Manager profile; the submitted one shows "Independent" |
 | Funding | None. "This research did not receive any specific grant from funding agencies in the public, commercial, or not-for-profit sectors." |
 | Declaration of interests | The author declares no known competing financial interests or personal relationships that could have appeared to influence the work reported in this paper. |
 | Data availability | block C below |
@@ -46,12 +46,10 @@ After posting, put the preprint DOI on the title page ("Preprint: ..." line in
 | Suggested reviewers | none; the step is optional (block D) |
 | Cover letter | block E below (also `paper/submission/cover-letter.docx`) |
 
-On 24 October the files were uploaded and the PDF built, but the PDF was never approved, so on
-27 October 2026 the journal recorded the submission as incomplete (it is removed if not
-completed by 10 November). The files were rebuilt that day from the current manuscript. To
-complete it: replace the cover letter and the manuscript (the figures are unchanged), paste
-block A into the abstract field, correct the institution, build the PDF, view it and approve
-it; the confirmation e-mail gives the manuscript number.
+Submitted on 27 October 2026 as PUTR-D-26-00254. A first attempt on 24 October had its files
+uploaded and its PDF built but was never approved; it was completed on 27 October with the
+cover letter and the manuscript rebuilt that day from the current manuscript (the figures
+unchanged), the abstract of block A and the institution corrected.
 
 Files to upload, in the order the system lists them:
 1. Cover letter: `paper/submission/cover-letter.docx`
