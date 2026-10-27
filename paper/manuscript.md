@@ -13,24 +13,23 @@
 ## Abstract
 
 Baku's bus network of about 200 routes is being redesigned, but no peer-reviewed
-evaluation of it exists and the data needed for one (timetables, vehicle positions and
-origin–destination flows) is not published. This paper asks how much can be measured,
-and how far a redesign can be tested, from public data alone. From the transport
-agency's public map, a population grid, OpenStreetMap destinations, metro entries and
-one operator's daily boardings, I repair the route geometry, measure directness,
-duplication, detours, stop spacing and coverage, and build a door-to-door travel model
-whose gravity demand model ranks routes against observed boardings at a Spearman
-correlation of 0.58. Only 29 of 201 routes run within 1.4 times the straight line
-between their ends, and 66% of the 3.04 million residents live within 400 m of a stop in
-a straight line, 45% walking along mapped streets. A greedy search that keeps today's
-fleet and applies the changes used by redesigns elsewhere shortens the average possible
-trip from 51.8 to 50.9 minutes (0.76 minutes with impossible trips counted at 120), or
-delivers today's modelled travel times with about 12% fewer buses than the estimated
-headways imply. On 10 independent trip samples the gain counted that way is 0.68 to 0.81
-minutes, and under 14 alternative assumptions 0.46 to 0.88, the smallest without bus
-shifts; a stricter rule that strands nobody gains as much as the default. The pipeline,
-data and results are released to regenerate or, with a reader for another map format,
-apply to other cities that publish only a map.
+evaluation exists and the data needed for one (timetables, vehicle positions,
+origin–destination flows) is unpublished. I ask how much can be measured, and how far a
+redesign can be tested, from public data alone. From the transport agency's public map,
+a population grid, OpenStreetMap destinations, metro entries and one operator's daily
+boardings, I repair the route geometry, measure directness, duplication, detours, stop
+spacing and coverage, and build a door-to-door travel model whose gravity demand model
+ranks routes against observed boardings at a Spearman correlation of 0.58. Only 29 of
+201 routes run within 1.4 times the straight line between their ends, and 66% of the
+3.04 million residents live within 400 m of a stop in a straight line, 45% along mapped
+streets. A greedy search keeping today's fleet and applying changes used by redesigns
+elsewhere shortens the average possible trip from 51.8 to 50.9 minutes (0.76 minutes
+with impossible trips counted at 120), or delivers today's modelled travel times with
+about 12% fewer buses than the estimated headways imply. On 10 independent trip samples
+the gain counted that way is 0.68 to 0.81 minutes, and under 14 alternative assumptions
+0.46 to 0.88, the smallest without bus shifts; a stricter rule that strands nobody gains
+as much as the default. The pipeline, data and results are released to regenerate or,
+with a reader for another map format, apply to other cities publishing only a map.
 
 Keywords: bus network design; public transport; open data; accessibility; Baku; transit
 network design problem
