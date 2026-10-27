@@ -309,11 +309,10 @@ point.
    and the figures, built by `python3 paper/build.py`); Elsevier's sharing policy allows
    a preprint on any server at any time, so posting it before submission is fine.
 5. Submit, in this order of fit and cost: Public Transport (subscription option, free;
-   started on 24 October 2026 as a Case Study and Application in its Editorial Manager
-   site, where the PDF was built, kept at `paper/submission/PUTR-S-26-00312.pdf`, but
-   never approved, so the journal recorded the submission as incomplete on 27 October
-   2026 and removes it if it is not completed by 10 November; it is to be completed with
-   the files rebuilt that day, see step 7) or Case Studies on Transport Policy (subscription option, free); if a free open-access
+   submitted on 27 October 2026 as a Case Study and Application through its Editorial
+   Manager site, submission PUTR-D-26-00254; a first attempt on 24 October had its PDF
+   built but never approved, which the journal's reminder of 27 October brought to
+   light) or Case Studies on Transport Policy (subscription option, free); if a free open-access
    paper matters more than the journal's standing, Periodica Polytechnica Transportation
    Engineering or Transactions on Transport Sciences. Send one sharp result to Findings
    at the same time only if the journals allow it.
@@ -327,10 +326,10 @@ point.
    `paper/submission/fields.md` is a paste sheet with the exact value of every form
    field for engrXiv and Editorial Manager. Suggesting reviewers is optional at Public
    Transport and the submission suggests none ([`paper/reviewers.md`](../paper/reviewers.md)
-   says why). What remains is done in the journal's Editorial Manager with my own
-   account: upload the files, answer the submission questionnaire, and view and approve
-   the PDF the system builds, without which the journal receives nothing; the preprint
-   DOI goes on the title page once engrXiv assigns it.
+   says why). In the journal's Editorial Manager, with my own account, I uploaded the
+   files, answered the submission questionnaire, and viewed and approved the PDF the
+   system builds; until that approval the journal receives nothing. The preprint DOI
+   goes on the title page once engrXiv assigns it.
 7. While the journal reviews: a plain-language post for Medium is drafted in
    [`paper/post/medium-post.md`](../paper/post/medium-post.md) with the two figures it
    uses as PNG beside it and a paragraph on the route planner that runs on the same
@@ -338,8 +337,8 @@ point.
    into my ORCID works, the preprint PDF onto ResearchGate and Academia.edu, and a
    Google Scholar profile is created. Material for the revision goes into
    `paper/manuscript.md` as it arises, while `paper/submission/` stays as submitted
-   until the decision. Because the submission was still incomplete on 27 October 2026,
-   the files rebuilt that day carry what had gone into the manuscript since 24 October:
+   until the decision. The submitted files, rebuilt on 27 October 2026, carry what had
+   gone into the manuscript since 24 October:
    the walking check of the straight-line coverage
    ([results.md](results.md#who-the-network-reaches)) in the abstract, Table 1, the
    method, Sections 5.2, 6.1 and 6.2 and the conclusions, the benchmark test
