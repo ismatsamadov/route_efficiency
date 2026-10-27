@@ -1,8 +1,12 @@
 # Suggested reviewers
 
-Five researchers whose published work covers what the paper does, none of whom I have
-any connection with. Journals ask for an institutional e-mail with each name; I take it
-from the person's official page at submission time rather than copy it here.
+The submission to Public Transport suggests no reviewers: the step is optional there, and
+the PDF of 24 October 2026 was built without any. The five researchers below, whose
+published work covers what the paper does, were the candidates that day. I have since been
+in touch with some of them about the work, so none of the five is suggested, to this
+journal or another, for this paper; if a journal ever insists on names, they must be
+people I have had no contact with, each with an institutional e-mail from their official
+page.
 
 | Name | Affiliation | Why | Official page |
 |---|---|---|---|
