@@ -38,11 +38,14 @@ their sources so they can be read and changed in one place.
 | `metro_passengers` | `data/external/opendata/metro_passengers-2026.csv` | Daily entries per metro station |
 | `metro_exits` | `data/external/opendata/metro_exits.csv` | Metro exit coordinates |
 | `walk_network` | `data/external/osm/osm_walk_network.json.gz` | Streets and paths from OpenStreetMap, read only by `robustness.py` for the walking check of coverage |
+| `bicycle_lanes` | `data/external/opendata/ayna_bicycle_lanes.kmz` | AYNA's bicycle lanes (KMZ), read only by `bicycle.py` |
+| `bicycle_parking` | `data/external/opendata/ayna_bicycle_parking.kmz` | AYNA's bicycle parking points (KMZ), read only by `bicycle.py` |
 
 A missing file is reported (`missing ...: (using assumptions instead)`) and the run goes on
 without it: no population means no coverage, access or redesign; no ridership means
 headways come from the zone table; no destinations means trips end at homes only; no
-walking network means `robustness.py` skips the walking check.
+walking network means `robustness.py` skips the walking check. `bicycle.py` needs both
+bicycle files and stops with a message when one is missing.
 
 ## Walking (`[walking]`)
 

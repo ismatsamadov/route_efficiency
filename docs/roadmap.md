@@ -125,6 +125,10 @@ outside the repository (it writes `ayna_data/ayna.db` there), replace `data/ayna
 with that file and rerun the three scripts; the repairs are detected from the data, so
 they adapt to the new snapshot, and `output/repairs.txt` shows any new ones. Fresh
 public data comes from `python3 data/fetch_external.py --refresh`, and a fresh metro
-from `python3 data/metro_scraper.py` followed by `python3 data/build_metro.py`. Whatever changes, I
+from `python3 data/metro_scraper.py` followed by `python3 data/build_metro.py`. AYNA's
+bicycle lanes and parking points come with the other opendata.az files; after a refresh,
+`python3 bicycle.py` puts the new lanes beside the network again, and when AYNA says
+what the 649 MPS points in its parking file are, or publishes when each lane was built
+and what separates it from traffic, `docs/data.md` is where that goes. Whatever changes, I
 commit the new data and the regenerated `output/` together, so results always match
 their inputs.

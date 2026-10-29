@@ -315,6 +315,32 @@ included), `route_minutes_saved`, and ATT and route time before and after the ch
 (`routeset(1).route = [30 11 17 ...];`) under two comment lines with its scores, so that
 other software can read and score it.
 
+## output/bicycle/ — the bicycle lanes and parking beside the bus network
+
+Written by `bicycle.py` from AYNA's two files ([data.md](data.md#bicycle-lanes-and-parking)),
+the repaired network, the population grid, the BakuBus counts and the metro exits, in
+about four seconds; the thresholds are in [methodology.md](methodology.md#13-bicycle-lanes-and-parking).
+
+`summary.json` holds `lanes` (segments, streets, km, the km with a bus route within
+40 m, the ten longest streets, the January 2025 layer's segments and km, the placemarks
+skipped, the bounding box), `parking` (points; for each kind the points within 50 and
+100 m of a lane and the median distance to one, the points within 100 m of a served
+stop and the median distance, the points within 300 m of a metro exit; the MPV name
+suffixes; the MPV points on an MPS point), `bus` (served stops; stops within 50, 100
+and 200 m of a lane; routes with a stop within 100 m of a lane; routes with at least
+0.5 km along a lane; routes touching a lane at all; route km along lanes), `people`
+(the study area, and the people within the coverage radius of a lane, of a stop, of
+both, and of an MPV parking point), `settings` (every threshold) and `inputs` (the
+files found).
+
+| File | Rows | Columns |
+|---|---|---|
+| `lanes.csv` | one per street with a lane (54), longest first | `street`, `km`, `segments`, `km_beside_bus_route` (lane km with a bus route within 40 m), `bus_routes` (routes whose path runs within 40 m of the lane for at least 100 m, space-separated) and `bus_routes_count`, `stops_within_100m`, `parking_mpv_within_100m`, `parking_mps_within_100m` |
+| `routes.csv` | one per route whose path runs along a lane at all (50), longest along the lanes first | `route`, `zone`, `carrier`, `one_way_km`, `km_along_lanes` (averaged over directions, like `one_way_km`), `share_along_lanes`, `streets` (the lanes it runs along for at least 100 m, longest first, separated by semicolons), `stops_within_100m_of_lane`, `weekday_boardings` (BakuBus routes only) |
+| `stops.csv` | one per served stop within 200 m of a lane (210), nearest first | `stop_id`, `name`, `lat`, `lon`, `routes` and `route_numbers`, `nearest_lane`, `m_to_lane`, `parking_mpv_within_100m`, `parking_mps_within_100m` |
+| `parking.csv` | one per point in the parking file (834), MPS then MPV, by number | `name`, `kind`, `number`, `suffix`, `lat`, `lon`, `nearest_stop_id`, `nearest_stop`, `m_to_stop`, `routes_at_stop`, `nearest_lane`, `m_to_lane`, `nearest_metro_exit`, `m_to_metro_exit`, `mps_within_5m` (for an MPV point, the MPS point on the same spot) |
+| `bicycle.geojson` | the 60 lanes and the 834 points | lanes carry `street`, `km` and `bus_routes`; points carry `kind`, `name`, `nearest_stop` and `m_to_stop`; GitHub draws the file as a map |
+
 ## site/data.js and the checklist workbook
 
 `site/build.py` writes `data.js` and `checklist.xlsx` for the page in `index.html`, and
@@ -356,7 +382,12 @@ hexagon with people farther than the coverage radius from a stop: its outline, t
 people and everyone in it), and `carriers` (one row per carrier, spelling variants
 combined: its routes, one-way km, direct routes, median path / straight line, detours and
 their km, routes mostly inside another route, closely spaced stops it serves, residents
-only one of its routes reaches, and counted boardings). Lines are encoded polylines with
+only one of its routes reaches, and counted boardings), and `bicycle` (the lanes, each
+with its street, km, encoded line and the routes along it; `streets`, the rows of
+`output/bicycle/lanes.csv`; every parking point as latitude, longitude, name, kind, the
+position of its nearest served stop and the metres to it, its nearest lane and the
+metres, its nearest metro exit and the metres; and a `summary` of the figures the
+Bicycles view and the tour quote). Lines are encoded polylines with
 5 decimals; stop coordinates have 6.
 
 `site/checklist.xlsx` holds the lists, one sheet each, with frozen headers and filters:
@@ -371,3 +402,5 @@ only one of its routes reaches, and counted boardings). Lines are encoded polyli
 | Close stops | 351, closest first | stop name, AYNA stop id, shortest distance along a route to a neighbouring stop, routes |
 | Carriers | 39, most routes first | carrier, other spellings, routes and their numbers, one-way km, direct routes, median path / straight line, detours and their km, routes mostly inside another route and those inside another carrier's, close stops served, residents only one of its routes reaches, weekday boardings |
 | Routes | 201 | the measured columns of `routes.csv`, without the modelled headways, fleet and fuel |
+| Bicycle lanes | 54 streets, longest first | street, lane km, segments, km beside a bus route, bus routes along it and their numbers, stops within 100 m, MPV and MPS points within 100 m |
+| Bicycle parking | 834 | point, kind, coordinates, nearest bus stop and metres to it, routes at that stop, nearest lane and metres, nearest metro exit and metres |

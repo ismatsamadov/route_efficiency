@@ -19,6 +19,7 @@ how the code uses it, what is wrong with it and what is still missing.
 | Metro intervals | `data/metro_headways.csv` | not read yet | Train intervals the operator has published, with sources |
 | OpenStreetMap destinations | `data/external/osm/osm_{education,health,shopping,offices,transport}.json` | `busnet/destinations.py` | Trip destinations |
 | OpenStreetMap streets and paths | `data/external/osm/osm_walk_network.json.gz` | `busnet/walking.py`, from `robustness.py` | Walking distances along streets, as a check on the straight-line coverage |
+| Bicycle lanes and parking (AYNA) | `data/external/opendata/ayna_bicycle_lanes.kmz`, `ayna_bicycle_parking.kmz` | `busnet/bicycle.py`, from `bicycle.py` | The lanes and parking points beside the bus network ([results.md](results.md#bicycle-lanes-and-parking)) |
 | Benchmark networks (Mandl, Mumford0–3) | `data/external/utrp/CEC2013Supp.zip` | `busnet/utrp.py`, from `benchmark.py` | Testing the redesign's search on networks with published answers ([benchmark.md](benchmark.md)) |
 | Reference only | AYNA route lines (`ayna_buslines.kmz`), bus stations, payment types, metro 2025, OSM route tags, statistics tables, district population | not read | Cross-checks and calibration targets |
 
@@ -267,6 +268,48 @@ in [results.md](results.md#who-the-network-reaches); the method in
 OpenStreetMap's Baku, so a walk along the mapped network is an upper bound where a
 shortcut is unmapped.
 
+## Bicycle lanes and parking
+
+AYNA publishes two files on opendata.az, both CC0 and both KMZ files saved from Google
+Earth: the existing bicycle lanes (`movcud-zolaqlar-velo.kmz`, dataset of 24 September
+2026) and the bicycle parking points (`mpv-v-mps.-son.kmz`, dataset of 4 May 2026).
+`fetch_external.py` keeps them as `ayna_bicycle_lanes.kmz` and `ayna_bicycle_parking.kmz`.
+The copies here were retrieved on 29 October 2026 and are, byte for byte, the files on
+which the TransportTech hackathon of October 2026 set its final task (the total length
+of the lanes, the parking points within 50 m of one, and where to build next).
+
+The lanes file holds one folder, "Mövcud zolaqlar" (existing lanes), of 61 placemarks:
+60 lines named after their streets, 57.1 km in all on 54 streets, and one "8 Noyabr pr."
+placemark with no coordinates. A street name repeats where its lane is drawn in two
+pieces. The lane along 8 Noyabr prospekti is 13.8 km, a quarter of the total; no other
+street has more than 2.3 km. Everything lies between 40.347 and 40.393 N and 49.808 and
+49.947 E: the centre of Baku and its shore to the east. The lengths are great-circle
+lengths of the drawn lines; in the UTM projection the hackathon asked for (EPSG:32639)
+they come out 0.03% shorter.
+
+The parking file is a saved Google Earth session rather than a dataset. Inside it,
+under two levels of "Temporary Places", are four things. The folder "velosiped
+məntəqələri yeni" (new bicycle points) holds 185 points named MPV-1-2, MPV-2-2 and so
+on: the bicycle parking points that the dataset's description and the hackathon's task
+refer to. A folder "My Places" holds 649 points named MPS-1 to MPS-649, also in central
+Baku, which nothing in the file or on the portal explains; 56 of the MPV points
+coincide with an MPS point to within 5 m, and 427 of the 649 are within 100 m of a bus
+stop (median 59 m), closer than the MPV points (median 82 m). The last number of an
+MPV name is 2 for 165 points, 1 for 17, 0 for 2 and 3 for one; the file does not say
+what it counts. A folder "Velosiped yolları 2025 yanvar" holds the bicycle lanes as of
+January 2025: 44 lines, 44.2 km, plus the same empty 8 Noyabr placemark. And Google
+Earth's own "Sightseeing Tour" folder holds its ten sample places, from the Eiffel
+Tower to Mount Fuji, which is why the file's bounding box spans the globe.
+
+`busnet/bicycle.py` reads the lanes by folder name and the parking points by their
+names (MPV-n-k or MPS-n) inside the Absheron peninsula, so the sample places and the
+empty placemark drop out, and keeps the two kinds of point apart in every table.
+`bicycle.py` puts both beside the bus network; the method is in
+[methodology.md](methodology.md#13-bicycle-lanes-and-parking) and the results in
+[results.md](results.md#bicycle-lanes-and-parking). Neither file says when the lanes
+were built, whether a lane is separated from traffic or only painted, or how many
+bicycles a parking point holds.
+
 ## Benchmark networks (`data/external/utrp/`)
 
 `CEC2013Supp.zip` (449 KB, SHA-256 `b483d39e…5ca2`) is the supplement to Mumford's
@@ -314,7 +357,8 @@ departure lists ([Metro](#metro)), though no full timetable and no GTFS feed.
 
 `python3 data/fetch_external.py --refresh` downloads every external file again from the
 URLs in the script. OpenStreetMap and the opendata.az files change over time, so results
-change after a refresh; commit the new data and the regenerated `output/` together.
+change after a refresh; commit the new data and the regenerated `output/` together (the
+two bicycle files are in the `opendata` group, and `bicycle.py` regenerates `output/bicycle/`).
 `python3 data/metro_scraper.py` asks the metro's API again and `python3
 data/build_metro.py` rebuilds `data/metro/` from whatever is in `data/external/`; nothing
 reads `data/metro/` yet, so the results do not change. The benchmark supplement
