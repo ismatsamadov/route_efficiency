@@ -100,8 +100,8 @@
   <div class="wrap">
     <div class="section-head">
       <p class="section-kicker">01 / Explore the evidence</p>
-      <h2>One network. Eight ways to look.</h2>
-      <p>Choose a layer, then select a route or search for a stop. Follow the geometry, compare shared stops, or explore modelled travel times.</p>
+      <h2>One network. Nine ways to look.</h2>
+      <p>Choose a layer, then select a route or search for a stop. Follow the geometry, compare shared stops, explore modelled travel times, or see where the bicycle lanes and parking points meet the buses.</p>
     </div>
     <div class="map-toolbar">
       <div class="views" role="tablist" aria-label="View">
@@ -111,6 +111,7 @@
         <button type="button" role="tab" data-view="corridors">Corridors</button>
         <button type="button" role="tab" data-view="coverage">Coverage</button>
         <button type="button" role="tab" data-view="spacing">Stop spacing</button>
+        <button type="button" role="tab" data-view="bicycle">Bicycles</button>
         <button type="button" role="tab" data-view="reach">Reach</button>
         <button type="button" role="tab" data-view="time">Travel time</button>
       </div>
@@ -214,7 +215,7 @@
         <div><span class="evidence-tag estimated">Model estimates</span><p>Coverage uses a population grid. Travel times use assumed speeds and mostly estimated headways.</p></div>
         <div><span class="evidence-tag review">Requires validation</span><p>Changes to routes or stops need rider counts, road checks and local knowledge.</p></div>
       </div>
-      <p>Routes, stops and route lines come from AYNA's public map API, taken on <span data-date="meta.scraped"></span>; the data is identical, row for row, to a copy taken on <span data-date="meta.same_as"></span>. Defects in the map data were detected and repaired automatically, as listed above. Residents come from the Kontur population grid (November 2023, hexagons of about 0.74 km²) and boardings from the daily counts BakuBus publishes on opendata.az (<span data-month="meta.counts_month"></span>, weekday average).</p>
+      <p>Routes, stops and route lines come from AYNA's public map API, taken on <span data-date="meta.scraped"></span>; the data is identical, row for row, to a copy taken on <span data-date="meta.same_as"></span>. Defects in the map data were detected and repaired automatically, as listed above. Residents come from the Kontur population grid (November 2023, hexagons of about 0.74 km²) and boardings from the daily counts BakuBus publishes on opendata.az (<span data-month="meta.counts_month"></span>, weekday average). Bicycle lanes and parking points are AYNA's, from its opendata.az datasets (files of 24 September and 4 May 2026, CC0).</p>
       <dl class="defs">
         <dt>Direct route</dt><dd>In both directions the path is at most 1.4 times the straight line between the end stops. Indirect: 1.4 to 2 times, very indirect: 2 to 3 times, loop: more than 3 times, or ends less than 1 km apart.</dd>
         <dt>Detour</dt><dd>A stretch where the bus travels at least 2.5 times the straight line between two of its stops, and at least 1.5 km more (12 stops at most). The extra minutes are estimates from speeds assumed by type of service.</dd>
@@ -226,6 +227,7 @@
         <dt>Travel time</dt><dd>Estimated minutes by bus from a stop, from the paper's travel model: half a route's headway of waiting at each boarding, the ride at speeds set by type of service with 20 seconds lost at each stop, and walks of up to 300 m between stops to change buses, which are avoided as if each change cost 5 minutes. Headways are estimated for 200 of the 201 routes, so the minutes are estimates.</dd>
         <dt>Carriers</dt><dd>The routes each carrier runs, as AYNA's map assigns them, with their figures added up. AYNA plans the routes, so the figures describe the routes, not how well a carrier runs them. Names that differ only in spelling are counted once, which gives the paper's 39 carriers.</dd>
         <dt>Coverage</dt><dd>Estimated population within a straight-line radius of a served stop, using the November 2023 Kontur grid. Each hexagon is represented by seven equally weighted points. The study area is the served-stop bounding box plus 2 km, not Baku’s administrative boundary. The default radius is 400 m; the coverage lab uses five recorded radii from 300 m to 1 km.</dd>
+        <dt>Bicycles</dt><dd>AYNA's existing bicycle lanes and its bicycle parking points, as published on opendata.az. A stop is within 100 m of a lane in a straight line; a route runs along a lane where its path lies within 40 m of one, sampled every 20 m, so that a lane on one side of a dual carriageway counts for a bus on the other. The parking file also holds 649 points named MPS whose purpose it does not state; they are drawn small and blue. People within 400 m of a lane are counted as coverage counts them.</dd>
       </dl>
       <p>The study has no comprehensive observed timetables, vehicle positions or origin–destination records. The captured API omits eight routes present in the September 2026 boarding records. Two identical snapshots establish equality on those dates; they do not establish that the API was unchanged throughout the interval.</p>
       <p>Directness and overlap alone do not measure service quality: indirect routes can serve important destinations, and shared routes can offer useful frequency or different connections. A shorter path in the graph is not a verified drivable alternative; legal turns, one-way streets, skipped stops and rider impacts need checking.</p>
@@ -254,7 +256,7 @@
   <div class="wrap">
     <a class="footer-brand" href="#top">Baku Bus Atlas <span>↑ Back to top</span></a>
     <p>An independent research project by Ismat Samadov. No affiliation with AYNA or the carriers is implied.</p>
-    <p>Route snapshot: AYNA (no published API licence identified). Base map: © OpenStreetMap contributors. Population: Kontur (CC BY). Boardings: BakuBus, opendata.az (CC BY). Text: CC BY 4.0. Code: MIT.</p>
+    <p>Route snapshot: AYNA (no published API licence identified). Base map: © OpenStreetMap contributors. Population: Kontur (CC BY). Boardings: BakuBus, opendata.az (CC BY). Bicycle lanes and parking: AYNA, opendata.az (CC0). Text: CC BY 4.0. Code: MIT.</p>
   </div>
 </footer>
 

@@ -11,7 +11,8 @@ from pathlib import Path
 
 from .assumptions import Assumptions
 
-DATA_KEYS = ("db", "population", "ridership", "headways", "destinations", "metro_passengers", "metro_exits", "walk_network")
+DATA_KEYS = ("db", "population", "ridership", "headways", "destinations", "metro_passengers", "metro_exits", "walk_network",
+             "bicycle_lanes", "bicycle_parking")
 
 
 def parse_value(text):

@@ -7,7 +7,8 @@ way measure.py repairs it, and writes to ./site/ (or --out):
   data.js         routes, stops, detours with a shorter path where streets allow one,
                   near-duplicates, corridors, closely spaced stops, carriers, the people
                   who live farther than coverage_radius_m from a stop, the coverage at the
-                  five radii recorded in output/robustness/coverage_radius.csv, and the
+                  five radii recorded in output/robustness/coverage_radius.csv, the bicycle
+                  lanes and parking points with the figures of output/bicycle/, and the
                   defects found in AYNA's map data, as one JavaScript object that index.html reads
   checklist.xlsx  the same lists as a workbook to go through line by line
   og.png          with --og: the 1200x630 picture that link previews show, drawn from
@@ -42,6 +43,7 @@ from xml.sax.saxutils import escape
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
+from busnet.bicycle import load_lanes, load_parking                           # noqa: E402
 from busnet.config import load_config                                          # noqa: E402
 from busnet.geo import PROJ, Polyline, haversine_m                              # noqa: E402
 from busnet.graph import StopIndex                                              # noqa: E402
@@ -331,6 +333,59 @@ def carriers_table(routes, duplicates, close_stops):
     return out
 
 
+def metres(text):
+    return round(float(text)) if text not in ("", None) else None
+
+
+def bicycle_layer(data, out, stop_ix):
+    """The lanes and parking points the bicycle view draws, with the figures of output/bicycle/.
+
+    The geometry is read again from the two opendata.az files and checked against summary.json;
+    the nearest stop, lane and metro exit of each parking point come from parking.csv."""
+    folder = out / "bicycle"
+    if not (folder / "summary.json").exists():
+        sys.exit("output/bicycle/summary.json is missing; run bicycle.py first")
+    summary = json.loads((folder / "summary.json").read_text(encoding="utf-8"))
+    lanes, _ = load_lanes(data["bicycle_lanes"])
+    check("bicycle lane segments", len(lanes), summary["lanes"]["segments"])
+    check("bicycle lane km", sum(lane.length_m for lane in lanes) / 1000, summary["lanes"]["km"])
+    check("bicycle served stops", len(stop_ix), summary["bus"]["served_stops"])
+    streets = read_csv(folder / "lanes.csv")
+    routes_on = {r["street"]: r["bus_routes"].split() for r in streets}
+    parking = load_parking(data["bicycle_parking"])
+    rows = {r["name"]: r for r in read_csv(folder / "parking.csv")}
+    check("bicycle parking points", len(parking), summary["parking"]["points"])
+    if set(rows) != {p.name for p in parking}:
+        sys.exit("output/bicycle/parking.csv does not match the parking file; run bicycle.py first")
+    points = []
+    for p in parking:
+        r = rows[p.name]
+        points.append([round(p.lat, 6), round(p.lon, 6), p.name, p.kind, stop_ix[int(r["nearest_stop_id"])],
+                       metres(r["m_to_stop"]), r["nearest_lane"], metres(r["m_to_lane"]),
+                       r["nearest_metro_exit"], metres(r["m_to_metro_exit"])])
+    s, pk, people = summary["lanes"], summary["parking"], summary["people"] or {}
+    return {
+        "lanes": [{"name": lane.name, "km": round(lane.length_m / 1000, 3), "line": line(lane.line.latlon),
+                   "routes": routes_on.get(lane.name, [])} for lane in lanes],
+        "streets": [{"street": r["street"], "km": num(r["km"]), "segments": num(r["segments"]),
+                     "km_beside_bus": num(r["km_beside_bus_route"]), "routes": r["bus_routes"].split(),
+                     "stops_100": num(r["stops_within_100m"]), "mpv_100": num(r["parking_mpv_within_100m"]),
+                     "mps_100": num(r["parking_mps_within_100m"])} for r in streets],
+        "parking": points,
+        "summary": {
+            "segments": s["segments"], "streets": s["streets"], "km": s["km"], "km_2025": s["january_2025"]["km"],
+            "km_beside_bus": s["km_beside_bus_route"],
+            "stops_near": summary["bus"]["stops_within_m_of_lane"]["100"],
+            "routes_along": summary["bus"]["routes_along_lanes"], "routes_touching": summary["bus"]["routes_touching_lanes"],
+            "mpv": pk["MPV"]["points"], "mps": pk["MPS"]["points"],
+            "mpv_near_stop": pk["MPV"]["within_100m_of_stop"], "mps_near_stop": pk["MPS"]["within_100m_of_stop"],
+            "mpv_near_lane": pk["MPV"]["within_50m_of_lane"],
+            "people_lane": people.get("within_radius_of_lane"), "people_mpv": people.get("within_radius_of_mpv_parking"),
+            "radius_m": summary["settings"]["coverage_radius_m"], "route_within_m": summary["settings"]["route_within_m"],
+        },
+    }
+
+
 def build(out_dir):
     a, data = load_config(ROOT / "busnet.toml")
     net = load_network(data["db"])
@@ -466,6 +521,7 @@ def build(out_dir):
     issues = map_issues(net, data["db"], data["ridership"], routes_csv)
     shapes = Counter(r["shape"] for r in routes)
     carriers = carriers_table(routes, duplicates, [s for s, _ in close])
+    bicycle = bicycle_layer(data, out, stop_ix)
     coverage_sensitivity = [
         {"radius_m": int(r["radius_m"]), "population_within": float(r["population_within"]),
          "share": float(r["share_population_covered"])}
@@ -533,6 +589,7 @@ def build(out_dir):
         "carriers": carriers,
         "coverage_sensitivity": coverage_sensitivity,
         "hexes": hexes,
+        "bicycle": bicycle,
     }
     out_dir.mkdir(parents=True, exist_ok=True)
     text = json.dumps(site, ensure_ascii=False, separators=(",", ":"))
@@ -582,11 +639,21 @@ TEXT = {
         "spelling are counted once.",
         "Routes: the measured figures for every route. Residents are counted within {radius} m; "
         "boardings are published for BakuBus routes only.",
+        "Bicycle lanes: AYNA's existing bicycle lanes (opendata.az, file of 24 September 2026) by street, "
+        "with the bus routes whose path runs within {within} m of the lane for at least 100 m, and the served "
+        "stops and parking points within 100 m. Bicycle parking: every point in AYNA's parking file (opendata.az, "
+        "4 May 2026) with its nearest bus stop, lane and metro exit; the file names 185 bicycle parking points "
+        "MPV and holds 649 further points named MPS without saying what they are.",
         "Page: {page}",
         "Code, data and paper: {repository}",
     ],
     "sheets": ["About", "Data issues", "Detours", "Near-duplicate routes", "Corridors", "Close stops", "Carriers",
-               "Routes"],
+               "Routes", "Bicycle lanes", "Bicycle parking"],
+    "lane_cols": ["Street", "Lane, km", "Segments", "Km beside a bus route", "Bus routes along it", "Route numbers",
+                  "Stops within 100 m", "Bicycle parking points (MPV) within 100 m", "MPS points within 100 m"],
+    "parking_cols": ["Point", "Kind", "Latitude", "Longitude", "Nearest bus stop", "Metres to the stop",
+                     "Routes at that stop", "Nearest lane", "Metres to the lane", "Nearest metro exit",
+                     "Metres to the exit"],
     "carrier_cols": ["Carrier", "Also spelled", "Routes", "Route numbers", "One-way km", "Direct routes",
                      "Median path / straight line", "Detours", "Detour extra km",
                      "Routes mostly inside another route", "… inside another carrier's route", "Close stops served",
@@ -634,7 +701,8 @@ def workbook(site):
     meta, issues, spacing = site["meta"], site["issues"], site["spacing"]
     fill = {"scraped": meta["scraped"], "same_as": meta["same_as"], "radius": meta["radius_m"],
             "page": meta["page"], "repository": meta["repository"], "month": meta["counts_month"],
-            "gap": round(spacing["min_gap_m"]), "max_gap": round(spacing["max_gap_after_m"])}
+            "gap": round(spacing["min_gap_m"]), "max_gap": round(spacing["max_gap_after_m"]),
+            "within": site["bicycle"]["summary"]["route_within_m"]}
     carrier = {r["n"]: r["carrier"] for r in site["routes"]}
     stops = site["stops"]
     yes_no = {True: t["yes"], False: t["no"]}
@@ -681,6 +749,12 @@ def workbook(site):
                    r["circuity"], r["gap"], r["gaps200"], r["detours"], r["detour_km"], r["shared"], r["pop"],
                    r["pop_only"], r["boardings"]] for r in site["routes"]]
 
+    bike = site["bicycle"]
+    lane_rows = [[r["street"], r["km"], r["segments"], r["km_beside_bus"], len(r["routes"]), " ".join(r["routes"]),
+                  r["stops_100"], r["mpv_100"], r["mps_100"]] for r in bike["streets"]]
+    parking_rows = [[p[2], p[3], p[0], p[1], stops[p[4]][2], p[5], len(at_stop[p[4]]), p[6], p[7], p[8], p[9]]
+                    for p in bike["parking"]]
+
     def cols(names):
         return [c.format(**fill) for c in names]
 
@@ -702,6 +776,10 @@ def workbook(site):
          [cols(t["route_cols"])] + route_rows,
          ["text", "wrap", "wrap", "wrap", "text", "text", "2", "1", "text", "2", "int", "int", "int", "1", "pct",
           "int", "int", "int"], True),
+        (names[8], [30, 9, 10, 12, 10, 50, 10, 14, 12], [cols(t["lane_cols"])] + lane_rows,
+         ["wrap", "2", "int", "2", "int", "wrap", "int", "int", "int"], True),
+        (names[9], [12, 7, 11, 11, 34, 10, 10, 30, 10, 24, 10], [cols(t["parking_cols"])] + parking_rows,
+         ["text", "text", "text", "text", "wrap", "int", "int", "wrap", "int", "wrap", "int"], True),
     ]
 
 
@@ -850,7 +928,8 @@ def main():
     print(f"{s['routes']} routes, {len(site['stops']):,} stops, {s['detours']} detours "
           f"({s['detours_with_shorter_path']} with a shorter path), {s['duplicate_pairs']} near-duplicate pairs, "
           f"{s['corridors']} corridors, {s['close_stops']} close stops, "
-          f"{len(site['hexes']):,} hexagons with people farther than {site['meta']['radius_m']} m from a stop")
+          f"{len(site['hexes']):,} hexagons with people farther than {site['meta']['radius_m']} m from a stop, "
+          f"{len(site['bicycle']['lanes'])} bicycle lane segments and {len(site['bicycle']['parking'])} parking points")
     print(f"Map data: {len(i['repairs'])} repairs, {len(i['no_stops'])} routes without stops, "
           f"{len(i['missing_from_map'])} counted routes missing from the map")
     if args.og:

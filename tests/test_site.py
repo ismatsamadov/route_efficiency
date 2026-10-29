@@ -1,5 +1,6 @@
 """The page in index.html: site/build.py regenerates the committed site/ files, its helpers
-do what the page expects, and every local file the page links to exists.
+do what the page expects, the bicycle layer matches output/bicycle/, and every local file
+the page links to exists.
 
 The build takes about three seconds and always runs. Its data must match the committed
 data.js to within rounding (see test_regression.py), and the workbook part for part. The

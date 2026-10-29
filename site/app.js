@@ -1,5 +1,5 @@
 /*
- * The logic of index.html: the map and its eight views, the guided tour, route cards with
+ * The logic of index.html: the map and its nine views, the guided tour, route cards with
  * their shorter paths and overlaps, reach from a stop, the data issues and the checklist
  * tables. Everything shown comes from site/data.js, which site/build.py writes from
  * output/. Text that comes from the data (stop names, carriers) goes into the page with
@@ -91,6 +91,17 @@
         share: "{p} of all {total}",
         keys: ["Reachable without changing", "With one change", "Out of reach with one change"],
         clear: "Pick another stop"
+      },
+      bicycle: {
+        name: "Bicycles",
+        text: "AYNA's bicycle lanes and bicycle parking points, from opendata.az, over the bus routes. Hover a lane for the routes that run along it; click a parking point for the nearest bus stop.",
+        lane: "Bicycle lane",
+        laneNote: "{km} km on {streets} streets",
+        mpv: "Bicycle parking point",
+        mpvNote: "named MPV in the file",
+        mps: "Other point in the parking file",
+        mpsNote: "named MPS; the file does not say what they are",
+        fact: "{near} of the {total} served stops are within 100 m of a lane, and {routes} routes run at least 0.5 km along one; {beside} of the {km} km of lane have a bus route beside them. {mpvNear} of the {mpv} bicycle parking points are within 100 m of a bus stop. An estimated {people} people live within {radius} m of a lane, against {covered} within {radius} m of a bus stop. In January 2025 the lanes totalled {km25} km."
       }
     },
     time: {
@@ -111,7 +122,10 @@
       corridor: "{mean} routes per link on average · {km} km",
       hex: "Estimated {n} people beyond {radius} m",
       inside: "{share} of its stops are on route {r}",
-      gap: "{gap} m to its nearest neighbour · spacing candidate"
+      gap: "{gap} m to its nearest neighbour · spacing candidate",
+      lane: "{km} km of bicycle lane · {n} bus routes along it",
+      laneNone: "{km} km of bicycle lane · no bus route along it",
+      parking: "{kind} · bus stop {stop} {m} m away · lane on {lane} {m2} m away"
     },
     popup: {
       hex: "Estimated {n} people beyond {radius} m straight-line distance from a served stop.",
@@ -119,7 +133,11 @@
       corridor: "{km} km · {stops} stops · {mean} routes per link on average, {max} at most",
       corridorRoutes: "Routes on this corridor:",
       gap: "{gap} m along the route from its nearest neighbour. The spacing scenario leaves no gap over {max} m; removal still needs local review.",
-      reach: "Show its reach"
+      reach: "Show its reach",
+      lane: "{km} km of bicycle lane on this street; {n} bus routes run along it:",
+      laneNone: "{km} km of bicycle lane on this street; no bus route runs along it.",
+      parkingStop: "Nearest bus stop: {stop}, {m} m away. Nearest lane: {lane}, {m2} m away.",
+      parkingRoutes: "Routes at that stop:"
     },
     card: {
       shape: "Its path is {x} times the straight line between its end stops.",
@@ -240,13 +258,14 @@
       spacing: ["{n} stop-spacing candidates", "Orange stops sit less than {gap} m from a neighbour on every route using them. The scenario leaves no gap over {max} m; {hours} hours across one trip per route direction is a model estimate. Local accessibility needs review."],
       coverage: ["An estimated {people} people beyond {radius} m", "The 2023 population grid estimates {people} people beyond {radius} m straight-line distance from a served stop in this hexagon. Across the study area, the estimate is {uncovered} of {population}. This is not a walking-access measure."],
       reach: ["From {stop}", "{k} routes stop here. Without changing buses they reach {n0} stops; with one change, walking up to {walk} m between stops, {n1} of all {total}."],
+      bicycle: ["{km} km of bicycle lanes", "AYNA's existing bicycle lanes run along {streets} streets, {beside} km of them beside a bus route, and {near} served stops are within 100 m of one. {mpvNear} of the {mpv} bicycle parking points are within 100 m of a bus stop."],
       fixes: ["Fixable at the source", "AYNA's own map data has {defects} defects, from route lines filed under the wrong direction to {missing} counted routes missing from the map. They are listed below with the routes they affect."]
     }
   };
 
   // ---------------------------------------------------------------- state
 
-  var VIEWS = ["directness", "detours", "duplication", "corridors", "coverage", "spacing", "reach", "time"];
+  var VIEWS = ["directness", "detours", "duplication", "corridors", "coverage", "spacing", "bicycle", "reach", "time"];
   var TIME_BINS = [15, 30, 45, 60];
   var SHAPES = ["direct", "indirect", "very indirect", "loop"];
   var HEX_BINS = [100, 500, 2000];
@@ -269,7 +288,7 @@
     stopRamp: ["#86b6ef", "#3987e5", "#1c5cab", "#0d366b"],
     timeRamp: ["#86b6ef", "#3987e5", "#256abf", "#184f95", "#0d366b"],
     base: "#bdbcb4", one: "#2a78d6", two: "#eb6834", fix: "#1baf7a", ink: "#0b0b0b", casing: "#ffffff",
-    stop: "#52514e", faint: "#a9b1bf", near: "#9ec5f4"
+    stop: "#52514e", faint: "#a9b1bf", near: "#9ec5f4", lane: "#23634e"
   };
 
   function reduceMotion() { return !!(motionQuery && motionQuery.matches); }
@@ -406,6 +425,9 @@
   D.duplicates.forEach(function (p) { byNumber[p.r].inside.push(p); byNumber[p["in"]].contains.push(p); });
   D.corridors.forEach(function (c) { c.ll = decode(c.line); c.box = bbox(c.ll); });
   D.hexes.forEach(function (h) { h.ll = decode(h[0]); h.box = bbox(h.ll); h.people = h[1]; h.total = h[2]; });
+  var B = D.bicycle;                       // lanes [{name, km, line, routes}], parking [[lat, lon, name, kind, stop, m]], summary
+  B.lanes.forEach(function (l) { l.ll = decode(l.line); l.box = bbox(l.ll); });
+  B.box = B.lanes.length ? joinBoxes(B.lanes.map(function (l) { return l.box; })) : null;
   D.issues.repairs.forEach(function (f) { if (byNumber[f.route]) byNumber[f.route].fixes.push(f); });
   D.issues.no_shape.forEach(function (n) { if (byNumber[n]) byNumber[n].fixes.push({ kind: "no_shape", direction: null }); });
   var NETWORK_BOX = joinBoxes(routes.map(function (r) { return r.box; }));
@@ -671,7 +693,7 @@
       if (view === "directness") {
         line.setStyle({ color: C.ramp[line.route.shape], weight: w, opacity: 0.92 * dim });
       } else {
-        var quiet = view === "coverage" || view === "spacing" || fromStop();
+        var quiet = view === "coverage" || view === "spacing" || view === "bicycle" || fromStop();
         line.setStyle({ color: C.base, weight: Math.max(1.2, w - 0.6), opacity: (quiet ? 0.55 : 0.85) * dim });
       }
     });
@@ -726,6 +748,18 @@
       });
       D.spacing.stops.forEach(function (x) {
         g.addLayer(dot(x[0], { radius: 4.4, color: C.casing, weight: 1.5, fillColor: C.two, fillOpacity: 1 }));
+      });
+    } else if (name === "bicycle") {
+      B.parking.forEach(function (p) {
+        if (p[3] !== "MPS") return;
+        g.addLayer(L.circleMarker([p[0], p[1]], { renderer: R.overlay, interactive: false, radius: 2.2, stroke: false, fillColor: C.one, fillOpacity: 0.6 }));
+      });
+      B.lanes.forEach(function (l) {
+        g.addLayer(L.polyline(l.ll, { renderer: R.overlay, interactive: false, lineCap: "round", lineJoin: "round", color: C.lane, weight: 4, opacity: 0.95 }));
+      });
+      B.parking.forEach(function (p) {
+        if (p[3] !== "MPV") return;
+        g.addLayer(L.circleMarker([p[0], p[1]], { renderer: R.overlay, interactive: false, radius: 4, color: C.casing, weight: 1.5, fillColor: C.two, fillOpacity: 1 }));
       });
     } else if (name === "time") {
       if (origin === null) {
@@ -943,7 +977,7 @@
     return inside;
   }
 
-  var PRIORITY = { stop: 0, detour: 1, corridor: 1, route: 2, hex: 3 };
+  var PRIORITY = { stop: 0, parking: 0, detour: 1, corridor: 1, lane: 1, route: 2, hex: 3 };
 
   // Everything within px pixels of a point, nearest first within each kind.
   function hitsAt(latlng, px) {
@@ -982,6 +1016,21 @@
         if (!near(c.box)) return;
         var m = distanceTo(c.ll, lat, lon, kx, ky, dLat, dLon);
         if (m <= tol * 1.4) out.push({ type: "corridor", item: c, d: m });
+      });
+    }
+    if (view === "bicycle") {
+      var bestP = null;
+      for (var q = 0; q < B.parking.length; q++) {
+        var p = B.parking[q];
+        if (p[0] < lat - dLat || p[0] > lat + dLat || p[1] < lon - dLon || p[1] > lon + dLon) continue;
+        var pdx = (p[1] - lon) * kx, pdy = (p[0] - lat) * ky, pm = Math.sqrt(pdx * pdx + pdy * pdy);
+        if (pm <= tol && (!bestP || pm < bestP.d)) bestP = { type: "parking", item: q, d: pm };
+      }
+      if (bestP) out.push(bestP);
+      B.lanes.forEach(function (l) {
+        if (!near(l.box)) return;
+        var m = distanceTo(l.ll, lat, lon, kx, ky, dLat, dLon);
+        if (m <= tol) out.push({ type: "lane", item: l, d: m });
       });
     }
     routes.forEach(function (r) {
@@ -1076,6 +1125,15 @@
           layers.hover.addLayer(L.polyline(dd.ll, lineOpts(C.ink, 3.2, { opacity: 0.75, renderer: R.hover })));
         });
       }
+    } else if (h.type === "parking") {
+      var pk = B.parking[h.item];
+      title = pk[2];
+      sub = fill(T.tip.parking, { kind: pk[3] === "MPV" ? T.views.bicycle.mpv : T.views.bicycle.mps, stop: stops[pk[4]][2] || "–", m: fmt(pk[5]), lane: pk[6], m2: fmt(pk[7]) });
+    } else if (h.type === "lane") {
+      var ln = h.item;
+      title = ln.name;
+      sub = fill(ln.routes.length ? T.tip.lane : T.tip.laneNone, { km: fmt(ln.km, 1), n: fmt(ln.routes.length) });
+      layers.hover.addLayer(L.polyline(ln.ll, lineOpts(C.ink, 6, { opacity: 0.35, renderer: R.hover })));
     } else if (h.type === "hex") {
       title = fill(T.tip.hex, { n: fmt(h.item.people), radius: fmt(D.meta.radius_m) });
     }
@@ -1140,6 +1198,19 @@
       hits.forEach(function (x) { if (x.type === "route" && numbers.indexOf(x.item.n) < 0) numbers.push(x.item.n); });
       if (numbers.length === 1) select(numbers[0], { noZoom: true });
       else openPopup(e.latlng, [el("div", { class: "popup-title", text: T.routesHere }), routeChips(numbers, pick)]);
+    } else if (h.type === "parking") {
+      var pk = B.parking[h.item];
+      openPopup(e.latlng, [el("div", { class: "popup-title", text: pk[2] }),
+        el("div", { class: "popup-meta", text: pk[3] === "MPV" ? T.views.bicycle.mpv : T.views.bicycle.mps }),
+        el("div", { class: "popup-meta", text: fill(T.popup.parkingStop, { stop: stops[pk[4]][2] || "–", m: fmt(pk[5]), lane: pk[6], m2: fmt(pk[7]) }) }),
+        el("div", { class: "popup-meta", text: T.popup.parkingRoutes }),
+        routeChips(atStop[pk[4]], pick),
+        el("button", { type: "button", class: "popup-link", text: T.popup.reach, onclick: function () { map.closePopup(); setReach(pk[4]); } })]);
+    } else if (h.type === "lane") {
+      var ln = h.item;
+      openPopup(e.latlng, [el("div", { class: "popup-title", text: ln.name }),
+        el("div", { class: "popup-meta", text: fill(ln.routes.length ? T.popup.lane : T.popup.laneNone, { km: fmt(ln.km, 1), n: fmt(ln.routes.length) }) }),
+        routeChips(ln.routes, pick)]);
     } else if (h.type === "hex") {
       focusHex(h.item);
       openPopup(e.latlng, [el("div", { class: "popup-title", text: fill(T.popup.hex, { n: fmt(h.item.people), radius: fmt(D.meta.radius_m) }) }),
@@ -1212,6 +1283,16 @@
       box.appendChild(list);
       box.appendChild(el("p", { class: "fact" }, [rich(v.fact, { n: fmt(sp.stops.length), visits: fmt(sp.visits), hours: fmt(sp.hours_saved, 1),
         loss: fmt(D.meta.stop_loss_s), lost: fmt(sp.residents_losing), radius: radius })]));
+    } else if (view === "bicycle") {
+      var bs = B.summary;
+      box.appendChild(el("p", { text: v.text }));
+      list.appendChild(legendItem(keyLine(C.lane), v.lane, fmt(bs.segments), fill(v.laneNote, { km: fmt(bs.km, 1), streets: fmt(bs.streets) })));
+      list.appendChild(legendItem(keyDot(C.two, 10), v.mpv, fmt(bs.mpv), v.mpvNote));
+      list.appendChild(legendItem(keyDot(C.one, 6), v.mps, fmt(bs.mps), v.mpsNote));
+      box.appendChild(list);
+      box.appendChild(el("p", { class: "fact" }, [rich(v.fact, { near: fmt(bs.stops_near), total: fmt(S.stops), routes: fmt(bs.routes_along),
+        beside: fmt(bs.km_beside_bus, 1), km: fmt(bs.km, 1), mpvNear: fmt(bs.mpv_near_stop), mpv: fmt(bs.mpv),
+        people: millions(bs.people_lane), covered: millions(S.covered), radius: radius, km25: fmt(bs.km_2025, 1) })]));
     } else if (view === "reach") {
       box.appendChild(el("p", { text: v.text }));
       var counts = [0, 0, 0, 0], single = 0, hub = 0;
@@ -1778,6 +1859,14 @@
       text: fill(t.coverage[1], { people: fmt(h.people), radius: fmt(D.meta.radius_m), uncovered: millions(S.uncovered), population: millions(S.population) }),
       run: function () { select(null); showView("coverage", true); focusHex(h); fly(pointBox((h.box[0] + h.box[1]) / 2, (h.box[2] + h.box[3]) / 2, 2600), 13.5, 20); }
     });
+    if (B.lanes.length) {
+      var bs = B.summary;
+      steps.push({
+        title: fill(t.bicycle[0], { km: fmt(bs.km, 1) }),
+        text: fill(t.bicycle[1], { streets: fmt(bs.streets), beside: fmt(bs.km_beside_bus, 1), near: fmt(bs.stops_near), mpvNear: fmt(bs.mpv_near_stop), mpv: fmt(bs.mpv) }),
+        run: function () { select(null); showView("bicycle", true); fly(B.box, 13.5, 30); }
+      });
+    }
     var hub = 0;
     atStop.forEach(function (rs, i) { if (rs.length > atStop[hub].length) hub = i; });
     var reach = reachOf(hub);

@@ -21,6 +21,8 @@ destinations = [
 metro_passengers = "data/external/opendata/metro_passengers-2026.csv"
 metro_exits = "data/external/opendata/metro_exits.csv"
 walk_network = "data/external/osm/osm_walk_network.json.gz"   # streets and paths, for robustness.py's walking check
+bicycle_lanes = "data/external/opendata/ayna_bicycle_lanes.kmz"       # AYNA's bicycle lanes and parking points, read only by bicycle.py
+bicycle_parking = "data/external/opendata/ayna_bicycle_parking.kmz"
 
 [walking]
 walk_speed_mps = 1.25            # about 4.5 km/h

@@ -28,6 +28,7 @@ lists what to check first.
 | Run the tools and regenerate every result | [getting-started.md](getting-started.md) |
 | See the latest findings and the redesign | [results.md](results.md) |
 | See how much the results depend on the trip sample and the assumptions | [results.md](results.md#how-robust-the-results-are) |
+| See AYNA's bicycle lanes and parking points beside the bus network | [results.md](results.md#bicycle-lanes-and-parking) |
 | Understand the data, its defects, the repairs and the licences | [data.md](data.md) |
 | Change an assumption or a data path | [configuration.md](configuration.md) |
 | Know exactly how a number is computed | [methodology.md](methodology.md) |
@@ -40,7 +41,7 @@ lists what to check first.
 | Turn the work into a research paper: outline, venues, format, steps for an independent researcher | [paper.md](paper.md) |
 | Read the manuscript draft and its title page | [../paper/manuscript.md](../paper/manuscript.md), [../paper/title-page.md](../paper/title-page.md) |
 | Use the route planner built on the same data | [birjob.com/aletler/avtobus-marsrutu](https://www.birjob.com/aletler/avtobus-marsrutu) (in Azerbaijani) |
-| Show the findings to people who will act on them: a guided tour, a map with eight views, a card per route, the data defects, the checklist and tables of all routes and carriers | [../index.html](../index.html), served at [ismatsamadov.github.io/route_efficiency](https://ismatsamadov.github.io/route_efficiency/); how it is built: [code.md](code.md#the-page) |
+| Show the findings to people who will act on them: a guided tour, a map with nine views, a card per route, the data defects, the checklist and tables of all routes and carriers | [../index.html](../index.html), served at [ismatsamadov.github.io/route_efficiency](https://ismatsamadov.github.io/route_efficiency/); how it is built: [code.md](code.md#the-page) |
 | Look up a term | [glossary.md](glossary.md) |
 
 ## Three commands
@@ -53,4 +54,6 @@ python3 robustness.py                                        # the results under
 
 All three read `busnet.toml` and the data committed under `data/`, need only Python 3.11
 or newer, and give byte-identical results on every run. `python3 -m unittest` runs the
-tests. `python3 site/build.py` then rebuilds the page's data from `output/` (about 3 s).
+tests, `python3 bicycle.py` puts AYNA's bicycle lanes and parking points beside the
+network (about 4 s), and `python3 site/build.py` then rebuilds the page's data from
+`output/` (about 3 s).

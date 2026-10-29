@@ -225,6 +225,31 @@ suburban routes 139, 141E, 189 and 163, and the express 140E, get under 15% of t
 observed share. `output/ridership_check.csv` has the comparison route by route for the
 default run.
 
+### Bicycle lanes and parking
+
+AYNA's bicycle lanes run for 57.1 km on 54 streets of central Baku, up from 44.2 km in
+January 2025 ([data.md](data.md#bicycle-lanes-and-parking)). A quarter of that is one
+lane, 13.8 km along 8 Noyabr prospekti; no other street has more than 2.3 km. The lanes
+and the buses share their streets: 47.5 of the 57.1 km have a bus route within 40 m,
+45 routes run at least 0.5 km along a lane (50 touch one at all), and eight routes (21,
+72, 10, 120, 46, 20, 120E and 32) run 7 to 10 km of their length beside one. For riders
+the overlap is small: 170 of the 3,456 served stops are within 100 m of a lane (140
+within 50 m, 210 within 200 m), and an estimated 323,000 people live within 400 m of a
+lane, 11% of the 3.04 million in the study area, against 66% within 400 m of a bus stop;
+nearly all of them, 316,000, are within 400 m of both.
+
+Of the 185 bicycle parking points, 87 are within 50 m of a lane and 106 within 100 m of
+a bus stop (median distance 82 m), 36 are within 300 m of a metro exit, and an estimated
+562,000 people live within 400 m of one. The 649 unexplained MPS points in the same file
+sit closer to bus stops still (427 within 100 m, median 59 m) and mostly away from the
+lanes (median 862 m).
+
+`output/bicycle/` has the tables ([outputs.md](outputs.md#outputbicycle--the-bicycle-lanes-and-parking-beside-the-bus-network)),
+the page draws them as its Bicycles view, and the thresholds are explained in
+[methodology.md](methodology.md#13-bicycle-lanes-and-parking). What the numbers do not
+say: the files give no dates of construction, no separation from traffic and no
+capacities, and nothing here measures whether anyone cycles to a bus.
+
 ## Stop balancing alone
 
 `--scenario stop-balancing --min-gap 250` removes stops closer than 250 m to a neighbour

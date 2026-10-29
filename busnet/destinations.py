@@ -71,6 +71,18 @@ def _match(name, candidates):
     return None
 
 
+def read_exits(path):
+    """[(station, lat, lon)] from the opendata.az file of metro exits: semicolon-separated,
+    with the coordinates in millionths of a degree."""
+    out = []
+    with open(path, newline="", encoding="utf-8-sig") as f:
+        reader = csv.reader(f, delimiter=";")
+        next(reader)
+        for row in reader:
+            out.append((row[1].strip(), float(row[2]) / 1e6, float(row[3]) / 1e6))
+    return out
+
+
 def metro_points(passengers_csv, exits_csv, per_1000_entries):
     """([(lat, lon, weight, "metro")], unmatched station names).
 
@@ -92,12 +104,8 @@ def metro_points(passengers_csv, exits_csv, per_1000_entries):
             entries[station] = statistics.mean(vals)
 
     exits = defaultdict(list)
-    with open(exits_csv, newline="", encoding="utf-8-sig") as f:
-        reader = csv.reader(f, delimiter=";")
-        next(reader)
-        for row in reader:
-            lat, lon = float(row[2]) / 1e6, float(row[3]) / 1e6
-            exits[row[1].strip()].append((lat, lon))
+    for station, lat, lon in read_exits(exits_csv):
+        exits[station].append((lat, lon))
 
     out, unmatched = [], []
     for station, n in entries.items():

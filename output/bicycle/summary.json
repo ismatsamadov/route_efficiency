@@ -1,0 +1,142 @@
+{
+ "lanes": {
+  "segments": 60,
+  "streets": 54,
+  "km": 57.10229558859961,
+  "km_beside_bus_route": 47.470598027686925,
+  "longest_streets": [
+   {
+    "street": "8 Noyabr pr.",
+    "km": 13.834488839854224
+   },
+   {
+    "street": "Neftçilər pr-Bulvar",
+    "km": 2.2602520927657728
+   },
+   {
+    "street": "Xətai pr.",
+    "km": 2.0144607515440107
+   },
+   {
+    "street": "28 may küç.",
+    "km": 1.9319341426401635
+   },
+   {
+    "street": "Mətbuat pr.",
+    "km": 1.9105098440381445
+   },
+   {
+    "street": "Hüseyn Cavid pr.",
+    "km": 1.8403982460514374
+   },
+   {
+    "street": "Bulvar 2",
+    "km": 1.6295423160636953
+   },
+   {
+    "street": "Rəşid Behbudov küç.",
+    "km": 1.6292328475992592
+   },
+   {
+    "street": "Ağ şəhər bulvarı ərazisi",
+    "km": 1.5603309394043383
+   },
+   {
+    "street": "Mirzəağa Əliyev küç.",
+    "km": 1.4985088558666488
+   }
+  ],
+  "january_2025": {
+   "segments": 44,
+   "km": 44.19628890290562
+  },
+  "skipped_placemarks": [
+   "8 Noyabr pr."
+  ],
+  "bbox": [
+   40.34694169102181,
+   40.39294190715743,
+   49.80806094635825,
+   49.9473192487674
+  ]
+ },
+ "parking": {
+  "points": 834,
+  "MPV": {
+   "points": 185,
+   "within_50m_of_lane": 87,
+   "within_100m_of_lane": 93,
+   "median_m_to_lane": 79.5810208419625,
+   "within_100m_of_stop": 106,
+   "median_m_to_stop": 81.75733727993025,
+   "within_300m_of_metro_exit": 36
+  },
+  "MPS": {
+   "points": 649,
+   "within_50m_of_lane": 150,
+   "within_100m_of_lane": 168,
+   "median_m_to_lane": 861.9801003436322,
+   "within_100m_of_stop": 427,
+   "median_m_to_stop": 58.81675973023059,
+   "within_300m_of_metro_exit": 102
+  },
+  "mpv_suffixes": {
+   "0": 2,
+   "1": 17,
+   "2": 165,
+   "3": 1
+  },
+  "mpv_on_an_mps_point": 56
+ },
+ "bus": {
+  "served_stops": 3456,
+  "stops_within_m_of_lane": {
+   "50": 140,
+   "100": 170,
+   "200": 210
+  },
+  "routes_with_stop_within_100m_of_lane": 49,
+  "routes_along_lanes": 45,
+  "routes_touching_lanes": 50,
+  "route_km_along_lanes": 163.67853877527088
+ },
+ "people": {
+  "study_area": 3043184.0,
+  "within_radius_of_lane": 322681.7142857139,
+  "within_radius_of_stop": 2007349.0000000033,
+  "within_radius_of_both": 316390.14285714267,
+  "within_radius_of_mpv_parking": 561992.0000000002
+ },
+ "settings": {
+  "coverage_radius_m": 400,
+  "stop_radii_m": [
+   50,
+   100,
+   200
+  ],
+  "near_m": 100,
+  "lane_m": 50,
+  "route_within_m": 40,
+  "along_min_m": 100,
+  "along_route_km": 0.5,
+  "metro_exit_m": 300,
+  "step_m": 20.0,
+  "same_point_m": 5.0
+ },
+ "inputs": {
+  "db": "data/ayna.db",
+  "population": "data/external/kontur/kontur_population_AZ_20231101.gpkg",
+  "ridership": "data/external/opendata/bakubus_passenger-2026.csv",
+  "headways": "data/headways.csv",
+  "destinations:osm_education.json": "data/external/osm/osm_education.json",
+  "destinations:osm_health.json": "data/external/osm/osm_health.json",
+  "destinations:osm_shopping.json": "data/external/osm/osm_shopping.json",
+  "destinations:osm_offices.json": "data/external/osm/osm_offices.json",
+  "destinations:osm_transport.json": "data/external/osm/osm_transport.json",
+  "metro_passengers": "data/external/opendata/metro_passengers-2026.csv",
+  "metro_exits": "data/external/opendata/metro_exits.csv",
+  "walk_network": "data/external/osm/osm_walk_network.json.gz",
+  "bicycle_lanes": "data/external/opendata/ayna_bicycle_lanes.kmz",
+  "bicycle_parking": "data/external/opendata/ayna_bicycle_parking.kmz"
+ }
+}

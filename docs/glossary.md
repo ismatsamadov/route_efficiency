@@ -11,6 +11,7 @@ Terms as they are used in this repository. Setting names are in `code` font
 | BakıKart | Baku's transport smart card |
 | BakuBus | The largest carrier in the data (55 of the 201 routes with stops, among 39 carriers; the data lists 42 carrier names, three of them spelling variants of others), and the only one whose boardings per route are published (by Bakı Metropoliteni on opendata.az). 56 routes have counts: route 49 is listed under another carrier (Azlənd Plaza MMC) in the AYNA data |
 | Benchmark network | One of the small networks on which methods of designing bus routes are compared, with published route sets and scores: Mandl's and Mumford0–3 ([benchmark.md](benchmark.md)) |
+| Bicycle lane | One of AYNA's existing bicycle lanes as drawn in its opendata.az file: 60 lines on 54 streets, 57.1 km in all ([results.md](results.md#bicycle-lanes-and-parking)) |
 | Boarding | One rider getting on one bus. A trip with one change is two boardings |
 | Bus-equivalent | A fractional number of buses. The redesign assigns fractions so that small changes count; whole buses are the fractions rounded up per route |
 | Bus-hours, bus-km | Hours and kilometres that buses drive in service in a day. The main operating costs |
@@ -47,6 +48,7 @@ Terms as they are used in this repository. Setting names are in `code` font
 | Loop route | A route whose ends are less than 1 km apart, or whose path is over 3 times the straight line between them |
 | Mandl, Mumford0–3 | The standard benchmark networks: Mandl's network of 15 nodes (1980) and Mumford's four made-up networks of 30, 70, 110 and 127 nodes (2013) |
 | Merge | A redesign change that removes a route whose stops are mostly (at least 85%) served by another route, and gives its buses to the routes it overlaps |
+| MPV, MPS | The two kinds of point in AYNA's bicycle parking file: 185 bicycle parking points named MPV-n-k, and 649 points named MPS-n that the file does not explain ([data.md](data.md#bicycle-lanes-and-parking)) |
 | Near-duplicate | A route with at least 85% of its stops also served by one other route |
 | NSGA-II | A genetic algorithm that finds the best trade-offs between two or more goals |
 | OpenStreetMap, Overpass | The open world map, and the service used to download features from it |

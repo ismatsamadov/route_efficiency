@@ -25,6 +25,7 @@ python3 robustness.py
 | `python3 measure.py --scenario stop-balancing --min-gap 250` | the same, plus `output/scenario.json` and `output/scenario_removed_stops.csv` | about 12 s |
 | `python3 redesign.py` | `output/redesign/` | about 2 minutes |
 | `python3 robustness.py` | `output/robustness/`: the results on other trip samples and under other assumptions | about 15 minutes (8 processes) |
+| `python3 bicycle.py` | `output/bicycle/`: AYNA's bicycle lanes and parking points beside the bus network | about 4 s |
 | `python3 site/build.py` | `site/data.js` and `site/checklist.xlsx`, the page's data, from `output/`; with `--og` also `site/og.png` (needs Chrome) | about 3 s |
 
 The committed `output/` folder was produced by exactly these three commands. Running
@@ -41,9 +42,10 @@ BUSNET_SLOW_TESTS=1 python3 -m unittest        # also regenerates the redesign a
 ```
 
 The tests check the geometry, the headway and daily-service rules, the settings reader
-and the redesign's plan arithmetic on a small made-up network, regenerate `output/`
-to compare it with the committed files, and rebuild the page's data and checklists to
-compare them with the committed ones ([code.md](code.md#checking-a-change)).
+and the redesign's plan arithmetic on a small made-up network, read a small bicycle
+file in the shape of AYNA's, regenerate `output/` and `output/bicycle/` to compare them
+with the committed files, and rebuild the page's data and checklists to compare them
+with the committed ones ([code.md](code.md#checking-a-change)).
 
 ## See the page
 

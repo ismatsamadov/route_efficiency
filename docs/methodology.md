@@ -273,3 +273,34 @@ within `max_access_walk_m` is protected and the pass runs again.
   as they are by then, and skips a change whose route has changed since it was found. The
   80 and the 0.005 minutes are the redesign's defaults, `redesign_max_straighten` and
   `redesign_min_gain_min`. The repeated search runs passes until one keeps nothing.
+
+## 13. Bicycle lanes and parking
+
+`bicycle.py` reads AYNA's two files with `busnet/bicycle.py`
+([data.md](data.md#bicycle-lanes-and-parking)): the lanes as polylines named after their
+streets, the parking points as MPV (bicycle parking) and MPS (unexplained) points. Every
+distance is a straight line in the flat projection of `geo.py`, as elsewhere.
+
+- **A stop near a lane**: a served stop whose nearest lane is within 50, 100 or 200 m;
+  the tables use 100 m.
+- **A route along a lane**: a route direction's path is sampled every 20 m, and a sample
+  within 40 m of a lane counts the length it stands for towards that lane. 40 m spans a
+  dual carriageway, so a lane on one side counts for a bus on the other; at 25 m the lane
+  km beside a bus route fall from 47.5 to 44.8, at 60 m they rise to 49.1. A route's km
+  along lanes is the mean over its directions, like its one-way length. It is listed on
+  a street when it runs at least 100 m along that street's lane in either direction, and
+  counted as a route along the lanes from 0.5 km.
+- **A lane beside a bus route**: the same sampling along the lane, against the paths of
+  every route direction, within 40 m.
+- **A parking point near a stop, a lane or a metro exit**: within 100 m of the nearest
+  served stop; within 50 m (the hackathon's distance) or 100 m of the nearest lane;
+  within 300 m of the nearest of the 98 metro exits in `metro_exits.csv`. An MPV point
+  is on an MPS point when the two are within 5 m.
+- **People within reach of a lane**: the population points of section 5 within
+  `coverage_radius_m` (400 m) of a lane, of a served stop, of both, and of an MPV point,
+  so that the figures compare with coverage directly.
+
+The lane lengths are great-circle lengths of the drawn lines; in the UTM zone the
+hackathon asked for, EPSG:32639, they are 0.03% shorter. The thresholds are constants
+at the top of `busnet/bicycle.py` rather than settings, since nothing else depends on
+them; `summary.json` records them under `settings`.
