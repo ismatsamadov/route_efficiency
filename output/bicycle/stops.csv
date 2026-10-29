@@ -1,0 +1,211 @@
+﻿stop_id,name,lat,lon,routes,route_numbers,nearest_lane,m_to_lane,parking_mpv_within_100m,parking_mps_within_100m
+124,Beynəlxalq Muğam Mərkəzi,40.3618,49.8353,8,E1 5 6 72 88 125 149 205,Bulvar,0.0097,0,0
+193,Azərbaycan Dillər Universiteti,40.383,49.8429,4,4 20 85 88,Rəşid Behbudov küç.,0.039,1,1
+112,4 nömrəli uşaq poliklinikası,40.3664,49.943,3,21 51 120,8 Noyabr pr.,0.1176,0,1
+386,55 nömrəli tam orta məktəb,40.3814,49.8759,6,4 10 21 32 46 120,İzzət Orucova küç.,0.2052,0,1
+963,73 saylı poçt şöbəsi,40.3673,49.8168,6,3 6 10 18 39 77,Hüseyn Cavid pr.,0.2722,0,1
+102,Puşkin küçəsi 3,40.375,49.854,5,1 2 4 10 46,Üzeyir Hacıbəyli küç.,0.3695,1,1
+9,DİN Miqrasiya İdarəsi,40.3776,49.9005,5,20 21 32 46 120,8 Noyabr pr.,0.4278,0,2
+1534,Puşkin parkı,40.3749,49.8545,1,125,Akademik Zərifə Əliyeva küç.,0.5283,1,1
+58,38 nömrəli şəhər poliklinikası,40.3679,49.9396,4,21 51 120 120E,8 Noyabr pr.,0.5417,0,2
+1835,Xətai pr. 61,40.3896,49.8596,2,11 199,Xətai pr.,0.5507,0,1
+266,8 Noyabr prospekti 141,40.3782,49.8911,5,20 21 32 46 120,8 Noyabr pr.,0.6068,0,0
+214,Azərbaycan Milli Konservatoriyası,40.378,49.8456,6,2 10 52 61 79 88A,Şəmsi Bədəlbəyli küç.,0.7068,1,1
+267,Çevik Polis Alayı,40.3769,49.9074,5,20 21 32 46 120,8 Noyabr pr.,0.7173,0,2
+142,2 saylı ASAN xidmət mərkəzi,40.3787,49.8788,9,10 20 21 32 46 72 88A 120 120E,8 Noyabr pr.,0.7215,0,0
+83,Əmlak Məsələləri Dövlət Komitəsi,40.3827,49.8643,4,1 E1 2 46,Yusif Səfərov küç.,0.9257,0,0
+351,63 nömrəli tam orta mәktәb,40.3639,49.9459,4,12 21 51 120,8 Noyabr pr.,1.0026,0,2
+1008,H.Cavid pr. 205A,40.3798,49.8151,6,3 6 10 17 18 96,Hüseyn Cavid pr.,1.0961,1,2
+227,8 Noyabr prospekti ilə Ramiz Quliyev küçəsinin kəs.,40.3689,49.9357,5,20 21 46 57 120,8 Noyabr pr.,1.1439,0,0
+926,İmam Hüseyn Məscidi,40.3703,49.8251,6,6 10 31 37 53 77,Abdulla Şaiq küçəsi,1.1776,0,1
+158,Bakı İstilik Elektrik Mərkəzi,40.3757,49.9185,5,20 21 46 72 120,8 Noyabr pr.,1.211,0,2
+84,Respublika Perinatal Mərkəzi,40.3787,49.8653,8,1 2 4 10 30 32 46 49,Yusif Səfərov küç.,1.2951,1,2
+330,Maliyyə İqtisad Kolleci,40.3789,49.874,4,10 20 32 88A,Afiyəddin Cəlilov küç.,1.3066,1,1
+417,2 saylı ASAN xidmət mərkəzi,40.3791,49.8789,10,4 10 20 21 32 46 72 88A 120 120E,Afiyəddin Cəlilov küç.,1.4904,0,0
+442,X.Rüstəmov küç.,40.3767,49.8817,2,10 88A,Xəqani Rüstəmov küç.,1.7414,0,1
+516,Bakı Fransız liseyi,40.379,49.8848,5,20 21 32 46 120,8 Noyabr pr.,1.7615,0,1
+195,AzərGeoMaş Elmi İstehsalat Müəssisəsi,40.3703,49.9322,5,20 21 46 57 120,8 Noyabr pr.,1.8409,0,2
+1813,Filarmoniya parkı,40.3629,49.8343,5,6 10 18 65 205,Filarmoniya bağı.,1.8916,1,1
+1308,Yaşıl bazar,40.3851,49.8541,2,11 199,Xətai pr.,1.9621,0,1
+1092,Nizami parkı,40.3696,49.8347,4,18 31 37 65,Azərbaycan pr.,2.1434,2,2
+839,Respublika İncəsənət Gimnaziyası,40.3647,49.819,5,6 10 31 53 77,Mikayıl Müşviq küç.,2.3179,1,2
+235,25 saylı poçt şöbəsi,40.378,49.8665,2,20 88A,Afiyəddin Cəlilov küç.,2.5194,1,1
+26,38 nömrəli şəhər poliklinika,40.3681,49.9404,5,12 21 51 120 120E,8 Noyabr pr.,2.5936,0,2
+452,Kövkəb Səfərəliyeva küçəsi 31,40.3786,49.8582,5,21 30 32 49 120,Kövkəb Xanım Səfərəliyeva küç.,2.6898,0,2
+1015,Nəriman Nərimanov heykəli,40.368,49.8244,5,6 10 31 37 77,Mikayıl Müşviq küç.,2.6982,0,1
+314,Gənclik parkı,40.3617,49.9465,3,21 51 120,8 Noyabr pr.,2.7497,0,2
+191,8 Noyabr prospekti 395,40.3728,49.9272,5,20 21 46 57 120,8 Noyabr pr.,2.7502,0,1
+10,Azərbaycan Futbol Federasiyaları Assosiasiyası AFFA,40.3779,49.8974,5,20 21 32 46 120,8 Noyabr pr.,2.7846,1,1
+263,4 nömrəli uşaq poliklinikası,40.3656,49.9444,4,12 21 51 120,8 Noyabr pr.,2.8373,0,1
+215,Ağ Şәhәr Bulvarı,40.3768,49.8674,4,20 21 88A 120,8 Noyabr pr.,3.0834,0,0
+251,Bakı İstilik Elektrik Mərkəzi,40.3759,49.9195,5,20 21 46 72 120,8 Noyabr pr.,3.1047,0,2
+407,8 Noyabr prospekti 36,40.3778,49.8921,5,20 21 32 46 120,8 Noyabr pr.,3.2363,0,1
+144,63 nömrəli tam orta mәktәb,40.3638,49.9454,3,21 51 120,8 Noyabr pr.,3.3632,0,2
+357,Xəzər Televiziyası,40.3767,49.9132,5,20 21 32 46 120,8 Noyabr pr.,3.4206,1,1
+255,Xəzər Televiziyası,40.3762,49.9144,4,20 21 46 120,8 Noyabr pr.,3.474,1,1
+771,AR Elm və Təhsil Nazirliyi,40.3913,49.8617,1,11,Xətai pr.,3.5643,1,0
+229,Mehdi Hüseynzadə parkı,40.3865,49.8277,7,2 14 33 52 65 79 96,Cəfər Cabbarlı küçəsi,3.6542,0,0
+987,10 nömrəli Uşaq Poliklinikası,40.3664,49.8216,5,6 10 31 53 77,Mikayıl Müşviq küç.,3.7671,1,1
+24,Gənclik parkı,40.3616,49.9471,4,12 21 51 120,8 Noyabr pr.,3.8301,0,2
+1305,Respublika İncəsənət Gimnaziyası,40.3649,49.8181,10,3 6 10 18 31 39 53 77 96 205,Hüseyn Cavid pr.,3.9691,0,1
+1711,28 May m/st,40.3795,49.851,3,H1 2 30,28 may HUB,4.3037,0,0
+1395,20 nömrəli tam orta məktəb,40.364,49.8189,3,18 39 205,Parlament pr.,4.4085,1,2
+287,5 saylı şəhər poliklinikası,40.3892,49.8396,4,4 20 85 88,Rəşid Behbudov küç.,4.4996,0,1
+1419,Elmlər Akademiyası m/st,40.375,49.8157,6,3 6 10 17 18 53,Hüseyn Cavid pr.,4.5165,2,2
+634,54 saylı uşaq bağçası,40.3849,49.8239,5,3 14 17 37 96,İnşaatçılar pr.,4.6555,0,0
+1278,Azərbaycan Texniki Universiteti,40.3707,49.8163,4,3 6 10 18,Hüseyn Cavid pr.,4.6908,1,2
+1508,Ş.Mehdiyev küç. 74,40.3812,49.8166,2,6 17,Şəfayət Mehdiyev küç.,5.0411,0,1
+747,Təzəpir məscidi,40.3738,49.8267,5,2 52 65 79 96,Abdulla Şaiq küçəsi,5.3067,0,1
+80,Sahil m/st,40.3703,49.8463,7,E1 5 10 72 88 125 149,Neftçilər pr-Bulvar,5.7065,1,1
+138,Azərbaycan Futbol Federasiyaları Assosiasiyası AFFA,40.3776,49.8968,5,20 21 32 46 120,8 Noyabr pr.,5.7575,1,1
+822,Ş.İ.Xətai pr. 41,40.3876,49.8572,2,11 199,Xətai pr.,5.8668,0,0
+1096,Mәrkәzi Klinik Xәstәxana,40.3603,49.8248,3,18 39 205,Parlament pr.,6.1883,0,0
+189,3 nömrəli şəhər poliklinikası,40.3837,49.829,7,2 14 33 52 65 79 96,Cəfər Cabbarlı küçəsi,6.1969,0,1
+339,59 nömrəli tam orta mәktәb,40.3748,49.9241,4,20 21 46 120,8 Noyabr pr.,6.3017,1,2
+1476,Bakı Dövlət Universiteti,40.3744,49.8098,1,29,Mətbuat pr.,6.4165,1,1
+538,"8 Noyabr prospekti, 363",40.3692,49.9362,3,20 46 120,8 Noyabr pr.,6.7003,0,0
+23,8 Noyabr pr. 171,40.373,49.9277,5,20 21 46 57 120,8 Noyabr pr.,6.7702,0,1
+105,28 May m/st,40.3794,49.8507,14,1 H1 2 14 20 21 30 32 46 49 88A 120 120E 125,28 may HUB,7.1015,1,1
+931,Respublika Şahmat Mərkəzi,40.3741,49.8327,2,18 65,Azərbaycan pr.,7.1687,1,1
+1120,94 saylı uşaq bağçası,40.3694,49.8105,1,29,Mətbuat pr.,7.187,1,1
+2535,R.Behbudov küç. 150,40.3858,49.8409,4,4 20 85 88,Rəşid Behbudov küç.,7.2385,0,1
+200,AzərGeoMaş Elmi İstehsalat Müəssisəsi,40.3701,49.9316,5,20 21 46 57 120,8 Noyabr pr.,7.3289,0,2
+1040,İçərişəhər m/st,40.365,49.8311,5,6 10 18 65 205,Filarmoniya bağı.,7.5196,1,1
+1404,Mədəniyyət və İncəsənət Universiteti,40.3799,49.8201,3,3 14 96,Əbdürrəhim bəy Haqverdiyev küçəsi,7.6512,1,1
+137,DİN Miqrasiya İdarəsi,40.3773,49.9001,5,20 21 32 46 120,8 Noyabr pr.,7.6592,0,1
+919,D.Əliyeva 251,40.3803,49.8561,1,1,Dilarə Əliyeva küç.,7.9606,1,0
+743,Yasamal Rayon İcra Hakimiyyəti,40.3786,49.8092,1,29,Mətbuat pr.,8.002,0,1
+89,Xarici İşlər Nazirliyi,40.3765,49.8319,7,2 14 33 52 65 79 96,Şıxəli Qurbanov küçəsi,9.1511,2,2
+1491,Ş.Mehdiyev küç. 80,40.3854,49.8161,2,6 17,Şəfayət Mehdiyev küç.,9.3558,0,0
+1347,Azərbaycan Dövlət Kukla Teatrı,40.3675,49.8395,5,5 10 88 125 149,Neftçilər pr-Bulvar,9.5042,1,0
+336,Azərbaycan Respublikası Mərkəzi Bankı,40.3783,49.8449,6,4 5 14 20 61 88,Rəşid Behbudov küç.,9.98,2,2
+837,Nikola Tesla Parkı,40.3807,49.8473,2,5 11,Xətai pr.,10.4115,0,1
+819,H.Zərdabi küç. 14,40.3816,49.8088,1,29,Mətbuat pr.,10.8516,0,1
+1313,H.Zərdabi küç. 38B,40.3849,49.8083,1,29,Mətbuat pr.,11.4374,0,1
+285,Şah İsmayıl Xətai metro stansiyası,40.3826,49.8725,6,4 10 30 32 46 49,Xocalı pr.,11.5601,1,1
+237,8 Noyabr prospekti 25,40.3796,49.8831,5,20 21 32 46 120,8 Noyabr pr.,11.5631,0,1
+100,59 nömrəli tam orta məktəb,40.3752,49.9243,4,20 21 46 120,8 Noyabr pr.,12.1546,1,2
+467,28 May küçəsi 71,40.3798,49.8592,10,1 2 4 10 21 30 32 46 49 120,28 may küç.,12.25,0,0
+941,Bakı Dəmiryol Vağzalı,40.381,49.849,2,5 11,Xətai pr.,12.4467,0,0
+970,Avropa-Azərbaycan Məktəbi,40.3852,49.8159,2,6 17,Şəfayət Mehdiyev küç.,12.5359,0,0
+59,Nizami metro stansiyası,40.3796,49.8303,7,2 14 33 52 65 79 96,Cəfər Cabbarlı küçəsi,12.7777,1,2
+308,Mərkəzi Neftçilər xəstəxanası,40.3806,49.8634,10,1 2 4 10 21 30 32 46 49 120,28 may küç.,12.9756,1,1
+416,Xocalı prospekti 14,40.382,49.8674,6,4 10 30 32 46 49,Xocalı pr.,13.1072,1,1
+45,Çevik Polis Alayı,40.3773,49.9075,5,20 21 32 46 120,8 Noyabr pr.,13.4741,0,2
+302,Məhəmməd Füzulinin meydanı,40.3751,49.8337,8,2 14 18 33 52 65 79 96,Mirzəağa Əliyev küç.,13.6864,1,1
+1812,Nizami kino mərkəzi,40.3755,49.843,1,18,Bülbül pr.,13.7206,1,1
+1506,13 nömrəli Uşaq Poliklinikası,40.3851,49.808,1,29,Mətbuat pr.,13.9197,1,1
+1400,Muğan bağı,40.378,49.8519,2,4 10,28 may küç.,14.4701,0,0
+738,Ş.Mehdiyev küç. 107,40.3814,49.8164,2,6 17,Şəfayət Mehdiyev küç.,14.9822,0,1
+402,İzzət Orucova küçəsi 11,40.3808,49.8759,3,10 32 46,İzzət Orucova küç.,15.7044,0,1
+1285,Elmlər Akademiyası m/st,40.3755,49.8147,3,39 96 206,Bəxtiyar Vahabzadə küç.,16.242,1,1
+1220,12 saylı notariat ofisi,40.3798,49.8215,4,3 14 17 96,İnşaatçılar pr.,16.4839,1,1
+241,Səməd Vurğun bağı,40.3792,49.8527,5,21 30 32 49 120,Dilarə Əliyeva küç.,16.8636,0,0
+1234,H.Zərdabi küç. 39,40.3824,49.8083,1,29,Mətbuat pr.,17.3489,0,1
+1834,Xətai pr. 124,40.3885,49.8586,2,11 199,Xətai pr.,18.1408,0,1
+1140,Yasamal Rayon İcra Hakimiyyəti,40.3777,49.809,1,29,Mətbuat pr.,18.9376,0,1
+172,3 nömrəli Uşaq Xəstəxanası,40.3754,49.859,5,21 30 32 49 120,Keykab xanım Səfərəliyeva 2,19.0152,0,0
+148,Azərbaycan Dəmir Yolları QSC,40.3786,49.8541,9,2 4 10 21 30 32 46 49 120,28 may küç.,19.6525,1,1
+1499,M.Müşfiq küç. 28,40.3664,49.8211,5,6 10 31 53 77,Mikayıl Müşviq küç.,20.0023,1,1
+909,Nərimanov Rayon İcra Hakimiyyəti,40.3859,49.8555,2,11 199,Xətai pr.,20.7035,1,2
+1409,Elmi-Tədqiqat Tibbi Bərpa Institutu,40.3837,49.8528,1,11,Xətai pr.,20.805,0,1
+1446,Bakı Dövlət Universiteti,40.3745,49.8094,4,29 39 96 206,Mətbuat pr.,20.8732,1,1
+68,Xarici İşlər Nazirliyi,40.3766,49.8323,7,2 14 33 52 65 79 96,Şıxəli Qurbanov küçəsi,20.9999,2,2
+894,Elmlər Akademiyası m/st,40.3759,49.8159,6,3 6 10 17 18 96,Hüseyn Cavid pr.,21.298,1,1
+785,Xəzər TV,40.3768,49.9141,1,32,8 Noyabr pr.,21.5159,1,2
+1202,225 nömrəli tam orta məktəb,40.3677,49.8171,6,3 6 10 18 39 96,Hüseyn Cavid pr.,22.23,0,1
+1416,İzmir Parkı,40.3853,49.8238,5,3 14 17 37 96,İnşaatçılar pr.,22.785,1,1
+1401,5 nömrəli Uşaq Poliklinikası,40.3704,49.8167,7,3 6 10 18 39 96 206,Hüseyn Cavid pr.,22.8365,1,2
+727,Fəxri Xiyaban,40.3619,49.8218,4,3 18 39 205,Parlament pr.,23.3812,0,0
+1320,Bakı Şәhәr Baş Polis İdarәsi,40.3884,49.8632,2,1 2,Fəzail Bayramov küç. - Yusif Səfərov küç.,23.6025,0,1
+1042,Səbail r. Dövlət Yanğından Mühafizə,40.353,49.8346,6,5 6 88 125 149 205,Bulvar 2,23.7134,0,1
+715,H.Cavid pr. 168,40.3798,49.8154,4,3 6 17 96,Hüseyn Cavid pr.,23.9637,1,2
+1302,Mərkəzi Dənizçilər Xəstəxanası,40.38,49.8187,3,3 14 96,Əbdürrəhim bəy Haqverdiyev küçəsi,25.1825,0,1
+754,Dövlət Statistika Komitəsi,40.3825,49.8224,4,3 14 17 96,İnşaatçılar pr.,26.0157,0,1
+224,Azneft meydanı,40.3616,49.8347,8,E1 5 6 72 88 125 149 205,Bulvar,26.2846,0,1
+1458,Azərbaycan Nəşriyyatı,40.3689,49.8102,4,29 39 96 206,Mətbuat pr.,26.897,1,1
+2219,İçərişəhər m/st,40.3656,49.8308,4,6 10 65 205,Filarmoniya bağı.,26.9594,1,1
+2663,N.Əliyev küç. 7,40.3784,49.8723,1,32,Afiyəddin Cəlilov küç.,27.2614,0,1
+1218,20 nömrəli tam orta məktəb,40.3638,49.8188,4,3 18 39 205,Parlament pr.,30.3359,1,1
+532,28 May m/st,40.3796,49.8502,2,10 120E,28 may HUB,31.1038,1,1
+1343,Azәrbaycan Hava Yolları QSC,40.3766,49.8487,4,5 10 61 88,28 may küç.,31.3487,0,0
+1137,Azərbaycan Respublikasının Milli Məclis,40.3587,49.8262,4,3 18 39 205,Parlament pr.,33.6,0,1
+127,Rəşid Behbudov adına Dövlət Mahnı Teatrı,40.3751,49.8464,5,5 10 20 61 88,Nizami küç.,35.2333,1,1
+827,Bəyaz zanbaqlar parkı,40.3674,49.8387,6,5 10 18 88 125 149,Neftçilər pr-Bulvar,37.0043,2,1
+146,Şah İsmayıl Xətai metro stansiyası,40.383,49.8723,8,4 10 21 30 32 46 49 120,Xocalı pr.,37.7942,1,1
+750,Ə.Haqverdiyev küç. 25,40.3804,49.8145,3,10 14 18,Əbdürrəhim bəy Haqverdiyev küçəsi,38.8462,1,2
+566,Puşkin küçəsi 13B,40.3765,49.8532,2,20 88A,Nizami küç.,39.737,1,2
+544,Puşkin küçəsi 8D,40.3765,49.8535,1,88A,Xaqani küçəsi,45.7589,1,2
+1833,304 nömrəli tam orta məktəb,40.3845,49.8527,1,199,Xətai pr.,46.7453,0,1
+145,2 nömrəli Şəhər Klinik xəstəxanası,40.3826,49.8638,4,1 E1 2 46,Yusif Səfərov küç.,47.3482,0,0
+543,28 Mall ticarət mərkəzi,40.3786,49.8461,1,33,Şəmsi Bədəlbəyli küç.,49.3268,0,1
+32,Heydər Əliyev Sarayı,40.3772,49.8415,8,2 14 18 33 52 61 79 88A,Mirzəağa Əliyev küç.,52.0408,0,0
+1807,Respublika Klinik Uroloji Xəstəxana,40.3696,49.834,3,18 31 37,Azərbaycan pr.,54.101,2,2
+1037,Hacı Cavad Məscidi,40.3686,49.8099,4,39 77 96 205,Mətbuat pr.,56.161,1,1
+828,6 saylı poçt şöbəsi,40.3675,49.8251,5,6 10 31 37 77,Abdulla Şaiq küçəsi,57.054,0,1
+2108,N.Rəfiyev küç. 33,40.3841,49.8766,2,30 49,Xocalı pr.,61.4464,0,1
+48,Səməd Vurğun bağı,40.3787,49.8524,9,2 21 30 32 46 49 88A 120 125,Dilarə Əliyeva küç.,62.0252,0,0
+165,Azadlıq pr. 5,40.3735,49.8505,6,5 10 20 61 88 125,Üzeyir Hacıbəyli küç.,64.3168,0,0
+411,Sahil m/st,40.371,49.8445,8,E1 5 10 18 72 88 125 149,Bülbül pr.,64.4529,0,0
+77,Muğan bağı,40.3786,49.852,8,1 2 4 10 20 46 88A 125,Dilarə Əliyeva küç.,65.0157,0,0
+205,Dövlət Bayrağı Meydanı,40.3465,49.8399,3,E1 72 149,Bulvar 2,65.4781,0,0
+2490,Azərbaycan Boks Federasiyası,40.38,49.8814,2,10 88A,Afiyəddin Cəlilov küç.,66.0169,0,1
+3089,İ.Mirzəyev küç. 5,40.3799,49.8857,1,4,8 Noyabr pr.,72.1051,0,0
+897,A.Abbasov küç. 17,40.3863,49.815,1,17,Şəfayət Mehdiyev küç.,72.3055,0,0
+533,Azərbaycan Dövlət Pedaqoji Universiteti,40.3726,49.8479,5,5 10 20 61 88,Üzeyir Hacıbəyli küç.,72.8785,1,1
+1412,16 nömrəli Uşaq Musiqi Məktəbi,40.3647,49.8171,9,3 6 10 18 31 39 53 77 205,Hüseyn Cavid pr.,73.1498,0,0
+2424,175 nömrəli tam orta məktəb,40.3789,49.8207,1,17,Əbdürrəhim bəy Haqverdiyev küçəsi,76.487,0,1
+1716,Nəriman Nərimanov heykəli,40.3689,49.8241,6,6 10 31 37 53 77,Abdulla Şaiq küçəsi,76.7199,1,2
+903,Qəzənfər Musabəyov parkı,40.3808,49.8079,3,10 14 18,Mətbuat pr.,77.0799,0,0
+1472,G.Qədirbəyova küç. 4,40.3936,49.8634,1,13,Xətai pr.,80.4655,1,1
+128,Nizami metro stansiyası,40.3804,49.8312,7,2 14 33 52 65 79 96,Cəfər Cabbarlı küçəsi,83.3716,0,0
+25,Bakı Elitar Gimnaziyası,40.3761,49.8569,2,20 88A,Xəqani küç.,84.0171,0,1
+923,28 Mall ticarət mərkəzi,40.3793,49.8454,6,2 14 52 79 85 88A,Rəşid Behbudov küç.,86.8804,1,1
+2150,Bakı İdman Sarayı,40.3587,49.8343,6,5 6 88 125 149 205,Bulvar,88.3254,0,2
+2096,N.Rəfiyev küç. 60,40.3844,49.8768,3,4 30 49,Xocalı pr.,89.3248,0,1
+1118,203 nömrəli tam orta məktəb,40.352,49.8341,1,149,Bulvar 2,91.3541,0,1
+67,Zivər bəy Əhmədbəyov 72,40.3849,49.8296,7,2 14 33 52 65 79 96,Cəfər Cabbarlı küçəsi,94.5371,1,1
+616,Bakı İdman Sarayı,40.3585,49.8346,6,5 6 88 125 149 205,Bulvar,97.2818,0,2
+3091,1-ci Yaşıl Ada küç. 10,40.3802,49.8851,1,4,8 Noyabr pr.,98.4932,1,0
+226,Koroğlu parkı,40.3915,49.8434,10,3 4 17 20 33 38 83 85 88 133,Vaqif pr.,99.513,0,0
+141,Qış parkı,40.3762,49.8339,7,2 14 33 52 65 79 96,Mirzəağa Əliyev küç.,99.8457,0,0
+249,Azərbaycan Dövlət Akademik Milli Dram Teatrı,40.3755,49.8297,7,2 14 33 52 65 79 96,Mirzəağa Əliyev küç.,103.501,0,0
+376,H.Ələsgərov küç. 21,40.3928,49.8407,3,17 20 83,Vaqif pr.,105.5299,1,0
+1219,Respublika Gənclər Kitabxanası,40.3809,49.8233,5,3 14 17 37 96,İnşaatçılar pr.,108.5503,0,0
+310,Dövlət Bayrağı Meydanı,40.3461,49.8411,7,5 6 72 88 125 149 205,Bulvar 2,108.9011,0,1
+3088,Mərkəzi Bulvar küç. 123,40.3792,49.8935,2,4 88A,8 Noyabr pr.,110.6287,0,1
+1065,Ə.Haqverdiyev küç. 50,40.3801,49.8137,3,10 14 18,Əbdürrəhim bəy Haqverdiyev küçəsi,113.37,1,3
+370,Ramiz Quliyev küçəsi 9,40.3697,49.9383,5,20 46 51 57 72,8 Noyabr pr.,114.0507,0,1
+1435,Hüseyn Cavid parkı,40.3727,49.8175,9,3 6 10 17 18 39 53 96 206,Hüseyn Cavid pr.,115.4313,0,1
+1864,K.Kərimov küç. 32,40.3768,49.9204,1,42,8 Noyabr pr.,115.6028,0,0
+1530,Hacı Cavad Məscidi,40.369,49.8091,4,39 77 96 205,Mətbuat pr.,117.5731,0,0
+2623,Neftçilər pr. 68,40.3744,49.8596,4,2 10 20 88A,Crescent mall ərazisi,119.7125,0,0
+27,Ramiz Quliyev küçəsi 10,40.3697,49.9386,6,12 20 46 51 57 72,8 Noyabr pr.,121.6295,0,1
+1059,Dövlət Yanğından Mühafizə hissəsi,40.3529,49.8334,5,5 6 88 125 205,Bulvar 2,123.5044,0,0
+630,Sevgi parkı,40.3867,49.8635,2,1 2,Yusif Səfərov küç.,126.9198,0,1
+1378,173 nömrəli tam orta məktəb,40.3719,49.8244,3,6 17 37,Abdulla Şaiq küçəsi,133.2054,0,1
+824,Qərbi Azərbaycan İcması - Gülarə Qədirbəyova küçəsi,40.3938,49.8626,1,13,Xətai pr.,136.6027,1,1
+1245,Neftçi Qurban küç. 84,40.3498,49.8349,5,5 6 88 125 205,Bulvar 2,136.8626,0,0
+1039,A.Abbasov küç. 119,40.3859,49.8097,1,17,Mətbuat pr.,138.098,0,0
+1309,Zorge parkı,40.3895,49.8359,2,61 88A,Vaqif pr.,139.1148,1,1
+847,A.Abbasov küç. 68,40.3857,49.8097,1,17,Mətbuat pr.,140.4246,0,0
+1459,Tbilisi pr. 2,40.388,49.8273,3,2 65 79,Cəfər Cabbarlı küçəsi,143.6363,0,2
+1791,C.Hacıbəyli küç. 146,40.3941,49.8448,3,38 85 88,Vaqif pr.,145.9168,0,1
+823,Zorge parkı,40.3894,49.8363,2,61 88A,Vaqif pr.,148.3696,0,1
+1836,Ə.Ağaoğlu küç. 4,40.391,49.8589,2,11 199,Xətai pr.,150.3931,0,1
+803,Axundov bağı,40.368,49.8299,4,18 31 37 65,İstiqlaliyyət küç.,150.737,0,1
+2018,33 nömrəli  Şəhər Poliklinikası,40.3475,49.8366,5,5 6 88 125 205,Bulvar 2,157.6214,0,0
+965,Ə.Haqverdiyev küç. 11,40.3801,49.8108,3,10 14 18,Mətbuat pr.,157.6302,1,1
+1247,15 nömrəli Uşaq Poliklinikası,40.3461,49.8386,2,53 56,Bulvar 2,164.5927,0,0
+1222,Bakı Xoreoqrafiya Akademiyası,40.3814,49.8415,1,61,Rəşid Behbudov küç.,165.1437,0,1
+322,Tibb Universitetinin Tədris Cərrahiyyə Klini*,40.3914,49.834,3,3 17 20,Vaqif pr.,167.8205,1,1
+162,Heydər Əliyev Sarayı,40.3783,49.8414,6,2 14 33 52 79 88A,Mirzəağa Əliyev küç.,167.852,0,0
+1325,Ə.Haqverdiyev küç. 28,40.3799,49.8109,3,10 14 18,Mətbuat pr.,169.394,1,1
+1682,Bakı Apellyasiya Məhkəməsi,40.3687,49.8126,3,39 77 206,Mətbuat pr.,170.6877,0,0
+1713,44 saylı uşaq bağçası,40.3668,49.8264,7,6 10 18 31 37 77 205,Abdulla Şaiq küçəsi,173.7385,0,0
+3092,1-ci Yaşıl Ada küç. 38,40.3798,49.8914,1,4,8 Noyabr pr.,174.5991,1,0
+891,Dövlət İdarəçilik Akademiyası,40.3665,49.8291,7,6 10 18 31 37 77 205,İstiqlaliyyət küç.,178.9174,0,2
+1442,Heydər Əliyev adına Müasir Təhsil K.,40.3897,49.8341,2,3 17,Vaqif pr.,182.7148,0,0
+1600,Təbriz küç. 3,40.384,49.85,2,5 11,Xətai pr.,184.7718,1,1
+802,2 nömrəli Şəhər Poliklinika,40.3677,49.8294,7,6 10 18 31 37 77 205,İstiqlaliyyət küç.,187.9442,0,2
+1307,Vergi Cinayətlərinin İbtidai Araşdırılma Dep.,40.3812,49.8246,5,3 14 17 37 96,İnşaatçılar pr.,198.1557,0,0

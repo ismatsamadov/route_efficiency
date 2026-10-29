@@ -1,0 +1,51 @@
+﻿route,zone,carrier,one_way_km,km_along_lanes,share_along_lanes,streets,stops_within_100m_of_lane,weekday_boardings
+21,Urban,BakuBus MMC,16.2813,9.5015,0.5836,8 Noyabr pr.; 28 may küç.; Xocalı pr.; Dilarə Əliyeva küç.; 28 may HUB; Kövkəb Xanım Səfərəliyeva küç.; İzzət Orucova küç.; Afiyəddin Cəlilov küç.; Ağ şəhər ərazisi.; Yusif Səfərov küç.; Keykab xanım Səfərəliyeva 2,42,18268.3636
+72,Urban express,BakuBus MMC,29.8834,9.49,0.3176,8 Noyabr pr.; Neftçilər pr-Bulvar; Afiyəddin Cəlilov küç.; Bulvar 2; Bulvar; Üzeyir Hacıbəyli küç.; Ağ şəhər ərazisi.; Üzeyir H - Keykab S. - keçid,9,8188.5263
+10,Urban,BakuBus MMC,16.9839,9.38,0.5523,Hüseyn Cavid pr.; Neftçilər pr-Bulvar; 28 may küç.; Xocalı pr.; Mikayıl Müşviq küç.; 8 Noyabr pr.; Xəqani Rüstəmov küç.; Abdulla Şaiq küçəsi; Filarmoniya bağı.; Yusif Səfərov küç.; İzzət Orucova küç.; 28 may HUB; Afiyəddin Cəlilov küç.; Rəşid Behbudov küç.; Şəmsi Bədəlbəyli küç.; Aleksandr Puşkin küç.; Ağ şəhər ərazisi.; Nizami küç.; Akademik Zərifə Əliyeva küç.; Mətbuat pr.; Xaqani küçəsi; Üzeyir Hacıbəyli küç.; İstiqlaliyyət küç.,48,11508.9091
+120,Suburban,BakuBus MMC,28.8762,9.285,0.3215,8 Noyabr pr.; 28 may küç.; Xocalı pr.; Dilarə Əliyeva küç.; Kövkəb Xanım Səfərəliyeva küç.; İzzət Orucova küç.; Afiyəddin Cəlilov küç.; Yusif Səfərov küç.; Ağ şəhər ərazisi.; Keykab xanım Səfərəliyeva 2; 28 may HUB,43,14149.9545
+46,Urban,BakuBus MMC,18.1633,8.613,0.4742,8 Noyabr pr.; 28 may küç.; Xocalı pr.; Yusif Səfərov küç.; İzzət Orucova küç.; Afiyəddin Cəlilov küç.; Aleksandr Puşkin küç.; Akademik Zərifə Əliyeva küç.; Ağ şəhər ərazisi.; 28 may HUB,39,19349.7727
+20,Urban,BakuBus MMC,24.3969,8.59,0.3521,8 Noyabr pr.; Rəşid Behbudov küç.; Afiyəddin Cəlilov küç.; Üzeyir Hacıbəyli küç.; 28 may HUB; Aleksandr Puşkin küç.; Ağ şəhər ərazisi.; Xan Şuşinski; Akademik Zərifə Əliyeva küç.; Azadlıq pr.,39,12595.0909
+120E,Urban express,BakuBus MMC,29.1481,8.521,0.2923,8 Noyabr pr.; Afiyəddin Cəlilov küç.; 28 may HUB; Aleksandr Puşkin küç.; Akademik Zərifə Əliyeva küç.; Ağ şəhər ərazisi.; Üzeyir H - Keykab S. - keçid,6,4059.2727
+32,Urban,BakuBus MMC,16.4631,6.865,0.417,8 Noyabr pr.; 28 may küç.; Xocalı pr.; Dilarə Əliyeva küç.; Yusif Səfərov küç.; 28 may HUB; Kövkəb Xanım Səfərəliyeva küç.; İzzət Orucova küç.; Afiyəddin Cəlilov küç.; Ağ şəhər ərazisi.; Keykab xanım Səfərəliyeva 2,30,13089.7273
+18,Urban,Xaliq Faiqoğlu MMC,16.6171,5.18,0.3117,Hüseyn Cavid pr.; Parlament pr.; Neftçilər pr-Bulvar; İstiqlaliyyət küç.; Azərbaycan pr.; Bülbül pr.; Filarmoniya bağı.; Mirzəağa Əliyev küç.; Mətbuat pr.,26,
+6,Urban,BakuBus MMC,19.0046,5.14,0.2705,Hüseyn Cavid pr.; Bulvar 2; Mikayıl Müşviq küç.; Abdulla Şaiq küçəsi; Şəfayət Mehdiyev küç.; Filarmoniya bağı.; Bulvar; Əbdürrəhim bəy Haqverdiyev küçəsi; İstiqlaliyyət küç.,29,19985.5
+96,Urban,Xaliq Faiqoğlu MMC,15.4984,4.825,0.3113,Hüseyn Cavid pr.; Cəfər Cabbarlı küçəsi; Mirzəağa Əliyev küç.; İnşaatçılar pr.; Mətbuat pr.; Şıxəli Qurbanov küçəsi; Əbdürrəhim bəy Haqverdiyev küçəsi; Bəxtiyar Vahabzadə küç.,26,
+4,Urban,BakuBus MMC,14.7237,4.45,0.3022,28 may küç.; Rəşid Behbudov küç.; Xocalı pr.; Yusif Səfərov küç.; İzzət Orucova küç.; 8 Noyabr pr.; Afiyəddin Cəlilov küç.; Azadlıq pr.; Aleksandr Puşkin küç.; Akademik Zərifə Əliyeva küç.; Ağ şəhər ərazisi.; Xan Şuşinski,20,6985.2727
+E1,Urban express,BakuBus MMC,34.773,4.26,0.1225,Neftçilər pr-Bulvar; Bulvar 2; Yusif Səfərov küç.; Fəzail Bayramov küç. - Yusif Səfərov küç.; Bulvar; Üzeyir Hacıbəyli küç.; Ağ şəhər ərazisi.; Aleksandr Puşkin küç.; Üzeyir H - Keykab S. - keçid,7,3375
+2,Urban,BakuBus MMC,22.1747,4.23,0.1908,Mirzəağa Əliyev küç.; 28 may küç.; Cəfər Cabbarlı küçəsi; Yusif Səfərov küç.; Fəzail Bayramov küç. - Yusif Səfərov küç.; Şıxəli Qurbanov küçəsi; 28 may HUB; Şəmsi Bədəlbəyli küç.; Aleksandr Puşkin küç.; Ağ şəhər ərazisi.; Azadlıq pr.; Akademik Zərifə Əliyeva küç.,25,26236.4545
+3,Urban,BakuBus MMC,19.4457,3.97,0.2042,Hüseyn Cavid pr.; Parlament pr.; İnşaatçılar pr.; Əbdürrəhim bəy Haqverdiyev küçəsi; Cəfər Cabbarlı küçəsi; Xan Şuşinski,20,23216.4091
+88,Urban,BakuBus MMC,17.3935,3.73,0.2144,Rəşid Behbudov küç.; Neftçilər pr-Bulvar; Bulvar 2; Bulvar; Azadlıq pr.; Xan Şuşinski; Üzeyir Hacıbəyli küç.,18,24564.8182
+125,Suburban,BakuBus MMC,22.6345,3.6108,0.1595,Neftçilər pr-Bulvar; Bulvar 2; Bulvar; 28 may HUB; Üzeyir Hacıbəyli küç.; Akademik Zərifə Əliyeva küç.; Aleksandr Puşkin küç.,14,14102.7727
+14,Urban,BakuBus MMC,13.6986,3.555,0.2595,Cəfər Cabbarlı küçəsi; Mirzəağa Əliyev küç.; İnşaatçılar pr.; Əbdürrəhim bəy Haqverdiyev küçəsi; Şıxəli Qurbanov küçəsi; Şəmsi Bədəlbəyli küç.; Azadlıq pr.; 28 may HUB; Mətbuat pr.,21,31302.5455
+5,Urban,BakuBus MMC,11.9557,3.31,0.2769,Neftçilər pr-Bulvar; Bulvar 2; Xətai pr.; Rəşid Behbudov küç.; Bulvar; Azadlıq pr.; Üzeyir Hacıbəyli küç.,16,19890.0909
+88A,Urban,BakuBus MMC,12.9767,3.18,0.2451,8 Noyabr pr.; Afiyəddin Cəlilov küç.; Xəqani Rüstəmov küç.; 28 may HUB; Şəmsi Bədəlbəyli küç.; Üzeyir Hacıbəyli küç.; Aleksandr Puşkin küç.; Ağ şəhər ərazisi.; Azadlıq pr.; Üzeyir H - Keykab S. - keçid,16,11383.6818
+17,Urban,BakuBus MMC,17.5959,3.02,0.1716,Hüseyn Cavid pr.; İnşaatçılar pr.; Şəfayət Mehdiyev küç.; Cəfər Cabbarlı küçəsi; Xan Şuşinski; Əbdürrəhim bəy Haqverdiyev küçəsi; Abdulla Şaiq küçəsi,15,18567.3636
+49,Urban,Azlənd Plaza MMC,21.933,2.8315,0.1291,28 may küç.; Xocalı pr.; Dilarə Əliyeva küç.; Yusif Səfərov küç.; Kövkəb Xanım Səfərəliyeva küç.; 28 may HUB; Ağ şəhər ərazisi.; Keykab xanım Səfərəliyeva 2,14,19499
+30,Urban,BakuBus MMC,14.5608,2.7218,0.1869,28 may küç.; Xocalı pr.; Dilarə Əliyeva küç.; Yusif Səfərov küç.; Kövkəb Xanım Səfərəliyeva küç.; Ağ şəhər ərazisi.; Keykab xanım Səfərəliyeva 2; 28 may HUB,15,15129.9545
+205,Suburban,BakuBus MMC,33.0375,2.68,0.0811,Bulvar 2; Parlament pr.; Filarmoniya bağı.; Bulvar; Hüseyn Cavid pr.; İstiqlaliyyət küç.,16,6562.9545
+39,Urban,Kral Transport MMC,8.1513,2.4942,0.306,Parlament pr.; Hüseyn Cavid pr.; Mətbuat pr.; Bəxtiyar Vahabzadə küç.,14,
+65,Urban,Xaliq Faiqoğlu MMC,10.0525,2.4624,0.245,Cəfər Cabbarlı küçəsi; Azərbaycan pr.; Filarmoniya bağı.; Mirzəağa Əliyev küç.; İstiqlaliyyət küç.; Şıxəli Qurbanov küçəsi,15,
+1,Urban,BakuBus MMC,12.9973,2.445,0.1881,Yusif Səfərov küç.; 28 may küç.; Dilarə Əliyeva küç.; Fəzail Bayramov küç. - Yusif Səfərov küç.; 28 may HUB; Aleksandr Puşkin küç.; Ağ şəhər ərazisi.; Akademik Zərifə Əliyeva küç.; Kövkəb Xanım Səfərəliyeva küç.,10,16320.5
+149,Suburban,BakuBus MMC,35.323,2.28,0.0645,Neftçilər pr-Bulvar; Bulvar 2; Bulvar; Bülbül pr.,11,4605.4091
+29,Urban,MENLOQQ MMC,12.6222,2.0,0.1585,Mətbuat pr.,10,
+H1,Urban express,BakuBus MMC,26.2397,1.7216,0.0656,Yusif Səfərov küç.; Dilarə Əliyeva küç.; Fəzail Bayramov küç. - Yusif Səfərov küç.; 28 may HUB; Aleksandr Puşkin küç.; Ağ şəhər ərazisi.; Akademik Zərifə Əliyeva küç.; 28 may küç.,2,4008.3636
+33,Urban,BakuBus MMC,15.9876,1.69,0.1057,Mirzəağa Əliyev küç.; Cəfər Cabbarlı küçəsi; Şıxəli Qurbanov küçəsi; Şəmsi Bədəlbəyli küç.; Vaqif pr.,12,11604.2273
+52,Urban,Xaliq Faiqoğlu MMC,9.2369,1.6132,0.1746,Mirzəağa Əliyev küç.; Cəfər Cabbarlı küçəsi; Şıxəli Qurbanov küçəsi; Şəmsi Bədəlbəyli küç.; Rəşid Behbudov küç.,13,
+79,Urban,Xaliq Faiqoğlu MMC,12.7147,1.61,0.1266,Mirzəağa Əliyev küç.; Cəfər Cabbarlı küçəsi; Şıxəli Qurbanov küçəsi; Şəmsi Bədəlbəyli küç.,13,
+11,Urban,BakuBus MMC,20.9537,1.5443,0.0737,Xətai pr.,9,17087.7273
+77,Urban,Orucov Malik Ələkbər oğlu,7.8383,1.43,0.1824,Mikayıl Müşviq küç.; Abdulla Şaiq küçəsi; Hüseyn Cavid pr.,11,
+31,Urban,Fidan MMC,9.0234,1.34,0.1485,Mikayıl Müşviq küç.; Abdulla Şaiq küçəsi; İstiqlaliyyət küç.; Hüseyn Cavid pr.; Azərbaycan pr.,11,
+51,Urban,BUS TRANS MMC,13.9234,1.33,0.0955,8 Noyabr pr.,8,
+57,Urban,BakuBus MMC,15.3363,1.2,0.0782,8 Noyabr pr.,5,13447.9091
+53,Urban,Fidan MMC,11.8624,1.195,0.1007,Mikayıl Müşviq küç.; Abdulla Şaiq küçəsi; Hüseyn Cavid pr.,8,
+37,Urban,Xaliq Faiqoğlu MMC,9.4906,1.18,0.1243,Abdulla Şaiq küçəsi; İnşaatçılar pr.; İstiqlaliyyət küç.; Mikayıl Müşviq küç.; Azərbaycan pr.,8,
+199,Suburban,Xaliq Faiqoğlu MMC,22.1783,1.05,0.0473,Xətai pr.,6,
+206,Suburban,BUS TRANS MMC,24.2075,0.9923,0.041,Mətbuat pr.; Hüseyn Cavid pr.; Bəxtiyar Vahabzadə küç.,4,
+85,Urban,Xaliq Faiqoğlu MMC,12.6921,0.9,0.0709,Rəşid Behbudov küç.; Xan Şuşinski,5,
+61,Urban,Xaliq Faiqoğlu MMC,9.4709,0.8809,0.093,Rəşid Behbudov küç.; Şəmsi Bədəlbəyli küç.; Üzeyir Hacıbəyli küç.; Nizami küç.; Xaqani küçəsi; 28 may küç.,7,
+12,Urban,Vətən.Az-Trans MMC,11.7318,0.65,0.0554,8 Noyabr pr.,4,
+13,Urban,BakuBus MMC,16.6799,0.32,0.0192,Fəzail Bayramov küç. - Yusif Səfərov küç.; Xətai pr.,1,18945.5455
+M8,Suburban,BakuBus MMC,29.3857,0.19,0.0065,Fəzail Bayramov küç. - Yusif Səfərov küç.,0,10371.8636
+83,Urban,MENLOQQ MMC,13.3553,0.1,0.0075,Vaqif pr.,1,
+38,Urban,General - Auto - Company firması,13.6734,0.06,0.0044,Vaqif pr.,1,
+133,Suburban,Çinar-Trans MMC,12.8725,0.06,0.0047,Vaqif pr.,1,

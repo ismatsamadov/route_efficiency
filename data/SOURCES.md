@@ -55,6 +55,15 @@ their licence is recorded as CC0.
 | `external/opendata/stat_passengers_by_mode.csv` | Passengers carried by mode and year | State Statistical Committee, table DT_BJ_004 | CC0 |
 | `external/opendata/stat_urban_electric_transport.csv` | Urban electric transport statistics | State Statistical Committee, table DT_BJ_049 | CC0 |
 
+## Bicycle lanes and parking
+
+| File | Contents | Source | Licence |
+|---|---|---|---|
+| `external/opendata/ayna_bicycle_lanes.kmz` | AYNA's existing bicycle lanes, saved from Google Earth: one folder, "Mövcud zolaqlar", of 61 placemarks, 60 lines named after their streets (57.1 km on 54 streets) and one empty "8 Noyabr pr." placemark. The portal's `movcud-zolaqlar-velo.kmz`, 11,816 bytes, SHA-256 `dfbc6d1610a96db9c1bb466986175135c1e0a54bbf3213ac4cf81df60c71ac67` | AYNA via [opendata.az](https://admin.opendata.az/dataset/74727856-3e72-4d49-ab34-9d4aac8f4ab0), dataset of 24 September 2026 (version 2); retrieved 29 October 2026 | CC0 |
+| `external/opendata/ayna_bicycle_parking.kmz` | AYNA's bicycle parking points, as a whole Google Earth session: 185 points named MPV-… in the folder "velosiped məntəqələri yeni", 649 points named MPS-… under "My Places", the bicycle lanes of January 2025 (44 lines, 44.2 km) and Google Earth's ten sample places. The portal's `mpv-v-mps.-son.kmz`, 87,908 bytes, SHA-256 `494065929eb8126a266699e7565d614218042b4c00b8da1902df9c8b746ee38e` | AYNA via [opendata.az](https://admin.opendata.az/dataset/8d61b508-7f13-4219-984f-08d769c61251), dataset of 4 May 2026 (version 2, metadata updated 24 September 2026); retrieved 29 October 2026 | CC0 |
+
+What is inside each file, and what the two files leave unsaid, is in [docs/data.md](../docs/data.md#bicycle-lanes-and-parking).
+
 ## Destinations (OpenStreetMap)
 
 Queried through the Overpass API for the box 39.9–40.7 N, 49.3–50.45 E. Data © OpenStreetMap contributors, available under the [Open Database Licence](https://www.openstreetmap.org/copyright).
