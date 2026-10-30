@@ -250,7 +250,12 @@ within `max_access_walk_m` is protected and the pass runs again.
 - **Data.** Mandl's network and Mumford0–3 from Mumford's (2013) supplement
   (`data/external/utrp/CEC2013Supp.zip`): link times in minutes (`Inf` where there is no
   link), trips between every pair of nodes, and the route sets best for passengers and
-  for the operator. Nodes are numbered from 1 in the files and from 0 in the code.
+  for the operator. Beside them, the route sets two later studies published: the ends of
+  the Pareto sets of Hüsselmann et al. (2024), best for the operator and for passengers,
+  from their results repository, and the passengers' sets of Jiao (2026) from the
+  author's archive ([data.md](data.md#route-sets-published-later-husselmann2024-jiao2026)).
+  Nodes are numbered from 1 in Mumford's and Jiao's files, from 0 in Hüsselmann's, and
+  from 0 in the code.
 - **Scoring.** One graph node per route and node on it, with links both ways along each
   route, and one change node per network node that costs 5 minutes to reach and nothing
   to leave. Dijkstra from every origin on (minutes, changes), so that of equally quick

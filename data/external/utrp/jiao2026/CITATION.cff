@@ -1,0 +1,29 @@
+cff-version: 1.2.0
+message: "If you use this software or data, please cite the preprint and this archive."
+title: "Certified bounds and exact search for transit route network design: code, certificates and data (v2)"
+type: software
+version: "v2"
+date-released: 2026-10-22
+doi: 10.5281/zenodo.23523785
+license:
+  - MIT
+  - CC-BY-4.0
+authors:
+  - family-names: Jiao
+    given-names: Tianqin
+    email: jtq@umich.edu
+    affiliation: Independent researcher
+keywords:
+  - transit route network design
+  - column generation
+  - branch-and-price
+  - dual certificates
+  - lower bounds
+preferred-citation:
+  type: article
+  title: "Certified bounds and exact search for transit route network design"
+  authors:
+    - family-names: Jiao
+      given-names: Tianqin
+  year: 2026
+  notes: "Preprint v2, 22 October 2026. The preprint PDF is included as paper/trndp_preprint_v2.pdf."

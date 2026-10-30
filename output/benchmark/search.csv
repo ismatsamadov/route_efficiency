@@ -1,21 +1,71 @@
-﻿network,route_set,search,passes,candidates,breaking_a_rule,better_alone,changes,att_before,att_after,att_change_pct,route_time_before,route_time_after,route_time_change_pct,d0_after,d1_after,d2_after,dun_after
-Mandl,passenger,one_pass,1,8,1,0,0,10.3301,10.3301,0.0,224.0,224.0,0.0,94.5408,5.1381,0.3211,0.0
-Mandl,passenger,repeated,1,8,1,0,0,10.3301,10.3301,0.0,224.0,224.0,0.0,94.5408,5.1381,0.3211,0.0
-Mandl,operator,one_pass,1,2,2,0,0,15.1304,15.1304,0.0,63.0,63.0,0.0,59.3449,30.5716,9.0559,1.0276
-Mandl,operator,repeated,1,2,2,0,0,15.1304,15.1304,0.0,63.0,63.0,0.0,59.3449,30.5716,9.0559,1.0276
-Mumford0,passenger,one_pass,1,29,3,4,4,16.0538,15.8659,-1.1704,759.0,704.0,-7.2464,63.3183,36.4391,0.2426,0.0
-Mumford0,passenger,repeated,3,82,7,5,5,16.0538,15.8585,-1.2166,759.0,692.0,-8.8274,62.8419,37.1581,0.0,0.0
-Mumford0,operator,one_pass,1,6,5,0,0,32.3961,32.3961,0.0,111.0,111.0,0.0,18.4212,23.3984,20.7768,37.4036
-Mumford0,operator,repeated,1,6,5,0,0,32.3961,32.3961,0.0,111.0,111.0,0.0,18.4212,23.3984,20.7768,37.4036
-Mumford1,passenger,one_pass,1,44,10,11,7,24.7868,24.3454,-1.7806,2038.0,1909.0,-6.3297,37.4048,53.6464,8.8035,0.1454
-Mumford1,passenger,repeated,4,169,34,17,12,24.7868,24.1967,-2.3808,2038.0,1800.0,-11.6781,38.1768,53.7543,8.0045,0.0644
-Mumford1,operator,one_pass,1,31,30,0,0,34.688,34.688,0.0,568.0,568.0,0.0,16.3469,29.0613,29.9319,24.6598
-Mumford1,operator,repeated,1,31,30,0,0,34.688,34.688,0.0,568.0,568.0,0.0,16.3469,29.0613,29.9319,24.6598
-Mumford2,passenger,one_pass,1,80,16,15,12,28.6459,28.2704,-1.3109,5632.0,5267.0,-6.4808,31.4423,54.176,13.4178,0.9639
-Mumford2,passenger,repeated,7,560,133,30,26,28.6459,28.0728,-2.0007,5632.0,4944.0,-12.2159,30.9846,56.3923,12.0518,0.5714
-Mumford2,operator,one_pass,1,80,78,0,0,36.5416,36.5416,0.0,2244.0,2244.0,0.0,13.7592,27.6889,29.5318,29.0202
-Mumford2,operator,repeated,1,80,78,0,0,36.5416,36.5416,0.0,2244.0,2244.0,0.0,13.7592,27.6889,29.5318,29.0202
-Mumford3,passenger,one_pass,1,80,16,22,17,31.4448,30.8666,-1.8389,6665.0,6047.0,-9.2723,29.0851,54.9283,15.0384,0.9481
-Mumford3,passenger,repeated,4,320,98,34,28,31.4448,30.6252,-2.6067,6665.0,5768.0,-13.4584,29.3242,56.0949,13.9627,0.6181
-Mumford3,operator,one_pass,1,80,78,0,0,36.9159,36.9159,0.0,2830.0,2830.0,0.0,16.7116,33.6877,29.1841,20.4166
-Mumford3,operator,repeated,1,80,78,0,0,36.9159,36.9159,0.0,2830.0,2830.0,0.0,16.7116,33.6877,29.1841,20.4166
+﻿source,method,network,route_set,search,passes,candidates,breaking_a_rule,better_alone,changes,att_before,att_after,att_change_pct,route_time_before,route_time_after,route_time_change_pct,d0_after,d1_after,d2_after,dun_after
+Mumford (2013),SEAMO2,Mandl,passenger,one_pass,1,8,1,0,0,10.3301,10.3301,0.0,224.0,224.0,0.0,94.5408,5.1381,0.3211,0.0
+Mumford (2013),SEAMO2,Mandl,passenger,repeated,1,8,1,0,0,10.3301,10.3301,0.0,224.0,224.0,0.0,94.5408,5.1381,0.3211,0.0
+Mumford (2013),SEAMO2,Mandl,operator,one_pass,1,2,2,0,0,15.1304,15.1304,0.0,63.0,63.0,0.0,59.3449,30.5716,9.0559,1.0276
+Mumford (2013),SEAMO2,Mandl,operator,repeated,1,2,2,0,0,15.1304,15.1304,0.0,63.0,63.0,0.0,59.3449,30.5716,9.0559,1.0276
+Hüsselmann et al. (2024),DBMOSA,Mandl,passenger,one_pass,1,6,3,0,0,10.2453,10.2453,0.0,179.0,179.0,0.0,95.9538,3.9178,0.1285,0.0
+Hüsselmann et al. (2024),DBMOSA,Mandl,passenger,repeated,1,6,3,0,0,10.2453,10.2453,0.0,179.0,179.0,0.0,95.9538,3.9178,0.1285,0.0
+Hüsselmann et al. (2024),DBMOSA,Mandl,operator,one_pass,1,3,3,0,0,13.5157,13.5157,0.0,63.0,63.0,0.0,71.0983,24.3417,3.982,0.578
+Hüsselmann et al. (2024),DBMOSA,Mandl,operator,repeated,1,3,3,0,0,13.5157,13.5157,0.0,63.0,63.0,0.0,71.0983,24.3417,3.982,0.578
+Hüsselmann et al. (2024),NSGA-II,Mandl,passenger,one_pass,1,5,2,0,0,10.1869,10.1869,0.0,197.0,197.0,0.0,96.9814,3.0186,0.0,0.0
+Hüsselmann et al. (2024),NSGA-II,Mandl,passenger,repeated,1,5,2,0,0,10.1869,10.1869,0.0,197.0,197.0,0.0,96.9814,3.0186,0.0,0.0
+Hüsselmann et al. (2024),NSGA-II,Mandl,operator,one_pass,1,2,2,0,0,13.4804,13.4804,0.0,63.0,63.0,0.0,70.9056,25.4978,2.9544,0.6423
+Hüsselmann et al. (2024),NSGA-II,Mandl,operator,repeated,1,2,2,0,0,13.4804,13.4804,0.0,63.0,63.0,0.0,70.9056,25.4978,2.9544,0.6423
+Jiao (2026),exact search,Mandl,passenger,one_pass,1,6,2,0,0,10.1798,10.1798,0.0,212.0,212.0,0.0,97.1741,2.8259,0.0,0.0
+Jiao (2026),exact search,Mandl,passenger,repeated,1,6,2,0,0,10.1798,10.1798,0.0,212.0,212.0,0.0,97.1741,2.8259,0.0,0.0
+Mumford (2013),SEAMO2,Mumford0,passenger,one_pass,1,29,3,4,4,16.0538,15.8659,-1.1704,759.0,704.0,-7.2464,63.3183,36.4391,0.2426,0.0
+Mumford (2013),SEAMO2,Mumford0,passenger,repeated,3,82,7,5,5,16.0538,15.8585,-1.2166,759.0,692.0,-8.8274,62.8419,37.1581,0.0,0.0
+Mumford (2013),SEAMO2,Mumford0,operator,one_pass,1,6,5,0,0,32.3961,32.3961,0.0,111.0,111.0,0.0,18.4212,23.3984,20.7768,37.4036
+Mumford (2013),SEAMO2,Mumford0,operator,repeated,1,6,5,0,0,32.3961,32.3961,0.0,111.0,111.0,0.0,18.4212,23.3984,20.7768,37.4036
+Hüsselmann et al. (2024),DBMOSA,Mumford0,passenger,one_pass,1,20,2,0,0,15.4808,15.4808,0.0,431.0,431.0,0.0,65.4986,34.5014,0.0,0.0
+Hüsselmann et al. (2024),DBMOSA,Mumford0,passenger,repeated,1,20,2,0,0,15.4808,15.4808,0.0,431.0,431.0,0.0,65.4986,34.5014,0.0,0.0
+Hüsselmann et al. (2024),DBMOSA,Mumford0,operator,one_pass,1,6,6,0,0,27.6051,27.6051,0.0,98.0,98.0,0.0,22.3901,31.2748,18.8245,27.5105
+Hüsselmann et al. (2024),DBMOSA,Mumford0,operator,repeated,1,6,6,0,0,27.6051,27.6051,0.0,98.0,98.0,0.0,22.3901,31.2748,18.8245,27.5105
+Hüsselmann et al. (2024),NSGA-II,Mumford0,passenger,one_pass,1,30,5,0,0,14.3377,14.3377,0.0,635.0,635.0,0.0,86.9359,13.0641,0.0,0.0
+Hüsselmann et al. (2024),NSGA-II,Mumford0,passenger,repeated,1,30,5,0,0,14.3377,14.3377,0.0,635.0,635.0,0.0,86.9359,13.0641,0.0,0.0
+Hüsselmann et al. (2024),NSGA-II,Mumford0,operator,one_pass,1,7,7,0,0,27.1709,27.1709,0.0,94.0,94.0,0.0,24.7136,38.3125,26.7711,10.2028
+Hüsselmann et al. (2024),NSGA-II,Mumford0,operator,repeated,1,7,7,0,0,27.1709,27.1709,0.0,94.0,94.0,0.0,24.7136,38.3125,26.7711,10.2028
+Jiao (2026),heuristic search,Mumford0,passenger,one_pass,1,28,5,0,0,13.8018,13.8018,0.0,747.0,747.0,0.0,92.5473,7.4527,0.0,0.0
+Jiao (2026),heuristic search,Mumford0,passenger,repeated,1,28,5,0,0,13.8018,13.8018,0.0,747.0,747.0,0.0,92.5473,7.4527,0.0,0.0
+Mumford (2013),SEAMO2,Mumford1,passenger,one_pass,1,44,10,11,7,24.7868,24.3454,-1.7806,2038.0,1909.0,-6.3297,37.4048,53.6464,8.8035,0.1454
+Mumford (2013),SEAMO2,Mumford1,passenger,repeated,4,169,34,17,12,24.7868,24.1967,-2.3808,2038.0,1800.0,-11.6781,38.1768,53.7543,8.0045,0.0644
+Mumford (2013),SEAMO2,Mumford1,operator,one_pass,1,31,30,0,0,34.688,34.688,0.0,568.0,568.0,0.0,16.3469,29.0613,29.9319,24.6598
+Mumford (2013),SEAMO2,Mumford1,operator,repeated,1,31,30,0,0,34.688,34.688,0.0,568.0,568.0,0.0,16.3469,29.0613,29.9319,24.6598
+Hüsselmann et al. (2024),DBMOSA,Mumford1,passenger,one_pass,1,44,8,1,1,22.3111,22.3048,-0.0282,1359.0,1343.0,-1.1773,57.0069,42.7605,0.2326,0.0
+Hüsselmann et al. (2024),DBMOSA,Mumford1,passenger,repeated,2,88,16,1,1,22.3111,22.3048,-0.0282,1359.0,1343.0,-1.1773,57.0069,42.7605,0.2326,0.0
+Hüsselmann et al. (2024),DBMOSA,Mumford1,operator,one_pass,1,26,25,0,0,26.4821,26.4821,0.0,511.0,511.0,0.0,25.1728,59.3348,14.5366,0.9558
+Hüsselmann et al. (2024),DBMOSA,Mumford1,operator,repeated,1,26,25,0,0,26.4821,26.4821,0.0,511.0,511.0,0.0,25.1728,59.3348,14.5366,0.9558
+Hüsselmann et al. (2024),NSGA-II,Mumford1,passenger,one_pass,1,42,13,1,1,21.9443,21.9387,-0.0256,1851.0,1848.0,-0.1621,61.8154,38.1379,0.0467,0.0
+Hüsselmann et al. (2024),NSGA-II,Mumford1,passenger,repeated,2,83,26,1,1,21.9443,21.9387,-0.0256,1851.0,1848.0,-0.1621,61.8154,38.1379,0.0467,0.0
+Hüsselmann et al. (2024),NSGA-II,Mumford1,operator,one_pass,1,31,31,0,0,31.2583,31.2583,0.0,465.0,465.0,0.0,19.7033,42.0897,33.8724,4.3345
+Hüsselmann et al. (2024),NSGA-II,Mumford1,operator,repeated,1,31,31,0,0,31.2583,31.2583,0.0,465.0,465.0,0.0,19.7033,42.0897,33.8724,4.3345
+Jiao (2026),heuristic search,Mumford1,passenger,one_pass,1,42,20,0,0,21.2057,21.2057,0.0,1976.0,1976.0,0.0,72.4889,27.5111,0.0,0.0
+Jiao (2026),heuristic search,Mumford1,passenger,repeated,1,42,20,0,0,21.2057,21.2057,0.0,1976.0,1976.0,0.0,72.4889,27.5111,0.0,0.0
+Mumford (2013),SEAMO2,Mumford2,passenger,one_pass,1,80,16,15,12,28.6459,28.2704,-1.3109,5632.0,5267.0,-6.4808,31.4423,54.176,13.4178,0.9639
+Mumford (2013),SEAMO2,Mumford2,passenger,repeated,7,560,133,30,26,28.6459,28.0728,-2.0007,5632.0,4944.0,-12.2159,30.9846,56.3923,12.0518,0.5714
+Mumford (2013),SEAMO2,Mumford2,operator,one_pass,1,80,78,0,0,36.5416,36.5416,0.0,2244.0,2244.0,0.0,13.7592,27.6889,29.5318,29.0202
+Mumford (2013),SEAMO2,Mumford2,operator,repeated,1,80,78,0,0,36.5416,36.5416,0.0,2244.0,2244.0,0.0,13.7592,27.6889,29.5318,29.0202
+Hüsselmann et al. (2024),DBMOSA,Mumford2,passenger,one_pass,1,80,12,1,1,25.6481,25.6421,-0.0234,3583.0,3576.0,-0.1954,48.179,51.1737,0.6473,0.0
+Hüsselmann et al. (2024),DBMOSA,Mumford2,passenger,repeated,2,160,24,1,1,25.6481,25.6421,-0.0234,3583.0,3576.0,-0.1954,48.179,51.1737,0.6473,0.0
+Hüsselmann et al. (2024),DBMOSA,Mumford2,operator,one_pass,1,80,79,0,0,29.908,29.908,0.0,1979.0,1979.0,0.0,22.7674,58.6468,18.0134,0.5724
+Hüsselmann et al. (2024),DBMOSA,Mumford2,operator,repeated,1,80,79,0,0,29.908,29.908,0.0,1979.0,1979.0,0.0,22.7674,58.6468,18.0134,0.5724
+Hüsselmann et al. (2024),NSGA-II,Mumford2,passenger,one_pass,1,80,4,0,0,25.3111,25.3111,0.0,4171.0,4171.0,0.0,52.5611,47.3331,0.1058,0.0
+Hüsselmann et al. (2024),NSGA-II,Mumford2,passenger,repeated,1,80,4,0,0,25.3111,25.3111,0.0,4171.0,4171.0,0.0,52.5611,47.3331,0.1058,0.0
+Hüsselmann et al. (2024),NSGA-II,Mumford2,operator,one_pass,1,80,80,0,0,37.5241,37.5241,0.0,1545.0,1545.0,0.0,13.484,36.7926,34.3303,15.3931
+Hüsselmann et al. (2024),NSGA-II,Mumford2,operator,repeated,1,80,80,0,0,37.5241,37.5241,0.0,1545.0,1545.0,0.0,13.484,36.7926,34.3303,15.3931
+Jiao (2026),heuristic search,Mumford2,passenger,one_pass,1,80,3,0,0,23.9997,23.9997,0.0,5493.0,5493.0,0.0,75.2856,24.7144,0.0,0.0
+Jiao (2026),heuristic search,Mumford2,passenger,repeated,1,80,3,0,0,23.9997,23.9997,0.0,5493.0,5493.0,0.0,75.2856,24.7144,0.0,0.0
+Mumford (2013),SEAMO2,Mumford3,passenger,one_pass,1,80,16,22,17,31.4448,30.8666,-1.8389,6665.0,6047.0,-9.2723,29.0851,54.9283,15.0384,0.9481
+Mumford (2013),SEAMO2,Mumford3,passenger,repeated,4,320,98,34,28,31.4448,30.6252,-2.6067,6665.0,5768.0,-13.4584,29.3242,56.0949,13.9627,0.6181
+Mumford (2013),SEAMO2,Mumford3,operator,one_pass,1,80,78,0,0,36.9159,36.9159,0.0,2830.0,2830.0,0.0,16.7116,33.6877,29.1841,20.4166
+Mumford (2013),SEAMO2,Mumford3,operator,repeated,1,80,78,0,0,36.9159,36.9159,0.0,2830.0,2830.0,0.0,16.7116,33.6877,29.1841,20.4166
+Hüsselmann et al. (2024),DBMOSA,Mumford3,passenger,one_pass,1,80,20,0,0,28.2169,28.2169,0.0,4060.0,4060.0,0.0,45.0707,54.3706,0.5587,0.0
+Hüsselmann et al. (2024),DBMOSA,Mumford3,passenger,repeated,1,80,20,0,0,28.2169,28.2169,0.0,4060.0,4060.0,0.0,45.0707,54.3706,0.5587,0.0
+Hüsselmann et al. (2024),DBMOSA,Mumford3,operator,one_pass,1,80,78,1,1,32.3302,32.3107,-0.0603,2682.0,2681.0,-0.0373,23.5644,58.0438,17.1642,1.2277
+Hüsselmann et al. (2024),DBMOSA,Mumford3,operator,repeated,2,160,157,1,1,32.3302,32.3107,-0.0603,2682.0,2681.0,-0.0373,23.5644,58.0438,17.1642,1.2277
+Hüsselmann et al. (2024),NSGA-II,Mumford3,passenger,one_pass,1,80,16,0,0,28.0331,28.0331,0.0,5018.0,5018.0,0.0,48.7144,51.0969,0.1887,0.0
+Hüsselmann et al. (2024),NSGA-II,Mumford3,passenger,repeated,1,80,16,0,0,28.0331,28.0331,0.0,5018.0,5018.0,0.0,48.7144,51.0969,0.1887,0.0
+Hüsselmann et al. (2024),NSGA-II,Mumford3,operator,one_pass,1,80,80,0,0,35.9683,35.9683,0.0,2043.0,2043.0,0.0,15.0156,48.6643,31.8264,4.4937
+Hüsselmann et al. (2024),NSGA-II,Mumford3,operator,repeated,1,80,80,0,0,35.9683,35.9683,0.0,2043.0,2043.0,0.0,15.0156,48.6643,31.8264,4.4937
+Jiao (2026),heuristic search,Mumford3,passenger,one_pass,1,80,8,0,0,26.7372,26.7372,0.0,6652.0,6652.0,0.0,70.7139,29.2861,0.0,0.0
+Jiao (2026),heuristic search,Mumford3,passenger,repeated,1,80,8,0,0,26.7372,26.7372,0.0,6652.0,6652.0,0.0,70.7139,29.2861,0.0,0.0

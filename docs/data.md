@@ -336,6 +336,42 @@ symmetric, and link times are whole minutes from 1 to 11. The numbers of routes 
 bounds are Table II of Mumford (2013), repeated in Table 1 of John, Mumford and Lewis
 (2014); they are not in the files, so `busnet/utrp.py` holds them.
 
+### Route sets published later (`husselmann2024/`, `jiao2026/`)
+
+Two later studies publish the route sets behind their scores, so the search can start
+from them too ([benchmark.md](benchmark.md#the-later-route-sets)).
+
+`husselmann2024/` holds eleven files from the results repository of Hüsselmann, van
+Vuuren and Andersen (2024), each the `Extreme solutions.txt` of one run of their two
+algorithms, DBMOSA and NSGA-II, saved under the name of the run's top folder
+(`ORIGINAL_PATHS.txt` gives the full paths). A file gives the two ends of the run's
+Pareto set, the set best for the operator and the set best for passengers, as
+Python-style lists of node numbers counted from 0, under a table of the scores their code
+gave them (ATT, route time and the shares by number of changes, as `f1_ATT`, `f2_TRT` and
+`d_0` to `d_un`). The sets behind the paper's Tables 9 and 10 are the two ends of
+one file per network and method, ten pairs; for NSGA-II on Mumford3 the two ends come
+from different runs, so that pair takes two files, `Results_11_5_…` for the passengers'
+set and `Results_10_5_…` for the operator's. Scored here on Mumford's files, all sixteen
+Mumford sets give exactly the scores in the files. The four Mandl sets differ by up to
+0.03 minutes of ATT, because the Mandl demand
+matrix in the authors' code has 10 trips between nodes 3 and 4 where Mumford's file has
+40 (7,755 trips in all against 7,785); the sets themselves keep every rule.
+
+`jiao2026/best_networks.json` holds the route sets with the lowest average travel times
+Jiao (2026) reports, one for each of Mumford0 to Mumford3 and six for Mandl with 4 to 12
+routes, as lists of node numbers counted from 1 with the author's ATT for each;
+`busnet/utrp.py` takes the set with the benchmark's number of routes. The Mandl set is
+proved optimal for six routes; the Mumford sets are the best known, with certified lower
+bounds in the preprint (`trndp_preprint_v2.pdf`). The author's `best_known.csv`, a table
+of the best published values with their sources, is kept beside them. Scored here, all
+five sets give exactly the author's ATT, and their route times and shares match the
+archive and the preprint's Table 6.
+
+Both come from `python3 data/fetch_external.py --only utrp`: the Hüsselmann files from
+the repository's raw files on GitHub, the Jiao files from inside the 175 MB archive on
+Zenodo. [SOURCES.md](../data/SOURCES.md) gives the licences: none is stated for the
+Hüsselmann repository, whose paper is CC BY 4.0; Jiao's data is CC BY 4.0.
+
 ## Real headways (`data/headways.csv`)
 
 Columns `route`, `headway_min` and an optional `source`. A route listed here uses this

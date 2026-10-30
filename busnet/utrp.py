@@ -3,9 +3,13 @@
 Mumford (2013) published four made-up networks, Mumford0 to Mumford3, beside Mandl's
 Swiss network, with the best route sets her evolutionary algorithm found and their
 scores. Her supplement (data/external/utrp/CEC2013Supp.zip) holds the networks, the route
-sets and the scores. This module reads them, scores a route set the way that literature
-does, and runs the redesign's straightening on a published route set under the
-benchmark's rules (benchmark.py).
+sets and the scores. Two later studies publish their best route sets too: Hüsselmann,
+van Vuuren and Andersen (2024), whose results repository holds the sets behind their
+Tables 9 and 10 (data/external/utrp/husselmann2024/), and Jiao (2026), whose archive
+holds the sets with the lowest average travel times reported so far
+(data/external/utrp/jiao2026/). This module reads all of them, scores a route set the way
+that literature does, and runs the redesign's straightening on a published route set under
+the benchmark's rules (benchmark.py).
 
 A route set is scored on the network's link times, with every route ridden both ways. Each
 trip takes its quickest path, where every change of route costs PENALTY_MIN minutes; of
@@ -23,11 +27,13 @@ frequencies to change."""
 
 import heapq
 import io
+import json
 import math
 import re
 import zipfile
 import xml.etree.ElementTree as ET
 from dataclasses import dataclass
+from pathlib import Path
 
 PENALTY_MIN = 5.0
 RULES = {                        # routes, fewest and most nodes on a route (Mumford 2013, Table II)
@@ -113,6 +119,74 @@ def published_scores(supplement):
         for r in block:
             for name, cell in zip(names, r[2:]):
                 out.setdefault((name, who), {})[measure[r[1].lower()]] = float(re.match(r"[\d.]+", cell).group())
+    return out
+
+
+# The route sets later studies published, under data/external/utrp/. Each file of
+# Hüsselmann et al. (2024) is the "Extreme solutions.txt" of one run of their results
+# repository (the original path is in husselmann2024/ORIGINAL_PATHS.txt): the two ends of
+# the run's Pareto set, best for the operator and best for passengers, with the scores
+# their own code gave them. The file named for each network and method holds the sets
+# behind their Tables 9 and 10; for NSGA-II on Mumford3 the two ends come from different
+# runs, so two files are listed, each for one end.
+LATER_SETS = (
+    # source, method, network, file, which of its two ends are the published ones
+    ("Hüsselmann et al. (2024)", "DBMOSA", "Mandl", "husselmann2024/Results_34_1_Mandl6_SA_Long_run.txt", ("passenger", "operator")),
+    ("Hüsselmann et al. (2024)", "NSGA-II", "Mandl", "husselmann2024/Results_1_1_Mandl6_GA_Initial_solutions.txt", ("passenger", "operator")),
+    ("Hüsselmann et al. (2024)", "DBMOSA", "Mumford0", "husselmann2024/Results_34_2_Mumford0_SA_Long_run.txt", ("passenger", "operator")),
+    ("Hüsselmann et al. (2024)", "NSGA-II", "Mumford0", "husselmann2024/Results_10_2_Mumford0_GA_Long_run.txt", ("passenger", "operator")),
+    ("Hüsselmann et al. (2024)", "DBMOSA", "Mumford1", "husselmann2024/Results_34_3_Mumford1_SA_Long_run.txt", ("passenger", "operator")),
+    ("Hüsselmann et al. (2024)", "NSGA-II", "Mumford1", "husselmann2024/Results_10_3_Mumford1_GA_Long_run.txt", ("passenger", "operator")),
+    ("Hüsselmann et al. (2024)", "DBMOSA", "Mumford2", "husselmann2024/Results_34_4_Mumford2_SA_Long_run.txt", ("passenger", "operator")),
+    ("Hüsselmann et al. (2024)", "NSGA-II", "Mumford2", "husselmann2024/Results_11_4_Mumford2_GA_Very_Long_run.txt", ("passenger", "operator")),
+    ("Hüsselmann et al. (2024)", "DBMOSA", "Mumford3", "husselmann2024/Results_34_5_Mumford3_SA_Long_run.txt", ("passenger", "operator")),
+    ("Hüsselmann et al. (2024)", "NSGA-II", "Mumford3", "husselmann2024/Results_11_5_Mumford3_GA_Very_Long_run.txt", ("passenger",)),
+    ("Hüsselmann et al. (2024)", "NSGA-II", "Mumford3", "husselmann2024/Results_10_5_Mumford3_GA_Long_run.txt", ("operator",)),
+)
+JIAO_FILE = "jiao2026/best_networks.json"
+# The scores Jiao (2026) reports for those sets beside their ATT: route time from the
+# archive's solutions.csv and the Mandl search log (the preprint prints no operator cost),
+# d0 and d1 from the preprint's Table 6; every set has d2 = dun = 0.
+JIAO_SCORES = {
+    "Mandl": {"route_time": 212, "d0": 97.17, "d1": 2.83, "d2": 0.0, "dun": 0.0},
+    "Mumford0": {"route_time": 747, "d0": 92.55, "d1": 7.45, "d2": 0.0, "dun": 0.0},
+    "Mumford1": {"route_time": 1976, "d0": 72.49, "d1": 27.51, "d2": 0.0, "dun": 0.0},
+    "Mumford2": {"route_time": 5493, "d0": 75.29, "d1": 24.71, "d2": 0.0, "dun": 0.0},
+    "Mumford3": {"route_time": 6652, "d0": 70.71, "d1": 29.29, "d2": 0.0, "dun": 0.0},
+}
+
+
+def husselmann_route_sets(path):
+    """The two route sets in one "Extreme solutions.txt" of Hüsselmann et al. (2024):
+    {"passenger": routes, "operator": routes, "scores": {who: {measure: value}}}, nodes
+    numbered from 0 as in the file.
+
+    The file gives a table of f1_ATT, f2_TRT, d_0, d_1, d_2 and d_un with an Operator and
+    a Passenger column, then each route set as a Python-style list of lists."""
+    text = Path(path).read_text(encoding="utf-8")
+    measure = {"f1_ATT": "att", "f2_TRT": "route_time", "d_0": "d0", "d_1": "d1", "d_2": "d2", "d_un": "dun"}
+    scores = {"operator": {}, "passenger": {}}
+    for m in re.finditer(r"^(f1_ATT|f2_TRT|d_0|d_1|d_2|d_un)\t([\d.]+)\t+([\d.]+)", text, re.M):
+        scores["operator"][measure[m.group(1)]] = float(m.group(2))
+        scores["passenger"][measure[m.group(1)]] = float(m.group(3))
+    out = {"scores": scores}
+    for who in ("operator", "passenger"):
+        block = re.search(rf"Best {who.capitalize()} Route set:\s*\\?\s*(\[\[.*?\]\])", text, re.S).group(1)
+        out[who] = [[int(v) for v in r.split(",")] for r in re.findall(r"\[([\d,\s]+)\]", block)]
+    return out
+
+
+def jiao_route_sets(path):
+    """{network: (routes, att)} from best_networks.json of Jiao (2026): for each network
+    the set with the benchmark's number of routes (the file also holds Mandl sets with
+    other counts), nodes numbered from 0 (the file numbers them from 1) and the average
+    travel time the author's evaluator gives it."""
+    names = {"mandl": "Mandl", "mumford0": "Mumford0", "mumford1": "Mumford1", "mumford2": "Mumford2", "mumford3": "Mumford3"}
+    out = {}
+    for entry in json.loads(Path(path).read_text(encoding="utf-8")):
+        name = names[entry["instance"]]
+        if entry["S"] == RULES[name][0]:
+            out[name] = ([[v - 1 for v in r] for r in entry["routes"]], float(entry["ATT"]))
     return out
 
 

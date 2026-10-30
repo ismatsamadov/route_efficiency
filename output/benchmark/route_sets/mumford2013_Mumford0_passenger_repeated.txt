@@ -1,11 +1,11 @@
-% Mumford0: Mumford (2013)'s route set best for passengers after benchmark.py's one pass straightening search
-% ATT 15.8659 (published set 16.0538), route time 704 (759)
+% Mumford0: the SEAMO2 route set of Mumford (2013) best for passengers after benchmark.py's repeated straightening search
+% ATT 15.8585 (published set 16.0538), route time 692 (759)
 routeset(1).route = [30 11 17 29 18 19 14 7 16 3 28 8 21 24 5];
 routeset(2).route = [26 23 19 1 27 9 20 18 29 8 5 2 4 12 15];
 routeset(3).route = [20 18 12 15 2 10 24 21 25 8 11 22 6 16 30];
 routeset(4).route = [3 30 11 16 6 7 17 8 15 10];
 routeset(5).route = [6 22 11 7 16 30 3 17 28 8 15 21 25 2 5];
-routeset(6).route = [6 7 14 19 13 18 12 15 10 2 24 25];
+routeset(6).route = [6 7 14 19 13 18 12 15 25];
 routeset(7).route = [25 5 24 21 15 10 2 4 12 26 8 3 16 22 7];
 routeset(8).route = [18 1 29 17 11 8 26 23 19 20 13];
 routeset(9).route = [23 1 14 7 3 16 6 22 11 30 28 17 29 18];
