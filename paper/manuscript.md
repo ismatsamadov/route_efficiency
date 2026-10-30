@@ -766,7 +766,7 @@ Farahani, R. Z., Miandoabchi, E., Szeto, W. Y., & Rashidi, H. (2013). A review o
 
 Heydar Aliyev International Airport (2024, August). H1 Airport Express route will now operate 24/7 for the convenience of passengers. https://www.airport.az/en/press-release/h1-airport-express-route-will-now-operate-24-7-for-the-convenience-of-passengers/
 
-Holliday, A., El-Geneidy, A., & Dudek, G. (2025). A neural-evolutionary algorithm for autonomous transit network design. Transportmetrica B: Transport Dynamics, 13(1). https://doi.org/10.1080/21680566.2025.2561863
+Holliday, A., El-Geneidy, A., & Dudek, G. (2025). Learning heuristics for transit network design and improvement with deep reinforcement learning. Transportmetrica B: Transport Dynamics, 13(1). https://doi.org/10.1080/21680566.2025.2561863
 
 Ibarra-Rojas, O. J., Delgado, F., Giesen, R., & Muñoz, J. C. (2015). Planning, operation, and control of bus transport systems: A literature review. Transportation Research Part B, 77, 38–75. https://doi.org/10.1016/j.trb.2015.03.002
 

@@ -345,7 +345,12 @@ point.
    method, Sections 5.2, 6.1 and 6.2 and the conclusions, the benchmark test
    ([benchmark.md](benchmark.md)) in Section 6.2 and the GTFS validation in Section 6.5,
    with the abstract cut from 257 to 248 words for the journal's limit of 250. The
-   preprint on engrXiv is the 24 October version.
+   preprint on engrXiv is the 24 October version. One correction waits for the
+   revision: the submitted files and the preprint cite Holliday, El-Geneidy and Dudek
+   (2025) under the title of another paper of theirs (arXiv:2403.07917); the paper at
+   that DOI is "Learning heuristics for transit network design and improvement with
+   deep reinforcement learning", as `paper/manuscript.md` now has it (found 30 October
+   2026; the numbers taken from its Table 3 were always from the right paper).
 8. After acceptance: add the reference to the preprint, update `CITATION.cff` with
    `preferred-citation`, make a new release if anything changed, add the paper to ORCID.
 

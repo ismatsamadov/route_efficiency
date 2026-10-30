@@ -100,10 +100,12 @@ every Mumford network at least one of them beats the improved sets on both score
 
 The later results are the passenger-best route sets that Table 3 of Holliday, El-Geneidy
 and Dudek (2025) collects; I read the accepted manuscript, arXiv:2404.05894. Those
-methods build routes from the demand. Straightening can only shorten a route that
-exists, so it cannot reach them, and that is also its role in Baku: it improves today's
-network rather than designing a new one. The conclusion is the one I draw for Baku: the
-search finds improvements, not the best network.
+methods build routes from shortest paths, lengthen them and move nodes within and
+between routes, and judge every move by the travel time over the demand. Straightening
+can only shorten a route that exists, so it cannot reach them, and that is also its
+role in Baku: it improves today's network rather than designing a new one. The
+conclusion is the one I draw for Baku: the search finds improvements, not the best
+network.
 
 Two smaller lessons. On Mumford1 to Mumford3, repeating the passes adds 34 to 53% to
 the gain in ATT and 45 to 88% to the saving in route time, so a single pass leaves gains
@@ -118,8 +120,9 @@ whose demand is given.
 - Ahmed, L., Mumford, C. & Kheiri, A. (2019). Solving urban transit route design problem
   using selection hyper-heuristics. European Journal of Operational Research 274(2):
   545–559.
-- Holliday, A., El-Geneidy, A. & Dudek, G. (2025). A neural-evolutionary algorithm for
-  autonomous transit network design. Transportmetrica B 13(1)
+- Holliday, A., El-Geneidy, A. & Dudek, G. (2025). Learning heuristics for transit
+  network design and improvement with deep reinforcement learning. Transportmetrica B
+  13(1)
   ([doi](https://doi.org/10.1080/21680566.2025.2561863); accepted manuscript
   [arXiv:2404.05894](https://arxiv.org/abs/2404.05894)).
 - Hüsselmann, G., van Vuuren, J. H. & Andersen, S. J. (2024). An improved solution
