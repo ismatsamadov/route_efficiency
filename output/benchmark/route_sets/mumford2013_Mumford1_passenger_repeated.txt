@@ -1,4 +1,4 @@
-% Mumford1: Mumford (2013)'s route set best for passengers after benchmark.py's repeated straightening search
+% Mumford1: the SEAMO2 route set of Mumford (2013) best for passengers after benchmark.py's repeated straightening search
 % ATT 24.1967 (published set 24.7868), route time 1800 (2038)
 routeset(1).route = [14 34 59 42 13 5 8 41 47 54 48 7 64 25 63 27 17 11 18 51 1];
 routeset(2).route = [43 16 31 64 7 22 25 63 50 10 2 12 69 60 11 21 14 44 62 15 61 45 18 51 3 24 70 67 55 6];

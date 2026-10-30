@@ -19,8 +19,10 @@ Overpass servers whenever they are busy; the 47 MB extract itself is not kept.
 import argparse
 import gzip
 import http.client
+import io
 import json
 import sys
+import tarfile
 import tempfile
 import time
 import urllib.error
@@ -52,6 +54,32 @@ SELECT ?item ?az ?en ?line ?opened ?coord ?adj ?towards WHERE {
 ORDER BY ?item ?line ?adj ?towards
 """
 WIKIDATA = "https://query.wikidata.org/sparql?format=json&query=" + urllib.parse.quote(METRO_SPARQL)
+# The route sets Hüsselmann et al. (2024) published: the "Extreme solutions.txt" of eleven runs in the results
+# repository their paper names, each saved under the name of its run's top folder.
+HUSSELMANN_REPO = "https://raw.githubusercontent.com/GHuss7/UTRP-Improvements-Article-Results/main/"
+HUSSELMANN_RUNS = [
+    "Results_34_1_Mandl6_SA_Long_run/34_1_Mandl6_SA_Long_run_20210827_135932 SA_Long_run",
+    "Results_1_1_Mandl6_GA_Initial_solutions/1_1_Mandl6_GA_Initial_solutions_20210715_222027 GA_Load_supplementing_pop_0",
+    "Results_34_2_Mumford0_SA_Long_run/34_2_Mumford0_SA_Long_run_20210828_125616 SA_Long_run",
+    "Results_10_2_Mumford0_GA_Long_run/10_2_Mumford0_GA_Long_run_20210730_171433 GA_Long_run",
+    "Results_34_3_Mumford1_SA_Long_run/34_3_Mumford1_SA_Long_run_20210828_145717 SA_Long_run",
+    "Results_10_3_Mumford1_GA_Long_run/10_3_Mumford1_GA_Long_run_20210731_170218 GA_Long_run",
+    "Results_34_4_Mumford2_SA_Long_run/34_4_Mumford2_SA_Long_run_20210827_141018 SA_Long_run",
+    "Results_11_4_Mumford2_GA_Very_Long_run/11_4_Mumford2_GA_Very_Long_run_20210810_170343 GA_Long_run",
+    "Results_34_5_Mumford3_SA_Long_run/34_5_Mumford3_SA_Long_run_20210827_140244 SA_Long_run",
+    "Results_11_5_Mumford3_GA_Very_Long_run/11_5_Mumford3_GA_Very_Long_run_20210810_170554 GA_Long_run",
+    "Results_10_5_Mumford3_GA_Long_run/10_5_Mumford3_GA_Long_run_20210730_172027 GA_Long_run",
+]
+# Jiao's (2026) archive on Zenodo: the preprint as a file of its own, the route sets inside a tarball split
+# into twelve parts (175 MB), from which four small files are taken.
+ZENODO_JIAO = "https://zenodo.org/api/records/23759374/files/{}/content"
+JIAO_PARTS = [f"trndp-exact-v2.tar.gz.part-{i:02d}" for i in range(12)]
+JIAO_MEMBERS = {                                   # member of the tarball: file under utrp/jiao2026/
+    "trndp-exact-v2/results/paper/data_20261022/best_networks.json": "best_networks.json",
+    "trndp-exact-v2/results/best_known.csv": "best_known.csv",
+    "trndp-exact-v2/LICENSE-DATA": "LICENSE-DATA",
+    "trndp-exact-v2/CITATION.cff": "CITATION.cff",
+}
 
 FILES = [
     # group, path under data/external, url
@@ -86,6 +114,9 @@ FILES = [
     # browser check, so the copy the Wayback Machine took on 16 December 2025 is read instead.
     ("utrp", "utrp/CEC2013Supp.zip",
      "http://web.archive.org/web/20251216204206id_/https://users.cs.cf.ac.uk/C.L.Mumford/Research%20Topics/UTRP/CEC2013Supp.zip"),
+    *[("utrp", f"utrp/husselmann2024/{run.split('/')[0]}.txt", HUSSELMANN_REPO + urllib.parse.quote(run + "/Extreme solutions.txt"))
+      for run in HUSSELMANN_RUNS],
+    ("utrp", "utrp/jiao2026/trndp_preprint_v2.pdf", ZENODO_JIAO.format("trndp_preprint_v2.pdf")),
 ]
 
 # OpenStreetMap through the Overpass API, for the Absheron peninsula.
@@ -174,6 +205,15 @@ def walk_network():
     return json.dumps(answer, ensure_ascii=False, separators=(",", ":")).encode("utf-8")
 
 
+def jiao():
+    """The four small files of Jiao (2026) the benchmark uses, from inside the archive's split
+    tarball: {file name: bytes}."""
+    print("  downloading the twelve parts of trndp-exact-v2.tar.gz (175 MB)")
+    data = b"".join(fetch(ZENODO_JIAO.format(part), timeout=900) for part in JIAO_PARTS)
+    with tarfile.open(fileobj=io.BytesIO(data), mode="r:gz") as tar:
+        return {name: tar.extractfile(member).read() for member, name in JIAO_MEMBERS.items()}
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--refresh", action="store_true", help="download files that already exist too")
@@ -190,6 +230,14 @@ def main():
             save(path, gzip.decompress(body) if url.endswith(".gz") else body)
         except RuntimeError as e:
             failed.append(f"{rel}: {e}")
+    jiao_dir = OUT / "utrp" / "jiao2026"
+    if (not args.only or args.only == "utrp") and (args.refresh or not all((jiao_dir / n).exists() for n in JIAO_MEMBERS.values())):
+        print("utrp: utrp/jiao2026/ from the Zenodo archive")
+        try:
+            for name, body in jiao().items():
+                save(jiao_dir / name, body)
+        except (RuntimeError, tarfile.TarError, KeyError) as e:
+            failed.append(f"utrp/jiao2026: {e}")
     for rel, query in OSM_QUERIES:
         path = OUT / rel
         if (args.only and args.only != "osm") or (path.exists() and not args.refresh):

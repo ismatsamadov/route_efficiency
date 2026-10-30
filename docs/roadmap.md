@@ -89,8 +89,9 @@ far from their own route's line.
 - The population grid is from November 2023: 3.04 million people in the study area
   against 3.22 million official for 2026.
 - The search is greedy and only changes existing routes, so it finds improvements, not
-  the best network. On the benchmark networks it improves published route sets on both
-  scores, but methods that build and reshape routes reach far lower travel times
+  the best network. On the benchmark networks it improves Mumford's (2013) route sets
+  best for passengers on both scores, but methods that build and reshape routes reach far lower travel
+  times, and in their own route sets it finds almost nothing to straighten
   ([benchmark.md](benchmark.md)).
 - Fuel is in diesel-equivalent litres; CNG and electric buses are not modelled
   separately.

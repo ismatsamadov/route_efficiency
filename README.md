@@ -69,17 +69,19 @@ the tables.
 ## Test the search where the answers are known
 
 ```sh
-python3 benchmark.py         # writes output/benchmark/, about two minutes
+python3 benchmark.py         # writes output/benchmark/, about three minutes
 ```
 
 The transit routing literature compares methods on small benchmark networks, Mandl's
-and Mumford's four, with published route sets and scores. My scoring reproduces
-Mumford's (2013) published scores exactly, and the redesign's straightening, the one
-kind of change the benchmarks' rules allow, improves her route sets best for passengers
-on both scores: on Mumford3 the average trip falls from 31.44 to 30.87 minutes and the
-route time from 6,665 to 6,047. Methods published since reach far lower times, so the
-search improves a network rather than designing one
-([docs/benchmark.md](docs/benchmark.md)).
+and Mumford's four, with published route sets and scores. My scoring reproduces the
+published scores of Mumford (2013), Hüsselmann et al. (2024) and Jiao (2026) to the last
+decimal, apart from four Mandl sets Hüsselmann scored on a slightly different demand
+matrix, and the redesign's straightening, the one kind of change the benchmarks' rules allow,
+improves Mumford's route sets best for passengers on both scores: on Mumford3 the
+average trip falls from 31.44 to 30.87 minutes and the route time from 6,665 to 6,047.
+In the 25 later sets, which reach far lower times, it finds four changes worth a few
+hundredths of a minute and nothing in the newest, so the search improves a network
+rather than designing one ([docs/benchmark.md](docs/benchmark.md)).
 
 ## Put the bicycle lanes beside the buses
 
@@ -107,7 +109,7 @@ the estimates. `python3 measure.py --config none` runs with the built-in default
 | Path | Contents |
 |---|---|
 | `data/ayna.db`, `data/ayna_scraper.py` | Bus network snapshot from the AYNA map API, and the script that builds it |
-| `data/external/` | Public datasets: population, ridership, metro, statistics, OpenStreetMap, Wikidata, the answers of the metro's own API, AYNA's bicycle lanes and parking points, and the benchmark networks of Mumford (2013) |
+| `data/external/` | Public datasets: population, ridership, metro, statistics, OpenStreetMap, Wikidata, the answers of the metro's own API, AYNA's bicycle lanes and parking points, the benchmark networks of Mumford (2013) and the route sets later studies published on them |
 | `data/headways.csv` | Real headways where known |
 | `data/fetch_external.py`, `data/osm_pbf.py` | Downloads the public datasets again; the reader of OpenStreetMap PBF extracts that cuts the walking network out of Geofabrik's |
 | `data/metro/`, `data/metro_scraper.py`, `data/build_metro.py` | The metro network (stations, train services, running times, departures), not yet used by the model; the scripts that read the metro's API and build the tables |
@@ -118,7 +120,7 @@ the estimates. `python3 measure.py --config none` runs with the built-in default
 | `redesign.py` | Searches for a better network and writes `output/redesign/` |
 | `robustness.py` | Repeats the results under other trip samples and assumptions and writes `output/robustness/` |
 | `validate_gtfs.py` | Runs MobilityData's GTFS validator on the two feeds and writes its findings to `output/gtfs_validation/` |
-| `benchmark.py` | Scores the published route sets of the Mandl and Mumford benchmark networks and runs the redesign's straightening on them; writes `output/benchmark/` |
+| `benchmark.py` | Scores the route sets published for the Mandl and Mumford benchmark networks, by Mumford (2013), Hüsselmann et al. (2024) and Jiao (2026), and runs the redesign's straightening on them; writes `output/benchmark/` |
 | `bicycle.py` | Puts AYNA's bicycle lanes and parking points beside the bus network; writes `output/bicycle/` |
 | `tests/` | Unit tests and a regression test: `python3 -m unittest` |
 | `index.html`, `site/` | The page for readers: `site/build.py` writes its data (`data.js`), the checklist (`checklist.xlsx`) and, from `og.html`, the link-preview picture (`og.png`); `app.js` and `style.css` draw it |

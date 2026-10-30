@@ -216,7 +216,10 @@ In the order I would read them, for someone new to the field:
    Mumford & Kheiri, 2019, EJOR 274(2):545–559, improve on them, and Hüsselmann, van
    Vuuren & Andersen, 2024, Computers & Operations Research 163:106481
    ([doi](https://doi.org/10.1016/j.cor.2023.106481)), finds route sets much cheaper to
-   run ([benchmark.md](benchmark.md) compares them).
+   run, and Jiao, 2026, a preprint with code and data on Zenodo
+   ([doi](https://doi.org/10.5281/zenodo.23759374)), reaches the lowest average travel
+   times so far with certified lower bounds; both publish their route sets, and
+   [benchmark.md](benchmark.md) compares them and runs the straightening on them.
 6. Holliday, El-Geneidy & Dudek, 2025, Transportmetrica B
    ([doi](https://doi.org/10.1080/21680566.2025.2561863); accepted manuscript
    [arXiv:2404.05894](https://arxiv.org/abs/2404.05894)). The state of the art with

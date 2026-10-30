@@ -281,18 +281,21 @@ deviation, minimum, maximum, count of positive gains and number of samples). The
 Written by `benchmark.py` ([benchmark.md](benchmark.md)). ATT and route time are in
 minutes, the shares in %; nodes are numbered from 1, as in Mumford's files.
 
-`published.csv` has one row for each of the ten published route sets:
+`published.csv` has one row for each of the 35 published route sets:
 
 | Column | Meaning |
 |---|---|
-| `network`, `route_set` | Mandl or Mumford0–3; `passenger` or `operator`, the set Mumford (2013) found best for them |
+| `source`, `method` | Who published the set and with what: Mumford (2013) with SEAMO2, Hüsselmann et al. (2024) with DBMOSA or NSGA-II, Jiao (2026) with exact search (Mandl) or heuristic search (Mumford0–3) |
+| `network`, `route_set` | Mandl or Mumford0–3; `passenger` or `operator`, the set found best for them (Jiao publishes passengers' sets only) |
 | `routes`, `nodes_min`, `nodes_max` | Routes in the set, and the fewest and most nodes on one |
-| `rules_broken` | The benchmark rules the set breaks; empty for all ten |
+| `rules_broken` | The benchmark rules the set breaks; empty for all 35 |
 | `att`, `d0`, `d1`, `d2`, `dun`, `route_time` | The scores computed here |
-| `att_published` ... `route_time_published` | The same scores in Mumford's Table IV; rounded to two decimals, they equal the scores computed here |
+| `att_published` ... `route_time_published` | The same scores as their authors give them: Mumford's Table IV (two decimals), the headers of Hüsselmann's files (four decimals), Jiao's file for ATT and the preprint and archive for the rest. Rounded alike, they equal the scores computed here, except the ATT and shares of Hüsselmann's Mandl sets, scored by them on a demand matrix that differs for one pair of nodes ([data.md](data.md#route-sets-published-later-husselmann2024-jiao2026)) |
 
 `search.csv` has one row for each published set and search (`one_pass`, as
-`redesign.py` searches, or `repeated`, with passes until one keeps nothing):
+`redesign.py` searches, or `repeated`, with passes until one keeps nothing), after the
+same `source`, `method`, `network` and `route_set` columns and a `search` column
+(`one_pass` or `repeated`):
 
 | Column | Meaning |
 |---|---|
@@ -305,15 +308,17 @@ minutes, the shares in %; nodes are numbered from 1, as in Mumford's files.
 | `route_time_before`, `route_time_after`, `route_time_change_pct` | The same for route time |
 | `d0_after`, `d1_after`, `d2_after`, `dun_after` | The shares of trips by number of changes after the search |
 
-`changes.csv` has one row per change kept, in order: `network`, `route_set`, `search`,
-`step`, `pass`, `route` (its number in the set), `from_node` and `to_node` (the ends of
-the stretch), `nodes_before` and `nodes_after` (the stretch before and after, ends
-included), `route_minutes_saved`, and ATT and route time before and after the change.
+`changes.csv` has one row per change kept, in order: `source`, `method`, `network`,
+`route_set`, `search`, `step`, `pass`, `route` (its number in the set), `from_node` and
+`to_node` (the ends of the stretch), `nodes_before` and `nodes_after` (the stretch before
+and after, ends included), `route_minutes_saved`, and ATT and route time before and after
+the change.
 
 `route_sets/` holds each route set a search changed, named
-`<network>_<route_set>_<search>.txt`, in the format of Mumford's supplement
-(`routeset(1).route = [30 11 17 ...];`) under two comment lines with its scores, so that
-other software can read and score it.
+`<source>_<network>_<route_set>_<search>.txt` with the source as `mumford2013`,
+`husselmann2024-dbmosa`, `husselmann2024-nsgaii` or `jiao2026`, in the format of
+Mumford's supplement (`routeset(1).route = [30 11 17 ...];`) under two comment lines with
+its scores, so that other software can read and score it.
 
 ## output/bicycle/ — the bicycle lanes and parking beside the bus network
 
