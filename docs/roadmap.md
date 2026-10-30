@@ -1,6 +1,6 @@
 # Roadmap
 
-Where I think the work stands on 23 October 2026, and what I would do next. This page is
+Where I think the work stands on 30 October 2026, and what I would do next. This page is
 about what is missing, not what has been built.
 
 ## What I would do next
@@ -53,6 +53,18 @@ cheap change to the search itself: on Mumford1 to Mumford3, repeating the
 straightening passes until one keeps nothing adds 34 to 53% to the gain in travel time
 of a single pass, and `redesign.py` makes a single pass. Repeating its passes, and checking the gain on the
 independent sample as before, would show whether Baku's minute is an underestimate.
+
+One piece of work is promised rather than merely planned: smaller instances cut from
+the Baku network, in the format of Mumford's (2013) benchmark files, so that other
+researchers can run their own methods on a network like this one and compare them with
+the greedy search. Each instance would be a sub-network of the 3,456 stops given as node
+coordinates, link times and a demand matrix, with its number of routes and node bounds
+stated and the code that cuts it published beside it. Its link times would come from
+distances at the model's speed and its demand from the gravity model, both labelled as
+modelled rather than measured, since Baku has no origin-destination counts; the 0.58
+rank correlation against counted boardings is the only check the demand has, and the
+instance files would say so. Christine Mumford suggested the instances in October 2026,
+and they would credit her; two researchers have been told to expect them.
 
 Everything else can wait, because it would make the method look more serious without
 changing the answer much: generating new candidate routes (k-shortest paths between
