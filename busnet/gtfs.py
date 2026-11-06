@@ -18,6 +18,7 @@ from .geo import Polyline
 
 FEED_URL = "https://github.com/ismatsamadov/route_efficiency"
 FAR_FROM_LINE_M = 100.0      # the validator's limit for a stop's distance from its trip's shape
+SERVICE_DATES = ("20260101", "20271231")   # nominal; the Mobility Database marks a feed inactive after the last
 
 
 def _hms(seconds):
@@ -85,7 +86,7 @@ def write_gtfs(path, network, a, headways, version, start_hour=6, feed_name="Bak
                        [["baku", feed_name, "https://ayna.gov.az", "Asia/Baku"]]),
         "feed_info.txt": (["feed_publisher_name", "feed_publisher_url", "feed_lang", "feed_start_date",
                            "feed_end_date", "feed_version", "feed_contact_url"],
-                          [["Ismat Samadov, independent researcher", FEED_URL, "az", "20260101", "20261231",
+                          [["Ismat Samadov, independent researcher", FEED_URL, "az", *SERVICE_DATES,
                             version, f"{FEED_URL}/issues"]]),
         "stops.txt": (["stop_id", "stop_code", "stop_name", "stop_lat", "stop_lon"],
                       [[s, network.stops[s].code or "", network.stops[s].name or "",
@@ -95,7 +96,7 @@ def write_gtfs(path, network, a, headways, version, start_hour=6, feed_name="Bak
                          f"{network.routes[rid].first_point} - {network.routes[rid].last_point}", 3]
                         for rid in sorted(headways) if rid in network.routes]),
         "calendar.txt": (["service_id", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday",
-                          "sunday", "start_date", "end_date"], [["daily", 1, 1, 1, 1, 1, 1, 1, "20260101", "20261231"]]),
+                          "sunday", "start_date", "end_date"], [["daily", 1, 1, 1, 1, 1, 1, 1, *SERVICE_DATES]]),
         "trips.txt": (["route_id", "service_id", "trip_id", "trip_headsign", "direction_id", "shape_id"], trips),
         "stop_times.txt": (["trip_id", "arrival_time", "departure_time", "stop_id", "stop_sequence"], stop_times),
         "shapes.txt": (["shape_id", "shape_pt_lat", "shape_pt_lon", "shape_pt_sequence", "shape_dist_traveled"], shapes),

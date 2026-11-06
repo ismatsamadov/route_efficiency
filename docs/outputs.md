@@ -170,10 +170,12 @@ Merged routes are drawn as `dropped`; `routes.csv` tells merges and drops apart.
 
 GTFS feeds with `agency.txt`, `feed_info.txt`, `stops.txt`, `routes.txt`, `calendar.txt`,
 `trips.txt`, `stop_times.txt`, `shapes.txt` and `frequencies.txt`. Each route direction is
-one trip that repeats every headway from 06:00 to 23:00, every day of 2026. Stop and route
-ids are AYNA's. Stop times come from the travel model, so the feeds describe the model,
-not an official timetable; `feed_info.txt` names the network (`feed_version` is `today`
-or `redesign`) and the repository as publisher.
+one trip that repeats every headway from 06:00 to 23:00, every day of 2026 and 2027. The
+dates are nominal, since the network is AYNA's map as scraped on 23 October 2026; they run
+to the end of 2027 because the Mobility Database marks a feed inactive once its last day
+has passed. Stop and route ids are AYNA's. Stop times come from the travel model, so the
+feeds describe the model, not an official timetable; `feed_info.txt` names the network
+(`feed_version` is `today` or `redesign`) and the repository as publisher.
 
 The shapes are the repaired route lines with two changes the validator below asks for: a
 point that repeats the one before it is written once (the repaired lines repeat a point
