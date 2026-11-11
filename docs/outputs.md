@@ -183,6 +183,30 @@ point that repeats the one before it is written once (the repaired lines repeat 
 first, is carried on to them in straight lines, as the model measures those hops. Route
 44 direction 2 is the case that matters: AYNA's line ends 1.7 km before its last stop.
 
+Today's feed is listed in the Mobility Database as a community feed,
+[mdb-3629](https://mobilitydatabase.org/feeds/gtfs/mdb-3629), under the provider name
+"Baku Community GTFS". It was added on 10 November 2026, the first feed there for
+Azerbaijan. Once a day the database downloads the file from
+`https://github.com/ismatsamadov/route_efficiency/raw/main/output/redesign/gtfs_today.zip`,
+keeps it as a new version if it has changed, and runs the validator on it; its first
+version is identical to the file here, and that version's report (validator 8.0.1) has
+the same notices as today's rows of `output/gtfs_validation/notices.csv`. The link holds
+only while the file keeps its path on `main` and the repository stays public under its
+present name, and any commit that changes the file, a rerun on a new scrape of the map
+for example, becomes the feed's next version there.
+
+The listing also scores the feed on the six criteria of the database's Seal of
+Reliability. The feed passes four: available (the daily download works), compliant (no
+validator errors) and the two fresh criteria. It fails official, which only a feed the
+agency publishes or authorises can pass, so it cannot earn the seal, and it fails stable
+until the same link has served it for six months. The fresh criteria are the rules the
+service dates have to keep: the last day at least seven days ahead, a span of two years
+at most (1 January 2026 to 31 December 2027 is exactly that), and the dates of each new
+version meeting or overlapping those of the one before. So by 24 December 2027 both
+dates in `busnet/gtfs.py` have to move forward, the first to a day no later than the day
+the new file goes in and the last to less than two years after that, and `redesign.py`
+has to write the feeds again.
+
 ## output/gtfs_validation/ — what the GTFS validator says about the feeds
 
 What MobilityData's canonical GTFS validator says about the two feeds, written by

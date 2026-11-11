@@ -109,4 +109,6 @@ OpenStreetMap, the BakuBus and AYNA websites, and news reports. Until AYNA or th
 operators share them, `busnet.toml` holds the assumptions that stand in for them. For the
 metro, intervals and running times are published (above), but no full timetable, no
 exit counts, no flows between stations and no GTFS feed: the Mobility Database catalogue
-(3,613 feeds on 25 October 2026) has none for Azerbaijan.
+(3,613 feeds on 25 October 2026) had none for Azerbaijan, and the first it added since,
+this repository's model of the buses (community feed mdb-3629, 10 November 2026), has no
+metro.
