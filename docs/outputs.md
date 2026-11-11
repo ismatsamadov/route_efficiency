@@ -201,10 +201,11 @@ validator errors) and the two fresh criteria. It fails official, which only a fe
 agency publishes or authorises can pass, so it cannot earn the seal, and it fails stable
 until the same link has served it for six months. The fresh criteria are the rules the
 service dates have to keep: the last day at least seven days ahead, a span of two years
-at most (1 January 2026 to 31 December 2027 is exactly that) and no gap between the dates
-of one version and the next. So by 24 December 2027 both dates in `busnet/gtfs.py`, the
-start as well as the end, have to move forward within those rules, and `redesign.py` has
-to write the feeds again.
+at most (1 January 2026 to 31 December 2027 is exactly that), and the dates of each new
+version meeting or overlapping those of the one before. So by 24 December 2027 both
+dates in `busnet/gtfs.py` have to move forward, the first to a day no later than the day
+the new file goes in and the last to less than two years after that, and `redesign.py`
+has to write the feeds again.
 
 ## output/gtfs_validation/ — what the GTFS validator says about the feeds
 

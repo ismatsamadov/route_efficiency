@@ -195,7 +195,8 @@ diesel-equivalent litres as a common unit ([configuration.md](configuration.md#f
 No official GTFS feed exists for Baku. The Mobility Database had none for Azerbaijan
 until 10 November 2026, when it added my feed of today's network as a community feed
 ([mdb-3629](https://mobilitydatabase.org/feeds/gtfs/mdb-3629)): AYNA's routes, stops and
-lines with headways I estimated, not a timetable.
+lines, with stop times from my travel model and headways I estimated for 200 of the 201
+routes, not a timetable.
 
 ## 9. Reading list
 

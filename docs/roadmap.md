@@ -149,6 +149,6 @@ bicycle lanes and parking points come with the other opendata.az files; after a 
 what the 649 MPS points in its parking file are, or publishes when each lane was built
 and what separates it from traffic, `docs/data.md` is where that goes. Whatever changes, I
 commit the new data and the regenerated `output/` together, so results always match
-their inputs. That commit also updates the Mobility Database's copy of today's GTFS
-feed, which it downloads from `main`, so I run `validate_gtfs.py` on the new feeds before
-making it.
+their inputs. Once that commit is on `main`, the Mobility Database stores the new
+today's feed at its next daily download, so I run `validate_gtfs.py` on the new feeds
+before committing them.
