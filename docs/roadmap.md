@@ -1,6 +1,6 @@
 # Roadmap
 
-Where I think the work stands on 30 October 2026, and what I would do next. This page is
+Where I think the work stands on 11 November 2026, and what I would do next. This page is
 about what is missing, not what has been built.
 
 ## What I would do next
@@ -75,7 +75,12 @@ kinds of change in `busnet/optimize.py`. The benchmark networks showed what such
 methods buy: on Mumford's networks they reach far lower travel times than straightening
 a published route set does. The GTFS feeds now pass MobilityData's validator with no
 errors (`validate_gtfs.py`); its remaining warnings are AYNA's, chiefly stops that sit
-far from their own route's line.
+far from their own route's line. Since 10 November 2026 the Mobility Database lists
+today's feed as a community feed
+([mdb-3629](https://mobilitydatabase.org/feeds/gtfs/mdb-3629)), the first for
+Azerbaijan. That asks two things of me: the file keeps its link, and its nominal service
+dates, which end on 31 December 2027, move forward by 24 December 2027
+([outputs.md](outputs.md#outputredesigngtfs_todayzip-and-gtfs_redesignzip)).
 
 ## What this version cannot do
 
@@ -144,4 +149,6 @@ bicycle lanes and parking points come with the other opendata.az files; after a 
 what the 649 MPS points in its parking file are, or publishes when each lane was built
 and what separates it from traffic, `docs/data.md` is where that goes. Whatever changes, I
 commit the new data and the regenerated `output/` together, so results always match
-their inputs.
+their inputs. That commit also updates the Mobility Database's copy of today's GTFS
+feed, which it downloads from `main`, so I run `validate_gtfs.py` on the new feeds before
+making it.

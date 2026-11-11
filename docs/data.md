@@ -221,8 +221,11 @@ December 1979), and the table keeps both.
 
 Not published anywhere I looked: a full timetable beyond the two departure lists,
 weekend and evening intervals for the red and green lines, exit counts (only entries),
-flows between stations, and train positions. Nor is there a GTFS feed for Baku: the
-Mobility Database catalogue, 3,613 feeds on 25 October 2026, has none for Azerbaijan.
+flows between stations, and train positions. Nor is there an official GTFS feed for
+Baku: the Mobility Database catalogue, 3,613 feeds on 25 October 2026, had none for
+Azerbaijan, and the first it added, on 10 November 2026, is my own model of today's
+buses, with no metro in it
+([outputs.md](outputs.md#outputredesigngtfs_todayzip-and-gtfs_redesignzip)).
 
 ## OpenStreetMap destinations
 

@@ -192,7 +192,10 @@ diesel-equivalent litres as a common unit ([configuration.md](configuration.md#f
 | [transit_learning](https://github.com/AHolliday/transit_learning) | The learned network-design method of Holliday et al. | GPL-3 |
 | Remix (Via), Optibus, PTV Visum, TransCAD | Commercial planning tools | Commercial |
 
-No public GTFS feed exists for Baku: the Mobility Database lists none for Azerbaijan.
+No official GTFS feed exists for Baku. The Mobility Database had none for Azerbaijan
+until 10 November 2026, when it added my feed of today's network as a community feed
+([mdb-3629](https://mobilitydatabase.org/feeds/gtfs/mdb-3629)): AYNA's routes, stops and
+lines with headways I estimated, not a timetable.
 
 ## 9. Reading list
 

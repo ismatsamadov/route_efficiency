@@ -53,6 +53,12 @@ gtfs-validator-8.0.1-cli.jar` writes its findings to `output/gtfs_validation/`, 
 stops it finds more than 100 m from their route's line
 ([docs/getting-started.md](docs/getting-started.md#checking-the-gtfs-feeds)).
 
+Today's feed is in the Mobility Database as a community feed,
+[mdb-3629](https://mobilitydatabase.org/feeds/gtfs/mdb-3629), the first there for
+Azerbaijan. The database downloads it from this repository every day, so
+`output/redesign/gtfs_today.zip` keeps its path on `main`
+([docs/outputs.md](docs/outputs.md#outputredesigngtfs_todayzip-and-gtfs_redesignzip)).
+
 ## Check how much the results depend on the sample and the assumptions
 
 ```sh

@@ -70,7 +70,8 @@ the coverage curve and the door-to-door model already support it, and it fits th
 Journal of Transport Geography or the Journal of Transport and Land Use); a data and
 software paper, with the repaired AYNA snapshot and the first GTFS feeds for Baku
 (`output/redesign/gtfs_today.zip`, which MobilityData's validator passes without
-errors) as a dataset with a Zenodo DOI and `busnet` as
+errors and the Mobility Database lists as a community feed, mdb-3629) as a dataset
+with a Zenodo DOI and `busnet` as
 research software in the Journal of Open Source Software, which is free and asks for an
 open licence, tests and documentation, all of which exist; a short Findings paper on one
 result, for example that the strict coverage guard gains as much as the default, in
@@ -352,7 +353,10 @@ point.
    deep reinforcement learning", as `paper/manuscript.md` now has it (found 30 October
    2026; the numbers taken from its Table 3 were always from the right paper).
 8. After acceptance: add the reference to the preprint, update `CITATION.cff` with
-   `preferred-citation`, make a new release if anything changed, add the paper to ORCID.
+   `preferred-citation`, make a new release if anything changed, add the paper to ORCID,
+   and name the Mobility Database listing of today's feed (mdb-3629) in Section 6.5 and
+   the availability statement. It stays out of the manuscript until then, because its
+   link names the repository and the review is double-anonymised.
 
 ## 8. Checklist before submitting
 
