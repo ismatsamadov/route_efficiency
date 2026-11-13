@@ -1,8 +1,10 @@
 # Code
 
-Python 3.11 or newer, standard library only. The `busnet` package has about 3,100 lines,
-the five scripts about 900 more, and the tests about 1,000. The page in `index.html` and
-`site/` adds about 3,000 lines of Python, JavaScript, CSS and HTML ([The page](#the-page)).
+Python 3.11 or newer, standard library only. The `busnet` package has about 3,600 lines,
+the six scripts about 1,100 more, and the tests about 1,700. The page in `index.html` and
+`site/` adds about 3,000 lines of Python, JavaScript, CSS and HTML ([The page](#the-page)),
+and the animations at the top of the README about 1,200 lines of Python
+([The animations](#the-animations)).
 `python3 -m unittest` runs the tests; see [Checking a change](#checking-a-change).
 
 ## Layout
@@ -44,6 +46,10 @@ site/
   og.html, og.png     the link-preview picture, and the page build.py --og draws it from
   app.js              the page's logic: tour, map views, route cards, reach, issues, tables
   style.css           the page's styles and its print layout
+animations/
+  build.py            the README's four animations, from the data, output/ and a rerun of the search
+  draw.py             anti-aliased lines, discs and polygons, a stroke font, and an animated-GIF writer
+  buses.gif, riders.gif, redesign.gif, travel-time.gif   written by build.py
 .nojekyll             tells GitHub Pages to serve the files as they are
 data/                 every input, committed (see data.md)
   ayna_scraper.py     the bus network from AYNA's map API -> ayna.db (run in a folder outside the repository)
@@ -133,7 +139,7 @@ output files show.
 | `metrics` | `route_table`, `detour_table`, `trunk_corridors`, `near_duplicates`, `find_detours`, `StreetGraph`, `coverage_by_route`, `evaluate_od`, `compare_ridership`, `network_summary` | `network_summary` gives every network-wide figure in `network.json` |
 | `scenarios` | `balance_stops(network, min_gap_m, max_gap_after_m, protect)` | Returns (new network, details); never edits its input |
 | `walking` | `walkable(tags)`, `load_overpass(path)`, `WalkNetwork(nodes, ways)` (`snap`, `distances_from`, `walk_distances`), `load_walk_network(path)` | Streets and paths from an Overpass answer as a graph; one multi-source Dijkstra from the stops gives the walk from every population point. Used by `robustness.py` only ([methodology.md](methodology.md#5-population-and-coverage)) |
-| `optimize` | `Plan`, `allocate`, `Evaluator` (`score`, `people_with_stop`), `Streets`, `straightened`, `Drop`, `Straighten`, `BalanceStops`, `Shift`, `Context` (`riders_for`), `candidates`, `search`, `fleet_for_same_time` | Explained in [redesign.md](redesign.md) |
+| `optimize` | `Plan`, `allocate`, `Evaluator` (`score`, `people_with_stop`), `Streets`, `straightened`, `Drop`, `Straighten`, `BalanceStops`, `Shift`, `Context` (`riders_for`), `candidates`, `search(plan, evaluator, ctx, say, kept)`, `fleet_for_same_time` | Explained in [redesign.md](redesign.md). Given `kept`, `search` calls it with each change it keeps and the plan that change makes, which is how `animations/build.py` draws every step |
 | `gtfs` | `write_gtfs(path, network, a, headways, version, start_hour=6)`, `shape_points(pattern, network)` | Frequency-based feed; `version` goes into `feed_info.txt`. `shape_points` writes a repeated point once and carries a line that stops short on to its end stops ([outputs.md](outputs.md#outputredesigngtfs_todayzip-and-gtfs_redesignzip)) |
 | `utrp` | `Instance`, `RULES`, `load_instance(supplement, name)`, `published_route_sets(supplement)`, `published_scores(supplement)`, `LATER_SETS`, `husselmann_route_sets(path)`, `JIAO_FILE`, `JIAO_SCORES`, `jiao_route_sets(path)`, `evaluate(inst, routes)`, `route_time`, `problems(inst, routes)`, `quickest_paths`, `detours`, `Straighten`, `candidates`, `search(inst, routes, max_tries=80, min_gain=0.005, repeat=False)`, `matlab(routes)` | Scores and rules of the benchmark literature; `search` is the redesign's straightening under those rules ([methodology.md](methodology.md#12-the-benchmark-networks)). Used by `benchmark.py` only |
 | `config` | `load_config(path, overrides)`, `parse_value`, `DATA_KEYS` | |
@@ -289,9 +295,71 @@ Cyrillic look-alikes some names use. The address bar keeps the state
 (`#view=detours&route=177`, `#route=190&compare=160`, `#view=reach&stop=60`, `#view=time&stop=60`, `#view=bicycle`), and
 `#tour` starts the tour.
 
+## The animations
+
+`animations/build.py` draws the four GIFs at the top of the README, and `draw.py` beside it
+holds all the drawing they need, in the standard library. A `Canvas` is three byte arrays,
+red, green and blue. A shape becomes a mask first, pixel to coverage: a segment covers a
+pixel by its half-width plus half a pixel minus the distance from the pixel's centre,
+kept between 0 and 1, and each row is searched only across the segment's two round ends
+and the band between them. A mask keeps the larger coverage where its pieces overlap, so
+a polyline never darkens at its own joints, while two lines painted one after the other
+do. A `Field` keeps each pixel's distance to some lines, so that a route can be drawn at a
+new width every frame by cutting the sorted distances. Polygons are filled by pixel
+centres without smoothing, so the population hexagons tile without seams. Text uses a
+stroke font defined in the file: Latin letters, digits and the punctuation the
+animations use, capitals 10 units high, the digits all one width so that counters do not
+jitter. A character the font lacks, or a line that would run off the picture, raises an
+error, which is how the build checks its own words. `Gif` collects the frames, makes one
+palette of at most 255 colours by median cut with the colours that must stay exact
+pinned, gives every pixel its nearest palette colour, and stores each frame as the
+rectangle that changed since the one before, with the unchanged pixels transparent and
+the frame left in place for the next (disposal 1), coded with GIF's LZW (`lzw`). A frame
+identical to the one before only lengthens it, and the file loops for ever.
+
+All four use the crop of the manuscript's figures (`paper/figures.py`), the measurements'
+flat projection, the repaired network, the population hexagons of the Kontur grid in four
+light steps from 100 people, and the page's colours.
+
+- `buses.gif`: `bus_runs` gives every route direction the times of the GTFS feed
+  (`gtfs.write_gtfs`), each hop at the zone's cruise speed plus `stop_loss_s`, and its
+  route's headway; buses leave every headway from a start that is random but fixed for
+  each direction (seeded with the route and the direction), and `bus_positions` puts every
+  bus on the road at a moment on the repaired path, between the stops its times fall
+  between. 80 frames, 45 seconds of the model apart, make the hour; each shows for 90 ms.
+  A bus is blue when its route's headway comes from counted boardings or a published
+  headway (sources `ridership` and `supplied`), orange when it is the zone's assumption.
+- `riders.gif`: one frame for each day of the BakuBus file, 60 ms each. Every counted
+  route the map carries is drawn along both its directions, one pixel wide for each 4,000
+  boardings that day, in whole pixels, widest first, in blue at half opacity. Each metro
+  station sits at the mean of its exits in `metro_exits.csv` (names matched by
+  `destinations._match`) as a circle of one square pixel for each 230 entries, its radius
+  in half pixels. Rounding the widths keeps the file small, since a day like the one
+  before then changes few pixels. The chart gives the daily totals of every counted route
+  and station, with 15 August marked.
+- `redesign.gif`: `replay_search` runs `redesign.py`'s search again with the same inputs and
+  sample (zones one per hexagon, the finer split for the coverage guard, `Evaluator` with
+  `redesign_origins` and `redesign_seed`) and collects each change it keeps with the plan
+  after it through `search(..., kept=...)`. The build stops if the kinds, routes or minutes
+  differ from `output/redesign/changes.csv`. Each change gets two frames: what it touches
+  (the merged or dropped route red and the routes that take its riders or buses blue; a
+  detour red and its shorter path green, ringed; the stops removed red; the buses moved
+  from the orange routes to the blue), then the network after it with the minutes it
+  saved. Dropped routes and removed stops stay faintly red and straightened stretches
+  green. The chart is the average door-to-door time on the search's sample after each
+  step; the last frame takes its figures from `summary.json`.
+- `travel-time.gif`: from the stop with the most routes (the lowest id on a tie), where the
+  page's Travel time view starts, `graph.TransitGraph` is searched from the stop's arrival
+  node as the page searches it, cut at `max_trip_min` plus three change penalties, and
+  each stop's minutes are the cost less one penalty per boarding. One frame per minute
+  from 0 to 120, 80 ms each and the last held for 3 s; each stop takes the colour of the
+  page's 15-minute bins when it is reached, with a white halo in that minute.
+
+On one Python version a rebuild gives the same files byte for byte.
+
 ## Checking a change
 
-1. **Run the tests.** `python3 -m unittest` takes about 15 seconds. `tests/test_geo.py`,
+1. **Run the tests.** `python3 -m unittest` takes about 35 seconds. `tests/test_geo.py`,
    `test_service.py`, `test_config.py` and `test_optimize.py` check `geo.match_stops`,
    the headway rules and daily service, the settings reader, and `Plan` arithmetic on a
    small made-up network (`tests/helpers.py`). `tests/test_regression.py` regenerates
@@ -307,7 +375,10 @@ Cyrillic look-alikes some names use. The address bar keeps the state
    `tests/test_site.py` rebuilds the page's data and workbooks and compares them with
    the committed ones, checks the polyline encoder, the line simplifier, the sorting of
    repairs and the workbook writer, and checks that every local file `index.html` links
-   to exists.
+   to exists. `tests/test_animations.py` decodes the GIF writer's output with a decoder of
+   its own, checks the font and that the drawing helpers agree, checks the buses' times
+   against the feed's on the made-up network, and checks that each committed GIF has the
+   picture size and the number of frames its data gives.
 2. **Regenerate and compare.** Run the three commands and look at `git diff --stat output/`.
    A refactoring should change nothing; a model change should change only what it means
    to. Commit the regenerated results with the change.
@@ -329,6 +400,8 @@ Cyrillic look-alikes some names use. The address bar keeps the state
    repository with `python3 -m http.server` and look at the page at desktop and phone
    width, run the tour (`#tour`) to its end, and open a route, a comparison and a stop's
    reach; the browser console must stay empty.
+9. **The animations.** After a change to the data, the settings or the search, run
+   `redesign.py` and then `python3 animations/build.py`, and look at the four GIFs.
 
 A new test goes in `tests/test_<module>.py` as a `unittest.TestCase`; `tests/helpers.py`
 builds the two-route network the tests share.

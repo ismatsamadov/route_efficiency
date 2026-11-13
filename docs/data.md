@@ -56,6 +56,11 @@ routes counted in both months at a Spearman correlation of 0.976), but some rout
 gained far more than the rest: 14 by 70%, 7A and 17 by 65% and 2 by 36%, against 13%
 for the 55 together. Routes 14 and 2 pass within 200 m of both Nizami and 28 May, and
 17 joins Elmlər Akademiyası to Gənclik, so they carry riders around the closed section.
+The break is sudden. On the ten weekdays after 15 August (17 to 28 August) the metro
+counted 388,165 entries a day against 520,544 on the ten before (3 to 14 August), 25%
+fewer, and BakuBus 674,943 boardings a day against 567,592, 19% more; 45% of that rise
+was on M2 to M6, which went from 361 boardings a day (their first day, 14 August) to
+48,624. `animations/riders.gif`, at the top of the README, shows the counts day by day.
 When the API changes, a new scrape and a rerun of the three scripts
 ([roadmap.md](roadmap.md#when-new-data-arrives)) will show which findings survive; the
 repairs are detected from the data, so they adapt to it.

@@ -2,7 +2,8 @@
 
 `measure.py` writes `output/`; `redesign.py` writes `output/redesign/`; `robustness.py`
 writes `output/robustness/`; `site/build.py` writes the page's files in `site/`
-([below](#sitedatajs-and-the-checklist-workbook)). CSV files are UTF-8 with a byte-order mark, so Excel shows
+([below](#sitedatajs-and-the-checklist-workbook)); `animations/build.py` writes the GIFs at
+the top of the README ([below](#animations--the-four-animations-at-the-top-of-the-readme)). CSV files are UTF-8 with a byte-order mark, so Excel shows
 Azerbaijani letters correctly. Shares are
 fractions between 0 and 1; distances are km or m as named; times are minutes unless named
 otherwise. Blank cells mean "not defined" (for example the circuity of a loop route).
@@ -435,3 +436,18 @@ Bicycles view and the tour quote). Lines are encoded polylines with
 | Routes | 201 | the measured columns of `routes.csv`, without the modelled headways, fleet and fuel |
 | Bicycle lanes | 54 streets, longest first | street, lane km, segments, km beside a bus route, bus routes along it and their numbers, stops within 100 m, MPV and MPS points within 100 m |
 | Bicycle parking | 834 | point, kind, coordinates, nearest bus stop and metres to it, routes at that stop, nearest lane and metres, nearest metro exit and metres |
+
+## animations/ — the four animations at the top of the README
+
+`animations/build.py` writes four GIFs, 960 × 566 pixels, that loop for ever; no script
+reads them. All four show the crop of the manuscript's figures over the population
+hexagons, and say on the picture what they rest on; [code.md](code.md#the-animations)
+explains how they are drawn.
+
+| File | Frames | What it shows |
+|---|---|---|
+| `buses.gif` | 80, one modelled hour in 7.2 s | Every bus of today's network on the road at the moment, as the GTFS feed runs them: each route at its estimated headway all day, at the zone's speed with `stop_loss_s` at each stop. Blue when the headway comes from counted boardings (55 routes) or a published headway (H1), orange when it is assumed from the type of service (145). The number on the road averages about 1,670 |
+| `riders.gif` | 273, one per day from 1 January to 30 September 2026, 60 ms each | The 57 counted BakuBus routes that AYNA's map carries, as wide as their boardings that day (1 px per 4,000, in whole pixels), and the 27 metro stations, as circles as large as their entries (1 px² per 230). The chart: daily boardings on all 65 counted routes and entries at all 27 stations, with 15 August, when the metro works began, marked. Counts only, nothing modelled |
+| `redesign.gif` | 56: today, two per change, the result | The 27 changes of `output/redesign/changes.csv` in their order: first what each touches, in colour, then the network after it; the average door-to-door time on the search's sample (from 79.66 to 78.31 minutes, a trip impossible within two hours counted at 120); and at the end the routes, stops and average trip before and after from `summary.json` |
+| `travel-time.gif` | 121, one per minute from 0 to 120, the last held for 3 s | The stops reached by bus from Q.Qarayev pr. 102, the stop with the most routes (27), as the page's Travel time view counts minutes: the travel model's journey of least cost, the change penalties left out. Colours are the page's 15-minute bins; grey stops are not reached within two hours |
+
