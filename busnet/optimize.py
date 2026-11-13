@@ -513,8 +513,9 @@ def candidates(plan, ctx):
     return out
 
 
-def search(plan, evaluator, ctx, say=print):
-    """Improve the plan step by step. Returns (plan, changes, score before, score after, people check)."""
+def search(plan, evaluator, ctx, say=print, kept=None):
+    """Improve the plan step by step. Returns (plan, changes, score before, score after).
+    kept, if given, is called with each change kept and the plan it makes, in order."""
     a = ctx.a
     start = evaluator.score(plan, boardings=True)
     ctx.riders = ctx.riders_for(plan, start["boardings"])
@@ -539,6 +540,8 @@ def search(plan, evaluator, ctx, say=print):
                     "people_losing_stop": people - new_people})
         say(f"  + {log[-1]['change']}  ({cur:.2f} -> {score['minutes']:.2f} min)")
         current, cur, people = new_plan, score["minutes"], new_people
+        if kept:
+            kept(change, new_plan)
 
     # 1. screen each structural change alone, then apply the winners in order of gain
     cands = candidates(plan, ctx)
