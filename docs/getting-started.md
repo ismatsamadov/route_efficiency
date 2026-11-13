@@ -27,6 +27,7 @@ python3 robustness.py
 | `python3 robustness.py` | `output/robustness/`: the results on other trip samples and under other assumptions | about 15 minutes (8 processes) |
 | `python3 bicycle.py` | `output/bicycle/`: AYNA's bicycle lanes and parking points beside the bus network | about 4 s |
 | `python3 site/build.py` | `site/data.js` and `site/checklist.xlsx`, the page's data, from `output/`; with `--og` also `site/og.png` (needs Chrome) | about 3 s |
+| `python3 animations/build.py` | `animations/*.gif`, the four animations at the top of the README ([below](#redraw-the-animations)) | about 4 minutes |
 
 The committed `output/` folder was produced by exactly these three commands. Running
 them again gives byte-identical files: random sampling uses fixed seeds and every list
@@ -37,7 +38,7 @@ committed files in the last digits of some numbers; the regression test allows t
 ## Run the tests
 
 ```sh
-python3 -m unittest                            # about 15 s
+python3 -m unittest                            # about 35 s
 BUSNET_SLOW_TESTS=1 python3 -m unittest        # also regenerates the redesign and the robustness checks, about 20 minutes
 ```
 
@@ -58,6 +59,19 @@ python3 -m http.server         # then open http://localhost:8000/ (or /#tour for
 needs an internet connection for the map library and the base map tiles; everything
 else is in the repository. GitHub Pages publishes it when Settings → Pages is set to
 deploy from the branch `main`, folder `/ (root)`.
+
+## Redraw the animations
+
+```sh
+python3 animations/build.py                  # all four, about 4 minutes
+python3 animations/build.py --only riders    # one of buses, riders, redesign and travel-time; repeatable
+```
+
+The four GIFs at the top of the README are drawn from the committed data and results with
+the standard library, like everything else ([code.md](code.md#the-animations)). Run
+`redesign.py` first after any change to the data or the settings: `redesign.gif` replays
+the search and stops with a message if it keeps other changes than
+`output/redesign/changes.csv` lists.
 
 ## Checking the GTFS feeds
 
